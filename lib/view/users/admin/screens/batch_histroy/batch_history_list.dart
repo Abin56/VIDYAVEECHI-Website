@@ -40,6 +40,7 @@ class BatchHistroyListPage extends StatelessWidget {
                     stream:
                         Get.put(BatchHistoryController()).batchHistoryStream(),
                     builder: (context, snapshot) {
+                      // ignore: unused_local_variable
                       List<BatchHistoryModel> batchHistory =
                           snapshot.data ?? [];
                       return ListView.separated(
