@@ -80,7 +80,7 @@ class DrawerSelectedPagesSection extends StatelessWidget {
           leading: SizedBox(
               height: 20,
               width: 20,
-              child: Image.asset('webassets/png/teacher (1).png')),
+              child: Image.asset('webassets/png/teacher_1.png')),
           tileColor: selectedIndex == 3
               ? themeColorBlue.withOpacity(0.1)
               : Colors.transparent,

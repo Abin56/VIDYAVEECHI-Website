@@ -319,7 +319,7 @@ class ClassController extends GetxController {
     final firebase = await server
         .collection('SchoolListCollection')
         .doc(UserCredentialsController.schoolId)
-        .collection('AllStudents')
+        .collection(' ')
         .get();
 
     for (var i = 0; i < firebase.docs.length; i++) {

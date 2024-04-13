@@ -1,10 +1,11 @@
-import 'package:dropdown_search/dropdown_search.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:vidyaveechi_website/controller/admin_section/parent_controller/parent_controller.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
 import 'package:vidyaveechi_website/view/drop_down/select_class.dart';
+import 'package:vidyaveechi_website/view/drop_down/select_student.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 import 'package:vidyaveechi_website/view/widgets/progess_button/progress_button.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
@@ -55,12 +56,13 @@ class CreateParent extends StatelessWidget {
             ),
             SizedBox(
               height: 40,
-              child: DropdownSearch(
-                items: const ['Sruthy', 'Abin'],
-                onChanged: (value) {
-                  parentController.studentName.value = value ?? '';
-                },
-              ),
+              child: SelectStudentsDropDown()
+              //  DropdownSearch(
+              //   items: const ['Sruthy', 'Abin'],
+              //   onChanged: (value) {
+              //     parentController.studentName.value = value ?? '';
+              //   },
+              // ),
             ),
           ],
         ),
