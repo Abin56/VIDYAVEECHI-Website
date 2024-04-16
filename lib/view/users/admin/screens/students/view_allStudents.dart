@@ -38,11 +38,10 @@ class AllStudentListContainer extends StatelessWidget {
                     child: Container(
                       color: screenContainerbackgroundColor,
                       height: 1000,
-                      width: 1150,
+                      width: 1200,
                       child: Padding(
-                        padding: const EdgeInsets.only(
-                          top: 0,
-                        ),
+                        padding:
+                            const EdgeInsets.only(top: 10, right: 20, left: 20),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -50,15 +49,12 @@ class AllStudentListContainer extends StatelessWidget {
                               height: 60,
                               width: double.infinity,
                               child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  const Padding(
-                                    padding: EdgeInsets.only(left: 25, top: 25),
-                                    child: TextFontWidget(
-                                      text: 'All Student List',
-                                      fontsize: 18,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                  const TextFontWidget(
+                                    text: 'All Student List',
+                                    fontsize: 18,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                   const Spacer(),
                                   GestureDetector(
@@ -84,7 +80,8 @@ class AllStudentListContainer extends StatelessWidget {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(left: 10),
+                                    padding: const EdgeInsets.only(
+                                        left: 10, right: 10),
                                     child: GestureDetector(
                                       onTap: () => searchStudentsByID(context),
                                       child: Container(
@@ -129,239 +126,222 @@ class AllStudentListContainer extends StatelessWidget {
                                             )
                                           ],
                                         )
-                                      : Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 10),
-                                          child: GestureDetector(
-                                            onTap: () {
-                                              studentController
-                                                  .onClassWiseSearch
-                                                  .value = true;
-                                            },
-                                            child: Container(
-                                              height: 40,
-                                              width: 200,
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                  color: Colors.grey
-                                                      .withOpacity(0.2)),
-                                              child: const Row(
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsets.all(8.0),
-                                                    child: Icon(Icons.search),
-                                                  ),
-                                                  TextFontWidget(
-                                                      text:
-                                                          " Search By ClassWise",
-                                                      fontsize: 12),
-                                                ],
-                                              ),
+                                      : GestureDetector(
+                                          onTap: () {
+                                            studentController
+                                                .onClassWiseSearch.value = true;
+                                          },
+                                          child: Container(
+                                            height: 40,
+                                            width: 200,
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                                color: Colors.grey
+                                                    .withOpacity(0.2)),
+                                            child: const Row(
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsets.all(8.0),
+                                                  child: Icon(Icons.search),
+                                                ),
+                                                TextFontWidget(
+                                                    text:
+                                                        " Search By ClassWise",
+                                                    fontsize: 12),
+                                              ],
                                             ),
                                           ),
                                         )),
                                 ],
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 20),
-                              child: Row(
-                                children: [
-                                  const Padding(
-                                    padding:
-                                        EdgeInsets.only(left: 20, right: 05),
-                                    child: RouteSelectedTextContainer(
-                                        title: 'All Student'),
-                                  ),
-                                  const Spacer(),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 20, right: 05),
-                                    child: GestureDetector(
-                                      onTap: () {
-                                        regiControl.ontapRegiStudentList.value =
-                                            true;
-                                      },
-                                      child: const RouteSelectedTextContainer(
-                                        width: 140,
-                                          title: 'Registered Student'),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 10),
-                                    child: GestureDetector(
-                                      onTap: () {
-                                        studentController
-                                            .ontapCreateStudent.value = true;
-                                      },
-                                      child: ButtonContainerWidget(
-                                          curving: 30,
-                                          colorindex: 0,
-                                          height: 35,
-                                          width: 150,
-                                          child: const Center(
-                                            child: TextFontWidget(
-                                              text: 'Create New Student',
-                                              fontsize: 12,
-                                              fontWeight: FontWeight.bold,
-                                              color: cWhite,
-                                            ),
-                                          )),
-                                    ),
-                                  )
-                                ],
-                              ),
+                            const SizedBox(
+                              height: 30,
                             ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 10, right: 10),
-                              child: Container(
-                                color: cWhite,
-                                child: Padding(
-                                  padding:
-                                      const EdgeInsets.only(left: 5, right: 5),
-                                  child: Container(
-                                    color: cWhite,
-                                    height: 40,
-                                    child: const Row(
-                                      children: [
-                                        Expanded(
-                                            flex: 1,
-                                            child: CatrgoryTableHeaderWidget(
-                                                headerTitle: 'No')),
-                                        SizedBox(
-                                          width: 02,
+                            Row(
+                              children: [
+                                const RouteSelectedTextContainer(
+                                  title: 'All Student',
+                                  width: 200,
+                                ),
+                                const SizedBox(
+                                  width: 20,
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    regiControl.ontapRegiStudentList.value =
+                                        true;
+                                  },
+                                  child: const RouteSelectedTextContainer(
+                                      width: 200, title: 'Registered Student'),
+                                ),
+                                const Spacer(),
+                                GestureDetector(
+                                  onTap: () {
+                                    studentController.ontapCreateStudent.value =
+                                        true;
+                                  },
+                                  child: ButtonContainerWidget(
+                                      curving: 30,
+                                      colorindex: 0,
+                                      height: 35,
+                                      width: 200,
+                                      child: const Center(
+                                        child: TextFontWidget(
+                                          text: 'Create New Student',
+                                          fontsize: 12,
+                                          fontWeight: FontWeight.bold,
+                                          color: cWhite,
                                         ),
-                                        Expanded(
-                                            flex: 2,
-                                            child: CatrgoryTableHeaderWidget(
-                                                headerTitle: 'ID')),
-                                        SizedBox(
-                                          width: 02,
-                                        ),
-                                        Expanded(
-                                            flex: 4,
-                                            child: CatrgoryTableHeaderWidget(
-                                                headerTitle: 'Name')),
-                                        SizedBox(
-                                          width: 02,
-                                        ),
-                                        Expanded(
-                                            flex: 4,
-                                            child: CatrgoryTableHeaderWidget(
-                                                headerTitle: 'E mail')),
-                                        SizedBox(
-                                          width: 02,
-                                        ),
-                                        Expanded(
-                                            flex: 3,
-                                            child: CatrgoryTableHeaderWidget(
-                                                headerTitle: 'Ph.NO')),
-                                        SizedBox(
-                                          width: 02,
-                                        ),
-                                        Expanded(
-                                            flex: 2,
-                                            child: CatrgoryTableHeaderWidget(
-                                                headerTitle: 'Class')),
-                                        SizedBox(
-                                          width: 02,
-                                        ),
-                                        Expanded(
-                                            flex: 3,
-                                            child: CatrgoryTableHeaderWidget(
-                                                headerTitle: 'Status')),
-                                        SizedBox(
-                                          width: 02,
-                                        ),
-                                      ],
-                                    ),
+                                      )),
+                                )
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 30,
+                            ),
+                            Container(
+                              color: cWhite,
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.only(left: 5, right: 5),
+                                child: Container(
+                                  color: cWhite,
+                                  height: 40,
+                                  child: const Row(
+                                    children: [
+                                      Expanded(
+                                          flex: 1,
+                                          child: CatrgoryTableHeaderWidget(
+                                              headerTitle: 'No')),
+                                      SizedBox(
+                                        width: 02,
+                                      ),
+                                      Expanded(
+                                          flex: 2,
+                                          child: CatrgoryTableHeaderWidget(
+                                              headerTitle: 'ID')),
+                                      SizedBox(
+                                        width: 02,
+                                      ),
+                                      Expanded(
+                                          flex: 4,
+                                          child: CatrgoryTableHeaderWidget(
+                                              headerTitle: 'Name')),
+                                      SizedBox(
+                                        width: 02,
+                                      ),
+                                      Expanded(
+                                          flex: 4,
+                                          child: CatrgoryTableHeaderWidget(
+                                              headerTitle: 'E mail')),
+                                      SizedBox(
+                                        width: 02,
+                                      ),
+                                      Expanded(
+                                          flex: 3,
+                                          child: CatrgoryTableHeaderWidget(
+                                              headerTitle: 'Ph.NO')),
+                                      SizedBox(
+                                        width: 02,
+                                      ),
+                                      Expanded(
+                                          flex: 2,
+                                          child: CatrgoryTableHeaderWidget(
+                                              headerTitle: 'Class')),
+                                      SizedBox(
+                                        width: 02,
+                                      ),
+                                      Expanded(
+                                          flex: 3,
+                                          child: CatrgoryTableHeaderWidget(
+                                              headerTitle: 'Status')),
+                                      SizedBox(
+                                        width: 02,
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
                             ),
                             Expanded(
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 10, right: 10),
-                                child: Container(
-                                  width: 1150,
-                                  decoration: BoxDecoration(
-                                    color: cWhite,
-                                    border: Border.all(color: cWhite),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(
-                                        right: 5, left: 5),
-                                    child: SizedBox(
-                                      // width: 1100,
-                                      child: StreamBuilder(
-                                        stream: studentController
-                                                    .onClassWiseSearch.value ==
-                                                true
-                                            ? server
-                                                .collection(
-                                                    'SchoolListCollection')
-                                                .doc(UserCredentialsController
-                                                    .schoolId)
-                                                .collection(
-                                                    UserCredentialsController
-                                                        .batchId!)
-                                                .doc(UserCredentialsController
-                                                    .batchId!)
-                                                .collection('classes')
-                                                .doc(Get.find<ClassController>()
-                                                    .classDocID
-                                                    .value)
-                                                .collection('Students')
-                                                .snapshots()
-                                            : server
-                                                .collection(
-                                                    'SchoolListCollection')
-                                                .doc(UserCredentialsController
-                                                    .schoolId)
-                                                .collection('AllStudents').orderBy('admissionNumber')
-                                                .snapshots(),
-                                        builder: (context, snaPS) {
-                                          if (snaPS.hasData) {
-                                            return ListView.separated(
-                                                itemBuilder: (context, index) {
-                                                  final data =
-                                                      StudentModel.fromMap(snaPS
-                                                          .data!.docs[index]
-                                                          .data());
-                                                  return GestureDetector(
-                                                    onTap: () {
-                                                      studentController
-                                                          .studentModelData
-                                                          .value = data;
-                                                      studentController
-                                                          .ontapStudent
-                                                          .value = true;
-                                                    },
-                                                    child: AllStudentDataList(
-                                                      data: data,
-                                                      index: index,
-                                                    ),
-                                                  );
-                                                },
-                                                separatorBuilder:
-                                                    (context, index) {
-                                                  return const SizedBox(
-                                                    height: 02,
-                                                  );
-                                                },
-                                                itemCount:
-                                                    snaPS.data!.docs.length);
-                                          } else if (snaPS.data == null) {
-                                            return const LoadingWidget();
-                                          } else {
-                                            return const LoadingWidget();
-                                          }
-                                        },
-                                      ),
+                              child: Container(
+                                // width: 1200,
+                                decoration: BoxDecoration(
+                                  color: cWhite,
+                                  border: Border.all(color: cWhite),
+                                ),
+                                child: Padding(
+                                  padding:
+                                      const EdgeInsets.only(right: 5, left: 5),
+                                  child: SizedBox(
+                                    // width: 1100,
+                                    child: StreamBuilder(
+                                      stream: studentController
+                                                  .onClassWiseSearch.value ==
+                                              true
+                                          ? server
+                                              .collection(
+                                                  'SchoolListCollection')
+                                              .doc(UserCredentialsController
+                                                  .schoolId)
+                                              .collection(
+                                                  UserCredentialsController
+                                                      .batchId!)
+                                              .doc(UserCredentialsController
+                                                  .batchId!)
+                                              .collection('classes')
+                                              .doc(Get.find<ClassController>()
+                                                  .classDocID
+                                                  .value)
+                                              .collection('Students')
+                                              .snapshots()
+                                          : server
+                                              .collection(
+                                                  'SchoolListCollection')
+                                              .doc(UserCredentialsController
+                                                  .schoolId)
+                                              .collection('AllStudents')
+                                              .orderBy('admissionNumber')
+                                              .snapshots(),
+                                      builder: (context, snaPS) {
+                                        if (snaPS.hasData) {
+                                          return ListView.separated(
+                                              itemBuilder: (context, index) {
+                                                final data =
+                                                    StudentModel.fromMap(snaPS
+                                                        .data!.docs[index]
+                                                        .data());
+                                                return GestureDetector(
+                                                  onTap: () {
+                                                    studentController
+                                                        .studentModelData
+                                                        .value = data;
+                                                    studentController
+                                                        .ontapStudent
+                                                        .value = true;
+                                                  },
+                                                  child: AllStudentDataList(
+                                                    data: data,
+                                                    index: index,
+                                                  ),
+                                                );
+                                              },
+                                              separatorBuilder:
+                                                  (context, index) {
+                                                return const SizedBox(
+                                                  height: 02,
+                                                );
+                                              },
+                                              itemCount:
+                                                  snaPS.data!.docs.length);
+                                        } else if (snaPS.data == null) {
+                                          return const LoadingWidget();
+                                        } else {
+                                          return const LoadingWidget();
+                                        }
+                                      },
                                     ),
                                   ),
                                 ),

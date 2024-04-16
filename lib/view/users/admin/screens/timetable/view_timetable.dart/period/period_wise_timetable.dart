@@ -9,9 +9,11 @@ import 'package:vidyaveechi_website/view/users/admin/screens/result/widget/data_
 import 'package:vidyaveechi_website/view/users/admin/screens/students/student_details/widgets/category_tableHeader.dart';
 import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
+import 'package:vidyaveechi_website/view/widgets/blue_Container_widget/blue_Container_widget.dart';
 import 'package:vidyaveechi_website/view/widgets/custom_showdialouge/custom_showdialouge.dart';
 import 'package:vidyaveechi_website/view/widgets/loading_widget/loading_widget.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
+import 'package:vidyaveechi_website/view/widgets/textformFiledContainer/textformFiledBlueContainer.dart';
 
 class PeriodWiseTimeTable extends StatelessWidget {
   final dynamic data;
@@ -50,33 +52,33 @@ class PeriodWiseTimeTable extends StatelessWidget {
                       width: 1,
                     ),
                     Expanded(
-                        flex: 2,
+                        flex: 1,
                         child:
                             CatrgoryTableHeaderWidget(headerTitle: "Period ")),
                     SizedBox(
                       width: 1,
                     ),
                     Expanded(
-                        flex: 2,
+                        flex: 3,
                         child:
                             CatrgoryTableHeaderWidget(headerTitle: "Subject")),
                     SizedBox(
                       width: 1,
                     ),
                     Expanded(
-                        flex: 2,
+                        flex: 3,
                         child: CatrgoryTableHeaderWidget(headerTitle: "Time")),
                     SizedBox(
                       width: 1,
                     ),
                     Expanded(
-                        flex: 1,
+                        flex: 2,
                         child: CatrgoryTableHeaderWidget(headerTitle: "Edit")),
                     SizedBox(
                       width: 1,
                     ),
                     Expanded(
-                        flex: 1,
+                        flex: 2,
                         child:
                             CatrgoryTableHeaderWidget(headerTitle: "Delete")),
                     SizedBox(
@@ -84,7 +86,7 @@ class PeriodWiseTimeTable extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                 SizedBox(
@@ -110,7 +112,7 @@ class PeriodWiseTimeTable extends StatelessWidget {
                               return GestureDetector(
                                 onTap: () {},
                                 child: Container(
-                                  color: data.selectColor,
+                                  // color: data.selectColor,
                                   child: Row(
                                     children: [
                                       Expanded(
@@ -127,11 +129,11 @@ class PeriodWiseTimeTable extends StatelessWidget {
                                         width: 1,
                                       ),
                                       Expanded(
-                                        flex: 2,
+                                        flex: 1,
                                         child: DataContainerMarksWidget(
                                             color: data.selectColor,
                                             rowMainAccess:
-                                                MainAxisAlignment.start,
+                                                MainAxisAlignment.center,
                                             index: index,
                                             headerTitle:
                                                 " ${data.periodNumber}"),
@@ -140,7 +142,7 @@ class PeriodWiseTimeTable extends StatelessWidget {
                                         width: 1,
                                       ),
                                       Expanded(
-                                        flex: 2,
+                                        flex: 3,
                                         child: DataContainerMarksWidget(
                                             color: data.selectColor,
                                             rowMainAccess:
@@ -153,7 +155,7 @@ class PeriodWiseTimeTable extends StatelessWidget {
                                         width: 1,
                                       ),
                                       Expanded(
-                                        flex: 2,
+                                        flex: 3,
                                         child: DataContainerMarksWidget(
                                             color: data.selectColor,
                                             rowMainAccess:
@@ -166,7 +168,7 @@ class PeriodWiseTimeTable extends StatelessWidget {
                                         width: 1,
                                       ),
                                       Expanded(
-                                        flex: 1,
+                                        flex: 2,
                                         child: GestureDetector(
                                           onTap: () {
                                             customShowDilogBox(
@@ -174,33 +176,28 @@ class PeriodWiseTimeTable extends StatelessWidget {
                                                 title: 'Edit',
                                                 children: [
                                                   SizedBox(
+                                                    width: 400,
                                                     height: 400,
                                                     child: Column(
                                                       children: [
-                                                        TextFormFiledBlueContainerWidget3(
-                                                          labeltext:
-                                                              '${data.periodNumber}',
+                                                        TextFormFiledBlueContainerWidgetWithOutColor(
+                                                          hintText:
+                                                              ' ${data.periodNumber}',
                                                           title:
                                                               'Period Number',
                                                           controller:
                                                               timeTableController
                                                                   .periodController,
                                                         ),
-                                                        const SizedBox(
-                                                          height: 10,
-                                                        ),
-                                                        TextFormFiledBlueContainerWidget3(
-                                                          labeltext:
-                                                              '${data.subjectName}',
+                                                        TextFormFiledBlueContainerWidgetWithOutColor(
+                                                          hintText:
+                                                              ' ${data.subjectName}',
                                                           title: 'Subject Name',
                                                           controller:
                                                               timeTableController
                                                                   .subjectNamecontroller,
                                                         ),
-                                                        const SizedBox(
-                                                          height: 10,
-                                                        ),
-                                                        TextFormFiledBlueContainerWidget3(
+                                                        TextFormFiledBlueContainerWidgetWithOutColor(
                                                           onTap: () async {
                                                             await timeTableController
                                                                 .selectTimesec(
@@ -208,17 +205,14 @@ class PeriodWiseTimeTable extends StatelessWidget {
                                                                     timeTableController
                                                                         .startTimeviewController);
                                                           },
-                                                          labeltext:
-                                                              '${data.startTime}',
+                                                          hintText:
+                                                              ' ${data.startTime}',
                                                           title: 'Start Time',
                                                           controller:
                                                               timeTableController
                                                                   .startTimeviewController,
                                                         ),
-                                                        const SizedBox(
-                                                          height: 10,
-                                                        ),
-                                                        TextFormFiledBlueContainerWidget3(
+                                                        TextFormFiledBlueContainerWidgetWithOutColor(
                                                           onTap: () async {
                                                             await timeTableController
                                                                 .selectTimesec(
@@ -226,8 +220,8 @@ class PeriodWiseTimeTable extends StatelessWidget {
                                                                     timeTableController
                                                                         .endTimeviewController);
                                                           },
-                                                          labeltext:
-                                                              '${data.endTime}',
+                                                          hintText:
+                                                              ' ${data.endTime}',
                                                           title: 'End Time',
                                                           controller:
                                                               timeTableController
@@ -249,40 +243,81 @@ class PeriodWiseTimeTable extends StatelessWidget {
                                           child: DataContainerMarksWidget(
                                               color: data.selectColor,
                                               rowMainAccess:
-                                                  MainAxisAlignment.start,
+                                                  MainAxisAlignment.center,
                                               index: index,
-                                              headerTitle: 'Edit'),
+                                              headerTitle: '  Edit'),
                                         ),
                                       ),
                                       const SizedBox(
                                         width: 1,
                                       ),
                                       Expanded(
-                                        flex: 1,
+                                        flex: 2,
                                         child: GestureDetector(
                                           onTap: () {
-                                            customShowDilogBox(
-                                                context: context,
-                                                title: 'Delete',
-                                                children: [
-                                                  const TextFontWidget(
-                                                      text:
-                                                          'Are you sure do you want to delete',
-                                                      fontsize: 16)
+                                            showDialog(
+                                              context: context,
+                                              barrierDismissible:
+                                                  false, // user must tap button!
+                                              builder: (context) => AlertDialog(
+                                                shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            0)),
+                                                title: const Text(
+                                                  "Delete",
+                                                  style: TextStyle(
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                          FontWeight.w600),
+                                                ),
+                                                content: const Text(
+                                                  "Are you sure do you want to delete ?",
+                                                  style:
+                                                      TextStyle(fontSize: 14),
+                                                ),
+                                                actions: [
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      GestureDetector(
+                                                          onTap: () {
+                                                            Navigator.pop(
+                                                                context);
+                                                          },
+                                                          child: BlueContainerWidget(
+                                                              title: "no",
+                                                              fontSize: 12,
+                                                              color:
+                                                                  adminePrimayColor,
+                                                              width: 100)),
+                                                      GestureDetector(
+                                                          onTap: () {
+                                                            timeTableController
+                                                                .enableDelete(
+                                                                    data.docid,
+                                                                    data.dayName!);
+                                                          },
+                                                          child: BlueContainerWidget(
+                                                              title: "Yes",
+                                                              fontSize: 12,
+                                                              color:
+                                                                  adminePrimayColor,
+                                                              width: 100)),
+                                                    ],
+                                                  ),
                                                 ],
-                                                doyouwantActionButton: true,
-                                                actiononTapfuction: () {
-                                                  timeTableController
-                                                      .enableDelete(data.docid,
-                                                          data.dayName!);
-                                                });
+                                              ),
+                                            );
                                           },
                                           child: DataContainerMarksWidget(
                                               color: data.selectColor,
                                               rowMainAccess:
-                                                  MainAxisAlignment.start,
+                                                  MainAxisAlignment.center,
                                               index: index,
-                                              headerTitle: 'Delete'),
+                                              headerTitle: '  Delete'),
                                         ),
                                       ),
                                     ],
