@@ -14,6 +14,7 @@ import 'package:vidyaveechi_website/view/widgets/custom_showDilog/custom_showdil
 import 'package:vidyaveechi_website/view/widgets/drop_DownList/schoolDropDownList.dart';
 
 class RegistrationController extends GetxController {
+  int notifierCounter = 0;
   RxBool ontapRegiStudentList = false.obs;
   List<ClassModel> allclassList = [];
   RxString batchYear = ''.obs;
@@ -42,10 +43,9 @@ class RegistrationController extends GetxController {
               value.docs.map((e) => ClassModel.fromMap(e.data())).toList();
           allclassList.add(list[i]);
         }
-            allclassList.sort((a, b) => a.className.compareTo(b.className));
+        allclassList.sort((a, b) => a.className.compareTo(b.className));
       });
     });
-
 
     return allclassList;
   }
@@ -126,7 +126,8 @@ class RegistrationController extends GetxController {
               .doc(classID)
               .collection('RegTemp_Students')
               .doc(studentDocID)
-              .delete().then((value) => Navigator.pop(context));
+              .delete()
+              .then((value) => Navigator.pop(context));
         },
         doyouwantActionButton: true);
   }
@@ -171,6 +172,7 @@ class RegistrationController extends GetxController {
           .doc(uid)
           .set(studentDetail.toMap())
           .then((value) async {
+        await notificationCounter();
         stNameController.clear();
         stPhoneController.clear();
         stEmailController.clear();
@@ -187,5 +189,40 @@ class RegistrationController extends GetxController {
       });
       log("Error .... $e");
     }
+  }
+
+  Future<void> notificationCounter() async {
+    await server
+        .collection('SchoolListCollection')
+        .doc(schoolListValue?['docid'])
+        .collection(batchYear.value)
+        .doc(batchYear.value)
+        .collection('RegStudentsNotifierCounter')
+        .doc('count')
+        .get()
+        .then((value) async {
+      if (value.data() == null) {
+        await server
+            .collection('SchoolListCollection')
+            .doc(schoolListValue?['docid'])
+            .collection(batchYear.value)
+            .doc(batchYear.value)
+            .collection('RegStudentsNotifierCounter')
+            .doc('count')
+            .set(
+          {'counter': 1},
+        );
+      } else {
+        notifierCounter = value.data()!['counter'] + 1;
+        await server
+            .collection('SchoolListCollection')
+            .doc(schoolListValue?['docid'])
+            .collection(batchYear.value)
+            .doc(batchYear.value)
+            .collection('RegStudentsNotifierCounter')
+            .doc('count')
+            .update({'counter': notifierCounter});
+      }
+    });
   }
 }

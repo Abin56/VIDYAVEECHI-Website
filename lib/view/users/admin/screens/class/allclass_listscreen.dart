@@ -66,7 +66,8 @@ class AllClassListView extends StatelessWidget {
                                 createClassFunction(context);
                               },
                               child: Padding(
-                                padding: const EdgeInsets.only(right: 15,bottom: 5),
+                                padding:
+                                    const EdgeInsets.only(right: 15, bottom: 5),
                                 child: ButtonContainerWidget(
                                     curving: 30,
                                     colorindex: 0,
@@ -86,22 +87,32 @@ class AllClassListView extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                         padding: const EdgeInsets.only(left: 15,right: 15),
+                        padding: const EdgeInsets.only(left: 15, right: 15),
                         child: Container(
                           color: cWhite,
                           child: const Padding(
-                            padding: EdgeInsets.only(left: 15,right: 15,top: 10),
+                            padding:
+                                EdgeInsets.only(left: 15, right: 15, top: 10),
                             child: Row(
                               children: [
                                 Expanded(
                                     flex: 1,
-                                    child: TableHeaderWidget(headerTitle: 'No')),
+                                    child:
+                                        TableHeaderWidget(headerTitle: 'No')),
                                 SizedBox(
                                   width: 01,
                                 ),
                                 Expanded(
                                     flex: 4,
-                                    child: TableHeaderWidget(headerTitle: 'Class')),
+                                    child: TableHeaderWidget(
+                                        headerTitle: 'Class')),
+                                SizedBox(
+                                  width: 01,
+                                ),
+                                Expanded(
+                                    flex: 2,
+                                    child: TableHeaderWidget(
+                                        headerTitle: 'Last Class Active Status')),
                                 SizedBox(
                                   width: 01,
                                 ),
@@ -112,18 +123,6 @@ class AllClassListView extends StatelessWidget {
                                 SizedBox(
                                   width: 01,
                                 ),
-                                Expanded(
-                                    flex: 3,
-                                    child: TableHeaderWidget(headerTitle: 'Status')),
-                                SizedBox(
-                                  width: 01,
-                                ),
-                                Expanded(
-                                    flex: 1,
-                                    child: TableHeaderWidget(headerTitle: 'Options')),
-                                SizedBox(
-                                  width: 01,
-                                ),
                               ],
                             ),
                           ),
@@ -131,17 +130,19 @@ class AllClassListView extends StatelessWidget {
                       ),
                       Expanded(
                         child: Padding(
-                          padding: const EdgeInsets.only(left: 15,right: 15),
+                          padding: const EdgeInsets.only(left: 15, right: 15),
                           child: Container(
                             width: 1200,
                             color: cWhite,
                             child: Padding(
-                              padding: const EdgeInsets.only(left: 15,right: 15,top: 10),
+                              padding: const EdgeInsets.only(
+                                  left: 15, right: 15, top: 10),
                               child: StreamBuilder(
                                 stream: server
                                     .collection('SchoolListCollection')
                                     .doc(UserCredentialsController.schoolId)
-                                    .collection(UserCredentialsController.batchId!)
+                                    .collection(
+                                        UserCredentialsController.batchId!)
                                     .doc(UserCredentialsController.batchId!)
                                     .collection('classes')
                                     .snapshots(),
@@ -150,7 +151,8 @@ class AllClassListView extends StatelessWidget {
                                     if (snaps.data!.docs.isEmpty) {
                                       return const Center(
                                         child: TextFontWidget(
-                                            text: "No class found add new classes",
+                                            text:
+                                                "No class found add new classes",
                                             fontsize: 12.5),
                                       );
                                     } else {
@@ -160,12 +162,13 @@ class AllClassListView extends StatelessWidget {
                                                 snaps.data!.docs[index].data());
                                             return GestureDetector(
                                               onTap: () {
+                                                classController.classModelData
+                                                    .value = data;
                                                 classController
-                                                    .classModelData.value = data;
-                                                classController.ontapClass.value =
-                                                    true;
+                                                    .ontapClass.value = true;
                                               },
                                               child: ClassDataListWidget(
+                                                classStatus: snaps,
                                                 data: data,
                                                 index: index,
                                               ),

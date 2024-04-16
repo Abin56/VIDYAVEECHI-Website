@@ -7,8 +7,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:vidyaveechi_website/controller/class_controller/class_controller.dart';
 import 'package:vidyaveechi_website/model/class_model/class_model.dart';
 
-class SelectClassDropDown extends StatelessWidget {
-  SelectClassDropDown({
+class RegSelectClassStdCountDropDown extends StatelessWidget {
+  RegSelectClassStdCountDropDown({
     Key? key,
   }) : super(key: key);
 
