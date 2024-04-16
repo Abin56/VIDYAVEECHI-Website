@@ -7,7 +7,8 @@ import 'dart:html' as html;
 import 'package:intl/intl.dart';
 import 'package:vidyaveechi_website/view/constant/const.dart';
 import 'package:vidyaveechi_website/view/splash_screen/splash_screen.dart';
-import 'package:vidyaveechi_website/view/users/teacher/teacher.dart';
+import 'package:vidyaveechi_website/view/users/teacher/teacher_home.dart';
+// import 'package:vidyaveechi_website/view/users/teacher/teacher.dart';
 import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
 import 'package:vidyaveechi_website/view/utils/utils.dart';
@@ -142,7 +143,7 @@ class UserLoginController extends GetxController {
         if (result.docs.isNotEmpty) {
           userEmailIDController.clear();
           userPasswordController.clear();
-          Get.offAll(() => const TeacherHomePage());
+          Get.offAll(() => const TeachersHomeScreen());
         } else if (result.docs.isEmpty) {
           showToast(msg: "No Results Found !!");
         } else {
@@ -178,7 +179,7 @@ class UserLoginController extends GetxController {
         if (result.docs.isNotEmpty) {
           userEmailIDController.clear();
           userPasswordController.clear();
-          Get.offAll(() => const TeacherHomePage());
+          Get.offAll(() => const TeachersHomeScreen());
         } else if (result.docs.isEmpty) {
           showToast(msg: "No Results Found !!");
         } else {

@@ -7,7 +7,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:vidyaveechi_website/controller/user_login_Controller/user_login_controller.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/fonts/google_poppins_widget.dart';
+import 'package:vidyaveechi_website/view/users/parent_panel/parent_home.dart';
+import 'package:vidyaveechi_website/view/users/student/student_home.dart';
+import 'package:vidyaveechi_website/view/users/teacher/teacher_home.dart';
+import 'package:vidyaveechi_website/view/widgets/glassmorphism.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
+import 'package:vidyaveechi_website/view/widgets/textformFiledContainer/textformFiledContainer.dart';
 
 class UserLoginPageScreen extends StatefulWidget {
   const UserLoginPageScreen({super.key});
@@ -33,13 +38,12 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
 
   @override
   void initState() {
-    animationctr =
-        AnimationController(vsync: this, duration: const Duration(seconds: 2))
-          ..addListener(() {
-            setState(() {});
-          });
-    colorAnimation = Tween(begin: 0.4, end: 1).animate(
-        CurvedAnimation(parent: animationctr, curve: Curves.fastOutSlowIn));
+    animationctr = AnimationController(vsync: this, duration: const Duration(seconds: 2))
+      ..addListener(() {
+        setState(() {});
+      });
+    colorAnimation = Tween(begin: 0.4, end: 1)
+        .animate(CurvedAnimation(parent: animationctr, curve: Curves.fastOutSlowIn));
 
     super.initState();
   }
@@ -52,20 +56,17 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
             : Builder(
                 builder: (context) => FabCircularMenuPlus(
                   fabChild: Container(
-                    decoration: const BoxDecoration(
-                        color: themeColorBlue, shape: BoxShape.circle),
+                    decoration: const BoxDecoration(color: themeColorBlue, shape: BoxShape.circle),
                     child: const Center(
                         child: Image(
-                            image: AssetImage(
-                                'webassets/flact_png/icons8-fingerprint-100.png'))),
+                            image: AssetImage('webassets/flact_png/icons8-fingerprint-100.png'))),
                     // decoration: ,
                   ),
                   key: fabKey,
                   // Cannot be `Alignment.center`
                   alignment: Alignment.bottomRight,
                   ringColor: cWhite.withOpacity(0.4),
-                  ringDiameter:
-                      ResponsiveWebSite.isMobile(context) ? 580 : 1000.0,
+                  ringDiameter: ResponsiveWebSite.isMobile(context) ? 580 : 1000.0,
                   ringWidth: ResponsiveWebSite.isMobile(context) ? 200 : 300.0,
                   fabSize: ResponsiveWebSite.isMobile(context) ? 30 : 64.0,
                   fabElevation: ResponsiveWebSite.isMobile(context) ? 8.0 : 8.0,
@@ -84,77 +85,9 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
                     //     context, "The menu is ${isOpen ? "open" : "closed"}");
                   },
                   children: <Widget>[
-                    SizedBox(
-                      height: ResponsiveWebSite.isMobile(context) ? 100 : 200,
-                      width: ResponsiveWebSite.isMobile(context) ? 100 : 200,
-                      child: Column(
-                        children: [
-                          Container(
-                            height:
-                                ResponsiveWebSite.isMobile(context) ? 50 : 100,
-                            width:
-                                ResponsiveWebSite.isMobile(context) ? 50 : 100,
-                            decoration: BoxDecoration(
-                                color: cWhite,
-                                shape: BoxShape.circle,
-                                border: Border.all(color: themeColorBlue)),
-                            child: Image.asset(
-                              "webassets/flact_png/icons8-student-100.png",
-                              scale: 1.5,
-                            ),
-                          ),
-                          GooglePoppinsWidgets(
-                            text: "STUDENT",
-                            fontsize: ResponsiveWebSite.isMobile(context)
-                                ? 10
-                                : ResponsiveWebSite.isMobile(context)
-                                    ? 10
-                                    : 12,
-                            fontWeight: FontWeight.bold,
-                          )
-                        ],
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    SizedBox(
-                      height: ResponsiveWebSite.isMobile(context) ? 100 : 200,
-                      width: ResponsiveWebSite.isMobile(context) ? 100 : 200,
-                      child: Column(
-                        children: [
-                          Container(
-                            height:
-                                ResponsiveWebSite.isMobile(context) ? 50 : 100,
-                            width:
-                                ResponsiveWebSite.isMobile(context) ? 50 : 100,
-                            decoration: BoxDecoration(
-                                color: cWhite,
-                                shape: BoxShape.circle,
-                                border: Border.all(color: themeColorBlue)),
-                            child: Image.asset(
-                              "webassets/flact_png/icons8-parent-100.png",
-                              scale: ResponsiveWebSite.isMobile(context)
-                                  ? 0.9
-                                  : 1.5,
-                            ),
-                          ),
-                          GooglePoppinsWidgets(
-                            text: "PARENT",
-                            fontsize:
-                                ResponsiveWebSite.isMobile(context) ? 10 : 12,
-                            fontWeight: FontWeight.bold,
-                          )
-                        ],
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
                     GestureDetector(
                       onTap: () {
-                        // classTeacherLoginController.classTeacherLogin(
-                        //     loginController.userEmailIDController, loginController.userPasswordController, context);
+                        Get.offAll(() => const StudentHomeScreen());
                       },
                       child: SizedBox(
                         height: ResponsiveWebSite.isMobile(context) ? 100 : 200,
@@ -162,12 +95,79 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
                         child: Column(
                           children: [
                             Container(
-                              height: ResponsiveWebSite.isMobile(context)
-                                  ? 50
-                                  : 100,
-                              width: ResponsiveWebSite.isMobile(context)
-                                  ? 50
-                                  : 100,
+                              height: ResponsiveWebSite.isMobile(context) ? 50 : 100,
+                              width: ResponsiveWebSite.isMobile(context) ? 50 : 100,
+                              decoration: BoxDecoration(
+                                  color: cWhite,
+                                  shape: BoxShape.circle,
+                                  border: Border.all(color: themeColorBlue)),
+                              child: Image.asset(
+                                "webassets/flact_png/icons8-student-100.png",
+                                scale: 1.5,
+                              ),
+                            ),
+                            GooglePoppinsWidgets(
+                              text: "STUDENT",
+                              fontsize: ResponsiveWebSite.isMobile(context)
+                                  ? 10
+                                  : ResponsiveWebSite.isMobile(context)
+                                      ? 10
+                                      : 12,
+                              fontWeight: FontWeight.bold,
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Get.offAll(() => const ParentHomeScreen());
+                      },
+                      child: SizedBox(
+                        height: ResponsiveWebSite.isMobile(context) ? 100 : 200,
+                        width: ResponsiveWebSite.isMobile(context) ? 100 : 200,
+                        child: Column(
+                          children: [
+                            Container(
+                              height: ResponsiveWebSite.isMobile(context) ? 50 : 100,
+                              width: ResponsiveWebSite.isMobile(context) ? 50 : 100,
+                              decoration: BoxDecoration(
+                                  color: cWhite,
+                                  shape: BoxShape.circle,
+                                  border: Border.all(color: themeColorBlue)),
+                              child: Image.asset(
+                                "webassets/flact_png/icons8-parent-100.png",
+                                scale: ResponsiveWebSite.isMobile(context) ? 0.9 : 1.5,
+                              ),
+                            ),
+                            GooglePoppinsWidgets(
+                              text: "PARENT",
+                              fontsize: ResponsiveWebSite.isMobile(context) ? 10 : 12,
+                              fontWeight: FontWeight.bold,
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        // loginController.teacherLoginController(context);
+                        Get.offAll(() => const TeachersHomeScreen());
+                      },
+                      child: SizedBox(
+                        height: ResponsiveWebSite.isMobile(context) ? 100 : 200,
+                        width: ResponsiveWebSite.isMobile(context) ? 100 : 200,
+                        child: Column(
+                          children: [
+                            Container(
+                              height: ResponsiveWebSite.isMobile(context) ? 50 : 100,
+                              width: ResponsiveWebSite.isMobile(context) ? 50 : 100,
                               decoration: BoxDecoration(
                                   color: cWhite,
                                   shape: BoxShape.circle,
@@ -179,8 +179,7 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
                             ),
                             GooglePoppinsWidgets(
                               text: "TEACHER",
-                              fontsize:
-                                  ResponsiveWebSite.isMobile(context) ? 10 : 12,
+                              fontsize: ResponsiveWebSite.isMobile(context) ? 10 : 12,
                               fontWeight: FontWeight.bold,
                             )
                           ],
@@ -200,12 +199,8 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
                         child: Column(
                           children: [
                             Container(
-                              height: ResponsiveWebSite.isMobile(context)
-                                  ? 50
-                                  : 100,
-                              width: ResponsiveWebSite.isMobile(context)
-                                  ? 50
-                                  : 100,
+                              height: ResponsiveWebSite.isMobile(context) ? 50 : 100,
+                              width: ResponsiveWebSite.isMobile(context) ? 50 : 100,
                               decoration: BoxDecoration(
                                   color: cWhite,
                                   shape: BoxShape.circle,
@@ -217,8 +212,7 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
                             ),
                             GooglePoppinsWidgets(
                               text: "ADMIN",
-                              fontsize:
-                                  ResponsiveWebSite.isMobile(context) ? 10 : 12,
+                              fontsize: ResponsiveWebSite.isMobile(context) ? 10 : 12,
                               fontWeight: FontWeight.bold,
                             )
                           ],
@@ -242,8 +236,7 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
               return loginController.lodingContainer.value == true
                   ? Center(
                       child: Padding(
-                        padding: const EdgeInsets.only(
-                            left: 50, bottom: 0, right: 50),
+                        padding: const EdgeInsets.only(left: 50, bottom: 0, right: 50),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -266,18 +259,11 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
                                       top: 45,
                                     ),
                                     child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                      mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
                                         Container(
-                                          height: ResponsiveWebSite.isMobile(
-                                                  context)
-                                              ? 20
-                                              : 40,
-                                          width: ResponsiveWebSite.isMobile(
-                                                  context)
-                                              ? 20
-                                              : 40,
+                                          height: ResponsiveWebSite.isMobile(context) ? 20 : 40,
+                                          width: ResponsiveWebSite.isMobile(context) ? 20 : 40,
                                           decoration: const BoxDecoration(
                                             image: DecorationImage(
                                               image: AssetImage(
@@ -303,9 +289,11 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
                                     child: SizedBox(
                                       height: 70,
                                       child: TextFormFiledContainerLoginWidget(
-                                          icon: Icon(Icons.email,size: 15,),
-                                          controller: loginController
-                                              .userEmailIDController,
+                                          icon: Icon(
+                                            Icons.email,
+                                            size: 15,
+                                          ),
+                                          controller: loginController.userEmailIDController,
                                           hintText: 'Enter your email',
                                           title: "Email",
                                           width: 300),
@@ -316,75 +304,68 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
                                     child: SizedBox(
                                       height: 64,
                                       child: TextFormFiledContainerLoginWidget(
-                                          icon: Icon(Icons.lock,size: 15,),
-                                          controller: loginController
-                                              .userPasswordController,
+                                          icon: Icon(
+                                            Icons.lock,
+                                            size: 15,
+                                          ),
+                                          controller: loginController.userPasswordController,
                                           hintText: 'Enter your password',
                                           title: "Password",
                                           width: 300),
                                     ),
                                   ),
                                   Padding(
-                              padding:
-                                  const EdgeInsets.only(top: 30, bottom: 30),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                    children: [
-                                      Checkbox(
-                                        value: isChecked,
-                                        onChanged: (bool? value) {
-                                          // This is where we update the state when the checkbox is tapped
-                                          setState(() {
-                                            isChecked = value!;
-                                          });
-                                        },
-                                      ),
-                                      Text(
-                                    "Remember Me",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w300,
-                                      fontSize: 11,
-                                      color: cBlack.withOpacity(1),
+                                    padding: const EdgeInsets.only(top: 30, bottom: 30),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                          children: [
+                                            Checkbox(
+                                              value: isChecked,
+                                              onChanged: (bool? value) {
+                                                // This is where we update the state when the checkbox is tapped
+                                                setState(() {
+                                                  isChecked = value!;
+                                                });
+                                              },
+                                            ),
+                                            Text(
+                                              "Remember Me",
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w300,
+                                                fontSize: 11,
+                                                color: cBlack.withOpacity(1),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Text(
+                                          "Forgot your password ?",
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w300,
+                                            fontSize: 11,
+                                            color: cred.withOpacity(1),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                    ],
-                                  ),
-                                  
-                                  Text(
-                                    "Forgot your password ?",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w300,
-                                      fontSize: 11,
-                                      color: cred.withOpacity(1),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
                                   Padding(
                                     padding: const EdgeInsets.only(top: 10),
                                     child: GestureDetector(
                                       onTap: () async {
-                                        loginController.loginontapped.value =
-                                            true;
+                                        loginController.loginontapped.value = true;
                                         istapped = true;
-                                        animationctr
-                                            .forward()
-                                            .then((value) async {
-                                          if (fabKey.currentState?.isOpen ??
-                                              false) {
+                                        animationctr.forward().then((value) async {
+                                          if (fabKey.currentState?.isOpen ?? false) {
                                             fabKey.currentState?.close();
                                           } else {
                                             fabKey.currentState?.open();
-                                            Future.delayed(
-                                                    const Duration(seconds: 3))
+                                            Future.delayed(const Duration(seconds: 3))
                                                 .then((value) async {
-                                              loginController
-                                                  .lodingContainer.value = true;
+                                              loginController.lodingContainer.value = true;
                                             });
                                           }
                                         });
@@ -393,8 +374,7 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
                                         height: 40,
                                         width: 300,
                                         decoration: BoxDecoration(
-                                          color:
-                                              Color.fromARGB(255, 14, 40, 97),
+                                          color: Color.fromARGB(255, 14, 40, 97),
                                           // borderRadius:
                                           // BorderRadius.circular(12)
                                         ),
@@ -432,8 +412,7 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
             } else {
               return Center(
                 child: Padding(
-                  padding:
-                      const EdgeInsets.only(left: 50, bottom: 0, right: 50),
+                  padding: const EdgeInsets.only(left: 50, bottom: 0, right: 50),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -455,16 +434,11 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Container(
-                                    height: ResponsiveWebSite.isMobile(context)
-                                        ? 20
-                                        : 40,
-                                    width: ResponsiveWebSite.isMobile(context)
-                                        ? 20
-                                        : 40,
+                                    height: ResponsiveWebSite.isMobile(context) ? 20 : 40,
+                                    width: ResponsiveWebSite.isMobile(context) ? 20 : 40,
                                     decoration: const BoxDecoration(
                                       image: DecorationImage(
-                                        image: AssetImage(
-                                            "webassets/images/vidyaveechi_logo.png"),
+                                        image: AssetImage("webassets/images/vidyaveechi_logo.png"),
                                         fit: BoxFit.fill,
                                       ),
                                     ),
@@ -497,9 +471,11 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
                               child: SizedBox(
                                 height: 70,
                                 child: TextFormFiledContainerLoginWidget(
-                                    icon: Icon(Icons.email,size: 15,),
-                                    controller:
-                                        loginController.userEmailIDController,
+                                    icon: Icon(
+                                      Icons.email,
+                                      size: 15,
+                                    ),
+                                    controller: loginController.userEmailIDController,
                                     hintText: 'Enter your email',
                                     title: "Email",
                                     width: 300),
@@ -510,9 +486,11 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
                               child: SizedBox(
                                 height: 64,
                                 child: TextFormFiledContainerLoginWidget(
-                                    icon: Icon(Icons.lock,size: 15,),
-                                    controller:
-                                        loginController.userPasswordController,
+                                    icon: Icon(
+                                      Icons.lock,
+                                      size: 15,
+                                    ),
+                                    controller: loginController.userPasswordController,
                                     hintText: 'Enter your password',
                                     title: "Password",
                                     width: 300),
@@ -520,11 +498,9 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
                             ),
 
                             Padding(
-                              padding:
-                                  const EdgeInsets.only(top: 30, bottom: 30),
+                              padding: const EdgeInsets.only(top: 30, bottom: 30),
                               child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -539,16 +515,15 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
                                         },
                                       ),
                                       Text(
-                                    "Remember Me",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w300,
-                                      fontSize: 11,
-                                      color: cBlack.withOpacity(1),
-                                    ),
-                                  ),
+                                        "Remember Me",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w300,
+                                          fontSize: 11,
+                                          color: cBlack.withOpacity(1),
+                                        ),
+                                      ),
                                     ],
                                   ),
-                                  
                                   Text(
                                     "Forgot your password ?",
                                     style: TextStyle(
@@ -587,8 +562,7 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
                                       fabKey.currentState?.open();
                                       Future.delayed(const Duration(seconds: 2))
                                           .then((value) async {
-                                        loginController.lodingContainer.value =
-                                            true;
+                                        loginController.lodingContainer.value = true;
                                       });
                                     }
                                   });
@@ -701,8 +675,7 @@ class TextFormFiledContainerLoginWidget extends StatelessWidget {
                   ),
                 ),
                 contentPadding: const EdgeInsets.all(8.0),
-                enabledBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(width: 0.4)),
+                enabledBorder: const OutlineInputBorder(borderSide: BorderSide(width: 0.4)),
                 hintStyle: const TextStyle(fontSize: 13),
                 hintText: hintText,
                 suffixIcon: icon,
