@@ -84,8 +84,7 @@ class StudentExamResult extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Padding(
-                      padding: EdgeInsets.only(
-                          left: 15, top: 20, bottom: 5, right: 05),
+                      padding: EdgeInsets.only(left: 15, top: 20, bottom: 5, right: 05),
                       child: RouteSelectedTextContainer(title: 'All Results'),
                     ),
                     Row(
@@ -98,10 +97,8 @@ class StudentExamResult extends StatelessWidget {
                           height: 170,
                           child: Column(
                             children: [
-                              resultListWidget[
-                                  1], /////////////////////////class
-                              resultListWidget[
-                                  2] ///////////////////////....exam
+                              resultListWidget[1], /////////////////////////class
+                              resultListWidget[2] ///////////////////////....exam
                             ],
                           ),
                         )
@@ -112,7 +109,7 @@ class StudentExamResult extends StatelessWidget {
               : Row(
                   children: [
                     const Padding(
-                      padding: EdgeInsets.only(left: 25, top: 25, right: 05),
+                      padding: EdgeInsets.only(left: 35, top: 25, right: 05),
                       child: RouteSelectedTextContainer(title: 'All Results'),
                     ),
                     Spacer(),
@@ -124,7 +121,7 @@ class StudentExamResult extends StatelessWidget {
                         padding: const EdgeInsets.all(8.0),
                         child: Container(child: resultListWidget[1])),
                     Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.only(right: 35, left: 8),
                         child: resultListWidget[2]),
                   ],
                 ),

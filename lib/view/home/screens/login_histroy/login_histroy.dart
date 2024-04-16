@@ -20,8 +20,7 @@ class LoginHistroyContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => adminLoginHistroyController.loginHistroyontapped.value ==
-            true
+    return Obx(() => adminLoginHistroyController.loginHistroyontapped.value == true
         ? CreateParent()
         : SingleChildScrollView(
             scrollDirection: Axis.horizontal,
@@ -39,7 +38,7 @@ class LoginHistroyContainer extends StatelessWidget {
                     const Padding(
                       padding: EdgeInsets.only(left: 25, top: 25),
                       child: SizedBox(
-                        height: 60,
+                        height: 30,
                         width: double.infinity,
                         child: TextFontWidget(
                           text: 'Login List',
@@ -54,8 +53,7 @@ class LoginHistroyContainer extends StatelessWidget {
                         children: [
                           const Padding(
                             padding: EdgeInsets.only(left: 20, right: 05),
-                            child: RouteSelectedTextContainer(
-                                title: 'Login Histroy'),
+                            child: RouteSelectedTextContainer(title: 'Login Histroy'),
                           ),
                           const Spacer(),
                           Padding(
@@ -67,8 +65,7 @@ class LoginHistroyContainer extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const TextFontWidget(
-                                      text: 'Month *', fontsize: 12.5),
+                                  const TextFontWidget(text: 'Month *', fontsize: 12.5),
                                   const SizedBox(
                                     height: 05,
                                   ),
@@ -89,8 +86,7 @@ class LoginHistroyContainer extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const TextFontWidget(
-                                      text: 'Date *', fontsize: 12.5),
+                                  const TextFontWidget(text: 'Date *', fontsize: 12.5),
                                   const SizedBox(
                                     height: 05,
                                   ),
@@ -117,9 +113,7 @@ class LoginHistroyContainer extends StatelessWidget {
                             child: const Row(
                               children: [
                                 Expanded(
-                                    flex: 1,
-                                    child: CatrgoryTableHeaderWidget(
-                                        headerTitle: 'No')),
+                                    flex: 1, child: CatrgoryTableHeaderWidget(headerTitle: 'No')),
                                 SizedBox(
                                   width: 01,
                                 ),
@@ -131,31 +125,26 @@ class LoginHistroyContainer extends StatelessWidget {
                                 //   width: 01,
                                 // ),
                                 Expanded(
-                                    flex: 4,
-                                    child: CatrgoryTableHeaderWidget(
-                                        headerTitle: 'Name')),
+                                    flex: 4, child: CatrgoryTableHeaderWidget(headerTitle: 'Name')),
                                 SizedBox(
                                   width: 02,
                                 ),
                                 Expanded(
                                     flex: 4,
-                                    child: CatrgoryTableHeaderWidget(
-                                        headerTitle: 'E mail')),
+                                    child: CatrgoryTableHeaderWidget(headerTitle: 'E mail')),
                                 SizedBox(
                                   width: 02,
                                 ),
                                 Expanded(
                                     flex: 3,
-                                    child: CatrgoryTableHeaderWidget(
-                                        headerTitle: 'Login Time')),
+                                    child: CatrgoryTableHeaderWidget(headerTitle: 'Login Time')),
                                 SizedBox(
                                   width: 02,
                                 ),
 
                                 Expanded(
                                     flex: 3,
-                                    child: CatrgoryTableHeaderWidget(
-                                        headerTitle: 'Logout Time')),
+                                    child: CatrgoryTableHeaderWidget(headerTitle: 'Logout Time')),
                                 SizedBox(
                                   width: 02,
                                 ),
@@ -188,11 +177,8 @@ class LoginHistroyContainer extends StatelessWidget {
                                   if (snaPS.hasData) {
                                     return ListView.separated(
                                         itemBuilder: (context, index) {
-                                          final data =
-                                              AdminLoginDetailHistoryModel
-                                                  .fromMap(snaPS
-                                                      .data!.docs[index]
-                                                      .data());
+                                          final data = AdminLoginDetailHistoryModel.fromMap(
+                                              snaPS.data!.docs[index].data());
                                           return GestureDetector(
                                             onTap: () {
                                               // adminLoginHistroyController

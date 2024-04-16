@@ -59,10 +59,7 @@ adminProfileshowlist(BuildContext context) {
                                 },
                                 child: BlueContainerWidget(
                                     title: "Cancel",
-                                    fontSize:
-                                        ResponsiveWebSite.isMobile(context)
-                                            ? 14
-                                            : 16,
+                                    fontSize: ResponsiveWebSite.isMobile(context) ? 14 : 16,
                                     color: cBlue,
                                     width: 80),
                               ),
@@ -72,10 +69,7 @@ adminProfileshowlist(BuildContext context) {
                                 },
                                 child: BlueContainerWidget(
                                     title: "Save",
-                                    fontSize:
-                                        ResponsiveWebSite.isMobile(context)
-                                            ? 14
-                                            : 16,
+                                    fontSize: ResponsiveWebSite.isMobile(context) ? 14 : 16,
                                     color: cBlue,
                                     width: 80),
                               ),
@@ -87,9 +81,7 @@ adminProfileshowlist(BuildContext context) {
                             },
                             child: BlueContainerWidget(
                                 title: "Edit",
-                                fontSize: ResponsiveWebSite.isMobile(context)
-                                    ? 14
-                                    : 16,
+                                fontSize: ResponsiveWebSite.isMobile(context) ? 14 : 16,
                                 color: cBlue,
                                 width: 80),
                           ),
@@ -137,10 +129,7 @@ adminProfileshowlist(BuildContext context) {
                                 },
                                 child: BlueContainerWidget(
                                     title: "Cancel",
-                                    fontSize:
-                                        ResponsiveWebSite.isMobile(context)
-                                            ? 14
-                                            : 16,
+                                    fontSize: ResponsiveWebSite.isMobile(context) ? 14 : 16,
                                     color: cBlue,
                                     width: 80),
                               ),
@@ -151,10 +140,7 @@ adminProfileshowlist(BuildContext context) {
                                 },
                                 child: BlueContainerWidget(
                                     title: "Save",
-                                    fontSize:
-                                        ResponsiveWebSite.isMobile(context)
-                                            ? 14
-                                            : 16,
+                                    fontSize: ResponsiveWebSite.isMobile(context) ? 14 : 16,
                                     color: cBlue,
                                     width: 80),
                               ),
@@ -166,9 +152,7 @@ adminProfileshowlist(BuildContext context) {
                             },
                             child: BlueContainerWidget(
                                 title: "Edit",
-                                fontSize: ResponsiveWebSite.isMobile(context)
-                                    ? 14
-                                    : 16,
+                                fontSize: ResponsiveWebSite.isMobile(context) ? 14 : 16,
                                 color: cBlue,
                                 width: 80),
                           ),
@@ -240,25 +224,17 @@ class AdminProfileEdit extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           TextFormFiledBlueContainerWidgetWithOutColor(
-              controller: profileCtr.nameController,
-              hintText: 'Enter your name',
-              title: 'Name'),
+              controller: profileCtr.nameController, hintText: 'Enter your name', title: 'Name'),
           TextFormFiledBlueContainerWidgetWithOutColor(
               controller: profileCtr.designationController,
               hintText: 'Designation',
               title: 'Designation'),
           TextFormFiledBlueContainerWidgetWithOutColor(
-              controller: profileCtr.aboutController,
-              hintText: 'About',
-              title: 'About'),
+              controller: profileCtr.aboutController, hintText: 'About', title: 'About'),
           TextFormFiledBlueContainerWidgetWithOutColor(
-              controller: profileCtr.phoneController,
-              hintText: 'phone no.',
-              title: 'phone no.'),
+              controller: profileCtr.phoneController, hintText: 'phone no.', title: 'phone no.'),
           TextFormFiledBlueContainerWidgetWithOutColor(
-              controller: profileCtr.emailController,
-              hintText: 'Email',
-              title: 'Email'),
+              controller: profileCtr.emailController, hintText: 'Email', title: 'Email'),
           const TextFontWidget(text: 'Gender *', fontsize: 12.5),
           const SizedBox(height: 5),
           Container(
@@ -397,8 +373,7 @@ class AdminProfileWidgetOne extends StatelessWidget {
                         data['phoneNumber'],
                         // '46545645665465',
                         style: TextStyle(
-                            fontSize:
-                                ResponsiveWebSite.isMobile(context) ? 14 : 16,
+                            fontSize: ResponsiveWebSite.isMobile(context) ? 14 : 16,
                             fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -423,8 +398,7 @@ class AdminProfileWidgetOne extends StatelessWidget {
                         data['email'],
                         //  'lepton@gmail.com',
                         style: TextStyle(
-                            fontSize:
-                                ResponsiveWebSite.isMobile(context) ? 14 : 16,
+                            fontSize: ResponsiveWebSite.isMobile(context) ? 14 : 16,
                             fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -453,8 +427,7 @@ class AdminProfileWidgetOne extends StatelessWidget {
                         data['gender'],
                         // 'Gender',
                         style: TextStyle(
-                            fontSize:
-                                ResponsiveWebSite.isMobile(context) ? 14 : 16,
+                            fontSize: ResponsiveWebSite.isMobile(context) ? 14 : 16,
                             fontWeight: FontWeight.bold),
                       ),
                     ),
