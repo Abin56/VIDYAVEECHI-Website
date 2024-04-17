@@ -40,10 +40,10 @@ class AdminController extends GetxController {
             .doc(value.user!.uid)
             .set({
               'docid': value.user!.uid,
-              'username': nameController,
-              'password': passwordController,
-              'email': emailController,
-              'phoneNumber': phoneNumberController,
+              'username': nameController.text,
+              'password': passwordController.text,
+              'email': emailController.text.trim(),
+              'phoneNumber': phoneNumberController.text.trim(),
               'active': true,
             })
             .then(
