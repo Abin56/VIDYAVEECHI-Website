@@ -73,4 +73,6 @@ class AdminController extends GetxController {
       });
     }
   }
+
+ Future<void> deactiveAdmin(String docid)async{}
 }
