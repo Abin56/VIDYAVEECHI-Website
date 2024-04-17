@@ -16,6 +16,7 @@ import 'package:vidyaveechi_website/view/widgets/routeSelectedTextContainer/rout
 class LoginHistroyContainer extends StatelessWidget {
   final AdminLoginHistroyController adminLoginHistroyController =
       Get.put(AdminLoginHistroyController());
+  
   LoginHistroyContainer({super.key});
 
   @override
