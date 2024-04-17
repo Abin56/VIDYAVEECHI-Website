@@ -3,7 +3,6 @@ import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/result/widget/data_container_marks.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/students/student_details/widgets/category_tableHeader.dart';
-import 'package:vidyaveechi_website/view/widgets/data_list_widgets/tableheaderWidget.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 
 class AllResultStatusListView extends StatelessWidget {
@@ -19,14 +18,18 @@ class AllResultStatusListView extends StatelessWidget {
         child: Column(
           children: [
             const Padding(
-              padding: EdgeInsets.only(top: 8, bottom: 8, right: 25, left: 25),
+              padding: EdgeInsets.only(top: 8, bottom: 8, right: 10, left: 10),
               child: Row(
                 children: [
-                  Expanded(flex: 1, child: CatrgoryTableHeaderWidget(headerTitle: 'No')),
+                  Expanded(
+                      flex: 1,
+                      child: CatrgoryTableHeaderWidget(headerTitle: 'No')),
                   SizedBox(
                     width: 01,
                   ),
-                  Expanded(flex: 12, child: CatrgoryTableHeaderWidget(headerTitle: 'Name')),
+                  Expanded(
+                      flex: 12,
+                      child: CatrgoryTableHeaderWidget(headerTitle: 'Name')),
                   SizedBox(
                     width: 01,
                   ),
@@ -38,7 +41,7 @@ class AllResultStatusListView extends StatelessWidget {
                     child: ListView.separated(
                         itemBuilder: (context, index) {
                           return Padding(
-                            padding: const EdgeInsets.only(left: 10, right: 10),
+                            padding: const EdgeInsets.only(left: 5, right: 5),
                             child: ExamResultDataListContainer(index: index),
                           );
                         },
@@ -74,21 +77,24 @@ class ExamResultDataListContainer extends StatelessWidget {
                 child: DataContainerMarksWidget(
                     index: index,
                     headerTitle: "${index + 1}",
-                    color:
-                        index % 2 == 0 ? const Color.fromARGB(255, 246, 246, 246) : Colors.blue[50],
+                    color: index % 2 == 0
+                        ? const Color.fromARGB(255, 246, 246, 246)
+                        : Colors.blue[50],
                     rowMainAccess: MainAxisAlignment.center)),
             Expanded(
               flex: 12,
               child: Container(
                   height: 30,
                   decoration: BoxDecoration(
-                    color:
-                        index % 2 == 0 ? const Color.fromARGB(255, 246, 246, 246) : Colors.blue[50],
+                    color: index % 2 == 0
+                        ? const Color.fromARGB(255, 246, 246, 246)
+                        : Colors.blue[50],
                   ),
                   alignment: Alignment.centerLeft,
                   child: const Padding(
                     padding: EdgeInsets.only(left: 20),
-                    child: TextFontWidget(text: "Name Of Student", fontsize: 13),
+                    child:
+                        TextFontWidget(text: "Name Of Student", fontsize: 13),
                   )),
             ),
           ],

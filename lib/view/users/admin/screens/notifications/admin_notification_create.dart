@@ -200,7 +200,91 @@ class AdminNotificationCreate extends StatelessWidget {
                       )
                     ],
                   ),
-          ))
+          )), ///////////////////////////////////////..........................8
+      Obx(() => Column(
+            children: [
+              Row(
+                children: [
+                  BlueContainerWidget(
+                      title: "Students",
+                      fontSize: 12,
+                      color: themeColorBlue,
+                      width: 150),
+                  notificationCntrl.selectStudent.value == false
+                      ? Checkbox(
+                          value: notificationCntrl.selectStudent.value,
+                          onChanged: (value) {
+                            notificationCntrl.selectStudent.value = true;
+                          },
+                          checkColor: cWhite,
+                          activeColor: cgreen,
+                        )
+                      : Checkbox(
+                          value: notificationCntrl.selectStudent.value,
+                          onChanged: (value) {
+                            notificationCntrl.selectStudent.value = false;
+                          },
+                          checkColor: cWhite,
+                          activeColor: cgreen,
+                        ),
+                ],
+              ),
+              const SizedBox(height: 2),
+              Row(
+                children: [
+                  BlueContainerWidget(
+                      title: "Parent",
+                      fontSize: 12,
+                      color: themeColorBlue,
+                      width: 150),
+                  notificationCntrl.selectParent.value == false
+                      ? Checkbox(
+                          value: notificationCntrl.selectParent.value,
+                          onChanged: (value) {
+                            notificationCntrl.selectParent.value = true;
+                          },
+                          checkColor: cWhite,
+                          activeColor: cgreen,
+                        )
+                      : Checkbox(
+                          value: notificationCntrl.selectParent.value,
+                          onChanged: (value) {
+                            notificationCntrl.selectParent.value = false;
+                          },
+                          checkColor: cWhite,
+                          activeColor: cgreen,
+                        ),
+                ],
+              ),
+              const SizedBox(height: 2),
+              Row(
+                children: [
+                  BlueContainerWidget(
+                      title: "Teachers",
+                      fontSize: 12,
+                      color: themeColorBlue,
+                      width: 150),
+                  notificationCntrl.selectTeacher.value == false
+                      ? Checkbox(
+                          value: notificationCntrl.selectTeacher.value,
+                          onChanged: (value) {
+                            notificationCntrl.selectTeacher.value = true;
+                          },
+                          checkColor: cWhite,
+                          activeColor: cgreen,
+                        )
+                      : Checkbox(
+                          value: notificationCntrl.selectTeacher.value,
+                          onChanged: (value) {
+                            notificationCntrl.selectTeacher.value = false;
+                          },
+                          checkColor: cWhite,
+                          activeColor: cgreen,
+                        ),
+                ],
+              )
+            ],
+          )), ///////////////////////////////////////..........................9 category mobile view
     ];
 
     return SafeArea(
@@ -223,25 +307,24 @@ class AdminNotificationCreate extends StatelessWidget {
                   child: adminSendNotificationWidgets[8],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 50),
+                  padding: const EdgeInsets.only(top: 30),
                   child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
                           padding: const EdgeInsets.only(
-                              top: 20, bottom: 20, left: 20, right: 10),
+                              bottom: 20, left: 20, right: 10),
                           child: adminSendNotificationWidgets[
                               1] ////////////////............category
                           ),
                       Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 10),
-                          child: Container(
-                              width: 200,
-                              color: cWhite,
-                              child: adminSendNotificationWidgets[
-                                  2] ///////////////////////...............category select
-                              ),
-                        ),
+                        child: Container(
+                            // width: 200,
+                            padding: const EdgeInsets.only(right: 10),
+                            color: cWhite,
+                            child: adminSendNotificationWidgets[
+                                9] ///////////////////////...............category select
+                            ),
                       ),
                     ],
                   ),
@@ -301,10 +384,10 @@ class AdminNotificationCreate extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                    padding:
-                        const EdgeInsets.only(left: 20, bottom: 15, top: 25),
-                    child: adminSendNotificationWidgets[
-                        7] ///////////////////////.................submit button
+                    padding: const EdgeInsets.only(bottom: 15, top: 25),
+                    child: Center(
+                      child: adminSendNotificationWidgets[7],
+                    ) ///////////////////////.................submit button
                     ),
               ],
             )
