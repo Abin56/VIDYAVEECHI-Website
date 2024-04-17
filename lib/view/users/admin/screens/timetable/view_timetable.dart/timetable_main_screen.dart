@@ -26,9 +26,17 @@ class TimeTableMainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final timetableCtrl = Get.put(TimeTableController());
     List<Widget> textformWidget = [
+      const Padding(
+        padding: EdgeInsets.only(top: 5, left: 10, right: 10),
+        child: TextFontWidget(text: 'Select class *', fontsize: 12.5),
+      ),
       Padding(
           padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
           child: SelectClassDropDown()),
+      const Padding(
+        padding: EdgeInsets.only(top: 15, left: 10, right: 10),
+        child: TextFontWidget(text: 'Select Day *', fontsize: 12.5),
+      ),
       Padding(
         padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
         child: Obx(() => Container(
@@ -65,12 +73,16 @@ class TimeTableMainScreen extends StatelessWidget {
             )),
       ),
       ////////////////////////////////////////////////////////1
+      const Padding(
+        padding: EdgeInsets.only(top: 15, left: 10, right: 10),
+        child: TextFontWidget(text: 'Select subject *', fontsize: 12.5),
+      ),
       Padding(
         padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
         child: SelectClassWiseSubjectDropDown(),
       ),
       Padding(
-        padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
+        padding: const EdgeInsets.only(top: 15, left: 10, right: 10),
         child: TextFormFiledBlueContainerWidget(
           controller: timetableCtrl.periodController,
           width: ResponsiveWebSite.isMobile(context) ? double.infinity : 400,
@@ -130,6 +142,7 @@ class TimeTableMainScreen extends StatelessWidget {
             color: screenContainerbackgroundColor,
             height: ResponsiveWebSite.isMobile(context) ? 890 : 820,
             width: 1200,
+            padding: const EdgeInsets.only(top: 8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -226,7 +239,7 @@ class TimeTableMainScreen extends StatelessWidget {
                                               labelColor: Colors.blue,
                                               labelStyle: const TextStyle(
                                                   fontWeight: FontWeight.w400,
-                                                  fontSize: 10),
+                                                  fontSize: 12),
                                               tabs: List.generate(
                                                 timesnaps.data!.docs.length,
                                                 (index) => Tab(
@@ -301,7 +314,7 @@ class TimeTableMainScreen extends StatelessWidget {
     return aweSideSheet(
         context: context,
         sheetPosition: SheetPosition.right,
-        title: "TimeTable",
+        title: " TimeTable",
         body: Padding(
           padding: const EdgeInsets.only(left: 10, top: 10),
           child: SingleChildScrollView(
@@ -325,6 +338,9 @@ class TimeTableMainScreen extends StatelessWidget {
                             textformWidget[3],
                             textformWidget[4],
                             textformWidget[5],
+                            textformWidget[6],
+                            textformWidget[7],
+                            textformWidget[8],
 
                             Padding(
                               padding:

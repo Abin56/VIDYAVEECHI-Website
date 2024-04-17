@@ -10,7 +10,6 @@ import 'package:vidyaveechi_website/view/widgets/routeSelectedTextContainer/rout
 import 'package:vidyaveechi_website/view/widgets/textformFiledContainer/textformFiledBlueContainer.dart';
 
 class CreateEvent extends StatelessWidget {
-
   final EventController eventController = Get.put(EventController());
   CreateEvent({super.key});
 
@@ -100,41 +99,56 @@ class CreateEvent extends StatelessWidget {
                                       SizedBox(
                                           height: 800,
                                           child: Container(
-                                            margin:  const EdgeInsets.only(top: 10),
+                                            margin:
+                                                const EdgeInsets.only(top: 10),
                                             child:
                                                 //  Obx(() {
                                                 // return
                                                 Column(
-                                                    mainAxisAlignment:  MainAxisAlignment.start,
-                                                    crossAxisAlignment:  CrossAxisAlignment.start,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.start,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
                                                     children: [
                                                   Padding(
-                                                    padding:const EdgeInsets.only(top: 5,
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 10,
                                                             left: 10,
                                                             right: 10),
-                                                    child:TextFormFiledWithoutColorEight(
+                                                    child:
+                                                        TextFormFiledWithoutColorEight(
                                                       width: ResponsiveWebSite
                                                               .isMobile(context)
                                                           ? double.infinity
                                                           : 500,
-                                                      validator:checkFieldEmpty,
-                                                      controller: eventController.eventnameController,
+                                                      validator:
+                                                          checkFieldEmpty,
+                                                      controller: eventController
+                                                          .eventnameController,
                                                       title: 'Event Name',
-                                                      hintText: 'Event Name', /////////////////////////////////////////0
+                                                      hintText:
+                                                          'Event Name', /////////////////////////////////////////0
                                                     ),
                                                   ),
 
                                                   Padding(
-                                                    padding: const EdgeInsets.only(
-                                                            top: 5,
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 10,
                                                             left: 10,
                                                             right: 10),
-                                                    child: TextFormFiledWithoutColorEight(
-                                                      width: ResponsiveWebSite .isMobile(context)
+                                                    child:
+                                                        TextFormFiledWithoutColorEight(
+                                                      width: ResponsiveWebSite
+                                                              .isMobile(context)
                                                           ? double.infinity
                                                           : 500,
-                                                      validator: checkFieldDateIsValid,
-                                                      controller: eventController .eventdateController,
+                                                      validator:
+                                                          checkFieldDateIsValid,
+                                                      controller: eventController
+                                                          .eventdateController,
                                                       hintText: 'Date',
                                                       title: 'Date',
                                                     ),
@@ -142,28 +156,39 @@ class CreateEvent extends StatelessWidget {
                                                   Padding(
                                                     padding:
                                                         const EdgeInsets.only(
-                                                            top: 5,
+                                                            top: 10,
                                                             left: 10,
                                                             right: 10),
-                                                    child: TextFormFiledWithoutColorEight(
-                                                      width: ResponsiveWebSite.isMobile(context)? double.infinity: 500,
-                                                      validator: checkFieldEmpty,
-                                                      controller: eventController .eventvenueController,
+                                                    child:
+                                                        TextFormFiledWithoutColorEight(
+                                                      width: ResponsiveWebSite
+                                                              .isMobile(context)
+                                                          ? double.infinity
+                                                          : 500,
+                                                      validator:
+                                                          checkFieldEmpty,
+                                                      controller: eventController
+                                                          .eventvenueController,
                                                       title: 'Venue',
                                                       hintText: 'Venue',
                                                     ),
                                                   ), ///////////////////////////////////////////////2
                                                   Padding(
-                                                    padding: const EdgeInsets.only(
-                                                            top: 5,
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 10,
                                                             left: 10,
                                                             right: 10),
-                                                    child: TextFormFiledWithoutColorEight(
-                                                      width: ResponsiveWebSite .isMobile(context)
+                                                    child:
+                                                        TextFormFiledWithoutColorEight(
+                                                      width: ResponsiveWebSite
+                                                              .isMobile(context)
                                                           ? double.infinity
                                                           : 500,
-                                                      validator:checkFieldEmpty,
-                                                      controller: eventController .eventdescriptionController,
+                                                      validator:
+                                                          checkFieldEmpty,
+                                                      controller: eventController
+                                                          .eventdescriptionController,
                                                       title: 'Description',
                                                       hintText: 'Description',
                                                     ),
@@ -171,16 +196,19 @@ class CreateEvent extends StatelessWidget {
                                                   Padding(
                                                     padding:
                                                         const EdgeInsets.only(
-                                                            top: 5,
+                                                            top: 10,
                                                             left: 10,
                                                             right: 10),
                                                     child:
                                                         TextFormFiledWithoutColorEight(
-                                                      width: ResponsiveWebSite .isMobile(context)
+                                                      width: ResponsiveWebSite
+                                                              .isMobile(context)
                                                           ? double.infinity
                                                           : 500,
-                                                      validator: checkFieldEmpty,
-                                                      controller: eventController .eventsignedByController,
+                                                      validator:
+                                                          checkFieldEmpty,
+                                                      controller: eventController
+                                                          .eventsignedByController,
                                                       title: 'Signed by',
                                                       hintText: 'Signed by',
                                                     ),
@@ -189,18 +217,27 @@ class CreateEvent extends StatelessWidget {
                                                   Padding(
                                                     padding:
                                                         const EdgeInsets.only(
-                                                            top: 10,
+                                                            top: 25,
                                                             bottom: 10),
                                                     child: Center(
                                                         child: Obx(() =>
                                                             ProgressButtonWidget(
-                                                                function: () async {
-                                                                  if (eventController.formKey.currentState! .validate()) {
-                                                                    eventController .createEvent();
-                                                                    print("object");
+                                                                function:
+                                                                    () async {
+                                                                  if (eventController
+                                                                      .formKey
+                                                                      .currentState!
+                                                                      .validate()) {
+                                                                    eventController
+                                                                        .createEvent();
+                                                                    print(
+                                                                        "object");
                                                                   }
                                                                 },
-                                                                buttonstate: eventController .buttonstate.value,
+                                                                buttonstate:
+                                                                    eventController
+                                                                        .buttonstate
+                                                                        .value,
                                                                 text:
                                                                     'Create Event'))
                                                         //     NoticeButtonContainerWidget(
