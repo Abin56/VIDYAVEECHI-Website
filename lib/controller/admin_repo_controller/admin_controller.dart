@@ -1,6 +1,6 @@
 import 'package:vidyaveechi_website/controller/admin_repo_controller/admin_repository.dart';
 
-class AdminController {
+class AdminGraphController {
   final AdminRepository _repository = AdminRepository();
 
   Future<Map<String, int>> getSchoolAllStudentsCount() async {

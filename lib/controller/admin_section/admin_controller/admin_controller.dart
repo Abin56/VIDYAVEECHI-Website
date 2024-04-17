@@ -62,8 +62,8 @@ class AdminController extends GetxController {
                   passwordController.clear(),
                   emailController.clear(),
                   phoneNumberController.clear(),
-                })
-            .then((value) => Navigator.pop(context));
+                });
+            
       });
     } on FirebaseAuthException catch (e) {
       showToast(msg: e.code);
