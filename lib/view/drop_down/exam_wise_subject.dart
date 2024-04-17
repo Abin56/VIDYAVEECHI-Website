@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vidyaveechi_website/controller/exam_result_controller/exam_result_controller.dart';
 import 'package:vidyaveechi_website/controller/subject_controller/subject_controller.dart';
-import 'package:vidyaveechi_website/model/subject_model/subject_model.dart';
 
 class SelectExamWiseSubjectDropDown extends StatelessWidget {
   SelectExamWiseSubjectDropDown({
