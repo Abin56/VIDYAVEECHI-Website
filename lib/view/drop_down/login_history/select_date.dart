@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vidyaveechi_website/controller/login_histroy_controller/login_histroy_controller.dart';
 
-class SelectLoginMonthDropDown extends StatelessWidget {
-  SelectLoginMonthDropDown({
+class SelectLoginDateDropDown extends StatelessWidget {
+  SelectLoginDateDropDown({
     Key? key,
   }) : super(key: key);
 
