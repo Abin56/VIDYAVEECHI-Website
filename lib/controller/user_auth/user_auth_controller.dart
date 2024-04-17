@@ -23,6 +23,8 @@ class UserAuthController extends GetxController {
         SharedPreferencesHelper.getString(SharedPreferencesHelper.schoolIdKey);
     UserCredentialsController.schoolName = SharedPreferencesHelper.getString(
         SharedPreferencesHelper.schoolNameKey);
+    UserCredentialsController.userloginKey =
+        SharedPreferencesHelper.getString(SharedPreferencesHelper.userloginKey);
 
     if (auth.currentUser == null) {
       if (kDebugMode) {
@@ -34,14 +36,13 @@ class UserAuthController extends GetxController {
         log("SchoolID :  ${UserCredentialsController.schoolId}");
         log("BatchID :  ${UserCredentialsController.batchId}");
         log("userrole :  ${UserCredentialsController.userRole}");
+             log("userloginKey :  ${UserCredentialsController.userloginKey}");
         await checkAdmin();
         loginAuthState.value = true;
-        log('message${loginAuthState.value}');
-  if (Get.find<UserLoginController>().logined.value == true) {
-        Get.find<UserLoginController>().loginSaveData();
-      }
- 
         Get.offAll(() => const AdminHomeScreen());
+        if (Get.find<UserLoginController>().logined.value == true) {
+          Get.find<UserLoginController>().loginSaveData();
+        }
       } else {
         if (kDebugMode) {
           print("shared pref Auth null");
@@ -55,7 +56,8 @@ class UserAuthController extends GetxController {
 Future<void> checkAdmin() async {
   if (UserCredentialsController.userRole == "" &&
       UserCredentialsController.batchId == "" &&
-      UserCredentialsController.schoolId == "") {
+      UserCredentialsController.schoolId == ""&&
+      UserCredentialsController.userloginKey == "") {
     logoutUser();
 
     Get.offAll(() => SplashScreen());

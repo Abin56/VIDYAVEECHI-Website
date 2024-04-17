@@ -51,9 +51,10 @@ class ClassController extends GetxController {
           .doc(data.docid)
           .set(data.toMap())
           .then((value) async {
-        buttonstate.value = ButtonState.success;
         classNameController.clear();
         classFeeController.clear();
+        buttonstate.value = ButtonState.success;
+
         await Future.delayed(const Duration(seconds: 2)).then((vazlue) {
           buttonstate.value = ButtonState.idle;
         });
