@@ -121,11 +121,11 @@ class HomePageContents extends StatelessWidget {
             children: [
               SizedBox(
                 height: ResponsiveWebSite.isDesktop(context)
-                    ? screenSize.width / 50
-                    : 25,
+                    ? screenSize.width / 30
+                    : 40,
                 width: ResponsiveWebSite.isDesktop(context)
-                    ? screenSize.width / 10
-                    : 120,
+                    ? screenSize.width / 6
+                    : 180,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromARGB(255, 75, 131, 252),
@@ -138,11 +138,11 @@ class HomePageContents extends StatelessWidget {
                     ));
                   },
                   child: Text(
-                    'REGISTER',
+                    'STUDENT REGISTRATION',
                     style: GoogleFonts.poppins(
                         fontSize: ResponsiveWebSite.isDesktop(context)
                             ? screenSize.width / 90
-                            : 14,
+                            : 13,
                         fontWeight: ResponsiveWebSite.isDesktop(context)
                             ? FontWeight.bold
                             : FontWeight.w500,
@@ -152,16 +152,16 @@ class HomePageContents extends StatelessWidget {
               ),
               SizedBox(
                 width: ResponsiveWebSite.isDesktop(context)
-                    ? screenSize.width / 20
-                    : 30,
+                    ? screenSize.width / 40
+                    : 20,
               ),
               SizedBox(
                 height: ResponsiveWebSite.isDesktop(context)
-                    ? screenSize.width / 50
-                    : 25,
+                    ? screenSize.width / 30
+                    : 40,
                 width: ResponsiveWebSite.isDesktop(context)
-                    ? screenSize.width / 10
-                    : 120,
+                    ? screenSize.width / 6
+                    : 180,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromARGB(255, 102, 206, 169),
@@ -174,11 +174,11 @@ class HomePageContents extends StatelessWidget {
                     ));
                   },
                   child: Text(
-                    'QUERY',
+                    'SCHOOL REGISTRATION',
                     style: GoogleFonts.poppins(
                         fontSize: ResponsiveWebSite.isDesktop(context)
                             ? screenSize.width / 90
-                            : 14,
+                            : 13,
                         fontWeight: ResponsiveWebSite.isDesktop(context)
                             ? FontWeight.bold
                             : FontWeight.w500,

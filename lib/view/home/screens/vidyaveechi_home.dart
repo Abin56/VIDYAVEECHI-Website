@@ -249,18 +249,43 @@ class VidhyaVeechiHomePageResponsive extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(
-                            top: 50, left: 20, bottom: 40),
+                            top: 50, left: 10, bottom: 40,right: 10),
                         child: Row(
                           children: [
-                            GestureDetector(
-                              onTap: () {
-                                print("object");
-                                Navigator.push(context, MaterialPageRoute(
-                                  builder: (context) {
-                                    return  RegisrationPage();
-                                  },
-                                ));
-                              },
+                            Expanded(
+                              child: GestureDetector(
+                                onTap: () {
+                                  print("object");
+                                  Navigator.push(context, MaterialPageRoute(
+                                    builder: (context) {
+                                      return  RegisrationPage();
+                                    },
+                                  ));
+                                },
+                                child: SizedBox(
+                                  height: 40,
+                                  width: 130,
+                                  child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor:
+                                          const Color.fromARGB(255, 75, 131, 252),
+                                    ),
+                                    onPressed: () {},
+                                    child: Text(
+                                      'STUDENT REGISTRATION',
+                                      style: GoogleFonts.poppins(
+                                          fontSize: 11,
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.white),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Expanded(
                               child: SizedBox(
                                 height: 40,
                                 width: 130,
@@ -268,43 +293,22 @@ class VidhyaVeechiHomePageResponsive extends StatelessWidget {
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor:
                                         const Color.fromARGB(255, 75, 131, 252),
+                                    // backgroundColor: const Color.fromARGB(255, 102, 206, 169),
                                   ),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.push(context, MaterialPageRoute(
+                                      builder: (context) {
+                                        return const SchoolProfile();
+                                      },
+                                    ));
+                                  },
                                   child: Text(
-                                    'REGISTER',
+                                    'SCHOOL REGISTRATION',
                                     style: GoogleFonts.poppins(
-                                        fontSize: 13,
+                                        fontSize: 11,
                                         fontWeight: FontWeight.w500,
                                         color: Colors.white),
                                   ),
-                                ),
-                              ),
-                            ),
-                            const SizedBox(
-                              width: 50,
-                            ),
-                            SizedBox(
-                              height: 40,
-                              width: 130,
-                              child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor:
-                                      const Color.fromARGB(255, 75, 131, 252),
-                                  // backgroundColor: const Color.fromARGB(255, 102, 206, 169),
-                                ),
-                                onPressed: () {
-                                  Navigator.push(context, MaterialPageRoute(
-                                    builder: (context) {
-                                      return const SchoolProfile();
-                                    },
-                                  ));
-                                },
-                                child: Text(
-                                  'QUERY',
-                                  style: GoogleFonts.poppins(
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.white),
                                 ),
                               ),
                             ),
