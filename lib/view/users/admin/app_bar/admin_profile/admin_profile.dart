@@ -46,11 +46,13 @@ adminProfileshowlist(BuildContext context) {
                     Padding(
                       padding: const EdgeInsets.only(right: 10),
                       child: IconButton(
-                          onPressed: () async{
+                          onPressed: () async {
                             if (kDebugMode) {
                               print("logoutUser");
                             }
-                            await  Get.find<UserLoginController>().logoutSaveData().then((value) => logoutUser());
+                            await Get.find<UserLoginController>()
+                                .logoutSaveData()
+                                .then((value) => logoutUser());
                             logoutUser();
                           },
                           icon: const Icon(Icons.power_settings_new_sharp)),
@@ -120,7 +122,7 @@ adminProfileshowlist(BuildContext context) {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                 Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const BackButton(),
@@ -132,11 +134,13 @@ adminProfileshowlist(BuildContext context) {
                     Padding(
                       padding: const EdgeInsets.only(right: 10),
                       child: IconButton(
-                          onPressed: () async{
+                          onPressed: () async {
                             if (kDebugMode) {
                               print("logoutUser");
                             }
-                            await  Get.find<UserLoginController>().logoutSaveData().then((value) => logoutUser());
+                            await Get.find<UserLoginController>()
+                                .logoutSaveData()
+                                .then((value) => logoutUser());
                             logoutUser();
                           },
                           icon: const Icon(Icons.power_settings_new_sharp)),
@@ -207,13 +211,11 @@ adminProfileshowlist(BuildContext context) {
 class AdminProfileEdit extends StatelessWidget {
   AdminProfileEdit({super.key});
 
-  // final profileCtr = Get.put(AdminProfileController());
   final imageCtr = Get.put(ImageController());
+  final profileCtr = Get.put(AdminProfileController());
 
   @override
   Widget build(BuildContext context) {
-    final profileCtr = Get.put(AdminProfileController());
-
     return Padding(
       padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
       child: Column(
@@ -222,15 +224,10 @@ class AdminProfileEdit extends StatelessWidget {
           Stack(
             children: [
               Center(
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                    top: 20,
-                  ),
-                  child: CircleAvatar(
-                    radius: ResponsiveWebSite.isMobile(context) ? 50 : 70,
-                    backgroundColor: cred,
-                    child: Image.asset('webassets/png/avathar.png'),
-                  ),
+                child: CircleAvatar(
+                  radius: ResponsiveWebSite.isMobile(context) ? 50 : 70,
+                  backgroundColor: cred,
+                  child: Image.asset('webassets/png/avathar.png'),
                 ),
               ),
               Padding(
@@ -257,26 +254,25 @@ class AdminProfileEdit extends StatelessWidget {
               )),
             ],
           ),
-          const SizedBox(height: 10),
           TextFormFiledBlueContainerWidgetWithOutColor(
               controller: profileCtr.nameController,
-              hintText: 'Enter your name',
+              hintText: ' Enter your name',
               title: 'Name'),
           TextFormFiledBlueContainerWidgetWithOutColor(
               controller: profileCtr.designationController,
-              hintText: 'Designation',
+              hintText: ' Designation',
               title: 'Designation'),
           TextFormFiledBlueContainerWidgetWithOutColor(
               controller: profileCtr.aboutController,
-              hintText: 'About',
+              hintText: ' About',
               title: 'About'),
           TextFormFiledBlueContainerWidgetWithOutColor(
               controller: profileCtr.phoneController,
-              hintText: 'phone no.',
+              hintText: ' phone no.',
               title: 'phone no.'),
           TextFormFiledBlueContainerWidgetWithOutColor(
               controller: profileCtr.emailController,
-              hintText: 'Email',
+              hintText: ' Email',
               title: 'Email'),
           const TextFontWidget(text: 'Gender *', fontsize: 12.5),
           const SizedBox(height: 5),
@@ -291,7 +287,7 @@ class AdminProfileEdit extends StatelessWidget {
               },
               dropdownDecoratorProps: DropDownDecoratorProps(
                   dropdownSearchDecoration: InputDecoration(
-                      hintText: "Please Select Gender",
+                      hintText: " Please Select Gender",
                       labelStyle: TextStyle(
                         fontSize: ResponsiveWebSite.isMobile(context) ? 13 : 15,
                       ),
