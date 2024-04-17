@@ -103,12 +103,34 @@ class AdminNotificationCreate extends StatelessWidget {
       SizedBox(
         width: ResponsiveWebSite.isMobile(context) ? 60 : 80,
         child: Text(
-          "Content",
+          "Heading",
           style: TextStyle(
               fontSize: ResponsiveWebSite.isMobile(context) ? 13 : 15,
               fontWeight: FontWeight.bold),
         ),
       ), ////////////////////..................3
+      SizedBox(
+        width: ResponsiveWebSite.isMobile(context) ? 80 : 150,
+        child: TextField(
+          controller: notificationCntrl.messageController,
+          maxLines: 1,
+          style: const TextStyle(fontSize: 14),
+          decoration: const InputDecoration(
+            border: OutlineInputBorder(),
+            hintText: ' Enter Messages',
+            contentPadding: EdgeInsets.only(top: 5, bottom: 5),
+          ),
+        ),
+      ), //////////////////////................4
+      SizedBox(
+        width: ResponsiveWebSite.isMobile(context) ? 60 : 80,
+        child: Text(
+          "Content",
+          style: TextStyle(
+              fontSize: ResponsiveWebSite.isMobile(context) ? 13 : 15,
+              fontWeight: FontWeight.bold),
+        ),
+      ), ////////////////////..................5
       SizedBox(
         width: ResponsiveWebSite.isMobile(context) ? 80 : 150,
         child: TextField(
@@ -121,8 +143,7 @@ class AdminNotificationCreate extends StatelessWidget {
             contentPadding: EdgeInsets.only(top: 5, bottom: 5),
           ),
         ),
-      ), //////////////////////................4
-
+      ), ////////////////////..................6
       SizedBox(
         // color: Colors.amber,
         height: 40,
@@ -138,7 +159,7 @@ class AdminNotificationCreate extends StatelessWidget {
             },
             buttonstate: notificationCntrl.buttonstate.value,
             text: 'Send Message')),
-      ), //////////////////////////////////............................5
+      ), //////////////////////////////////............................7
       Obx(() => SizedBox(
             height: 40,
             width: 250,
@@ -165,11 +186,9 @@ class AdminNotificationCreate extends StatelessWidget {
                   )
                 : Row(
                     children: [
+                      SizedBox(width: 200, child: SelectClassDropDown()),
                       SizedBox(
-                              width: 200,
-                        child: SelectClassDropDown()),
-                      SizedBox(
-                              width: 50,
+                        width: 50,
                         child: Checkbox(
                           value: notificationCntrl.selectClass.value,
                           onChanged: (value) {
@@ -200,6 +219,10 @@ class AdminNotificationCreate extends StatelessWidget {
                             0] ///////////////////....................Send Notifications
                         )),
                 Padding(
+                  padding: const EdgeInsets.only(top: 05, left: 10),
+                  child: adminSendNotificationWidgets[8],
+                ),
+                Padding(
                   padding: const EdgeInsets.only(top: 50),
                   child: Row(
                     children: [
@@ -207,7 +230,7 @@ class AdminNotificationCreate extends StatelessWidget {
                           padding: const EdgeInsets.only(
                               top: 20, bottom: 20, left: 20, right: 10),
                           child: adminSendNotificationWidgets[
-                              1] ////////////////............Category
+                              1] ////////////////............category
                           ),
                       Expanded(
                         child: Padding(
@@ -216,7 +239,7 @@ class AdminNotificationCreate extends StatelessWidget {
                               width: 200,
                               color: cWhite,
                               child: adminSendNotificationWidgets[
-                                  2] ///////////////////////...............Category select
+                                  2] ///////////////////////...............category select
                               ),
                         ),
                       ),
@@ -235,13 +258,40 @@ class AdminNotificationCreate extends StatelessWidget {
                               padding: const EdgeInsets.only(
                                   top: 20, bottom: 20, left: 20, right: 10),
                               child: adminSendNotificationWidgets[
-                                  3], /////////////////.....................Content
+                                  3], /////////////////.....................heading
                             ),
                             Expanded(
                               child: Padding(
                                   padding: const EdgeInsets.only(right: 10),
                                   child: adminSendNotificationWidgets[
-                                      4] ///////////////////.....................Content type
+                                      4] ///////////////////.....................heading type
+                                  ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  color: cWhite,
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 20),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 20, bottom: 20, left: 20, right: 10),
+                              child: adminSendNotificationWidgets[
+                                  5], /////////////////.....................Content
+                            ),
+                            Expanded(
+                              child: Padding(
+                                  padding: const EdgeInsets.only(right: 10),
+                                  child: adminSendNotificationWidgets[
+                                      6] ///////////////////.....................Content type
                                   ),
                             ),
                           ],
@@ -254,7 +304,7 @@ class AdminNotificationCreate extends StatelessWidget {
                     padding:
                         const EdgeInsets.only(left: 20, bottom: 15, top: 25),
                     child: adminSendNotificationWidgets[
-                        5] ///////////////////////.................submit button
+                        7] ///////////////////////.................submit button
                     ),
               ],
             )
@@ -277,8 +327,8 @@ class AdminNotificationCreate extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 05, left: 10),
-                  child: adminSendNotificationWidgets[6],
-                ),
+                  child: adminSendNotificationWidgets[8],
+                ), ///////////////////................... choose class wise message
                 Padding(
                   padding: const EdgeInsets.only(top: 10),
                   child: Row(
@@ -316,14 +366,43 @@ class AdminNotificationCreate extends StatelessWidget {
                               padding: const EdgeInsets.only(
                                   top: 20, bottom: 20, left: 20, right: 10),
                               child: adminSendNotificationWidgets[
-                                  3], /////////////////.....................Content
+                                  3], /////////////////.....................heading
                             ),
                             Expanded(
                               flex: 1,
                               child: Padding(
                                   padding: const EdgeInsets.only(right: 10),
                                   child: adminSendNotificationWidgets[
-                                      4] ///////////////////..................Content Text
+                                      4] ///////////////////..................heading Text
+                                  ),
+                            ),
+                            Expanded(flex: 1, child: Container()),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  color: cWhite,
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 20),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 20, bottom: 20, left: 20, right: 10),
+                              child: adminSendNotificationWidgets[
+                                  5], /////////////////.....................Content
+                            ),
+                            Expanded(
+                              flex: 1,
+                              child: Padding(
+                                  padding: const EdgeInsets.only(right: 10),
+                                  child: adminSendNotificationWidgets[
+                                      6] ///////////////////..................Content Text
                                   ),
                             ),
                             Expanded(flex: 1, child: Container()),
@@ -337,7 +416,7 @@ class AdminNotificationCreate extends StatelessWidget {
                     padding:
                         const EdgeInsets.only(left: 20, bottom: 15, top: 30),
                     child: Container(
-                      child: adminSendNotificationWidgets[5],
+                      child: adminSendNotificationWidgets[7],
                     ) ///////////////////////.................submit button
                     ),
               ],
