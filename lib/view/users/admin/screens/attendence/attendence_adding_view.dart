@@ -16,8 +16,7 @@ import 'package:vidyaveechi_website/view/widgets/routeSelectedTextContainer/rout
 import 'package:vidyaveechi_website/view/widgets/textformFiledContainer/textformFiledContainer.dart';
 
 class AttendanceAddingList extends StatelessWidget {
-  final AttendenceController attendenceController =
-      Get.put(AttendenceController());
+  final AttendenceController attendenceController = Get.put(AttendenceController());
   final CalenderController calenderController = Get.put(CalenderController());
   AttendanceAddingList({super.key});
 
@@ -37,11 +36,11 @@ class AttendanceAddingList extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.only(left: 25, top: 25),
-                    child: SizedBox(
+              Padding(
+                padding: const EdgeInsets.only(top: 20, left: 10),
+                child: Row(
+                  children: [
+                    const SizedBox(
                       height: 60,
                       width: 250,
                       child: TextFontWidget(
@@ -50,83 +49,40 @@ class AttendanceAddingList extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                  ),
-                  const Spacer(),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 20),
-                    child: SizedBox(
-                        height: 65,
-                        width: 250,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            // const TextFontWidget(
-                            //     text: "Select Date *", fontsize: 12),
-                            GestureDetector(
-                              onTap: () {
-                                calenderController.setDate(
-                                    context: context, lastDay: DateTime.now());
-                              },
-                              child: AbsorbPointer(
-                                absorbing: true,
-                                child: TextFormFiledContainerWidget(
-                                  width: 200,
-                                  // height: 40,
-                                  // color: screenContainerbackgroundColor,
-                                  hintText: "  Select Date",
-                                  title: 'Select Date🗓️ ',
-                                  validator: checkFieldEmpty,
-                                  // readOnly: true,
-                                  controller: calenderController.dateCtr,
+                    const Spacer(),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 20),
+                      child: SizedBox(
+                          height: 65,
+                          width: 250,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              // const TextFontWidget(
+                              //     text: "Select Date *", fontsize: 12),
+                              GestureDetector(
+                                onTap: () {
+                                  calenderController.setDate(
+                                      context: context, lastDay: DateTime.now());
+                                },
+                                child: AbsorbPointer(
+                                  absorbing: true,
+                                  child: TextFormFiledContainerWidget(
+                                    width: 200,
+                                    // height: 40,
+                                    // color: screenContainerbackgroundColor,
+                                    hintText: "  Select Date",
+                                    title: 'Select Date🗓️ ',
+                                    validator: checkFieldEmpty,
+                                    // readOnly: true,
+                                    controller: calenderController.dateCtr,
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
-                        )),
-                  ),
-                  // Padding(
-                  //   padding: const EdgeInsets.only(right: 20),
-                  //   child: SizedBox(
-                  //       height: 65,
-                  //       width: 250,
-                  //       child: Column(
-                  //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //         crossAxisAlignment: CrossAxisAlignment.start,
-                  //         children: [
-                  //           const TextFontWidget(
-                  //               text: "Select Month *", fontsize: 12),
-                  //           SizedBox(height: 40, child: SelectClassDropDown()),
-                  //         ],
-                  //       )),
-                  // ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 20),
-                    child: SizedBox(
-                      height: 65,
-                      width: 250,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const TextFontWidget(
-                              text: "Select Class *", fontsize: 12),
-                          SizedBox(height: 40, child: SelectClassDropDown()),
-                        ],
-                      ),
+                            ],
+                          )),
                     ),
-                  ),
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 20),
-                child: Row(
-                  children: [
-                    // Padding(
-                    //   padding: EdgeInsets.only(left: 20, right: 05),
-                    //   child: RouteSelectedTextContainer(title: 'Add Attendance'),
-                    // ),
-                    const Spacer(),
                     // Padding(
                     //   padding: const EdgeInsets.only(right: 20),
                     //   child: SizedBox(
@@ -137,13 +93,26 @@ class AttendanceAddingList extends StatelessWidget {
                     //         crossAxisAlignment: CrossAxisAlignment.start,
                     //         children: [
                     //           const TextFontWidget(
-                    //               text: "Select Subject *", fontsize: 12),
-                    //           SizedBox(
-                    //               height: 40,
-                    //               child: SelectClassWiseSubjectDropDown()),
+                    //               text: "Select Month *", fontsize: 12),
+                    //           SizedBox(height: 40, child: SelectClassDropDown()),
                     //         ],
                     //       )),
                     // ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 20),
+                      child: SizedBox(
+                        height: 65,
+                        width: 250,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const TextFontWidget(text: "Select Class *", fontsize: 12),
+                            SizedBox(height: 40, child: SelectClassDropDown()),
+                          ],
+                        ),
+                      ),
+                    ),
                     Padding(
                       padding: const EdgeInsets.only(right: 20),
                       child: SizedBox(
@@ -153,18 +122,62 @@ class AttendanceAddingList extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const TextFontWidget(
-                                  text: "Select Period *", fontsize: 12),
-                              SizedBox(
-                                  height: 40, child: SelectPeriodDropDown()),
+                              const TextFontWidget(text: "Select Period *", fontsize: 12),
+                              SizedBox(height: 40, child: SelectPeriodDropDown()),
                             ],
                           )),
                     ),
                   ],
                 ),
               ),
+              // Padding(
+              //   padding: const EdgeInsets.only(bottom: 20),
+              //   child: Row(
+              //     children: [
+              //       // Padding(
+              //       //   padding: EdgeInsets.only(left: 20, right: 05),
+              //       //   child: RouteSelectedTextContainer(title: 'Add Attendance'),
+              //       // ),
+              //       const Spacer(),
+              //       // Padding(
+              //       //   padding: const EdgeInsets.only(right: 20),
+              //       //   child: SizedBox(
+              //       //       height: 65,
+              //       //       width: 250,
+              //       //       child: Column(
+              //       //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //       //         crossAxisAlignment: CrossAxisAlignment.start,
+              //       //         children: [
+              //       //           const TextFontWidget(
+              //       //               text: "Select Subject *", fontsize: 12),
+              //       //           SizedBox(
+              //       //               height: 40,
+              //       //               child: SelectClassWiseSubjectDropDown()),
+              //       //         ],
+              //       //       )),
+              //       // ),
+              //       Padding(
+              //         padding: const EdgeInsets.only(right: 20),
+              //         child: SizedBox(
+              //             height: 65,
+              //             width: 250,
+              //             child: Column(
+              //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //               crossAxisAlignment: CrossAxisAlignment.start,
+              //               children: [
+              //                 const TextFontWidget(text: "Select Period *", fontsize: 12),
+              //                 SizedBox(height: 40, child: SelectPeriodDropDown()),
+              //               ],
+              //             )),
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              SizedBox(
+                height: 50,
+              ),
               Padding(
-                padding: const EdgeInsets.only(top: 10),
+                padding: const EdgeInsets.only(bottom: 20),
                 child: Row(
                   children: [
                     Padding(
@@ -176,12 +189,13 @@ class AttendanceAddingList extends StatelessWidget {
                         onTap: () {
                           attendenceController.ontapaddAttendence.value = false;
                         },
-                        child:
-                            const RouteNonSelectedTextContainer(title: 'Home'),
+                        child: const RouteNonSelectedTextContainer(title: 'Home'),
                       ),
                     ),
-                    const RouteSelectedTextContainer(
-                        width: 140, title: 'Timetable Deatils'),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    const RouteSelectedTextContainer(width: 140, title: 'Timetable Deatils'),
                     const Spacer(),
                     Padding(
                       padding: const EdgeInsets.only(right: 20),
@@ -194,14 +208,11 @@ class AttendanceAddingList extends StatelessWidget {
                           child: Container(
                             color: themeColorBlue,
                             child: const Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 3),
+                              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 3),
                               child: Row(
                                 children: [
                                   TextFontWidget(
-                                      text: "Check Attendance",
-                                      fontsize: 14,
-                                      color: cWhite),
+                                      text: "Check Attendance", fontsize: 14, color: cWhite),
                                   sw10,
                                   Icon(
                                     Icons.refresh,
@@ -272,8 +283,7 @@ class AttendanceAddingList extends StatelessWidget {
                               ),
                             ),
                             const Spacer(),
-                            Obx(() => attendenceController
-                                    .studentAttenanceList.value.isEmpty
+                            Obx(() => attendenceController.studentAttenanceList.value.isEmpty
                                 ? const SizedBox()
                                 : InkWell(
                                     onTap: () {
@@ -285,11 +295,9 @@ class AttendanceAddingList extends StatelessWidget {
                                       );
                                     },
                                     child: Container(
-                                      decoration: const BoxDecoration(
-                                          color: themeColorBlue),
+                                      decoration: const BoxDecoration(color: themeColorBlue),
                                       child: const Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: 15, vertical: 2),
+                                        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 2),
                                         child: Row(
                                           children: [
                                             // Icon(
@@ -320,30 +328,23 @@ class AttendanceAddingList extends StatelessWidget {
                             child: const Row(
                               children: [
                                 Expanded(
-                                    flex: 1,
-                                    child: CatrgoryTableHeaderWidget(
-                                        headerTitle: 'No')),
+                                    flex: 1, child: CatrgoryTableHeaderWidget(headerTitle: 'No')),
                                 SizedBox(
                                   width: 01,
                                 ),
                                 Expanded(
-                                    flex: 2,
-                                    child: CatrgoryTableHeaderWidget(
-                                        headerTitle: 'ID')),
+                                    flex: 2, child: CatrgoryTableHeaderWidget(headerTitle: 'ID')),
                                 SizedBox(
                                   width: 01,
                                 ),
                                 Expanded(
-                                    flex: 4,
-                                    child: CatrgoryTableHeaderWidget(
-                                        headerTitle: 'Name')),
+                                    flex: 4, child: CatrgoryTableHeaderWidget(headerTitle: 'Name')),
                                 SizedBox(
                                   width: 02,
                                 ),
                                 Expanded(
                                   flex: 3,
-                                  child: CatrgoryTableHeaderWidget(
-                                      headerTitle: 'Status'),
+                                  child: CatrgoryTableHeaderWidget(headerTitle: 'Status'),
                                 ),
                                 SizedBox(
                                   width: 02,
@@ -364,16 +365,13 @@ class AttendanceAddingList extends StatelessWidget {
                               ),
                               child: Obx(
                                 () {
-                                  if (attendenceController
-                                      .studentAttenanceList.isEmpty) {
-                                    return attendenceController
-                                            .isAttendanceNotAvail.value
+                                  if (attendenceController.studentAttenanceList.isEmpty) {
+                                    return attendenceController.isAttendanceNotAvail.value
                                         ? Center(
                                             child: Column(
                                               children: [
                                                 sh50,
-                                                const Text(
-                                                    'Not Data Available'),
+                                                const Text('Not Data Available'),
                                                 sh10,
                                                 InkWell(
                                                   onTap: () {
@@ -385,12 +383,9 @@ class AttendanceAddingList extends StatelessWidget {
                                                     );
                                                   },
                                                   child: const Padding(
-                                                    padding: EdgeInsets.only(
-                                                        left: 20, right: 20),
-                                                    child:
-                                                        RouteSelectedTextContainer(
-                                                            title:
-                                                                'Add Attendance'),
+                                                    padding: EdgeInsets.only(left: 20, right: 20),
+                                                    child: RouteSelectedTextContainer(
+                                                        title: 'Add Attendance'),
                                                   ),
                                                 ),
                                               ],
@@ -399,24 +394,19 @@ class AttendanceAddingList extends StatelessWidget {
                                         : const Column(
                                             children: [
                                               sh50,
-                                              Center(
-                                                  child:
-                                                      Text('Check Attendance')),
+                                              Center(child: Text('Check Attendance')),
                                             ],
                                           );
                                   } else {
                                     return SizedBox(
                                       child: ListView.separated(
                                         itemBuilder: (context, index) {
-                                          final studentData =
-                                              attendenceController
-                                                  .studentAttenanceList
-                                                  .value[index];
+                                          final studentData = attendenceController
+                                              .studentAttenanceList.value[index];
                                           // final studentData = StudentModel.fromMap(
                                           //     snapshot.data!.docs[index].data());
                                           return Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 10, right: 10),
+                                            padding: const EdgeInsets.only(left: 10, right: 10),
                                             child: AttendanceDataTile(
                                               index: index,
                                               studentData: studentData,
@@ -428,8 +418,8 @@ class AttendanceAddingList extends StatelessWidget {
                                             height: 02,
                                           );
                                         },
-                                        itemCount: attendenceController
-                                            .studentAttenanceList.value.length,
+                                        itemCount:
+                                            attendenceController.studentAttenanceList.value.length,
                                       ),
                                     );
                                   }
@@ -458,16 +448,14 @@ class AttendanceAddingDialog extends StatelessWidget {
 
   final GlobalKey<FormState> fkey = GlobalKey<FormState>();
 
-  final AttendenceController attendenceController =
-      Get.put(AttendenceController());
+  final AttendenceController attendenceController = Get.put(AttendenceController());
 
   @override
   Widget build(BuildContext context) {
     attendenceController.getClassStudentDetails();
     final size = MediaQuery.of(context).size;
     return AlertDialog(
-      contentPadding:
-          EdgeInsetsGeometry.lerp(EdgeInsets.zero, EdgeInsets.zero, 0),
+      contentPadding: EdgeInsetsGeometry.lerp(EdgeInsets.zero, EdgeInsets.zero, 0),
       content: Container(
         decoration: const BoxDecoration(color: cWhite),
         width: size.width * 0.3,
@@ -494,22 +482,16 @@ class AttendanceAddingDialog extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const TextFontWidget(
-                          text: "Select Subject *", fontsize: 12),
-                      SizedBox(
-                          height: 40, child: SelectClassWiseSubjectDropDown()),
+                      const TextFontWidget(text: "Select Subject *", fontsize: 12),
+                      SizedBox(height: 40, child: SelectClassWiseSubjectDropDown()),
                     ],
                   ),
                 ),
                 sh10,
                 const Row(
                   children: [
-                    Expanded(
-                        flex: 2,
-                        child: CatrgoryTableHeaderWidget(headerTitle: 'Name')),
-                    Expanded(
-                        flex: 1,
-                        child: CatrgoryTableHeaderWidget(headerTitle: 'Status'))
+                    Expanded(flex: 2, child: CatrgoryTableHeaderWidget(headerTitle: 'Name')),
+                    Expanded(flex: 1, child: CatrgoryTableHeaderWidget(headerTitle: 'Status'))
                   ],
                 ),
                 sh10,
@@ -517,15 +499,14 @@ class AttendanceAddingDialog extends StatelessWidget {
                   () => Expanded(
                     child: ListView.separated(
                         itemBuilder: (context, index) {
-                          final studentsData = attendenceController
-                              .allStudentAttenanceList.value[index];
+                          final studentsData =
+                              attendenceController.allStudentAttenanceList.value[index];
                           return AttendanceListTile(studentData: studentsData);
                         },
                         separatorBuilder: (context, index) {
                           return sh10;
                         },
-                        itemCount: attendenceController
-                            .allStudentAttenanceList.value.length),
+                        itemCount: attendenceController.allStudentAttenanceList.value.length),
                   ),
                 ),
                 Row(
@@ -534,8 +515,7 @@ class AttendanceAddingDialog extends StatelessWidget {
                         onTap: () {
                           Navigator.pop(context);
                         },
-                        child:
-                            const RouteSelectedTextContainer(title: 'Cancel')),
+                        child: const RouteSelectedTextContainer(title: 'Cancel')),
                     const Spacer(),
                     InkWell(
                         onTap: () {
@@ -545,8 +525,7 @@ class AttendanceAddingDialog extends StatelessWidget {
                             Navigator.pop(context);
                           }
                         },
-                        child:
-                            const RouteSelectedTextContainer(title: 'Submit'))
+                        child: const RouteSelectedTextContainer(title: 'Submit'))
                   ],
                 )
               ],
@@ -577,22 +556,19 @@ class _AttendanceListTileState extends State<AttendanceListTile> {
         children: [
           Expanded(
             flex: 2,
-            child: TextFontWidget(
-                text: widget.studentData.studentName, fontsize: 16),
+            child: TextFontWidget(text: widget.studentData.studentName, fontsize: 16),
           ),
           Expanded(
             flex: 1,
             child: InkWell(
               onTap: () {
                 setState(() {
-                  attendanceCtr.setAttendance(
-                      widget.studentData.uid, widget.studentData.present);
+                  attendanceCtr.setAttendance(widget.studentData.uid, widget.studentData.present);
                 });
               },
               child: RouteSelectedTextContainer(
                 color: widget.studentData.present == true ? cgreen : cred,
-                title:
-                    widget.studentData.present == true ? 'Present' : 'Absent',
+                title: widget.studentData.present == true ? 'Present' : 'Absent',
               ),
             ),
           ),

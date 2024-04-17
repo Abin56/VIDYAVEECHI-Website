@@ -39,30 +39,34 @@ class MeetingEditRemove extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(
-                    left: 08,
-                    right: 05,
-                  ),
-                  child: GestureDetector(
+            SizedBox(
+              height: 30,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 25, right: 25),
+              child: Row(
+                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
                     onTap: () {
                       meetingController.ontapMeeting.value = false;
                     },
                     child: const RouteNonSelectedTextContainer(title: 'Home'),
                   ),
-                ),
-                const RouteSelectedTextContainer(
-                    width: 140, title: 'Meeting Deatils'),
-              ],
+                  Spacer(),
+                  const RouteSelectedTextContainer(width: 140, title: 'Meeting Deatils'),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 20,
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(right: 25, left: 25),
               child: Container(
                 color: cWhite,
-                height: 700,
-                width: 1200,
+                height: 600,
+                // width: 1200,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -84,34 +88,30 @@ class MeetingEditRemove extends StatelessWidget {
                               .collection('AdminMeetings')
                               .snapshots(),
                           builder: (context, snapshot) {
-                            if (snapshot.connectionState ==
-                                ConnectionState.waiting) {
-                              return const Center(
-                                  child: CircularProgressIndicator());
+                            if (snapshot.connectionState == ConnectionState.waiting) {
+                              return const Center(child: CircularProgressIndicator());
                             }
                             // ignore: prefer_is_empty
                             if (snapshot.data!.docs.length == 0) {
                               return Center(
                                   child: Text(
                                 'No Meetings',
-                                style: GoogleFonts.poppins(
-                                    fontSize: 20, fontWeight: FontWeight.w500),
+                                style:
+                                    GoogleFonts.poppins(fontSize: 20, fontWeight: FontWeight.w500),
                               ));
                             }
                             return Container(
                               color: screenContainerbackgroundColor,
                               height: 1000,
-                              width: 1150,
+                              width: 1200,
                               child: Column(
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 0, right: 0),
+                                    padding: const EdgeInsets.only(left: 0, right: 0),
                                     child: Container(
                                       color: cWhite,
                                       child: Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 5, right: 5),
+                                        padding: const EdgeInsets.only(left: 5, right: 5),
                                         child: Container(
                                           color: cWhite,
                                           height: 40,
@@ -119,7 +119,8 @@ class MeetingEditRemove extends StatelessWidget {
                                             children: [
                                               Expanded(
                                                   flex: 1,
-                                                  child: CatrgoryTableHeaderWidget(     headerTitle: 'No')),
+                                                  child:
+                                                      CatrgoryTableHeaderWidget(headerTitle: 'No')),
                                               SizedBox(
                                                 width: 01,
                                               ),
@@ -132,38 +133,44 @@ class MeetingEditRemove extends StatelessWidget {
                                               // ),
                                               Expanded(
                                                   flex: 4,
-                                                  child:CatrgoryTableHeaderWidget(    headerTitle: 'Topic')),
+                                                  child: CatrgoryTableHeaderWidget(
+                                                      headerTitle: 'Topic')),
                                               SizedBox(
                                                 width: 02,
                                               ),
                                               Expanded(
                                                   flex: 3,
-                                                  child:CatrgoryTableHeaderWidget(    headerTitle: 'Time')),
+                                                  child: CatrgoryTableHeaderWidget(
+                                                      headerTitle: 'Time')),
                                               SizedBox(
                                                 width: 02,
                                               ),
                                               Expanded(
                                                   flex: 3,
-                                                  child:CatrgoryTableHeaderWidget(    headerTitle:        'Date')),
+                                                  child: CatrgoryTableHeaderWidget(
+                                                      headerTitle: 'Date')),
                                               SizedBox(
                                                 width: 02,
                                               ),
                                               Expanded(
                                                   flex: 4,
-                                                  child:CatrgoryTableHeaderWidget(    headerTitle:        'Venue')),
+                                                  child: CatrgoryTableHeaderWidget(
+                                                      headerTitle: 'Venue')),
                                               SizedBox(
                                                 width: 02,
                                               ),
                                               Expanded(
                                                   flex: 3,
-                                                  child:CatrgoryTableHeaderWidget(    headerTitle:        'Edit')),
+                                                  child: CatrgoryTableHeaderWidget(
+                                                      headerTitle: 'Edit')),
                                               SizedBox(
                                                 width: 02,
                                               ),
 
                                               Expanded(
                                                   flex: 3,
-                                                  child:CatrgoryTableHeaderWidget(    headerTitle:        'Delete')),
+                                                  child: CatrgoryTableHeaderWidget(
+                                                      headerTitle: 'Delete')),
                                               SizedBox(
                                                 width: 02,
                                               ),
@@ -175,17 +182,15 @@ class MeetingEditRemove extends StatelessWidget {
                                   ),
                                   Expanded(
                                     child: Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 0, right: 0),
+                                      padding: const EdgeInsets.only(left: 0, right: 0),
                                       child: Container(
-                                        width: 1150,
+                                        width: 1200,
                                         decoration: BoxDecoration(
                                           color: cWhite,
                                           border: Border.all(color: cWhite),
                                         ),
                                         child: Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 5, right: 5),
+                                          padding: const EdgeInsets.only(left: 5, right: 5),
                                           child: SizedBox(
                                               // width: 1100,
                                               child:
@@ -199,8 +204,7 @@ class MeetingEditRemove extends StatelessWidget {
                                                   //     if (snaPS.hasData) {
                                                   //       return
                                                   ListView.separated(
-                                                      itemBuilder:
-                                                          (context, index) {
+                                                      itemBuilder: (context, index) {
                                                         final data = MeetingModel.fromMap(
                                                             snapshot.data!.docs[index].data());
                                                         return GestureDetector(
@@ -212,15 +216,13 @@ class MeetingEditRemove extends StatelessWidget {
                                                             //     .loginHistroyontapped
                                                             //     .value = true;
                                                           },
-                                                          child:
-                                                              AllMeetingsDataList(
+                                                          child: AllMeetingsDataList(
                                                             index: index,
                                                             data: data,
                                                           ),
                                                         ); ///////
                                                       },
-                                                      separatorBuilder:
-                                                          (context, index) {
+                                                      separatorBuilder: (context, index) {
                                                         return const SizedBox(
                                                           height: 02,
                                                         );
@@ -426,8 +428,7 @@ class TextFormFiledBlueContainerWidgetMeeting extends StatelessWidget {
                 keyboardType: keyboardType,
                 controller: controller,
                 decoration: InputDecoration(
-                  contentPadding:
-                      const EdgeInsets.symmetric(vertical: 01, horizontal: 01),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 01, horizontal: 01),
                   errorBorder: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(0)),
                       borderSide: BorderSide(
@@ -444,8 +445,7 @@ class TextFormFiledBlueContainerWidgetMeeting extends StatelessWidget {
                     ),
                   ),
                   // contentPadding: const EdgeInsets.all(8.0),
-                  enabledBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(width: 0.4)),
+                  enabledBorder: const OutlineInputBorder(borderSide: BorderSide(width: 0.4)),
                   hintStyle: const TextStyle(fontSize: 13),
                   hintText: hintText,
                   focusedBorder: const OutlineInputBorder(

@@ -1,7 +1,5 @@
 import 'package:fab_circular_menu_plus/fab_circular_menu_plus.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vidyaveechi_website/controller/user_login_Controller/user_login_controller.dart';
@@ -10,9 +8,7 @@ import 'package:vidyaveechi_website/view/fonts/google_poppins_widget.dart';
 import 'package:vidyaveechi_website/view/users/parent_panel/parent_home.dart';
 import 'package:vidyaveechi_website/view/users/student/student_home.dart';
 import 'package:vidyaveechi_website/view/users/teacher/teacher_home.dart';
-import 'package:vidyaveechi_website/view/widgets/glassmorphism.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
-import 'package:vidyaveechi_website/view/widgets/textformFiledContainer/textformFiledContainer.dart';
 
 class UserLoginPageScreen extends StatefulWidget {
   const UserLoginPageScreen({super.key});
@@ -247,7 +243,7 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
                             Container(
                               height: 500,
                               width: 400,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: cWhite,
                                 // borderRadius: BorderRadius.circular(20),
                               ),
@@ -272,14 +268,12 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
                                             ),
                                           ),
                                         ),
-                                        Container(
-                                          child: Text(
-                                            "Vidya Veechi",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                color: cgreen.withOpacity(1),
-                                                fontSize: 25),
-                                          ),
+                                        Text(
+                                          "Vidya Veechi",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: cgreen.withOpacity(1),
+                                              fontSize: 25),
                                         ),
                                       ],
                                     ),
@@ -289,7 +283,7 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
                                     child: SizedBox(
                                       height: 70,
                                       child: TextFormFiledContainerLoginWidget(
-                                          icon: Icon(
+                                          icon: const Icon(
                                             Icons.email,
                                             size: 15,
                                           ),
@@ -304,7 +298,7 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
                                     child: SizedBox(
                                       height: 64,
                                       child: TextFormFiledContainerLoginWidget(
-                                          icon: Icon(
+                                          icon: const Icon(
                                             Icons.lock,
                                             size: 15,
                                           ),
@@ -356,7 +350,6 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
                                     padding: const EdgeInsets.only(top: 10),
                                     child: GestureDetector(
                                       onTap: () async {
-                                        loginController.loginontapped.value = true;
                                         istapped = true;
                                         animationctr.forward().then((value) async {
                                           if (fabKey.currentState?.isOpen ?? false) {
@@ -373,7 +366,7 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
                                       child: Container(
                                         height: 40,
                                         width: 300,
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                           color: Color.fromARGB(255, 14, 40, 97),
                                           // borderRadius:
                                           // BorderRadius.circular(12)
@@ -419,7 +412,7 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
                       Container(
                         height: 500,
                         width: 400,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: cWhite,
                           // borderRadius: BorderRadius.circular(20),
                         ),
@@ -443,14 +436,12 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
                                       ),
                                     ),
                                   ),
-                                  Container(
-                                    child: Text(
-                                      "Vidya Veechi",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: cgreen.withOpacity(1),
-                                          fontSize: 25),
-                                    ),
+                                  Text(
+                                    "Vidya Veechi",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: cgreen.withOpacity(1),
+                                        fontSize: 25),
                                   ),
                                 ],
                               ),
@@ -471,7 +462,7 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
                               child: SizedBox(
                                 height: 70,
                                 child: TextFormFiledContainerLoginWidget(
-                                    icon: Icon(
+                                    icon: const Icon(
                                       Icons.email,
                                       size: 15,
                                     ),
@@ -486,7 +477,7 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
                               child: SizedBox(
                                 height: 64,
                                 child: TextFormFiledContainerLoginWidget(
-                                    icon: Icon(
+                                    icon: const Icon(
                                       Icons.lock,
                                       size: 15,
                                     ),
@@ -570,7 +561,7 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
                                 child: Container(
                                   height: 40,
                                   width: 300,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     color: Color.fromARGB(255, 14, 40, 97),
                                     // borderRadius: BorderRadius.circular(12)
                                   ),
