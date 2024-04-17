@@ -133,7 +133,7 @@ class AllParentsListContainer extends StatelessWidget {
                                     Expanded(
                                         flex: 3,
                                         child: CatrgoryTableHeaderWidget(
-                                            headerTitle: 'Class')),
+                                            headerTitle: 'Class ')),
                                     SizedBox(
                                       width: 02,
                                     ),

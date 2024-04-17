@@ -48,6 +48,7 @@ class AllTeacherStatusListView extends StatelessWidget {
     final date = DateTime.now();
     DateTime parseDate = DateTime.parse(date.toString());
     final month = DateFormat('MMMM-yyyy');
+    // ignore: unused_local_variable
     String monthwise = month.format(parseDate);
     final DateFormat formatter = DateFormat('dd-MM-yyyy');
     String formatted = formatter.format(parseDate);

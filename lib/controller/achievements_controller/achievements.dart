@@ -6,7 +6,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:uuid/uuid.dart';
-import 'package:vidyaveechi_website/controller/get_firebase-data/get_firebase_data.dart';
 import 'package:vidyaveechi_website/model/achievement_model/achievement_model.dart';
 import 'package:vidyaveechi_website/view/constant/const.dart';
 import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
@@ -39,7 +38,7 @@ class AchievementsController extends GetxController {
       final TaskSnapshot snap = await uploadTask;
       final String downloadUrl = await snap.ref.getDownloadURL();
 
-      AchievementModel modell = AchievementModel(
+      AchievementModel achievementDetails = AchievementModel(
           photoUrl: downloadUrl,
           studentName: studentNameController.text,
           dateofAchievement: dateController.text,
@@ -57,15 +56,19 @@ class AchievementsController extends GetxController {
           // .collection(Get.find<GetFireBaseData>().bYear.value)
           // .doc(Get.find<GetFireBaseData>().bYear.value)
           .collection('AdminAchievements')
-          .doc(modell.uid)
-          .set(modell.toMap())
+          .doc(achievementDetails.uid)
+          .set(achievementDetails.toMap())
           .then((value) {
         studentNameController.clear();
         dateController.clear();
         achievementController.clear();
         admissionNumberController.clear();
-        showToast(msg: 'New Achievement Added!');
-      });
+        //   if (afile == null) {
+        //     showToast(msg: 'Select an image');
+        //   } else {
+        // showToast(msg: 'New Achievement Added!');}
+      })
+      .then((value) => showToast(msg: 'New Achievement Added!'));
 
       return {
         "downloadUrl": downloadUrl,
@@ -81,16 +84,16 @@ class AchievementsController extends GetxController {
     }
   }
 
-  Future<void> updateAchievement( String uid) async {
+  Future<void> updateAchievement( String uid,BuildContext context) async {
      
     await server
         .collection('SchoolListCollection')
         .doc(UserCredentialsController.schoolId)
         .collection(UserCredentialsController.batchId!)
         .doc(UserCredentialsController.batchId!)
-        .collection(Get.find<GetFireBaseData>().bYear.value)
-        .doc(Get.find<GetFireBaseData>().bYear.value)
-        .collection('Achievements')
+        // .collection(Get.find<GetFireBaseData>().bYear.value)
+        // .doc(Get.find<GetFireBaseData>().bYear.value)
+        .collection('AdminAchievements')
         .doc(uid)
         .update({
           'studentName':studentNameController.text,
@@ -98,19 +101,22 @@ class AchievementsController extends GetxController {
            'achievementHead':achievementController.text,
            'admissionNumber':admissionNumberController.text,
           // 'photoUrl': downloadUrl,
-    });
+    })  .then((value) => Navigator.pop(context ))
+        .then((value) => showToast(msg: 'Achievement Updated!'));
   }
 
-  Future<void> deleteAchievements(String uid) async {
+  Future<void> deleteAchievements(String uid,BuildContext context) async {
     await server
         .collection('SchoolListCollection')
         .doc(UserCredentialsController.schoolId)
         .collection(UserCredentialsController.batchId!)
         .doc(UserCredentialsController.batchId!)
-        .collection(Get.find<GetFireBaseData>().bYear.value)
-        .doc(Get.find<GetFireBaseData>().bYear.value)
-        .collection('Achievements')
+        // .collection(Get.find<GetFireBaseData>().bYear.value)
+        // .doc(Get.find<GetFireBaseData>().bYear.value)
+        .collection('AdminAchievements')
         .doc(uid)
-        .delete();
+        .delete()
+        .then((value) => Navigator.pop(context ))
+        .then((value) => showToast(msg: 'Successfully Deleted!'));
   }
 }
