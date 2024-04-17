@@ -14,7 +14,7 @@ class BatchHistoryController extends GetxController {
 
         // Reference to the subcollections
         CollectionReference subcollectionReference =
-            schoolDocument.collection("batchYear");
+            schoolDocument.collection("SchoolListCollection");
         QuerySnapshot subcollectionQuery = await subcollectionReference.get();
         List<BatchHistoryModel> batchHistory = subcollectionQuery.docs
             .map((document) => BatchHistoryModel.fromJson(

@@ -19,8 +19,8 @@ class TotalStudentAttendanceContainer extends StatelessWidget {
           color: cWhite, border: Border.all(color: cBlack.withOpacity(0.1))),
       child: FutureBuilder(
           future: Future.wait([
-            Get.find<AdminController>().getSchoolAttendacne(),
-            Get.find<AdminController>().getSchoolAllStudentsCount()
+            Get.find<AdminGraphController>().getSchoolAttendacne(),
+            Get.find<AdminGraphController>().getSchoolAllStudentsCount()
           ]),
           builder: (context, snapshot) {
             if (snapshot.data == null ||

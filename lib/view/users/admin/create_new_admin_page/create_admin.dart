@@ -1,14 +1,16 @@
 import 'package:dropdown_search/dropdown_search.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
+import 'package:vidyaveechi_website/controller/admin_section/admin_controller/admin_controller.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
+import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
 
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 
 class CreateAdmin extends StatelessWidget {
+  final AdminController adminController = Get.put(AdminController());
   CreateAdmin({super.key});
-  final _formKey = GlobalKey<FormState>();
+ // final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +34,8 @@ class CreateAdmin extends StatelessWidget {
         height: 35,
         width: ResponsiveWebSite.isMobile(context) ? 80 : 150,
         child: TextFormField(
+          controller: adminController.nameController,
+          validator: checkFieldEmpty,
           autovalidateMode: AutovalidateMode.always,
           // validator: (value) {
           //   if (value == null || value.isEmpty) {
@@ -65,6 +69,8 @@ class CreateAdmin extends StatelessWidget {
         height: 35,
         color: screenContainerbackgroundColor,
         child: TextFormField(
+          controller: adminController.emailController,
+           validator: checkFieldEmailIsValid,
           autovalidateMode: AutovalidateMode.always,
           // validator: (value) {
           //   if (value == null || value.isEmpty) {
@@ -120,6 +126,9 @@ class CreateAdmin extends StatelessWidget {
                         size: 20,
                       ))),
               items: const ['Male', 'Female', 'Others'],
+              onChanged: (value) {
+                  adminController.gender.value = value ?? '';
+                },
             ),
           ),
         ],
@@ -136,6 +145,8 @@ class CreateAdmin extends StatelessWidget {
         height: 35,
         color: screenContainerbackgroundColor,
         child: TextFormField(
+          controller: adminController.phoneNumberController,
+           validator: checkFieldPhoneNumberIsValid,
           //   autovalidateMode: AutovalidateMode.always,
           //   validator: (value) {
           //   if (value == null || value.isEmpty) {
@@ -169,6 +180,8 @@ class CreateAdmin extends StatelessWidget {
         height: 35,
         color: screenContainerbackgroundColor,
         child: TextFormField(
+          controller: adminController.passwordController,
+           validator: checkFieldPasswordIsValid,
           style: const TextStyle(fontSize: 14),
           decoration: const InputDecoration(
             prefixIcon: Icon(
@@ -193,6 +206,8 @@ class CreateAdmin extends StatelessWidget {
         height: 35,
         color: screenContainerbackgroundColor,
         child: TextFormField(
+           validator: checkFieldPasswordIsValid,
+            controller: adminController.passwordController,
           style: const TextStyle(fontSize: 14),
           decoration: const InputDecoration(
             prefixIcon: Icon(
@@ -211,7 +226,8 @@ class CreateAdmin extends StatelessWidget {
         ),
         onPressed: () {
           // Validate returns true if the form is valid, or false otherwise.
-          if (_formKey.currentState!.validate()) {
+          if ( adminController. formKey.currentState!.validate()) {
+            adminController.createNewAdmin(context);
             // If the form is valid, display a snackbar. In the real world,
             // you'd often call a server or save the information in a database.
             // ScaffoldMessenger.of(context).showSnackBar(
@@ -233,7 +249,7 @@ class CreateAdmin extends StatelessWidget {
           ? Container(
               color: screenContainerbackgroundColor,
               child: Form(
-                key: _formKey,
+                key:adminController.formKey,
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -453,7 +469,7 @@ class CreateAdmin extends StatelessWidget {
             height: 700,
             color: screenContainerbackgroundColor,
             child: Form(
-              key: _formKey,
+              key: adminController.formKey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

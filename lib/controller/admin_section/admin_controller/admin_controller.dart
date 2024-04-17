@@ -12,6 +12,7 @@ class AdminController extends GetxController {
   RxBool ontapAdmin = false.obs;
   RxString dobSelectedDate = ''.obs;
   RxString joiningSelectedDate = ''.obs;
+  final Rx<String> gender = ''.obs;
   Rx<ButtonState> buttonstate = ButtonState.idle.obs;
 //......................  Add Admin Section
 
@@ -20,6 +21,7 @@ class AdminController extends GetxController {
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneNumberController = TextEditingController();
   TextEditingController conformpassController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
 
   RxBool automaticmail = false.obs;
 
@@ -38,10 +40,11 @@ class AdminController extends GetxController {
             .doc(value.user!.uid)
             .set({
               'docid': value.user!.uid,
-              'username': nameController,
-              'password': passwordController,
-              'email': emailController,
-              'phoneNumber': phoneNumberController
+              'username': nameController.text,
+              'password': passwordController.text,
+              'email': emailController.text.trim(),
+              'phoneNumber': phoneNumberController.text.trim(),
+              'active': true,
             })
             .then(
               (value) async {
@@ -59,8 +62,8 @@ class AdminController extends GetxController {
                   passwordController.clear(),
                   emailController.clear(),
                   phoneNumberController.clear(),
-                })
-            .then((value) => Navigator.pop(context));
+                });
+            
       });
     } on FirebaseAuthException catch (e) {
       showToast(msg: e.code);
@@ -73,4 +76,6 @@ class AdminController extends GetxController {
       });
     }
   }
+
+  Future<void> deactiveAdmin(String docid) async {}
 }
