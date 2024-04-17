@@ -22,9 +22,7 @@ class SplashScreen extends StatelessWidget {
       Get.put(UserLoginController());
     
     }
-  if (Get.find<UserLoginController>().logined.value == true) {
-        Get.find<UserLoginController>().loginSaveData();
-      }
+
     nextpage();
     return Scaffold(
       backgroundColor: cWhite,
