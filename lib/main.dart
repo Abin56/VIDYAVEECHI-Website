@@ -20,7 +20,7 @@ Future<void> main() async {
 
   runApp(const MyApp());
 
-      Get.put(UserLoginController());
+  Get.put(UserLoginController());
 
   // html.window.onBeforeUnload.listen((html.Event e) {
   //   // Perform logout operation here

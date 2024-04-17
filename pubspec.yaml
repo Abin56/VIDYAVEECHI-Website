@@ -2,7 +2,7 @@ name: vidyaveechi_website
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.3.1 <4.0.0'
+  sdk: ">=3.3.1 <4.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -31,18 +31,17 @@ dependencies:
   flutter:
     sdk: flutter
 
-
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  awesome_side_sheet: 
-  bubble: 
-  carousel_slider: 
-  chewie: 
-  country_state_city_picker: 
-  dio: 
-  download: 
-  draw_graph: 
+  awesome_side_sheet:
+  bubble:
+  carousel_slider:
+  chewie:
+  country_state_city_picker:
+  dio:
+  download:
+  draw_graph:
   dropdown_search:
   excel:
   file_picker:
@@ -51,48 +50,48 @@ dependencies:
   firebase_core:
   firebase_core_web: ^2.11.3
   firebase_ui_auth:
-  firebase_storage: 
-  flutter_colorpicker: 
-  flutter_inset_box_shadow: 
-  flutter_overboard: 
-  flutter_sms: 
+  firebase_storage:
+  flutter_colorpicker:
+  flutter_inset_box_shadow:
+  flutter_overboard:
+  flutter_sms:
   flutter_staggered_animations:
   fluttertoast:
-  gcloud: 
-  get: 
+  gcloud:
+  get:
   google_fonts: 6.1.0
-  google_sign_in: 
-  group_radio_button: 
-  http: 
-  image_picker: 
-  intl: 
-  liquid_progress_indicator: 
+  google_sign_in:
+  group_radio_button:
+  http:
+  image_picker:
+  intl:
+  liquid_progress_indicator:
   lottie:
-  month_picker_dialog: 
-  open_document: 
-  open_file: 
-  permission_handler: 
-  pocketbase: 
-  razorpay_web: 
-  shared_preferences: 
-  simple_gradient_text: 
-  slider_button: 
+  month_picker_dialog:
+  open_document:
+  open_file:
+  permission_handler:
+  pocketbase:
+  razorpay_web:
+  shared_preferences:
+  simple_gradient_text:
+  slider_button:
   sprung:
-  text_scroll: 
+  text_scroll:
   toggle_switch:
   universal_html:
   url_launcher:
   uuid:
   sidebar_drawer:
   visibility_detector:
-  syncfusion_flutter_charts: 
+  syncfusion_flutter_charts:
   syncfusion_flutter_calendar:
   syncfusion_flutter_datagrid:
   syncfusion_flutter_gauges:
   percent_indicator:
-  data_table_2: 
+  data_table_2:
   flutter_svg:
-  adaptive_ui_layout: 
+  adaptive_ui_layout:
   fab_circular_menu_plus:
   font_awesome_flutter:
   flutter_rounded_date_picker:
@@ -100,7 +99,6 @@ dependencies:
   progress_state_button: ^1.0.4
   skeletonizer: ^1.1.0
   syncfusion_flutter_xlsio:
-
 
 dev_dependencies:
   flutter_test:
@@ -118,7 +116,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
