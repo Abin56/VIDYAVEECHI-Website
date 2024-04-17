@@ -329,40 +329,40 @@ class CreateAdmin extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 5, right: 5),
-                      child: Container(
-                        color: cWhite,
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 20,
-                                        bottom: 20,
-                                        left: 20,
-                                        right: 10),
-                                    child: adminListWidgets[
-                                        5] ////////////////............Gender
-                                    ),
-                                Expanded(
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(right: 10),
-                                    child: Container(
-                                        width: 200,
-                                        color: cWhite,
-                                        child: adminListWidgets[
-                                            6] ///////////////////////...............Gender select
-                                        ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+                    // Padding(
+                    //   padding: const EdgeInsets.only(left: 5, right: 5),
+                    //   child: Container(
+                    //     color: cWhite,
+                    //     child: Column(
+                    //       children: [
+                    //         Row(
+                    //           children: [
+                    //             Padding(
+                    //                 padding: const EdgeInsets.only(
+                    //                     top: 20,
+                    //                     bottom: 20,
+                    //                     left: 20,
+                    //                     right: 10),
+                    //                 child: adminListWidgets[
+                    //                     5] ////////////////............Gender
+                    //                 ),
+                    //             Expanded(
+                    //               child: Padding(
+                    //                 padding: const EdgeInsets.only(right: 10),
+                    //                 child: Container(
+                    //                     width: 200,
+                    //                     color: cWhite,
+                    //                     child: adminListWidgets[
+                    //                         6] ///////////////////////...............Gender select
+                    //                     ),
+                    //               ),
+                    //             ),
+                    //           ],
+                    //         ),
+                    //       ],
+                    //     ),
+                    //   ),
+                    // ),
                     Padding(
                       padding: const EdgeInsets.only(left: 5, right: 5),
                       child: Container(
@@ -551,35 +551,35 @@ class CreateAdmin extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10, right: 10),
-                    child: Container(
-                      color: cWhite,
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 20,
-                                      bottom: 20,
-                                      left: 30,
-                                      right: 30),
-                                  child: adminListWidgets[
-                                      5] ///////////////////................Gender
-                                  ),
-                              Expanded(
-                                  flex: 1,
-                                  child: adminListWidgets[
-                                      6] /////////////////...............Select gender
-                                  ),
-                              Expanded(flex: 1, child: Container()),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(left: 10, right: 10),
+                  //   child: Container(
+                  //     color: cWhite,
+                  //     child: Column(
+                  //       children: [
+                  //         Row(
+                  //           children: [
+                  //             Padding(
+                  //                 padding: const EdgeInsets.only(
+                  //                     top: 20,
+                  //                     bottom: 20,
+                  //                     left: 30,
+                  //                     right: 30),
+                  //                 child: adminListWidgets[
+                  //                     5] ///////////////////................Gender
+                  //                 ),
+                  //             Expanded(
+                  //                 flex: 1,
+                  //                 child: adminListWidgets[
+                  //                     6] /////////////////...............Select gender
+                  //                 ),
+                  //             Expanded(flex: 1, child: Container()),
+                  //           ],
+                  //         ),
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
                   Padding(
                     padding: const EdgeInsets.only(left: 10, right: 10),
                     child: Container(
