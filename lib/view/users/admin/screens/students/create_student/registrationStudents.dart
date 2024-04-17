@@ -64,20 +64,23 @@ class RegistrationStudentList extends StatelessWidget {
                         ),
                       )),
                 ),
-                SizedBox(
-                    height: 60,
-                    width: 250,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const TextFontWidget(text: 'Class *', fontsize: 10),
-                        const SizedBox(
-                          height: 05,
-                        ),
-                        SizedBox(height: 40, child: SelectClassDropDown()),
-                      ],
-                    ))
+                Padding(
+                  padding: const EdgeInsets.only(right: 20),
+                  child: SizedBox(
+                      height: 60,
+                      width: 250,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const TextFontWidget(text: 'Class *', fontsize: 10),
+                          const SizedBox(
+                            height: 05,
+                          ),
+                          SizedBox(height: 40, child: SelectClassDropDown()),
+                        ],
+                      )),
+                )
               ],
             ),
           ),

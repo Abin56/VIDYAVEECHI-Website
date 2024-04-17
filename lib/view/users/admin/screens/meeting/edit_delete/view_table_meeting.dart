@@ -42,30 +42,27 @@ class MeetingEditRemove extends StatelessWidget {
             SizedBox(
               height: 30,
             ),
-            Row(
-              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 08, right: 05, bottom: 5),
-                  child: GestureDetector(
+            Padding(
+              padding: const EdgeInsets.only(left: 25, right: 25),
+              child: Row(
+                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
                     onTap: () {
                       meetingController.ontapMeeting.value = false;
                     },
                     child: const RouteNonSelectedTextContainer(title: 'Home'),
                   ),
-                ),
-                Spacer(),
-                Padding(
-                  padding: const EdgeInsets.only(right: 30, bottom: 5),
-                  child: const RouteSelectedTextContainer(width: 140, title: 'Meeting Deatils'),
-                ),
-              ],
+                  Spacer(),
+                  const RouteSelectedTextContainer(width: 140, title: 'Meeting Deatils'),
+                ],
+              ),
             ),
             SizedBox(
               height: 20,
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 30, left: 35),
+              padding: const EdgeInsets.only(right: 25, left: 25),
               child: Container(
                 color: cWhite,
                 height: 600,
@@ -106,7 +103,7 @@ class MeetingEditRemove extends StatelessWidget {
                             return Container(
                               color: screenContainerbackgroundColor,
                               height: 1000,
-                              width: 1150,
+                              width: 1200,
                               child: Column(
                                 children: [
                                   Padding(
@@ -187,7 +184,7 @@ class MeetingEditRemove extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.only(left: 0, right: 0),
                                       child: Container(
-                                        width: 1150,
+                                        width: 1200,
                                         decoration: BoxDecoration(
                                           color: cWhite,
                                           border: Border.all(color: cWhite),
