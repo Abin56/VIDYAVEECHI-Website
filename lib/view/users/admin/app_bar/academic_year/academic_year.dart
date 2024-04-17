@@ -1,11 +1,16 @@
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 import 'package:vidyaveechi_website/view/users/admin/app_bar/academic_year/add_academic.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 
+import '../../../../../controller/batch_yearController/batch_year_Controller.dart';
+import '../../../../drop_down/batch_year/batch_year.dart';
+
 academicYearSettingFunction(BuildContext context) {
+  final BatchYearController batchYearController=Get.put(BatchYearController());
   final academicYearListWidegt = [
     GestureDetector(
       onTap: () {
@@ -30,7 +35,7 @@ academicYearSettingFunction(BuildContext context) {
     ), ///////////////////////.......0
     GestureDetector(
       onTap: () {
-        
+      batchYearController .setBatchYear() ;
       },
       child: Container(
         height: 40,
@@ -75,7 +80,7 @@ academicYearSettingFunction(BuildContext context) {
     context: context,
     builder: (context) {
       return AlertDialog(
-        title: const TextFontWidget(text: "Change Academic Year", fontsize: 15),
+        title: const TextFontWidget(text: "demic Year", fontsize: 15),
         backgroundColor: cWhite,
         content: SizedBox(
           height: ResponsiveWebSite.isMobile(context)? 220: 140,
@@ -93,13 +98,7 @@ academicYearSettingFunction(BuildContext context) {
                     const SizedBox(
                       height: 05,
                     ),
-                    SizedBox(
-                      height: 40,
-                      child: DropdownSearch(
-                        selectedItem: '2024-2025',
-                        items: const ['2024-2025', '2023-2024'],
-                      ),
-                    ),
+                    SelectBatchYearDropDown()
                   ],
                 ),
               ),

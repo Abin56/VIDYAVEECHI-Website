@@ -4,7 +4,6 @@ import 'package:vidyaveechi_website/controller/login_histroy_controller/login_hi
 import 'package:vidyaveechi_website/model/loginHistory_model/login_history_model.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
-import 'package:vidyaveechi_website/view/home/screens/login_histroy/dropdown/drop_down_lh.dart';
 import 'package:vidyaveechi_website/view/home/screens/login_histroy/login_histroy_datalist.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/parents/create_parent/create_parent.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/students/student_details/widgets/category_tableHeader.dart';
@@ -12,6 +11,9 @@ import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
 import 'package:vidyaveechi_website/view/widgets/loading_widget/loading_widget.dart';
 import 'package:vidyaveechi_website/view/widgets/routeSelectedTextContainer/routeSelectedTextContainer.dart';
+
+import '../../../drop_down/login_history/select_date.dart';
+import '../../../drop_down/login_history/select_month.dart';
 
 class LoginHistroyContainer extends StatelessWidget {
   final AdminLoginHistroyController adminLoginHistroyController =
@@ -72,7 +74,7 @@ class LoginHistroyContainer extends StatelessWidget {
                                   ),
                                   SizedBox(
                                     height: 40,
-                                    child: SelectLoginHistroyMonthDropDown(),
+                                    child: SelectLoginMonthDropDown(),
                                   ),
                                 ],
                               ),
@@ -93,7 +95,7 @@ class LoginHistroyContainer extends StatelessWidget {
                                   ),
                                   SizedBox(
                                     height: 40,
-                                    child: SelectLoginHistroyDateDropDown(),
+                                    child: SelectLoginDateDropDown(),
                                   ),
                                 ],
                               ),

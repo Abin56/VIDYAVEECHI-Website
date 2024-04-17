@@ -71,7 +71,8 @@ class AdminLoginHistroyController extends GetxController {
 
     for (var i = 0; i < firebase.docs.length; i++) {
       final list = firebase.docs[i].data()['docid'];
-      allLoginMonthList.add(list[i]);
+      allLoginMonthList.add(list);
+      print(list);
     }
     return allLoginMonthList;
   }
@@ -91,7 +92,7 @@ class AdminLoginHistroyController extends GetxController {
 
     for (var i = 0; i < firebase.docs.length; i++) {
       final list = firebase.docs[i].data()['docid'];
-      allLoginDayList.add(list[i]);
+      allLoginDayList.add(list);
     }
     return allLoginDayList;
   }
