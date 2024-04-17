@@ -19,6 +19,7 @@ class BatchYearController extends GetxController {
     }
     return allbatchList;
   }
+  
 
   Future<void> setBatchYear() async {
     await SharedPreferencesHelper.setString(
