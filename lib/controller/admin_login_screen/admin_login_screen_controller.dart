@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'dart:html' as html;
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ import 'package:vidyaveechi_website/model/loginHistory_model/login_history_model
 import 'package:vidyaveechi_website/view/constant/const.dart';
 import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
 import 'package:vidyaveechi_website/view/widgets/drop_DownList/schoolDropDownList.dart';
+
 import '../get_firebase-data/get_firebase_data.dart';
 
 class AdminLoginScreenController extends GetxController {
@@ -334,7 +336,7 @@ class AdminLoginScreenController extends GetxController {
                             // ignore: unused_local_variable
                             TextEditingController emailController =
                                 TextEditingController();
-                                
+
                             return AlertDialog(
                               title: const Text('Reset Password ?'),
                               content: const SingleChildScrollView(
@@ -371,4 +373,5 @@ class AdminLoginScreenController extends GetxController {
       );
     } catch (e) {}
   }
+
 }
