@@ -41,7 +41,8 @@ class AdminController extends GetxController {
               'username': nameController,
               'password': passwordController,
               'email': emailController,
-              'phoneNumber': phoneNumberController
+              'phoneNumber': phoneNumberController,
+              'active': true,
             })
             .then(
               (value) async {
@@ -74,5 +75,5 @@ class AdminController extends GetxController {
     }
   }
 
- Future<void> deactiveAdmin(String docid)async{}
+  Future<void> deactiveAdmin(String docid) async {}
 }
