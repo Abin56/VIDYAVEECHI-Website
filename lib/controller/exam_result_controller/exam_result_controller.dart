@@ -1,8 +1,5 @@
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/get_rx.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 import 'package:vidyaveechi_website/controller/class_controller/class_controller.dart';
 import 'package:vidyaveechi_website/controller/subject_controller/subject_controller.dart';
 import 'package:vidyaveechi_website/model/student_mark_list_model/student_mark_list_model.dart';
