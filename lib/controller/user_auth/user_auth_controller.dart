@@ -3,12 +3,14 @@ import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+import 'package:vidyaveechi_website/controller/user_login_Controller/user_login_controller.dart';
 import 'package:vidyaveechi_website/view/home/main_screen.dart';
 import 'package:vidyaveechi_website/view/splash_screen/splash_screen.dart';
 import 'package:vidyaveechi_website/view/users/admin/admin_home.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
 
 class UserAuthController extends GetxController {
+  RxBool loginAuthState = false.obs;
   Future<void> checkSavedLoginAuth() async {
     if (kDebugMode) {}
     FirebaseAuth auth = FirebaseAuth.instance;
@@ -32,7 +34,13 @@ class UserAuthController extends GetxController {
         log("SchoolID :  ${UserCredentialsController.schoolId}");
         log("BatchID :  ${UserCredentialsController.batchId}");
         log("userrole :  ${UserCredentialsController.userRole}");
-        checkAdmin();
+        await checkAdmin();
+        loginAuthState.value = true;
+        log('message${loginAuthState.value}');
+  if (Get.find<UserLoginController>().logined.value == true) {
+        Get.find<UserLoginController>().loginSaveData();
+      }
+ 
         Get.offAll(() => const AdminHomeScreen());
       } else {
         if (kDebugMode) {
@@ -49,6 +57,7 @@ Future<void> checkAdmin() async {
       UserCredentialsController.batchId == "" &&
       UserCredentialsController.schoolId == "") {
     logoutUser();
+
     Get.offAll(() => SplashScreen());
   }
 }

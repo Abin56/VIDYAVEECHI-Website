@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:vidyaveechi_website/controller/user_login_Controller/user_login_controller.dart';
 import 'package:vidyaveechi_website/model/admin_model.dart/admin_model.dart';
 import 'package:vidyaveechi_website/model/parent_model/parent_model.dart';
 import 'package:vidyaveechi_website/model/student_model/student_model.dart';
@@ -75,6 +76,7 @@ class UserCredentialsController {
 
 logoutUser() async {
   await FirebaseAuth.instance.signOut().then((value) async {
+      
     Get.offAll(SplashScreen());
     await SharedPreferencesHelper.clearSharedPreferenceData();
     UserCredentialsController.clearUserCredentials();

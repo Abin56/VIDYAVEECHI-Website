@@ -1,8 +1,11 @@
+import 'dart:developer';
+
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:vidyaveechi_website/controller/user_auth/user_auth_controller.dart';
+import 'package:vidyaveechi_website/controller/user_login_Controller/user_login_controller.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/fonts/google_monstre.dart';
 
@@ -13,6 +16,15 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (userLoginController.loginAuthState.value == true) {
+      log("****************TRUE");
+      log("Get.find<UserLoginController>().logined.value ${Get.find<UserLoginController>().logined.value}");
+      Get.put(UserLoginController());
+    
+    }
+  if (Get.find<UserLoginController>().logined.value == true) {
+        Get.find<UserLoginController>().loginSaveData();
+      }
     nextpage();
     return Scaffold(
       backgroundColor: cWhite,

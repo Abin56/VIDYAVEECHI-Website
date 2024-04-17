@@ -1,13 +1,16 @@
 import 'dart:developer';
+import 'dart:html' as html;
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'dart:html' as html;
 import 'package:intl/intl.dart';
 import 'package:vidyaveechi_website/view/constant/const.dart';
+import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
 import 'package:vidyaveechi_website/view/splash_screen/splash_screen.dart';
-import 'package:vidyaveechi_website/view/users/teacher/teacher.dart';
+import 'package:vidyaveechi_website/view/users/teacher/teacher_home.dart';
+// import 'package:vidyaveechi_website/view/users/teacher/teacher.dart';
 import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
 import 'package:vidyaveechi_website/view/utils/utils.dart';
@@ -25,8 +28,9 @@ class UserLoginController extends GetxController {
   RxString userUID = ''.obs;
   final TextEditingController userEmailIDController = TextEditingController();
   final TextEditingController userPasswordController = TextEditingController();
-  String schoolID = schoolListValue?['docid'];
-  String schoolName = schoolListValue?['schoolName'];
+  String batchID = '';
+  late String? schoolID = schoolListValue?['docid'];
+  late String? schoolName = schoolListValue?['schoolName'] ?? '';
 
   Future<bool> secondaryAdminLogin() async {
     //....... .......................................Secondary Admin Login Function
@@ -45,15 +49,17 @@ class UserLoginController extends GetxController {
             .where('docid', isEqualTo: userUID.value)
             .get();
         if (result.docs.isNotEmpty) {
+          batchID = user.data()?['batchYear'];
           await SharedPreferencesHelper.setString(
               SharedPreferencesHelper.userRoleKey, 'admin');
           await SharedPreferencesHelper.setString(
-              SharedPreferencesHelper.batchIdKey, schoolID);
+              SharedPreferencesHelper.batchIdKey, schoolID!);
           await SharedPreferencesHelper.setString(
-              SharedPreferencesHelper.schoolNameKey, schoolName);
+              SharedPreferencesHelper.schoolNameKey, schoolName!);
           await SharedPreferencesHelper.setString(
                   SharedPreferencesHelper.batchIdKey, user.data()?['batchYear'])
               .then((value) async {
+            logined.value = true;
             userEmailIDController.clear();
             userPasswordController.clear();
             Get.offAll(() => SplashScreen());
@@ -77,6 +83,8 @@ class UserLoginController extends GetxController {
   }
 
   Future<void> adminLoginController(BuildContext context) async {
+    loginontapped.value = true;
+
     //....... ........................................Admin  Login Function
     try {
       final user =
@@ -91,12 +99,13 @@ class UserLoginController extends GetxController {
           setBatchYear(context);
         } else {
           if (userUID.value == schoolID) {
+            batchID = user.data()?['batchYear'];
             await SharedPreferencesHelper.setString(
                 SharedPreferencesHelper.userRoleKey, 'admin');
             await SharedPreferencesHelper.setString(
-                SharedPreferencesHelper.schoolIdKey, schoolID);
+                SharedPreferencesHelper.schoolIdKey, schoolID!);
             await SharedPreferencesHelper.setString(
-                SharedPreferencesHelper.schoolNameKey, schoolName);
+                SharedPreferencesHelper.schoolNameKey, schoolName!);
             await SharedPreferencesHelper.setString(
                     SharedPreferencesHelper.batchIdKey,
                     user.data()!['batchYear'])
@@ -106,6 +115,7 @@ class UserLoginController extends GetxController {
               log("userrole :  ${UserCredentialsController.userRole}");
               userEmailIDController.clear();
               userPasswordController.clear();
+              logined.value = true;
               Get.offAll(() => SplashScreen());
             });
           } else {
@@ -142,7 +152,7 @@ class UserLoginController extends GetxController {
         if (result.docs.isNotEmpty) {
           userEmailIDController.clear();
           userPasswordController.clear();
-          Get.offAll(() => const TeacherHomePage());
+          Get.offAll(() => const TeachersHomeScreen());
         } else if (result.docs.isEmpty) {
           showToast(msg: "No Results Found !!");
         } else {
@@ -178,7 +188,7 @@ class UserLoginController extends GetxController {
         if (result.docs.isNotEmpty) {
           userEmailIDController.clear();
           userPasswordController.clear();
-          Get.offAll(() => const TeacherHomePage());
+          Get.offAll(() => const TeachersHomeScreen());
         } else if (result.docs.isEmpty) {
           showToast(msg: "No Results Found !!");
         } else {
@@ -378,5 +388,91 @@ class UserLoginController extends GetxController {
         );
       },
     );
+  }
+
+  RxString logoutData = ''.obs;
+  RxBool logined = false.obs;
+  Future<void> loginSaveData() async {
+    try {
+      log("***************loginSaveData*************************");
+      final date = DateTime.now();
+      DateTime parseDate = DateTime.parse(date.toString());
+      final month = DateFormat('MMMM-yyyy');
+      String monthwise = month.format(parseDate);
+      final DateFormat formatter = DateFormat('dd-MM-yyyy');
+      String formatted = formatter.format(parseDate);
+
+      final String docid = uuid.v1();
+      await server
+          .collection('SchoolListCollection')
+          .doc(UserCredentialsController.schoolId)
+          .collection(UserCredentialsController.batchId ?? batchID)
+          .doc(UserCredentialsController.batchId ?? batchID)
+          .collection("LoginHistory")
+          .doc(monthwise)
+          .set({
+        'docid': monthwise,
+      }).then((value) async {
+        await server
+            .collection('SchoolListCollection')
+            .doc(UserCredentialsController.schoolId)
+            .collection(UserCredentialsController.batchId ?? batchID)
+            .doc(UserCredentialsController.batchId ?? batchID)
+            .collection("LoginHistory")
+            .doc(monthwise)
+            .collection(monthwise)
+            .doc(formatted)
+            .set({'docid': formatted}).then((value) async {
+          logoutData.value = docid;
+          await server
+              .collection('SchoolListCollection')
+              .doc(UserCredentialsController.schoolId)
+              .collection(UserCredentialsController.batchId ?? batchID)
+              .doc(UserCredentialsController.batchId ?? batchID)
+              .collection("LoginHistory")
+              .doc(monthwise)
+              .collection(monthwise)
+              .doc(formatted)
+              .collection(formatted)
+              .doc(docid)
+              .set({
+            'docid': docid,
+            'loginTime': DateTime.now().toString(),
+            'logoutTime': '',
+            'adminuserName': FirebaseAuth.instance.currentUser?.email,
+            'adminID': FirebaseAuth.instance.currentUser?.uid
+          }, SetOptions(merge: true));
+        });
+      });
+      logined.value = false;
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future<void> logoutSaveData() async {
+    final date = DateTime.now();
+    DateTime parseDate = DateTime.parse(date.toString());
+    final month = DateFormat('MMMM-yyyy');
+    String monthwise = month.format(parseDate);
+    final DateFormat formatter = DateFormat('dd-MM-yyyy');
+    String formatted = formatter.format(parseDate);
+    await server
+        .collection('SchoolListCollection')
+        .doc(UserCredentialsController.schoolId)
+        .collection(UserCredentialsController.batchId!)
+        .doc(UserCredentialsController.batchId)
+        .collection("LoginHistory")
+        .doc(monthwise)
+        .collection(monthwise)
+        .doc(formatted)
+        .collection(formatted)
+        .doc(logoutData.value)
+        .set({
+      'docid': logoutData.value,
+      'logoutTime': DateTime.now(),
+      'adminuserName': FirebaseAuth.instance.currentUser?.email,
+      'adminID': FirebaseAuth.instance.currentUser?.uid
+    }, SetOptions(merge: true));
   }
 }

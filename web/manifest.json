@@ -1,11 +1,11 @@
 {
-    "name": "vidyaveechi_website",
-    "short_name": "vidyaveechi_website",
+    "name": "VIDHA VEECHI",
+    "short_name": "VIDHA VEECHI",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "LeptonDujo is a comprehensive school management app designed to streamline and automate various administrative and academic processes in educational institutions.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

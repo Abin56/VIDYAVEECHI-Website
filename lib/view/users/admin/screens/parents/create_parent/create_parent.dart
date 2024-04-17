@@ -27,7 +27,7 @@ class CreateParent extends StatelessWidget {
         fontsize: 18,
         fontWeight: FontWeight.bold,
       ), //////////////////////////0.....................
-       Container(
+      Container(
         height: ResponsiveWebSite.isMobile(context) ? 80 : 100,
         color: cWhite,
         child: Column(
@@ -73,223 +73,219 @@ class CreateParent extends StatelessWidget {
         title: 'Parent Name',
         validator: checkFieldEmpty,
       ), /////////////////////////////3.....................name
-      
+
       TextFormFiledBlueContainerWidget(
-       controller: parentController.parentPhNOController,
+        controller: parentController.parentPhNOController,
         hintText: " Enter Parent Ph",
         title: 'Phone Number',
         validator: checkFieldPhoneNumberIsValid,
       ), /////////////////////////.....4.........................number
-    
+
       Obx(() => ProgressButtonWidget(
           function: () async {
             if (_formKey.currentState!.validate()) {
-               parentController.addParent();
+              parentController.addParent();
             }
           },
           buttonstate: parentController.buttonstate.value,
-          text: 'Create Parent')), /////////////........................................5...  
+          text:
+              'Create Parent')), /////////////........................................5...
     ];
     return Form(
       key: _formKey,
       child: Container(
         color: screenContainerbackgroundColor,
         height: ResponsiveWebSite.isMobile(context) ? 1200 : 820,
+        padding: const EdgeInsets.only(left: 15, right: 15, top: 25),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Padding(
-              padding: EdgeInsets.only(left: 25, top: 25),
-              child: TextFontWidget(
-                text: 'Create A New Parent',
-                fontsize: 18,
-                fontWeight: FontWeight.bold,
-              ),
+            const TextFontWidget(
+              text: 'Create A New Parent',
+              fontsize: 18,
+              fontWeight: FontWeight.bold,
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 10),
-              child: Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      left: 08,
-                      right: 05,
-                    ),
-                    child: GestureDetector(
-                        onTap: () {
-                          parentController.ontapParent.value = false;
-                        },
-                        child:
-                            const RouteNonSelectedTextContainer(title: 'Home')),
-                  ),
-                  const RouteSelectedTextContainer(
-                      width: 140, title: 'Create Parent'),
-                ],
-              ),
+            const SizedBox(
+              height: 25,
+            ),
+            Row(
+              children: [
+                GestureDetector(
+                    onTap: () {
+                      parentController.ontapParent.value = false;
+                    },
+                    child: const RouteNonSelectedTextContainer(title: 'Home')),
+                const SizedBox(
+                  width: 20,
+                ),
+                const RouteSelectedTextContainer(
+                    width: 140, title: 'Create Parent'),
+              ],
+            ),
+            const SizedBox(
+              height: 20,
             ),
             ResponsiveWebSite.isMobile(context)
-                ? Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: SingleChildScrollView(
-                      child: Container(
-                        color: cWhite,
-                        height: 1000,
-                        width: double.infinity,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 20, top: 15),
-                              child: createStudentListWidget[0], ////////////heading
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 10),
-                              child: Column(
-                                children: [
-                                  Padding(
-                                      padding: const EdgeInsets.only(
-                                          right: 20, left: 10, top: 10),
-                                      child:
-                                          createStudentListWidget[1] ///////////class
-                                      ),
-                                  Padding(
-                                      padding: const EdgeInsets.only(
-                                        right: 20,
-                                        left: 10,
-                                      ),
-                                      child: createStudentListWidget[ 2] ////////std name............
-                                      ),
-                                  // Padding(
-                                  //     padding: const EdgeInsets.only(
-                                  //         right: 20, left: 10, top: 10),
-                                  //     child:
-                                  //         createStudentListWidget[3] ////////number
-                                  //     ),
-                                ],
-                              ),
-                            ),
-                            Column(
-                              children: [
-                                Padding(
-                                    padding:
-                                        const EdgeInsets.only(left: 10, right: 20),
-                                    child: createStudentListWidget[3] //////name
-                                    ),
-                                Padding(
-                                    padding:
-                                        const EdgeInsets.only(left: 10, right: 20),
-                                    child: createStudentListWidget[4] /////number
-                                    ),
-                                // Padding(
-                                //     padding:
-                                //         const EdgeInsets.only(left: 10, right: 20),
-                                //     child: createStudentListWidget[6] ///////dob
-                                //     ),
-                              ],
-                            ),
-                           
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Padding(
-                                    padding: const EdgeInsets.only(top: 20, left: 20),
-                                    child: createStudentListWidget[5] ////////////button
-                                    ),
-                              ],
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ) /////////////////////////////////////////////////////////////////////////
-                : Padding(
-                    padding: const EdgeInsets.all(8.0),
+                ? SingleChildScrollView(
                     child: Container(
                       color: cWhite,
-                      height: 550,
+                      height: 1000,
                       width: double.infinity,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                              padding: const EdgeInsets.only(left: 20, top: 15),
-                              child: createStudentListWidget[0] ///////////heading 
-                              ),
+                            padding: const EdgeInsets.only(left: 20, top: 15),
+                            child:
+                                createStudentListWidget[0], ////////////heading
+                          ),
                           Padding(
-                            padding: const EdgeInsets.only(top: 20),
-                            child: Row(
+                            padding: const EdgeInsets.only(top: 10),
+                            child: Column(
                               children: [
-                                Expanded(
-                                  flex: 1,
-                                  child: Padding(
-                                      padding: const EdgeInsets.only(
-                                          right: 20, left: 10, top: 30),
-                                      child:
-                                          createStudentListWidget[1] ///////////class
-                                      ),
-                                ),
-                                Expanded(
-                                  flex: 1,
-                                  child: Padding(
-                                      padding: const EdgeInsets.only(
-                                        top: 10,
-                                        right: 20,
-                                        left: 10,
-                                      ),
-                                      child: createStudentListWidget[
-                                          2] /////////////////////stdent name....
-                                      ),
-                                ),
-                                // Expanded(
-                                //   flex: 1,
-                                //   child: Padding(
-                                //       padding: const EdgeInsets.only(
-                                //           right: 20, left: 10, top: 30),
-                                //       child:
-                                //           createStudentListWidget[3] ///////number
-                                //       ),
-                                // ),
+                                Padding(
+                                    padding: const EdgeInsets.only(
+                                        right: 20, left: 10, top: 10),
+                                    child: createStudentListWidget[
+                                        1] ///////////class
+                                    ),
+                                Padding(
+                                    padding: const EdgeInsets.only(
+                                      right: 20,
+                                      left: 10,
+                                    ),
+                                    child: createStudentListWidget[
+                                        2] ////////std name............
+                                    ),
+                                // Padding(
+                                //     padding: const EdgeInsets.only(
+                                //         right: 20, left: 10, top: 10),
+                                //     child:
+                                //         createStudentListWidget[3] ////////number
+                                //     ),
                               ],
                             ),
                           ),
-                          Row(
+                          Column(
                             children: [
-                              Expanded(
-                                  flex: 1,
-                                  child: Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 10, right: 20),
-                                      child:
-                                          createStudentListWidget[3] ////////.....name
-                                      )),
-                              Expanded(
-                                  flex: 1,
-                                  child: Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 10, right: 20),
-                                      child: createStudentListWidget[4] //////....number
-                                      )),
-                              // Expanded(
-                              //     flex: 1,
-                              //     child: Padding(
-                              //         padding: const EdgeInsets.only(
-                              //             left: 10, right: 20),
-                              //         child: createStudentListWidget[6] ////dob
-                              //         )),
+                              Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 10, right: 20),
+                                  child: createStudentListWidget[3] //////name
+                                  ),
+                              Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 10, right: 20),
+                                  child: createStudentListWidget[4] /////number
+                                  ),
+                              // Padding(
+                              //     padding:
+                              //         const EdgeInsets.only(left: 10, right: 20),
+                              //     child: createStudentListWidget[6] ///////dob
+                              //     ),
                             ],
                           ),
-                         
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Padding(
-                                  padding: const EdgeInsets.only(top: 20, left: 20),
-                                  child: createStudentListWidget[5] //////button
+                                  padding:
+                                      const EdgeInsets.only(top: 20, left: 20),
+                                  child: createStudentListWidget[
+                                      5] ////////////button
                                   ),
                             ],
                           )
                         ],
                       ),
+                    ),
+                  ) /////////////////////////////////////////////////////////////////////////
+                : Container(
+                    color: cWhite,
+                    height: 550,
+                    width: double.infinity,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                            padding: const EdgeInsets.only(left: 20, top: 15),
+                            child: createStudentListWidget[0] ///////////heading
+                            ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 20),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                flex: 1,
+                                child: Padding(
+                                    padding: const EdgeInsets.only(
+                                        right: 20, left: 10, top: 30),
+                                    child: createStudentListWidget[
+                                        1] ///////////class
+                                    ),
+                              ),
+                              Expanded(
+                                flex: 1,
+                                child: Padding(
+                                    padding: const EdgeInsets.only(
+                                      top: 10,
+                                      right: 20,
+                                      left: 10,
+                                    ),
+                                    child: createStudentListWidget[
+                                        2] /////////////////////stdent name....
+                                    ),
+                              ),
+                              // Expanded(
+                              //   flex: 1,
+                              //   child: Padding(
+                              //       padding: const EdgeInsets.only(
+                              //           right: 20, left: 10, top: 30),
+                              //       child:
+                              //           createStudentListWidget[3] ///////number
+                              //       ),
+                              // ),
+                            ],
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                                flex: 1,
+                                child: Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 10, right: 20),
+                                    child: createStudentListWidget[
+                                        3] ////////.....name
+                                    )),
+                            Expanded(
+                                flex: 1,
+                                child: Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 10, right: 20),
+                                    child: createStudentListWidget[
+                                        4] //////....number
+                                    )),
+                            // Expanded(
+                            //     flex: 1,
+                            //     child: Padding(
+                            //         padding: const EdgeInsets.only(
+                            //             left: 10, right: 20),
+                            //         child: createStudentListWidget[6] ////dob
+                            //         )),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                                padding:
+                                    const EdgeInsets.only(top: 20, left: 20),
+                                child: createStudentListWidget[5] //////button
+                                ),
+                          ],
+                        )
+                      ],
                     ),
                   ),
           ],

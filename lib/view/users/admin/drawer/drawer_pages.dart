@@ -2,6 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
+import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
+import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
+import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
 import 'package:vidyaveechi_website/view/widgets/dashboard_textFontWidget.dart';
 
 class DrawerSelectedPagesSection extends StatelessWidget {
@@ -46,9 +49,9 @@ class DrawerSelectedPagesSection extends StatelessWidget {
         ),
         ListTile(
           leading: SizedBox(
-              height: 20,
-              width: 20,
-              child: Image.asset('webassets/png/student.png')),
+              height: 25,
+              width: 25,
+              child: Image.asset('webassets/png/registation_setting.png')),
           tileColor: selectedIndex == 1
               ? themeColorBlue.withOpacity(0.1)
               : Colors.transparent,
@@ -56,10 +59,45 @@ class DrawerSelectedPagesSection extends StatelessWidget {
             index = 1;
             onTap.call(index);
           },
-          title: DashboardTextFontWidget(
-            title: 'Registered Student',
+          title: Row(
+            children: [
+              DashboardTextFontWidget(
+                title: 'Registered Student',
+              ),
+              const Spacer(),
+              StreamBuilder(
+                  stream: server
+                      .collection('SchoolListCollection')
+                      .doc(UserCredentialsController.schoolId)
+                      .collection(UserCredentialsController.batchId!)
+                      .doc(UserCredentialsController.batchId)
+                      .collection('RegStudentsNotifierCounter')
+                      .doc('count')
+                      .snapshots(),
+                  builder: (context, classSnap) {
+                    if (classSnap.hasData) {
+                      return Padding(
+                        padding: const EdgeInsets.only(),
+                        child: CircleAvatar(
+                          radius: 11,
+                          backgroundColor: const Color.fromARGB(255, 37, 211, 102),
+                          child: Center(
+                            child: TextFontWidget(
+                              color: cWhite,
+                                text: "${classSnap.data?.data()?['counter']}",
+                                fontsize: 10,fontWeight: FontWeight.bold,),
+                          ),
+                        ),
+                      );
+                    }else if (classSnap.data==null){
+                        return const SizedBox();
+                    } else {
+                      return const SizedBox();
+                    }
+                  })
+            ],
           ),
-        ), 
+        ),
         ListTile(
           leading: SizedBox(
               height: 20,
@@ -108,7 +146,7 @@ class DrawerSelectedPagesSection extends StatelessWidget {
             title: 'Parent',
           ),
         ), //////////////////////////////////////........................
-        
+
         Container(
           color: selectedIndex == 5
               ? themeColorBlue.withOpacity(0.1)
@@ -130,7 +168,7 @@ class DrawerSelectedPagesSection extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
-         ListTile(
+        ListTile(
           leading: SizedBox(
               height: 20,
               width: 20,
@@ -145,7 +183,7 @@ class DrawerSelectedPagesSection extends StatelessWidget {
           title: DashboardTextFontWidget(
             title: 'Fees and Bills',
           ),
-        ),///////////////////////////////////////6
+        ), ///////////////////////////////////////6
         const SizedBox(
           height: 10,
         ),
@@ -202,10 +240,11 @@ class DrawerSelectedPagesSection extends StatelessWidget {
             title: 'Examinations',
           ),
         ),
-       ///////////////////////////////////////////////.....................................
+        ///////////////////////////////////////////////.....................................
         const SizedBox(
           height: 10,
-        ),ListTile(
+        ),
+        ListTile(
           leading: SizedBox(
               height: 20,
               width: 20,
@@ -221,7 +260,7 @@ class DrawerSelectedPagesSection extends StatelessWidget {
             title: 'Results',
           ),
         ),
-       /////////////////////////////////////////////////.................
+        /////////////////////////////////////////////////.................
         const SizedBox(
           height: 10,
         ),
@@ -241,12 +280,12 @@ class DrawerSelectedPagesSection extends StatelessWidget {
             title: 'Notices',
           ),
         ),
-       /////////////////////////////////////////////////................
-         /////////////////////////////////////////////////.......................................
+        /////////////////////////////////////////////////................
+        /////////////////////////////////////////////////.......................................
         const SizedBox(
           height: 10,
         ),
-         ListTile(
+        ListTile(
           leading: SizedBox(
               height: 20,
               width: 20,
@@ -262,12 +301,12 @@ class DrawerSelectedPagesSection extends StatelessWidget {
             title: 'Events',
           ),
         ),
-       
+
         /////////////////////////////////..................................
         const SizedBox(
           height: 10,
         ),
-         ListTile(
+        ListTile(
           leading: SizedBox(
               height: 20,
               width: 20,
@@ -283,7 +322,7 @@ class DrawerSelectedPagesSection extends StatelessWidget {
             title: 'Meetings',
           ),
         ),
-         //////////////////////////////...........................................
+        //////////////////////////////...........................................
         const SizedBox(
           height: 10,
         ),
@@ -306,7 +345,7 @@ class DrawerSelectedPagesSection extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
-        
+
         ListTile(
           leading: SizedBox(
               height: 20,
@@ -365,7 +404,7 @@ class DrawerSelectedPagesSection extends StatelessWidget {
           height: 10,
         ),
         ///////////////////////////////////////...............................
-       
+
         ListTile(
           leading: SizedBox(
               height: 20,
@@ -401,7 +440,7 @@ class DrawerSelectedPagesSection extends StatelessWidget {
             title: 'TimeTable',
           ),
         ), ////////////////////////////////////........................
-         const SizedBox(
+        const SizedBox(
           height: 10,
         ),
         ListTile(
@@ -409,17 +448,17 @@ class DrawerSelectedPagesSection extends StatelessWidget {
               height: 20,
               width: 20,
               child: Image.asset('webassets/png/logout.png')),
-          tileColor: selectedIndex == 20  
+          tileColor: selectedIndex == 20
               ? themeColorBlue.withOpacity(0.1)
               : Colors.transparent,
           onTap: () {
-            index = 20  ;
+            index = 20;
             onTap.call(index);
           },
           title: DashboardTextFontWidget(
             title: 'Login Histroy',
           ),
-        ), 
+        ),
         const SizedBox(
           height: 10,
         ),

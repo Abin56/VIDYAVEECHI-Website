@@ -16,6 +16,7 @@ class ClassController extends GetxController {
   final TextEditingController classNameEditController = TextEditingController();
   final TextEditingController classFeeController = TextEditingController();
   final TextEditingController classFeeEditController = TextEditingController();
+  Rx<String> lastClassStatus ='......'.obs;
   Rx<ButtonState> buttonstate = ButtonState.idle.obs;
   List<StudentModel> allstudentList = [];
   List<ClassModel> allclassList = [];
@@ -384,4 +385,5 @@ class ClassController extends GetxController {
     boysCount = count;
     girlsCount = classData.docs.length - boysCount;
   }
+
 }
