@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:vidyaveechi_website/controller/event_controller/event_controller.dart';
 import 'package:vidyaveechi_website/model/event_models/events_model.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/events/events.dart';
 import 'package:vidyaveechi_website/view/widgets/custom_showdialouge/custom_showdialouge.dart';
 
 editFunctionOfEvent(BuildContext context, EventModel data) {
+  final EventController eventController = Get.put(EventController());
   customShowDilogBox(
       context: context,
       title: 'Edit',

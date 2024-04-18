@@ -54,7 +54,7 @@ class MeetingEditRemove extends StatelessWidget {
                     },
                     child: const RouteNonSelectedTextContainer(title: 'Home'),
                   ),
-                  const Spacer(),
+                  // const Spacer(),
                   const RouteSelectedTextContainer(
                       width: 140, title: 'Meeting Deatils'),
                 ],

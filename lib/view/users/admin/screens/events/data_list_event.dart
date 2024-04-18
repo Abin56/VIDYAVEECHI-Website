@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:vidyaveechi_website/model/event_models/events_model.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
-import 'package:vidyaveechi_website/view/fonts/google_poppins_widget.dart';
+import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
+import 'package:vidyaveechi_website/view/users/admin/screens/events/functions/all_list.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/events/functions/delete.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/events/functions/edit.dart';
-import 'package:vidyaveechi_website/view/widgets/custom_showDilog/show_dialoge_box.dart';
 import 'package:vidyaveechi_website/view/widgets/data_list_widgets/data_container.dart';
-import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 
 class AllEventsDataList extends StatelessWidget {
   final int index;
@@ -66,43 +65,11 @@ class AllEventsDataList extends StatelessWidget {
                         child: Center(
                             child: GestureDetector(
                                 onTap: () {
-                                  showDialogeBox(
-                                    context: context,
-                                    // title: 'Delete',
-                                    children: [
-                                      GooglePoppinsWidgets(
-                                          text: 'Textbjbbjkbnkhkhlilkhnkjhvjhbkjnlk\nhnlknhlkhl;kl;m;lm;lkccccccgjkhgvbl\nkfdeasrtyuiopnbfxsrxsrdfghgxfd\nbvhgjjbvvvh;lhvkjkjbkgv\ngvjhvhjyvjhvbjhvh',
-                                          fontsize: ResponsiveWebSite.isMobile(
-                                                  context)
-                                              ? 12
-                                              : 15)
-                                    ],
-                                    doyouwantActionButton: true,
-                                    //actiontext: 'cancel',
-                                    actiononTapfuction: () {
-                                      // eventController.deleteEvent(
-                                      //     context,
-                                      //     index,
-                                      //     snapshot
-                                      //     );
-                                      // ignore: unused_local_variable
-                                      // String delete = snapshot.data!
-                                      //     .docs[index]['eventName'];
-                                      // FirebaseFirestore.instance
-                                      //     .collection(
-                                      //         'SchoolListCollection')
-                                      //     .doc(UserCredentialsController.schoolId)
-                                      //     .collection(UserCredentialsController.batchId!)
-                                      //     .doc(UserCredentialsController.batchId!)
-                                      //     .collection('AdminEvents')
-                                      //     .doc(snapshot.data!
-                                      //         .docs[index]['id'])
-                                      //     .delete()
-                                      //     .then((value) =>Navigator.pop(context));
-                                    },
-                                  );
+                                  allEventListFinction(context, data);
                                 },
-                                child: Text(data.eventDescription)))),
+                                child: SingleChildScrollView(child: TextFontWidget(text: data.eventDescription, fontsize: 12.5))
+                                //Text(data.eventDescription)
+                                ))),
                   ),
                 ],
               )
