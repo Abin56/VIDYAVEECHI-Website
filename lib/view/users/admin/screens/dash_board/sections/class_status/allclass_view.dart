@@ -8,7 +8,7 @@ import 'package:vidyaveechi_website/view/widgets/loading_widget/loading_widget.d
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 
 class TotalClassViewContainer extends StatelessWidget {
-  const TotalClassViewContainer({super.key});
+  const   TotalClassViewContainer({super.key});
 
   @override
   Widget build(BuildContext context) {

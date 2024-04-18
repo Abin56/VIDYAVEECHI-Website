@@ -26,7 +26,8 @@ editFunctionOfEvent(BuildContext context, EventModel data) {
       ],
       doyouwantActionButton: true,
       actiononTapfuction: () {
-        eventController.updateEvent(data.id,context );
+        eventController.updateEvent(data.eventDate,data.eventName,data.eventDescription,data.venue,data.signedBy,
+          data.id,context );
         //      // ignore: unused_local_variable
         //      String edit = snapshot.data!
         //     .docs[index]['eventName'];

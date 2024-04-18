@@ -36,11 +36,22 @@ createTeacherFunction(BuildContext context) {
             print("object");
           }
           final teacherModel = TeacherModel(
+          if  (teacherController. formKey.currentState!.validate()) {
+              teacherController.createNewTeacher(
+                 TeacherModel(
               teacherName: teacherController.teacherNameController.text,
               employeeID: teacherController.teacherIDController.text.trim(),
               teacherPhNo: teacherController.teacherPhoneNumeber.text.trim());
 
           teacherController.createNewTeacher(teacherModel);
+              teacherPhNo: teacherController.teacherPhoneNumeber.text.trim())
+              );
+            }
+          // final teacherModel = TeacherModel(
+          //     teacherName: teacherController.teacherNameController.text,
+          //     employeeID: teacherController.teacherIDController.text.trim(),
+          //     teacherPhNo: teacherController.teacherPhoneNumeber.text.trim());
+          // teacherController.createNewTeacher(teacherModel);
         },
         buttonstate: teacherController.buttonstate.value,
         text: 'Create Teacher')),

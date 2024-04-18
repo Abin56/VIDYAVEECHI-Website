@@ -18,6 +18,7 @@ class SelectClassDropDown extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
         child: DropdownSearch<ClassModel>(
+        //  dropdownDecoratorProps: DropDownDecoratorProps(dropdownSearchDecoration: InputDecoration(labelText: 'Select Class')),
       validator: (item) {
         if (item == null) {
           return "Required field";
@@ -48,6 +49,7 @@ class SelectClassDropDown extends StatelessWidget {
           showSearchBox: true,
           searchDelay: Duration(microseconds: 10)),
       dropdownDecoratorProps: DropDownDecoratorProps(
+       // dropdownSearchDecoration: InputDecoration(labelText: 'Select Class',),
           baseStyle: GoogleFonts.poppins(
               fontSize: 13, color: Colors.black.withOpacity(0.7))),
     ));

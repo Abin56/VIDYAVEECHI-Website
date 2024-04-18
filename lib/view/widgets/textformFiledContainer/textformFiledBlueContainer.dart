@@ -66,7 +66,8 @@ class TextFormFiledBlueContainerWidget extends StatelessWidget {
                 keyboardType: keyboardType,
                 controller: controller,
                 decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.symmetric(vertical: 01, horizontal: 01),
+                  contentPadding:
+                      const EdgeInsets.symmetric(vertical: 01, horizontal: 01),
                   errorBorder: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(0)),
                       borderSide: BorderSide(
@@ -83,7 +84,8 @@ class TextFormFiledBlueContainerWidget extends StatelessWidget {
                     ),
                   ),
                   // contentPadding: const EdgeInsets.all(8.0),
-                  enabledBorder: const OutlineInputBorder(borderSide: BorderSide(width: 0.4)),
+                  enabledBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(width: 0.4)),
                   hintStyle: const TextStyle(fontSize: 13),
                   hintText: hintText,
                   focusedBorder: const OutlineInputBorder(
@@ -130,7 +132,7 @@ class TextFormFiledBlueContainerWidgetWithOutColor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: ResponsiveWebSite.isMobile(context) ? 80 : 100,
+      height: ResponsiveWebSite.isMobile(context) ? 75 : 80,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -158,7 +160,8 @@ class TextFormFiledBlueContainerWidgetWithOutColor extends StatelessWidget {
                 keyboardType: keyboardType,
                 controller: controller,
                 decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.symmetric(vertical: 01, horizontal: 01),
+                  contentPadding:
+                      const EdgeInsets.symmetric(vertical: 01, horizontal: 01),
                   errorBorder: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(0)),
                       borderSide: BorderSide(
@@ -175,7 +178,8 @@ class TextFormFiledBlueContainerWidgetWithOutColor extends StatelessWidget {
                     ),
                   ),
                   // contentPadding: const EdgeInsets.all(8.0),
-                  enabledBorder: const OutlineInputBorder(borderSide: BorderSide(width: 0.4)),
+                  enabledBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(width: 0.4)),
                   hintStyle: const TextStyle(fontSize: 13),
                   hintText: hintText,
                   focusedBorder: const OutlineInputBorder(

@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:progress_state_button/progress_button.dart';
 import 'package:uuid/uuid.dart';
 import 'package:vidyaveechi_website/model/event_models/events_model.dart';
@@ -12,17 +13,20 @@ import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_creden
 class EventController extends GetxController {
   Rx<ButtonState> buttonstate = ButtonState.idle.obs;
   TextEditingController eventnameController = TextEditingController();
-  TextEditingController eventdateController = TextEditingController();
+ // TextEditingController eventdateController = TextEditingController();
   TextEditingController eventdescriptionController = TextEditingController();
   TextEditingController eventvenueController = TextEditingController();
   TextEditingController eventsignedByController = TextEditingController();
   final formKey = GlobalKey<FormState>();
+   final Rxn<DateTime> dateSelected = Rxn<DateTime>();
+    final Rx<String> eventdateController = ''.obs;
+   
   //EventModel? model;
 
   Future<void> createEvent() async {
     final uuid =const  Uuid().v1();
     final eventDetails = EventModel(
-        eventDate: eventdateController.text,
+        eventDate: eventdateController.value,
         eventName: eventnameController.text,
         eventDescription: eventdescriptionController.text,
         venue: eventvenueController.text,
@@ -43,7 +47,7 @@ class EventController extends GetxController {
           .set(eventDetails.toMap())
           .then((value) async {
         eventnameController.clear();
-        eventdateController.clear();
+        eventdateController.value = '';
         eventdescriptionController.clear();
         eventvenueController.clear();
         eventsignedByController.clear();
@@ -65,7 +69,9 @@ class EventController extends GetxController {
     }
   }
 
-  Future<void> updateEvent(String id,BuildContext context) async {
+  Future<void> updateEvent(String eventData,String eventName,
+    String eventDescription,String venue,String signedBy,
+    String id,BuildContext context) async {
     // ignore: unused_local_variable
    // String edit = snapshot.data!.docs[index]['eventName'];
     server
@@ -76,7 +82,7 @@ class EventController extends GetxController {
         .collection('AdminEvents')
         .doc(id)
         .update({
-          'eventDate': eventController.eventdateController.text,
+          'eventDate': eventController.eventdateController.value,
           'eventName': eventController.eventnameController.text,
           'eventDescription': eventController.eventdescriptionController.text,
           'venue': eventController.eventvenueController.text,
@@ -98,5 +104,27 @@ class EventController extends GetxController {
         .doc(id)
         .delete()
         .then((value) => Navigator.pop(context ));
+  }
+
+
+   selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: dateSelected.value ?? DateTime.now(),
+      firstDate: DateTime(1920),
+      lastDate: DateTime(2100),
+      // builder: (context, child) {
+      //   return Container();
+      // },
+    );
+    if (picked != null && picked != dateSelected.value) {
+      dateSelected.value = picked;
+      DateTime parseDate = DateTime.parse(dateSelected.value.toString());
+      final DateFormat formatter = DateFormat('yyyy-MMMM-dd');
+      String formatted = formatter.format(parseDate);
+
+      eventdateController.value = formatted.toString();
+      log(formatted.toString());
+    }
   }
 }

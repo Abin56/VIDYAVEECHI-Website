@@ -22,9 +22,7 @@ class SplashScreen extends StatelessWidget {
       Get.put(UserLoginController());
     
     }
-  if (Get.find<UserLoginController>().logined.value == true) {
-        Get.find<UserLoginController>().loginSaveData();
-      }
+
     nextpage();
     return Scaffold(
       backgroundColor: cWhite,
@@ -75,7 +73,7 @@ class SplashScreen extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                       GoogleMonstserratWidgets(
-                        text: ' VidyaVeechi',
+                        text: ' vidyaveechi',
                         fontsize: 25,
                         color: Colors.black,
                         fontWeight: FontWeight.bold,

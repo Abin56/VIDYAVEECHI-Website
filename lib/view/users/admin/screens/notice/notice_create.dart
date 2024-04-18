@@ -2,10 +2,11 @@ import 'package:awesome_side_sheet/Enums/sheet_position.dart';
 import 'package:awesome_side_sheet/side_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vidyaveechi_website/constants/colors/app_colors.dart';
 import 'package:vidyaveechi_website/controller/notice_controller/notice_controller.dart';
+import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
-import 'package:vidyaveechi_website/view/users/admin/screens/notice/noticebutton_container.dart';
+import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
+import 'package:vidyaveechi_website/view/widgets/progess_button/progress_button.dart';
 import 'package:vidyaveechi_website/view/widgets/routeSelectedTextContainer/routeSelectedTextContainer.dart';
 import 'package:vidyaveechi_website/view/widgets/textformFiledContainer/textformFiledBlueContainer.dart';
 
@@ -116,7 +117,7 @@ class CreateNotice extends StatelessWidget {
                 children: [
                   GestureDetector(
                       onTap: () {
-                        {
+
                           aweSideSheet(
                               context: context,
                               sheetPosition: SheetPosition.right,
@@ -140,44 +141,7 @@ class CreateNotice extends StatelessWidget {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            // Row(
-                                            //   mainAxisAlignment:
-                                            //       MainAxisAlignment.center,
-                                            //   children: [
-                                            //     Checkbox(
-                                            //       value: valuefirst,
-                                            //       onChanged: (bool? value) {
-                                            //         setState(() {
-                                            //           valuefirst = value ??
-                                            //               false; // Update the value of valuefirst
-                                            //         });
-                                            //       },
-                                            //     ),
-                                            //     GooglePoppinsWidgets(
-                                            //       text: 'Custom Content',
-                                            //       fontsize: 14,
-                                            //     ),
-                                            //   ],
-                                            // ), //////////////////////////////////////////////////0
-                                            // Row(
-                                            //   children: [
-                                            //     Expanded(
-                                            //       child: GooglePoppinsWidgets(
-                                            //         text:
-                                            //             '(If you select this, the other contents will disappear)',
-                                            //         fontsize: 11,
-                                            //       ),
-                                            //     )
-                                            //   ],
-                                            // ), /////////////////////////////////////1
-                                            // if (valuefirst != null && valuefirst!)
-                                            //   Column(
-                                            //     children: [
-                                            //       textformWidget[0],
-                                            //       textformWidget[1],
-                                            //     ],
-                                            //   )
-                                            // else
+
                                             Column(
                                               children: [
                                                 Padding(
@@ -199,6 +163,40 @@ class CreateNotice extends StatelessWidget {
                                                 ),
 
                                                 Padding(
+                                                  padding:const EdgeInsets.only( top: 5,left: 10, right: 10),
+                                                  child:   Column(
+                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                      children: [
+                                                        TextFontWidget(text: 'Published Date *', fontsize: 12.5),
+                                                        GestureDetector(
+                                                          onTap: () =>
+                                                              noticeController.selectPublishedDate( context),
+                                                          child: Container(
+                                                            height: 40,
+                                                            decoration: BoxDecoration(
+                                                                borderRadius:
+                                                                    BorderRadius .circular(  05),
+                                                                color:
+                                                                    screenContainerbackgroundColor,
+                                                                border: Border.all(
+                                                                    color: cBlack  .withOpacity(0.4))),
+                                                            width: double.infinity,
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(8.0),
+                                                              child: Obx(() => TextFontWidget(
+                                                                  text: noticeController .noticePublishedDateController .value ==   ''
+                                                                      ? 'DD/MM/YYYY *'
+                                                                      : noticeController
+                                                                          .noticePublishedDateController
+                                                                          .value,
+                                                                  fontsize: 12.5)),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
                                                   padding:
                                                       const EdgeInsets.only(
                                                           top: 5,
@@ -248,6 +246,40 @@ class CreateNotice extends StatelessWidget {
                                                     hintText:
                                                         'Date of occation',
                                                   ),
+                                                  padding:  const EdgeInsets.only( top: 5,left: 10, right: 10),
+                                                  child:   Column(
+                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                      children: [
+                                                        TextFontWidget(text: 'Date of occasion*', fontsize: 12.5),
+                                                        GestureDetector(
+                                                          onTap: () =>
+                                                              noticeController.selectOccasionDate( context),
+                                                          child: Container(
+                                                            height: 40,
+                                                            decoration: BoxDecoration(
+                                                                borderRadius:
+                                                                    BorderRadius .circular(  05),
+                                                                color:
+                                                                    screenContainerbackgroundColor,
+                                                                border: Border.all(
+                                                                    color: cBlack  .withOpacity(0.4))),
+                                                            width: double.infinity,
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(8.0),
+                                                              child: Obx(() => TextFontWidget(
+                                                                  text: noticeController .noticeOccasionDateController .value ==   ''
+                                                                      ? 'DD/MM/YYYY *'
+                                                                      : noticeController
+                                                                          .noticeOccasionDateController
+                                                                          .value,
+                                                                  fontsize: 12.5)),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
                                                 ), ////////////////////////////////////4
                                                 Padding(
                                                   padding:
@@ -298,6 +330,40 @@ class CreateNotice extends StatelessWidget {
                                                     hintText:
                                                         'Date of Submission',
                                                   ),
+                                                  padding: const EdgeInsets.only( top: 5, left: 10,right: 10),
+                                                  child:   Column(
+                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                      children: [
+                                                        TextFontWidget(text: 'Date of submission*', fontsize: 12.5),
+                                                        GestureDetector(
+                                                          onTap: () =>
+                                                              noticeController.selectSubmissionDate( context),
+                                                          child: Container(
+                                                            height: 40,
+                                                            decoration: BoxDecoration(
+                                                                borderRadius:
+                                                                    BorderRadius .circular(  05),
+                                                                color:
+                                                                    screenContainerbackgroundColor,
+                                                                border: Border.all(
+                                                                    color: cBlack  .withOpacity(0.4))),
+                                                            width: double.infinity,
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(8.0),
+                                                              child: Obx(() => TextFontWidget(
+                                                                  text: noticeController .noticeSubmissionDateController .value ==   ''
+                                                                      ? 'DD/MM/YYYY *'
+                                                                      : noticeController
+                                                                          .noticeSubmissionDateController
+                                                                          .value,
+                                                                  fontsize: 12.5)),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
                                                 ),
                                                 Padding(
                                                   padding:
@@ -359,6 +425,39 @@ class CreateNotice extends StatelessWidget {
                                                   ),
                                                 ),
                                               ),
+                                                  child:
+                                                 Obx(() =>
+                                                      ProgressButtonWidget(
+                                                          function: () async {
+                                                            if (noticeController
+                                                                .formKey
+                                                                .currentState!
+                                                                .validate()) {
+                                                              noticeController
+                                                                  .createNotice();
+                                                              print("object");
+                                                            }
+                                                          },
+                                                          buttonstate: noticeController .buttonstate.value,
+                                                          text: 'Create Notice'))
+                                                      // NoticeButtonContainerWidget(
+                                                      //           text: 'Submit',
+                                                      //          width: 300,
+                                                      //         height: 50,
+                                                      //         fontSize: 18,
+                                                      //         onTap: () {
+                                                      //            if (noticeController
+                                                      //         .formKey
+                                                      //         .currentState!
+                                                      //         .validate()) {
+                                                      //       noticeController
+                                                      //           .createNotice();
+                                                      //       print("object");
+                                                      //     }
+                                                      //         },
+                                                      //         color: adminePrimayColor,
+                                                      //   ),
+                                                  ),
                                             )
                                           ],
                                         ),
@@ -369,7 +468,7 @@ class CreateNotice extends StatelessWidget {
                               ),
                               showCloseButton: false,
                               footer: Container());
-                        }
+
                       },
                       child: const RouteSelectedTextContainer(
                           width: 140, title: 'Create')),

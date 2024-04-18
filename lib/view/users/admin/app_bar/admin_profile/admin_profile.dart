@@ -2,12 +2,15 @@ import 'package:awesome_side_sheet/Enums/sheet_position.dart';
 import 'package:awesome_side_sheet/side_sheet.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dropdown_search/dropdown_search.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vidyaveechi_website/controller/image_upload_controller/image_uploader_controller.dart';
+import 'package:vidyaveechi_website/controller/user_login_Controller/user_login_controller.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
+import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
 import 'package:vidyaveechi_website/view/widgets/blue_Container_widget/blue_Container_widget.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 import 'package:vidyaveechi_website/view/widgets/textformFiledContainer/textformFiledBlueContainer.dart';
@@ -31,18 +34,28 @@ adminProfileshowlist(BuildContext context) {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                 Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    BackButton(),
-                    TextFontWidget(
+                    const BackButton(),
+                    const TextFontWidget(
                       text: "Profile",
                       fontsize: 17,
                       fontWeight: FontWeight.bold,
                     ),
                     Padding(
-                      padding: EdgeInsets.only(right: 10),
-                      child: Icon(Icons.logout),
+                      padding: const EdgeInsets.only(right: 10),
+                      child: IconButton(
+                          onPressed: () async {
+                            if (kDebugMode) {
+                              print("logoutUser");
+                            }
+                            await Get.find<UserLoginController>()
+                                .logoutSaveData()
+                                .then((value) => logoutUser());
+                            logoutUser();
+                          },
+                          icon: const Icon(Icons.power_settings_new_sharp)),
                     )
                   ],
                 ),
@@ -59,7 +72,10 @@ adminProfileshowlist(BuildContext context) {
                                 },
                                 child: BlueContainerWidget(
                                     title: "Cancel",
-                                    fontSize: ResponsiveWebSite.isMobile(context) ? 14 : 16,
+                                    fontSize:
+                                        ResponsiveWebSite.isMobile(context)
+                                            ? 14
+                                            : 16,
                                     color: cBlue,
                                     width: 80),
                               ),
@@ -69,7 +85,10 @@ adminProfileshowlist(BuildContext context) {
                                 },
                                 child: BlueContainerWidget(
                                     title: "Save",
-                                    fontSize: ResponsiveWebSite.isMobile(context) ? 14 : 16,
+                                    fontSize:
+                                        ResponsiveWebSite.isMobile(context)
+                                            ? 14
+                                            : 16,
                                     color: cBlue,
                                     width: 80),
                               ),
@@ -81,7 +100,9 @@ adminProfileshowlist(BuildContext context) {
                             },
                             child: BlueContainerWidget(
                                 title: "Edit",
-                                fontSize: ResponsiveWebSite.isMobile(context) ? 14 : 16,
+                                fontSize: ResponsiveWebSite.isMobile(context)
+                                    ? 14
+                                    : 16,
                                 color: cBlue,
                                 width: 80),
                           ),
@@ -90,7 +111,7 @@ adminProfileshowlist(BuildContext context) {
                 Obx(
                   () => profileCtr.onTapEdit.value == true
                       ? AdminProfileEdit()
-                      : const AdminProfileWidgetOne(),
+                      : AdminProfileWidgetOne(),
                 )
               ],
             )),
@@ -101,18 +122,28 @@ adminProfileshowlist(BuildContext context) {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-               Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    BackButton(),
-                    TextFontWidget(
+                    const BackButton(),
+                    const TextFontWidget(
                       text: "Profile",
                       fontsize: 17,
                       fontWeight: FontWeight.bold,
                     ),
                     Padding(
-                      padding: EdgeInsets.only(right: 10),
-                      child: Icon(Icons.logout),
+                      padding: const EdgeInsets.only(right: 10),
+                      child: IconButton(
+                          onPressed: () async {
+                            if (kDebugMode) {
+                              print("logoutUser");
+                            }
+                            await Get.find<UserLoginController>()
+                                .logoutSaveData()
+                                .then((value) => logoutUser());
+                            logoutUser();
+                          },
+                          icon: const Icon(Icons.power_settings_new_sharp)),
                     )
                   ],
                 ),
@@ -129,7 +160,10 @@ adminProfileshowlist(BuildContext context) {
                                 },
                                 child: BlueContainerWidget(
                                     title: "Cancel",
-                                    fontSize: ResponsiveWebSite.isMobile(context) ? 14 : 16,
+                                    fontSize:
+                                        ResponsiveWebSite.isMobile(context)
+                                            ? 14
+                                            : 16,
                                     color: cBlue,
                                     width: 80),
                               ),
@@ -140,7 +174,10 @@ adminProfileshowlist(BuildContext context) {
                                 },
                                 child: BlueContainerWidget(
                                     title: "Save",
-                                    fontSize: ResponsiveWebSite.isMobile(context) ? 14 : 16,
+                                    fontSize:
+                                        ResponsiveWebSite.isMobile(context)
+                                            ? 14
+                                            : 16,
                                     color: cBlue,
                                     width: 80),
                               ),
@@ -152,7 +189,9 @@ adminProfileshowlist(BuildContext context) {
                             },
                             child: BlueContainerWidget(
                                 title: "Edit",
-                                fontSize: ResponsiveWebSite.isMobile(context) ? 14 : 16,
+                                fontSize: ResponsiveWebSite.isMobile(context)
+                                    ? 14
+                                    : 16,
                                 color: cBlue,
                                 width: 80),
                           ),
@@ -161,7 +200,7 @@ adminProfileshowlist(BuildContext context) {
                 Obx(
                   () => profileCtr.onTapEdit.value == true
                       ? AdminProfileEdit()
-                      : const AdminProfileWidgetOne(),
+                      : AdminProfileWidgetOne(),
                 )
               ],
             )),
@@ -172,13 +211,11 @@ adminProfileshowlist(BuildContext context) {
 class AdminProfileEdit extends StatelessWidget {
   AdminProfileEdit({super.key});
 
-  // final profileCtr = Get.put(AdminProfileController());
   final imageCtr = Get.put(ImageController());
+  final profileCtr = Get.put(AdminProfileController());
 
   @override
   Widget build(BuildContext context) {
-    final profileCtr = Get.put(AdminProfileController());
-
     return Padding(
       padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
       child: Column(
@@ -187,15 +224,11 @@ class AdminProfileEdit extends StatelessWidget {
           Stack(
             children: [
               Center(
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                    top: 20,
-                  ),
-                  child: CircleAvatar(
-                    radius: ResponsiveWebSite.isMobile(context) ? 50 : 70,
-                    backgroundColor: cred,
-                    child: Image.asset('webassets/png/avathar.png'),
-                  ),
+                child: CircleAvatar(
+                  radius: ResponsiveWebSite.isMobile(context) ? 50 : 70,
+                  backgroundColor: cred,
+                  // backgroundImage: NetworkImage(profileCtr.image.value),
+                  child: Image.asset('webassets/png/avathar.png'),
                 ),
               ),
               Padding(
@@ -222,24 +255,32 @@ class AdminProfileEdit extends StatelessWidget {
               )),
             ],
           ),
-          const SizedBox(height: 10),
           TextFormFiledBlueContainerWidgetWithOutColor(
-              controller: profileCtr.nameController, hintText: 'Enter your name', title: 'Name'),
+              controller: profileCtr.nameController,
+              hintText: ' Enter your name',
+              title: 'Name'),
           TextFormFiledBlueContainerWidgetWithOutColor(
               controller: profileCtr.designationController,
-              hintText: 'Designation',
+              hintText: ' Designation',
               title: 'Designation'),
           TextFormFiledBlueContainerWidgetWithOutColor(
-              controller: profileCtr.aboutController, hintText: 'About', title: 'About'),
+              controller: profileCtr.aboutController,
+              hintText: ' About',
+              title: 'About'),
           TextFormFiledBlueContainerWidgetWithOutColor(
-              controller: profileCtr.phoneController, hintText: 'phone no.', title: 'phone no.'),
+              controller: profileCtr.phoneController,
+              hintText: ' phone no.',
+              title: 'phone no.'),
           TextFormFiledBlueContainerWidgetWithOutColor(
-              controller: profileCtr.emailController, hintText: 'Email', title: 'Email'),
-           TextFontWidget(text: 'Gender *', fontsize: 12.5),
+              controller: profileCtr.emailController,
+              hintText: ' Email',
+              title: 'Email'),
+          const TextFontWidget(text: 'Gender *', fontsize: 12.5),
           const SizedBox(height: 5),
           Container(
             color: screenContainerbackgroundColor,
             child: DropdownSearch(
+              selectedItem: profileCtr.gender.value,
               onSaved: (newValue) {
                 profileCtr.gender.value = newValue!;
               },
@@ -248,7 +289,7 @@ class AdminProfileEdit extends StatelessWidget {
               },
               dropdownDecoratorProps: DropDownDecoratorProps(
                   dropdownSearchDecoration: InputDecoration(
-                      hintText: "Please Select Gender",
+                      hintText: " Please Select Gender",
                       labelStyle: TextStyle(
                         fontSize: ResponsiveWebSite.isMobile(context) ? 13 : 15,
                       ),
@@ -267,9 +308,10 @@ class AdminProfileEdit extends StatelessWidget {
 }
 
 class AdminProfileWidgetOne extends StatelessWidget {
-  const AdminProfileWidgetOne({
+  AdminProfileWidgetOne({
     super.key,
   });
+  final profileCtr = Get.put(AdminProfileController());
 
   @override
   Widget build(BuildContext context) {
@@ -280,6 +322,13 @@ class AdminProfileWidgetOne extends StatelessWidget {
         stream: docRef.snapshots(),
         builder: (context, snapshot) {
           final data = snapshot.data!;
+          // profileCtr.image.value = data['image'];
+          profileCtr.nameController.text = data['adminUserName'];
+          profileCtr.designationController.text = data['designation'];
+          profileCtr.aboutController.text = data['about'];
+          profileCtr.phoneController.text = data['phoneNumber'];
+          profileCtr.emailController.text = data['email'];
+          profileCtr.gender.value = data['gender'];
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -373,7 +422,8 @@ class AdminProfileWidgetOne extends StatelessWidget {
                         data['phoneNumber'],
                         // '46545645665465',
                         style: TextStyle(
-                            fontSize: ResponsiveWebSite.isMobile(context) ? 14 : 16,
+                            fontSize:
+                                ResponsiveWebSite.isMobile(context) ? 14 : 16,
                             fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -398,7 +448,8 @@ class AdminProfileWidgetOne extends StatelessWidget {
                         data['email'],
                         //  'lepton@gmail.com',
                         style: TextStyle(
-                            fontSize: ResponsiveWebSite.isMobile(context) ? 14 : 16,
+                            fontSize:
+                                ResponsiveWebSite.isMobile(context) ? 14 : 16,
                             fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -427,7 +478,8 @@ class AdminProfileWidgetOne extends StatelessWidget {
                         data['gender'],
                         // 'Gender',
                         style: TextStyle(
-                            fontSize: ResponsiveWebSite.isMobile(context) ? 14 : 16,
+                            fontSize:
+                                ResponsiveWebSite.isMobile(context) ? 14 : 16,
                             fontWeight: FontWeight.bold),
                       ),
                     ),

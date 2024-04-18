@@ -19,8 +19,8 @@ class TotalStudentAttendanceContainer extends StatelessWidget {
           color: cWhite, border: Border.all(color: cBlack.withOpacity(0.1))),
       child: FutureBuilder(
           future: Future.wait([
-            Get.find<AdminController>().getSchoolAttendacne(),
-            Get.find<AdminController>().getSchoolAllStudentsCount()
+            Get.find<AdminGraphController>().getSchoolAttendacne(),
+            Get.find<AdminGraphController>().getSchoolAllStudentsCount()
           ]),
           builder: (context, snapshot) {
             if (snapshot.data == null ||
@@ -54,26 +54,26 @@ class TotalStudentAttendanceContainer extends StatelessWidget {
                 SizedBox(
                     height: 50,
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 10),
+                      padding: const EdgeInsets.only(left: 5),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Column(
                             children: [
                               Padding(
-                                padding: const EdgeInsets.only(right: 10),
+                                padding: const EdgeInsets.only(right: 5),
                                 child: Container(
                                   height: 04,
-                                  width: 80,
+                                  width: ResponsiveWebSite.isTablet(context)?40: 65,
                                   color: const Color.fromARGB(255, 48, 79, 254),
                                 ),
                               ),
                               Padding(
                                 padding:
-                                    const EdgeInsets.only(right: 10, top: 05),
+                                    const EdgeInsets.only(right: 5, top: 05),
                                 child: TextFontWidget(
                                   text: 'Present',
-                                  fontsize: 12.5,
+                                  fontsize: 12,
                                   color: Colors.black.withOpacity(0.8),
                                 ),
                               ),
@@ -95,19 +95,19 @@ class TotalStudentAttendanceContainer extends StatelessWidget {
                           Column(
                             children: [
                               Padding(
-                                padding: const EdgeInsets.only(left: 10),
+                                padding: const EdgeInsets.only(left: 5),
                                 child: Container(
                                   height: 04,
-                                  width: 80,
+                                  width: ResponsiveWebSite.isTablet(context)?40: 65,
                                   color: const Color.fromARGB(255, 255, 0, 0),
                                 ),
                               ),
                               Padding(
                                 padding:
-                                    const EdgeInsets.only(left: 15, top: 05),
+                                    const EdgeInsets.only(left: 5, top: 05),
                                 child: TextFontWidget(
                                   text: 'Absent',
-                                  fontsize: 12.5,
+                                  fontsize: 12,
                                   color: Colors.black.withOpacity(0.8),
                                 ),
                               ),
@@ -123,7 +123,7 @@ class TotalStudentAttendanceContainer extends StatelessWidget {
                             ],
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 10),
+                            padding: const EdgeInsets.only(left: 5),
                             child: Container(
                               width: 01,
                               color: Colors.grey,
@@ -132,19 +132,19 @@ class TotalStudentAttendanceContainer extends StatelessWidget {
                           Column(
                             children: [
                               Padding(
-                                padding: const EdgeInsets.only(left: 10),
+                                padding: const EdgeInsets.only(left: 5),
                                 child: Container(
                                     height: 04,
-                                    width: 80,
+                                    width: ResponsiveWebSite.isTablet(context)?40: 65,
                                     color:
                                         const Color.fromARGB(255, 255, 251, 0)),
                               ),
                               Padding(
                                 padding:
-                                    const EdgeInsets.only(left: 15, top: 05),
+                                    const EdgeInsets.only(left: 5, top: 05),
                                 child: TextFontWidget(
                                   text: 'Pending',
-                                  fontsize: 12.5,
+                                  fontsize: 12,
                                   color: Colors.black.withOpacity(0.8),
                                 ),
                               ),

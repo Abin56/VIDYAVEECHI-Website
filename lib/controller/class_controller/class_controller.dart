@@ -51,9 +51,10 @@ class ClassController extends GetxController {
           .doc(data.docid)
           .set(data.toMap())
           .then((value) async {
-        buttonstate.value = ButtonState.success;
         classNameController.clear();
         classFeeController.clear();
+        buttonstate.value = ButtonState.success;
+
         await Future.delayed(const Duration(seconds: 2)).then((vazlue) {
           buttonstate.value = ButtonState.idle;
         });
@@ -320,7 +321,7 @@ class ClassController extends GetxController {
     final firebase = await server
         .collection('SchoolListCollection')
         .doc(UserCredentialsController.schoolId)
-        .collection('AllStudents')
+        .collection(' ')
         .get();
 
     for (var i = 0; i < firebase.docs.length; i++) {

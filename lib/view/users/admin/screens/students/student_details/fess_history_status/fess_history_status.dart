@@ -1,5 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
+import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
+import 'package:vidyaveechi_website/view/drop_down/fees/select_day.dart';
+import 'package:vidyaveechi_website/view/drop_down/fees/select_month.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/students/student_details/widgets/fees_dataList.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/students/student_details/widgets/category_tableHeader.dart';
@@ -26,6 +31,44 @@ class PerStudentFeesHistory extends StatelessWidget {
               fontWeight: FontWeight.bold,
               color: cBlue,
             ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Row(
+            children: [
+              const Expanded(
+                flex: 1,
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: TextFontWidget(
+                    text: 'Select Month  :  ',
+                    fontsize: 16,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+              Expanded(flex: 3, child: SelectFeeMonthDropDown()),
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Row(
+            children: [
+              const Expanded(
+                flex: 1,
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: TextFontWidget(
+                    text: 'Select Day  :  ',
+                    fontsize: 16,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+              Expanded(flex: 3, child: SelectFeeMonthDateDropDown()),
+            ],
           ),
         ),
         const Padding(

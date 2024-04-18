@@ -155,6 +155,7 @@ class EditAttendanceAddingDialog extends StatelessWidget {
                     child: ListView.separated(
                         itemBuilder: (context, index) {
                           final studentsData = attendenceController
+                              // ignore: invalid_use_of_protected_member
                               .allStudentAttenanceList.value[index];
                           return AttendanceListTile(studentData: studentsData);
                         },
@@ -162,6 +163,7 @@ class EditAttendanceAddingDialog extends StatelessWidget {
                           return sh10;
                         },
                         itemCount: attendenceController
+                            // ignore: invalid_use_of_protected_member
                             .allStudentAttenanceList.value.length),
                   ),
                 ),

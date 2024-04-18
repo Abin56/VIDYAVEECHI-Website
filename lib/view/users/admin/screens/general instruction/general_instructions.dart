@@ -130,7 +130,7 @@ class GeneralInsructions extends StatelessWidget {
                                                       title:
                                                           'General Instruction')
                                                 ],actiononTapfuction: () {
-                                                   generalInsructionController.updateInstructions(data.instructionId,generalInsructionController.instructionController.text.trim() );
+                                                   generalInsructionController.updateInstructions(data.instructionId,context );
 
                                                 },
                                                 doyouwantActionButton: true,
@@ -163,7 +163,7 @@ class GeneralInsructions extends StatelessWidget {
                                               ],
                                               doyouwantActionButton: true,
                                               actiononTapfuction: () {
-                                                generalInsructionController.removeInstruction();
+                                                generalInsructionController.removeInstruction(data.instructionId,context);
                                               },
                                               );
                                         },

@@ -8,7 +8,7 @@ import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 
 class TotalMembersSection extends StatelessWidget {
-  final controller = Get.put(AdminController());
+  final controller = Get.put(AdminGraphController());
    TotalMembersSection({super.key});
 
   @override

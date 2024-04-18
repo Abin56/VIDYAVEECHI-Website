@@ -191,7 +191,7 @@ class TeachersAttendanceDataList extends StatelessWidget {
                     Expanded(
                         flex: 6,
                         child: CatrgoryTableHeaderWidget(
-                            headerTitle: "Student Name")),
+                            headerTitle: "Teacher Name")),
                     SizedBox(
                       width: 1,
                     ),
