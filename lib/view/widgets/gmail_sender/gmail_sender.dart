@@ -52,7 +52,7 @@ projectGmailSender(
 </head>
 
 <body>
-    <h1>Congratulations on successfully creating your account with vidyaveechi_website at MTHSS Tuition Center!</h1>
+    <h1>Congratulations on successfully creating your account with Vidyaveechi at MTHSS Tuition Center!</h1>
 
     <p>Here are your account details:</p>
 
@@ -63,7 +63,7 @@ projectGmailSender(
 
     <p>Thank you for joining us! If you have any questions or need assistance, feel free to reach out.</p>
 
-    <p class="signature">Best regards,<br>[Your Name]<br>vidyaveechi_website - MTHSS Tuition Center</p>
+    <p class="signature">Best regards,<br>[Your Name]<br>Vidyaveechi - MTHSS Tuition Center</p>
 </body>
 
 </html>

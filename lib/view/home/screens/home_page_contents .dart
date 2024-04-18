@@ -25,7 +25,7 @@ class HomePageContents extends StatelessWidget {
                 : 125,
           ),
           child: Text(
-            "vidyaveechi_website",
+            "VIDYAVEECHI",
             style: GoogleFonts.spectral(
                 fontSize: ResponsiveWebSite.isDesktop(context)
                     ? screenSize.width / 37
@@ -100,7 +100,7 @@ class HomePageContents extends StatelessWidget {
                 : 30,
           ),
           child: Text(
-            "For a demo, please register your school. Our team \nwill contact you to onboard you to the vidyaveechi_website app",
+            "For a demo, please register your school. Our team \nwill contact you to onboard you to the Vidyaveechi app",
             style: GoogleFonts.spectral(
                 fontSize: ResponsiveWebSite.isDesktop(context)
                     ? screenSize.width / 70

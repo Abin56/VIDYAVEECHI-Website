@@ -263,7 +263,7 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
                                           decoration: const BoxDecoration(
                                             image: DecorationImage(
                                               image: AssetImage(
-                                                  "webassets/images/vidyaveechi_website_logo.png"),
+                                                  "webassets/images/vidyaveechi_logo.png"),
                                               fit: BoxFit.fill,
                                             ),
                                           ),
@@ -431,7 +431,7 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
                                     width: ResponsiveWebSite.isMobile(context) ? 20 : 40,
                                     decoration: const BoxDecoration(
                                       image: DecorationImage(
-                                        image: AssetImage("webassets/images/vidyaveechi_website_logo.png"),
+                                        image: AssetImage("webassets/images/vidyaveechi_logo.png"),
                                         fit: BoxFit.fill,
                                       ),
                                     ),
