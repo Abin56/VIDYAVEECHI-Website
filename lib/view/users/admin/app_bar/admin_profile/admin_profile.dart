@@ -111,7 +111,7 @@ adminProfileshowlist(BuildContext context) {
                 Obx(
                   () => profileCtr.onTapEdit.value == true
                       ? AdminProfileEdit()
-                      : const AdminProfileWidgetOne(),
+                      : AdminProfileWidgetOne(),
                 )
               ],
             )),
@@ -200,7 +200,7 @@ adminProfileshowlist(BuildContext context) {
                 Obx(
                   () => profileCtr.onTapEdit.value == true
                       ? AdminProfileEdit()
-                      : const AdminProfileWidgetOne(),
+                      : AdminProfileWidgetOne(),
                 )
               ],
             )),
@@ -227,6 +227,7 @@ class AdminProfileEdit extends StatelessWidget {
                 child: CircleAvatar(
                   radius: ResponsiveWebSite.isMobile(context) ? 50 : 70,
                   backgroundColor: cred,
+                  // backgroundImage: NetworkImage(profileCtr.image.value),
                   child: Image.asset('webassets/png/avathar.png'),
                 ),
               ),
@@ -279,6 +280,7 @@ class AdminProfileEdit extends StatelessWidget {
           Container(
             color: screenContainerbackgroundColor,
             child: DropdownSearch(
+              selectedItem: profileCtr.gender.value,
               onSaved: (newValue) {
                 profileCtr.gender.value = newValue!;
               },
@@ -306,9 +308,10 @@ class AdminProfileEdit extends StatelessWidget {
 }
 
 class AdminProfileWidgetOne extends StatelessWidget {
-  const AdminProfileWidgetOne({
+  AdminProfileWidgetOne({
     super.key,
   });
+  final profileCtr = Get.put(AdminProfileController());
 
   @override
   Widget build(BuildContext context) {
@@ -319,6 +322,13 @@ class AdminProfileWidgetOne extends StatelessWidget {
         stream: docRef.snapshots(),
         builder: (context, snapshot) {
           final data = snapshot.data!;
+          // profileCtr.image.value = data['image'];
+          profileCtr.nameController.text = data['adminUserName'];
+          profileCtr.designationController.text = data['designation'];
+          profileCtr.aboutController.text = data['about'];
+          profileCtr.phoneController.text = data['phoneNumber'];
+          profileCtr.emailController.text = data['email'];
+          profileCtr.gender.value = data['gender'];
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
