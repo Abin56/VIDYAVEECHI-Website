@@ -63,80 +63,81 @@ class AllTeacherStatusListView extends StatelessWidget {
             .collection('Classes')
             .snapshots(),
         builder: (context, snaps) {
-         if (snaps.hasData) {
-           return ListView.separated(
-              itemBuilder: (context, index) {
-                final data = snaps.data!.docs[index].data();
-                return Container(
-                  height: 60,
-                  decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 176, 238, 178)
-                          .withOpacity(0.1),
-                      border: Border.all(color: Colors.grey.withOpacity(0.1))),
-                  child: ListTile(
-                    leading: const CircleAvatar(
-                      radius: 15,
-                      child: CircleAvatar(
-                        backgroundColor: cWhite,
-                        radius: 10,
+          if (snaps.hasData) {
+            return ListView.separated(
+                itemBuilder: (context, index) {
+                  final data = snaps.data!.docs[index].data();
+                  return Container(
+                    height: 60,
+                    decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 176, 238, 178)
+                            .withOpacity(0.1),
+                        border:
+                            Border.all(color: Colors.grey.withOpacity(0.1))),
+                    child: ListTile(
+                      leading: const CircleAvatar(
+                        radius: 15,
+                        child: CircleAvatar(
+                          backgroundColor: cWhite,
+                          radius: 10,
+                        ),
+                      ),
+                      title: StreamBuilder(
+                          stream: server
+                              .collection('SchoolListCollection')
+                              .doc(UserCredentialsController.schoolId)
+                              .collection('Teachers')
+                              .doc(data['teacherDocid'])
+                              .snapshots(),
+                          builder: (context, teacherSnap) {
+                            if (teacherSnap.hasData) {
+                              return TextFontWidget(
+                                text: teacherSnap.data!.data()!['teacherName'],
+                                fontsize: ResponsiveWebSite.isMobile(context)
+                                    ? 11
+                                    : 12,
+                                fontWeight: FontWeight.w500,
+                              );
+                            } else {
+                              return TextFontWidget(
+                                text: '........',
+                                fontsize: ResponsiveWebSite.isMobile(context)
+                                    ? 11
+                                    : 12,
+                                fontWeight: FontWeight.w500,
+                              );
+                            }
+                          }),
+                      subtitle: Row(
+                        children: [
+                          Expanded(
+                            child: TextFontWidget(
+                              text: data['subjectName'],
+                              fontsize:
+                                  ResponsiveWebSite.isMobile(context) ? 11 : 12,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                    title: StreamBuilder(
-                        stream: server
-                            .collection('SchoolListCollection')
-                            .doc(UserCredentialsController.schoolId)
-                            .collection('Teachers')
-                            .doc(data['teacherDocid'])
-                            .snapshots(),
-                        builder: (context, teacherSnap) {
-                          if (teacherSnap.hasData) {
-                            return TextFontWidget(
-                              text: teacherSnap.data!.data()!['teacherName'],
-                              fontsize:
-                                  ResponsiveWebSite.isMobile(context) ? 11 : 12,
-                              fontWeight: FontWeight.w500,
-                            );
-                          } else {
-                            return TextFontWidget(
-                              text: '........',
-                              fontsize:
-                                  ResponsiveWebSite.isMobile(context) ? 11 : 12,
-                              fontWeight: FontWeight.w500,
-                            );
-                          }
-                        }),
-                    subtitle: Row(
-                      children: [
-                        Expanded(
-                          child: TextFontWidget(
-                            text: data['subjectName'],
-                            fontsize:
-                                ResponsiveWebSite.isMobile(context) ? 11 : 12,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                );
-              },
-              separatorBuilder: (context, index) {
-                return const SizedBox(
-                  height: 05,
-                );
-              },
-              itemCount: snaps.data!.docs.length);
-           
-         }else if (snaps.data==null){
-  return TextFontWidget(
-                              text: 'PLease take attendence',
-                              fontsize:
-                                  ResponsiveWebSite.isMobile(context) ? 11 : 12,
-                              fontWeight: FontWeight.w500,
-                            );
-         } else{
-          return const LoadingWidget();
-         }
+                  );
+                },
+                separatorBuilder: (context, index) {
+                  return const SizedBox(
+                    height: 05,
+                  );
+                },
+                itemCount: snaps.data!.docs.length);
+          } else if (snaps.data == null) {
+            return TextFontWidget(
+              text: 'PLease take attendence',
+              fontsize: ResponsiveWebSite.isMobile(context) ? 11 : 12,
+              fontWeight: FontWeight.w500,
+            );
+          } else {
+            return const LoadingWidget();
+          }
         });
   }
 }

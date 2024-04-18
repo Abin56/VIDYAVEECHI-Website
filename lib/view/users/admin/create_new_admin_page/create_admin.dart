@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:vidyaveechi_website/controller/admin_section/admin_controller/admin_controller.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
+import 'package:vidyaveechi_website/view/widgets/progess_button/progress_button.dart';
 
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 
@@ -21,7 +22,7 @@ class CreateAdmin extends StatelessWidget {
             fontSize: ResponsiveWebSite.isMobile(context) ? 15 : 17,
             fontWeight: FontWeight.bold),
       ), //////////////////////..............0
-      Container(
+      SizedBox(
         width: ResponsiveWebSite.isMobile(context) ? 80 : 150,
         child: Text(
           "Admin Name",
@@ -30,13 +31,13 @@ class CreateAdmin extends StatelessWidget {
               fontWeight: FontWeight.bold),
         ),
       ), ////////////////////..................1
-      Container(
+      SizedBox(
         height: 35,
         width: ResponsiveWebSite.isMobile(context) ? 80 : 150,
         child: TextFormField(
           controller: adminController.nameController,
           validator: checkFieldEmpty,
-          autovalidateMode: AutovalidateMode.always,
+         // autovalidateMode: AutovalidateMode.always,
           // validator: (value) {
           //   if (value == null || value.isEmpty) {
           //     return 'Please enter some text';
@@ -57,7 +58,7 @@ class CreateAdmin extends StatelessWidget {
           ),
         ),
       ), //////////////////////................2
-      Container(
+      SizedBox(
           width: ResponsiveWebSite.isMobile(context) ? 80 : 150,
           child: Text(
             "Admin Email",
@@ -71,7 +72,7 @@ class CreateAdmin extends StatelessWidget {
         child: TextFormField(
           controller: adminController.emailController,
            validator: checkFieldEmailIsValid,
-          autovalidateMode: AutovalidateMode.always,
+        //  autovalidateMode: AutovalidateMode.always,
           // validator: (value) {
           //   if (value == null || value.isEmpty) {
           //     return 'Please enter some text';
@@ -91,7 +92,7 @@ class CreateAdmin extends StatelessWidget {
           ),
         ),
       ), //////////////////////////////............4
-      Container(
+      SizedBox(
           height: 35,
           width: ResponsiveWebSite.isMobile(context) ? 80 : 150,
           child: Text(
@@ -133,7 +134,7 @@ class CreateAdmin extends StatelessWidget {
           ),
         ],
       ), ////////////////////////....................6
-      Container(
+      SizedBox(
           width: ResponsiveWebSite.isMobile(context) ? 80 : 150,
           child: Text(
             "Phone Number",
@@ -168,7 +169,7 @@ class CreateAdmin extends StatelessWidget {
               prefixText: "+91"),
         ),
       ), //////////////////////.............................8
-      Container(
+      SizedBox(
           width: ResponsiveWebSite.isMobile(context) ? 80 : 150,
           child: Text(
             "Admin Password",
@@ -194,7 +195,7 @@ class CreateAdmin extends StatelessWidget {
           ),
         ),
       ), ////////////////////////.....................10
-      Container(
+      SizedBox(
           width: ResponsiveWebSite.isMobile(context) ? 80 : 150,
           child: Text(
             "Confirm Password",
@@ -220,29 +221,37 @@ class CreateAdmin extends StatelessWidget {
           ),
         ),
       ), ///////////////////......................12
-      ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: const Color.fromARGB(255, 30, 4, 202),
-        ),
-        onPressed: () {
-          // Validate returns true if the form is valid, or false otherwise.
-          if ( adminController. formKey.currentState!.validate()) {
+        Obx(() => ProgressButtonWidget(
+        function: () async {
+         if ( adminController. formKey.currentState!.validate()) {
             adminController.createNewAdmin(context);
-            // If the form is valid, display a snackbar. In the real world,
-            // you'd often call a server or save the information in a database.
-            // ScaffoldMessenger.of(context).showSnackBar(
-            //   const SnackBar(content: Text('Processing Data')),
-            // );
-          }
+            }
         },
-        child: Text(
-          'Submit',
-          style: TextStyle(
-              fontSize: ResponsiveWebSite.isMobile(context) ? 13 : 15,
-              fontWeight: FontWeight.bold,
-              color: cWhite),
-        ),
-      ), ///////////////////////////......................13
+        buttonstate: adminController.buttonstate.value,
+        text: 'Create Admin')),
+      // ElevatedButton(
+      //   style: ElevatedButton.styleFrom(
+      //     backgroundColor: const Color.fromARGB(255, 30, 4, 202),
+      //   ),
+      //   onPressed: () {
+      //     // Validate returns true if the form is valid, or false otherwise.
+      //     if ( adminController. formKey.currentState!.validate()) {
+      //       adminController.createNewAdmin(context);
+      //       // If the form is valid, display a snackbar. In the real world,
+      //       // you'd often call a server or save the information in a database.
+      //       // ScaffoldMessenger.of(context).showSnackBar(
+      //       //   const SnackBar(content: Text('Processing Data')),
+      //       // );
+      //     }
+      //   },
+      //   child: Text(
+      //     'Submit',
+      //     style: TextStyle(
+      //         fontSize: ResponsiveWebSite.isMobile(context) ? 13 : 15,
+      //         fontWeight: FontWeight.bold,
+      //         color: cWhite),
+      //   ),
+      // ), ///////////////////////////......................13
     ];
     return SingleChildScrollView(
       child: ResponsiveWebSite.isMobile(context)

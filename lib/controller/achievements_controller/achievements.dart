@@ -5,6 +5,8 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
+import 'package:progress_state_button/progress_button.dart';
 import 'package:uuid/uuid.dart';
 import 'package:vidyaveechi_website/model/achievement_model/achievement_model.dart';
 import 'package:vidyaveechi_website/view/constant/const.dart';
@@ -12,6 +14,9 @@ import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
 
 class AchievementsController extends GetxController {
+
+ Rx<ButtonState> buttonstate = ButtonState.idle.obs;
+
   QueryDocumentSnapshot<Map<String, dynamic>>? classListValue;
   final FirebaseStorage storage = FirebaseStorage.instance;
   bool loadingStatus = false;
@@ -20,10 +25,12 @@ class AchievementsController extends GetxController {
   Uint8List? afile;
 
   TextEditingController achievementController = TextEditingController();
-  TextEditingController dateController = TextEditingController();
+ // TextEditingController dateController = TextEditingController();
   TextEditingController studentNameController = TextEditingController();
   TextEditingController admissionNumberController = TextEditingController();
   final formKey = GlobalKey<FormState>();
+   final Rx<String> dateController = ''.obs;
+     final Rxn<DateTime> dateSelected = Rxn<DateTime>();
 
   Future<Map<String, String>> uploadImageToStorage(
    // file
@@ -41,7 +48,7 @@ class AchievementsController extends GetxController {
       AchievementModel achievementDetails = AchievementModel(
           photoUrl: downloadUrl,
           studentName: studentNameController.text,
-          dateofAchievement: dateController.text,
+          dateofAchievement: dateController.value,
           achievementHead: achievementController.text,
           admissionNumber: admissionNumberController.text,
           uid: uid,
@@ -60,7 +67,7 @@ class AchievementsController extends GetxController {
           .set(achievementDetails.toMap())
           .then((value) {
         studentNameController.clear();
-        dateController.clear();
+        dateController.value = '';
         achievementController.clear();
         admissionNumberController.clear();
         //   if (afile == null) {
@@ -69,6 +76,9 @@ class AchievementsController extends GetxController {
         // showToast(msg: 'New Achievement Added!');}
       })
       .then((value) => showToast(msg: 'New Achievement Added!'));
+       await Future.delayed(const Duration(seconds: 2)).then((vazlue) {
+          buttonstate.value = ButtonState.idle;
+        });
 
       return {
         "downloadUrl": downloadUrl,
@@ -79,6 +89,10 @@ class AchievementsController extends GetxController {
       //   return {};
       // }
     } catch (e) {
+       buttonstate.value = ButtonState.fail;
+      await Future.delayed(const Duration(seconds: 2)).then((value) {
+        buttonstate.value = ButtonState.idle;
+      });
       log(e.toString());
       return {};
     }
@@ -97,7 +111,7 @@ class AchievementsController extends GetxController {
         .doc(uid)
         .update({
           'studentName':studentNameController.text,
-           'dateofAchievement':dateController.text,
+           'dateofAchievement':dateController.value = '',
            'achievementHead':achievementController.text,
            'admissionNumber':admissionNumberController.text,
           // 'photoUrl': downloadUrl,
@@ -118,5 +132,26 @@ class AchievementsController extends GetxController {
         .delete()
         .then((value) => Navigator.pop(context ))
         .then((value) => showToast(msg: 'Successfully Deleted!'));
+  }
+
+    selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: dateSelected.value ?? DateTime.now(),
+      firstDate: DateTime(1920),
+      lastDate: DateTime(2100),
+      // builder: (context, child) {
+      //   return Container();
+      // },
+    );
+    if (picked != null && picked != dateSelected.value) {
+      dateSelected.value = picked;
+      DateTime parseDate = DateTime.parse(dateSelected.value.toString());
+      final DateFormat formatter = DateFormat('yyyy-MMMM-dd');
+      String formatted = formatter.format(parseDate);
+
+      dateController.value = formatted.toString();
+      log(formatted.toString());
+    }
   }
 }

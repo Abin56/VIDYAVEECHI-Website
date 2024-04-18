@@ -11,14 +11,14 @@ import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
 import 'package:vidyaveechi_website/view/drop_down/select_class.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/achievements/new_acheivements_ui.dart';
-import 'package:vidyaveechi_website/view/users/admin/screens/notice/noticebutton_container.dart';
 import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
+import 'package:vidyaveechi_website/view/widgets/progess_button/progress_button.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 import 'package:vidyaveechi_website/view/widgets/routeSelectedTextContainer/routeSelectedTextContainer.dart';
 
 class Achievements extends StatefulWidget {
-  const Achievements({super.key});
+  Achievements({super.key});
 
   @override
   State<Achievements> createState() => _AchievementsState();
@@ -32,7 +32,7 @@ class _AchievementsState extends State<Achievements> {
   Widget build(BuildContext context) {
     List<Widget> textformWidget = [
       Padding(
-          padding: const EdgeInsets.only(top: 5, right: 10, left: 10),
+          padding: EdgeInsets.only(top: 5, right: 10, left: 10),
           child:
               SelectClassDropDown()), ///////////////////////////////////////////////////////////////////////0
       Padding(
@@ -48,12 +48,30 @@ class _AchievementsState extends State<Achievements> {
 
       Padding(
         padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
-        child: TextFormFiledBlueContainerWidgetAchievement(
-          validator: checkFieldDateIsValid,
-          controller: achievementsController.dateController,
-          width: ResponsiveWebSite.isMobile(context) ? double.infinity : 500,
-          hintText: 'Date',
-          title: 'Date',
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            TextFontWidget(text: 'Date *', fontsize: 12.5),
+            GestureDetector(
+              onTap: () => achievementsController.selectDate(context),
+              child: Container(
+                height: 40,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(05),
+                    color: screenContainerbackgroundColor,
+                    border: Border.all(color: cBlack.withOpacity(0.4))),
+                width: double.infinity,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Obx(() => TextFontWidget(
+                      text: achievementsController.dateController.value == ''
+                          ? 'DD/MM/YYYY *'
+                          : achievementsController.dateController.value,
+                      fontsize: 12.5)),
+                ),
+              ),
+            ),
+          ],
         ),
       ), ////////////////////////////////////////////////////////2
       Padding(
@@ -105,7 +123,7 @@ class _AchievementsState extends State<Achievements> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 10, bottom: 10),
+                padding: const EdgeInsets.only(top: 10),
                 child: Row(
                   children: [
                     GestureDetector(
@@ -211,29 +229,49 @@ class _AchievementsState extends State<Achievements> {
                                                     textformWidget[4],
 
                                                     Padding(
-                                                      padding:
-                                                          const EdgeInsets.only(
-                                                              top: 10,
-                                                              bottom: 10),
-                                                      child:
-                                                          NoticeButtonContainerWidget(
-                                                        text: 'Submit',
-                                                        width: 300,
-                                                        height: 50,
-                                                        fontSize: 18,
-                                                        onTap: () {
-                                                          if (achievementsController
-                                                              .formKey
-                                                              .currentState!
-                                                              .validate()) {
-                                                            achievementsController
-                                                                .uploadImageToStorage();
-                                                          }
-                                                        },
-                                                        color: AppColors
-                                                            .blueDarkColor,
-                                                      ),
-                                                    )
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .only(
+                                                                top: 10,
+                                                                bottom: 10),
+                                                        child:
+                                                            //     NoticeButtonContainerWidget(
+                                                            //   text: 'Submit',
+                                                            //   width: 300,
+                                                            //   height: 50,
+                                                            //   fontSize: 18,
+                                                            //   onTap: () {
+                                                            //     if (achievementsController
+                                                            //         .formKey
+                                                            //         .currentState!
+                                                            //         .validate()) {
+                                                            //       achievementsController
+                                                            //           .uploadImageToStorage();
+                                                            //     }
+                                                            //   },
+                                                            //   color: AppColors
+                                                            //       .blueDarkColor,
+                                                            // ),
+                                                            Obx(() =>
+                                                                ProgressButtonWidget(
+                                                                    function:
+                                                                        () async {
+                                                                      if (achievementsController
+                                                                          .formKey
+                                                                          .currentState!
+                                                                          .validate()) {
+                                                                        achievementsController
+                                                                            .uploadImageToStorage();
+                                                                        print(
+                                                                            "object");
+                                                                      }
+                                                                    },
+                                                                    buttonstate:
+                                                                        achievementsController
+                                                                            .buttonstate
+                                                                            .value,
+                                                                    text:
+                                                                        'Create Event')))
                                                     // }),
                                                   ]),
                                             )),
@@ -289,25 +327,24 @@ class _AchievementsState extends State<Achievements> {
                             }
                             return GridView.builder(
                               itemCount: snapshot.data!.docs.length,
+
                               //snapshot.data!.docs.length,
                               itemBuilder: (context, index) {
                                 AchievementModel data =
                                     AchievementModel.fromMap(
                                         snapshot.data!.docs[index].data());
-                                return NewAchievementsUI(data: data);
+                                return Padding(
+                                    padding: EdgeInsets.all(20.0),
+                                    child: NewAchievementsUI(
+                                      data: data,
+                                    ));
                               },
                               gridDelegate:
                                   SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount:
-                                    ResponsiveWebSite.isMobile(context) ? 1 : 2,
-                                mainAxisSpacing: 20,
-                                mainAxisExtent:
-                                    ResponsiveWebSite.isTablet(context)
-                                        ? 355
-                                        : ResponsiveWebSite.isMobile(context)
-                                            ? 300
-                                            : 400,
-                              ),
+                                      crossAxisCount:
+                                          ResponsiveWebSite.isMobile(context)
+                                              ? 1
+                                              : 2),
                             );
                           }),
 

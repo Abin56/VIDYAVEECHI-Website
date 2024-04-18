@@ -3,7 +3,9 @@ import 'package:awesome_side_sheet/side_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vidyaveechi_website/controller/event_controller/event_controller.dart';
+import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
+import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 import 'package:vidyaveechi_website/view/widgets/progess_button/progress_button.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 import 'package:vidyaveechi_website/view/widgets/routeSelectedTextContainer/routeSelectedTextContainer.dart';
@@ -139,18 +141,38 @@ class CreateEvent extends StatelessWidget {
                                                             top: 10,
                                                             left: 10,
                                                             right: 10),
-                                                    child:
-                                                        TextFormFiledWithoutColorEight(
-                                                      width: ResponsiveWebSite
-                                                              .isMobile(context)
-                                                          ? double.infinity
-                                                          : 500,
-                                                      validator:
-                                                          checkFieldDateIsValid,
-                                                      controller: eventController
-                                                          .eventdateController,
-                                                      hintText: 'Date',
-                                                      title: 'Date',
+                                                    child: Column(
+                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                      children: [
+                                                        TextFontWidget(text: 'Date *', fontsize: 12.5),
+                                                        GestureDetector(
+                                                          onTap: () =>
+                                                              eventController.selectDate( context),
+                                                          child: Container(
+                                                            height: 40,
+                                                            decoration: BoxDecoration(
+                                                                borderRadius:
+                                                                    BorderRadius .circular(  05),
+                                                                color:
+                                                                    screenContainerbackgroundColor,
+                                                                border: Border.all(
+                                                                    color: cBlack  .withOpacity(0.4))),
+                                                            width: double.infinity,
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(8.0),
+                                                              child: Obx(() => TextFontWidget(
+                                                                  text: eventController .eventdateController .value ==   ''
+                                                                      ? 'DD/MM/YYYY *'
+                                                                      : eventController
+                                                                          .eventdateController
+                                                                          .value,
+                                                                  fontsize: 12.5)),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
                                                     ),
                                                   ), ////////////////////////////////////////////////////////1
                                                   Padding(
