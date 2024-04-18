@@ -11,7 +11,7 @@ import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 class CreateAdmin extends StatelessWidget {
   final AdminController adminController = Get.put(AdminController());
   CreateAdmin({super.key});
- // final _formKey = GlobalKey<FormState>();
+  // final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class CreateAdmin extends StatelessWidget {
         child: TextFormField(
           controller: adminController.nameController,
           validator: checkFieldEmpty,
-         // autovalidateMode: AutovalidateMode.always,
+          // autovalidateMode: AutovalidateMode.always,
           // validator: (value) {
           //   if (value == null || value.isEmpty) {
           //     return 'Please enter some text';
@@ -71,8 +71,8 @@ class CreateAdmin extends StatelessWidget {
         color: screenContainerbackgroundColor,
         child: TextFormField(
           controller: adminController.emailController,
-           validator: checkFieldEmailIsValid,
-        //  autovalidateMode: AutovalidateMode.always,
+          validator: checkFieldEmailIsValid,
+          //  autovalidateMode: AutovalidateMode.always,
           // validator: (value) {
           //   if (value == null || value.isEmpty) {
           //     return 'Please enter some text';
@@ -128,8 +128,8 @@ class CreateAdmin extends StatelessWidget {
                       ))),
               items: const ['Male', 'Female', 'Others'],
               onChanged: (value) {
-                  adminController.gender.value = value ?? '';
-                },
+                adminController.gender.value = value ?? '';
+              },
             ),
           ),
         ],
@@ -147,7 +147,7 @@ class CreateAdmin extends StatelessWidget {
         color: screenContainerbackgroundColor,
         child: TextFormField(
           controller: adminController.phoneNumberController,
-           validator: checkFieldPhoneNumberIsValid,
+          validator: checkFieldPhoneNumberIsValid,
           //   autovalidateMode: AutovalidateMode.always,
           //   validator: (value) {
           //   if (value == null || value.isEmpty) {
@@ -182,7 +182,7 @@ class CreateAdmin extends StatelessWidget {
         color: screenContainerbackgroundColor,
         child: TextFormField(
           controller: adminController.passwordController,
-           validator: checkFieldPasswordIsValid,
+          validator: checkFieldPasswordIsValid,
           style: const TextStyle(fontSize: 14),
           decoration: const InputDecoration(
             prefixIcon: Icon(
@@ -207,8 +207,8 @@ class CreateAdmin extends StatelessWidget {
         height: 35,
         color: screenContainerbackgroundColor,
         child: TextFormField(
-           validator: checkFieldPasswordIsValid,
-            controller: adminController.passwordController,
+          validator: checkFieldPasswordIsValid,
+          controller: adminController.passwordController,
           style: const TextStyle(fontSize: 14),
           decoration: const InputDecoration(
             prefixIcon: Icon(
@@ -221,14 +221,14 @@ class CreateAdmin extends StatelessWidget {
           ),
         ),
       ), ///////////////////......................12
-        Obx(() => ProgressButtonWidget(
-        function: () async {
-         if ( adminController. formKey.currentState!.validate()) {
-            adminController.createNewAdmin(context);
+      Obx(() => ProgressButtonWidget(
+          function: () async {
+            if (adminController.formKey.currentState!.validate()) {
+              adminController.createNewAdmin(context);
             }
-        },
-        buttonstate: adminController.buttonstate.value,
-        text: 'Create Admin')),
+          },
+          buttonstate: adminController.buttonstate.value,
+          text: 'Create Admin')),
       // ElevatedButton(
       //   style: ElevatedButton.styleFrom(
       //     backgroundColor: const Color.fromARGB(255, 30, 4, 202),
@@ -258,7 +258,7 @@ class CreateAdmin extends StatelessWidget {
           ? Container(
               color: screenContainerbackgroundColor,
               child: Form(
-                key:adminController.formKey,
+                key: adminController.formKey,
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -475,182 +475,63 @@ class CreateAdmin extends StatelessWidget {
               ),
             ) /////////////////////////////////////////////////////////////////////////////////////////..............mobile view
           : Container(
-            height: 700,
-            color: screenContainerbackgroundColor,
-            child: Form(
-              key: adminController.formKey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 20),
-                    child: Container(
-                        width: double.infinity,
-                        height: 58,
-                        color: screenContainerbackgroundColor,
-                        child: Padding(
-                            padding:
-                                const EdgeInsets.only(top: 30, left: 40),
-                            child: adminListWidgets[
-                                0] ///////////////////..........................Create New Admin
-                            )),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10, right: 10),
-                    child: Container(
-                      // color: screenContainerbackgroundColor,
-                      color: cWhite,
-          
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(top: 30),
-                            child: Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 20,
-                                      bottom: 20,
-                                      left: 30,
-                                      right: 30),
-                                  child: adminListWidgets[
-                                      1], //////////////////////////..............admin name
-                                ),
-                                Expanded(
-                                    flex: 1,
+              height: 700,
+              color: screenContainerbackgroundColor,
+              child: Form(
+                key: adminController.formKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 20),
+                      child: Container(
+                          width: double.infinity,
+                          height: 58,
+                          color: screenContainerbackgroundColor,
+                          child: Padding(
+                              padding: const EdgeInsets.only(top: 30, left: 40),
+                              child: adminListWidgets[
+                                  0] ///////////////////..........................Create New Admin
+                              )),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10, right: 10),
+                      child: Container(
+                        // color: screenContainerbackgroundColor,
+                        color: cWhite,
+
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(top: 30),
+                              child: Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 20,
+                                        bottom: 20,
+                                        left: 30,
+                                        right: 30),
                                     child: adminListWidgets[
-                                        2] ///////////////////////////////...enter name
-                                    ),
-                                Expanded(flex: 1, child: Container())
-                              ],
+                                        1], //////////////////////////..............admin name
+                                  ),
+                                  Expanded(
+                                      flex: 1,
+                                      child: adminListWidgets[
+                                          2] ///////////////////////////////...enter name
+                                      ),
+                                  Expanded(flex: 1, child: Container())
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10, right: 10),
-                    child: Container(
-                      color: cWhite,
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 20,
-                                      bottom: 20,
-                                      left: 30,
-                                      right: 30),
-                                  child: adminListWidgets[
-                                      3] ////////////////admin email
-                                  ),
-                              Expanded(
-                                  flex: 1,
-                                  child: adminListWidgets[
-                                      4] //////////////////////.................enter email ID
-                                  ),
-                              Expanded(flex: 1, child: Container())
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  // Padding(
-                  //   padding: const EdgeInsets.only(left: 10, right: 10),
-                  //   child: Container(
-                  //     color: cWhite,
-                  //     child: Column(
-                  //       children: [
-                  //         Row(
-                  //           children: [
-                  //             Padding(
-                  //                 padding: const EdgeInsets.only(
-                  //                     top: 20,
-                  //                     bottom: 20,
-                  //                     left: 30,
-                  //                     right: 30),
-                  //                 child: adminListWidgets[
-                  //                     5] ///////////////////................Gender
-                  //                 ),
-                  //             Expanded(
-                  //                 flex: 1,
-                  //                 child: adminListWidgets[
-                  //                     6] /////////////////...............Select gender
-                  //                 ),
-                  //             Expanded(flex: 1, child: Container()),
-                  //           ],
-                  //         ),
-                  //       ],
-                  //     ),
-                  //   ),
-                  // ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10, right: 10),
-                    child: Container(
-                      color: cWhite,
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 20,
-                                      bottom: 20,
-                                      left: 30,
-                                      right: 30),
-                                  child: adminListWidgets[
-                                      7] //////////////////................Phone Number
-                                  ),
-                              Expanded(
-                                  flex: 1,
-                                  child: adminListWidgets[
-                                      8] ////////////////////............Enter PHone Number
-                                  ),
-                              Expanded(flex: 1, child: Container())
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10, right: 10),
-                    child: Container(
-                      color: cWhite,
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 20,
-                                      bottom: 20,
-                                      left: 30,
-                                      right: 30),
-                                  child: adminListWidgets[
-                                      9] ////////////////////..................Admin Password
-                                  ),
-                              Expanded(
-                                  flex: 1,
-                                  child: adminListWidgets[
-                                      10] ///////////////////////..................Enter password
-                                  ),
-                              Expanded(flex: 1, child: Container())
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10, right: 10),
-                    child: Container(
-                      color: cWhite,
-                      child: Padding(
-                        padding: const EdgeInsets.only(bottom: 30),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10, right: 10),
+                      child: Container(
+                        color: cWhite,
                         child: Column(
                           children: [
                             Row(
@@ -662,12 +543,12 @@ class CreateAdmin extends StatelessWidget {
                                         left: 30,
                                         right: 30),
                                     child: adminListWidgets[
-                                        11] ///////////////.............Confirm Password
+                                        3] ////////////////admin email
                                     ),
                                 Expanded(
                                     flex: 1,
                                     child: adminListWidgets[
-                                        12] /////////////////////....................Enter Confirm Password
+                                        4] //////////////////////.................enter email ID
                                     ),
                                 Expanded(flex: 1, child: Container())
                               ],
@@ -676,17 +557,135 @@ class CreateAdmin extends StatelessWidget {
                         ),
                       ),
                     ),
-                  ),
-                  Padding(
-                      padding: const EdgeInsets.only(
-                          left: 40, bottom: 25, top: 25),
-                      child: adminListWidgets[
-                          13] ///////////////////////....................submit button
+                    // Padding(
+                    //   padding: const EdgeInsets.only(left: 10, right: 10),
+                    //   child: Container(
+                    //     color: cWhite,
+                    //     child: Column(
+                    //       children: [
+                    //         Row(
+                    //           children: [
+                    //             Padding(
+                    //                 padding: const EdgeInsets.only(
+                    //                     top: 20,
+                    //                     bottom: 20,
+                    //                     left: 30,
+                    //                     right: 30),
+                    //                 child: adminListWidgets[
+                    //                     5] ///////////////////................Gender
+                    //                 ),
+                    //             Expanded(
+                    //                 flex: 1,
+                    //                 child: adminListWidgets[
+                    //                     6] /////////////////...............Select gender
+                    //                 ),
+                    //             Expanded(flex: 1, child: Container()),
+                    //           ],
+                    //         ),
+                    //       ],
+                    //     ),
+                    //   ),
+                    // ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10, right: 10),
+                      child: Container(
+                        color: cWhite,
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 20,
+                                        bottom: 20,
+                                        left: 30,
+                                        right: 30),
+                                    child: adminListWidgets[
+                                        7] //////////////////................Phone Number
+                                    ),
+                                Expanded(
+                                    flex: 1,
+                                    child: adminListWidgets[
+                                        8] ////////////////////............Enter PHone Number
+                                    ),
+                                Expanded(flex: 1, child: Container())
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
-                ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10, right: 10),
+                      child: Container(
+                        color: cWhite,
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 20,
+                                        bottom: 20,
+                                        left: 30,
+                                        right: 30),
+                                    child: adminListWidgets[
+                                        9] ////////////////////..................Admin Password
+                                    ),
+                                Expanded(
+                                    flex: 1,
+                                    child: adminListWidgets[
+                                        10] ///////////////////////..................Enter password
+                                    ),
+                                Expanded(flex: 1, child: Container())
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10, right: 10),
+                      child: Container(
+                        color: cWhite,
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 30),
+                          child: Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 20,
+                                          bottom: 20,
+                                          left: 30,
+                                          right: 30),
+                                      child: adminListWidgets[
+                                          11] ///////////////.............Confirm Password
+                                      ),
+                                  Expanded(
+                                      flex: 1,
+                                      child: adminListWidgets[
+                                          12] /////////////////////....................Enter Confirm Password
+                                      ),
+                                  Expanded(flex: 1, child: Container())
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                        padding: const EdgeInsets.only(
+                            left: 40, bottom: 25, top: 25),
+                        child: adminListWidgets[
+                            13] ///////////////////////....................submit button
+                        ),
+                  ],
+                ),
               ),
-            ),
-          ), //////////////////////////////////////////////...................web view
+            ), //////////////////////////////////////////////...................web view
     );
   }
 }
