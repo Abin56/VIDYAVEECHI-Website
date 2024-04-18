@@ -9,7 +9,7 @@ import 'package:vidyaveechi_website/view/users/admin/screens/result/widget/data_
 import 'package:vidyaveechi_website/view/users/admin/screens/students/student_details/widgets/category_tableHeader.dart';
 import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
-import 'package:vidyaveechi_website/view/widgets/blue_Container_widget/blue_Container_widget.dart';
+import 'package:vidyaveechi_website/view/widgets/custom_delete_showdialog/custom_delete_showdialog.dart';
 import 'package:vidyaveechi_website/view/widgets/custom_showdialouge/custom_showdialouge.dart';
 import 'package:vidyaveechi_website/view/widgets/loading_widget/loading_widget.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
@@ -255,61 +255,13 @@ class PeriodWiseTimeTable extends StatelessWidget {
                                         flex: 2,
                                         child: GestureDetector(
                                           onTap: () {
-                                            showDialog(
+                                            customDeleteShowDialog(
                                               context: context,
-                                              barrierDismissible:
-                                                  false, // user must tap button!
-                                              builder: (context) => AlertDialog(
-                                                shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            0)),
-                                                title: const Text(
-                                                  "Delete",
-                                                  style: TextStyle(
-                                                      fontSize: 16,
-                                                      fontWeight:
-                                                          FontWeight.w600),
-                                                ),
-                                                content: const Text(
-                                                  "Are you sure do you want to delete ?",
-                                                  style:
-                                                      TextStyle(fontSize: 14),
-                                                ),
-                                                actions: [
-                                                  Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
-                                                    children: [
-                                                      GestureDetector(
-                                                          onTap: () {
-                                                            Navigator.pop(
-                                                                context);
-                                                          },
-                                                          child: BlueContainerWidget(
-                                                              title: "no",
-                                                              fontSize: 12,
-                                                              color:
-                                                                  adminePrimayColor,
-                                                              width: 100)),
-                                                      GestureDetector(
-                                                          onTap: () {
-                                                            timeTableController
-                                                                .enableDelete(
-                                                                    data.docid,
-                                                                    data.dayName!);
-                                                          },
-                                                          child: BlueContainerWidget(
-                                                              title: "Yes",
-                                                              fontSize: 12,
-                                                              color:
-                                                                  adminePrimayColor,
-                                                              width: 100)),
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
+                                              onTap: () {
+                                                timeTableController
+                                                    .enableDelete(data.docid,
+                                                        data.dayName!);
+                                              },
                                             );
                                           },
                                           child: DataContainerMarksWidget(

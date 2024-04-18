@@ -59,44 +59,38 @@ class DrawerSelectedPagesSection extends StatelessWidget {
             index = 1;
             onTap.call(index);
           },
-          title: Row(
-            children: [
-              DashboardTextFontWidget(
-                title: 'Registered Student',
-              ),
-              const Spacer(),
-              StreamBuilder(
-                  stream: server
-                      .collection('SchoolListCollection')
-                      .doc(UserCredentialsController.schoolId)
-                      .collection(UserCredentialsController.batchId!)
-                      .doc(UserCredentialsController.batchId)
-                      .collection('RegStudentsNotifierCounter')
-                      .doc('count')
-                      .snapshots(),
-                  builder: (context, classSnap) {
-                    if (classSnap.hasData) {
-                      return Padding(
-                        padding: const EdgeInsets.only(),
-                        child: CircleAvatar(
-                          radius: 11,
-                          backgroundColor: const Color.fromARGB(255, 37, 211, 102),
-                          child: Center(
-                            child: TextFontWidget(
-                              color: cWhite,
-                                text: "${classSnap.data?.data()?['counter']}",
-                                fontsize: 10,fontWeight: FontWeight.bold,),
-                          ),
-                        ),
-                      );
-                    }else if (classSnap.data==null){
-                        return const SizedBox();
-                    } else {
-                      return const SizedBox();
-                    }
-                  })
-            ],
+          title: DashboardTextFontWidget(
+            title: 'Registered Student',
           ),
+          trailing: StreamBuilder(
+              stream: server
+                  .collection('SchoolListCollection')
+                  .doc(UserCredentialsController.schoolId)
+                  .collection(UserCredentialsController.batchId!)
+                  .doc(UserCredentialsController.batchId)
+                  .collection('RegStudentsNotifierCounter')
+                  .doc('count')
+                  .snapshots(),
+              builder: (context, classSnap) {
+                if (classSnap.hasData) {
+                  return CircleAvatar(
+                    radius: 11,
+                    backgroundColor: const Color.fromARGB(255, 37, 211, 102),
+                    child: Center(
+                      child: TextFontWidget(
+                        color: cWhite,
+                        text: "${classSnap.data?.data()?['counter']}",
+                        fontsize: 10,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  );
+                } else if (classSnap.data == null) {
+                  return const SizedBox();
+                } else {
+                  return const SizedBox();
+                }
+              }),
         ),
         ListTile(
           leading: SizedBox(
