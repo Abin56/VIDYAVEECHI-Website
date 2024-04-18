@@ -340,7 +340,7 @@ class StudentController extends GetxController {
 </head>
 
 <body>
-    <h1>Congratulations on successfully creating your account with Vidyaveechi at MTHSS Tuition Center!</h1>
+    <h1>Congratulations on successfully creating your account with vidyaveechi_website at MTHSS Tuition Center!</h1>
 
     <p>Here are your account details:</p>
 
@@ -356,7 +356,7 @@ class StudentController extends GetxController {
 
     <p>Thank you for joining us! If you have any questions or need assistance, feel free to reach out.</p>
 
-    <p class="signature">Best regards,<br>[ ${UserCredentialsController.schoolName}} ]<br>Vidyaveechi - ${UserCredentialsController.schoolName} Tuition Center</p>
+    <p class="signature">Best regards,<br>[ ${UserCredentialsController.schoolName}} ]<br>vidyaveechi_website - ${UserCredentialsController.schoolName} Tuition Center</p>
 </body>
 
 </html>

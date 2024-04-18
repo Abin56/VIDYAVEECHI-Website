@@ -24,7 +24,7 @@ class HomePageImages extends StatelessWidget {
   //     "https://firebasestorage.googleapis.com/v0/b/dujo-kerala-schools-1a6c5.appspot.com/o/dujocolleges.jpeg?alt=media&token=0c3fa202-c59f-47bd-b997-88f3128e6871";
 
   String _description = "Any schools from Kerala can register on\n"
-      "Lepton VIDYAVEECHI. Lepton VIDYAVEECHI is a mobile application\n"
+      "Lepton vidyaveechi_website. Lepton vidyaveechi_website is a mobile application\n"
       "with student login,  parent login, teacher login";
 
   Uri _faceBookUrl =
@@ -1035,7 +1035,7 @@ class HomePageImages extends StatelessWidget {
                                   fontWeight: FontWeight.w500,
                                   fontsize: 14.sp,
                                   text:
-                                      "The 'Lepton VIDYAVEECHI The Tution App' is a collaborative effort between Lepton Communications and \n"
+                                      "The 'Lepton vidyaveechi_website The Tution App' is a collaborative effort between Lepton Communications and \n"
                                       "\n"
                                       "Lepton, designed to serve as a comprehensive mobile application for efficiently managing various \n"
                                       "\n"
@@ -1137,7 +1137,7 @@ class HomePageImages extends StatelessWidget {
                                 fontsize: 14.sp,
                                 fontWeight: FontWeight.w500,
                                 text: "\n"
-                                    "'Lepton VIDYAVEECHI The Tution App' aims to revolutionize the way schools in Kerala manage\n"
+                                    "'Lepton vidyaveechi_website The Tution App' aims to revolutionize the way schools in Kerala manage\n"
                                     "\n"
                                     "their infrastructure and interact with their stakeholders. By providing a centralized platform\n"
                                     "\n"

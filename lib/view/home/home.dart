@@ -372,9 +372,9 @@ class WebSiteDiscriptionWidget extends StatelessWidget {
               child: Center(
                 child: GooglePoppinsWidgets(
                   text:
-                      "The 'Lepton VIDYAVEECHI The School App' is a collaborative effort between Lepton Communications and \n"
+                      "The 'Lepton vidyaveechi_website The School App' is a collaborative effort between Lepton Communications and \n"
                       "\n"
-                      "Lepton VIDYAVEECHI, designed to serve as a comprehensive mobile application for efficiently managing various \n"
+                      "Lepton vidyaveechi_website, designed to serve as a comprehensive mobile application for efficiently managing various \n"
                       "\n"
                       "aspects of school infrastructure in the state of Kerala, India. The app offers a range of features and \n"
                       "\n"
@@ -483,7 +483,7 @@ class WebSiteDiscriptionWidget extends StatelessWidget {
               child: Center(
                 child: GooglePoppinsWidgets(
                     text:
-                        "'Lepton VIDYAVEECHI The Tution App' aims to revolutionize the way schools in Kerala manage\n"
+                        "'Lepton vidyaveechi_website The Tution App' aims to revolutionize the way schools in Kerala manage\n"
                         "\n"
                         "their infrastructure and interact with their stakeholders. By providing a centralized platform\n"
                         "\n"

@@ -37,6 +37,7 @@ class GeneralInsructionController extends GetxController {
 
      Future<void> removeInstruction(String instructionId,BuildContext context ) async {
              final uuid =const  Uuid().v1();
+       // ignore: unused_local_variable
        final generalInstructionsDetails = GeneralInstructionsModel(
         instruction: instructionController.text, 
         instructionId: uuid, 
@@ -62,6 +63,7 @@ class GeneralInsructionController extends GetxController {
 
   Future<void> updateInstructions(String instructionId,BuildContext context) async {
        final uuid =const  Uuid().v1();
+       // ignore: unused_local_variable
        final generalInstructionsDetails = GeneralInstructionsModel(
         instruction: instructionController.text, 
         instructionId: uuid, 

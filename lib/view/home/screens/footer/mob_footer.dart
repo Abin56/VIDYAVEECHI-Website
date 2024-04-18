@@ -59,7 +59,7 @@ class FooterMob extends StatelessWidget {
             Column(
               children: [
                 Text(
-                  'Lepton VIDYAVEECHI',
+                  'Lepton vidyaveechi_website',
                   style: GoogleFonts.poppins(
                       fontSize: 10.h, fontWeight: FontWeight.bold, color: cWhite
                       //  color: const Color.fromRGBO(103, 53, 107, 1),

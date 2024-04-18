@@ -65,7 +65,7 @@ class VidhyaVeechiHomePageResponsive extends StatelessWidget {
                                     ),
                                   ),
                                   Text(
-                                    "VidyaVeechi",
+                                    "vidyaveechi_website",
                                     style: GoogleFonts.dmSerifDisplay(
                                         color: const Color.fromARGB(
                                             255, 43, 97, 19),
@@ -175,7 +175,7 @@ class VidhyaVeechiHomePageResponsive extends StatelessWidget {
                           // top: screenSize.width / 15,
                         ),
                         child: Text(
-                          "VIDYAVEECHI",
+                          "vidyaveechi_website",
                           style: GoogleFonts.spectral(
                               fontSize: 35,
                               //fontSize: screenSize.width / 37,
@@ -242,7 +242,7 @@ class VidhyaVeechiHomePageResponsive extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(left: 20, top: 15),
                         child: Text(
-                          "For a demo, please register your school. Our team will contact you to onboard you to the Vidyaveechi app",
+                          "For a demo, please register your school. Our team will contact you to onboard you to the vidyaveechi_website app",
                           style: GoogleFonts.spectral(
                               fontSize: 15, fontWeight: FontWeight.w500),
                         ),
@@ -363,7 +363,7 @@ class VidhyaVeechiHomePageResponsive extends StatelessWidget {
                             ],
                           ),
                         ),
-                        LeptonLogoVidyaveechi(
+                        LeptonLogovidyaveechi_website(
                             screenSize: screenSize), ///////////appbar
                         Positioned(
                           right: 50,

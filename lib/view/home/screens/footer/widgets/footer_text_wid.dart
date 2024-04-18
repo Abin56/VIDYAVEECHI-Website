@@ -204,7 +204,7 @@ class WhoWeAreWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           GooglePoppinsWidgets(
-            text: 'LEPTON VIDYAVEECHI',
+            text: 'LEPTON vidyaveechi_website',
             fontsize: 18,
             fontWeight: FontWeight.bold,
             color: cWhite,

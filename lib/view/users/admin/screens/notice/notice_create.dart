@@ -2,12 +2,10 @@ import 'package:awesome_side_sheet/Enums/sheet_position.dart';
 import 'package:awesome_side_sheet/side_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vidyaveechi_website/constants/colors/app_colors.dart';
 import 'package:vidyaveechi_website/controller/notice_controller/notice_controller.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
-import 'package:vidyaveechi_website/view/users/admin/screens/notice/noticebutton_container.dart';
 import 'package:vidyaveechi_website/view/widgets/progess_button/progress_button.dart';
 import 'package:vidyaveechi_website/view/widgets/routeSelectedTextContainer/routeSelectedTextContainer.dart';
 import 'package:vidyaveechi_website/view/widgets/textformFiledContainer/textformFiledBlueContainer.dart';
@@ -119,7 +117,7 @@ class CreateNotice extends StatelessWidget {
                 children: [
                   GestureDetector(
                       onTap: () {
-                        {
+                     
                           aweSideSheet(
                               context: context,
                               sheetPosition: SheetPosition.right,
@@ -370,7 +368,7 @@ class CreateNotice extends StatelessWidget {
                               ),
                               showCloseButton: false,
                               footer: Container());
-                        }
+                        
                       },
                       child: const RouteSelectedTextContainer(
                           width: 140, title: 'Create')),

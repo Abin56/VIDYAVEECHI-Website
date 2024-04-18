@@ -27,10 +27,10 @@ class WhyChooseUs extends StatelessWidget {
               width: double.infinity,
               child: GoogleMonstserratWidgets(
                   text:
-                      "LEPTON VIDYAVEECHI - the ultimate digitalized school infra app that streamlines infrastructure management and enhances school operations. With VidyaVeechi, schools can easily manage their facilities, assets, and resources with just a few clicks."
-                      "VidyaVeechi provides a comprehensive range of features to manage schools' infrastructure, including live updates of attendance, a list of classes, a list of teachers, and notices and events as notifications. VidyaVeechi also offers online payment facilities, with a bill generation option for easy payment processing."
-                      "VidyaVeechi also facilitates seamless learning through recorded and live classes. With student, parent, admin, teacher, and guardian logins, VidyaVeechi provides a customizable and secure platform for all stakeholders to manage and access information relevant to them."
-                      "Join us on this exciting journey towards a more streamlined and efficient school infrastructure management system with VidyaVeechi. Experience the convenience and flexibility of a digitalized school infra app that takes your school's operations to the next level.",
+                      "LEPTON vidyaveechi_website - the ultimate digitalized school infra app that streamlines infrastructure management and enhances school operations. With vidyaveechi_website, schools can easily manage their facilities, assets, and resources with just a few clicks."
+                      "vidyaveechi_website provides a comprehensive range of features to manage schools' infrastructure, including live updates of attendance, a list of classes, a list of teachers, and notices and events as notifications. vidyaveechi_website also offers online payment facilities, with a bill generation option for easy payment processing."
+                      "vidyaveechi_website also facilitates seamless learning through recorded and live classes. With student, parent, admin, teacher, and guardian logins, vidyaveechi_website provides a customizable and secure platform for all stakeholders to manage and access information relevant to them."
+                      "Join us on this exciting journey towards a more streamlined and efficient school infrastructure management system with vidyaveechi_website. Experience the convenience and flexibility of a digitalized school infra app that takes your school's operations to the next level.",
                   fontsize: 18,
                   color: cWhite,
                   letterSpacing: 2),

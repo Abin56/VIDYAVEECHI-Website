@@ -3,8 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:vidyaveechi_website/view/home/screens/appbar_row.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 
-class LeptonLogoVidyaveechi extends StatelessWidget {
-  const LeptonLogoVidyaveechi({
+class LeptonLogovidyaveechi_website extends StatelessWidget {
+  const LeptonLogovidyaveechi_website({
     super.key,
     required this.screenSize,
   });
@@ -64,7 +64,7 @@ class LeptonLogoVidyaveechi extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(left: 20),
                               child: Text(
-                                "VidyaVeechi",
+                                "vidyaveechi_website",
                                 style: GoogleFonts.dmSerifDisplay(
                                     color:
                                         const Color.fromARGB(255, 43, 97, 19),
@@ -161,7 +161,7 @@ class LeptonLogoVidyaveechi extends StatelessWidget {
                                       ),
                                     ),
                                     Text(
-                                      "VidyaVeechi",
+                                      "vidyaveechi_website",
                                       style: GoogleFonts.dmSerifDisplay(
                                           fontSize: 16,
                                           fontWeight: FontWeight.bold),

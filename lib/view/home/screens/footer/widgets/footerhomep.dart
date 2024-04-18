@@ -81,7 +81,7 @@ class FooterHomeP extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Lepton VIDYAVEECHI',
+                            'Lepton vidyaveechi_website',
                             style: GoogleFonts.poppins(
                               fontSize: 25.w,
                               fontWeight: FontWeight.bold,
