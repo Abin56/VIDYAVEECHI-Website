@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:progress_state_button/progress_button.dart';
 import 'package:uuid/uuid.dart';
 import 'package:vidyaveechi_website/model/meeting_model/meeting_model.dart';
@@ -11,21 +12,22 @@ import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_creden
 
 class MeetingController extends GetxController{
   TextEditingController topicController = TextEditingController();
-  TextEditingController dateController = TextEditingController();
+  Rx<String> dateController =  ''.obs;
   TextEditingController timeController = TextEditingController();
   TextEditingController categoryController = TextEditingController();
   TextEditingController memberController = TextEditingController();
   TextEditingController specialguestController = TextEditingController();
   TextEditingController venueController = TextEditingController();
     Rx<ButtonState> buttonstate = ButtonState.idle.obs;
-      RxBool ontapMeeting = false.obs;
+    RxBool ontapMeeting = false.obs;
+   final Rxn<DateTime> dateSelected = Rxn<DateTime>();
        final formKey = GlobalKey<FormState>();
 
   Future<void> createMeeting() async {
     final uuid =const  Uuid().v1();
     final meetingDetails = MeetingModel(
       topic: topicController.text, 
-      date: dateController.text, 
+      date: dateController.value, 
       time: timeController.text, 
       category: categoryController.text, 
       members: memberController.text, 
@@ -46,7 +48,7 @@ class MeetingController extends GetxController{
           .set(meetingDetails.toMap())
           .then((value) async {
         topicController.clear();
-        dateController.clear();
+        dateController.value='';
         timeController.clear();
         categoryController.clear();
         memberController.clear();
@@ -81,7 +83,7 @@ class MeetingController extends GetxController{
         .doc(meetingId)
         .update({
         'topic':  topicController.text,
-        'date': dateController.text,
+        'date': dateController.value,
         'time': timeController.text,
         'category': categoryController.text,
         'member': memberController.text,
@@ -105,5 +107,27 @@ class MeetingController extends GetxController{
         .doc(meetingId)
         .delete()
         .then((value) => Navigator.pop(context ));
+  }
+
+
+   selectDateOfMeeting(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: dateSelected.value ?? DateTime.now(),
+      firstDate: DateTime(1920),
+      lastDate: DateTime(2100),
+      // builder: (context, child) {
+      //   return Container();
+      // },
+    );
+    if (picked != null && picked != dateSelected.value) {
+      dateSelected.value = picked;
+      DateTime parseDate = DateTime.parse(dateSelected.value.toString());
+      final DateFormat formatter = DateFormat('yyyy-MMMM-dd');
+      String formatted = formatter.format(parseDate);
+
+      dateController.value = formatted.toString();
+      log(formatted.toString());
+    }
   }
 }

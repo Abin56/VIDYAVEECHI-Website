@@ -42,6 +42,8 @@ class SelectFeeMonthDropDown extends StatelessWidget {
           showSearchBox: true,
           searchDelay: Duration(microseconds: 10)),
       dropdownDecoratorProps: DropDownDecoratorProps(
+        // dropdownSearchDecoration: InputDecoration(
+        //   hintText: 'Select Month', ),
           baseStyle: GoogleFonts.poppins(
               fontSize: 13, color: Colors.black.withOpacity(0.7))),
     ));

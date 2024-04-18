@@ -8,6 +8,7 @@ import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/meeting/edit_delete/view_table_meeting.dart';
 import 'package:vidyaveechi_website/view/widgets/button_container/button_container.dart';
+import 'package:vidyaveechi_website/view/widgets/progess_button/progress_button.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 import 'package:vidyaveechi_website/view/widgets/routeSelectedTextContainer/routeSelectedTextContainer.dart';
 import 'package:vidyaveechi_website/view/widgets/textformFiledContainer/textformFiledContainer.dart';
@@ -40,13 +41,36 @@ class MeetingCreatingPage extends StatelessWidget {
                   : 450), //////////topic field......2
 
       const ContainerTitleWidget(text: "When"), //////.3
-
-      TextFormFiledContainerWidget(
-          controller: meetingController.dateController,
-          validator: checkFieldDateIsValid,
-          hintText: "Date",
-          title: '',
-          width: ResponsiveWebSite.isTablet(context) ? 140 : 210), /////...4
+    GestureDetector(
+      onTap:() =>
+          meetingController.selectDateOfMeeting( context),
+      child: SizedBox(
+        height: 60,
+        width: ResponsiveWebSite.isTablet(context) ? 140 : 210,
+        child: Padding(
+          padding: const EdgeInsets.only(top: 25),
+          child: Container(width: ResponsiveWebSite.isTablet(context) ? 140 : 210,
+            height: 35,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius .circular(  05),
+                    color: screenContainerbackgroundColor,
+                    border: Border.all(
+                        color: cBlack  .withOpacity(0.4))),
+                child: Padding(
+                  padding:
+                      const EdgeInsets .all(8.0),
+                  child: Obx(() => TextFontWidget(
+                      text: meetingController .dateController .value ==   ''
+                          ? 'DD/MM/YYYY *'
+                          : meetingController
+                              .dateController
+                              .value,
+                      fontsize: 12.5)),
+                ),),
+        ),
+      ),
+    ),
+       /////////////////////////////////////////////////////////////////////...4
       TextFormFiledContainerWidget(
           controller: meetingController.timeController,
           validator: checkFieldEmpty,
@@ -94,27 +118,38 @@ class MeetingCreatingPage extends StatelessWidget {
               : ResponsiveWebSite.isTablet(context)
                   ? 300
                   : 450), //////////////////12
-      GestureDetector(
-        onTap: () {
-          if (meetingController.formKey.currentState!.validate()) {
-            meetingController.createMeeting();
-            print("object");
-          }
-        },
-        child: Container(
-          height: 35,
-          width: 120,
-          decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(8)), color: themeColorBlue),
-          child: const Center(
-              child: TextFontWidget(
-            text: "Submit",
-            fontsize: 15,
-            fontWeight: FontWeight.bold,
-            color: cWhite,
-          )),
-        ),
-      ), ////////////////////////13
+
+                    Obx(() =>
+                      ProgressButtonWidget(
+                          function: () async {
+                            if (meetingController.formKey.currentState!.validate()) {
+                               meetingController.createMeeting();
+                               print("object");
+                                 }
+                               },
+                               buttonstate: meetingController .buttonstate.value,
+                               text: 'Create Meeting')),
+      // GestureDetector(
+      //   onTap: () {
+      //     if (meetingController.formKey.currentState!.validate()) {
+      //       meetingController.createMeeting();
+      //       print("object");
+      //     }
+      //   },
+      //   child: Container(
+      //     height: 35,
+      //     width: 120,
+      //     decoration: const BoxDecoration(
+      //         borderRadius: BorderRadius.all(Radius.circular(8)), color: themeColorBlue),
+      //     child: const Center(
+      //         child: TextFontWidget(
+      //       text: "Submit",
+      //       fontsize: 15,
+      //       fontWeight: FontWeight.bold,
+      //       color: cWhite,
+      //     )),
+      //   ),
+      // ), ////////////////////////13
       Padding(
         padding: const EdgeInsets.only(top: 5),
         child: Row(
@@ -296,7 +331,7 @@ class MeetingCreatingPage extends StatelessWidget {
                                                   meetingListWidget[12] /////////////////venu field
                                                 ],
                                               ),
-                                              meetingListWidget[14],
+                                            //  meetingListWidget[14],
 
                                               Align(
                                                 alignment: Alignment.center,
@@ -385,7 +420,7 @@ class MeetingCreatingPage extends StatelessWidget {
                                                   meetingListWidget[12] /////////////////venu field
                                                 ],
                                               ),
-                                              meetingListWidget[14],
+                                            //  meetingListWidget[14],
 
                                               Align(
                                                 alignment: Alignment.center,
