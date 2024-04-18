@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sidebar_drawer/sidebar_drawer.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/fonts/google_poppins_widget.dart';
-import 'package:vidyaveechi_website/view/home/screens/login_histroy/login_histroy.dart';
+import 'package:vidyaveechi_website/view/users/admin/screens/login_histroy/login_histroy.dart';
 import 'package:vidyaveechi_website/view/users/admin/app_bar/admin_appBar.dart';
 import 'package:vidyaveechi_website/view/users/admin/create_new_admin_page/create_admin.dart';
 import 'package:vidyaveechi_website/view/users/admin/drawer/drawer_pages.dart';
@@ -68,7 +68,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                               ),
                             ),
                             GooglePoppinsWidgets(
-                              text: "VIDYA VEECHI",
+                              text: "VIDYAVEECHI",
                               fontsize:
                                   ResponsiveWebSite.isMobile(context) ? 18 : 20,
                               fontWeight: FontWeight.w500,

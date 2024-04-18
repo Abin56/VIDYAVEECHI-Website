@@ -6,7 +6,7 @@ import 'package:vidyaveechi_website/controller/meeting_controller/meeting_contro
 import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
-import 'package:vidyaveechi_website/view/users/admin/screens/meeting/edit_delete/view_table_meeting.dart';
+import 'package:vidyaveechi_website/view/users/admin/screens/meeting/view_table_meeting.dart';
 import 'package:vidyaveechi_website/view/widgets/button_container/button_container.dart';
 import 'package:vidyaveechi_website/view/widgets/progess_button/progress_button.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';

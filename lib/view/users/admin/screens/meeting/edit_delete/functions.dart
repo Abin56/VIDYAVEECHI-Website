@@ -4,7 +4,7 @@ import 'package:vidyaveechi_website/controller/meeting_controller/meeting_contro
 import 'package:vidyaveechi_website/model/meeting_model/meeting_model.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
-import 'package:vidyaveechi_website/view/users/admin/screens/meeting/edit_delete/view_table_meeting.dart';
+import 'package:vidyaveechi_website/view/users/admin/screens/meeting/view_table_meeting.dart';
 import 'package:vidyaveechi_website/view/widgets/custom_delete_showdialog/custom_delete_showdialog.dart';
 import 'package:vidyaveechi_website/view/widgets/custom_showdialouge/custom_showdialouge.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';

@@ -54,7 +54,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                               ),
                             ),
                             GooglePoppinsWidgets(
-                              text: "LEPTON VIDHYA VEECHI",
+                              text: "LEPTON VIDYAVEECHI",
                               fontsize: 20,
                               fontWeight: FontWeight.w500,
                             )

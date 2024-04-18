@@ -112,7 +112,7 @@ class AdminNotificationCreate extends StatelessWidget {
       SizedBox(
         width: ResponsiveWebSite.isMobile(context) ? 80 : 150,
         child: TextField(
-          controller: notificationCntrl.messageController,
+          controller: notificationCntrl.headingController,
           maxLines: 1,
           style: const TextStyle(fontSize: 14),
           decoration: const InputDecoration(
