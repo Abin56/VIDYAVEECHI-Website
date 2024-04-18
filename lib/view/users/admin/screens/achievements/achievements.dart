@@ -18,7 +18,7 @@ import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 import 'package:vidyaveechi_website/view/widgets/routeSelectedTextContainer/routeSelectedTextContainer.dart';
 
 class Achievements extends StatefulWidget {
-  Achievements({super.key});
+  const Achievements({super.key});
 
   @override
   State<Achievements> createState() => _AchievementsState();
@@ -32,7 +32,7 @@ class _AchievementsState extends State<Achievements> {
   Widget build(BuildContext context) {
     List<Widget> textformWidget = [
       Padding(
-          padding: EdgeInsets.only(top: 5, right: 10, left: 10),
+          padding: const EdgeInsets.only(top: 5, right: 10, left: 10),
           child:
               SelectClassDropDown()), ///////////////////////////////////////////////////////////////////////0
       Padding(
@@ -105,129 +105,152 @@ class _AchievementsState extends State<Achievements> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 10),
+                padding: const EdgeInsets.only(top: 10, bottom: 10),
                 child: Row(
                   children: [
-                    GestureDetector(///////////////////////////////////////////////////////////////////////////////////
+                    GestureDetector(
+                        ///////////////////////////////////////////////////////////////////////////////////
                         onTap: () {
-                          
-                            aweSideSheet(
-                                context: context,
-                                sheetPosition: SheetPosition.right,
-                                title: "Acheivements",
-                                body: Padding(
-                                  padding: const EdgeInsets.only(  left: 10, top: 10),
-                                  child: SingleChildScrollView(
-                                    child: Form(
-                                      key: achievementsController.formKey,
-                                      child: Column(
-                                        children: [
-                                          SizedBox(
-                                              height: 800,
-                                              child: Container(
-                                                margin: const EdgeInsets.only( top: 10),
-                                                child:
-                                                    //  Obx(() {
-                                                    // return
-                                                    Column(
-                                                        mainAxisAlignment:  MainAxisAlignment.center,
-                                                        crossAxisAlignment: CrossAxisAlignment .center,
-                                                        children: [
-                                                      Stack(
-                                                        children: [
-                                                          // Obx(() {
-                                                          (achievementsController.afile == null)
-                                                              ? const CircleAvatar(
-                                                                  radius: 60,
-                                                                  backgroundImage:
-                                                                      NetworkImage( 'https://via.placeholder.com/150'),
-                                                                  backgroundColor:  Color.fromARGB( 241, 54, 225, 248),
-                                                                )
-                                                              : CircleAvatar(
-                                                                  radius: 60,
-                                                                  backgroundImage:
-                                                                      MemoryImage( achievementsController .afile!)
-                                                                  //
-                                                                  //   .image,
-                                                                  ),
-                                            
-                                                          // }
-                                                          // }),
-                                                          Positioned(
-                                                              bottom: -10,
-                                                              left: 80,
-                                                              child: IconButton(
-                                                                  onPressed:
-                                                                      () async {
-                                                                    FilePickerResult?
-                                                                        result =
-                                                                        await FilePicker
-                                                                            .platform
-                                                                            .pickFiles(type: FileType.image);
-                                                                    if (result !=
-                                                                        null) {
-                                                                      achievementsController.file = result
-                                                                          .files
-                                                                          .first
-                                                                          .bytes;
-                                                                      setState(
-                                                                          () {
-                                                                        achievementsController.afile =
-                                                                            achievementsController.file;
-                                                                      });
-                                                                    }
-                                                                  },
-                                                                  icon: const Icon(
-                                                                      Icons  .add_a_photo)))
-                                                        ],
+                          aweSideSheet(
+                              context: context,
+                              sheetPosition: SheetPosition.right,
+                              title: "Acheivements",
+                              body: Padding(
+                                padding:
+                                    const EdgeInsets.only(left: 10, top: 10),
+                                child: SingleChildScrollView(
+                                  child: Form(
+                                    key: achievementsController.formKey,
+                                    child: Column(
+                                      children: [
+                                        SizedBox(
+                                            height: 800,
+                                            child: Container(
+                                              margin: const EdgeInsets.only(
+                                                  top: 10),
+                                              child:
+                                                  //  Obx(() {
+                                                  // return
+                                                  Column(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                    Stack(
+                                                      children: [
+                                                        // Obx(() {
+                                                        (achievementsController
+                                                                    .afile ==
+                                                                null)
+                                                            ? const CircleAvatar(
+                                                                radius: 60,
+                                                                backgroundImage:
+                                                                    NetworkImage(
+                                                                        'https://via.placeholder.com/150'),
+                                                                backgroundColor:
+                                                                    Color.fromARGB(
+                                                                        241,
+                                                                        54,
+                                                                        225,
+                                                                        248),
+                                                              )
+                                                            : CircleAvatar(
+                                                                radius: 60,
+                                                                backgroundImage:
+                                                                    MemoryImage(
+                                                                        achievementsController
+                                                                            .afile!)
+                                                                //
+                                                                //   .image,
+                                                                ),
+
+                                                        // }
+                                                        // }),
+                                                        Positioned(
+                                                            bottom: -10,
+                                                            left: 80,
+                                                            child: IconButton(
+                                                                onPressed:
+                                                                    () async {
+                                                                  FilePickerResult?
+                                                                      result =
+                                                                      await FilePicker
+                                                                          .platform
+                                                                          .pickFiles(
+                                                                              type: FileType.image);
+                                                                  if (result !=
+                                                                      null) {
+                                                                    achievementsController
+                                                                            .file =
+                                                                        result
+                                                                            .files
+                                                                            .first
+                                                                            .bytes;
+                                                                    setState(
+                                                                        () {
+                                                                      achievementsController
+                                                                              .afile =
+                                                                          achievementsController
+                                                                              .file;
+                                                                    });
+                                                                  }
+                                                                },
+                                                                icon: const Icon(
+                                                                    Icons
+                                                                        .add_a_photo)))
+                                                      ],
+                                                    ),
+                                                    textformWidget[0],
+                                                    textformWidget[1],
+                                                    textformWidget[2],
+
+                                                    textformWidget[3],
+                                                    textformWidget[4],
+
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              top: 10,
+                                                              bottom: 10),
+                                                      child:
+                                                          NoticeButtonContainerWidget(
+                                                        text: 'Submit',
+                                                        width: 300,
+                                                        height: 50,
+                                                        fontSize: 18,
+                                                        onTap: () {
+                                                          if (achievementsController
+                                                              .formKey
+                                                              .currentState!
+                                                              .validate()) {
+                                                            achievementsController
+                                                                .uploadImageToStorage();
+                                                          }
+                                                        },
+                                                        color: AppColors
+                                                            .blueDarkColor,
                                                       ),
-                                                      textformWidget[0],
-                                                      textformWidget[1],
-                                                      textformWidget[2],
-                                            
-                                                      textformWidget[3],
-                                                      textformWidget[4],
-                                            
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsets .only(  top: 10, bottom: 10),
-                                                        child:
-                                                            NoticeButtonContainerWidget(
-                                                          text: 'Submit',
-                                                          width: 300,
-                                                          height: 50,
-                                                          fontSize: 18,
-                                                          onTap: () {
-                                                            if (achievementsController
-                                                                .formKey
-                                                                .currentState!
-                                                                .validate()) {
-                                                              achievementsController
-                                                                  .uploadImageToStorage();
-                                                            }
-                                                          },
-                                                          color: AppColors
-                                                              .blueDarkColor,
-                                                        ),
-                                                      )
-                                                      // }),
-                                                    ]),
-                                              )),
-                                        ],
-                                      ),
+                                                    )
+                                                    // }),
+                                                  ]),
+                                            )),
+                                      ],
                                     ),
                                   ),
                                 ),
-                                showCloseButton: false,
-                                footer: Container());
-                          
-                        },/////////////////////////////////////////////////////////////create function
+                              ),
+                              showCloseButton: false,
+                              footer: Container());
+                        }, /////////////////////////////////////////////////////////////create function
                         child: const RouteSelectedTextContainer(
                             width: 140, title: 'Create')),
                   ],
                 ),
               ),
-      
+
               SingleChildScrollView(
                 child: SizedBox(
                   height: 1000,
@@ -261,33 +284,33 @@ class _AchievementsState extends State<Achievements> {
                                   child: Text(
                                 'No Achievements',
                                 style: GoogleFonts.poppins(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w500),
+                                    fontSize: 20, fontWeight: FontWeight.w500),
                               ));
                             }
                             return GridView.builder(
                               itemCount: snapshot.data!.docs.length,
-      
                               //snapshot.data!.docs.length,
                               itemBuilder: (context, index) {
                                 AchievementModel data =
                                     AchievementModel.fromMap(
                                         snapshot.data!.docs[index].data());
-                                return Padding(
-                                    padding: EdgeInsets.all(20.0),
-                                    child: NewAchievementsUI(
-                                      data: data,
-                                    ));
+                                return NewAchievementsUI(data: data);
                               },
                               gridDelegate:
                                   SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount:
-                                          ResponsiveWebSite.isMobile(context)
-                                              ? 1
-                                              : 2),
+                                crossAxisCount:
+                                    ResponsiveWebSite.isMobile(context) ? 1 : 2,
+                                mainAxisSpacing: 20,
+                                mainAxisExtent:
+                                    ResponsiveWebSite.isTablet(context)
+                                        ? 355
+                                        : ResponsiveWebSite.isMobile(context)
+                                            ? 300
+                                            : 400,
+                              ),
                             );
                           }),
-      
+
                   // ),
                 ),
               )

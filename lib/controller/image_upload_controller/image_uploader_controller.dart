@@ -72,7 +72,7 @@ class AdminProfileController extends GetxController {
     final Map<String, dynamic> updateData = {
       "image": image,
       "adminUserName": nameController.text,
-      "designation": nameController.text,
+      "designation": designationController.text,
       "about": aboutController.text,
       "phoneNumber": phoneController.text,
       "email": emailController.text,
