@@ -6,52 +6,72 @@ import 'package:vidyaveechi_website/view/fonts/google_poppins_widget.dart';
 class TableListContainers extends StatelessWidget {
   final int flex;
   final String text;
+  final Image? image;
+
   const TableListContainers({
     required this.text,
     required this.flex,
+    this.image,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-     flex: flex,
-     child: Container(
-     height: 45,
-      decoration:   BoxDecoration(
-        border:  const Border(
-          right: BorderSide(color: cWhite,width: 5),
-            bottom: BorderSide(color: cWhite)),
-       color: Colors.pink.withOpacity(0.1) ),
-     child: Center(child: GooglePoppinsWidgets(text: text, fontsize: 13,fontWeight: FontWeight.w500,)),
-                        ),
-                      );
+    return Flexible(
+        flex: flex,
+        child: Container(
+          height: 45,
+          width: 400,
+          decoration: BoxDecoration(
+              border: const Border(
+                  right: BorderSide(color: cWhite, width: 0), bottom: BorderSide(color: cWhite)),
+              color: Color.fromARGB(255, 240, 234, 234)),
+          child: Center(
+              child: Text(
+            text,
+            style: TextStyle(
+              decoration: TextDecoration.none,
+              color: cBlack,
+              fontWeight: FontWeight.w700,
+              fontSize: 14,
+            ),
+          )),
+        ));
   }
 }
 
 class HeaderOfTable extends StatelessWidget {
   final String text;
-   final int flex;
+  final int flex;
+
   const HeaderOfTable({
     required this.text,
     required this.flex,
-    super.key,
-  });
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-     flex: flex,
-     child: Container(
-       height: 45,
-       decoration:  BoxDecoration(
-        border: const Border(
-          right: BorderSide(color: cWhite,width: 5)), 
-            color: cBlue.withOpacity(0.5)
+    return Flexible(
+      flex: flex,
+      child: Container(
+        height: 45,
+        width: 400,
+        decoration: BoxDecoration(
+            border: const Border(right: BorderSide(color: Colors.white, width: 0)),
+            color: Colors.blue),
+        child: Center(
+          child: Text(
+            text,
+            style: const TextStyle(
+              decoration: TextDecoration.none,
+              color: Colors.white,
+              fontWeight: FontWeight.w700,
+              fontSize: 14,
             ),
-      
-       child: Center(child: GoogleLoraWidgets(text: text, fontsize: 14,fontWeight: FontWeight.w700,)),
-     ),
-   );
+          ),
+        ),
+      ),
+    );
   }
 }

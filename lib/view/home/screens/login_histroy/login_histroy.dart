@@ -6,6 +6,7 @@ import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 import 'package:vidyaveechi_website/view/home/screens/login_histroy/dropdown/drop_down_lh.dart';
 import 'package:vidyaveechi_website/view/home/screens/login_histroy/login_histroy_datalist.dart';
+import 'package:vidyaveechi_website/view/users/admin/screens/newAdminDetails/new_adminDetails.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/parents/create_parent/create_parent.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/students/student_details/widgets/category_tableHeader.dart';
 import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
@@ -35,15 +36,21 @@ class LoginHistroyContainer extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.only(left: 25, top: 25),
-                      child: SizedBox(
-                        height: 30,
-                        width: double.infinity,
-                        child: TextFontWidget(
-                          text: 'Login List',
-                          fontsize: 18,
-                          fontWeight: FontWeight.bold,
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.of(context)
+                              .push(MaterialPageRoute(builder: (context) => NewAdminListPage()));
+                        },
+                        child: SizedBox(
+                          height: 30,
+                          width: double.infinity,
+                          child: TextFontWidget(
+                            text: 'Login List',
+                            fontsize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),

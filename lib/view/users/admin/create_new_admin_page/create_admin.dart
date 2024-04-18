@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
+import 'package:vidyaveechi_website/view/users/admin/screens/newAdminDetails/new_adminDetails.dart';
 
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 
@@ -16,16 +17,15 @@ class CreateAdmin extends StatelessWidget {
       Text(
         "Create A New Admin",
         style: TextStyle(
-            fontSize: ResponsiveWebSite.isMobile(context) ? 15 : 17,
-            fontWeight: FontWeight.bold),
-      ), //////////////////////..............0
+            fontSize: ResponsiveWebSite.isMobile(context) ? 15 : 17, fontWeight: FontWeight.bold),
+      ),
+      //////////////////////..............0
       Container(
         width: ResponsiveWebSite.isMobile(context) ? 80 : 150,
         child: Text(
           "Admin Name",
           style: TextStyle(
-              fontSize: ResponsiveWebSite.isMobile(context) ? 13 : 15,
-              fontWeight: FontWeight.bold),
+              fontSize: ResponsiveWebSite.isMobile(context) ? 13 : 15, fontWeight: FontWeight.bold),
         ),
       ), ////////////////////..................1
       Container(
@@ -205,28 +205,50 @@ class CreateAdmin extends StatelessWidget {
           ),
         ),
       ), ///////////////////......................12
-      ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: const Color.fromARGB(255, 30, 4, 202),
-        ),
-        onPressed: () {
-          // Validate returns true if the form is valid, or false otherwise.
-          if (_formKey.currentState!.validate()) {
-            // If the form is valid, display a snackbar. In the real world,
-            // you'd often call a server or save the information in a database.
-            // ScaffoldMessenger.of(context).showSnackBar(
-            //   const SnackBar(content: Text('Processing Data')),
-            // );
-          }
-        },
-        child: Text(
-          'Submit',
-          style: TextStyle(
-              fontSize: ResponsiveWebSite.isMobile(context) ? 13 : 15,
-              fontWeight: FontWeight.bold,
-              color: cWhite),
-        ),
-      ), ///////////////////////////......................13
+      Row(
+        children: [
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color.fromARGB(255, 30, 4, 202),
+            ),
+            onPressed: () {
+              // Validate returns true if the form is valid, or false otherwise.
+              if (_formKey.currentState!.validate()) {
+                // If the form is valid, display a snackbar. In the real world,
+                // you'd often call a server or save the information in a database.
+                // ScaffoldMessenger.of(context).showSnackBar(
+                //   const SnackBar(content: Text('Processing Data')),
+                // );
+              }
+            },
+            child: Text(
+              'Submit',
+              style: TextStyle(
+                  fontSize: ResponsiveWebSite.isMobile(context) ? 13 : 15,
+                  fontWeight: FontWeight.bold,
+                  color: cWhite),
+            ),
+          ),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color.fromARGB(255, 30, 4, 202),
+            ),
+            onPressed: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => NewAdminListPage()));
+            },
+            child: Text(
+              'AdminDetails',
+              style: TextStyle(
+                  fontSize: ResponsiveWebSite.isMobile(context) ? 13 : 15,
+                  fontWeight: FontWeight.bold,
+                  color: cWhite),
+            ),
+          )
+        ],
+      ),
+
+      ///////////////////////////......................13
     ];
     return SingleChildScrollView(
       child: ResponsiveWebSite.isMobile(context)
@@ -259,17 +281,13 @@ class CreateAdmin extends StatelessWidget {
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.only(
-                                        top: 20,
-                                        bottom: 20,
-                                        left: 20,
-                                        right: 10),
+                                        top: 20, bottom: 20, left: 20, right: 10),
                                     child: adminListWidgets[
                                         1], /////////////////.....................admin name
                                   ),
                                   Expanded(
                                     child: Padding(
-                                        padding:
-                                            const EdgeInsets.only(right: 10),
+                                        padding: const EdgeInsets.only(right: 10),
                                         child: adminListWidgets[
                                             2] ///////////////////...............enter name
                                         ),
@@ -291,12 +309,8 @@ class CreateAdmin extends StatelessWidget {
                               children: [
                                 Padding(
                                     padding: const EdgeInsets.only(
-                                        top: 20,
-                                        bottom: 20,
-                                        left: 20,
-                                        right: 10),
-                                    child: adminListWidgets[
-                                        3] ////////////////admin email
+                                        top: 20, bottom: 20, left: 20, right: 10),
+                                    child: adminListWidgets[3] ////////////////admin email
                                     ),
                                 Expanded(
                                   child: Padding(
@@ -321,12 +335,8 @@ class CreateAdmin extends StatelessWidget {
                               children: [
                                 Padding(
                                     padding: const EdgeInsets.only(
-                                        top: 20,
-                                        bottom: 20,
-                                        left: 20,
-                                        right: 10),
-                                    child: adminListWidgets[
-                                        5] ////////////////............Gender
+                                        top: 20, bottom: 20, left: 20, right: 10),
+                                    child: adminListWidgets[5] ////////////////............Gender
                                     ),
                                 Expanded(
                                   child: Padding(
@@ -355,10 +365,7 @@ class CreateAdmin extends StatelessWidget {
                               children: [
                                 Padding(
                                     padding: const EdgeInsets.only(
-                                        top: 20,
-                                        bottom: 20,
-                                        left: 20,
-                                        right: 10),
+                                        top: 20, bottom: 20, left: 20, right: 10),
                                     child: adminListWidgets[
                                         7] /////////////////////....................Phone Number
                                     ),
@@ -385,10 +392,7 @@ class CreateAdmin extends StatelessWidget {
                               children: [
                                 Padding(
                                     padding: const EdgeInsets.only(
-                                        top: 20,
-                                        bottom: 20,
-                                        left: 20,
-                                        right: 10),
+                                        top: 20, bottom: 20, left: 20, right: 10),
                                     child: adminListWidgets[
                                         9] ////////////////////////.....................Admin Password
                                     ),
@@ -417,17 +421,13 @@ class CreateAdmin extends StatelessWidget {
                                 children: [
                                   Padding(
                                       padding: const EdgeInsets.only(
-                                          top: 20,
-                                          bottom: 20,
-                                          left: 20,
-                                          right: 10),
+                                          top: 20, bottom: 20, left: 20, right: 10),
                                       child: adminListWidgets[
                                           11] ///////////////...............confirm password
                                       ),
                                   Expanded(
                                     child: Padding(
-                                        padding:
-                                            const EdgeInsets.only(right: 10),
+                                        padding: const EdgeInsets.only(right: 10),
                                         child: adminListWidgets[
                                             12] ///////////////////////.................Enter Confirm Password
                                         ),
@@ -440,8 +440,7 @@ class CreateAdmin extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                        padding: const EdgeInsets.only(
-                            left: 25, bottom: 15, top: 15),
+                        padding: const EdgeInsets.only(left: 25, bottom: 15, top: 15),
                         child: adminListWidgets[
                             13] ///////////////////////.................submit button
                         ),
@@ -464,8 +463,7 @@ class CreateAdmin extends StatelessWidget {
                             height: 58,
                             color: screenContainerbackgroundColor,
                             child: Padding(
-                                padding:
-                                    const EdgeInsets.only(top: 30, left: 40),
+                                padding: const EdgeInsets.only(top: 30, left: 40),
                                 child: adminListWidgets[
                                     0] ///////////////////..........................Create New Admin
                                 )),
@@ -484,10 +482,7 @@ class CreateAdmin extends StatelessWidget {
                                   children: [
                                     Padding(
                                       padding: const EdgeInsets.only(
-                                          top: 20,
-                                          bottom: 20,
-                                          left: 30,
-                                          right: 30),
+                                          top: 20, bottom: 20, left: 30, right: 30),
                                       child: adminListWidgets[
                                           1], //////////////////////////..............admin name
                                     ),
@@ -514,12 +509,8 @@ class CreateAdmin extends StatelessWidget {
                                 children: [
                                   Padding(
                                       padding: const EdgeInsets.only(
-                                          top: 20,
-                                          bottom: 20,
-                                          left: 30,
-                                          right: 30),
-                                      child: adminListWidgets[
-                                          3] ////////////////admin email
+                                          top: 20, bottom: 20, left: 30, right: 30),
+                                      child: adminListWidgets[3] ////////////////admin email
                                       ),
                                   Expanded(
                                       flex: 1,
@@ -543,10 +534,7 @@ class CreateAdmin extends StatelessWidget {
                                 children: [
                                   Padding(
                                       padding: const EdgeInsets.only(
-                                          top: 20,
-                                          bottom: 20,
-                                          left: 30,
-                                          right: 30),
+                                          top: 20, bottom: 20, left: 30, right: 30),
                                       child: adminListWidgets[
                                           5] ///////////////////................Gender
                                       ),
@@ -572,10 +560,7 @@ class CreateAdmin extends StatelessWidget {
                                 children: [
                                   Padding(
                                       padding: const EdgeInsets.only(
-                                          top: 20,
-                                          bottom: 20,
-                                          left: 30,
-                                          right: 30),
+                                          top: 20, bottom: 20, left: 30, right: 30),
                                       child: adminListWidgets[
                                           7] //////////////////................Phone Number
                                       ),
@@ -601,10 +586,7 @@ class CreateAdmin extends StatelessWidget {
                                 children: [
                                   Padding(
                                       padding: const EdgeInsets.only(
-                                          top: 20,
-                                          bottom: 20,
-                                          left: 30,
-                                          right: 30),
+                                          top: 20, bottom: 20, left: 30, right: 30),
                                       child: adminListWidgets[
                                           9] ////////////////////..................Admin Password
                                       ),
@@ -632,10 +614,7 @@ class CreateAdmin extends StatelessWidget {
                                   children: [
                                     Padding(
                                         padding: const EdgeInsets.only(
-                                            top: 20,
-                                            bottom: 20,
-                                            left: 30,
-                                            right: 30),
+                                            top: 20, bottom: 20, left: 30, right: 30),
                                         child: adminListWidgets[
                                             11] ///////////////.............Confirm Password
                                         ),
@@ -653,8 +632,7 @@ class CreateAdmin extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                          padding: const EdgeInsets.only(
-                              left: 40, bottom: 25, top: 25),
+                          padding: const EdgeInsets.only(left: 40, bottom: 25, top: 25),
                           child: adminListWidgets[
                               13] ///////////////////////....................submit button
                           ),
