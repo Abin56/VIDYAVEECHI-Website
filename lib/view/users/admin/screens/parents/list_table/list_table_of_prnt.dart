@@ -59,7 +59,7 @@ class AllParentsDataList extends StatelessWidget {
                     ),
                   ),
                 ),
-                const Expanded(
+                 Expanded(
                   child: TextFontWidget(
                     text: "  Reshma Suresh",
                     fontsize: 12,

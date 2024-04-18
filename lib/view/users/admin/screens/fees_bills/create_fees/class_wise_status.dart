@@ -28,7 +28,7 @@ class ClassWiseFeesStatus extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Padding(
+           Padding(
               padding: EdgeInsets.only(left: 25, top: 25),
               child: TextFontWidget(
                 text: 'Fee Details',
@@ -284,7 +284,7 @@ class ClassWiseFeesDataListContainer extends StatelessWidget {
                           'webassets/png/not_active.png',
                         ),
                       ),
-                      const TextFontWidget(
+                       TextFontWidget(
                         text: " Pending",
                         fontsize: 12,
                         overflow: TextOverflow.ellipsis,
@@ -304,7 +304,7 @@ class ClassWiseFeesDataListContainer extends StatelessWidget {
                               size: 20,
                             )),
                       ),
-                      const TextFontWidget(
+                       TextFontWidget(
                         text: 'Paid?',
                         fontsize: 12,
                         color: cgreen,
@@ -321,7 +321,7 @@ class ClassWiseFeesDataListContainer extends StatelessWidget {
                           'webassets/png/active.png',
                         ),
                       ),
-                      const TextFontWidget(
+                       TextFontWidget(
                         text: " Full Paid",
                         fontsize: 12,
                         overflow: TextOverflow.ellipsis,
@@ -341,7 +341,7 @@ class ClassWiseFeesDataListContainer extends StatelessWidget {
                               size: 20,
                             )),
                       ),
-                      const TextFontWidget(
+                      TextFontWidget(
                         text: 'Not Paid?',
                         fontsize: 12,
                         color: cgreen,
@@ -421,7 +421,7 @@ class StudentFeesEditWidget extends StatelessWidget {
               height: 35,
               decoration: BoxDecoration(
                   border: Border.all(color: cBlack.withOpacity(0.2))),
-              child: const Center(
+              child:  Center(
                 child: TextFontWidget(
                   text: '✔️',
                   fontsize: 12,
@@ -448,7 +448,7 @@ class StudentFeesEditWidget extends StatelessWidget {
               height: 35,
               decoration: BoxDecoration(
                   border: Border.all(color: cBlack.withOpacity(0.2))),
-              child: const Center(
+              child:  Center(
                 child: TextFontWidget(
                   text: '✖️',
                   fontsize: 12,

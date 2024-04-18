@@ -31,7 +31,7 @@ adminProfileshowlist(BuildContext context) {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Row(
+                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     BackButton(),
@@ -101,7 +101,7 @@ adminProfileshowlist(BuildContext context) {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Row(
+               Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     BackButton(),
@@ -235,7 +235,7 @@ class AdminProfileEdit extends StatelessWidget {
               controller: profileCtr.phoneController, hintText: 'phone no.', title: 'phone no.'),
           TextFormFiledBlueContainerWidgetWithOutColor(
               controller: profileCtr.emailController, hintText: 'Email', title: 'Email'),
-          const TextFontWidget(text: 'Gender *', fontsize: 12.5),
+           TextFontWidget(text: 'Gender *', fontsize: 12.5),
           const SizedBox(height: 5),
           Container(
             color: screenContainerbackgroundColor,

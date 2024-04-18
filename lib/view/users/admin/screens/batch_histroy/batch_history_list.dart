@@ -20,9 +20,9 @@ class BatchHistroyListPage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
-            padding: const EdgeInsets.only(left: 30, top: 30, bottom: 30,),
-            child: const TextFontWidget(
+           Padding(
+            padding:  EdgeInsets.only(left: 30, top: 30, bottom: 30,),
+            child: TextFontWidget(
               text: 'List Of Batches',
               fontsize: 18,
               fontWeight: FontWeight.bold,

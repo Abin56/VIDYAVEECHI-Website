@@ -123,7 +123,7 @@ class AllClassListViewContainer extends StatelessWidget {
                               flex: 1,
                               child: Container(
                                 color: Colors.green.withOpacity(0.2),
-                                child: const Column(
+                                child: Column(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceAround,
                                   children: [
@@ -160,7 +160,7 @@ class AllClassListViewContainer extends StatelessWidget {
                                   builder: (context, attendeceSnaps) {
                                     return Container(
                                       color: Colors.red.withOpacity(0.2),
-                                      child: const Column(
+                                      child: Column(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceAround,
                                         children: [
@@ -182,7 +182,7 @@ class AllClassListViewContainer extends StatelessWidget {
                               flex: 1,
                               child: Container(
                                 color: Colors.blue.withOpacity(0.4),
-                                child: const Column(
+                                child:  Column(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceAround,
                                   children: [
@@ -255,7 +255,7 @@ class AllClassListViewContainer extends StatelessWidget {
                 },
                 itemCount: snaps.data!.docs.length);
           } else if (snaps.data == null) {
-            return const Center(
+            return Center(
               child:
                   TextFontWidget(text: 'Please take attendence', fontsize: 12),
             );

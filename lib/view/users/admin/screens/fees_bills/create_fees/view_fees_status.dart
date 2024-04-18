@@ -55,7 +55,7 @@ class CreatedFeesStatus extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const TextFontWidget(
+                               TextFontWidget(
                                   text: 'Month *', fontsize: 12.5),
                               const SizedBox(
                                 height: 05,
@@ -77,7 +77,7 @@ class CreatedFeesStatus extends StatelessWidget {
                             colorindex: 0,
                             height: 40,
                             width: 180,
-                            child: const Center(
+                            child:  Center(
                               child: TextFontWidget(
                                 text: 'Create Fee',
                                 fontsize: 14,

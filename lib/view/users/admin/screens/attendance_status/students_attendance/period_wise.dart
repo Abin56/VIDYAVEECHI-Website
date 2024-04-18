@@ -43,7 +43,7 @@ class PeriodWiseStudentsAttendance extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      const Padding(
+                      Padding(
                         padding: EdgeInsets.only(left: 20, top: 20),
                         child: TextFontWidget(
                           text: 'All Students Attendance ',
@@ -64,7 +64,7 @@ class PeriodWiseStudentsAttendance extends StatelessWidget {
                               colorindex: 0,
                               height: 40,
                               width: 180,
-                              child: const Center(
+                              child:  Center(
                                 child: TextFontWidget(
                                   text: 'Add Attendance ',
                                   fontsize: 14,
@@ -83,7 +83,7 @@ class PeriodWiseStudentsAttendance extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const TextFontWidget(
+                                 TextFontWidget(
                                     text: "Select Class *", fontsize: 12),
                                 SizedBox(
                                     height: 40, child: SelectClassDropDown()),
@@ -200,7 +200,7 @@ class PeriodWiseStudentsAttendance extends StatelessWidget {
                                                                 CrossAxisAlignment
                                                                     .start,
                                                             children: [
-                                                              const TextFontWidget(
+                                                               TextFontWidget(
                                                                   text:
                                                                       'Month *',
                                                                   fontsize:
@@ -235,7 +235,7 @@ class PeriodWiseStudentsAttendance extends StatelessWidget {
                                                                 CrossAxisAlignment
                                                                     .start,
                                                             children: [
-                                                              const TextFontWidget(
+                                                               TextFontWidget(
                                                                   text:
                                                                       'Date *',
                                                                   fontsize:
@@ -354,7 +354,7 @@ class PeriodWiseStudentsAttendance extends StatelessWidget {
                                   ),
                                 );
                               } else if (snaps.data == null) {
-                                return const Center(
+                                return Center(
                                   child: TextFontWidget(
                                       text: "No recordes found", fontsize: 16),
                                 );

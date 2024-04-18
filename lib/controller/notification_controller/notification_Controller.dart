@@ -19,7 +19,7 @@ class NotificationController extends GetxController {
   TextEditingController messageController = TextEditingController();
   List<UserDeviceIDModel> selectedUSerUIDList = [];
   Rx<ButtonState> buttonstate = ButtonState.idle.obs;
-
+ final formKey = GlobalKey<FormState>();
   RxBool ontapClassWiseSender = false.obs;
   RxBool selectStudent = false.obs;
   RxBool selectParent = false.obs;

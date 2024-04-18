@@ -113,7 +113,7 @@ class RegistrationController extends GetxController {
         context: context,
         title: "Alert",
         children: [
-          const TextFontWidget(
+           TextFontWidget(
               text: "Do you want remove this student now?", fontsize: 12)
         ],
         actiononTapfuction: () async {

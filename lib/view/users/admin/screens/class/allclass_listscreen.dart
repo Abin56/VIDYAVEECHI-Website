@@ -37,7 +37,7 @@ class AllClassListView extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const SizedBox(
+                       SizedBox(
                         height: 40,
                         width: double.infinity,
                         child: TextFontWidget(
@@ -63,7 +63,7 @@ class AllClassListView extends StatelessWidget {
                                 colorindex: 0,
                                 height: 40,
                                 width: 180,
-                                child: const Center(
+                                child: Center(
                                   child: TextFontWidget(
                                     text: 'Create / EDIT',
                                     fontsize: 14,
@@ -134,7 +134,7 @@ class AllClassListView extends StatelessWidget {
                               builder: (context, snaps) {
                                 if (snaps.hasData) {
                                   if (snaps.data!.docs.isEmpty) {
-                                    return const Center(
+                                    return  Center(
                                       child: TextFontWidget(
                                           text:
                                               "No class found add new classes",

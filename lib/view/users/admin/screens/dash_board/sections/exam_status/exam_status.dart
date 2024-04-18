@@ -19,7 +19,7 @@ class ExamStatusContainer extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
+           Padding(
             padding: EdgeInsets.only(top: 10, left: 20, bottom: 05),
             child: TextFontWidget(
               text: "Exam Results Analyser",

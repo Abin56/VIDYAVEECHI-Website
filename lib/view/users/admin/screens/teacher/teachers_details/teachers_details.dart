@@ -33,7 +33,7 @@ class TeachersDetailsContainer extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Padding(
+               Padding(
                 padding: EdgeInsets.only(left: 25, top: 25),
                 child: TextFontWidget(
                   text: 'Teacher Details',

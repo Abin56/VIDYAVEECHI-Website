@@ -290,6 +290,7 @@ class DisplayingText extends StatelessWidget {
   final Widget? widget;
   final double? width;
   final String text;
+  String? Function(String?)? validator;
   final Style;
   TextInputType? keyboardType;
   DisplayingText({
@@ -298,6 +299,7 @@ class DisplayingText extends StatelessWidget {
     required this.title,
     required this.text,
     this.Style,
+    this.validator,
     super.key,
   });
 

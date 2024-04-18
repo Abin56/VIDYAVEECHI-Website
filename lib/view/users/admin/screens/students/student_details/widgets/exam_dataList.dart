@@ -127,7 +127,7 @@ class ExameDataListContainer extends StatelessWidget {
                     height: double.infinity,
                     color: cgreen,
                     child: Center(
-                      child: const TextFontWidget(
+                      child:  TextFontWidget(
                         text: " Pass",
                         fontsize: 12,
                         color: cWhite,
@@ -139,7 +139,7 @@ class ExameDataListContainer extends StatelessWidget {
                     height: double.infinity,
                     color: cred,
                     child: Center(
-                      child: const TextFontWidget(
+                      child:  TextFontWidget(
                         color: cWhite,
                         text: " Fail",
                         fontsize: 12,

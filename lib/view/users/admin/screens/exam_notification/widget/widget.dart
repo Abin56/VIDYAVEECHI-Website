@@ -58,11 +58,11 @@ class ExamTimeTableAddWidget extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const TextFontWidget(
+                              TextFontWidget(
                                   text: 'Select Class *', fontsize: 12.5),
                               SelectClassDropDown(),
                               sh10,
-                              const TextFontWidget(
+                               TextFontWidget(
                                   text: 'Select Subject *', fontsize: 12.5),
                               SelectClassWiseSubjectDropDown(),
                               sh10,
@@ -204,7 +204,7 @@ class ExamTimeTableAddWidget extends StatelessWidget {
                                       color: cWhite.withOpacity(0.2))),
                               height: 40,
                               width: double.infinity,
-                              child: const Center(
+                              child: Center(
                                 child: TextFontWidget(
                                   text: 'Time Table List',
                                   fontsize: 16,
@@ -233,12 +233,12 @@ class ExamTimeTableAddWidget extends StatelessWidget {
                                         return const Center(
                                             child: CircularProgressIndicator());
                                       } else if (snapshot.data!.docs.isEmpty) {
-                                        return const Center(
+                                        return  Center(
                                           child: TextFontWidget(
                                               text: "No data", fontsize: 16),
                                         );
                                       } else if (!snapshot.hasData) {
-                                        return const Center(
+                                        return Center(
                                           child: TextFontWidget(
                                               text: "Please select class",
                                               fontsize: 16),
@@ -299,7 +299,7 @@ class ExamTimeTableAddWidget extends StatelessWidget {
                                                             );
                                                           },
                                                           child:
-                                                              const TextFontWidget(
+                                                               TextFontWidget(
                                                             text: "Edit",
                                                             fontsize: 16,
                                                           )),
@@ -319,7 +319,7 @@ class ExamTimeTableAddWidget extends StatelessWidget {
                                                                 });
                                                           },
                                                           child:
-                                                              const TextFontWidget(
+                                                               TextFontWidget(
                                                             text: " Delete",
                                                             fontsize: 16,
                                                           )),
@@ -395,7 +395,7 @@ class EditExamTimeTableAddWidget extends StatelessWidget {
                   width: double.infinity,
                   height: 60,
                   color: screenContainerbackgroundColor,
-                  child: const Center(
+                  child: Center(
                     child:
                         TextFontWidget(text: 'Edit Time Table', fontsize: 25),
                   ),

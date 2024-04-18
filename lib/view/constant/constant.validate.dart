@@ -168,7 +168,7 @@ showDialogWidget(
         title: TextFontWidget(text: title, fontsize: 16),
         actions: [
           TextButton(
-            child: const TextFontWidget(
+            child: TextFontWidget(
               text: 'No',
               fontsize: 16,
             ),
@@ -177,7 +177,7 @@ showDialogWidget(
             },
           ),
           TextButton(
-            child: const TextFontWidget(
+            child: TextFontWidget(
               text: 'Yes',
               fontsize: 16,
             ),

@@ -18,7 +18,7 @@ academicYearSettingFunction(BuildContext context) {
             color: themeColorBlue,
             border: Border.all(color: themeColorBlue),
             borderRadius: BorderRadius.circular(05)),
-        child: const Center(
+        child:  Center(
           child: TextFontWidget(
             text: "Add Academic Year",
             fontsize: 14,
@@ -39,7 +39,7 @@ academicYearSettingFunction(BuildContext context) {
             color: themeColorBlue,
             border: Border.all(color: themeColorBlue),
             borderRadius: BorderRadius.circular(05)),
-        child: const Center(
+        child: Center(
           child: TextFontWidget(
             text: "Set Academic Year",
             fontsize: 14,
@@ -60,7 +60,7 @@ academicYearSettingFunction(BuildContext context) {
             color: themeColorBlue,
             border: Border.all(color: themeColorBlue),
             borderRadius: BorderRadius.circular(05)),
-        child: const Center(
+        child:  Center(
           child: TextFontWidget(
             text: "Cancel",
             fontsize: 14,
@@ -75,7 +75,7 @@ academicYearSettingFunction(BuildContext context) {
     context: context,
     builder: (context) {
       return AlertDialog(
-        title: const TextFontWidget(text: "Change Academic Year", fontsize: 15),
+        title:  TextFontWidget(text: "Change Academic Year", fontsize: 15),
         backgroundColor: cWhite,
         content: SizedBox(
           height: ResponsiveWebSite.isMobile(context)? 220: 140,
@@ -88,7 +88,7 @@ academicYearSettingFunction(BuildContext context) {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const TextFontWidget(
+                     TextFontWidget(
                         text: 'Select Academic Year*', fontsize: 12.5),
                     const SizedBox(
                       height: 05,

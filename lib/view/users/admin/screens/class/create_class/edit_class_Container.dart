@@ -64,7 +64,7 @@ class ClassNameEditWidget extends StatelessWidget {
               height: 35,
               decoration: BoxDecoration(
                   border: Border.all(color: cBlack.withOpacity(0.2))),
-              child: const Center(
+              child: Center(
                 child: TextFontWidget(
                   text: '✔️',
                   fontsize: 12,
@@ -92,7 +92,7 @@ class ClassNameEditWidget extends StatelessWidget {
               height: 35,
               decoration: BoxDecoration(
                   border: Border.all(color: cBlack.withOpacity(0.2))),
-              child: const Center(
+              child: Center(
                 child: TextFontWidget(
                   text: '✖️',
                   fontsize: 12,
@@ -168,7 +168,7 @@ class FeesEditWidget extends StatelessWidget {
               height: 35,
               decoration: BoxDecoration(
                   border: Border.all(color: cBlack.withOpacity(0.2))),
-              child: const Center(
+              child: Center(
                 child: TextFontWidget(
                   text: '✔️',
                   fontsize: 12,
@@ -196,7 +196,7 @@ class FeesEditWidget extends StatelessWidget {
               height: 35,
               decoration: BoxDecoration(
                   border: Border.all(color: cBlack.withOpacity(0.2))),
-              child: const Center(
+              child: Center(
                 child: TextFontWidget(
                   text: '✖️',
                   fontsize: 12,

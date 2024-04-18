@@ -184,7 +184,7 @@ class AllMeetingsDataList extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const TextFontWidget(
+                   TextFontWidget(
                      text: "  Update",
                      fontsize: 12,
                      overflow: TextOverflow.ellipsis,
@@ -212,7 +212,7 @@ class AllMeetingsDataList extends StatelessWidget {
                       'webassets/png/active.png',
                     ),
                   ),
-                  const TextFontWidget(
+                 TextFontWidget(
                     text: "  Delete",
                     fontsize: 12,
                     overflow: TextOverflow.ellipsis,

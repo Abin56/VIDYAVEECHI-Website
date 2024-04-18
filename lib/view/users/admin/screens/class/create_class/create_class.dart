@@ -27,7 +27,7 @@ createClassFunction(BuildContext context) {
       // t
       body: Column(
         children: [
-          const Row(
+           Row(
             children: [
               BackButton(),
               Padding(
@@ -84,7 +84,7 @@ createClassFunction(BuildContext context) {
                   builder: (context, snap) {
                     if (snap.hasData) {
                       if (snap.data!.docs.isEmpty) {
-                        return const Center(
+                        return  Center(
                           child: TextFontWidget(
                               text: "No class found add new classes",
                               fontsize: 12.5),

@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
+import 'package:vidyaveechi_website/view/constantvalidate.dart';
 
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 
@@ -32,7 +33,8 @@ class CreateAdmin extends StatelessWidget {
         height: 35,
         width: ResponsiveWebSite.isMobile(context) ? 80 : 150,
         child: TextFormField(
-          autovalidateMode: AutovalidateMode.always,
+          validator: checkFieldEmpty,
+          // autovalidateMode: AutovalidateMode.always,
           // validator: (value) {
           //   if (value == null || value.isEmpty) {
           //     return 'Please enter some text';
@@ -65,7 +67,8 @@ class CreateAdmin extends StatelessWidget {
         height: 35,
         color: screenContainerbackgroundColor,
         child: TextFormField(
-          autovalidateMode: AutovalidateMode.always,
+          // autovalidateMode: AutovalidateMode.always,
+          validator: checkFieldEmpty,
           // validator: (value) {
           //   if (value == null || value.isEmpty) {
           //     return 'Please enter some text';
@@ -101,6 +104,7 @@ class CreateAdmin extends StatelessWidget {
             height: 35,
             color: screenContainerbackgroundColor,
             child: DropdownSearch(
+              validator: checkFieldEmpty,
               //   validator: (value) {
               //           if (value == null || value.isEmpty) {
               // return 'Please enter some text';
@@ -136,6 +140,7 @@ class CreateAdmin extends StatelessWidget {
         height: 35,
         color: screenContainerbackgroundColor,
         child: TextFormField(
+          validator: checkFieldEmpty,
           //   autovalidateMode: AutovalidateMode.always,
           //   validator: (value) {
           //   if (value == null || value.isEmpty) {
@@ -169,6 +174,7 @@ class CreateAdmin extends StatelessWidget {
         height: 35,
         color: screenContainerbackgroundColor,
         child: TextFormField(
+          validator: checkFieldEmpty,
           style: const TextStyle(fontSize: 14),
           decoration: const InputDecoration(
             prefixIcon: Icon(
@@ -193,6 +199,7 @@ class CreateAdmin extends StatelessWidget {
         height: 35,
         color: screenContainerbackgroundColor,
         child: TextFormField(
+          validator: checkFieldEmpty,
           style: const TextStyle(fontSize: 14),
           decoration: const InputDecoration(
             prefixIcon: Icon(
@@ -222,6 +229,7 @@ class CreateAdmin extends StatelessWidget {
         child: Text(
           'Submit',
           style: TextStyle(
+            
               fontSize: ResponsiveWebSite.isMobile(context) ? 13 : 15,
               fontWeight: FontWeight.bold,
               color: cWhite),

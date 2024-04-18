@@ -39,7 +39,7 @@ class TeacherAttendanceList extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    const Padding(
+                   Padding(
                       padding: EdgeInsets.only(left: 20, top: 20),
                       child: TextFontWidget(
                         text: 'All Teachers Attendance ',
@@ -59,7 +59,7 @@ class TeacherAttendanceList extends StatelessWidget {
                                 colorindex: 0,
                                 height: 40,
                                 width: 180,
-                                child: const Center(
+                                child:  Center(
                                   child: TextFontWidget(
                                     text: 'Add Attendance ',
                                     fontsize: 14,
@@ -187,7 +187,7 @@ class TeacherAttendanceList extends StatelessWidget {
                                                         child: Column(
                                                           crossAxisAlignment: CrossAxisAlignment.start,
                                                           children: [
-                                                            const TextFontWidget(
+                                                             TextFontWidget(
                                                                 text: 'Month *',
                                                                 fontsize: 12.5),
                                                             const SizedBox(
@@ -210,7 +210,7 @@ class TeacherAttendanceList extends StatelessWidget {
                                                         child: Column(
                                                           crossAxisAlignment:  CrossAxisAlignment .start,
                                                           children: [
-                                                            const TextFontWidget(
+                                                             TextFontWidget(
                                                                 text: 'Date *',
                                                                 fontsize: 12.5),
                                                             const SizedBox(

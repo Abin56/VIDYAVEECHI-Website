@@ -40,7 +40,7 @@ class AttendanceAddingList extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 20, left: 10),
                 child: Row(
                   children: [
-                    const SizedBox(
+                     SizedBox(
                       height: 60,
                       width: 250,
                       child: TextFontWidget(
@@ -107,7 +107,7 @@ class AttendanceAddingList extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const TextFontWidget(text: "Select Class *", fontsize: 12),
+                             TextFontWidget(text: "Select Class *", fontsize: 12),
                             SizedBox(height: 40, child: SelectClassDropDown()),
                           ],
                         ),
@@ -122,7 +122,7 @@ class AttendanceAddingList extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const TextFontWidget(text: "Select Period *", fontsize: 12),
+                               TextFontWidget(text: "Select Period *", fontsize: 12),
                               SizedBox(height: 40, child: SelectPeriodDropDown()),
                             ],
                           )),
@@ -207,7 +207,7 @@ class AttendanceAddingList extends StatelessWidget {
                           },
                           child: Container(
                             color: themeColorBlue,
-                            child: const Padding(
+                            child:  Padding(
                               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 3),
                               child: Row(
                                 children: [
@@ -296,7 +296,7 @@ class AttendanceAddingList extends StatelessWidget {
                                     },
                                     child: Container(
                                       decoration: const BoxDecoration(color: themeColorBlue),
-                                      child: const Padding(
+                                      child:  Padding(
                                         padding: EdgeInsets.symmetric(horizontal: 15, vertical: 2),
                                         child: Row(
                                           children: [
@@ -470,7 +470,7 @@ class AttendanceAddingDialog extends StatelessWidget {
                   width: double.infinity,
                   height: 60,
                   color: screenContainerbackgroundColor,
-                  child: const Center(
+                  child:  Center(
                     child: TextFontWidget(text: 'Add Attendance', fontsize: 25),
                   ),
                 ),
@@ -482,7 +482,7 @@ class AttendanceAddingDialog extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const TextFontWidget(text: "Select Subject *", fontsize: 12),
+                       TextFontWidget(text: "Select Subject *", fontsize: 12),
                       SizedBox(height: 40, child: SelectClassWiseSubjectDropDown()),
                     ],
                   ),

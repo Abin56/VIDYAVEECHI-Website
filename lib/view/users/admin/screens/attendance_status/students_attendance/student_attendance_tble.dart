@@ -133,7 +133,7 @@ class StudentAttendanceDataList extends StatelessWidget {
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
                                               children: [
-                                                const TextFontWidget(
+                                                TextFontWidget(
                                                   text: 'Total Students',
                                                   fontsize: 12,
                                                   fontWeight: FontWeight.w400,
@@ -145,7 +145,7 @@ class StudentAttendanceDataList extends StatelessWidget {
                                                   fontsize: 12,
                                                   fontWeight: FontWeight.w600,
                                                 ),
-                                                const TextFontWidget(
+                                                TextFontWidget(
                                                   text: 'Present Students',
                                                   fontsize: 12,
                                                   fontWeight: FontWeight.w400,
@@ -158,7 +158,7 @@ class StudentAttendanceDataList extends StatelessWidget {
                                                   fontsize: 12,
                                                   fontWeight: FontWeight.w600,
                                                 ),
-                                                const TextFontWidget(
+                                                 TextFontWidget(
                                                   text: 'Absent Students',
                                                   fontsize: 12,
                                                   fontWeight: FontWeight.w400,
@@ -376,7 +376,7 @@ class StudentAttendanceDataList extends StatelessWidget {
                             ),
                           );
                         } else if (snapshot.data == null) {
-                          return const Center(
+                          return  Center(
                             child: TextFontWidget(
                                 text: "No result found", fontsize: 12),
                           );

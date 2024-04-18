@@ -130,7 +130,7 @@ class TeachersAttendanceDataList extends StatelessWidget {
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
                                               children: [
-                                                const TextFontWidget(
+                                                 TextFontWidget(
                                                   text: 'Total Teachers',
                                                   fontsize: 12,
                                                   fontWeight: FontWeight.w400,
@@ -141,7 +141,7 @@ class TeachersAttendanceDataList extends StatelessWidget {
                                                   fontsize: 12,
                                                   fontWeight: FontWeight.w600,
                                                 ),
-                                                const TextFontWidget(
+                                                 TextFontWidget(
                                                   text: 'Present Teachers',
                                                   fontsize: 12,
                                                   fontWeight: FontWeight.w400,
@@ -154,7 +154,7 @@ class TeachersAttendanceDataList extends StatelessWidget {
                                                   fontsize: 12,
                                                   fontWeight: FontWeight.w600,
                                                 ),
-                                                const TextFontWidget(
+                                                TextFontWidget(
                                                   text: 'Absent Teachers',
                                                   fontsize: 12,
                                                   fontWeight: FontWeight.w400,

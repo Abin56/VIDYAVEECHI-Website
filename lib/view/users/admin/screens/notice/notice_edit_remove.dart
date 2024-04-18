@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:vidyaveechi_website/controller/notice_controller/notice_controller.dart';
 import 'package:vidyaveechi_website/model/notice_model/notice_model.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
+import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
 import 'package:vidyaveechi_website/view/fonts/google_poppins_widget.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/notice/notice_create.dart';
@@ -41,7 +42,7 @@ class NoticeEditRemove extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          CreateNotice(),
+          CreateNotice(),////////////////////////........................Notice Creation Page
           Expanded(
             child: StreamBuilder(
                 stream: server
@@ -99,57 +100,73 @@ class NoticeEditRemove extends StatelessWidget {
                                 child: Column(
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsets.only(left: 10,right: 10),
+                                      padding: const EdgeInsets.only(
+                                          left: 10, right: 10),
                                       child: AbsorbPointer(
                                         absorbing: true,
+                                        
                                         child: DisplayingText(
-                                            text: '  ${data.heading}',
-                                            title: "  Heading"),
+                                          validator: checkFieldEmpty,
+                                                                                    
+                                          text: '  ${data.heading}',
+                                          title: "  Heading",
+                                        ),
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.only(left: 10,right: 10),
+                                      padding: const EdgeInsets.only(
+                                          left: 10, right: 10),
                                       child: AbsorbPointer(
                                         absorbing: true,
                                         child: DisplayingText(
+                                          validator: checkFieldEmpty,
                                             text: '  ${data.subject}',
                                             title: "  Subject"),
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.only(left: 10,right: 10),
+                                      padding: const EdgeInsets.only(
+                                          left: 10, right: 10),
                                       child: AbsorbPointer(
                                         absorbing: true,
                                         child: DisplayingText(
+                                          validator: checkFieldEmpty,
                                             text: '  ${data.dateofoccation}',
                                             title: "  Date of occation"),
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.only(left: 10,right: 10),
+                                      padding: const EdgeInsets.only(
+                                          left: 10, right: 10),
                                       child: AbsorbPointer(
                                         absorbing: true,
                                         child: DisplayingText(
+                                          validator: checkFieldEmpty,
                                             text: '  ${data.venue}',
                                             title: "  Venue"),
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.only(left: 10,right: 10),
+                                      padding: const EdgeInsets.only(
+                                          left: 10, right: 10),
                                       child: AbsorbPointer(
                                         absorbing: true,
                                         child: DisplayingText(
+                                          validator: checkFieldEmpty,
                                             text: '  ${data.chiefGuest}',
                                             title: "  Chief Guest"),
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.only(left: 10,right: 10),
+                                      padding: const EdgeInsets.only(
+                                          left: 10, right: 10),
                                       child: AbsorbPointer(
                                         absorbing: true,
                                         child: DisplayingText(
+                                          validator: checkFieldEmpty,
                                             text: '  ${data.signedBy}',
-                                            title: "  Signed By"),
+                                            title: "  Signed By",
+                                            ),
                                       ),
                                     ),
                                   ],
@@ -236,34 +253,48 @@ class NoticeEditRemove extends StatelessWidget {
                                                 title: 'Edit',
                                                 children: [
                                                   TextFormFiledBlueContainerWidgetEvent(
-                                                      hintText: data.heading,
-                                                      title: 'Heading'),
+                                                    hintText: data.heading,
+                                                    title: 'Heading',
+                                                    validator: checkFieldEmpty,
+                                                  ),
                                                   TextFormFiledBlueContainerWidgetEvent(
-                                                      hintText:
-                                                          data.publishedDate,
-                                                      title: 'Published Date'),
+                                                    hintText:
+                                                        data.publishedDate,
+                                                    title: 'Published Date',
+                                                    validator: checkFieldEmpty,
+                                                  ),
                                                   TextFormFiledBlueContainerWidgetEvent(
-                                                      hintText: data.subject,
-                                                      title: 'Subject'),
+                                                    hintText: data.subject,
+                                                    title: 'Subject',
+                                                    validator: checkFieldEmpty,
+                                                  ),
                                                   TextFormFiledBlueContainerWidgetEvent(
-                                                      hintText:
-                                                          data.dateofoccation,
-                                                      title:
-                                                          'Date Of Occation'),
+                                                    hintText:
+                                                        data.dateofoccation,
+                                                    title: 'Date Of Occation',
+                                                    validator: checkFieldEmpty,
+                                                  ),
                                                   TextFormFiledBlueContainerWidgetEvent(
-                                                      hintText: data.venue,
-                                                      title: 'Venue'),
+                                                    hintText: data.venue,
+                                                    title: 'Venue',
+                                                    validator: checkFieldEmpty,
+                                                  ),
                                                   TextFormFiledBlueContainerWidgetEvent(
-                                                      hintText:
-                                                          data.dateOfSubmission,
-                                                      title:
-                                                          'Date Of Submission'),
+                                                    hintText:
+                                                        data.dateOfSubmission,
+                                                    title: 'Date Of Submission',
+                                                    validator: checkFieldEmpty,
+                                                  ),
                                                   TextFormFiledBlueContainerWidgetEvent(
-                                                      hintText: data.chiefGuest,
-                                                      title: 'Cheif guest'),
+                                                    hintText: data.chiefGuest,
+                                                    title: 'Cheif guest',
+                                                    validator: checkFieldEmpty,
+                                                  ),
                                                   TextFormFiledBlueContainerWidgetEvent(
-                                                      hintText: data.signedBy,
-                                                      title: 'Signed by'),
+                                                    hintText: data.signedBy,
+                                                    title: 'Signed by',
+                                                    validator: checkFieldEmpty,
+                                                  ),
                                                 ],
                                                 doyouwantActionButton: true,
                                                 actiononTapfuction: () {

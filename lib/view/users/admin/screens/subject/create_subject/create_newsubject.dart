@@ -25,7 +25,7 @@ class CreateSubject extends StatelessWidget {
               ? Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Padding(
+                   Padding(
                       padding: EdgeInsets.only(left: 25, top: 25),
                       child: TextFontWidget(
                         text: 'Create A New Subject',
@@ -62,7 +62,7 @@ class CreateSubject extends StatelessWidget {
                               Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const Expanded(
+                                   Expanded(
                                     flex: 1,
                                     child: Padding(
                                       padding: EdgeInsets.only(
@@ -92,7 +92,7 @@ class CreateSubject extends StatelessWidget {
                                                     color: themeColorBlue),
                                                 borderRadius:
                                                     BorderRadius.circular(05)),
-                                            child: const Center(
+                                            child:  Center(
                                               child: TextFontWidget(
                                                 text: "Add Subject",
                                                 fontsize: 14,
@@ -115,7 +115,7 @@ class CreateSubject extends StatelessWidget {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      const TextFontWidget(
+                                       TextFontWidget(
                                           text: 'Select Class *',
                                           fontsize: 12.5),
                                       const SizedBox(
@@ -146,7 +146,7 @@ class CreateSubject extends StatelessWidget {
               : Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.only(left: 25, top: 25),
                       child: TextFontWidget(
                         text: 'Create A New Subject',
@@ -199,7 +199,7 @@ class CreateSubject extends StatelessWidget {
                                   colorindex: 0,
                                   height: 40,
                                   width: 180,
-                                  child: const Center(
+                                  child:  Center(
                                     child: TextFontWidget(
                                       text: 'Create / E D I T',
                                       fontsize: 14,
@@ -220,7 +220,7 @@ class CreateSubject extends StatelessWidget {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    const TextFontWidget(
+                                     TextFontWidget(
                                         text: 'Select Class *', fontsize: 12.5),
                                     const SizedBox(
                                       height: 05,

@@ -35,7 +35,7 @@ class AllExamNotificationListView extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Padding(
+               Padding(
                 padding: EdgeInsets.only(left: 25, top: 25),
                 child: SizedBox(
                   height: 60,
@@ -65,7 +65,7 @@ class AllExamNotificationListView extends StatelessWidget {
                           colorindex: 0,
                           height: 40,
                           width: 180,
-                          child: const Center(
+                          child: Center(
                             child: TextFontWidget(
                               text: 'Create / E D I T',
                               fontsize: 14,
@@ -123,7 +123,7 @@ class AllExamNotificationListView extends StatelessWidget {
                     builder: (context, snaps) {
                       if (snaps.hasData) {
                         if (snaps.data!.docs.isEmpty) {
-                          return const Center(
+                          return  Center(
                             child: TextFontWidget(
                                 text: "No exam found, add new exams", fontsize: 12.5),
                           );

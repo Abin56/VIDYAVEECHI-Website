@@ -19,7 +19,7 @@ class ViewClassStudentScreen extends StatelessWidget {
         width: 1200,
         child: Column(
           children: [
-            const Padding(
+            Padding(
               padding: EdgeInsets.only(left: 25, top: 25),
               child: SizedBox(
                 height: 60,

@@ -33,7 +33,7 @@ editFunctionOfMeeting(BuildContext context, MeetingModel data) {
                 color: themeColorBlue,
                 border: Border.all(color: themeColorBlue),
                 borderRadius: BorderRadius.circular(05)),
-            child: const Center(
+            child:  Center(
               child: TextFontWidget(
                 text: "Update",
                 fontsize: 14,
@@ -115,7 +115,7 @@ allviewFunctionOfMeeting(BuildContext context, MeetingModel data) {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const TextFontWidget(
+                  TextFontWidget(
                     text: "   Topic",
                     fontsize: 12,
                     fontWeight: FontWeight.bold,
@@ -134,7 +134,7 @@ allviewFunctionOfMeeting(BuildContext context, MeetingModel data) {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const TextFontWidget(
+                   TextFontWidget(
                     text: "   Time",
                     fontsize: 12,
                     fontWeight: FontWeight.bold,
@@ -153,7 +153,7 @@ allviewFunctionOfMeeting(BuildContext context, MeetingModel data) {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const TextFontWidget(
+                 TextFontWidget(
                     text: "   Date",
                     fontsize: 12,
                     fontWeight: FontWeight.bold,
@@ -172,7 +172,7 @@ allviewFunctionOfMeeting(BuildContext context, MeetingModel data) {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const TextFontWidget(
+                   TextFontWidget(
                     text: "   Category",
                     fontsize: 12,
                     fontWeight: FontWeight.bold,
@@ -191,7 +191,7 @@ allviewFunctionOfMeeting(BuildContext context, MeetingModel data) {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const TextFontWidget(
+                   TextFontWidget(
                     text: "   Venue",
                     fontsize: 12,
                     fontWeight: FontWeight.bold,
@@ -210,7 +210,7 @@ allviewFunctionOfMeeting(BuildContext context, MeetingModel data) {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const TextFontWidget(
+                   TextFontWidget(
                     text: "  Expected Members",
                     fontsize: 12,
                     fontWeight: FontWeight.bold,
@@ -229,7 +229,7 @@ allviewFunctionOfMeeting(BuildContext context, MeetingModel data) {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const TextFontWidget(
+           TextFontWidget(
                     text: "   Special Guest",
                     fontsize: 12,
                     fontWeight: FontWeight.bold,

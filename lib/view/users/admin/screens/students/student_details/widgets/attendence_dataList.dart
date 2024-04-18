@@ -52,7 +52,7 @@ class AttendenceDataListContainer extends StatelessWidget {
                       decoration: BoxDecoration(
                           border: Border.all(color: cBlack.withOpacity(0.2))),
                       width: 50,
-                      child: const Center(
+                      child: Center(
                         child: TextFontWidget(
                           text: " English",
                           fontsize: 10,
@@ -117,7 +117,7 @@ class AttendenceDataListContainer extends StatelessWidget {
                     'webassets/png/active.png',
                   ),
                 ),
-                const TextFontWidget(
+                 TextFontWidget(
                   text: " Present",
                   fontsize: 12,
                   overflow: TextOverflow.ellipsis,

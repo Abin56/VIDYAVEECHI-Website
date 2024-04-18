@@ -16,7 +16,7 @@ class TotalStudentContainer extends StatelessWidget {
           color: cWhite, border: Border.all(color: cBlack.withOpacity(0.1))),
       child: Column(
         children: [
-          const Padding(
+           Padding(
             padding: EdgeInsets.only(top: 20, right: 0),
             child: TextFontWidget(
               text: "Students",

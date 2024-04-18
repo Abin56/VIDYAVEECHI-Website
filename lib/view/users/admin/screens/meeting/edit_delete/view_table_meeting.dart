@@ -31,7 +31,7 @@ class MeetingEditRemove extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Padding(
+           Padding(
               padding: EdgeInsets.only(left: 25, top: 25),
               child: TextFontWidget(
                 text: 'View All Meeting',
@@ -70,7 +70,7 @@ class MeetingEditRemove extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.all(20),
                       child: TextFontWidget(
                         text: 'Meeting ',

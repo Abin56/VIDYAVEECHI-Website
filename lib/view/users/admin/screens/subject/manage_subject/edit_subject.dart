@@ -13,7 +13,7 @@ editFunctionOfSubject(BuildContext context){
             Navigator.pop(context);
           },
           child: const Icon(Icons.arrow_back)),
-        const TextFontWidget(text: "  Edit Subject", fontsize: 15,fontWeight: FontWeight.bold,)
+         TextFontWidget(text: "  Edit Subject", fontsize: 15,fontWeight: FontWeight.bold,)
       ],),
       content: SizedBox(
         height: 120,
@@ -24,7 +24,7 @@ editFunctionOfSubject(BuildContext context){
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                     const TextFontWidget(text: ' Subject Name *', fontsize: 12.5),
+                     TextFontWidget(text: ' Subject Name *', fontsize: 12.5),
                   const SizedBox(
                     height: 05,
                   ),
@@ -55,7 +55,7 @@ editFunctionOfSubject(BuildContext context){
                   color: themeColorBlue,
                   border: Border.all(color: themeColorBlue),
                   borderRadius: BorderRadius.circular(05)),
-              child: const Center(
+              child:  Center(
                 child: TextFontWidget(
                   text: "Edit",
                   fontsize: 14,

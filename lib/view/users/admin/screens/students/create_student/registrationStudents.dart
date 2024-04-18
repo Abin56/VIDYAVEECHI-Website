@@ -38,7 +38,7 @@ class RegistrationStudentList extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Padding(
+               Padding(
                   padding: EdgeInsets.only(left: 10, top: 25, bottom: 10),
                   child: TextFontWidget(
                     text: 'Student Registation List',
@@ -73,7 +73,7 @@ class RegistrationStudentList extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const TextFontWidget(text: 'Class *', fontsize: 10),
+                           TextFontWidget(text: 'Class *', fontsize: 10),
                           const SizedBox(
                             height: 05,
                           ),

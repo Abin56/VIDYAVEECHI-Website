@@ -291,8 +291,7 @@ class VidhyaVeechiHomePageResponsive extends StatelessWidget {
                                 width: 130,
                                 child: ElevatedButton(
                                   style: ElevatedButton.styleFrom(
-                                    backgroundColor:
-                                        const Color.fromARGB(255, 75, 131, 252),
+                                    backgroundColor: const Color.fromARGB(255, 102, 206, 169),
                                     // backgroundColor: const Color.fromARGB(255, 102, 206, 169),
                                   ),
                                   onPressed: () {

@@ -20,7 +20,7 @@ class MeetingCreatingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Widget> meetingListWidget = [
-      const TextFontWidget(
+       TextFontWidget(
         text: "SCHEDULE MEETING",
         fontsize: 19,
         fontWeight: FontWeight.bold,
@@ -106,7 +106,7 @@ class MeetingCreatingPage extends StatelessWidget {
           width: 120,
           decoration: const BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(8)), color: themeColorBlue),
-          child: const Center(
+          child:Center(
               child: TextFontWidget(
             text: "Submit",
             fontsize: 15,
@@ -155,7 +155,7 @@ class MeetingCreatingPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Padding(
+                     Padding(
                       padding: EdgeInsets.only(left: 25, top: 25),
                       child: TextFontWidget(
                         text: "Meeting",
@@ -196,7 +196,7 @@ class MeetingCreatingPage extends StatelessWidget {
                                       colorindex: 0,
                                       height: 35,
                                       width: 150,
-                                      child: const Center(
+                                      child:  Center(
                                         child: TextFontWidget(
                                           text: 'View All Meetings',
                                           fontsize: 12,

@@ -86,7 +86,7 @@ class ExamResultDataListContainer extends StatelessWidget {
                         index % 2 == 0 ? const Color.fromARGB(255, 246, 246, 246) : Colors.blue[50],
                   ),
                   alignment: Alignment.centerLeft,
-                  child: const Padding(
+                  child:  Padding(
                     padding: EdgeInsets.only(left: 20),
                     child: TextFontWidget(text: "Name Of Student", fontsize: 13),
                   )),
@@ -116,7 +116,7 @@ class ExamResultDataListContainer extends StatelessWidget {
                               height: 25,
                               color: themeColorBlue,
                               alignment: Alignment.center,
-                              child: const TextFontWidget(
+                              child: TextFontWidget(
                                 text: "Subject",
                                 fontsize: 13,
                                 color: cWhite,
@@ -129,7 +129,7 @@ class ExamResultDataListContainer extends StatelessWidget {
                               height: 25,
                               color: themeColorBlue,
                               alignment: Alignment.center,
-                              child: const TextFontWidget(
+                              child:  TextFontWidget(
                                 text: "Optained Marks",
                                 fontsize: 13,
                                 color: cWhite,
@@ -142,7 +142,7 @@ class ExamResultDataListContainer extends StatelessWidget {
                               height: 25,
                               color: themeColorBlue,
                               alignment: Alignment.center,
-                              child: const TextFontWidget(
+                              child:  TextFontWidget(
                                 text: "Total Marks",
                                 fontsize: 13,
                                 color: cWhite,
@@ -155,7 +155,7 @@ class ExamResultDataListContainer extends StatelessWidget {
                               height: 25,
                               color: themeColorBlue,
                               alignment: Alignment.center,
-                              child: const TextFontWidget(
+                              child:TextFontWidget(
                                 text: "Percentage",
                                 fontsize: 13,
                                 color: cWhite,
@@ -168,7 +168,7 @@ class ExamResultDataListContainer extends StatelessWidget {
                               height: 25,
                               color: themeColorBlue,
                               alignment: Alignment.center,
-                              child: const TextFontWidget(
+                              child:  TextFontWidget(
                                 text: "Status",
                                 fontsize: 13,
                                 color: cWhite,
