@@ -63,7 +63,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                             SizedBox(
                               height: 60,
                               child: Image.asset(
-                                'webassets/images/vidyaveechi_website_logo.png',
+                                'webassets/images/vidyaveechi_logo.png',
                                 fit: BoxFit.fill,
                               ),
                             ),

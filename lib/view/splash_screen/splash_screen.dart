@@ -73,7 +73,7 @@ class SplashScreen extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                       GoogleMonstserratWidgets(
-                        text: ' vidyaveechi_website',
+                        text: ' vidyaveechi',
                         fontsize: 25,
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
