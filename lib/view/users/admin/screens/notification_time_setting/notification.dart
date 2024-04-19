@@ -96,7 +96,7 @@ notificationFunction( BuildContext context){
                       border: Border.all(color: themeColorBlue),
                       borderRadius: BorderRadius.circular(05)),
                   child: const Center(
-                    child: TextFontWidget(
+                    child: TextFontWidgetRouter(
                       text: "Set",
                       fontsize: 14,
                       // fontWeight: FontWeight.w600,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:vidyaveechi_website/controller/meeting_controller/meeting_controller.dart';
 import 'package:vidyaveechi_website/model/meeting_model/meeting_model.dart';
@@ -9,57 +10,74 @@ import 'package:vidyaveechi_website/view/widgets/custom_delete_showdialog/custom
 import 'package:vidyaveechi_website/view/widgets/custom_showdialouge/custom_showdialouge.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 
-final MeetingController meetingController = Get.put(MeetingController());
+
 editFunctionOfMeeting(BuildContext context, MeetingModel data) {
+  final MeetingController meetingController = Get.put(MeetingController());
   customShowDilogBox(
     context: context,
     title: 'Edit Meeting',
     children: [
       TextFormFiledBlueContainerWidgetMeeting(
+        controller: meetingController.topicController,
           hintText: data.topic, title: 'Topic'),
       TextFormFiledBlueContainerWidgetMeeting(
-          hintText: data.date, title: 'Date'),
+         
+          hintText: data.date, title: 'Date🗓️ '),
       TextFormFiledBlueContainerWidgetMeeting(
+         controller: meetingController.timeController,
           hintText: data.time, title: 'Time '),
       TextFormFiledBlueContainerWidgetMeeting(
+         controller: meetingController.categoryController,
           hintText: data.category, title: 'Category'),
       TextFormFiledBlueContainerWidgetMeeting(
+         controller: meetingController.venueController,
           hintText: data.venue, title: 'Venue'),
       TextFormFiledBlueContainerWidgetMeeting(
+         controller: meetingController.memberController,
           hintText: data.members, title: 'Expected Members'),
       TextFormFiledBlueContainerWidgetMeeting(
+         controller: meetingController.specialguestController,
           hintText: data.specialGuest, title: 'Special Guest'),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          Container(
-            height: 40,
-            width: 150,
-            decoration: BoxDecoration(
-                color: themeColorBlue,
-                border: Border.all(color: themeColorBlue),
-                borderRadius: BorderRadius.circular(05)),
-            child: const Center(
-              child: TextFontWidget(
-                text: "Update",
-                fontsize: 14,
-                // fontWeight: FontWeight.w600,
-                color: cWhite,
-              ),
-            ),
-          ),
-        ],
-      ),
-    ],
+      // Row(
+      //   mainAxisAlignment: MainAxisAlignment.end,
+      //   children: [
+      //     GestureDetector(
+      //       onTap: () {
+      //          meetingController.updateMeeting(
+      //   data.meetingId, context);
+      //       },
+      //       child: Container(
+      //         height: 40,
+      //         width: 150,
+      //         decoration: BoxDecoration(
+      //             color: themeColorBlue,
+      //             border: Border.all(color: themeColorBlue),
+      //             borderRadius: BorderRadius.circular(05)),
+      //         child: const Center(
+      //           child: TextFontWidgetRouter(
+      //             text: "Update",
+      //             fontsize: 14,
+      //             // fontWeight: FontWeight.w600,
+      //             color: cWhite,
+      //           ),
+      //         ),
+      //       ),
+      //     ),
+      //   ],
+      // ),
+    ],doyouwantActionButton: true,
     actiononTapfuction: () {
-      meetingController.updateMeeting(data.meetingId, context);
+      meetingController.updateMeeting(
+        data.meetingId, context);
+        print("okaaaaaaaaaa");
     },
-    doyouwantActionButton: false,
+    
     actiontext: 'Update',
   );
 }
 
 deleteFunctionOfMeetings(BuildContext context, MeetingModel data) {
+  final MeetingController meetingController = Get.put(MeetingController());
   customDeleteShowDialog(
     context: context,
     onTap: () {

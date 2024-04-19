@@ -12,20 +12,25 @@ editFunctionOfNotice(BuildContext context, NoticeModel data) {
       title: 'Edit',
       children: [
         TextFormFiledBlueContainerWidgetEvent(
+          controller: noticeController.noticeHeadingController,
             hintText: data.heading, title: 'Heading'),
         TextFormFiledBlueContainerWidgetEvent(
             hintText: data.publishedDate, title: 'Published Date'),
         TextFormFiledBlueContainerWidgetEvent(
+           controller: noticeController.noticeSubjectController,
             hintText: data.subject, title: 'Subject'),
         TextFormFiledBlueContainerWidgetEvent(
             hintText: data.dateofoccation, title: 'Date Of Occation'),
         TextFormFiledBlueContainerWidgetEvent(
+           controller: noticeController.noticevenueController,
             hintText: data.venue, title: 'Venue'),
         TextFormFiledBlueContainerWidgetEvent(
             hintText: data.dateOfSubmission, title: 'Date Of Submission'),
         TextFormFiledBlueContainerWidgetEvent(
+           controller: noticeController.noticeGuestController,
             hintText: data.chiefGuest, title: 'Cheif guest'),
         TextFormFiledBlueContainerWidgetEvent(
+           controller: noticeController.noticeSignedByController,
             hintText: data.signedBy, title: 'Signed by'),
       ],
       doyouwantActionButton: true,

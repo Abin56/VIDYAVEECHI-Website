@@ -12,18 +12,22 @@ editFunctionOfEvent(BuildContext context, EventModel data) {
       title: 'Edit',
       children: [
         TextFormFiledBlueContainerWidgetEvent(
+          controller: eventController.eventnameController,
             hintText: data.eventName,
             title: 'Event'),
         TextFormFiledBlueContainerWidgetEvent(
             hintText: data.eventDate,
             title: 'Date'),
         TextFormFiledBlueContainerWidgetEvent(
+          controller: eventController.eventvenueController,
             hintText: data.venue,
             title: 'Venue'),
         TextFormFiledBlueContainerWidgetEvent(
+          controller: eventController.eventdescriptionController,
             hintText: data.eventDescription,
             title: 'Description'),
         TextFormFiledBlueContainerWidgetEvent(
+          controller: eventController.eventsignedByController,
             hintText: data.signedBy,
             title: 'Signed by')
       ],

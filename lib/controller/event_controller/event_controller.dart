@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:progress_state_button/progress_button.dart';
-import 'package:uuid/uuid.dart';
+import 'package:uuid/uuid.dart';  
 import 'package:vidyaveechi_website/model/event_models/events_model.dart';
 import 'package:vidyaveechi_website/view/constant/const.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/events/all_event_view.dart';

@@ -152,6 +152,7 @@ class GeneralInsructions extends StatelessWidget {
                                                         title: 'Edit',
                                                         children: [
                                                           TextFormFiledBlueContainerWidgetWithOutColor(
+                                                            controller: generalInsructionController.instructionController,
                                                               hintText: generalInsructionController
                                                                   .instructionController.text,
                                                               title: 'General Instruction')

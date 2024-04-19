@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:vidyaveechi_website/controller/batch_yearController/batch_year_Controller.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 
 addAcademicYearFunction(BuildContext context) {
+  final BatchYearController batchYearController=Get.put(BatchYearController());
   showDialog(
     context: context,
     builder: (BuildContext context) {
@@ -15,10 +18,12 @@ addAcademicYearFunction(BuildContext context) {
                 SizedBox(
                   height: 40,
                   child: TextFormField(
-                   // controller: applynewBatchYearContoller,
+                   controller:batchYearController. applynewBatchYearContoller,
                     readOnly: true,
-                    onTap: () {},
-                    // _selectDate(context),
+                    onTap: () {
+                      batchYearController. selectDate(context);
+                    },
+                   
                     decoration: const InputDecoration(
                       labelText: 'DD-MM-YYYY',
                       border: OutlineInputBorder(),
@@ -29,10 +34,12 @@ addAcademicYearFunction(BuildContext context) {
                 SizedBox(
                   height: 40,
                   child: TextFormField(
-                  //  controller: selectedToDaterContoller,
+                  controller:batchYearController. selectedToDaterContoller,
                     readOnly: true,
-                    onTap: () {},
-                  //  _selectToDate(context),
+                    onTap: () {
+                      batchYearController. selectToDate(context);
+                    },
+                 
                     decoration: const InputDecoration(
                       labelText: 'To',
                       border: OutlineInputBorder(),
@@ -53,19 +60,8 @@ addAcademicYearFunction(BuildContext context) {
           TextButton(
             child: const Text('Create'),
             onPressed: () async {
-              // await FirebaseFirestore.instance
-              //     .collection("SchoolListCollection")
-              //     .doc(Get.find<AdminLoginScreenController>().schoolID)
-              //     .collection("BatchYear")
-              //     .doc(
-              //         '${applynewBatchYearContoller.text.trim()}-${selectedToDaterContoller.text.trim()}')
-              //     .set({
-              //   'id':
-              //       '${applynewBatchYearContoller.text.trim()}-${selectedToDaterContoller.text.trim()}'
-              // }).then((value) {
-              //   Navigator.of(context).pop();
-              //   Navigator.of(context).pop();
-              // });
+              await batchYearController.createBatchYear(context);
+              print("object");
             },
           ),
         ],
