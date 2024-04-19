@@ -64,7 +64,7 @@ class AdminProfileController extends GetxController {
   TextEditingController emailController = TextEditingController();
 
   Future updateAdminProfile() async {
-    print('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<${getImageCtr.image.value}');
+    // print('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<${getImageCtr.image.value}');
     String image =
         await getImageCtr.uploapImageToFirebase(getImageCtr.image.value!);
     print('Image converted');

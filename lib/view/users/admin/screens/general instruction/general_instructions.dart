@@ -48,7 +48,8 @@ class GeneralInsructions extends StatelessWidget {
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5), color: adminePrimayColor),
+                                borderRadius: BorderRadius.circular(5),
+                                color: adminePrimayColor),
                             height: 38,
                             width: 100,
                             child: Center(
@@ -64,8 +65,9 @@ class GeneralInsructions extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding:
-                    EdgeInsets.only(top: 25, left: ResponsiveWebSite.isMobile(context) ? 05 : 10),
+                padding: EdgeInsets.only(
+                    top: 25,
+                    left: ResponsiveWebSite.isMobile(context) ? 05 : 10),
               ),
               // Obx(() {
               //   return generalInsructionController.isLoading.value
@@ -77,7 +79,8 @@ class GeneralInsructions extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
-                    decoration: BoxDecoration(color: cWhite, border: Border.all(color: cBlue)),
+                    decoration: BoxDecoration(
+                        color: cWhite, border: Border.all(color: cBlue)),
                     height: 700,
                     width: double.infinity,
                     child: StreamBuilder(
@@ -89,27 +92,33 @@ class GeneralInsructions extends StatelessWidget {
                             .collection('Admin_general_instructions')
                             .snapshots(),
                         builder: (context, snapshot) {
-                          if (snapshot.connectionState == ConnectionState.waiting) {
-                            return const Center(child: CircularProgressIndicator());
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            return const Center(
+                                child: CircularProgressIndicator());
                           }
                           // ignore: prefer_is_empty
                           if (snapshot.data!.docs.length == 0) {
                             return Center(
                                 child: Text(
                               'No General_instructions',
-                              style: GoogleFonts.poppins(fontSize: 20, fontWeight: FontWeight.w500),
+                              style: GoogleFonts.poppins(
+                                  fontSize: 20, fontWeight: FontWeight.w500),
                             ));
                           }
                           return Column(
                             children: [
-                              Container(
+                              SizedBox(
                                 height: 650,
                                 child: GridView.builder(
-                                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: ResponsiveWebSite.isMobile(context)
+                                  gridDelegate:
+                                      SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: ResponsiveWebSite.isMobile(
+                                            context)
                                         ? 1
                                         : 3, // Number of columns in the grid
-                                    crossAxisSpacing: 3, // Spacing between columns
+                                    crossAxisSpacing:
+                                        3, // Spacing between columns
                                     mainAxisSpacing: 5, // Spacing between rows
                                     mainAxisExtent: 200,
                                   ),
@@ -127,15 +136,21 @@ class GeneralInsructions extends StatelessWidget {
                                       //   alignment: Alignment.centerLeft,
                                       child: Container(
                                         // height: 200,
-                                        padding: EdgeInsets.only(
-                                            top: 30, bottom: 15, right: 20, left: 20),
+                                        padding: const EdgeInsets.only(
+                                            top: 30,
+                                            bottom: 15,
+                                            right: 20,
+                                            left: 20),
                                         decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(10),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
                                           color: screenContainerbackgroundColor,
                                         ),
                                         child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
                                           children: [
                                             TextFontWidget(
                                               text: ' ${data.instruction}',
@@ -144,7 +159,8 @@ class GeneralInsructions extends StatelessWidget {
                                             ),
                                             const Spacer(),
                                             Row(
-                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceEvenly,
                                               children: [
                                                 GestureDetector(
                                                   onTap: () {
@@ -153,34 +169,41 @@ class GeneralInsructions extends StatelessWidget {
                                                         title: 'Edit',
                                                         children: [
                                                           TextFormFiledBlueContainerWidgetWithOutColor(
-                                                              hintText: generalInsructionController
-                                                                  .instructionController.text,
-                                                              title: 'General Instruction')
+                                                              hintText:
+                                                                  generalInsructionController
+                                                                      .instructionController
+                                                                      .text,
+                                                              title:
+                                                                  'General Instruction')
                                                         ],
                                                         actiononTapfuction: () {
                                                           generalInsructionController
                                                               .updateInstructions(
                                                                   data.instructionId,
-                                                                 context);
+                                                                  context);
                                                         },
-                                                        doyouwantActionButton: true,
+                                                        doyouwantActionButton:
+                                                            true,
                                                         actiontext: 'Update');
                                                   },
-                                                  child: Text(
+                                                  child: const Text(
                                                     'Edit',
                                                     style: TextStyle(
-                                                        color: cgreen, fontWeight: FontWeight.bold),
+                                                        color: cgreen,
+                                                        fontWeight:
+                                                            FontWeight.bold),
                                                   ),
                                                 ),
                                                 const SizedBox(
                                                   width: 10,
                                                 ),
                                                 GestureDetector(
-                                                  child: Text(
+                                                  child: const Text(
                                                     'Delete',
                                                     style: TextStyle(
                                                         color: Colors.red,
-                                                        fontWeight: FontWeight.bold),
+                                                        fontWeight:
+                                                            FontWeight.bold),
                                                   ),
                                                   // child: Icon(
                                                   //   Icons.delete,
@@ -191,43 +214,62 @@ class GeneralInsructions extends StatelessWidget {
                                                       context: context,
                                                       barrierDismissible:
                                                           false, // user must tap button!
-                                                      builder: (context) => AlertDialog(
-                                                        shape: RoundedRectangleBorder(
-                                                            borderRadius: BorderRadius.circular(0)),
+                                                      builder: (context) =>
+                                                          AlertDialog(
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            0)),
                                                         title: const Text(
                                                           "Delete",
                                                           style: TextStyle(
                                                               fontSize: 16,
-                                                              fontWeight: FontWeight.w600),
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600),
                                                         ),
                                                         content: const Text(
                                                           "Are you sure do you want to delete ?",
-                                                          style: TextStyle(fontSize: 14),
+                                                          style: TextStyle(
+                                                              fontSize: 14),
                                                         ),
                                                         actions: [
                                                           Row(
                                                             mainAxisAlignment:
-                                                                MainAxisAlignment.spaceBetween,
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
                                                             children: [
                                                               GestureDetector(
                                                                   onTap: () {
-                                                                    Navigator.pop(context);
+                                                                    Navigator.pop(
+                                                                        context);
                                                                   },
                                                                   child: BlueContainerWidget(
-                                                                      title: "No",
-                                                                      fontSize: 12,
-                                                                      color: adminePrimayColor,
-                                                                      width: 100)),
+                                                                      title:
+                                                                          "No",
+                                                                      fontSize:
+                                                                          12,
+                                                                      color:
+                                                                          adminePrimayColor,
+                                                                      width:
+                                                                          100)),
                                                               GestureDetector(
                                                                   onTap: () {
-                                                                    generalInsructionController
-                                                                        .removeInstruction(data.instructionId,context);
+                                                                    generalInsructionController.removeInstruction(
+                                                                        data.instructionId,
+                                                                        context);
                                                                   },
                                                                   child: BlueContainerWidget(
-                                                                      title: "Yes",
-                                                                      fontSize: 12,
-                                                                      color: adminePrimayColor,
-                                                                      width: 100)),
+                                                                      title:
+                                                                          "Yes",
+                                                                      fontSize:
+                                                                          12,
+                                                                      color:
+                                                                          adminePrimayColor,
+                                                                      width:
+                                                                          100)),
                                                             ],
                                                           ),
                                                         ],

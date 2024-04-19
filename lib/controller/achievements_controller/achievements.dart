@@ -25,11 +25,11 @@ class AchievementsController extends GetxController {
   Uint8List? afile;
 
   TextEditingController achievementController = TextEditingController();
- // TextEditingController dateController = TextEditingController();
+ TextEditingController dateController = TextEditingController();
   TextEditingController studentNameController = TextEditingController();
   TextEditingController admissionNumberController = TextEditingController();
   final formKey = GlobalKey<FormState>();
-   final Rx<String> dateController = ''.obs;
+   final Rx<String> dateControllerr = ''.obs;
      final Rxn<DateTime> dateSelected = Rxn<DateTime>();
 
   Future<Map<String, String>> uploadImageToStorage(
@@ -48,7 +48,7 @@ class AchievementsController extends GetxController {
       AchievementModel achievementDetails = AchievementModel(
           photoUrl: downloadUrl,
           studentName: studentNameController.text,
-          dateofAchievement: dateController.value,
+          dateofAchievement: dateControllerr.value,
           achievementHead: achievementController.text,
           admissionNumber: admissionNumberController.text,
           uid: uid,
@@ -67,7 +67,7 @@ class AchievementsController extends GetxController {
           .set(achievementDetails.toMap())
           .then((value) {
         studentNameController.clear();
-        dateController.value = '';
+        dateControllerr.value = '';
         achievementController.clear();
         admissionNumberController.clear();
         //   if (afile == null) {
@@ -111,7 +111,7 @@ class AchievementsController extends GetxController {
         .doc(uid)
         .update({
           'studentName':studentNameController.text,
-           'dateofAchievement':dateController.value = '',
+           'dateofAchievement':dateControllerr.value = '',
            'achievementHead':achievementController.text,
            'admissionNumber':admissionNumberController.text,
           // 'photoUrl': downloadUrl,
@@ -150,7 +150,7 @@ class AchievementsController extends GetxController {
       final DateFormat formatter = DateFormat('yyyy-MMMM-dd');
       String formatted = formatter.format(parseDate);
 
-      dateController.value = formatted.toString();
+      dateControllerr.value = formatted.toString();
       log(formatted.toString());
     }
   }
