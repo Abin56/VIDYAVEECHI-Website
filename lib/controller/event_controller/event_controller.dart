@@ -13,26 +13,25 @@ import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_creden
 class EventController extends GetxController {
   Rx<ButtonState> buttonstate = ButtonState.idle.obs;
   TextEditingController eventnameController = TextEditingController();
- // TextEditingController eventdateController = TextEditingController();
+  // TextEditingController eventdateController = TextEditingController();
   TextEditingController eventdescriptionController = TextEditingController();
   TextEditingController eventvenueController = TextEditingController();
   TextEditingController eventsignedByController = TextEditingController();
   final formKey = GlobalKey<FormState>();
-   final Rxn<DateTime> dateSelected = Rxn<DateTime>();
-    final Rx<String> eventdateController = ''.obs;
-   
+  final Rxn<DateTime> dateSelected = Rxn<DateTime>();
+  final Rx<String> eventdateController = ''.obs;
+
   //EventModel? model;
 
   Future<void> createEvent() async {
-    final uuid =const  Uuid().v1();
+    final uuid = const Uuid().v1();
     final eventDetails = EventModel(
         eventDate: eventdateController.value,
         eventName: eventnameController.text,
         eventDescription: eventdescriptionController.text,
         venue: eventvenueController.text,
         signedBy: eventsignedByController.text,
-        id: uuid
-        );
+        id: uuid);
 
     // final Map<String, dynamic> eventData = eventDetails.toMap();
 
@@ -69,11 +68,16 @@ class EventController extends GetxController {
     }
   }
 
-  Future<void> updateEvent(String eventData,String eventName,
-    String eventDescription,String venue,String signedBy,
-    String id,BuildContext context) async {
+  Future<void> updateEvent(
+      String eventData,
+      String eventName,
+      String eventDescription,
+      String venue,
+      String signedBy,
+      String id,
+      BuildContext context) async {
     // ignore: unused_local_variable
-   // String edit = snapshot.data!.docs[index]['eventName'];
+    // String edit = snapshot.data!.docs[index]['eventName'];
     server
         .collection('SchoolListCollection')
         .doc(UserCredentialsController.schoolId)
@@ -88,13 +92,13 @@ class EventController extends GetxController {
           'venue': eventController.eventvenueController.text,
           'signedBy': eventController.eventsignedByController.text,
         })
-        .then((value) => Navigator.pop(context ))
+        .then((value) => Navigator.pop(context))
         .then((value) => showToast(msg: 'Event Updated!'));
   }
 
-  Future<void> deleteEvent(String id,BuildContext context)async{
-     // ignore: unused_local_variable
-   //  String delete = snapshot.data!.docs[index]['eventName'];
+  Future<void> deleteEvent(String id, BuildContext context) async {
+    // ignore: unused_local_variable
+    //  String delete = snapshot.data!.docs[index]['eventName'];
     server
         .collection('SchoolListCollection')
         .doc(UserCredentialsController.schoolId)
@@ -103,11 +107,10 @@ class EventController extends GetxController {
         .collection('AdminEvents')
         .doc(id)
         .delete()
-        .then((value) => Navigator.pop(context ));
+        .then((value) => Navigator.pop(context));
   }
 
-
-   selectDate(BuildContext context) async {
+  selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
       initialDate: dateSelected.value ?? DateTime.now(),

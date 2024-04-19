@@ -5,7 +5,6 @@ import 'package:vidyaveechi_website/model/loginHistory_model/login_history_model
 import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/login_histroy/login_histroy_datalist.dart';
-import 'package:vidyaveechi_website/view/users/admin/screens/parents/create_parent/create_parent.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/students/student_details/widgets/category_tableHeader.dart';
 import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
@@ -18,14 +17,12 @@ import '../../../../drop_down/login_history/select_month.dart';
 class LoginHistroyContainer extends StatelessWidget {
   final AdminLoginHistroyController adminLoginHistroyController =
       Get.put(AdminLoginHistroyController());
-  
+
   LoginHistroyContainer({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => adminLoginHistroyController.loginHistroyontapped.value == true
-        ? CreateParent()
-        : SingleChildScrollView(
+    return SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Container(
               color: screenContainerbackgroundColor,
@@ -56,19 +53,21 @@ class LoginHistroyContainer extends StatelessWidget {
                         children: [
                           const Padding(
                             padding: EdgeInsets.only(left: 20, right: 05),
-                            child: RouteSelectedTextContainer(title: 'Login Histroy'),
+                            child: RouteSelectedTextContainer(
+                                title: 'Login Histroy'),
                           ),
                           const Spacer(),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Container(
+                            child: SizedBox(
                               width: 250,
                               height: 70,
                               //  color: cWhite,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const TextFontWidget(text: 'Month *', fontsize: 12.5),
+                                  const TextFontWidget(
+                                      text: 'Month *', fontsize: 12.5),
                                   const SizedBox(
                                     height: 05,
                                   ),
@@ -82,14 +81,15 @@ class LoginHistroyContainer extends StatelessWidget {
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Container(
+                            child: SizedBox(
                               width: 200,
                               height: 70,
                               // color: cWhite,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const TextFontWidget(text: 'Date *', fontsize: 12.5),
+                                  const TextFontWidget(
+                                      text: 'Date *', fontsize: 12.5),
                                   const SizedBox(
                                     height: 05,
                                   ),
@@ -116,7 +116,9 @@ class LoginHistroyContainer extends StatelessWidget {
                             child: const Row(
                               children: [
                                 Expanded(
-                                    flex: 1, child: CatrgoryTableHeaderWidget(headerTitle: 'No')),
+                                    flex: 1,
+                                    child: CatrgoryTableHeaderWidget(
+                                        headerTitle: 'No')),
                                 SizedBox(
                                   width: 01,
                                 ),
@@ -128,26 +130,31 @@ class LoginHistroyContainer extends StatelessWidget {
                                 //   width: 01,
                                 // ),
                                 Expanded(
-                                    flex: 4, child: CatrgoryTableHeaderWidget(headerTitle: 'Name')),
+                                    flex: 4,
+                                    child: CatrgoryTableHeaderWidget(
+                                        headerTitle: 'Name')),
                                 SizedBox(
                                   width: 02,
                                 ),
                                 Expanded(
                                     flex: 4,
-                                    child: CatrgoryTableHeaderWidget(headerTitle: 'E mail')),
+                                    child: CatrgoryTableHeaderWidget(
+                                        headerTitle: 'E mail')),
                                 SizedBox(
                                   width: 02,
                                 ),
                                 Expanded(
                                     flex: 3,
-                                    child: CatrgoryTableHeaderWidget(headerTitle: 'Login Time')),
+                                    child: CatrgoryTableHeaderWidget(
+                                        headerTitle: 'Login Time')),
                                 SizedBox(
                                   width: 02,
                                 ),
 
                                 Expanded(
                                     flex: 3,
-                                    child: CatrgoryTableHeaderWidget(headerTitle: 'Logout Time')),
+                                    child: CatrgoryTableHeaderWidget(
+                                        headerTitle: 'Logout Time')),
                                 SizedBox(
                                   width: 02,
                                 ),
@@ -174,14 +181,34 @@ class LoginHistroyContainer extends StatelessWidget {
                                 stream: server
                                     .collection('SchoolListCollection')
                                     .doc(UserCredentialsController.schoolId)
-                                    .collection('LoginHistroy')
+                                    .collection(
+                                        UserCredentialsController.batchId!)
+                                    .doc(UserCredentialsController.batchId)
+                                    .collection('LoginHistory')
+                                    .doc(Get.find<AdminLoginHistroyController>()
+                                        .loginHMonthValue
+                                        .value)
+                                    .collection(
+                                        Get.find<AdminLoginHistroyController>()
+                                            .loginHMonthValue
+                                            .value)
+                                    .doc(Get.find<AdminLoginHistroyController>()
+                                        .loginHDayValue
+                                        .value)
+                                    .collection(
+                                        Get.find<AdminLoginHistroyController>()
+                                            .loginHDayValue
+                                            .value)
                                     .snapshots(),
                                 builder: (context, snaPS) {
                                   if (snaPS.hasData) {
                                     return ListView.separated(
                                         itemBuilder: (context, index) {
-                                          final data = AdminLoginDetailHistoryModel.fromMap(
-                                              snaPS.data!.docs[index].data());
+                                          final data =
+                                              AdminLoginDetailHistoryModel
+                                                  .fromMap(snaPS
+                                                      .data!.docs[index]
+                                                      .data());
                                           return GestureDetector(
                                             onTap: () {
                                               // adminLoginHistroyController
@@ -206,9 +233,12 @@ class LoginHistroyContainer extends StatelessWidget {
                                             //  100);
                                             snaPS.data!.docs.length);
                                     //           //////////
+                                  }else if(snaPS.data==null){
+return const SizedBox();
                                   } else {
                                     return const LoadingWidget();
                                   }
+
                                 },
                               ), ////////
                             ),
@@ -220,6 +250,6 @@ class LoginHistroyContainer extends StatelessWidget {
                 ),
               ),
             ),
-          ));
+          );
   }
 }

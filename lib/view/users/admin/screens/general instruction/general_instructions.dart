@@ -161,9 +161,7 @@ class GeneralInsructions extends StatelessWidget {
                                                           generalInsructionController
                                                               .updateInstructions(
                                                                   data.instructionId,
-                                                                  generalInsructionController
-                                                                      .instructionController.text
-                                                                      .trim());
+                                                                 context);
                                                         },
                                                         doyouwantActionButton: true,
                                                         actiontext: 'Update');
@@ -223,7 +221,7 @@ class GeneralInsructions extends StatelessWidget {
                                                               GestureDetector(
                                                                   onTap: () {
                                                                     generalInsructionController
-                                                                        .removeInstruction();
+                                                                        .removeInstruction(data.instructionId,context);
                                                                   },
                                                                   child: BlueContainerWidget(
                                                                       title: "Yes",

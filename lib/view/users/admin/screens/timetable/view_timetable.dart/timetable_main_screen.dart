@@ -13,6 +13,7 @@ import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
 import 'package:vidyaveechi_website/view/widgets/button_container/button_container.dart';
 import 'package:vidyaveechi_website/view/widgets/loading_widget/loading_widget.dart';
+import 'package:vidyaveechi_website/view/widgets/progess_button/progress_button.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 
 import '../../../../../../controller/timetable_controller/timetable_controller.dart';
@@ -55,14 +56,14 @@ class TimeTableMainScreen extends StatelessWidget {
                   timetableCtrl.dayName.value = newValue ?? '';
                 },
                 items: <String>[
-                  'Select Day',
+                'Select Day',
                   'Monday',
                   'Tuesday',
                   'Wednesday',
                   'Thursday',
                   'Friday',
                   'Saturday',
-                  'Sunday'
+                  'Sunday',
                 ].map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
@@ -163,7 +164,8 @@ class TimeTableMainScreen extends StatelessWidget {
                         onTap: () {
                           timetable_Creation(context, textformWidget);
                         },
-                        child: ButtonContainerWidget(
+                        child:
+                         ButtonContainerWidget(
                             curving: 30,
                             colorindex: 0,
                             height: 40,
@@ -346,16 +348,19 @@ class TimeTableMainScreen extends StatelessWidget {
                               padding:
                                   const EdgeInsets.only(top: 10, bottom: 10),
                               child: Center(
-                                child: NoticeButtonContainerWidget(
-                                  text: 'Submit',
-                                  width: 300,
-                                  height: 50,
-                                  fontSize: 18,
-                                  onTap: () {
-                                    timetableCtrl.addTimeTableDataToFirebase();
-                                  },
-                                  color: adminePrimayColor,
-                                ),
+                                child:ProgressButtonWidget(buttonstate:timetableCtrl.buttonstate.value , text: 'Submit', function: (){
+                                   timetableCtrl.addTimeTableDataToFirebase();
+                                })
+                                //  NoticeButtonContainerWidget(
+                                //   text: 'Submit',
+                                //   width: 300,
+                                //   height: 50,
+                                //   fontSize: 18,
+                                //   onTap: () {
+                                //     timetableCtrl.addTimeTableDataToFirebase();
+                                //   },
+                                //   color: adminePrimayColor,
+                                // ),
                               ),
                             )
                             // }),

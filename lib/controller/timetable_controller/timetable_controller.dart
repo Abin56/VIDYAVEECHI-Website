@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:progress_state_button/progress_button.dart';
 import 'package:vidyaveechi_website/controller/class_controller/class_controller.dart';
 import 'package:vidyaveechi_website/controller/subject_controller/subject_controller.dart';
 import 'package:vidyaveechi_website/controller/teacher_controller/teacher_controller.dart';
@@ -46,6 +47,7 @@ class TimeTableController extends GetxController {
   bool loadingStatus = false;
 
   RxBool ontapTimetable = false.obs;
+  Rx<ButtonState> buttonstate = ButtonState.idle.obs;
 
   Future<void> addTimeTableDataToFirebase() async {
     final classController = Get.put(ClassController());
@@ -88,7 +90,7 @@ class TimeTableController extends GetxController {
                       .doc(periodController.text)
                       .set(timetableData)
                       .then((value) {
-                    showToast(msg: 'Timetable Added');
+                   // showToast(msg: 'Timetable Added');
                     dayName.value = 'Select Day';
                     subjectName.value = 'Select Subject';
                     teacherName.value = 'Select Teacher';
@@ -97,6 +99,12 @@ class TimeTableController extends GetxController {
                     //selectColor.value = Colors.amber;
                     startTimeController.clear();
                     endTimeController.clear();
+                    buttonstate.value = ButtonState.success;
+       showToast(msg: "TimeTable Created Successfully");
+         Future.delayed(const Duration(seconds: 2)).then((vazlue) {
+          buttonstate.value = ButtonState.idle;
+        });
+                    
                   }));
 
       // Log the details
@@ -108,8 +116,15 @@ class TimeTableController extends GetxController {
       // print(periodNumber.value);
       print(timetableData);
     } catch (e, stackTrace) {
+      
       log('Error adding timetable: $e', stackTrace: stackTrace);
       showToast(msg: 'Failed to add timetable');
+
+      buttonstate.value = ButtonState.fail;
+      await Future.delayed(const Duration(seconds: 2)).then((value) {
+        buttonstate.value = ButtonState.idle;
+      });
+      log("Error .... $e");
     }
   }
 
