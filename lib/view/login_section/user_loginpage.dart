@@ -269,7 +269,7 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
                                           ),
                                         ),
                                         Text(
-                                          "Vidya Veechi",
+                                          "VidyaVeechi",
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold,
                                               color: cgreen.withOpacity(1),
@@ -437,7 +437,7 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
                                     ),
                                   ),
                                   Text(
-                                    "Vidya Veechi",
+                                    "VidyaVeechi",
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         color: cgreen.withOpacity(1),

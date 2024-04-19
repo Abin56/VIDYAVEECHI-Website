@@ -6,7 +6,7 @@ import 'package:progress_state_button/progress_button.dart';
 import 'package:uuid/uuid.dart';
 import 'package:vidyaveechi_website/model/event_models/events_model.dart';
 import 'package:vidyaveechi_website/view/constant/const.dart';
-import 'package:vidyaveechi_website/view/users/admin/screens/events/events.dart';
+import 'package:vidyaveechi_website/view/users/admin/screens/events/all_event_view.dart';
 import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
 

@@ -170,7 +170,7 @@ adminProfileshowlist(BuildContext context) {
                               GestureDetector(
                                 onTap: () {
                                   profileCtr.updateAdminProfile();
-                                  profileCtr.onTapEdit.value = false;
+                                  // profileCtr.onTapEdit.value = false;
                                 },
                                 child: BlueContainerWidget(
                                     title: "Save",

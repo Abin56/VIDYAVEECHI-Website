@@ -26,10 +26,11 @@ class TextFontWidget extends StatelessWidget {
       overflow: overflow,
       // maxLines: 1,
       style: TextStyle(
+        decoration: TextDecoration.none,
         letterSpacing: letterSpacing,
         fontSize: fontsize,
         fontWeight: fontWeight,
-        color: color,
+        color: Colors.black,
       ),
     );
   }

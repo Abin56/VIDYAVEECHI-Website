@@ -393,7 +393,7 @@ class UserLoginController extends GetxController {
     );
   }
 
-  RxString logoutData = ''.obs;
+  RxString loginData = ''.obs;
   RxBool logined = false.obs;
   Future<void> loginSaveData() async {
     try {
@@ -430,9 +430,11 @@ class UserLoginController extends GetxController {
             .collection(monthwise)
             .doc(formatted)
             .set({'docid': formatted}).then((value) async {
-          logoutData.value = docid;
+              loginData.value = docid;
           await SharedPreferencesHelper.setString(
-              SharedPreferencesHelper.userloginKey, docid);
+              SharedPreferencesHelper.userloginKey, loginData.value);
+
+              log("LOG IN KEY ::::: ${loginData.value}");
           await server
               .collection('SchoolListCollection')
               .doc(UserCredentialsController.schoolId)
