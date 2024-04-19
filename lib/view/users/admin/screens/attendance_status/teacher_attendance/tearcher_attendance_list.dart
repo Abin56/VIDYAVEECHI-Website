@@ -8,6 +8,7 @@ import 'package:vidyaveechi_website/view/drop_down/attendence/month_dropdown.dar
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/attendance_status/teacher_attendance/teachers_attendance_tble.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/attendence/attendence_adding_view.dart';
+import 'package:vidyaveechi_website/view/users/admin/screens/attendence/teacher_attendance_adding/adding_attendance.dart';
 import 'package:vidyaveechi_website/view/widgets/button_container/button_container.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 import '../../../../../widgets/blue_Container_widget/blue_Container_widget.dart';
@@ -29,7 +30,7 @@ class TeacherAttendanceList extends StatelessWidget {
 
     return Obx(() => 
     attendenceController.ontapaddAttendence.value == true
-        ? AttendanceAddingList(): 
+        ? TeachersAttendanceAddingList(): 
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Container(
@@ -62,7 +63,7 @@ class TeacherAttendanceList extends StatelessWidget {
                                 height: 40,
                                 width: 180,
                                 child: const Center(
-                                  child: TextFontWidget(
+                                  child: TextFontWidgetRouter(
                                     text: 'Add Attendance ',
                                     fontsize: 14,
                                     fontWeight: FontWeight.bold,

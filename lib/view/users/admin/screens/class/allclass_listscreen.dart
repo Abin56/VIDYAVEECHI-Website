@@ -64,7 +64,7 @@ class AllClassListView extends StatelessWidget {
                                 height: 40,
                                 width: 180,
                                 child: const Center(
-                                  child: TextFontWidget(
+                                  child: TextFontWidgetRouter(
                                     text: 'Create / EDIT',
                                     fontsize: 14,
                                     fontWeight: FontWeight.bold,

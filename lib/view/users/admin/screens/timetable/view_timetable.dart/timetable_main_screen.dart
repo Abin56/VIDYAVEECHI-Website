@@ -169,7 +169,7 @@ class TimeTableMainScreen extends StatelessWidget {
                             height: 40,
                             width: 180,
                             child: const Center(
-                              child: TextFontWidget(
+                              child: TextFontWidgetRouter(
                                 text: 'Add TimeTable ',
                                 fontsize: 14,
                                 fontWeight: FontWeight.bold,
@@ -346,7 +346,8 @@ class TimeTableMainScreen extends StatelessWidget {
                               padding:
                                   const EdgeInsets.only(top: 10, bottom: 10),
                               child: Center(
-                                child: NoticeButtonContainerWidget(
+                                child: 
+                                NoticeButtonContainerWidget(
                                   text: 'Submit',
                                   width: 300,
                                   height: 50,

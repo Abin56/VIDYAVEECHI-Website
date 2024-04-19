@@ -65,7 +65,7 @@ class AllExamNotificationListView extends StatelessWidget {
                           height: 40,
                           width: 180,
                           child: const Center(
-                            child: TextFontWidget(
+                            child: TextFontWidgetRouter(
                               text: 'Create / E D I T',
                               fontsize: 14,
                               fontWeight: FontWeight.bold,
