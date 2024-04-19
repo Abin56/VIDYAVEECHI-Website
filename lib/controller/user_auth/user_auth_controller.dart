@@ -42,7 +42,7 @@ class UserAuthController extends GetxController {
         if (Get.find<UserLoginController>().logined.value == true) {
           Get.find<UserLoginController>()
               .loginSaveData()
-              .then((value) => Get.offAll(() => const AdminHomeScreen()));
+              .then((value) => Get.offAll(() => SplashScreen()));
         } else {
           Get.offAll(() => const AdminHomeScreen());
         }
