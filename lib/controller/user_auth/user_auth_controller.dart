@@ -36,12 +36,15 @@ class UserAuthController extends GetxController {
         log("SchoolID :  ${UserCredentialsController.schoolId}");
         log("BatchID :  ${UserCredentialsController.batchId}");
         log("userrole :  ${UserCredentialsController.userRole}");
-             log("userloginKey :  ${UserCredentialsController.userloginKey}");
+        log("userloginKey :  ${UserCredentialsController.userloginKey}");
         await checkAdmin();
         loginAuthState.value = true;
-        Get.offAll(() => const AdminHomeScreen());
         if (Get.find<UserLoginController>().logined.value == true) {
-          Get.find<UserLoginController>().loginSaveData();
+          Get.find<UserLoginController>()
+              .loginSaveData()
+              .then((value) => Get.offAll(() => const AdminHomeScreen()));
+        } else {
+          Get.offAll(() => const AdminHomeScreen());
         }
       } else {
         if (kDebugMode) {
@@ -56,7 +59,7 @@ class UserAuthController extends GetxController {
 Future<void> checkAdmin() async {
   if (UserCredentialsController.userRole == "" &&
       UserCredentialsController.batchId == "" &&
-      UserCredentialsController.schoolId == ""&&
+      UserCredentialsController.schoolId == "" &&
       UserCredentialsController.userloginKey == "") {
     logoutUser();
 
