@@ -47,7 +47,8 @@ class GeneralInsructions extends StatelessWidget {
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5), color: adminePrimayColor),
+                                borderRadius: BorderRadius.circular(5),
+                                color: adminePrimayColor),
                             height: 38,
                             width: 100,
                             child: Center(
@@ -63,8 +64,9 @@ class GeneralInsructions extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding:
-                    EdgeInsets.only(top: 25, left: ResponsiveWebSite.isMobile(context) ? 05 : 10),
+                padding: EdgeInsets.only(
+                    top: 25,
+                    left: ResponsiveWebSite.isMobile(context) ? 05 : 10),
               ),
               // Obx(() {
               //   return generalInsructionController.isLoading.value
@@ -76,7 +78,8 @@ class GeneralInsructions extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
-                    decoration: BoxDecoration(color: cWhite, border: Border.all(color: cBlue)),
+                    decoration: BoxDecoration(
+                        color: cWhite, border: Border.all(color: cBlue)),
                     height: 700,
                     width: double.infinity,
                     child: StreamBuilder(
@@ -101,7 +104,7 @@ class GeneralInsructions extends StatelessWidget {
                           }
                           return Column(
                             children: [
-                              Container(
+                              SizedBox(
                                 height: 650,
                                 child: GridView.builder(
                                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -126,8 +129,11 @@ class GeneralInsructions extends StatelessWidget {
                                       //   alignment: Alignment.centerLeft,
                                       child: Container(
                                         // height: 200,
-                                        padding: EdgeInsets.only(
-                                            top: 30, bottom: 15, right: 20, left: 20),
+                                        padding: const EdgeInsets.only(
+                                            top: 30,
+                                            bottom: 15,
+                                            right: 20,
+                                            left: 20),
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(10),
                                           color: screenContainerbackgroundColor,
