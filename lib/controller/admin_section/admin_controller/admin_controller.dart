@@ -9,6 +9,7 @@ import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
 
 class AdminController extends GetxController {
+   RxBool ontapCreateAdmin = false.obs;
   RxBool ontapAdmin = false.obs;
   RxString dobSelectedDate = ''.obs;
   RxString joiningSelectedDate = ''.obs;

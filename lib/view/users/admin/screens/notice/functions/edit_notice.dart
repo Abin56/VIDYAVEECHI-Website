@@ -15,16 +15,28 @@ editFunctionOfNotice(BuildContext context, NoticeModel data) {
           controller: noticeController.noticeHeadingController,
             hintText: data.heading, title: 'Heading'),
         TextFormFiledBlueContainerWidgetEvent(
+          onTap: () {
+            noticeController.selectDate(context, noticeController.editnoticePublishedDateController,);
+          },
+          controller: noticeController.editnoticePublishedDateController,
             hintText: data.publishedDate, title: 'Published Date'),
         TextFormFiledBlueContainerWidgetEvent(
            controller: noticeController.noticeSubjectController,
             hintText: data.subject, title: 'Subject'),
         TextFormFiledBlueContainerWidgetEvent(
+           onTap: () {
+            noticeController.selectDate(context, noticeController.editnoticeDateofoccationController,);
+          },
+          controller: noticeController.editnoticeDateofoccationController,
             hintText: data.dateofoccation, title: 'Date Of Occation'),
         TextFormFiledBlueContainerWidgetEvent(
            controller: noticeController.noticevenueController,
             hintText: data.venue, title: 'Venue'),
         TextFormFiledBlueContainerWidgetEvent(
+           onTap: () {
+            noticeController.selectDate(context, noticeController.editnoticeDateofSubmissionController,);
+          },
+          controller: noticeController.editnoticeDateofSubmissionController,
             hintText: data.dateOfSubmission, title: 'Date Of Submission'),
         TextFormFiledBlueContainerWidgetEvent(
            controller: noticeController.noticeGuestController,

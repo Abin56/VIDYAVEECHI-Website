@@ -12,8 +12,10 @@ import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_creden
 
 class MeetingController extends GetxController{
   TextEditingController topicController = TextEditingController();
-  Rx<String> dateController =  ''.obs;
+ // Rx<String> dateController =  ''.obs;
   TextEditingController timeController = TextEditingController();
+   TextEditingController dateController = TextEditingController();
+     TextEditingController editdateController = TextEditingController();
   TextEditingController categoryController = TextEditingController();
   TextEditingController memberController = TextEditingController();
   TextEditingController specialguestController = TextEditingController();
@@ -27,7 +29,7 @@ class MeetingController extends GetxController{
     final uuid =const  Uuid().v1();
     final meetingDetails = MeetingModel(
       topic: topicController.text, 
-      date: dateController.value, 
+      date: dateController.text, 
       time: timeController.text, 
       category: categoryController.text, 
       members: memberController.text, 
@@ -48,7 +50,7 @@ class MeetingController extends GetxController{
           .set(meetingDetails.toMap())
           .then((value) async {
         topicController.clear();
-        dateController.value='';
+        dateController.clear();
         timeController.clear();
         categoryController.clear();
         memberController.clear();
@@ -56,7 +58,7 @@ class MeetingController extends GetxController{
         venueController.clear();
         buttonstate.value = ButtonState.success;
 
-
+print(meetingDetails.meetingId);
         showToast(msg: "Meeting Created Successfully");
         await Future.delayed(const Duration(seconds: 2)).then((vazlue) {
           buttonstate.value = ButtonState.idle;
@@ -83,7 +85,7 @@ class MeetingController extends GetxController{
         .doc(meetingId)
         .update({
         'topic':  topicController.text,
-        'date': dateController.value,
+        'date': editdateController.text,
         'time': timeController.text,
         'category': categoryController.text,
         'member': memberController.text,
@@ -110,24 +112,17 @@ class MeetingController extends GetxController{
   }
 
 
-   selectDateOfMeeting(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: dateSelected.value ?? DateTime.now(),
-      firstDate: DateTime(1920),
-      lastDate: DateTime(2100),
-      // builder: (context, child) {
-      //   return Container();
-      // },
-    );
-    if (picked != null && picked != dateSelected.value) {
-      dateSelected.value = picked;
-      DateTime parseDate = DateTime.parse(dateSelected.value.toString());
-      final DateFormat formatter = DateFormat('yyyy-MMMM-dd');
-      String formatted = formatter.format(parseDate);
+     Future<void> selectDate(BuildContext context, TextEditingController controller) async {
+  final DateTime? pickedDate = await showDatePicker(
+    context: context,
+    initialDate: DateTime.now(),
+    firstDate: DateTime(2000),
+    lastDate: DateTime(2101),
+  );
 
-      dateController.value = formatted.toString();
-      log(formatted.toString());
-    }
+  if (pickedDate != null) {
+    String formattedDate = DateFormat('dd-MM-yyyy').format(pickedDate);
+    controller.text = formattedDate;
   }
+}
 }

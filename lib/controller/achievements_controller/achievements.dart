@@ -26,6 +26,7 @@ class AchievementsController extends GetxController {
 
   TextEditingController achievementController = TextEditingController();
  TextEditingController dateController = TextEditingController();
+ TextEditingController editdateController = TextEditingController();
   TextEditingController studentNameController = TextEditingController();
   TextEditingController admissionNumberController = TextEditingController();
   final formKey = GlobalKey<FormState>();
@@ -67,7 +68,7 @@ class AchievementsController extends GetxController {
           .set(achievementDetails.toMap())
           .then((value) {
         studentNameController.clear();
-        dateControllerr.value = '';
+        dateController.clear();
         achievementController.clear();
         admissionNumberController.clear();
         //   if (afile == null) {
@@ -111,7 +112,7 @@ class AchievementsController extends GetxController {
         .doc(uid)
         .update({
           'studentName':studentNameController.text,
-           'dateofAchievement':dateControllerr.value = '',
+           'dateofAchievement':editdateController.text,
            'achievementHead':achievementController.text,
            'admissionNumber':admissionNumberController.text,
           // 'photoUrl': downloadUrl,
@@ -134,24 +135,38 @@ class AchievementsController extends GetxController {
         .then((value) => showToast(msg: 'Successfully Deleted!'));
   }
 
-    selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: dateSelected.value ?? DateTime.now(),
-      firstDate: DateTime(1920),
-      lastDate: DateTime(2100),
-      // builder: (context, child) {
-      //   return Container();
-      // },
-    );
-    if (picked != null && picked != dateSelected.value) {
-      dateSelected.value = picked;
-      DateTime parseDate = DateTime.parse(dateSelected.value.toString());
-      final DateFormat formatter = DateFormat('yyyy-MMMM-dd');
-      String formatted = formatter.format(parseDate);
+  Future<void> selectDate(BuildContext context, TextEditingController controller) async {
+  final DateTime? pickedDate = await showDatePicker(
+    context: context,
+    initialDate: DateTime.now(),
+    firstDate: DateTime(2000),
+    lastDate: DateTime(2101),
+  );
 
-      dateControllerr.value = formatted.toString();
-      log(formatted.toString());
-    }
+  if (pickedDate != null) {
+    String formattedDate = DateFormat('dd-MM-yyyy').format(pickedDate);
+    controller.text = formattedDate;
   }
+}
+
+  //   selectDate(BuildContext context) async {
+  //   final DateTime? picked = await showDatePicker(
+  //     context: context,
+  //     initialDate: dateSelected.value ?? DateTime.now(),
+  //     firstDate: DateTime(1920),
+  //     lastDate: DateTime(2100),
+  //     // builder: (context, child) {
+  //     //   return Container();
+  //     // },
+  //   );
+  //   if (picked != null && picked != dateSelected.value) {
+  //     dateSelected.value = picked;
+  //     DateTime parseDate = DateTime.parse(dateSelected.value.toString());
+  //     final DateFormat formatter = DateFormat('yyyy-MMMM-dd');
+  //     String formatted = formatter.format(parseDate);
+
+  //     dateControllerr.value = formatted.toString();
+  //     log(formatted.toString());
+  //   }
+  // }
 }

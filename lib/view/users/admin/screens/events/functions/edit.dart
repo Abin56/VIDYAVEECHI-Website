@@ -16,6 +16,10 @@ editFunctionOfEvent(BuildContext context, EventModel data) {
             hintText: data.eventName,
             title: 'Event'),
         TextFormFiledBlueContainerWidgetEvent(
+          onTap: () {
+            eventController.selectDate(context, eventController.editeventdateController);
+          },
+          controller: eventController.editeventdateController,
             hintText: data.eventDate,
             title: 'Date'),
         TextFormFiledBlueContainerWidgetEvent(
