@@ -34,7 +34,7 @@ class TeacherController extends GetxController {
       .collection('SchoolListCollection')
       .doc(UserCredentialsController.schoolId);
 
-  get formKey => null;
+  
 
   Future<void> createNewTeacher(TeacherModel teacherModel) async {
     buttonstate.value = ButtonState.loading;

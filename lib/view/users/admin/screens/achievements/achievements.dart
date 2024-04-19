@@ -110,7 +110,7 @@ class _AchievementsState extends State<Achievements> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Padding(
+              Padding(
                 padding: EdgeInsets.only(left: 25, top: 25),
                 child: Row(
                   children: [

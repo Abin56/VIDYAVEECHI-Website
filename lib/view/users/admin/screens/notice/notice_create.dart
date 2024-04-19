@@ -117,7 +117,7 @@ class CreateNotice extends StatelessWidget {
                 children: [
                   GestureDetector(
                       onTap: () {
-
+                     
                           aweSideSheet(
                               context: context,
                               sheetPosition: SheetPosition.right,
@@ -133,7 +133,7 @@ class CreateNotice extends StatelessWidget {
                                         width: 500,
                                         margin: const EdgeInsets.only(top: 10),
                                         child:
-                                            //  Obx(() {
+                                             //  Obx(() {
                                             // return
                                             Column(
                                           mainAxisAlignment:
@@ -141,24 +141,17 @@ class CreateNotice extends StatelessWidget {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-
+                                          
                                             Column(
                                               children: [
                                                 Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          top: 5,
-                                                          left: 10,
-                                                          right: 10),
-                                                  child:
-                                                      TextFormFiledWithoutColorEight(
+                                                  padding:const EdgeInsets.only(top: 5, left: 10,right: 10),
+                                                  child: TextFormFiledWithoutColorEight(
                                                     width: 500,
-                                                    controller: noticeController
-                                                        .noticeHeadingController,
+                                                    controller: noticeController .noticeHeadingController,
                                                     validator: checkFieldEmpty,
                                                     title: 'Heading',
-                                                    hintText:
-                                                        'Heading', /////////////////////////////////////////0
+                                                    hintText:'Heading', /////////////////////////////////////////0
                                                   ),
                                                 ),
 
@@ -197,55 +190,18 @@ class CreateNotice extends StatelessWidget {
                                                         ),
                                                       ],
                                                     ),
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          top: 5,
-                                                          left: 10,
-                                                          right: 10),
-                                                  child:
-                                                      TextFormFiledWithoutColorEight(
-                                                    width: 500,
-                                                    controller: noticeController
-                                                        .noticePublishedDateController,
-                                                    validator:
-                                                        checkFieldDateIsValid,
-                                                    hintText: 'Published Date',
-                                                    title: 'Published Date',
-                                                  ),
                                                 ), ////////////////////////////////////////////////////////2
                                                 Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          top: 5,
-                                                          left: 10,
-                                                          right: 10),
-                                                  child:
-                                                      TextFormFiledWithoutColorEight(
+                                                  padding:  const EdgeInsets.only(  top: 5, left: 10,right: 10),
+                                                  child:  TextFormFiledWithoutColorEight(
                                                     width: 500,
                                                     validator: checkFieldEmpty,
-                                                    controller: noticeController
-                                                        .noticeSubjectController,
+                                                    controller: noticeController .noticeSubjectController,
                                                     title: 'Subject',
                                                     hintText: 'Subject',
                                                   ),
                                                 ), ///////////////////////////////////////////////3
                                                 Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          top: 5,
-                                                          left: 10,
-                                                          right: 10),
-                                                  child:
-                                                      TextFormFiledWithoutColorEight(
-                                                    width: 500,
-                                                    validator:
-                                                        checkFieldDateIsValid,
-                                                    controller: noticeController
-                                                        .noticeDateofoccationontroller,
-                                                    title: 'Date of occation',
-                                                    hintText:
-                                                        'Date of occation',
-                                                  ),
                                                   padding:  const EdgeInsets.only( top: 5,left: 10, right: 10),
                                                   child:   Column(
                                                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -297,39 +253,21 @@ class CreateNotice extends StatelessWidget {
                                                     hintText: 'Venue',
                                                   ),
                                                 ), ////////////////////////////////////5
-                                                Padding(
+                                                 Padding(
                                                   padding:
                                                       const EdgeInsets.only(
                                                           top: 5,
                                                           left: 10,
                                                           right: 10),
-                                                  child:
-                                                      TextFormFiledWithoutColorEight(
+                                                  child:TextFormFiledWithoutColorEight(
                                                     width: 500,
                                                     validator: checkFieldEmpty,
-                                                    controller: noticeController
-                                                        .noticeSignedByController,
+                                                    controller: noticeController .noticeSignedByController,
                                                     title: 'Signed by',
                                                     hintText: 'Signed by',
                                                   ),
                                                 ), ////////////////////////////////////7
                                                 Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          top: 5,
-                                                          left: 10,
-                                                          right: 10),
-                                                  child:
-                                                      TextFormFiledWithoutColorEight(
-                                                    width: 500,
-                                                    validator:
-                                                        checkFieldDateIsValid,
-                                                    controller: noticeController
-                                                        .noticeDateofSubmissionontroller,
-                                                    title: 'Date of Submission',
-                                                    hintText:
-                                                        'Date of Submission',
-                                                  ),
                                                   padding: const EdgeInsets.only( top: 5, left: 10,right: 10),
                                                   child:   Column(
                                                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -375,57 +313,19 @@ class CreateNotice extends StatelessWidget {
                                                       TextFormFiledWithoutColorEight(
                                                     width: 500,
                                                     validator: checkFieldEmpty,
-                                                    controller: noticeController
-                                                        .noticeGuestController,
+                                                    controller: noticeController.noticeGuestController,
                                                     title: 'Cheif guest',
                                                     hintText: 'Cheif guest',
                                                   ),
                                                 ), ////////////////////////////////////6
+                                               
                                               ],
                                             ),
 
                                             Padding(
-                                              padding: const EdgeInsets.only(
-                                                  top: 10, bottom: 10),
+                                              padding: const EdgeInsets.only( top: 10, bottom: 10),
                                               child: Center(
-                                                child:
-                                                    // Obx(() =>
-                                                    // ProgressButtonWidget(
-                                                    //     function: () async {
-                                                    //       if (noticeController
-                                                    //           .formKey
-                                                    //           .currentState!
-                                                    //           .validate()) {
-                                                    //         noticeController
-                                                    //             .createNotice();
-                                                    //         print("object");
-                                                    //       }
-                                                    //     },
-                                                    //     buttonstate: noticeController .buttonstate.value,
-                                                    //     text: 'Create Notice'))
-                                                    Form(
-                                                  key: noticeController.formKey,
-                                                  child:
-                                                      NoticeButtonContainerWidget(
-                                                    text: 'Submit',
-                                                    width: 300,
-                                                    height: 50,
-                                                    fontSize: 18,
-                                                    onTap: () {
-                                                      if (noticeController
-                                                          .formKey.currentState!
-                                                          .validate()) {
-                                                        noticeController
-                                                            .createNotice();
-                                                        print("object");
-                                                      }
-                                                    },
-                                                    color:
-                                                        AppColors.darkBlueColor,
-                                                  ),
-                                                ),
-                                              ),
-                                                  child:
+                                                  child: 
                                                  Obx(() =>
                                                       ProgressButtonWidget(
                                                           function: () async {
@@ -468,7 +368,7 @@ class CreateNotice extends StatelessWidget {
                               ),
                               showCloseButton: false,
                               footer: Container());
-
+                        
                       },
                       child: const RouteSelectedTextContainer(
                           width: 140, title: 'Create')),

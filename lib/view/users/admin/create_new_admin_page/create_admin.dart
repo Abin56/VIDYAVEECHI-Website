@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vidyaveechi_website/controller/admin_section/admin_controller/admin_controller.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
-import 'package:vidyaveechi_website/view/constantvalidate.dart';
+
 import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
 import 'package:vidyaveechi_website/view/widgets/progess_button/progress_button.dart';
 
@@ -13,7 +13,7 @@ import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 class CreateAdmin extends StatelessWidget {
   final AdminController adminController = Get.put(AdminController());
   CreateAdmin({super.key});
- // final _formKey = GlobalKey<FormState>();
+//  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,7 @@ class CreateAdmin extends StatelessWidget {
           validator: checkFieldEmpty,
           // autovalidateMode: AutovalidateMode.always,
           controller: adminController.nameController,
-          validator: checkFieldEmpty,
+        
          // autovalidateMode: AutovalidateMode.always,
           // validator: (value) {
           //   if (value == null || value.isEmpty) {
@@ -75,7 +75,7 @@ class CreateAdmin extends StatelessWidget {
         color: screenContainerbackgroundColor,
         child: TextFormField(
           // autovalidateMode: AutovalidateMode.always,
-          validator: checkFieldEmpty,
+      
           controller: adminController.emailController,
            validator: checkFieldEmailIsValid,
         //  autovalidateMode: AutovalidateMode.always,
@@ -153,7 +153,7 @@ class CreateAdmin extends StatelessWidget {
         height: 35,
         color: screenContainerbackgroundColor,
         child: TextFormField(
-          validator: checkFieldEmpty,
+          
           controller: adminController.phoneNumberController,
            validator: checkFieldPhoneNumberIsValid,
           //   autovalidateMode: AutovalidateMode.always,
@@ -189,7 +189,7 @@ class CreateAdmin extends StatelessWidget {
         height: 35,
         color: screenContainerbackgroundColor,
         child: TextFormField(
-          validator: checkFieldEmpty,
+          
           controller: adminController.passwordController,
            validator: checkFieldPasswordIsValid,
           style: const TextStyle(fontSize: 14),
@@ -218,7 +218,7 @@ class CreateAdmin extends StatelessWidget {
         child: TextFormField(
            validator: checkFieldPasswordIsValid,
             controller: adminController.passwordController,
-          validator: checkFieldEmpty,
+      
           style: const TextStyle(fontSize: 14),
           decoration: const InputDecoration(
             prefixIcon: Icon(
@@ -262,7 +262,7 @@ class CreateAdmin extends StatelessWidget {
       //         color: cWhite),
       //   ),
       // ), ///////////////////////////......................13
-        child: Text(
+         Text(
           'Submit',
           style: TextStyle(
 
@@ -270,7 +270,7 @@ class CreateAdmin extends StatelessWidget {
               fontWeight: FontWeight.bold,
               color: cWhite),
         ),
-      ), ///////////////////////////......................13
+       ///////////////////////////......................13
     ];
     return SingleChildScrollView(
       child: ResponsiveWebSite.isMobile(context)

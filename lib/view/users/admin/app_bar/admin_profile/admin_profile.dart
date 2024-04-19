@@ -38,7 +38,7 @@ adminProfileshowlist(BuildContext context) {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const BackButton(),
-                    const TextFontWidget(
+                     TextFontWidget(
                       text: "Profile",
                       fontsize: 17,
                       fontWeight: FontWeight.bold,
@@ -126,7 +126,7 @@ adminProfileshowlist(BuildContext context) {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const BackButton(),
-                    const TextFontWidget(
+                     TextFontWidget(
                       text: "Profile",
                       fontsize: 17,
                       fontWeight: FontWeight.bold,
@@ -275,7 +275,7 @@ class AdminProfileEdit extends StatelessWidget {
               controller: profileCtr.emailController,
               hintText: ' Email',
               title: 'Email'),
-          const TextFontWidget(text: 'Gender *', fontsize: 12.5),
+           TextFontWidget(text: 'Gender *', fontsize: 12.5),
           const SizedBox(height: 5),
           Container(
             color: screenContainerbackgroundColor,

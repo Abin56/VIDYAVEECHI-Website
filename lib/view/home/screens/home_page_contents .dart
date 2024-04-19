@@ -115,7 +115,7 @@ class HomePageContents extends StatelessWidget {
                 : 40,
             left: ResponsiveWebSite.isDesktop(context)
                 ? screenSize.width / 20
-                : 60,
+                : 30,
           ),
           child: Row(
             children: [
@@ -124,8 +124,8 @@ class HomePageContents extends StatelessWidget {
                     ? screenSize.width / 30
                     : 40,
                 width: ResponsiveWebSite.isDesktop(context)
-                    ? screenSize.width / 6
-                    : 180,
+                    ? screenSize.width / 5.5
+                    : 270,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromARGB(255, 75, 131, 252),
@@ -142,7 +142,7 @@ class HomePageContents extends StatelessWidget {
                     style: GoogleFonts.poppins(
                         fontSize: ResponsiveWebSite.isDesktop(context)
                             ? screenSize.width / 90
-                            : 13,
+                            : 15,
                         fontWeight: ResponsiveWebSite.isDesktop(context)
                             ? FontWeight.bold
                             : FontWeight.w500,
@@ -160,8 +160,8 @@ class HomePageContents extends StatelessWidget {
                     ? screenSize.width / 30
                     : 40,
                 width: ResponsiveWebSite.isDesktop(context)
-                    ? screenSize.width / 6
-                    : 180,
+                    ? screenSize.width / 5.5
+                    : 270,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromARGB(255, 102, 206, 169),
@@ -178,7 +178,7 @@ class HomePageContents extends StatelessWidget {
                     style: GoogleFonts.poppins(
                         fontSize: ResponsiveWebSite.isDesktop(context)
                             ? screenSize.width / 90
-                            : 13,
+                            : 15,
                         fontWeight: ResponsiveWebSite.isDesktop(context)
                             ? FontWeight.bold
                             : FontWeight.w500,

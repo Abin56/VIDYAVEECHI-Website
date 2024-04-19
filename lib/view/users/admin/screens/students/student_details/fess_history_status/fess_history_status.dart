@@ -37,7 +37,7 @@ class PerStudentFeesHistory extends StatelessWidget {
           padding: const EdgeInsets.all(10.0),
           child: Row(
             children: [
-              const Expanded(
+               Expanded(
                 flex: 1,
                 child: Align(
                   alignment: Alignment.centerRight,
@@ -56,7 +56,7 @@ class PerStudentFeesHistory extends StatelessWidget {
           padding: const EdgeInsets.all(10.0),
           child: Row(
             children: [
-              const Expanded(
+             Expanded(
                 flex: 1,
                 child: Align(
                   alignment: Alignment.centerRight,

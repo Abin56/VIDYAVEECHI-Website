@@ -31,19 +31,11 @@ createTeacherFunction(BuildContext context) {
     ), ///////////////////4.......................
     Obx(() => ProgressButtonWidget(
         function: () async {
-          if (teacherController.formKey.currentState!.validate()) {
-            teacherController.createNewTeacher;
-            print("object");
-          }
-          final teacherModel = TeacherModel(
           if  (teacherController. formKey.currentState!.validate()) {
               teacherController.createNewTeacher(
                  TeacherModel(
               teacherName: teacherController.teacherNameController.text,
               employeeID: teacherController.teacherIDController.text.trim(),
-              teacherPhNo: teacherController.teacherPhoneNumeber.text.trim());
-
-          teacherController.createNewTeacher(teacherModel);
               teacherPhNo: teacherController.teacherPhoneNumeber.text.trim())
               );
             }
@@ -74,19 +66,16 @@ createTeacherFunction(BuildContext context) {
             )
           ],
         ),
-        content: Form(
-          key: teacherController.formKey,
-          child: SizedBox(
-            height: 380,
-            width: 300,
-            child: Column(
-              children: [
-                createTeacherList[0],
-                createTeacherList[1],
-                createTeacherList[2],
-                createTeacherList[3],
-              ],
-            ),
+        content: SizedBox(
+          height: 380,
+          width: 300,
+          child: Column(
+            children: [
+              createTeacherList[0],
+              createTeacherList[1],
+              createTeacherList[2],
+              createTeacherList[3],
+            ],
           ),
         ),
       );

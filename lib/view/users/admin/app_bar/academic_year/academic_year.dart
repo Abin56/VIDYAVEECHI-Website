@@ -1,5 +1,7 @@
-import 'package:dropdown_search/dropdown_search.dart';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 import 'package:vidyaveechi_website/view/users/admin/app_bar/academic_year/add_academic.dart';
@@ -80,7 +82,7 @@ academicYearSettingFunction(BuildContext context) {
     builder: (context) {
       return AlertDialog(
         title:  TextFontWidget(text: "Change Academic Year", fontsize: 15),
-        title: const TextFontWidget(text: "demic Year", fontsize: 15),
+        // title: const TextFontWidget(text: "demic Year", fontsize: 15),
         backgroundColor: cWhite,
         content: SizedBox(
           height: ResponsiveWebSite.isMobile(context)? 220: 140,

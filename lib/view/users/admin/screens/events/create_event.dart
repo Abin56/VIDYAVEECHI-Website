@@ -225,7 +225,7 @@ class CreateEvent extends StatelessWidget {
                                                         TextFormFiledWithoutColorEight(
                                                       width: ResponsiveWebSite
                                                               .isMobile(context)
-                                                          ? double.infinity
+                                                          ? double.infinity                                
                                                           : 500,
                                                       validator:
                                                           checkFieldEmpty,

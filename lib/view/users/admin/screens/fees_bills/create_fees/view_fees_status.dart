@@ -29,193 +29,6 @@ class CreatedFeesStatus extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() => feesAndBillsController.ontapviewclasswiseFees.value == true
         ? const ClassWiseFeesStatus()
-        : Container(
-            color: screenContainerbackgroundColor,
-            height: 700,
-            width: double.infinity,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 25, top: 25, right: 25),
-                  child: Row(
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.only(left: 05, right: 05),
-                        child: RouteSelectedTextContainer(
-                            title: 'All Fees & Bills'),
-                      ),
-                      const Spacer(),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 10),
-                        child: SizedBox(
-                          width: 250,
-                          height: ResponsiveWebSite.isMobile(context) ? 80 : 80,
-                          //color: cWhite,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                               TextFontWidget(
-                                  text: 'Month *', fontsize: 12.5),
-                              const SizedBox(
-                                height: 05,
-                              ),
-                              SizedBox(
-                                height: 40,
-                                child: SelectFeeMonthDropDown(),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          createFeesFunction(context);
-                        },
-                        child: ButtonContainerWidget(
-                            curving: 30,
-                            colorindex: 0,
-                            height: 40,
-                            width: 180,
-                            child:  Center(
-                              child: TextFontWidget(
-                                text: 'Create Fee',
-                                fontsize: 14,
-                                fontWeight: FontWeight.bold,
-                                color: cWhite,
-                              ),
-                            )),
-                      )
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 10, right: 10, top: 25),
-                  child: Container(
-                      width: double.infinity,
-                      height: ResponsiveWebSite.isMobile(context) ? 800 : 500,
-                      color: cWhite,
-                      child: Column(
-                        children: [
-                          const Padding(
-                            padding: EdgeInsets.only(top: 8, left: 8, right: 8),
-                            child: Row(
-                              children: [
-                                Expanded(
-                                    flex: 1,
-                                    child: CatrgoryTableHeaderWidget(
-                                        headerTitle: 'No')),
-                                SizedBox(
-                                  width: 01,
-                                ),
-                                Expanded(
-                                    flex: 3,
-                                    child: CatrgoryTableHeaderWidget(
-                                        headerTitle: 'Fee Type Name')),
-                                SizedBox(
-                                  width: 01,
-                                ),
-                                Expanded(
-                                    flex: 2,
-                                    child: CatrgoryTableHeaderWidget(
-                                        headerTitle: 'Created Date')),
-                                SizedBox(
-                                  width: 01,
-                                ),
-                                Expanded(
-                                    flex: 2,
-                                    child: CatrgoryTableHeaderWidget(
-                                        headerTitle: 'Due Date')),
-                                SizedBox(
-                                  width: 01,
-                                ),
-                                Expanded(
-                                    flex: 2,
-                                    child: CatrgoryTableHeaderWidget(
-                                        headerTitle: 'Fee per student')),
-                                SizedBox(
-                                  width: 01,
-                                ),
-                                Expanded(
-                                    flex: 2,
-                                    child: CatrgoryTableHeaderWidget(
-                                        headerTitle: 'Collected')),
-                                SizedBox(
-                                  width: 01,
-                                ),
-                                Expanded(
-                                    flex: 2,
-                                    child: CatrgoryTableHeaderWidget(
-                                        headerTitle: 'Pending')),
-                                SizedBox(
-                                  width: 01,
-                                ),
-                                Expanded(
-                                    flex: 2,
-                                    child: CatrgoryTableHeaderWidget(
-                                        headerTitle: 'Total')),
-                                SizedBox(
-                                  width: 01,
-                                ),
-                              ],
-                            ),
-                          ),
-                          Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  bottom: 8, left: 8, right: 8),
-                              child: StreamBuilder(
-                                  stream: server
-                                      .collection('SchoolListCollection')
-                                      .doc(UserCredentialsController.schoolId)
-                                      .collection(
-                                          UserCredentialsController.batchId!)
-                                      .doc(UserCredentialsController.batchId!)
-                                      .collection('FeesCollection')
-                                      .doc(feesAndBillsController
-                                          .feeMonthData.value)
-                                      .collection(feesAndBillsController
-                                          .feeMonthData.value)
-                                      .snapshots(),
-                                  builder: (context, snaps) {
-                                    if (snaps.hasData) {
-                                      return ListView.separated(
-                                          itemBuilder: (context, index) {
-                                            final data =
-                                                snaps.data!.docs[index].data();
-                                            return GestureDetector(
-                                              onTap: () {
-                                                feesAndBillsController
-                                                    .feeDateData
-                                                    .value = data['docid'];
-                                                feesAndBillsController
-                                                    .ontapviewclasswiseFees
-                                                    .value = true;
-                                              },
-                                              child: AllClassessFeesDataList(
-                                                data: data,
-                                                index: index,
-                                              ),
-                                            );
-                                          },
-                                          separatorBuilder: (context, index) {
-                                            return const SizedBox(
-                                              height: 02,
-                                            );
-                                          },
-                                          itemCount: snaps.data!.docs.length);
-                                    } else if (snaps.data == null) {
-                                      return const LoadingWidget();
-                                    } else {
-                                      return const LoadingWidget();
-                                    }
-                                  }),
-                            ),
-                          )
-                        ],
-                      )),
-                ),
-              ],
         : SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Container(
@@ -246,7 +59,7 @@ class CreatedFeesStatus extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const TextFontWidget(
+                                 TextFontWidget(
                                     text: 'Month *', fontsize: 12.5),
                                 const SizedBox(
                                   height: 05,
@@ -268,7 +81,7 @@ class CreatedFeesStatus extends StatelessWidget {
                               colorindex: 0,
                               height: 40,
                               width: 180,
-                              child: const Center(
+                              child: Center(
                                 child: TextFontWidget(
                                   text: 'Create Fee',
                                   fontsize: 14,

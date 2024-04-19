@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:vidyaveechi_website/controller/notice_controller/notice_controller.dart';
 import 'package:vidyaveechi_website/model/notice_model/notice_model.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
@@ -11,6 +12,9 @@ import 'package:vidyaveechi_website/view/users/admin/screens/notice/notice_data_
 import 'package:vidyaveechi_website/view/users/admin/screens/students/student_details/widgets/category_tableHeader.dart';
 import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
+import 'package:vidyaveechi_website/view/widgets/custom_showdialouge/custom_showdialouge.dart';
+import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
+import 'package:vidyaveechi_website/view/widgets/textformFiledContainer/textformFiledBlueContainer.dart';
 
 class NoticeEditRemove extends StatelessWidget {
   final NoticeController noticeController = Get.put(NoticeController());
@@ -40,15 +44,8 @@ class NoticeEditRemove extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
+         ///////////////////////........................Notice Creation Page
           Padding(
-            padding: const EdgeInsets.all(20),
-            child: GooglePoppinsWidgets(
-              text: 'Notice ',
-              fontsize: 24,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          CreateNotice(),////////////////////////........................Notice Creation Page
             padding: const EdgeInsets.only(top: 20, bottom: 20),
             child: CreateNotice(),
           ),
@@ -437,47 +434,7 @@ class NoticeEditRemove extends StatelessWidget {
                     }),
                   );
                 }),
-            child: Container(
-              width: 1200,
-              padding: const EdgeInsets.only(left: 5, right: 5),
-              decoration: BoxDecoration(
-                color: cWhite,
-                border: Border.all(color: cWhite),
-              ),
-              child: StreamBuilder(
-                  stream: server
-                      .collection('SchoolListCollection')
-                      .doc(UserCredentialsController.schoolId)
-                      .collection(UserCredentialsController.batchId!)
-                      .doc(UserCredentialsController.batchId!)
-                      .collection('AdminNotices')
-                      .snapshots(),
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Center(child: CircularProgressIndicator());
-                    }
-                    // ignore: prefer_is_empty
-                    if (snapshot.data!.docs.length == 0) {
-                      return const Center(
-                          child: Text(
-                        'No Notices',
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.w500),
-                      ));
-                    }
-                    return ListView.separated(
-                      itemCount: snapshot.data!.docs.length,
-                      itemBuilder: (context, index) {
-                        NoticeModel data = NoticeModel.fromMap(
-                            snapshot.data!.docs[index].data());
-                        return AllNoticeDataList(data: data, index: index);
-                      },
-                      separatorBuilder: (context, index) => const SizedBox(
-                        height: 02,
-                      ),
-                    );
-                  }),
-            ),
+          
           ),
         ],
       ),

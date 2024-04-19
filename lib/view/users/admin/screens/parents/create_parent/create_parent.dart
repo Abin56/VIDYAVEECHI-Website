@@ -33,7 +33,7 @@ class CreateParent extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-             TextFontWidget(text: 'Class *', fontsize: 12.5),
+            TextFontWidget(text: 'Class *', fontsize: 12.5),
             const SizedBox(
               height: 05,
             ),
@@ -50,33 +50,33 @@ class CreateParent extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-             TextFontWidget(text: 'Select Student *', fontsize: 12.5),
+            TextFontWidget(text: 'Select Student *', fontsize: 12.5),
             const SizedBox(
               height: 05,
             ),
             SizedBox(
-              height: 40,
-              child: DropdownSearch(
+                height: 40,
+                child: DropdownSearch(
                   validator: (item) {
-        if (item == null) {
-          return "Required field";
-        } else {
-          return null;
-        }
-      },
-                items: const ['Sruthy', 'Abin'],
-                onChanged: (value) {
-                  parentController.studentName.value = value ?? '';
-                },
-              ),
-              child: SelectStudentsDropDown()
-              //  DropdownSearch(
-              //   items: const ['Sruthy', 'Abin'],
-              //   onChanged: (value) {
-              //     parentController.studentName.value = value ?? '';
-              //   },
-              // ),
-            ),
+                    if (item == null) {
+                      return "Required field";
+                    } else {
+                      return null;
+                    }
+                  },
+                  items: const ['Sruthy', 'Abin'],
+                  onChanged: (value) {
+                    parentController.studentName.value = value ?? '';
+                  },
+                ),
+                // child: SelectStudentsDropDown()
+                //  DropdownSearch(
+                //   items: const ['Sruthy', 'Abin'],
+                //   onChanged: (value) {
+                //     parentController.studentName.value = value ?? '';
+                //   },
+                // ),
+                ),
           ],
         ),
       ), ////////////////////2..............slect.student..........
@@ -113,7 +113,7 @@ class CreateParent extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-             TextFontWidget(
+            TextFontWidget(
               text: 'Create A New Parent',
               fontsize: 18,
               fontWeight: FontWeight.bold,
