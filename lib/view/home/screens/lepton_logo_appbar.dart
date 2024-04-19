@@ -55,8 +55,7 @@ class LeptonLogoVidyaveechi extends StatelessWidget {
                               child: Text(
                                 "Lepton",
                                 style: GoogleFonts.dmSerifDisplay(
-                                    color:
-                                        const Color.fromARGB(255, 38, 93, 15),
+                                    color: const Color.fromARGB(255, 38, 93, 15),
                                     fontSize: screenSize.width / 50,
                                     fontWeight: FontWeight.bold),
                               ),
@@ -66,8 +65,7 @@ class LeptonLogoVidyaveechi extends StatelessWidget {
                               child: Text(
                                 "VidyaVeechi",
                                 style: GoogleFonts.dmSerifDisplay(
-                                    color:
-                                        const Color.fromARGB(255, 43, 97, 19),
+                                    color: const Color.fromARGB(255, 43, 97, 19),
                                     fontSize: screenSize.width / 60,
                                     fontWeight: FontWeight.bold),
                               ),
@@ -77,8 +75,7 @@ class LeptonLogoVidyaveechi extends StatelessWidget {
                       ],
                     ),
                     Padding(
-                      padding:
-                          EdgeInsets.only(top: 60, left: screenSize.width / 17),
+                      padding: EdgeInsets.only(top: 60, left: screenSize.width / 10),
                       child: const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -86,10 +83,10 @@ class LeptonLogoVidyaveechi extends StatelessWidget {
                             padding: EdgeInsets.only(left: 20, right: 20),
                             child: ContentsHomePage1(),
                           ),
-                          // Padding(
-                          //   padding: EdgeInsets.only(right: 20),
-                          //   child: ContentsHomePage2(),
-                          // ),
+                          Padding(
+                            padding: EdgeInsets.only(right: 20),
+                            child: ContentsHomePage2(),
+                          ),
                           Padding(
                             padding: EdgeInsets.only(right: 20),
                             child: ContentsHomePage3(),
@@ -101,7 +98,11 @@ class LeptonLogoVidyaveechi extends StatelessWidget {
                           Padding(
                             padding: EdgeInsets.only(right: 20),
                             child: ContentsHomePage5(),
-                          )
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(right: 20),
+                            child: ContentsHomePage6(),
+                          ),
                         ],
                       ),
                     )
@@ -131,8 +132,7 @@ class LeptonLogoVidyaveechi extends StatelessWidget {
                                     height: screenSize.width / 15,
                                     width: screenSize.width / 15,
                                     color: Colors.transparent,
-                                    child: Image.asset(
-                                        "webassets/images/logo5.png"),
+                                    child: Image.asset("webassets/images/logo5.png"),
                                   ),
                                 ),
                                 // Padding(
@@ -156,15 +156,13 @@ class LeptonLogoVidyaveechi extends StatelessWidget {
                                       child: Text(
                                         "Lepton",
                                         style: GoogleFonts.dmSerifDisplay(
-                                            fontSize: 19,
-                                            fontWeight: FontWeight.bold),
+                                            fontSize: 19, fontWeight: FontWeight.bold),
                                       ),
                                     ),
                                     Text(
                                       "VidyaVeechi",
                                       style: GoogleFonts.dmSerifDisplay(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold),
+                                          fontSize: 16, fontWeight: FontWeight.bold),
                                     ),
                                   ],
                                 ),
@@ -172,7 +170,9 @@ class LeptonLogoVidyaveechi extends StatelessWidget {
                             ),
                           ),
                           const Padding(
-                            padding: EdgeInsets.only(top: 50, left: 20),
+                            padding: EdgeInsets.only(
+                              top: 10,
+                            ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -180,10 +180,10 @@ class LeptonLogoVidyaveechi extends StatelessWidget {
                                   padding: EdgeInsets.only(left: 8, right: 8),
                                   child: ContentsHomePage1(),
                                 ),
-                                // Padding(
-                                //   padding: EdgeInsets.only(right: 8),
-                                //   child: ContentsHomePage2(),
-                                // ),
+                                Padding(
+                                  padding: EdgeInsets.only(right: 8),
+                                  child: ContentsHomePage2(),
+                                ),
                                 Padding(
                                   padding: EdgeInsets.only(right: 8),
                                   child: ContentsHomePage3(),
@@ -195,7 +195,11 @@ class LeptonLogoVidyaveechi extends StatelessWidget {
                                 Padding(
                                   padding: EdgeInsets.only(right: 8),
                                   child: ContentsHomePage5(),
-                                )
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(right: 8),
+                                  child: ContentsHomePage6(),
+                                ),
                               ],
                             ),
                           )

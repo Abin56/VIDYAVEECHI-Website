@@ -7,14 +7,15 @@ class ContentsHomePage1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      "About",
-      style: GoogleFonts.roboto(
-          fontSize: ResponsiveWebSite.isDesktop(context) ? 18 : 14,
-          fontWeight: ResponsiveWebSite.isDesktop(context)
-              ? FontWeight.w500
-              : FontWeight.w400,
-          color: Colors.black),
+    return InkWell(
+      onTap: () {},
+      child: Text(
+        "About",
+        style: GoogleFonts.roboto(
+            fontSize: ResponsiveWebSite.isDesktop(context) ? 16 : 12,
+            fontWeight: ResponsiveWebSite.isDesktop(context) ? FontWeight.w500 : FontWeight.w400,
+            color: Colors.black),
+      ),
     );
   }
 }
@@ -25,14 +26,15 @@ class ContentsHomePage2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Text(
-        "Tution Center",
-        style: GoogleFonts.roboto(
-            fontSize: ResponsiveWebSite.isDesktop(context) ? 18 : 14,
-            fontWeight: ResponsiveWebSite.isDesktop(context)
-                ? FontWeight.w500
-                : FontWeight.w400,
-            color: Colors.black),
+      child: InkWell(
+        onTap: () {},
+        child: Text(
+          "Schools",
+          style: GoogleFonts.roboto(
+              fontSize: ResponsiveWebSite.isDesktop(context) ? 16 : 12,
+              fontWeight: ResponsiveWebSite.isDesktop(context) ? FontWeight.w500 : FontWeight.w400,
+              color: Colors.black),
+        ),
       ),
     );
   }
@@ -43,14 +45,15 @@ class ContentsHomePage3 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      "Syllabus",
-      style: GoogleFonts.roboto(
-          fontSize: ResponsiveWebSite.isDesktop(context) ? 18 : 14,
-          fontWeight: ResponsiveWebSite.isDesktop(context)
-              ? FontWeight.w500
-              : FontWeight.w400,
-          color: Colors.black),
+    return InkWell(
+      onTap: () {},
+      child: Text(
+        "Colleges",
+        style: GoogleFonts.roboto(
+            fontSize: ResponsiveWebSite.isDesktop(context) ? 16 : 12,
+            fontWeight: ResponsiveWebSite.isDesktop(context) ? FontWeight.w500 : FontWeight.w400,
+            color: Colors.black),
+      ),
     );
   }
 }
@@ -60,14 +63,15 @@ class ContentsHomePage4 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      "Mock Test",
-      style: GoogleFonts.roboto(
-          fontSize: ResponsiveWebSite.isDesktop(context) ? 18 : 14,
-          fontWeight: ResponsiveWebSite.isDesktop(context)
-              ? FontWeight.w500
-              : FontWeight.w400,
-          color: Colors.black),
+    return InkWell(
+      onTap: () {},
+      child: Text(
+        "Study Materials",
+        style: GoogleFonts.roboto(
+            fontSize: ResponsiveWebSite.isDesktop(context) ? 16 : 12,
+            fontWeight: ResponsiveWebSite.isDesktop(context) ? FontWeight.w500 : FontWeight.w400,
+            color: Colors.black),
+      ),
     );
   }
 }
@@ -77,14 +81,33 @@ class ContentsHomePage5 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      "Previous Qn",
-      style: GoogleFonts.roboto(
-          fontSize: ResponsiveWebSite.isDesktop(context) ? 18 : 14,
-          fontWeight: ResponsiveWebSite.isDesktop(context)
-              ? FontWeight.w500
-              : FontWeight.w400,
-          color: Colors.black),
+    return InkWell(
+      onTap: () {},
+      child: Text(
+        "Carriers",
+        style: GoogleFonts.roboto(
+            fontSize: ResponsiveWebSite.isDesktop(context) ? 16 : 12,
+            fontWeight: ResponsiveWebSite.isDesktop(context) ? FontWeight.w500 : FontWeight.w400,
+            color: Colors.black),
+      ),
+    );
+  }
+}
+
+class ContentsHomePage6 extends StatelessWidget {
+  const ContentsHomePage6({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {},
+      child: Text(
+        "Contact Us",
+        style: GoogleFonts.roboto(
+            fontSize: ResponsiveWebSite.isDesktop(context) ? 16 : 12,
+            fontWeight: ResponsiveWebSite.isDesktop(context) ? FontWeight.w500 : FontWeight.w400,
+            color: Colors.black),
+      ),
     );
   }
 }
