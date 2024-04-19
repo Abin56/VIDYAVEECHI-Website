@@ -79,7 +79,7 @@ academicYearSettingFunction(BuildContext context) {
     context: context,
     builder: (context) {
       return AlertDialog(
-        title: const TextFontWidget(text: "demic Year", fontsize: 15),
+        title: const TextFontWidget(text: "Change acdemic Year", fontsize: 15),
         backgroundColor: cWhite,
         content: SizedBox(
           height: ResponsiveWebSite.isMobile(context)? 220: 140,
@@ -87,7 +87,7 @@ academicYearSettingFunction(BuildContext context) {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               SizedBox(
-                height: 70,
+                height: 80,
                 // color: cWhite,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

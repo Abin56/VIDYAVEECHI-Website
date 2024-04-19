@@ -237,6 +237,7 @@ class PeriodWiseTimeTable extends StatelessWidget {
                                                   timeTableController
                                                       .enableUpdate(data.docid,
                                                           data.dayName!);
+                                                           Navigator.of(context).pop();
                                                   print(data.dayName!);
                                                 });
                                           },
@@ -261,6 +262,7 @@ class PeriodWiseTimeTable extends StatelessWidget {
                                                 timeTableController
                                                     .enableDelete(data.docid,
                                                         data.dayName!);
+                                                         Navigator.of(context).pop();
                                               },
                                             );
                                           },

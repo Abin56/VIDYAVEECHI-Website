@@ -22,234 +22,246 @@ class LoginHistroyContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Container(
-              color: screenContainerbackgroundColor,
-              height: 1000,
-              width: 1150,
-              child: Padding(
-                padding: const EdgeInsets.only(
-                  top: 0,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.only(left: 25, top: 25),
-                      child: SizedBox(
-                        height: 30,
-                        width: double.infinity,
-                        child: TextFontWidget(
-                          text: 'Login List',
-                          fontsize: 18,
-                          fontWeight: FontWeight.bold,
+    return Obx(()=>
+       SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Container(
+                color: screenContainerbackgroundColor,
+                height: 1000,
+                width: 1150,
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    top: 0,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.only(left: 25, top: 25),
+                        child: SizedBox(
+                          height: 30,
+                          width: double.infinity,
+                          child: TextFontWidget(
+                            text: 'Login List',
+                            fontsize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 20),
-                      child: Row(
-                        children: [
-                          const Padding(
-                            padding: EdgeInsets.only(left: 20, right: 05),
-                            child: RouteSelectedTextContainer(
-                                title: 'Login Histroy'),
-                          ),
-                          const Spacer(),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: SizedBox(
-                              width: 250,
-                              height: 70,
-                              //  color: cWhite,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  const TextFontWidget(
-                                      text: 'Month *', fontsize: 12.5),
-                                  const SizedBox(
-                                    height: 05,
-                                  ),
-                                  SizedBox(
-                                    height: 40,
-                                    child: SelectLoginMonthDropDown(),
-                                  ),
-                                ],
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 20),
+                        child: Row(
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.only(left: 20, right: 05),
+                              child: RouteSelectedTextContainer(
+                                  title: 'Login Histroy'),
+                            ),
+                            const Spacer(),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: SizedBox(
+                                width: 250,
+                                height: 70,
+                                //  color: cWhite,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const TextFontWidget(
+                                        text: 'Month *', fontsize: 12.5),
+                                    const SizedBox(
+                                      height: 05,
+                                    ),
+                                    SizedBox(
+                                      height: 40,
+                                      child: SelectLoginMonthDropDown(),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: SizedBox(
-                              width: 200,
-                              height: 70,
-                              // color: cWhite,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  const TextFontWidget(
-                                      text: 'Date *', fontsize: 12.5),
-                                  const SizedBox(
-                                    height: 05,
-                                  ),
-                                  SizedBox(
-                                    height: 40,
-                                    child: SelectLoginDateDropDown(),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10, right: 10),
-                      child: Container(
-                        color: cWhite,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 5, right: 5),
-                          child: Container(
-                            color: cWhite,
-                            height: 40,
-                            child: const Row(
-                              children: [
-                                Expanded(
-                                    flex: 1,
-                                    child: CatrgoryTableHeaderWidget(
-                                        headerTitle: 'No')),
-                                SizedBox(
-                                  width: 01,
-                                ),
-                                // Expanded(
-                                //     flex: 2,
-                                //     child: CatrgoryTableHeaderWidget(
-                                //         headerTitle: 'ID')),
-                                // SizedBox(
-                                //   width: 01,
-                                // ),
-                                Expanded(
-                                    flex: 4,
-                                    child: CatrgoryTableHeaderWidget(
-                                        headerTitle: 'Name')),
-                                SizedBox(
-                                  width: 02,
-                                ),
-                                Expanded(
-                                    flex: 4,
-                                    child: CatrgoryTableHeaderWidget(
-                                        headerTitle: 'E mail')),
-                                SizedBox(
-                                  width: 02,
-                                ),
-                                Expanded(
-                                    flex: 3,
-                                    child: CatrgoryTableHeaderWidget(
-                                        headerTitle: 'Login Time')),
-                                SizedBox(
-                                  width: 02,
-                                ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: SizedBox(
+                                width: 200,
+                                height: 70,
+                                // color: cWhite,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const TextFontWidget(
+                                        text: 'Date *', fontsize: 12.5),
+                                    const SizedBox(
+                                      height: 05,
+                                    ),
+                                    SizedBox(
+                                      height: 40,
 
-                                Expanded(
-                                    flex: 3,
-                                    child: CatrgoryTableHeaderWidget(
-                                        headerTitle: 'Logout Time')),
-                                SizedBox(
-                                  width: 02,
+                                      child:adminLoginHistroyController.selectedMonth.value==true?
+                                       SelectLoginDateDropDown():const Row(
+                                         children: [
+                                          Text('Please select the month  '),
+                                           CircularProgressIndicator(),
+                                         ],
+                                       )
+                                    ),
+                                  ],
                                 ),
-                              ],
+                              ),
                             ),
-                          ),
+                          ],
                         ),
                       ),
-                    ),
-                    Expanded(
-                      child: Padding(
+                      Padding(
                         padding: const EdgeInsets.only(left: 10, right: 10),
                         child: Container(
-                          width: 1150,
-                          decoration: BoxDecoration(
-                            color: cWhite,
-                            border: Border.all(color: cWhite),
-                          ),
+                          color: cWhite,
                           child: Padding(
                             padding: const EdgeInsets.only(left: 5, right: 5),
-                            child: SizedBox(
-                              // width: 1100,
-                              child: StreamBuilder(
-                                stream: server
-                                    .collection('SchoolListCollection')
-                                    .doc(UserCredentialsController.schoolId)
-                                    .collection(
-                                        UserCredentialsController.batchId!)
-                                    .doc(UserCredentialsController.batchId)
-                                    .collection('LoginHistory')
-                                    .doc(Get.find<AdminLoginHistroyController>()
-                                        .loginHMonthValue
-                                        .value)
-                                    .collection(
-                                        Get.find<AdminLoginHistroyController>()
-                                            .loginHMonthValue
-                                            .value)
-                                    .doc(Get.find<AdminLoginHistroyController>()
-                                        .loginHDayValue
-                                        .value)
-                                    .collection(
-                                        Get.find<AdminLoginHistroyController>()
-                                            .loginHDayValue
-                                            .value)
-                                    .snapshots(),
-                                builder: (context, snaPS) {
-                                  if (snaPS.hasData) {
-                                    return ListView.separated(
-                                        itemBuilder: (context, index) {
-                                          final data =
-                                              AdminLoginDetailHistoryModel
-                                                  .fromMap(snaPS
-                                                      .data!.docs[index]
-                                                      .data());
-                                          return GestureDetector(
-                                            onTap: () {
-                                              // adminLoginHistroyController
-                                              //     .parentModelData
-                                              //     .value = data;
-                                              // adminLoginHistroyController
-                                              //     .loginHistroyontapped
-                                              //     .value = true;
-                                            },
-                                            child: AllLoginLogoutDataList(
-                                              index: index,
-                                              data: data,
-                                            ),
-                                          ); ///////
-                                        },
-                                        separatorBuilder: (context, index) {
-                                          return const SizedBox(
-                                            height: 02,
-                                          );
-                                        },
-                                        itemCount:
-                                            //  100);
-                                            snaPS.data!.docs.length);
-                                    //           //////////
-                                  }else if(snaPS.data==null){
-return const SizedBox();
-                                  } else {
-                                    return const LoadingWidget();
-                                  }
-
-                                },
-                              ), ////////
+                            child: Container(
+                              color: cWhite,
+                              height: 40,
+                              child: const Row(
+                                children: [
+                                  Expanded(
+                                      flex: 1,
+                                      child: CatrgoryTableHeaderWidget(
+                                          headerTitle: 'No')),
+                                  SizedBox(
+                                    width: 01,
+                                  ),
+                                  // Expanded(
+                                  //     flex: 2,
+                                  //     child: CatrgoryTableHeaderWidget(
+                                  //         headerTitle: 'ID')),
+                                  // SizedBox(
+                                  //   width: 01,
+                                  // ),
+                                  Expanded(
+                                      flex: 4,
+                                      child: CatrgoryTableHeaderWidget(
+                                          headerTitle: 'Name')),
+                                  SizedBox(
+                                    width: 02,
+                                  ),
+                                  Expanded(
+                                      flex: 4,
+                                      child: CatrgoryTableHeaderWidget(
+                                          headerTitle: 'E mail')),
+                                  SizedBox(
+                                    width: 02,
+                                  ),
+                                  Expanded(
+                                      flex: 3,
+                                      child: CatrgoryTableHeaderWidget(
+                                          headerTitle: 'Login Time')),
+                                  SizedBox(
+                                    width: 02,
+                                  ),
+      
+                                  Expanded(
+                                      flex: 3,
+                                      child: CatrgoryTableHeaderWidget(
+                                          headerTitle: 'Logout Time')),
+                                  SizedBox(
+                                    width: 02,
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    )
-                  ],
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 10, right: 10),
+                          child: Container(
+                            width: 1150,
+                            decoration: BoxDecoration(
+                              color: cWhite,
+                              border: Border.all(color: cWhite),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 5, right: 5),
+                              child: SizedBox(
+                                // width: 1100,
+                                child: StreamBuilder(
+                                  stream: server
+                                      .collection('SchoolListCollection')
+                                      .doc(UserCredentialsController.schoolId)
+                                      .collection(
+                                          UserCredentialsController.batchId!)
+                                      .doc(UserCredentialsController.batchId)
+                                      .collection('LoginHistory')
+                                      .doc(Get.find<AdminLoginHistroyController>()
+                                          .loginHMonthValue
+                                          .value)
+                                      .collection(
+                                          Get.find<AdminLoginHistroyController>()
+                                              .loginHMonthValue
+                                              .value)
+                                      .doc(Get.find<AdminLoginHistroyController>()
+                                          .loginHDayValue
+                                          .value)
+                                      .collection(
+                                          Get.find<AdminLoginHistroyController>()
+                                              .loginHDayValue
+                                              .value)
+                                      .snapshots(),
+                                  builder: (context, snaPS) {
+      
+                                    if (snaPS.hasData) {
+                                     
+                                      return snaPS.data!.docs.isEmpty?const Text('Please select the month and date'):
+                                       ListView.separated(
+                                          itemBuilder: (context, index) {
+                                            final data =
+                                                AdminLoginDetailHistoryModel
+                                                    .fromMap(snaPS
+                                                        .data!.docs[index]
+                                                        .data());
+                                            return GestureDetector(
+                                              onTap: () {
+                                                // adminLoginHistroyController
+                                                //     .parentModelData
+                                                //     .value = data;
+                                                // adminLoginHistroyController
+                                                //     .loginHistroyontapped
+                                                //     .value = true;
+                                              },
+                                              child: AllLoginLogoutDataList(
+                                                index: index,
+                                                data: data,
+                                              ),
+                                            ); ///////
+                                          },
+                                          separatorBuilder: (context, index) {
+                                            return const SizedBox(
+                                              height: 02,
+                                            );
+                                          },
+                                          itemCount:
+                                              //  100);
+                                              snaPS.data!.docs.length);
+                                      //           //////////
+                                    }else if(snaPS.data==null){
+      return  Container(color: Colors.black,);
+                                    } else {
+                                      return const LoadingWidget();
+                                    }
+      
+                                  },
+                                ), ////////
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),
-          );
+    );
   }
 }

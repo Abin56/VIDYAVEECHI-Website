@@ -51,17 +51,10 @@ class AllLoginLogoutDataList extends StatelessWidget {
             flex: 4,
             child: Row(
               children: [
-                SizedBox(
-                  width: 20,
-                  child: Center(
-                    child: Image.asset(
-                      'webassets/flact_png/icons8-parent-100.png',
-                    ),
-                  ),
-                ),
+               
                 Expanded(
                   child: TextFontWidget(
-                    text: "  ${data.adminuser}",
+                    text: "  ${data.adminuserName}",
                     // "  Name of the Person",
                     fontsize: 12,
                     overflow: TextOverflow.ellipsis,
@@ -77,17 +70,10 @@ class AllLoginLogoutDataList extends StatelessWidget {
             flex: 4,
             child: Row(
               children: [
-                SizedBox(
-                  width: 15,
-                  child: Center(
-                    child: Image.asset(
-                      'webassets/stickers/icons8-student-100 (1).png',
-                    ),
-                  ),
-                ),
+               
                 Expanded(
                   child: TextFontWidget(
-                    text: "  ${data.adminuser}",
+                    text: "  ${data.adminuserName}",
                     //  "  @gmail.com",
                     fontsize: 12,
                     overflow: TextOverflow.ellipsis,
@@ -103,18 +89,12 @@ class AllLoginLogoutDataList extends StatelessWidget {
             flex: 3,
             child: Row(
               children: [
-                SizedBox(
-                  width: 20,
-                  child: Center(
-                    child: Image.asset(
-                      'webassets/png/login.png',
-                    ),
-                  ),
-                ),
-                Expanded(
+                
+                const Expanded(
                   child: TextFontWidget(
-                    text: "  ${data.loginTime}",
-                    //  "  12:45 pm",
+                    text:
+                    // "  ${data.loginTime}",
+                      "  12:45 pm",
                     fontsize: 12,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -129,17 +109,10 @@ class AllLoginLogoutDataList extends StatelessWidget {
             flex: 3,
             child: Row(
               children: [
-                SizedBox(
-                  width: 20,
-                  child: Center(
-                    child: Image.asset(
-                      'webassets/png/logout.t.png',
-                    ),
-                  ),
-                ),
+                
                 Expanded(
                   child: TextFontWidget(
-                    text: "  ${data.logOutTime}",
+                    text: "  ${data.logoutTime}",
                     fontsize: 12,
                     overflow: TextOverflow.ellipsis,
                   ),

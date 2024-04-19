@@ -16,6 +16,7 @@ class AdminLoginHistroyController extends GetxController {
       Rxn<AdminLoginDetailHistoryModel>();
 
   RxBool loginHistroyontapped = false.obs;
+  RxBool selectedMonth=false.obs;
 
 
   /////////////////////////////////////////\

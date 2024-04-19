@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -34,6 +36,8 @@ class SelectLoginMonthDropDown extends StatelessWidget {
       onChanged: (value) async {
         if (value != null) {
           loginHCtrl.loginHMonthValue.value = value;
+          log( loginHCtrl.loginHMonthValue.value);
+          loginHCtrl.selectedMonth.value=true;
         }
       },
       popupProps: const PopupProps.menu(

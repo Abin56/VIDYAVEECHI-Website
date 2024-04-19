@@ -1,10 +1,21 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
+import 'package:vidyaveechi_website/view/widgets/custom_delete_showdialog/custom_delete_showdialog.dart';
 import 'package:vidyaveechi_website/view/widgets/table/table_widgets.dart';
 
+import '../../../../../controller/batch_yearController/batch_year_Controller.dart';
+import '../../../../utils/shared_pref/user_auth/user_credentials.dart';
+
 class BatchHistroyListPage extends StatelessWidget {
-  const BatchHistroyListPage({super.key});
+  final BatchYearController batchYearController =
+      Get.put(BatchYearController());
+  BatchHistroyListPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +39,7 @@ class BatchHistroyListPage extends StatelessWidget {
                     HeaderOfTable(text: "No.", flex: 1),
                     HeaderOfTable(text: "Batch Name", flex: 3),
                     HeaderOfTable(text: "Batch Created Date", flex: 3),
-                    HeaderOfTable(text: "Create By", flex: 2),
+                    //  HeaderOfTable(text: "Create By", flex: 2),
                     // HeaderOfTable(text: "Total Students", flex: 2),
                     // HeaderOfTable(text: "Total Staff", flex: 2),
                   ],
@@ -37,18 +48,21 @@ class BatchHistroyListPage extends StatelessWidget {
                   child: StreamBuilder(
                       stream: FirebaseFirestore.instance
                           .collection('SchoolListCollection')
+                          .doc(UserCredentialsController.schoolId)
+                          .collection('BatchYear')
                           .snapshots(),
                       builder: (context, snapshot) {
                         final List<DocumentSnapshot> documents =
                             snapshot.data!.docs;
                         if (snapshot.hasData) {
+                          //print(UserCredentialsController.schoolId);
                           return ListView.separated(
                               itemBuilder: (context, index) {
-                                final document = documents[index].data()
+                                final data = documents[index].data()
                                     as Map<String, dynamic>;
-                                final DateTime createDate =
-                                    (document['createDate'] as Timestamp)
-                                        .toDate();
+                                // final DateTime createDate =
+                                //     (document['createDate'] as Timestamp)
+                                //         .toDate();
                                 //  final String formattedCreateDate = formatDate(createDate);
 
                                 return SizedBox(
@@ -59,15 +73,23 @@ class BatchHistroyListPage extends StatelessWidget {
                                       TableListContainers(
                                           text: '${index + 1}', flex: 1),
                                       TableListContainers(
-                                        text: document['batchYear'] ?? '',
+                                        text: data['id'] ?? '',
                                         flex: 3,
                                       ),
+
                                       TableListContainers(
-                                        text: createDate.toString(),
-                                        flex: 3,
-                                      ),
-                                      TableListContainers(
-                                        text: document['adminUserName'] ?? '',
+                                        onTap: () {
+                                          customDeleteShowDialog(
+                                              context: context,
+                                              onTap: () {
+                                                batchYearController
+                                                    .enableDelete(
+                                                        data['id'] );
+                                                         Navigator.of(context).pop();
+                                              });
+                                          log(data['id']);
+                                        },
+                                        text: 'Delete',
                                         flex: 2,
                                       ),
                                       //  TableListContainers(
@@ -86,7 +108,7 @@ class BatchHistroyListPage extends StatelessWidget {
                                   const SizedBox(
                                     height: 1,
                                   ),
-                              itemCount: 1);
+                              itemCount: snapshot.data!.docs.length);
                         } else {
                           return const Text('No data found');
                         }

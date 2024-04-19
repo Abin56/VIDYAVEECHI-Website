@@ -8,7 +8,7 @@ import 'package:vidyaveechi_website/controller/class_controller/class_controller
 import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/drop_down/select_class.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
-import 'package:vidyaveechi_website/view/users/admin/screens/timetable/view_timetable.dart/period/period_wise_timetable.dart';
+import 'package:vidyaveechi_website/view/users/admin/screens/timetable/period_wise_timetable.dart';
 import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
 import 'package:vidyaveechi_website/view/widgets/button_container/button_container.dart';
@@ -16,10 +16,9 @@ import 'package:vidyaveechi_website/view/widgets/loading_widget/loading_widget.d
 import 'package:vidyaveechi_website/view/widgets/progess_button/progress_button.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 
-import '../../../../../../controller/timetable_controller/timetable_controller.dart';
-import '../../../../../drop_down/class_wise_subject.dart';
-import '../../../../../widgets/textformFiledContainer/textformFiledBlueContainer.dart';
-import '../../notice/noticebutton_container.dart';
+import '../../../../../controller/timetable_controller/timetable_controller.dart';
+import '../../../../drop_down/class_wise_subject.dart';
+import '../../../../widgets/textformFiledContainer/textformFiledBlueContainer.dart';
 
 class TimeTableMainScreen extends StatelessWidget {
   const TimeTableMainScreen({super.key});

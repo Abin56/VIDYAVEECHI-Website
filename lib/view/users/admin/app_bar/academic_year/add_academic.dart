@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 
+import '../../../../../controller/batch_yearController/batch_year_Controller.dart';
+
 addAcademicYearFunction(BuildContext context) {
+    final BatchYearController batchYearController=Get.put(BatchYearController());
+
   showDialog(
     context: context,
     builder: (BuildContext context) {
@@ -15,9 +20,9 @@ addAcademicYearFunction(BuildContext context) {
                 SizedBox(
                   height: 40,
                   child: TextFormField(
-                   // controller: applynewBatchYearContoller,
+                   controller: batchYearController.frombatchController,
                     readOnly: true,
-                    onTap: () {},
+                    onTap: () {batchYearController.selectDate(context, batchYearController.frombatchController);},
                     // _selectDate(context),
                     decoration: const InputDecoration(
                       labelText: 'DD-MM-YYYY',
@@ -29,9 +34,9 @@ addAcademicYearFunction(BuildContext context) {
                 SizedBox(
                   height: 40,
                   child: TextFormField(
-                  //  controller: selectedToDaterContoller,
+                    controller: batchYearController.tobatchController,
                     readOnly: true,
-                    onTap: () {},
+                    onTap: () {batchYearController.selectDate(context, batchYearController.tobatchController);},
                   //  _selectToDate(context),
                     decoration: const InputDecoration(
                       labelText: 'To',
@@ -52,7 +57,7 @@ addAcademicYearFunction(BuildContext context) {
           ),
           TextButton(
             child: const Text('Create'),
-            onPressed: () async {
+            onPressed: () async {batchYearController.addBatchyear();
               // await FirebaseFirestore.instance
               //     .collection("SchoolListCollection")
               //     .doc(Get.find<AdminLoginScreenController>().schoolID)
