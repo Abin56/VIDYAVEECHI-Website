@@ -123,11 +123,11 @@ class ClassDetailsContainer extends StatelessWidget {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          const Padding(
+                                          Padding(
                                             padding: EdgeInsets.only(
                                                 left: 10, top: 10),
                                             child: TextFontWidget(
-                                              text: "Class Name",
+                                              text: data!.className,
                                               fontsize: 20,
                                               fontWeight: FontWeight.w600,
                                             ),
@@ -342,7 +342,7 @@ class ClassDetailsContainer extends StatelessWidget {
                   // height: 300,
                   child: TabBarView(children: [
                     const FeesHistory(), //........................ Student FEES
-                    const AttendenceHistory(), //.......................... Student Attendence
+                    AttendenceHistory(), //.......................... Student Attendence
                     ExamHistory() //............................ Student Exam History
                   ]),
                 ),
