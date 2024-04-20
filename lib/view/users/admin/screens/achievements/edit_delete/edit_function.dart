@@ -15,12 +15,19 @@ editFunctionOfAchievements(BuildContext context, AchievementModel data) {
       title: 'Edit',
       children: [
         TextFormFiledBlueContainerWidgetEvent(
+          controller: achievementsController.studentNameController,
             hintText: data.studentName, title: 'Student Name'),
         TextFormFiledBlueContainerWidgetEvent(
+          controller: achievementsController.admissionNumberController,
             hintText: data.admissionNumber, title: 'Admission Number'),
         TextFormFiledBlueContainerWidgetEvent(
+          onTap: () {
+            achievementsController.selectDate(context, achievementsController.editdateController);
+          },
+          controller: achievementsController.editdateController,
             hintText: data.dateofAchievement, title: 'Date'),
         TextFormFiledBlueContainerWidgetEvent(
+          controller: achievementsController.achievementController,
             hintText: data.achievementHead, title: 'Achievement'),
       ],
       doyouwantActionButton: true,

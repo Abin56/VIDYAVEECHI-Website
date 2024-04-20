@@ -44,6 +44,9 @@ class _CreateAchievementState extends State<CreateAchievement> {
       Padding(
         padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
         child: TextFormFiledBlueContainerWidgetAchievement(
+          onTap: () {
+            achievementsController.selectDate(context, achievementsController.dateController);
+          },
           validator: checkFieldDateIsValid,
           controller: achievementsController.dateController,
           width: ResponsiveWebSite.isMobile(context) ? double.infinity : 500,

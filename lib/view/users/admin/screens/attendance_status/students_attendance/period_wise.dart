@@ -65,7 +65,7 @@ class PeriodWiseStudentsAttendance extends StatelessWidget {
                               height: 40,
                               width: 180,
                               child: const Center(
-                                child: TextFontWidget(
+                                child: TextFontWidgetRouter(
                                   text: 'Add Attendance ',
                                   fontsize: 14,
                                   fontWeight: FontWeight.bold,

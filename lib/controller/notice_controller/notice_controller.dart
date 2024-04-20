@@ -24,15 +24,18 @@ class NoticeController extends GetxController {
   final Rxn<DateTime> dateSelectedSubmission = Rxn<DateTime>();
   final Rxn<DateTime> dateSelectedOccasion = Rxn<DateTime>();
 
-  final Rx<String> noticePublishedDateController = ''.obs;
-  final Rx<String> noticeSubmissionDateController = ''.obs;
-  final Rx<String> noticeOccasionDateController = ''.obs;
+  // final Rx<String> noticePublishedDateController = ''.obs;
+  // final Rx<String> noticeSubmissionDateController = ''.obs;
+  // final Rx<String> noticeOccasionDateController = ''.obs;
 
    TextEditingController noticeHeadingController = TextEditingController();
-  // TextEditingController noticePublishedDateController = TextEditingController();
+   TextEditingController noticePublishedDateController = TextEditingController();
    TextEditingController noticeSubjectController = TextEditingController();
-  // TextEditingController noticeDateofoccationontroller = TextEditingController();
- //  TextEditingController noticeDateofSubmissionontroller = TextEditingController();
+   TextEditingController noticeDateofoccationController = TextEditingController();
+   TextEditingController noticeDateofSubmissionController = TextEditingController();
+    TextEditingController editnoticePublishedDateController = TextEditingController();
+   TextEditingController editnoticeDateofoccationController = TextEditingController();
+   TextEditingController editnoticeDateofSubmissionController = TextEditingController();
    TextEditingController noticevenueController = TextEditingController();
    TextEditingController noticeGuestController = TextEditingController();
    TextEditingController noticeSignedByController = TextEditingController();
@@ -41,12 +44,12 @@ class NoticeController extends GetxController {
     final uuid =const  Uuid().v1();
     final noticeDetails = NoticeModel(
       subject: noticeSubjectController.text,
-      publishedDate: noticePublishedDateController.value, 
+      publishedDate: noticePublishedDateController.text, 
       heading: noticeHeadingController.text, 
-      dateofoccation: noticeOccasionDateController.value, 
+      dateofoccation: noticeDateofoccationController.text, 
       venue: noticevenueController.text, 
       chiefGuest: noticeGuestController.text, 
-      dateOfSubmission: noticeSubmissionDateController.value, 
+      dateOfSubmission: noticeDateofSubmissionController.text, 
       signedBy: noticeSignedByController.text, 
       noticeId: uuid);
 
@@ -63,12 +66,12 @@ class NoticeController extends GetxController {
           .set(noticeDetails.toMap())
           .then((value) async {
         noticeSubjectController.clear();
-        noticePublishedDateController.value = '';
+        noticePublishedDateController.clear();
         noticeHeadingController.clear();
-        noticeOccasionDateController.value = '';
+        noticeDateofoccationController.clear();
         noticevenueController.clear();
         noticeGuestController.clear();
-        noticeSubmissionDateController.value = '';
+        noticeDateofSubmissionController.clear();
         noticeSignedByController.clear();
         buttonstate.value = ButtonState.success;
         print(UserCredentialsController.batchId!);
@@ -99,12 +102,12 @@ class NoticeController extends GetxController {
         .doc(noticeId)
         .update({
         'subject':  noticeSubjectController.text,
-        'publishedDate': noticePublishedDateController.value,
+        'publishedDate': editnoticePublishedDateController.text,
         'heading': noticeHeadingController.text,
-        'dateofoccation': noticeOccasionDateController.value,
+        'dateofoccation': editnoticeDateofoccationController,
         'venue': noticevenueController.text,
         'chiefGuest': noticeGuestController.text,
-        'dateOfSubmission': noticeSubmissionDateController.value,
+        'dateOfSubmission': editnoticeDateofSubmissionController,
         'signedBy': noticeSignedByController.text,
         })
         .then((value) => Navigator.pop(context ))
@@ -129,67 +132,17 @@ class NoticeController extends GetxController {
 
   
 
-   selectPublishedDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: dateSelectedPublished.value ?? DateTime.now(),
-      firstDate: DateTime(1920),
-      lastDate: DateTime(2100),
-      // builder: (context, child) {
-      //   return Container();
-      // },
-    );
-    if (picked != null && picked != dateSelectedPublished.value) {
-      dateSelectedPublished.value = picked;
-      DateTime parseDate = DateTime.parse(dateSelectedPublished.value.toString());
-      final DateFormat formatter = DateFormat('yyyy-MMMM-dd');
-      String formatted = formatter.format(parseDate);
+   Future<void> selectDate(BuildContext context, TextEditingController controller) async {
+  final DateTime? pickedDate = await showDatePicker(
+    context: context,
+    initialDate: DateTime.now(),
+    firstDate: DateTime(2000),
+    lastDate: DateTime(2101),
+  );
 
-      noticePublishedDateController.value = formatted.toString();
-      log(formatted.toString());
-    }
+  if (pickedDate != null) {
+    String formattedDate = DateFormat('dd-MM-yyyy').format(pickedDate);
+    controller.text = formattedDate;
   }
-
-   selectSubmissionDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: dateSelectedSubmission.value ?? DateTime.now(),
-      firstDate: DateTime(1920),
-      lastDate: DateTime(2100),
-      // builder: (context, child) {
-      //   return Container();
-      // },
-    );
-    if (picked != null && picked != dateSelectedSubmission.value) {
-      dateSelectedSubmission.value = picked;
-      DateTime parseDate = DateTime.parse(dateSelectedSubmission.value.toString());
-      final DateFormat formatter = DateFormat('yyyy-MMMM-dd');
-      String formatted = formatter.format(parseDate);
-
-      noticeSubmissionDateController.value = formatted.toString();
-      log(formatted.toString());
-    }
-  }
-
-
- selectOccasionDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: dateSelectedOccasion.value ?? DateTime.now(),
-      firstDate: DateTime(1920),
-      lastDate: DateTime(2100),
-      // builder: (context, child) {
-      //   return Container();
-      // },
-    );
-    if (picked != null && picked != dateSelectedOccasion.value) {
-      dateSelectedOccasion.value = picked;
-      DateTime parseDate = DateTime.parse(dateSelectedOccasion.value.toString());
-      final DateFormat formatter = DateFormat('yyyy-MMMM-dd');
-      String formatted = formatter.format(parseDate);
-
-      noticeOccasionDateController.value = formatted.toString();
-      log(formatted.toString());
-    }
-  }
+}
 }

@@ -63,7 +63,7 @@ class AllTeacherListContainer extends StatelessWidget {
                                   height: 35,
                                   width: 150,
                                   child: const Center(
-                                    child: TextFontWidget(
+                                    child: TextFontWidgetRouter(
                                       text: 'Create New Teacher',
                                       fontsize: 12,
                                       fontWeight: FontWeight.bold,

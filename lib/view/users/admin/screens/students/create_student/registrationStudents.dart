@@ -102,7 +102,7 @@ class RegistrationStudentList extends StatelessWidget {
                   const Padding(
                     padding: EdgeInsets.only(top: 30),
                     child: RouteSelectedTextContainer(
-                        width: 200, title: 'Registred Students'),
+                        width: 200, title: 'Registered Students'),
                   ),
                 ],
               ),

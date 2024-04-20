@@ -9,16 +9,17 @@ import 'package:vidyaveechi_website/view/drop_down/class_wise_subject.dart';
 import 'package:vidyaveechi_website/view/drop_down/select_class.dart';
 import 'package:vidyaveechi_website/view/drop_down/select_period.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
+import 'package:vidyaveechi_website/view/users/admin/screens/attendence/teacher_attendance_adding/widget.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/attendence/widget.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/students/student_details/widgets/category_tableHeader.dart';
 import 'package:vidyaveechi_website/view/widgets/routeSelectedTextContainer/routeSelectedTextContainer.dart';
 import 'package:vidyaveechi_website/view/widgets/routeSelectedTextContainer/route_NonSelectedContainer.dart';
 import 'package:vidyaveechi_website/view/widgets/textformFiledContainer/textformFiledContainer.dart';
 //////
-class AttendanceAddingList extends StatelessWidget {
+class TeachersAttendanceAddingList extends StatelessWidget {
   final AttendenceController attendenceController = Get.put(AttendenceController());
   final CalenderController calenderController = Get.put(CalenderController());
-  AttendanceAddingList({super.key});
+  TeachersAttendanceAddingList({super.key});
 
   GlobalKey<FormState> fkey = GlobalKey<FormState>();
 
@@ -290,7 +291,7 @@ class AttendanceAddingList extends StatelessWidget {
                                       showDialog(
                                         context: context,
                                         builder: (context) {
-                                          return EditAttendanceAddingDialog();
+                                          return TeacherEditAttendanceAddingDialog();
                                         },
                                       );
                                     },
@@ -407,7 +408,7 @@ class AttendanceAddingList extends StatelessWidget {
                                           //     snapshot.data!.docs[index].data());
                                           return Padding(
                                             padding: const EdgeInsets.only(left: 10, right: 10),
-                                            child: AttendanceDataTile(
+                                            child: TeacherAttendanceDataTile(
                                               index: index,
                                               studentData: studentData,
                                             ),

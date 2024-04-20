@@ -15,8 +15,7 @@ import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 import 'package:vidyaveechi_website/view/widgets/textformFiledContainer/textformFiledBlueContainer.dart';
 
 class GeneralInsructions extends StatelessWidget {
-  final GeneralInsructionController generalInsructionController =
-      Get.put(GeneralInsructionController());
+  final GeneralInsructionController generalInsructionController =  Get.put(GeneralInsructionController());
   GeneralInsructions({super.key});
 
   @override
@@ -92,18 +91,15 @@ class GeneralInsructions extends StatelessWidget {
                             .collection('Admin_general_instructions')
                             .snapshots(),
                         builder: (context, snapshot) {
-                          if (snapshot.connectionState ==
-                              ConnectionState.waiting) {
-                            return const Center(
-                                child: CircularProgressIndicator());
+                          if (snapshot.connectionState == ConnectionState.waiting) {
+                            return const Center(child: CircularProgressIndicator());
                           }
                           // ignore: prefer_is_empty
                           if (snapshot.data!.docs.length == 0) {
                             return Center(
                                 child: Text(
                               'No General_instructions',
-                              style: GoogleFonts.poppins(
-                                  fontSize: 20, fontWeight: FontWeight.w500),
+                              style: GoogleFonts.poppins(fontSize: 20, fontWeight: FontWeight.w500),
                             ));
                           }
                           return Column(
@@ -111,14 +107,11 @@ class GeneralInsructions extends StatelessWidget {
                               SizedBox(
                                 height: 650,
                                 child: GridView.builder(
-                                  gridDelegate:
-                                      SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: ResponsiveWebSite.isMobile(
-                                            context)
+                                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: ResponsiveWebSite.isMobile(context)
                                         ? 1
                                         : 3, // Number of columns in the grid
-                                    crossAxisSpacing:
-                                        3, // Spacing between columns
+                                    crossAxisSpacing: 3, // Spacing between columns
                                     mainAxisSpacing: 5, // Spacing between rows
                                     mainAxisExtent: 200,
                                   ),
@@ -142,15 +135,12 @@ class GeneralInsructions extends StatelessWidget {
                                             right: 20,
                                             left: 20),
                                         decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
+                                          borderRadius: BorderRadius.circular(10),
                                           color: screenContainerbackgroundColor,
                                         ),
                                         child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.center,
                                           children: [
                                             TextFontWidget(
                                               text: ' ${data.instruction}',
@@ -159,8 +149,7 @@ class GeneralInsructions extends StatelessWidget {
                                             ),
                                             const Spacer(),
                                             Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceEvenly,
+                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                               children: [
                                                 GestureDetector(
                                                   onTap: () {
@@ -169,12 +158,10 @@ class GeneralInsructions extends StatelessWidget {
                                                         title: 'Edit',
                                                         children: [
                                                           TextFormFiledBlueContainerWidgetWithOutColor(
-                                                              hintText:
-                                                                  generalInsructionController
-                                                                      .instructionController
-                                                                      .text,
-                                                              title:
-                                                                  'General Instruction')
+                                                            controller: generalInsructionController.instructionController,
+                                                              hintText: generalInsructionController
+                                                                  .instructionController.text,
+                                                              title: 'General Instruction')
                                                         ],
                                                         actiononTapfuction: () {
                                                           generalInsructionController
@@ -182,28 +169,24 @@ class GeneralInsructions extends StatelessWidget {
                                                                   data.instructionId,
                                                                   context);
                                                         },
-                                                        doyouwantActionButton:
-                                                            true,
+                                                        doyouwantActionButton: true,
                                                         actiontext: 'Update');
                                                   },
-                                                  child: const Text(
+                                                  child: Text(
                                                     'Edit',
                                                     style: TextStyle(
-                                                        color: cgreen,
-                                                        fontWeight:
-                                                            FontWeight.bold),
+                                                        color: cgreen, fontWeight: FontWeight.bold),
                                                   ),
                                                 ),
                                                 const SizedBox(
                                                   width: 10,
                                                 ),
                                                 GestureDetector(
-                                                  child: const Text(
+                                                  child: Text(
                                                     'Delete',
                                                     style: TextStyle(
                                                         color: Colors.red,
-                                                        fontWeight:
-                                                            FontWeight.bold),
+                                                        fontWeight: FontWeight.bold),
                                                   ),
                                                   // child: Icon(
                                                   //   Icons.delete,
@@ -214,62 +197,43 @@ class GeneralInsructions extends StatelessWidget {
                                                       context: context,
                                                       barrierDismissible:
                                                           false, // user must tap button!
-                                                      builder: (context) =>
-                                                          AlertDialog(
-                                                        shape:
-                                                            RoundedRectangleBorder(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            0)),
+                                                      builder: (context) => AlertDialog(
+                                                        shape: RoundedRectangleBorder(
+                                                            borderRadius: BorderRadius.circular(0)),
                                                         title: const Text(
                                                           "Delete",
                                                           style: TextStyle(
                                                               fontSize: 16,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600),
+                                                              fontWeight: FontWeight.w600),
                                                         ),
                                                         content: const Text(
                                                           "Are you sure do you want to delete ?",
-                                                          style: TextStyle(
-                                                              fontSize: 14),
+                                                          style: TextStyle(fontSize: 14),
                                                         ),
                                                         actions: [
                                                           Row(
                                                             mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .spaceBetween,
+                                                                MainAxisAlignment.spaceBetween,
                                                             children: [
                                                               GestureDetector(
                                                                   onTap: () {
-                                                                    Navigator.pop(
-                                                                        context);
+                                                                    Navigator.pop(context);
                                                                   },
                                                                   child: BlueContainerWidget(
-                                                                      title:
-                                                                          "No",
-                                                                      fontSize:
-                                                                          12,
-                                                                      color:
-                                                                          adminePrimayColor,
-                                                                      width:
-                                                                          100)),
+                                                                      title: "No",
+                                                                      fontSize: 12,
+                                                                      color: adminePrimayColor,
+                                                                      width: 100)),
                                                               GestureDetector(
                                                                   onTap: () {
-                                                                    generalInsructionController.removeInstruction(
-                                                                        data.instructionId,
-                                                                        context);
+                                                                    generalInsructionController
+                                                                        .removeInstruction(data.instructionId,context);
                                                                   },
                                                                   child: BlueContainerWidget(
-                                                                      title:
-                                                                          "Yes",
-                                                                      fontSize:
-                                                                          12,
-                                                                      color:
-                                                                          adminePrimayColor,
-                                                                      width:
-                                                                          100)),
+                                                                      title: "Yes",
+                                                                      fontSize: 12,
+                                                                      color: adminePrimayColor,
+                                                                      width: 100)),
                                                             ],
                                                           ),
                                                         ],
