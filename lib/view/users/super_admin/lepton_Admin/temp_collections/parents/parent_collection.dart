@@ -9,7 +9,7 @@ import '../../../widgets/drop_down/get_class.dart';
 
 class ParentTempCollection extends StatelessWidget {
  final TempParentController tempParentController = Get.put(TempParentController());
-  String schoolID;
+ final String schoolID;
   ParentTempCollection({super.key, required this.schoolID});
 
   @override

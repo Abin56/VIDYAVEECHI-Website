@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vidyaveechi_website/view/users/super_admin/lepton_Admin/requested_list/req_list_screen.dart';
 
@@ -18,7 +19,8 @@ class LeptonHomePage extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, SchoolsListScreen.route);
+                            Get.off(const SchoolsListScreen());
+         
               },
               child: ButtonContainerWidget(
                 curving: 30,
@@ -37,7 +39,7 @@ class LeptonHomePage extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, RequestedSchoolsListScreen.route);
+             Get.off(RequestedSchoolsListScreen());
               },
               child: ButtonContainerWidget(
                 curving: 30,

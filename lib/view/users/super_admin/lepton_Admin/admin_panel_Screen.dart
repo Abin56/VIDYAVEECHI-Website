@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
@@ -14,12 +13,12 @@ class LeptonAdminLoginScreen extends StatelessWidget {
   LeptonAdminLoginScreen({Key? key}) : super(key: key);
 
   final _hideGetxController = Get.put(PasswordField());
- final String adminpassword = '';
+  final String adminpassword = '';
   static const String route = '/adminLoginScreen';
 
   final TextEditingController _leptonIdController = TextEditingController();
 
- final TextEditingController passwordController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -41,8 +40,8 @@ class LeptonAdminLoginScreen extends StatelessWidget {
                       height: height,
                       color: const Color.fromARGB(255, 6, 71, 157),
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           IconButtonBackWidget(
                             color: cWhite,
@@ -59,7 +58,9 @@ class LeptonAdminLoginScreen extends StatelessWidget {
                                   fontWeight: FontWeight.w800,
                                 ),
                               ),
-                              const SizedBox(height: 30,),
+                              const SizedBox(
+                                height: 30,
+                              ),
                               SizedBox(
                                 height: 350,
                                 child: LottieBuilder.network(
@@ -237,24 +238,12 @@ class LeptonAdminLoginScreen extends StatelessWidget {
                         color: Colors.transparent,
                         child: InkWell(
                           onTap: () async {
-                            try {
-                              await FirebaseAuth.instance
-                                  .signInWithEmailAndPassword(
-                                      email: _leptonIdController.text.trim(),
-                                      password: passwordController.text.trim())
-                                  .then(
-                                    (value) => Navigator.pushNamed(
-                                      context,
-                                      LeptonHomePage.route,
-                                    ),
-                                  );
-                              // .then((value) => Get.to(SchoolStudentHomeNew(
-                              //       schoolID: schoolId,
-                              //       classID: classID,
-                              //       studentEmailid: emailController.text.trim(),
-                              //     )));
-                            } catch (e) {
-                              errorBox(context, e);
+                            if (_leptonIdController.text.trim() ==
+                                    'openadminpanel' &&
+                                passwordController.text.trim() == 'Lemon4you') {
+                              Get.off(const LeptonHomePage());
+                            } else {
+                              return;
                             }
                           },
                           borderRadius: BorderRadius.circular(16.0),
@@ -298,4 +287,3 @@ void errorBox(context, e) {
         );
       });
 }
-
