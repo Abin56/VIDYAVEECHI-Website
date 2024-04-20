@@ -38,7 +38,7 @@ class BatchHistroyListPage extends StatelessWidget {
                   children: [
                     HeaderOfTable(text: "No.", flex: 1),
                     HeaderOfTable(text: "Batch Name", flex: 3),
-                    HeaderOfTable(text: "Batch Created Date", flex: 3),
+                    HeaderOfTable(text: "Delete Option", flex: 3),
                     //  HeaderOfTable(text: "Create By", flex: 2),
                     // HeaderOfTable(text: "Total Students", flex: 2),
                     // HeaderOfTable(text: "Total Staff", flex: 2),
@@ -52,18 +52,11 @@ class BatchHistroyListPage extends StatelessWidget {
                           .collection('BatchYear')
                           .snapshots(),
                       builder: (context, snapshot) {
-                        final List<DocumentSnapshot> documents =
-                            snapshot.data!.docs;
+           
                         if (snapshot.hasData) {
-                          //print(UserCredentialsController.schoolId);
                           return ListView.separated(
                               itemBuilder: (context, index) {
-                                final data = documents[index].data()
-                                    as Map<String, dynamic>;
-                                // final DateTime createDate =
-                                //     (document['createDate'] as Timestamp)
-                                //         .toDate();
-                                //  final String formattedCreateDate = formatDate(createDate);
+                                final data = snapshot.data!.docs[index].data();
 
                                 return SizedBox(
                                   width: 870,
@@ -76,30 +69,20 @@ class BatchHistroyListPage extends StatelessWidget {
                                         text: data['id'] ?? '',
                                         flex: 3,
                                       ),
-
                                       TableListContainers(
                                         onTap: () {
                                           customDeleteShowDialog(
                                               context: context,
                                               onTap: () {
                                                 batchYearController
-                                                    .enableDelete(
-                                                        data['id'] );
-                                                         Navigator.of(context).pop();
+                                                    .enableDelete(data['id']);
+                                                Navigator.of(context).pop();
                                               });
                                           log(data['id']);
                                         },
                                         text: 'Delete',
                                         flex: 2,
                                       ),
-                                      //  TableListContainers(
-                                      //   text: document['batchYear'] ?? '',
-                                      //   flex: 4,
-                                      // ),
-                                      //  TableListContainers(
-                                      //   text: document['batchYear'] ?? '',
-                                      //   flex: 4,
-                                      // ),
                                     ],
                                   ),
                                 );

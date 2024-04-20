@@ -55,7 +55,7 @@ class TimeTableMainScreen extends StatelessWidget {
                   timetableCtrl.dayName.value = newValue ?? '';
                 },
                 items: <String>[
-                'Select Day',
+                  'Select Day',
                   'Monday',
                   'Tuesday',
                   'Wednesday',
@@ -163,8 +163,7 @@ class TimeTableMainScreen extends StatelessWidget {
                         onTap: () {
                           timetable_Creation(context, textformWidget);
                         },
-                        child:
-                         ButtonContainerWidget(
+                        child: ButtonContainerWidget(
                             curving: 30,
                             colorindex: 0,
                             height: 40,
@@ -215,7 +214,7 @@ class TimeTableMainScreen extends StatelessWidget {
                               .collection('classes')
                               .doc(Get.find<ClassController>().classDocID.value)
                               .collection('timetables')
-                              .orderBy('day', descending: false)
+                              .orderBy('day', descending: true)
                               .snapshots(),
                           builder: (context, timesnaps) {
                             log("class id ${Get.find<ClassController>().classDocID.value}");
@@ -347,20 +346,25 @@ class TimeTableMainScreen extends StatelessWidget {
                               padding:
                                   const EdgeInsets.only(top: 10, bottom: 10),
                               child: Center(
-                                child:ProgressButtonWidget(buttonstate:timetableCtrl.buttonstate.value , text: 'Submit', function: (){
-                                   timetableCtrl.addTimeTableDataToFirebase();
-                                })
-                                //  NoticeButtonContainerWidget(
-                                //   text: 'Submit',
-                                //   width: 300,
-                                //   height: 50,
-                                //   fontSize: 18,
-                                //   onTap: () {
-                                //     timetableCtrl.addTimeTableDataToFirebase();
-                                //   },
-                                //   color: adminePrimayColor,
-                                // ),
-                              ),
+                                  child: ProgressButtonWidget(
+                                      buttonstate:
+                                          timetableCtrl.buttonstate.value,
+                                      text: 'Submit',
+                                      function: () {
+                                        timetableCtrl
+                                            .addTimeTableDataToFirebase();
+                                      })
+                                  //  NoticeButtonContainerWidget(
+                                  //   text: 'Submit',
+                                  //   width: 300,
+                                  //   height: 50,
+                                  //   fontSize: 18,
+                                  //   onTap: () {
+                                  //     timetableCtrl.addTimeTableDataToFirebase();
+                                  //   },
+                                  //   color: adminePrimayColor,
+                                  // ),
+                                  ),
                             )
                             // }),
                           ]),

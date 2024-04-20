@@ -105,186 +105,190 @@ class PeriodWiseTimeTable extends StatelessWidget {
                           .snapshots(),
                       builder: (context, snapshot) {
                         if (snapshot.hasData) {
-                          return ListView.separated(
-                            itemBuilder: (context, index) {
-                              final data = TimeTableModel.fromMap(
-                                  snapshot.data!.docs[index].data());
-                              return GestureDetector(
-                                onTap: () {},
-                                child: Container(
-                                  // color: data.selectColor,
-                                  child: Row(
-                                    children: [
-                                      Expanded(
-                                        flex: 1,
-                                        child: DataContainerMarksWidget(
-                                            color: data.selectColor,
-                                            wantColor: false,
-                                            rowMainAccess:
-                                                MainAxisAlignment.center,
-                                            index: index,
-                                            headerTitle: "${index + 1}"),
-                                      ),
-                                      const SizedBox(
-                                        width: 1,
-                                      ),
-                                      Expanded(
-                                        flex: 1,
-                                        child: DataContainerMarksWidget(
-                                            color: data.selectColor,
-                                            rowMainAccess:
-                                                MainAxisAlignment.center,
-                                            index: index,
-                                            headerTitle:
-                                                " ${data.periodNumber}"),
-                                      ),
-                                      const SizedBox(
-                                        width: 1,
-                                      ),
-                                      Expanded(
-                                        flex: 3,
-                                        child: DataContainerMarksWidget(
-                                            color: data.selectColor,
-                                            rowMainAccess:
-                                                MainAxisAlignment.start,
-                                            index: index,
-                                            headerTitle:
-                                                "   ${data.subjectName}"),
-                                      ),
-                                      const SizedBox(
-                                        width: 1,
-                                      ),
-                                      Expanded(
-                                        flex: 3,
-                                        child: DataContainerMarksWidget(
-                                            color: data.selectColor,
-                                            rowMainAccess:
-                                                MainAxisAlignment.start,
-                                            index: index,
-                                            headerTitle:
-                                                " ${data.startTime} - ${data.endTime}"),
-                                      ),
-                                      const SizedBox(
-                                        width: 1,
-                                      ),
-                                      Expanded(
-                                        flex: 2,
-                                        child: GestureDetector(
-                                          onTap: () {
-                                            customShowDilogBox(
-                                                context: context,
-                                                title: 'Edit',
-                                                children: [
-                                                  SizedBox(
-                                                    width: 400,
-                                                    height: 400,
-                                                    child: Column(
-                                                      children: [
-                                                        TextFormFiledBlueContainerWidgetWithOutColor(
-                                                          hintText:
-                                                              ' ${data.periodNumber}',
-                                                          title:
-                                                              'Period Number',
-                                                          controller:
-                                                              timeTableController
-                                                                  .periodController,
-                                                        ),
-                                                        TextFormFiledBlueContainerWidgetWithOutColor(
-                                                          hintText:
-                                                              ' ${data.subjectName}',
-                                                          title: 'Subject Name',
-                                                          controller:
-                                                              timeTableController
-                                                                  .subjectNamecontroller,
-                                                        ),
-                                                        TextFormFiledBlueContainerWidgetWithOutColor(
-                                                          onTap: () async {
-                                                            await timeTableController
-                                                                .selectTimesec(
-                                                                    context,
-                                                                    timeTableController
-                                                                        .startTimeviewController);
-                                                          },
-                                                          hintText:
-                                                              ' ${data.startTime}',
-                                                          title: 'Start Time',
-                                                          controller:
-                                                              timeTableController
-                                                                  .startTimeviewController,
-                                                        ),
-                                                        TextFormFiledBlueContainerWidgetWithOutColor(
-                                                          onTap: () async {
-                                                            await timeTableController
-                                                                .selectTimesec(
-                                                                    context,
-                                                                    timeTableController
-                                                                        .endTimeviewController);
-                                                          },
-                                                          hintText:
-                                                              ' ${data.endTime}',
-                                                          title: 'End Time',
-                                                          controller:
-                                                              timeTableController
-                                                                  .endTimeviewController,
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  )
-                                                ],
-                                                doyouwantActionButton: true,
-                                                actiontext: 'Update',
-                                                actiononTapfuction: () {
-                                                  timeTableController
-                                                      .enableUpdate(data.docid,
-                                                          data.dayName!);
-                                                           Navigator.of(context).pop();
-                                                  print(data.dayName!);
-                                                });
-                                          },
-                                          child: DataContainerMarksWidget(
-                                              color: data.selectColor,
-                                              rowMainAccess:
-                                                  MainAxisAlignment.center,
-                                              index: index,
-                                              headerTitle: '  Edit'),
-                                        ),
-                                      ),
-                                      const SizedBox(
-                                        width: 1,
-                                      ),
-                                      Expanded(
-                                        flex: 2,
-                                        child: GestureDetector(
-                                          onTap: () {
-                                            customDeleteShowDialog(
-                                              context: context,
+                          return snapshot.data!.docs.isEmpty
+                              ? const Text(
+                                  'Please select Class in Right Top DropDown List 😊')
+                              : ListView.separated(
+                                  itemBuilder: (context, index) {
+                                    final data = TimeTableModel.fromMap(
+                                        snapshot.data!.docs[index].data());
+                                    return GestureDetector(
+                                      onTap: () {},
+                                      child: Row(
+                                        children: [
+                                          Expanded(
+                                            flex: 1,
+                                            child: DataContainerMarksWidget(
+                                                color: data.selectColor,
+                                                wantColor: false,
+                                                rowMainAccess:
+                                                    MainAxisAlignment.center,
+                                                index: index,
+                                                headerTitle: "${index + 1}"),
+                                          ),
+                                          const SizedBox(
+                                            width: 1,
+                                          ),
+                                          Expanded(
+                                            flex: 1,
+                                            child: DataContainerMarksWidget(
+                                                color: data.selectColor,
+                                                rowMainAccess:
+                                                    MainAxisAlignment.center,
+                                                index: index,
+                                                headerTitle:
+                                                    " ${data.periodNumber}"),
+                                          ),
+                                          const SizedBox(
+                                            width: 1,
+                                          ),
+                                          Expanded(
+                                            flex: 3,
+                                            child: DataContainerMarksWidget(
+                                                color: data.selectColor,
+                                                rowMainAccess:
+                                                    MainAxisAlignment.start,
+                                                index: index,
+                                                headerTitle:
+                                                    "   ${data.subjectName}"),
+                                          ),
+                                          const SizedBox(
+                                            width: 1,
+                                          ),
+                                          Expanded(
+                                            flex: 3,
+                                            child: DataContainerMarksWidget(
+                                                color: data.selectColor,
+                                                rowMainAccess:
+                                                    MainAxisAlignment.start,
+                                                index: index,
+                                                headerTitle:
+                                                    " ${data.startTime} - ${data.endTime}"),
+                                          ),
+                                          const SizedBox(
+                                            width: 1,
+                                          ),
+                                          Expanded(
+                                            flex: 2,
+                                            child: GestureDetector(
                                               onTap: () {
-                                                timeTableController
-                                                    .enableDelete(data.docid,
-                                                        data.dayName!);
-                                                         Navigator.of(context).pop();
+                                                customShowDilogBox(
+                                                    context: context,
+                                                    title: 'Edit',
+                                                    children: [
+                                                      SizedBox(
+                                                        width: 400,
+                                                        height: 400,
+                                                        child: Column(
+                                                          children: [
+                                                            TextFormFiledBlueContainerWidgetWithOutColor(
+                                                              hintText:
+                                                                  ' ${data.periodNumber}',
+                                                              title:
+                                                                  'Period Number',
+                                                              controller:
+                                                                  timeTableController
+                                                                      .periodController,
+                                                            ),
+                                                            TextFormFiledBlueContainerWidgetWithOutColor(
+                                                              hintText:
+                                                                  ' ${data.subjectName}',
+                                                              title:
+                                                                  'Subject Name',
+                                                              controller:
+                                                                  timeTableController
+                                                                      .subjectNamecontroller,
+                                                            ),
+                                                            TextFormFiledBlueContainerWidgetWithOutColor(
+                                                              onTap: () async {
+                                                                await timeTableController
+                                                                    .selectTimesec(
+                                                                        context,
+                                                                        timeTableController
+                                                                            .startTimeviewController);
+                                                              },
+                                                              hintText:
+                                                                  ' ${data.startTime}',
+                                                              title:
+                                                                  'Start Time',
+                                                              controller:
+                                                                  timeTableController
+                                                                      .startTimeviewController,
+                                                            ),
+                                                            TextFormFiledBlueContainerWidgetWithOutColor(
+                                                              onTap: () async {
+                                                                await timeTableController
+                                                                    .selectTimesec(
+                                                                        context,
+                                                                        timeTableController
+                                                                            .endTimeviewController);
+                                                              },
+                                                              hintText:
+                                                                  ' ${data.endTime}',
+                                                              title: 'End Time',
+                                                              controller:
+                                                                  timeTableController
+                                                                      .endTimeviewController,
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      )
+                                                    ],
+                                                    doyouwantActionButton: true,
+                                                    actiontext: 'Update',
+                                                    actiononTapfuction: () {
+                                                      timeTableController
+                                                          .enableUpdate(
+                                                              data.docid,
+                                                              data.dayName!);
+                                                      Navigator.of(context)
+                                                          .pop();
+                                                    });
                                               },
-                                            );
-                                          },
-                                          child: DataContainerMarksWidget(
-                                              color: data.selectColor,
-                                              rowMainAccess:
-                                                  MainAxisAlignment.center,
-                                              index: index,
-                                              headerTitle: '  Delete'),
-                                        ),
+                                              child: DataContainerMarksWidget(
+                                                  color: data.selectColor,
+                                                  rowMainAccess:
+                                                      MainAxisAlignment.center,
+                                                  index: index,
+                                                  headerTitle: '  Edit'),
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                            width: 1,
+                                          ),
+                                          Expanded(
+                                            flex: 2,
+                                            child: GestureDetector(
+                                              onTap: () {
+                                                customDeleteShowDialog(
+                                                  context: context,
+                                                  onTap: () {
+                                                    timeTableController
+                                                        .enableDelete(
+                                                            data.docid,
+                                                            data.dayName!);
+                                                    Navigator.of(context).pop();
+                                                  },
+                                                );
+                                              },
+                                              child: DataContainerMarksWidget(
+                                                  color: data.selectColor,
+                                                  rowMainAccess:
+                                                      MainAxisAlignment.center,
+                                                  index: index,
+                                                  headerTitle: '  Delete'),
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                    ],
+                                    );
+                                  },
+                                  itemCount: snapshot.data!.docs.length,
+                                  separatorBuilder: (context, index) =>
+                                      const SizedBox(
+                                    height: 1,
                                   ),
-                                ),
-                              );
-                            },
-                            itemCount: snapshot.data!.docs.length,
-                            separatorBuilder: (context, index) =>
-                                const SizedBox(
-                              height: 1,
-                            ),
-                          );
+                                );
                         } else if (snapshot.data == null) {
                           return const Center(
                             child: TextFontWidget(

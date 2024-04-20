@@ -38,72 +38,76 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
   int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: cWhite,
-      body: SafeArea(
-        child: SidebarDrawer(
-            body: ListView(
-              children: [
-                AppBarAdminPanel(),
-                pages[selectedIndex],
-              ],
-            ),
-            drawer: Container(
-              color: Colors.white,
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 10),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(0),
-                        child: Row(
-                          children: [
-                            SizedBox(
-                              height: 60,
-                              child: Image.asset(
-                                'webassets/images/vidyaveechi_logo.png',
-                                fit: BoxFit.fill,
-                              ),
-                            ),
-                            GooglePoppinsWidgets(
-                              text: "VIDYAVEECHI",
-                              fontsize:
-                                  ResponsiveWebSite.isMobile(context) ? 18 : 20,
-                              fontWeight: FontWeight.w500,
-                            )
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10, top: 12),
-                        child: Text(
-                          "Main Menu",
-                          style: TextStyle(
-                              color: cBlack.withOpacity(
-                                0.4,
-                              ),
-                              fontSize: 12),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      DrawerSelectedPagesSection(
-                        selectedIndex: selectedIndex,
-                        onTap: (index) {
-                          setState(() {
-                            selectedIndex = index;
-                          });
-                        },
-                      )
-                    ],
-                  ),
+    return Builder(
+      builder: (context) {
+        return Scaffold(
+          backgroundColor: cWhite,
+          body: SafeArea(
+            child: SidebarDrawer(
+                body: ListView(
+                  children: [
+                    AppBarAdminPanel(),
+                    pages[selectedIndex],
+                  ],
                 ),
-              ),
-            )),
-      ),
+                drawer: Container(
+                  color: Colors.white,
+                  child: SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(0),
+                            child: Row(
+                              children: [
+                                SizedBox(
+                                  height: 60,
+                                  child: Image.asset(
+                                    'webassets/images/vidyaveechi_logo.png',
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
+                                GooglePoppinsWidgets(
+                                  text: "VIDYAVEECHI",
+                                  fontsize:
+                                      ResponsiveWebSite.isMobile(context) ? 18 : 20,
+                                  fontWeight: FontWeight.w500,
+                                )
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10, top: 12),
+                            child: Text(
+                              "Main Menu",
+                              style: TextStyle(
+                                  color: cBlack.withOpacity(
+                                    0.4,
+                                  ),
+                                  fontSize: 12),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          DrawerSelectedPagesSection(
+                            selectedIndex: selectedIndex,
+                            onTap: (index) {
+                              setState(() {
+                                selectedIndex = index;
+                              });
+                            },
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                )),
+          ),
+        );
+      }
     );
   }
 }
@@ -111,7 +115,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
 List<Widget> pages = [
   const AdminDashBoardSections(),
   RegistrationStudentList(),
-   AllStudentListContainer(),
+  AllStudentListContainer(),
 
   AllTeacherListContainer(),
 
@@ -119,31 +123,29 @@ List<Widget> pages = [
   AllClassListView(),
   CreatedFeesStatus(),
   PeriodWiseStudentsAttendance(),
-   TeacherAttendanceList(),
-
+  TeacherAttendanceList(),
 
   AllExamNotificationListView(),
   const StudentExamResult(),
 
-   NoticeEditRemove(),
+  NoticeEditRemove(),
 
-   const AllEventsList(),
+  const AllEventsList(),
 
   AllMeetingsListPage(),
 
-   AdminNotificationCreate(),
- 
+  AdminNotificationCreate(),
 
   AllAdminListPage(),
 
   GeneralInsructions(),
 
-   Achievements(),
+  Achievements(),
 
   // const FeesAndBillsPage(),
 
-   BatchHistroyListPage(),
- const TimeTableMainScreen(),
+  BatchHistroyListPage(),
+  const TimeTableMainScreen(),
   LoginHistroyContainer()
   // TimeTable(),
 ];

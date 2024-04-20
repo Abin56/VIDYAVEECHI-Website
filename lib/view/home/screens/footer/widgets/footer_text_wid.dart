@@ -249,7 +249,7 @@ class WhoWeAreWidget extends StatelessWidget {
   }
 }
 
-List<String> constechDUjo = ['Who We Are', 'Why choose us'];
+List<String> constechDUjo = ['Who We Are', 'Why choose us','SUPER ADMIN'];
 List<String> connect = ['Facebook', 'Instagram', 'Twitter', 'Youtube'];
 List<String> legal = [
   'Terms & Conditions',

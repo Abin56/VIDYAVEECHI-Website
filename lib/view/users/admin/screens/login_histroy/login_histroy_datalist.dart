@@ -36,22 +36,11 @@ class AllLoginLogoutDataList extends StatelessWidget {
           const SizedBox(
             width: 01,
           ),
-          // Expanded(
-          //   flex: 2,
-          //   child: DataContainerWidget(
-          //       rowMainAccess: MainAxisAlignment.center,
-          //       color: cWhite,
-          //       index: index,
-          //       headerTitle: "99578"),
-          // ), //................................................. Parent ID
-          // const SizedBox(
-          //   width: 01,
-          // ),
+
           Expanded(
             flex: 4,
             child: Row(
               children: [
-               
                 Expanded(
                   child: TextFontWidget(
                     text: "  ${data.adminuserName}",
@@ -70,7 +59,6 @@ class AllLoginLogoutDataList extends StatelessWidget {
             flex: 4,
             child: Row(
               children: [
-               
                 Expanded(
                   child: TextFontWidget(
                     text: "  ${data.adminuserName}",
@@ -89,12 +77,9 @@ class AllLoginLogoutDataList extends StatelessWidget {
             flex: 3,
             child: Row(
               children: [
-                
-                const Expanded(
+                Expanded(
                   child: TextFontWidget(
-                    text:
-                    // "  ${data.loginTime}",
-                      "  12:45 pm",
+                    text: "  ${data.loginTime}",
                     fontsize: 12,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -109,10 +94,9 @@ class AllLoginLogoutDataList extends StatelessWidget {
             flex: 3,
             child: Row(
               children: [
-                
                 Expanded(
                   child: TextFontWidget(
-                    text: "  ${data.logoutTime}",
+                    text:data.logoutTime==''?'Not found':data.logoutTime,
                     fontsize: 12,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -124,25 +108,6 @@ class AllLoginLogoutDataList extends StatelessWidget {
           const SizedBox(
             width: 01,
           ),
-          // Expanded(
-          //   flex: 3,
-          //   child: Row(
-          //     mainAxisAlignment: MainAxisAlignment.center,
-          //     children: [
-          //       SizedBox(
-          //         width: 15,
-          //         child: Image.asset(
-          //           'webassets/png/active.png',
-          //         ),
-          //       ),
-          //       const TextFontWidget(
-          //         text: "  Active",
-          //         fontsize: 12,
-          //         overflow: TextOverflow.ellipsis,
-          //       ),
-          //     ],
-          //   ),
-          // ), //............................. Status [Active or DeActivate]
         ],
       ),
     );
