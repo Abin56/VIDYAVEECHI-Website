@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/get_rx.dart';
 import 'package:intl/intl.dart';
 import 'package:progress_state_button/progress_button.dart';
 import 'package:vidyaveechi_website/model/teacher_model/teacher_model.dart';
@@ -11,6 +10,8 @@ import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
 
 class TeacherController extends GetxController {
+  RxBool teacherAttendeceOnTap = false.obs;
+  RxBool teacherAttendeceMonthWiswOnTap = false.obs;
   TextEditingController teacherNameController = TextEditingController();
   TextEditingController teacherPhoneNumeber = TextEditingController();
   TextEditingController teacherIDController = TextEditingController();
@@ -24,7 +25,7 @@ class TeacherController extends GetxController {
   RxString joiningSelectedDate = ''.obs;
   RxBool ontapviewteacher = false.obs;
   Rxn<TeacherModel> teacherModelData = Rxn<TeacherModel>();
-    final formKey = GlobalKey<FormState>();
+  final formKey = GlobalKey<FormState>();
 
 //......................  Add teacher Section
 
@@ -167,6 +168,30 @@ class TeacherController extends GetxController {
     teacherIDController.clear();
   }
 
+  RxString attendenceTeacherDocID = 'dd'.obs;
+  RxString selectedMonthView = 'dds'.obs;
+  RxList teacherAttendeceMonthList = [].obs;
 
-  
+  Future<List> fetchTeacherAttenceMonthfunction() async {
+    try {
+      await server
+          .collection('SchoolListCollection')
+          .doc(UserCredentialsController.schoolId)
+          .collection(UserCredentialsController.batchId!)
+          .doc(UserCredentialsController.batchId!)
+          .collection('TeacherAttendence')
+          .doc(attendenceTeacherDocID.value)
+          .collection('MonthWiseAttendence')
+          .get()
+          .then((value) {
+        for (var i = 0; i < value.docs.length; i++) {
+          teacherAttendeceMonthList.add(value.docs[i].data()['docid']);
+        }
+      });
+    } catch (e) {
+      log(e.toString());
+    }
+
+    return teacherAttendeceMonthList;
+  }
 }

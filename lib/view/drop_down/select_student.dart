@@ -33,11 +33,11 @@ class SelectStudentsDropDown extends StatelessWidget {
 
         return classCtrl.fetchStudent();
       },
-      itemAsString: (value) => value.studentName!,
+      itemAsString: (value) => value.studentName,
       onChanged: (value) async {
         if (value != null) {
-          classCtrl.studentName = value.studentName!;
-          classCtrl.studentId = value.docid!;
+          classCtrl.studentName = value.studentName;
+          classCtrl.studentId = value.docid;
         }
       },
       popupProps: const PopupProps.menu(
