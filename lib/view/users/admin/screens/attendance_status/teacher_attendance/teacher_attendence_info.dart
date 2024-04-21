@@ -18,7 +18,7 @@ import '../../../../../widgets/blue_Container_widget/blue_Container_widget.dart'
 
 class TeacherAttendenceHistoryInfo extends StatelessWidget {
   final TeacherController teacherController = Get.put(TeacherController());
-  TeacherAttendenceHistoryInfo({super.key});
+  TeacherAttendenceHistoryInfo({super.key, });
   @override
   Widget build(BuildContext context) {
     final date = DateTime.now();
@@ -168,7 +168,8 @@ class TeacherAttendenceHistoryInfo extends StatelessWidget {
                                   height: 480,
                                   color: cWhite,
                           
-                                  child:TeacherAttendanceDataList()
+                                  child:TeacherAttendanceDataList(
+                                  )
                                 ),
                               )
                             ],

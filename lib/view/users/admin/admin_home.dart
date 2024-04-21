@@ -12,7 +12,6 @@ import 'package:vidyaveechi_website/view/users/admin/screens/batch_histroy/batch
 import 'package:vidyaveechi_website/view/users/admin/screens/class/allclass_listscreen.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/dash_board/admin_dashboard.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/events/all_event_view.dart';
-import 'package:vidyaveechi_website/view/users/admin/screens/exam_notification/exam_notification.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/fees_bills/create_fees/view_fees_status.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/general%20instruction/general_instructions.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/login_histroy/login_histroy.dart';
@@ -113,7 +112,6 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
 }
 
 List<Widget> pages = [
-   AllTeachersAttendance(),
 
    AdminDashBoardSections(),
   RegistrationStudentList(),
@@ -125,8 +123,9 @@ List<Widget> pages = [
   AllClassListView(),
   CreatedFeesStatus(),
   PeriodWiseStudentsAttendance(),
+   AllTeachersAttendance(),
 
-  AllExamNotificationListView(),
+  // AllExamNotificationListView(),
   const StudentExamResult(),
 
   NoticeEditRemove(),

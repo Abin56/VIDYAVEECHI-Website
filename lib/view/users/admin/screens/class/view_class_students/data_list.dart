@@ -90,6 +90,17 @@ class ClassDataListWidget extends StatelessWidget {
           ),
           Expanded(
             flex: 2,
+            child: DataContainerWidget(
+                rowMainAccess: MainAxisAlignment.center,
+                color: cWhite,
+                index: index,
+                headerTitle: "${data.workingDaysCount}"),
+          ),
+          const SizedBox(
+            width: 01,
+          ),
+          Expanded(
+            flex: 2,
             child: StreamBuilder(
                 stream: server
                     .collection('SchoolListCollection')

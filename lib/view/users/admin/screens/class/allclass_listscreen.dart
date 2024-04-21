@@ -107,6 +107,13 @@ class AllClassListView extends StatelessWidget {
                               Expanded(
                                   flex: 2,
                                   child: CatrgoryTableHeaderWidget(
+                                      headerTitle: 'Total Working Days')),
+                              SizedBox(
+                                width: 01,
+                              ),
+                              Expanded(
+                                  flex: 2,
+                                  child: CatrgoryTableHeaderWidget(
                                       headerTitle: 'Total Students')),
                               SizedBox(
                                 width: 01,
