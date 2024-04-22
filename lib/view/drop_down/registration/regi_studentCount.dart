@@ -36,7 +36,8 @@ class SelectRegClassStudntCountDropDown extends StatelessWidget {
 
         return classCtrl.fetchClassStudent();
       },
-      itemAsString: (value) => '${value.className}  (${value.studentCount})',
+      itemAsString: (value) =>
+          '${value.className}  ${value.studentCount == 0 ? '' : '(${value.studentCount})'}',
       onChanged: (value) async {
         if (value != null) {
           classCtrl.classRegClassName.value = value.className;
@@ -51,7 +52,7 @@ class SelectRegClassStudntCountDropDown extends StatelessWidget {
                 .doc(UserCredentialsController.batchId)
                 .collection('RegStudentsNotifierCounter')
                 .doc('count')
-                .update({'counter':classCtrl.classRegClassCount.value});
+                .update({'counter': classCtrl.classRegClassCount.value});
           } catch (e) {
             log("XXXXXXx");
             log(e.toString());

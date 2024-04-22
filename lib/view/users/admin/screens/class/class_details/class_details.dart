@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:vidyaveechi_website/controller/class_controller/class_controller.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
@@ -7,7 +6,6 @@ import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/class/add_student/add_studentfunction.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/class/class_details/attendence_history_status/attendence_history_status.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/class/class_details/exam_history_status/exam_history_status.dart';
-import 'package:vidyaveechi_website/view/users/admin/screens/class/class_details/fess_history_status/fess_history_status.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/class/subject/create_subject.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/students/student_details/widgets/detail_tileContainer.dart';
 import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
@@ -124,7 +122,7 @@ class ClassDetailsContainer extends StatelessWidget {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Padding(
-                                            padding: EdgeInsets.only(
+                                            padding: const EdgeInsets.only(
                                                 left: 10, top: 10),
                                             child: TextFontWidget(
                                               text: data!.className,
@@ -242,7 +240,7 @@ class ClassDetailsContainer extends StatelessWidget {
                                               const Spacer(),
                                               GestureDetector(
                                                 onTap: () => addStudentToClass(
-                                                    context, data!.docid),
+                                                    context, data.docid),
                                                 child: BlueContainerWidget(
                                                   color: themeColorBlue,
                                                   fontSize: 12,
@@ -257,7 +255,7 @@ class ClassDetailsContainer extends StatelessWidget {
                                               GestureDetector(
                                                 onTap: () =>
                                                     createSubjectFunction(
-                                                        context, data!.docid),
+                                                        context, data.docid),
                                                 child: BlueContainerWidget(
                                                   color: themeColorBlue,
                                                   fontSize: 12,
@@ -308,9 +306,9 @@ class ClassDetailsContainer extends StatelessWidget {
                         labelStyle: TextStyle(
                             fontWeight: FontWeight.w400, fontSize: 14),
                         tabs: [
-                          Tab(
-                            text: 'FEES',
-                          ),
+                          // Tab(
+                          //   text: 'FEES',
+                          // ),
                           Tab(
                             text: 'ATTENDANCE',
                           ),
@@ -341,7 +339,7 @@ class ClassDetailsContainer extends StatelessWidget {
 
                   // height: 300,
                   child: TabBarView(children: [
-                    const FeesHistory(), //........................ Student FEES
+                    // const FeesHistory(), //........................ Student FEES
                     AttendenceHistory(), //.......................... Student Attendence
                     ExamHistory() //............................ Student Exam History
                   ]),
