@@ -21,7 +21,7 @@ class CreateNotice extends StatelessWidget {
     // List<Widget> textformWidget = [
     //   Padding(
     //     padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
-    //     child: TextFormFiledWithoutColorEight(
+    //     child: TextFormFiledHeightnoColor(
     //       width: 500,
     //       controller: noticeController.noticeHeadingController,
     //       validator: checkFieldEmpty,
@@ -32,7 +32,7 @@ class CreateNotice extends StatelessWidget {
 
     //   Padding(
     //     padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
-    //     child: TextFormFiledWithoutColorEight(
+    //     child: TextFormFiledHeightnoColor(
     //       width: 500,
     //       controller: noticeController.noticePublishedDateController,
     //       validator: checkFieldDateIsValid,
@@ -42,7 +42,7 @@ class CreateNotice extends StatelessWidget {
     //   ), ////////////////////////////////////////////////////////2
     //   Padding(
     //     padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
-    //     child: TextFormFiledWithoutColorEight(
+    //     child: TextFormFiledHeightnoColor(
     //       width: 500,
     //       validator: checkFieldEmpty,
     //       controller: noticeController.noticeSubjectController,
@@ -52,7 +52,7 @@ class CreateNotice extends StatelessWidget {
     //   ), ///////////////////////////////////////////////3
     //   Padding(
     //     padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
-    //     child: TextFormFiledWithoutColorEight(
+    //     child: TextFormFiledHeightnoColor(
     //       width: 500,
     //       validator: checkFieldDateIsValid,
     //       controller: noticeController.noticeDateofoccationontroller,
@@ -62,7 +62,7 @@ class CreateNotice extends StatelessWidget {
     //   ), ////////////////////////////////////4
     //   Padding(
     //     padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
-    //     child: TextFormFiledWithoutColorEight(
+    //     child: TextFormFiledHeightnoColor(
     //       width: 500,
     //       validator: checkFieldEmpty,
     //       controller: noticeController.noticevenueController,
@@ -72,7 +72,7 @@ class CreateNotice extends StatelessWidget {
     //   ), ////////////////////////////////////5
     //   Padding(
     //     padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
-    //     child: TextFormFiledWithoutColorEight(
+    //     child: TextFormFiledHeightnoColor(
     //       width: 500,
     //       validator: checkFieldEmpty,
     //       controller: noticeController.noticeGuestController,
@@ -82,7 +82,7 @@ class CreateNotice extends StatelessWidget {
     //   ), ////////////////////////////////////6
     //   Padding(
     //     padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
-    //     child: TextFormFiledWithoutColorEight(
+    //     child: TextFormFiledHeightnoColor(
     //       width: 500,
     //       validator: checkFieldEmpty,
     //       controller: noticeController.noticeSignedByController,
@@ -92,7 +92,7 @@ class CreateNotice extends StatelessWidget {
     //   ), ////////////////////////////////////7
     //   Padding(
     //     padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
-    //     child: TextFormFiledWithoutColorEight(
+    //     child: TextFormFiledHeightnoColor(
     //       width: 500,
     //       validator: checkFieldDateIsValid,
     //       controller: noticeController.noticeDateofSubmissionontroller,
@@ -149,7 +149,7 @@ class CreateNotice extends StatelessWidget {
                                                 children: [
                                                   Padding(
                                                     padding:const EdgeInsets.only(top: 5, left: 10,right: 10),
-                                                    child: TextFormFiledWithoutColorEight(
+                                                    child: TextFormFiledHeightnoColor(
                                                       width: 500,
                                                       controller: noticeController .noticeHeadingController,
                                                       validator: checkFieldEmpty,
@@ -160,7 +160,7 @@ class CreateNotice extends StatelessWidget {
                                               
                                                   Padding(
                                                     padding:const EdgeInsets.only( top: 5,left: 10, right: 10),
-                                                    child:  TextFormFiledWithoutColorEight(
+                                                    child:  TextFormFiledHeightnoColor(
                                                       onTap: () {
                                                         noticeController.selectDate(context, noticeController .noticePublishedDateController);
                                                       },
@@ -173,7 +173,7 @@ class CreateNotice extends StatelessWidget {
                                                   ), ////////////////////////////////////////////////////////2
                                                   Padding(
                                                     padding:  const EdgeInsets.only(  top: 5, left: 10,right: 10),
-                                                    child:  TextFormFiledWithoutColorEight(
+                                                    child:  TextFormFiledHeightnoColor(
                                                       width: 500,
                                                       validator: checkFieldEmpty,
                                                       controller: noticeController .noticeSubjectController,
@@ -183,7 +183,7 @@ class CreateNotice extends StatelessWidget {
                                                   ), ///////////////////////////////////////////////3
                                                   Padding(
                                                     padding:  const EdgeInsets.only( top: 5,left: 10, right: 10),
-                                                    child:    TextFormFiledWithoutColorEight(
+                                                    child:    TextFormFiledHeightnoColor(
                                                       onTap: () {
                                                         noticeController.selectDate(context, noticeController .noticeDateofoccationController);
                                                       },
@@ -201,7 +201,7 @@ class CreateNotice extends StatelessWidget {
                                                             left: 10,
                                                             right: 10),
                                                     child:
-                                                        TextFormFiledWithoutColorEight(
+                                                        TextFormFiledHeightnoColor(
                                                       width: 500,
                                                       validator: checkFieldEmpty,
                                                       controller: noticeController
@@ -216,7 +216,7 @@ class CreateNotice extends StatelessWidget {
                                                             top: 5,
                                                             left: 10,
                                                             right: 10),
-                                                    child:TextFormFiledWithoutColorEight(
+                                                    child:TextFormFiledHeightnoColor(
                                                       width: 500,
                                                       validator: checkFieldEmpty,
                                                       controller: noticeController .noticeSignedByController,
@@ -226,7 +226,7 @@ class CreateNotice extends StatelessWidget {
                                                   ), ////////////////////////////////////7
                                                   Padding(
                                                     padding: const EdgeInsets.only( top: 5, left: 10,right: 10),
-                                                    child:     TextFormFiledWithoutColorEight(
+                                                    child:     TextFormFiledHeightnoColor(
                                                       onTap: () {
                                                         noticeController.selectDate(context, noticeController .noticeDateofSubmissionController);
                                                       },
@@ -244,7 +244,7 @@ class CreateNotice extends StatelessWidget {
                                                             left: 10,
                                                             right: 10),
                                                     child:
-                                                        TextFormFiledWithoutColorEight(
+                                                        TextFormFiledHeightnoColor(
                                                       width: 500,
                                                       validator: checkFieldEmpty,
                                                       controller: noticeController.noticeGuestController,
