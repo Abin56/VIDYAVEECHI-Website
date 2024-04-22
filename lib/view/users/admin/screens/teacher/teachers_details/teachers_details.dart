@@ -1,13 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:vidyaveechi_website/controller/admin_section/teacher_controller/teacher_controller.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/teacher/asign_subject/asign_subject.dart';
-import 'package:vidyaveechi_website/view/users/admin/screens/teacher/attendence_history_status/attendence_history_status.dart';
-import 'package:vidyaveechi_website/view/users/admin/screens/teacher/salary_history_status/salary_history_status.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/teacher/teachers_details/widgets/detail_tileContainer.dart';
 import 'package:vidyaveechi_website/view/widgets/blue_Container_widget/blue_Container_widget.dart';
 import 'package:vidyaveechi_website/view/widgets/routeSelectedTextContainer/routeSelectedTextContainer.dart';
@@ -252,15 +248,15 @@ class TeachersDetailsContainer extends StatelessWidget {
                         labelStyle: TextStyle(
                             fontWeight: FontWeight.w400, fontSize: 14),
                         tabs: [
-                          Tab(
-                            text: 'SALARY',
-                          ),
-                          Tab(
-                            text: 'ATTENDANCE',
-                          ),
                           // Tab(
-                          //   text: 'EXAM ',
-                          // )
+                          //   text: 'SALARY',
+                          // ),
+                          // Tab(
+                          //   text: 'ATTENDANCE',
+                          // ),
+                          // // Tab(
+                          // //   text: 'EXAM ',
+                          // // )
                         ],
                       ),
                     ),
@@ -285,9 +281,9 @@ class TeachersDetailsContainer extends StatelessWidget {
 
                   // height: 300,
                   child: const TabBarView(children: [
-                    PerTeacherSalaryHistory(), //........................ Teacher FEES
-                    PerTeacherAttendenceHistory(), //.......................... Teacher Attendence
-                    // PerExamHistory() //............................ Teacher Exam History
+                    // PerTeacherSalaryHistory(), //........................ Teacher FEES
+                    // PerTeacherAttendenceHistory(), //.......................... Teacher Attendence
+                    // // PerExamHistory() //............................ Teacher Exam History
                   ]),
                 ),
               )

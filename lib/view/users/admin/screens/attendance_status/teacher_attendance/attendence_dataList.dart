@@ -49,7 +49,7 @@ class TeacherAttendanceDataList extends StatelessWidget {
                     Expanded(
                         flex: 3,
                         child: CatrgoryTableHeaderWidget(
-                            headerTitle: "No.of Class Teacher Attended")),
+                            headerTitle: "No.of Classes Teacher Attended")),
                     SizedBox(
                       width: 1,
                     ),
@@ -57,7 +57,7 @@ class TeacherAttendanceDataList extends StatelessWidget {
                         flex: 3,
                         child: CatrgoryTableHeaderWidget(
                             headerTitle:
-                                "No.of Student Present Teacher Classes")),
+                                "No.of Students Present in the Classes")),
                     SizedBox(
                       width: 1,
                     ),
@@ -65,7 +65,7 @@ class TeacherAttendanceDataList extends StatelessWidget {
                         flex: 3,
                         child: CatrgoryTableHeaderWidget(
                             headerTitle:
-                                "No.of Student Absent Teacher Classes")),
+                                "No.of Students Absent in the Classes")),
                     SizedBox(
                       width: 1,
                     ),

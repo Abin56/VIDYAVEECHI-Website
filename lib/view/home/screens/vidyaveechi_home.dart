@@ -6,7 +6,6 @@ import 'package:vidyaveechi_website/view/home/screens/create_school/Registration
 import 'package:vidyaveechi_website/view/home/screens/create_school/create_school.dart';
 import 'package:vidyaveechi_website/view/home/screens/home_page_contents%20.dart';
 import 'package:vidyaveechi_website/view/home/screens/lepton_logo_appbar.dart';
-import 'package:vidyaveechi_website/view/home/screens/popup_menu_home_page.dart';
 import 'package:vidyaveechi_website/view/home/screens/tree_part.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 
@@ -16,17 +15,18 @@ class VidhyaVeechiHomePageResponsive extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
+
     return SingleChildScrollView(
       child: ResponsiveWebSite.isMobile(context)
           ? Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 10, bottom: 10),
+                  padding: const EdgeInsets.only(top: 35, bottom: 10),
                   child: Row(
                     children: [
                       Expanded(
                         child: SizedBox(
-                          height: 80,
+                          height: 100,
                           child: Row(
                             children: [
                               Padding(
@@ -59,8 +59,7 @@ class VidhyaVeechiHomePageResponsive extends StatelessWidget {
                                     child: Text(
                                       "Lepton",
                                       style: GoogleFonts.dmSerifDisplay(
-                                          color: const Color.fromARGB(
-                                              255, 38, 93, 15),
+                                          color: const Color.fromARGB(255, 38, 93, 15),
                                           fontSize: 20,
                                           fontWeight: FontWeight.w600),
                                     ),
@@ -68,8 +67,7 @@ class VidhyaVeechiHomePageResponsive extends StatelessWidget {
                                   Text(
                                     "VidyaVeechi",
                                     style: GoogleFonts.dmSerifDisplay(
-                                        color: const Color.fromARGB(
-                                            255, 43, 97, 19),
+                                        color: const Color.fromARGB(255, 43, 97, 19),
                                         fontSize: 15,
                                         fontWeight: FontWeight.bold),
                                   ),
@@ -79,45 +77,43 @@ class VidhyaVeechiHomePageResponsive extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(right: 20),
-                            child: Container(
-                              height: 40,
-                              width: 40,
-                              child: PopupMenuExample(),
-                            ),
-                          ), //////////////////////////////////////////...............menu button
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 20),
-                            child: GestureDetector(
-                              onTap: () {},
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    color: Colors.transparent,
-                                    border: Border.all(width: 1, color: cgreen),
-                                    borderRadius: BorderRadius.circular(10)),
-                                height: 25,
-                                width: 80,
-                                child: Center(
-                                  child: Text(
-                                    'LOGIN',
-                                    style: GoogleFonts.poppins(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.purple),
-                                  ),
-                                ),
+                      Expanded(
+                          child: SizedBox(
+                        height: 50,
+                        width: 100,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 70),
+                          child: SizedBox(
+                            height: 20,
+
+                            width: 90,
+
+                            // child: const HomePageDropDown()),
+                            child: DropdownSearch<String>(
+                              popupProps: PopupProps.menu(
+                                showSelectedItems: true,
+                                disabledItemFn: (String s) => s.startsWith('I'),
                               ),
+                              items: const [
+                                "About",
+                                "Schools",
+                                "Colleges",
+                                "Study Materials",
+                                "Carriers",
+                                "Contact Us"
+                              ],
+                              dropdownDecoratorProps: const DropDownDecoratorProps(
+                                dropdownSearchDecoration: InputDecoration(
+                                    //labelText: "Menu mode",
+                                    // hintText: "country in menu mode",
+                                    ),
+                              ),
+                              onChanged: print,
+                              selectedItem: "About",
                             ),
-                          ), //////////////////////////////////.............Login
-                        ],
-                      )
+                          ),
+                        ),
+                      ))
                     ],
                   ),
                 ),
@@ -144,6 +140,33 @@ class VidhyaVeechiHomePageResponsive extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            GestureDetector(
+                              onTap: () {},
+                              child: Container(
+                                decoration: const BoxDecoration(
+                                    color: cWhite,
+                                    borderRadius: BorderRadius.all(Radius.circular(10))),
+                                height: 30,
+                                width: 100,
+                                child: Center(
+                                  child: Text(
+                                    'LOGIN',
+                                    style: GoogleFonts.poppins(
+                                        fontSize: 13,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.purple),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
                         padding: const EdgeInsets.only(
                           left: 20,
                           top: 5,
@@ -152,7 +175,7 @@ class VidhyaVeechiHomePageResponsive extends StatelessWidget {
                         child: Text(
                           "VIDYAVEECHI",
                           style: GoogleFonts.spectral(
-                              fontSize: 30,
+                              fontSize: 35,
                               //fontSize: screenSize.width / 37,
                               fontWeight: FontWeight.bold,
                               color: Colors.black87),
@@ -162,8 +185,7 @@ class VidhyaVeechiHomePageResponsive extends StatelessWidget {
                         padding: const EdgeInsets.only(left: 20),
                         child: Text(
                           "Smart Pathways to the Parallel World",
-                          style: GoogleFonts.spectral(
-                              fontSize: 13, fontWeight: FontWeight.w500),
+                          style: GoogleFonts.spectral(fontSize: 13, fontWeight: FontWeight.w500),
                         ),
                       ),
                       Center(
@@ -182,9 +204,8 @@ class VidhyaVeechiHomePageResponsive extends StatelessWidget {
                                 child: const Align(
                                     alignment: Alignment.center,
                                     child: Text("വിദ്യാവീചി",
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold))),
+                                        style:
+                                            TextStyle(fontSize: 20, fontWeight: FontWeight.bold))),
                               ),
                             ),
                           ],
@@ -194,48 +215,34 @@ class VidhyaVeechiHomePageResponsive extends StatelessWidget {
                         padding: const EdgeInsets.only(left: 20, top: 30),
                         child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              backgroundColor:
-                                  const Color.fromARGB(196, 150, 221, 215),
+                              backgroundColor: const Color.fromARGB(196, 150, 221, 215),
                             ),
                             onPressed: () {},
                             child: Text(
                               'What We Provide',
                               style: GoogleFonts.spectral(
-                                  color: Colors.black,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600),
+                                  color: Colors.black, fontSize: 15, fontWeight: FontWeight.w600),
                             )),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 20, top: 20),
                         child: Text(
                           "Tution Center Solutions",
-                          style: GoogleFonts.robotoSlab(
-                              fontSize: 22, fontWeight: FontWeight.w500),
+                          style: GoogleFonts.robotoSlab(fontSize: 22, fontWeight: FontWeight.w500),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 20, top: 15),
                         child: Text(
-                          "At Vidyaveechi, we believe that education is not just about imparting knowledge; it's about creating an ecosystem where learning thrives. With our cutting-edge educational infrastructure app, we are redefining the way educational institutes operate, collaborate, and engage with students, parents, teachers, and administrators.",
-                          style: GoogleFonts.spectral(
-                              fontSize: 15, fontWeight: FontWeight.w500),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20, top: 5),
-                        child: Text(
                           "For a demo, please register your school. Our team will contact you to onboard you to the Vidyaveechi app",
-                          style: GoogleFonts.spectral(
-                              fontSize: 15, fontWeight: FontWeight.w500),
+                          style: GoogleFonts.spectral(fontSize: 15, fontWeight: FontWeight.w500),
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(
-                            top: 50, left: 10, bottom: 40, right: 10),
-                        child: Column(
+                        padding: const EdgeInsets.only(top: 50, left: 10, bottom: 40, right: 10),
+                        child: Row(
                           children: [
-                            Center(
+                            Expanded(
                               child: GestureDetector(
                                 onTap: () {
                                   print("object");
@@ -247,52 +254,68 @@ class VidhyaVeechiHomePageResponsive extends StatelessWidget {
                                 },
                                 child: SizedBox(
                                   height: 40,
-                                  width: 270,
+                                  width: 130,
                                   child: ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor: const Color.fromARGB(
-                                          255, 75, 131, 252),
-                                    ),
-                                    onPressed: () {},
-                                    child: Text(
-                                      'STUDENT REGISTRATION',
-                                      style: GoogleFonts.poppins(
-                                          fontSize:screenSize.width / 30,
-                                          fontWeight: FontWeight.w500,
-                                          color: Colors.white),
-                                    ),
-                                  ),
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: const Color.fromARGB(255, 75, 131, 252),
+                                      ),
+                                      onPressed: () {},
+                                      child: LayoutBuilder(
+                                        builder:
+                                            (BuildContext context, BoxConstraints constraints) {
+                                          double fontSize = constraints.maxWidth > 1528 ? 8 : 11;
+                                          return Text(
+                                            'STUDENT REGISTRATION',
+                                            style: GoogleFonts.poppins(
+                                              fontSize: fontSize,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.white,
+                                            ),
+                                            // Example of using the constraints to adjust text size
+                                            // based on available width
+                                            maxLines: 1,
+                                            overflow: TextOverflow.ellipsis,
+                                          );
+                                        },
+                                      )),
                                 ),
                               ),
                             ),
                             const SizedBox(
-                              height: 20,
+                              width: 10,
                             ),
-                            Center(
+                            Expanded(
                               child: SizedBox(
                                 height: 40,
-                                width: 270,
+                                width: 130,
                                 child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: const Color.fromARGB(
-                                        255, 102, 206, 169),
-                                    // backgroundColor: const Color.fromARGB(255, 102, 206, 169),
-                                  ),
-                                  onPressed: () {
-                                    Navigator.push(context, MaterialPageRoute(
-                                      builder: (context) {
-                                        return const SchoolProfile();
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: const Color.fromARGB(255, 75, 131, 252),
+                                      // backgroundColor: const Color.fromARGB(255, 102, 206, 169),
+                                    ),
+                                    onPressed: () {
+                                      Navigator.push(context, MaterialPageRoute(
+                                        builder: (context) {
+                                          return const SchoolProfile();
+                                        },
+                                      ));
+                                    },
+                                    child: LayoutBuilder(
+                                      builder: (BuildContext context, BoxConstraints constraints) {
+                                        return Text(
+                                          'SCHOOL REGISTRATION',
+                                          style: GoogleFonts.poppins(
+                                            fontSize: constraints.maxWidth > 1528 ? 8 : 11,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.white,
+                                          ),
+                                          // Example of using the constraints to adjust text size
+                                          // based on available width
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                        );
                                       },
-                                    ));
-                                  },
-                                  child: Text(
-                                    'SCHOOL REGISTRATION',
-                                    style: GoogleFonts.poppins(
-                                        fontSize: screenSize.width/30,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white),
-                                  ),
-                                ),
+                                    )),
                               ),
                             ),
                           ],
@@ -340,18 +363,15 @@ class VidhyaVeechiHomePageResponsive extends StatelessWidget {
                                         Colors.white70
                                       ]),
                                 ),
-                                child:
-                                    const HomePageContents(), ////////////text
+                                child: const HomePageContents(), ////////////text
                               ),
                             ],
                           ),
                         ),
-                        LeptonLogoVidyaveechi(
-                            screenSize: screenSize), ///////////appbar
+                        LeptonLogoVidyaveechi(screenSize: screenSize), ///////////appbar
                         Positioned(
                           right: 50,
-                          child: HomePageDesign(
-                              screenSize: screenSize), /////////////////tree
+                          child: HomePageDesign(screenSize: screenSize), /////////////////tree
                         ),
                       ],
                     ),

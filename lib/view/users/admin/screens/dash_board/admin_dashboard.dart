@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:vidyaveechi_website/controller/dashBoard_controller/dashBoard_controller.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/dash_board/sections/attendence/total_students_attendence.dart';
@@ -12,8 +10,7 @@ import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 import 'sections/total_members/total_members_section.dart';
 
 class AdminDashBoardSections extends StatelessWidget {
-  final DashBoardController dashBoardController = Get.put(DashBoardController());
-   AdminDashBoardSections({super.key});
+ const  AdminDashBoardSections({super.key});
 
   @override
   Widget build(BuildContext context) {

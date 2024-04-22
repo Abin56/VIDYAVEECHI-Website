@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vidyaveechi_website/controller/achievements_controller/achievements.dart';
 import 'package:vidyaveechi_website/model/achievement_model/achievement_model.dart';
+import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
 import 'package:vidyaveechi_website/view/fonts/google_poppins_widget.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/events/events.dart';
 import 'package:vidyaveechi_website/view/widgets/custom_showdialouge/custom_showdialouge.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
+import 'package:vidyaveechi_website/view/widgets/textformFiledContainer/textformFiledBlueContainer.dart';
 
 editFunctionOfAchievements(BuildContext context, AchievementModel data) {
   final AchievementsController achievementsController =
@@ -14,25 +16,39 @@ editFunctionOfAchievements(BuildContext context, AchievementModel data) {
       context: context,
       title: 'Edit',
       children: [
-        TextFormFiledBlueContainerWidgetEvent(
-          controller: achievementsController.studentNameController,
-            hintText: data.studentName, title: 'Student Name'),
-        TextFormFiledBlueContainerWidgetEvent(
-          controller: achievementsController.admissionNumberController,
-            hintText: data.admissionNumber, title: 'Admission Number'),
-        TextFormFiledBlueContainerWidgetEvent(
-          onTap: () {
-            achievementsController.selectDate(context, achievementsController.editdateController);
-          },
-          controller: achievementsController.editdateController,
-            hintText: data.dateofAchievement, title: 'Date'),
-        TextFormFiledBlueContainerWidgetEvent(
-          controller: achievementsController.achievementController,
-            hintText: data.achievementHead, title: 'Achievement'),
+        Form(
+          key: achievementsController.formKey,
+          child: Column(children: [
+          TextFormFiledHeightnoColor(
+             validator: checkFieldEmpty,
+            controller: achievementsController.editstudentNameController,
+              hintText: data.studentName, title: 'Student Name'),
+          TextFormFiledHeightnoColor(
+             validator: checkFieldEmpty,
+            controller: achievementsController.editadmissionNumberController,
+              hintText: data.admissionNumber, title: 'Admission Number'),
+          TextFormFiledHeightnoColor(
+            onTap: () {
+              achievementsController.selectDate(context, achievementsController.editdateController);
+            },
+             validator: checkFieldEmpty,
+            controller: achievementsController.editdateController,
+              hintText: data.dateofAchievement, title: 'Date'),
+          TextFormFiledHeightnoColor(
+             validator: checkFieldEmpty,
+            controller: achievementsController.editachievementController,
+              hintText: data.achievementHead, title: 'Achievement'),
+              ],),
+        )
       ],
+      
       doyouwantActionButton: true,
       actiononTapfuction: () {
-        achievementsController.updateAchievement(data.uid,context);
+      if(achievementsController  .formKey.currentState! .validate()) {
+        achievementsController.updateAchievement(
+          data.studentName,data.achievementHead,data.dateofAchievement,data.admissionNumber,
+          data.uid,context);
+      }
       },
       actiontext: 'Update');
 }

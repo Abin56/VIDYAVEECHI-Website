@@ -90,11 +90,6 @@ class DujoWebFeatures extends StatelessWidget {
                             "Parents have a dedicated login that enables them to monitor their child's academic progress, attendance, homework assignments, and safety through features like GPS and RFID-enabled ID cards",
                         imagePath: 'webassets/images/parent_png.png',
                         title: 'Parent Login'),
-                    WidgetContainerOnHome(
-                        body:
-                            "Teachers can utilize the app to manage live and recorded classes, assign homework, track student attendance, and communicate with students and parents. Class teachers can monitor their respective classes closely",
-                        imagePath: 'webassets/images/teacher_png.png',
-                        title: ' Teacher Login'),
                   ],
                 ),
               ),
@@ -105,9 +100,22 @@ class DujoWebFeatures extends StatelessWidget {
                   children: [
                     WidgetContainerOnHome(
                         body:
+                            "Teachers can utilize the app to manage live and recorded classes, assign homework, track student attendance, and communicate with students and parents. Class teachers can monitor their respective classes closely",
+                        imagePath: 'webassets/images/teacher_png.png',
+                        title: ' Teacher Login'),
+                    WidgetContainerOnHome(
+                        body:
                             "Students can access a personalized dashboard that allows them to efficiently manage their academic activities, view study materials, attend live classes, access recorded classes, and interact with the app's resources",
                         imagePath: 'webassets/images/student_png.png',
                         title: 'Student Login'),
+                  ],
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.only(top: 30),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
                     WidgetContainerOnHome(
                         body:
                             "Class teachers can view and manage the details of the classes they are responsible for. This includes information about the students in their class, such as names, contact details, and attendance records",
@@ -276,8 +284,7 @@ This app provide digital versions of textbooks and e-books, which students can r
                                 title: 'Exam Notifications'),
                           ),
                           Padding(
-                            padding:
-                                EdgeInsets.only(top: 25, left: 10, right: 10),
+                            padding: EdgeInsets.only(top: 25, left: 10, right: 10),
                             child: DujoOurFeaturesContainerWidgets(
                                 color: Colors.blue,
                                 bodytext:

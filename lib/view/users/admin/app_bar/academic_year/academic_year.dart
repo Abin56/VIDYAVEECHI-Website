@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
@@ -34,7 +35,9 @@ academicYearSettingFunction(BuildContext context) {
     ), ///////////////////////.......0
     GestureDetector(
       onTap: () {
+        if(batchYearController .formKey.currentState! .validate()){
       batchYearController .setBatchYear() ;
+        }
       },
       child: Container(
         height: 40,
@@ -79,26 +82,29 @@ academicYearSettingFunction(BuildContext context) {
     context: context,
     builder: (context) {
       return AlertDialog(
-        title:  TextFontWidget(text: "Academic Year", fontsize: 15),
+        title: const TextFontWidget(text: "Academic Year", fontsize: 15),
         backgroundColor: cWhite,
         content: SizedBox(
-          height: ResponsiveWebSite.isMobile(context)? 220: 140,
+          height: ResponsiveWebSite.isMobile(context)? 240: 170,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              SizedBox(
-                height: 75,
-                // color: cWhite,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                     TextFontWidget(
-                        text: 'Select Academic Year*', fontsize: 12.5),
-                    const SizedBox(
-                      height: 05,
-                    ),
-                    SelectBatchYearDropDown()
-                  ],
+              Form(
+                key: batchYearController.formKey,
+                child: SizedBox(
+                  height: 95,
+                  // color: cWhite,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const TextFontWidget(
+                          text: 'Select Academic Year*', fontsize: 12.5),
+                      const SizedBox(
+                        height: 05,
+                      ),
+                      SelectBatchYearDropDown()
+                    ],
+                  ),
                 ),
               ),
               ResponsiveWebSite.isMobile(context)

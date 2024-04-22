@@ -104,7 +104,7 @@ class CreateMeetinPage extends StatelessWidget {
 
       Obx(() => ProgressButtonWidget(
           function: () async {
-            if (meetingController.formKey.currentState!.validate()) {
+            if (meetingController .formKey .currentState! .validate()) {
               meetingController.createMeeting();
               print("object");
             }
@@ -157,7 +157,7 @@ class CreateMeetinPage extends StatelessWidget {
       ) ///////////////////14
     ];
     return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
+    //  scrollDirection: Axis.horizontal,
       child: Container(
         color: screenContainerbackgroundColor,
         height: 800,

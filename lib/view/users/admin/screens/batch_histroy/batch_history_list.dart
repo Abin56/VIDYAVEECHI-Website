@@ -81,7 +81,7 @@ class BatchHistroyListPage extends StatelessWidget {
                                           log(data['id']);
                                         },
                                         text: 'Delete',
-                                        flex: 2,
+                                        flex: 3,
                                       ),
                                     ],
                                   ),

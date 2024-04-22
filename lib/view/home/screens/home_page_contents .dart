@@ -17,28 +17,20 @@ class HomePageContents extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.only(
-            left: ResponsiveWebSite.isDesktop(context)
-                ? screenSize.width / 20
-                : 40,
-            top: ResponsiveWebSite.isDesktop(context)
-                ? screenSize.width / 15
-                : 125,
+            left: ResponsiveWebSite.isDesktop(context) ? screenSize.width / 20 : 40,
+            top: ResponsiveWebSite.isDesktop(context) ? screenSize.width / 15 : 125,
           ),
           child: Text(
             "VIDYAVEECHI",
             style: GoogleFonts.spectral(
-                fontSize: ResponsiveWebSite.isDesktop(context)
-                    ? screenSize.width / 37
-                    : 28,
+                fontSize: ResponsiveWebSite.isDesktop(context) ? screenSize.width / 37 : 28,
                 fontWeight: FontWeight.bold,
                 color: Colors.black87),
           ),
         ),
         Padding(
           padding: EdgeInsets.only(
-              left: ResponsiveWebSite.isDesktop(context)
-                  ? screenSize.width / 20
-                  : 40),
+              left: ResponsiveWebSite.isDesktop(context) ? screenSize.width / 20 : 40),
           child: Text(
             "Smart Pathways to the Parallel World",
             style: GoogleFonts.spectral(
@@ -50,12 +42,8 @@ class HomePageContents extends StatelessWidget {
         ),
         Padding(
           padding: EdgeInsets.only(
-            left: ResponsiveWebSite.isDesktop(context)
-                ? screenSize.width / 20
-                : 40,
-            top: ResponsiveWebSite.isDesktop(context)
-                ? screenSize.width / 60
-                : 30,
+            left: ResponsiveWebSite.isDesktop(context) ? screenSize.width / 20 : 40,
+            top: ResponsiveWebSite.isDesktop(context) ? screenSize.width / 60 : 30,
           ),
           child: ElevatedButton(
               style: ElevatedButton.styleFrom(
@@ -66,66 +54,44 @@ class HomePageContents extends StatelessWidget {
                 'What We Provide',
                 style: GoogleFonts.spectral(
                     color: Colors.black,
-                    fontSize: ResponsiveWebSite.isDesktop(context)
-                        ? screenSize.width / 70
-                        : 24,
+                    fontSize: ResponsiveWebSite.isDesktop(context) ? screenSize.width / 70 : 24,
                     fontWeight: FontWeight.w600),
               )),
         ),
         Padding(
           padding: EdgeInsets.only(
-            left: ResponsiveWebSite.isDesktop(context)
-                ? screenSize.width / 20
-                : 40,
-            top: ResponsiveWebSite.isDesktop(context)
-                ? screenSize.width / 60
-                : 30,
+            left: ResponsiveWebSite.isDesktop(context) ? screenSize.width / 20 : 40,
+            top: ResponsiveWebSite.isDesktop(context) ? screenSize.width / 60 : 30,
           ),
           child: Text(
             "Tution Center Solutions",
             style: GoogleFonts.robotoSlab(
-                fontSize: ResponsiveWebSite.isDesktop(context)
-                    ? screenSize.width / 35
-                    : 30,
+                fontSize: ResponsiveWebSite.isDesktop(context) ? screenSize.width / 35 : 30,
                 fontWeight: FontWeight.w500),
           ),
         ),
         Padding(
           padding: EdgeInsets.only(
-            left: ResponsiveWebSite.isDesktop(context)
-                ? screenSize.width / 20
-                : 40,
-            top: ResponsiveWebSite.isDesktop(context)
-                ? screenSize.width / 60
-                : 30,
+            left: ResponsiveWebSite.isDesktop(context) ? screenSize.width / 20 : 40,
+            top: ResponsiveWebSite.isDesktop(context) ? screenSize.width / 60 : 30,
           ),
           child: Text(
             "For a demo, please register your school. Our team \nwill contact you to onboard you to the Vidyaveechi app",
             style: GoogleFonts.spectral(
-                fontSize: ResponsiveWebSite.isDesktop(context)
-                    ? screenSize.width / 70
-                    : 16,
+                fontSize: ResponsiveWebSite.isDesktop(context) ? screenSize.width / 70 : 16,
                 fontWeight: FontWeight.w500),
           ),
         ),
         Padding(
           padding: EdgeInsets.only(
-            top: ResponsiveWebSite.isDesktop(context)
-                ? screenSize.width / 60
-                : 40,
-            left: ResponsiveWebSite.isDesktop(context)
-                ? screenSize.width / 20
-                : 30,
+            top: ResponsiveWebSite.isDesktop(context) ? screenSize.width / 60 : 40,
+            left: ResponsiveWebSite.isDesktop(context) ? screenSize.width / 20 : 60,
           ),
           child: Row(
             children: [
               SizedBox(
-                height: ResponsiveWebSite.isDesktop(context)
-                    ? screenSize.width / 30
-                    : 40,
-                width: ResponsiveWebSite.isDesktop(context)
-                    ? screenSize.width / 5.5
-                    : 270,
+                height: ResponsiveWebSite.isDesktop(context) ? screenSize.width / 30 : 40,
+                width: ResponsiveWebSite.isDesktop(context) ? screenSize.width / 6 : 180,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromARGB(255, 75, 131, 252),
@@ -140,9 +106,8 @@ class HomePageContents extends StatelessWidget {
                   child: Text(
                     'STUDENT REGISTRATION',
                     style: GoogleFonts.poppins(
-                        fontSize: ResponsiveWebSite.isDesktop(context)
-                            ? screenSize.width / 90
-                            : 15,
+                        fontSize:
+                            ResponsiveWebSite.isDesktop(context) ? screenSize.width / 100 : 10,
                         fontWeight: ResponsiveWebSite.isDesktop(context)
                             ? FontWeight.bold
                             : FontWeight.w500,
@@ -151,17 +116,11 @@ class HomePageContents extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                width: ResponsiveWebSite.isDesktop(context)
-                    ? screenSize.width / 40
-                    : 20,
+                width: ResponsiveWebSite.isDesktop(context) ? screenSize.width / 40 : 20,
               ),
               SizedBox(
-                height: ResponsiveWebSite.isDesktop(context)
-                    ? screenSize.width / 30
-                    : 40,
-                width: ResponsiveWebSite.isDesktop(context)
-                    ? screenSize.width / 5.5
-                    : 270,
+                height: ResponsiveWebSite.isDesktop(context) ? screenSize.width / 30 : 40,
+                width: ResponsiveWebSite.isDesktop(context) ? screenSize.width / 6 : 180,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromARGB(255, 102, 206, 169),
@@ -176,9 +135,8 @@ class HomePageContents extends StatelessWidget {
                   child: Text(
                     'SCHOOL REGISTRATION',
                     style: GoogleFonts.poppins(
-                        fontSize: ResponsiveWebSite.isDesktop(context)
-                            ? screenSize.width / 90
-                            : 15,
+                        fontSize:
+                            ResponsiveWebSite.isDesktop(context) ? screenSize.width / 100 : 10,
                         fontWeight: ResponsiveWebSite.isDesktop(context)
                             ? FontWeight.bold
                             : FontWeight.w500,

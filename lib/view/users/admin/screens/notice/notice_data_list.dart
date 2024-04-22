@@ -6,6 +6,7 @@ import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/notice/functions/edit_notice.dart';
 import 'package:vidyaveechi_website/view/widgets/custom_delete_showdialog/custom_delete_showdialog.dart';
+import 'package:vidyaveechi_website/view/widgets/data_list_widgets/data_container.dart';
 
 class AllNoticeDataList extends StatelessWidget {
   final NoticeModel data;
@@ -100,11 +101,12 @@ class AllNoticeDataList extends StatelessWidget {
                 onTap: () {
                   editFunctionOfNotice(context, data);
                 },
-                child: const Icon(
-                  Icons.edit,
-                  size: 15,
-                  color: cgreen,
-                ),
+                child: DataContainerWidget(
+                    rowMainAccess: MainAxisAlignment.center,
+                    color: cWhite,
+                    // width: 150,
+                    index: index,
+                    headerTitle: ' Update 🖋️'),
               ),
             ),
           ), //........................................... edit
@@ -122,15 +124,16 @@ class AllNoticeDataList extends StatelessWidget {
                       noticeController.deleteNotice(
                         data.noticeId,
                         context,
-                      );
+                      );Navigator.pop(context );
                     },
                   );
                 },
-                child: const Icon(
-                  Icons.delete,
-                  size: 15,
-                  color: cred,
-                ),
+                child:DataContainerWidget(
+                    rowMainAccess: MainAxisAlignment.center,
+                    color: cWhite,
+                    // width: 150,
+                    index: index,
+                    headerTitle: ' Remove 🗑️'),
               ),
             ),
           ), //........................................... delete

@@ -4,6 +4,7 @@ import 'package:vidyaveechi_website/controller/class_controller/class_controller
 import 'package:vidyaveechi_website/controller/timetable_controller/timetable_controller.dart';
 import 'package:vidyaveechi_website/model/timetable_model/timetable_model.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
+import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/result/widget/data_container_marks.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/students/student_details/widgets/category_tableHeader.dart';
@@ -28,6 +29,7 @@ class PeriodWiseTimeTable extends StatelessWidget {
     super.key,
     required this.subjectID,
   });
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -178,71 +180,78 @@ class PeriodWiseTimeTable extends StatelessWidget {
                                                     children: [
                                                       SizedBox(
                                                         width: 400,
-                                                        height: 400,
-                                                        child: Column(
-                                                          children: [
-                                                            TextFormFiledBlueContainerWidgetWithOutColor(
-                                                              hintText:
-                                                                  ' ${data.periodNumber}',
-                                                              title:
-                                                                  'Period Number',
-                                                              controller:
-                                                                  timeTableController
-                                                                      .periodController,
+                                                        height: 500,
+                                                        child: Form(
+                                                          key: formKey,
+                                                          child: SingleChildScrollView(
+                                                            child: Column(
+                                                              children: [
+                                                                TextFormFiledBlueContainerWidgetWithOutColor(validator: checkFieldEmpty,
+                                                                  hintText:
+                                                                      ' ${data.periodNumber}',
+                                                                  title:
+                                                                      'Period Number',
+                                                                  controller:
+                                                                      timeTableController
+                                                                          .periodController,
+                                                                ),const SizedBox(height: 20,),
+                                                                TextFormFiledBlueContainerWidgetWithOutColor(validator: checkFieldEmpty,
+                                                                  hintText:
+                                                                      ' ${data.subjectName}',
+                                                                  title:
+                                                                      'Subject Name',
+                                                                  controller:
+                                                                      timeTableController
+                                                                          .subjectNamecontroller,
+                                                                ),const SizedBox(height: 10,),
+                                                                TextFormFiledBlueContainerWidgetWithOutColor(validator: checkFieldEmpty,
+                                                                  onTap: () async {
+                                                                    await timeTableController
+                                                                        .selectTimesec(
+                                                                            context,
+                                                                            timeTableController
+                                                                                .startTimeviewController);
+                                                                  },
+                                                                  hintText:
+                                                                      ' ${data.startTime}',
+                                                                  title:
+                                                                      'Start Time',
+                                                                  controller:
+                                                                      timeTableController
+                                                                          .startTimeviewController,
+                                                                ),const SizedBox(height: 10,),
+                                                                TextFormFiledBlueContainerWidgetWithOutColor(validator: checkFieldEmpty,
+                                                                  onTap: () async {
+                                                                    await timeTableController
+                                                                        .selectTimesec(
+                                                                            context,
+                                                                            timeTableController
+                                                                                .endTimeviewController);
+                                                                  },
+                                                                  hintText:
+                                                                      ' ${data.endTime}',
+                                                                  title: 'End Time',
+                                                                  controller:
+                                                                      timeTableController
+                                                                          .endTimeviewController,
+                                                                ),const SizedBox(height: 10,),
+                                                              ],
                                                             ),
-                                                            TextFormFiledBlueContainerWidgetWithOutColor(
-                                                              hintText:
-                                                                  ' ${data.subjectName}',
-                                                              title:
-                                                                  'Subject Name',
-                                                              controller:
-                                                                  timeTableController
-                                                                      .subjectNamecontroller,
-                                                            ),
-                                                            TextFormFiledBlueContainerWidgetWithOutColor(
-                                                              onTap: () async {
-                                                                await timeTableController
-                                                                    .selectTimesec(
-                                                                        context,
-                                                                        timeTableController
-                                                                            .startTimeviewController);
-                                                              },
-                                                              hintText:
-                                                                  ' ${data.startTime}',
-                                                              title:
-                                                                  'Start Time',
-                                                              controller:
-                                                                  timeTableController
-                                                                      .startTimeviewController,
-                                                            ),
-                                                            TextFormFiledBlueContainerWidgetWithOutColor(
-                                                              onTap: () async {
-                                                                await timeTableController
-                                                                    .selectTimesec(
-                                                                        context,
-                                                                        timeTableController
-                                                                            .endTimeviewController);
-                                                              },
-                                                              hintText:
-                                                                  ' ${data.endTime}',
-                                                              title: 'End Time',
-                                                              controller:
-                                                                  timeTableController
-                                                                      .endTimeviewController,
-                                                            ),
-                                                          ],
+                                                          ),
                                                         ),
                                                       )
                                                     ],
                                                     doyouwantActionButton: true,
                                                     actiontext: 'Update',
-                                                    actiononTapfuction: () {
-                                                      timeTableController
+                                                    actiononTapfuction: () {if(formKey.currentState!.validate()){
+                                                       timeTableController
                                                           .enableUpdate(
                                                               data.docid,
                                                               data.dayName!);
                                                       Navigator.of(context)
                                                           .pop();
+                                                    }
+                                                     
                                                     });
                                               },
                                               child: DataContainerMarksWidget(

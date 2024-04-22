@@ -132,7 +132,7 @@ class TextFormFiledBlueContainerWidgetWithOutColor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: ResponsiveWebSite.isMobile(context) ? 75 : 95,
+      height: ResponsiveWebSite.isMobile(context) ? 95 : 100,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -226,7 +226,7 @@ class TextFormFiledWithoutColorEight extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 95,
+      height: 75,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -294,7 +294,6 @@ class DisplayingText extends StatelessWidget {
   final Widget? widget;
   final double? width;
   final String text;
-  String? Function(String?)? validator;
   final Style;
   TextInputType? keyboardType;
   DisplayingText({
@@ -303,7 +302,6 @@ class DisplayingText extends StatelessWidget {
     required this.title,
     required this.text,
     this.Style,
-    this.validator,
     super.key,
   });
 
@@ -331,6 +329,101 @@ class DisplayingText extends StatelessWidget {
             alignment: Alignment.centerLeft,
             height: 35,
             child: TextFontWidget(text: text, fontsize: 14),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+
+class TextFormFiledHeightnoColor extends StatelessWidget {
+  TextEditingController? controller = TextEditingController();
+  final String title;
+  final String hintText;
+  final Widget? widget;
+  final double? width;
+  bool? readOnly;
+  Function(String)? onChanged;
+  Iterable<String>? autofillHints;
+  String? Function(String?)? validator;
+  Function()? onTap;
+  TextInputType? keyboardType;
+  TextFormFiledHeightnoColor({
+    this.width,
+    this.widget,
+    required this.hintText,
+    required this.title,
+    this.readOnly,
+    this.keyboardType,
+    this.controller,
+    this.autofillHints,
+    this.onChanged,
+    this.validator,
+    this.onTap,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: ResponsiveWebSite.isMobile(context) ? 75 : 95,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TextFontWidget(text: '$title *', fontsize: 12.5),
+              widget == null ? const SizedBox() : widget!,
+            ],
+          ),
+          const SizedBox(
+            height: 05,
+          ),
+          Container(
+            // height: 40,
+            width: width,
+            color: screenContainerbackgroundColor,
+            child: Center(
+              child: TextFormField(
+                readOnly: readOnly ?? false,
+                onChanged: onChanged,
+                autofillHints: autofillHints,
+                onTap: onTap,
+                validator: validator,
+                keyboardType: keyboardType,
+                controller: controller,
+                decoration: InputDecoration(
+                  contentPadding:
+                      const EdgeInsets.symmetric(vertical: 01, horizontal: 01),
+                  errorBorder: const OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(0)),
+                      borderSide: BorderSide(
+                        width: 1,
+                        style: BorderStyle.none,
+                        color: Colors.red,
+                      )),
+                  focusedErrorBorder: const OutlineInputBorder(
+                    // borderRadius: BorderRadius.all(Radius.circular(4)),
+                    borderSide: BorderSide(
+                      width: 1,
+                      style: BorderStyle.none,
+                      color: Colors.red,
+                    ),
+                  ),
+                  // contentPadding: const EdgeInsets.all(8.0),
+                  enabledBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(width: 0.4)),
+                  hintStyle: const TextStyle(fontSize: 13),
+                  hintText: hintText,
+                  focusedBorder: const OutlineInputBorder(
+                    //<-- SEE HERE
+                    borderSide: BorderSide(width: 1, color: Colors.green),
+                  ),
+                ),
+              ),
+            ),
           )
         ],
       ),

@@ -5,7 +5,7 @@ import 'package:vidyaveechi_website/view/fonts/google_poppins_widget.dart';
 import 'package:vidyaveechi_website/view/users/admin/app_bar/admin_appBar.dart';
 import 'package:vidyaveechi_website/view/users/admin/create_new_admin_page/newAdminDetails/new_adminDetails.dart';
 import 'package:vidyaveechi_website/view/users/admin/drawer/drawer_pages.dart';
-import 'package:vidyaveechi_website/view/users/admin/screens/achievements/achievements.dart';
+import 'package:vidyaveechi_website/view/users/admin/screens/achievements/all_achievements.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/attendance_status/students_attendance/period_wise.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/attendance_status/teacher_attendance/all_teachers.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/batch_histroy/batch_history_list.dart';
@@ -112,7 +112,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
 }
 
 List<Widget> pages = [
-  AdminDashBoardSections(),
+  const AdminDashBoardSections(),
   RegistrationStudentList(),
   AllStudentListContainer(),
 
@@ -124,8 +124,8 @@ List<Widget> pages = [
   PeriodWiseStudentsAttendance(),
   AllTeachersAttendance(),
 
-   AllExamNotificationListView(),
-  const StudentExamResult(),
+  AllExamNotificationListView(),
+ // const StudentExamResult(),
 
   NoticeEditRemove(),
 

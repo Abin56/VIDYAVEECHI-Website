@@ -50,115 +50,138 @@ class AllEventsDataList extends StatelessWidget {
           ),
           Expanded(
               flex: 4,
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Container(
-                        decoration: BoxDecoration(
-                          // ignore: unnecessary_null_comparison
-                          color: color == null
-                              ? null
-                              : index % 2 == 0
-                                  ? const Color.fromARGB(255, 246, 246, 246)
-                                  : Colors.blue[50],
-                        ),
-                        child: Center(
-                            child: GestureDetector(
-                                onTap: () {
+          //     child: Row(
+          //       children: [
+          //         Expanded(
+          //           child: Container(
+          //               decoration: BoxDecoration(
+          //                 // ignore: unnecessary_null_comparison
+          //                 color: color == null
+          //                     ? null
+          //                     : index % 2 == 0
+          //                         ? const Color.fromARGB(255, 246, 246, 246)
+          //                         : Colors.blue[50],
+          //               ),
+          //               child: Center(
+          //                   child: GestureDetector(
+          //                       onTap: () {
+          //                         allEventListFinction(context, data);
+          //                       },
+          //                       child: SingleChildScrollView(child: TextFontWidget(text: data.eventDescription, fontsize: 12.5))
+          //                       //Text(data.eventDescription)
+          //                       ))),
+          //         ),
+          //       ],
+          //     )
+          child:     GestureDetector(
+             onTap: () {
                                   allEventListFinction(context, data);
                                 },
-                                child: SingleChildScrollView(child: TextFontWidget(text: data.eventDescription, fontsize: 12.5))
-                                //Text(data.eventDescription)
-                                ))),
-                  ),
-                ],
-              )
-              // DataContainerWidget(
-              //     rowMainAccess: MainAxisAlignment.center,
-              //     color: cWhite,
-              //     // width: 150,
-              //     index: index,
-              //     headerTitle: 'Event Description'),
+            child: DataContainerWidget(
+                    rowMainAccess: MainAxisAlignment.center,
+                    color: cWhite,
+                    // width: 150,
+                    index: index,
+                    headerTitle: 'Event Description'),
+          ),
               ), // ...................................Event Description
           const SizedBox(
             width: 01,
           ),
           Expanded(
               flex: 2,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: Container(
-                        decoration: BoxDecoration(
-                          // ignore: unnecessary_null_comparison
-                          color: color == null
-                              ? null
-                              : index % 2 == 0
-                                  ? const Color.fromARGB(255, 246, 246, 246)
-                                  : Colors.blue[50],
-                        ),
-                        child: Center(
-                            child: GestureDetector(
-                          onTap: () {
+              child:
+              //  Row(
+              //   mainAxisAlignment: MainAxisAlignment.center,
+              //   children: [
+              //     Expanded(
+              //       child: Container(
+              //           decoration: BoxDecoration(
+              //             // ignore: unnecessary_null_comparison
+              //             color: color == null
+              //                 ? null
+              //                 : index % 2 == 0
+              //                     ? const Color.fromARGB(255, 246, 246, 246)
+              //                     : Colors.blue[50],
+              //           ),
+              //           child: Center(
+              //               child: GestureDetector(
+              //             onTap: () {
+              //             editFunctionOfEvent(context, data);
+              //             },
+              //             child: Icon(
+              //               Icons.edit,
+              //               size: 15,
+              //               color: cgreen,
+              //             ),
+              //           ))),
+              //     ),
+              //   ],
+              // )
+               GestureDetector(
+                  onTap: () {
                           editFunctionOfEvent(context, data);
                           },
-                          child: Icon(
-                            Icons.edit,
-                            size: 15,
-                            color: cgreen,
-                          ),
-                        ))),
-                  ),
-                ],
-              )
-              // DataContainerWidget(
-              //     rowMainAccess: MainAxisAlignment.center,
-              //     color: cWhite,
-              //     // width: 150,
-              //     index: index,
-              //     headerTitle: 'Edit'),
+                 child: DataContainerWidget(
+                    rowMainAccess: MainAxisAlignment.center,
+                    color: cWhite,
+                    // width: 150,
+                    index: index,
+                    headerTitle: '           Update 🖋️'),
+               ),
               ), //....................................... Edit
           const SizedBox(
             width: 01,
           ),
           Expanded(
             flex: 2,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(
-                  child: Container(
-                      decoration: BoxDecoration(
-                        // ignore: unnecessary_null_comparison
-                        color: color == null
-                            ? null
-                            : index % 2 == 0
-                                ? const Color.fromARGB(255, 246, 246, 246)
-                                : Colors.blue[50],
-                      ),
-                      child: Center(
-                          child: GestureDetector(
-                              onTap: () {
-                                  deleteFunctionOfEvents(context, data);
-                              },
-                              child: Icon(
-                                Icons.delete,
-                                size: 15,
-                                color: cred,
-                              )))),
-                ),
-                // Expanded(
-                //   child: DataContainerWidget(
-                //       rowMainAccess: MainAxisAlignment.center,
-                //       color: cWhite,
-                //       // width: 150,
-                //       index: index,
-                //       headerTitle: '11',
-                //       icon: Icon(Icons.delete),),
-                // ),
-              ],
-            ),
+            child: GestureDetector(
+                  onTap: () {
+                          deleteFunctionOfEvents(context, data);
+                          },
+                 child: DataContainerWidget(
+                    rowMainAccess: MainAxisAlignment.center,
+                    color: cWhite,
+                    // width: 150,
+                    index: index,
+                    headerTitle: '           Remove 🗑️'),
+               ),
+            //  Row(
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            //   children: [
+            //     Expanded(
+            //       child: Container(
+            //           decoration: BoxDecoration(
+            //             // ignore: unnecessary_null_comparison
+            //             color: color == null
+            //                 ? null
+            //                 : index % 2 == 0
+            //                     ? const Color.fromARGB(255, 246, 246, 246)
+            //                     : Colors.blue[50],
+            //           ),
+            //           child: Center(
+            //               child: GestureDetector(
+            //                   onTap: () {
+            //                       deleteFunctionOfEvents(context, data);
+                                  
+            //                   },
+            //                   child: Icon(
+            //                     Icons.delete,
+            //                     size: 15,
+            //                     color: cred,
+            //                   )))),
+            //     ),
+            //     // Expanded(
+            //     //   child: DataContainerWidget(
+            //     //       rowMainAccess: MainAxisAlignment.center,
+            //     //       color: cWhite,
+            //     //       // width: 150,
+            //     //       index: index,
+            //     //       headerTitle: '11',
+            //     //       icon: Icon(Icons.delete),),
+            //     // ),
+            //   ],
+            // ),
           ), //....................Delete
         ],
       ),

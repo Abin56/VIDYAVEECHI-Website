@@ -26,9 +26,13 @@ class AchievementsController extends GetxController {
 
   TextEditingController achievementController = TextEditingController();
  TextEditingController dateController = TextEditingController();
- TextEditingController editdateController = TextEditingController();
   TextEditingController studentNameController = TextEditingController();
   TextEditingController admissionNumberController = TextEditingController();
+
+ TextEditingController editdateController = TextEditingController();
+ TextEditingController editachievementController = TextEditingController(); 
+  TextEditingController editstudentNameController = TextEditingController();
+  TextEditingController editadmissionNumberController = TextEditingController();
   final formKey = GlobalKey<FormState>();
    final Rx<String> dateControllerr = ''.obs;
      final Rxn<DateTime> dateSelected = Rxn<DateTime>();
@@ -99,7 +103,9 @@ class AchievementsController extends GetxController {
     }
   }
 
-  Future<void> updateAchievement( String uid,BuildContext context) async {
+  Future<void> updateAchievement(String studentName,String achievementHead,
+  String dateofAchievement,String admissionNumber,
+  String uid,BuildContext context) async {
      
     await server
         .collection('SchoolListCollection')
@@ -111,10 +117,10 @@ class AchievementsController extends GetxController {
         .collection('AdminAchievements')
         .doc(uid)
         .update({
-          'studentName':studentNameController.text,
+          'studentName':editstudentNameController.text,
            'dateofAchievement':editdateController.text,
-           'achievementHead':achievementController.text,
-           'admissionNumber':admissionNumberController.text,
+           'achievementHead':editachievementController.text,
+           'admissionNumber':editadmissionNumberController.text,
           // 'photoUrl': downloadUrl,
     })  .then((value) => Navigator.pop(context ))
         .then((value) => showToast(msg: 'Achievement Updated!'));
