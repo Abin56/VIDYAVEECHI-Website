@@ -1,92 +1,91 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:vidyaveechi_website/controller/meeting_controller/meeting_controller.dart';
 import 'package:vidyaveechi_website/model/meeting_model/meeting_model.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
-import 'package:vidyaveechi_website/view/fonts/google_poppins_widget.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
-import 'package:vidyaveechi_website/view/users/admin/screens/meeting/edit_delete/view_table_meeting.dart';
-import 'package:vidyaveechi_website/view/widgets/blue_Container_widget/blue_Container_widget.dart';
+import 'package:vidyaveechi_website/view/users/admin/screens/meeting/creating_meeting/create_meeting.dart';
+import 'package:vidyaveechi_website/view/widgets/custom_delete_showdialog/custom_delete_showdialog.dart';
 import 'package:vidyaveechi_website/view/widgets/custom_showdialouge/custom_showdialouge.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 
-final MeetingController meetingController = Get.put(MeetingController());
+
 editFunctionOfMeeting(BuildContext context, MeetingModel data) {
+  final MeetingController meetingController = Get.put(MeetingController());
   customShowDilogBox(
     context: context,
     title: 'Edit Meeting',
     children: [
-      TextFormFiledBlueContainerWidgetMeeting(hintText: data.topic, title: 'Topic'),
-      TextFormFiledBlueContainerWidgetMeeting(hintText: data.date, title: 'Date'),
-      TextFormFiledBlueContainerWidgetMeeting(hintText: data.time, title: 'Time '),
-      TextFormFiledBlueContainerWidgetMeeting(hintText: data.category, title: 'Category'),
-      TextFormFiledBlueContainerWidgetMeeting(hintText: data.venue, title: 'Venue'),
-      TextFormFiledBlueContainerWidgetMeeting(hintText: data.members, title: 'Expected Members'),
-      TextFormFiledBlueContainerWidgetMeeting(hintText: data.specialGuest, title: 'Special Guest'),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          Container(
-            height: 40,
-            width: 150,
-            decoration: BoxDecoration(
-                color: themeColorBlue,
-                border: Border.all(color: themeColorBlue),
-                borderRadius: BorderRadius.circular(05)),
-            child: const Center(
-              child: TextFontWidget(
-                text: "Update",
-                fontsize: 14,
-                // fontWeight: FontWeight.w600,
-                color: cWhite,
-              ),
-            ),
-          ),
-        ],
-      ),
-    ],
+      TextFormFiledBlueContainerWidgetMeeting(
+        controller: meetingController.topicController,
+          hintText: data.topic, title: 'Topic'),
+      TextFormFiledBlueContainerWidgetMeeting(
+        onTap: () {
+          meetingController.selectDate(context, meetingController.editdateController);
+        },
+         controller: meetingController.editdateController,
+          hintText: data.date, title: 'Date🗓️ '),
+      TextFormFiledBlueContainerWidgetMeeting(
+         controller: meetingController.timeController,
+          hintText: data.time, title: 'Time '),
+      TextFormFiledBlueContainerWidgetMeeting(
+         controller: meetingController.categoryController,
+          hintText: data.category, title: 'Category'),
+      TextFormFiledBlueContainerWidgetMeeting(
+         controller: meetingController.venueController,
+          hintText: data.venue, title: 'Venue'),
+      TextFormFiledBlueContainerWidgetMeeting(
+         controller: meetingController.memberController,
+          hintText: data.members, title: 'Expected Members'),
+      TextFormFiledBlueContainerWidgetMeeting(
+         controller: meetingController.specialguestController,
+          hintText: data.specialGuest, title: 'Special Guest'),
+      // Row(
+      //   mainAxisAlignment: MainAxisAlignment.end,
+      //   children: [
+      //     GestureDetector(
+      //       onTap: () {
+      //          meetingController.updateMeeting(
+      //   data.meetingId, context);
+      //       },
+      //       child: Container(
+      //         height: 40,
+      //         width: 150,
+      //         decoration: BoxDecoration(
+      //             color: themeColorBlue,
+      //             border: Border.all(color: themeColorBlue),
+      //             borderRadius: BorderRadius.circular(05)),
+      //         child: const Center(
+      //           child: TextFontWidgetRouter(
+      //             text: "Update",
+      //             fontsize: 14,
+      //             // fontWeight: FontWeight.w600,
+      //             color: cWhite,
+      //           ),
+      //         ),
+      //       ),
+      //     ),
+      //   ],
+      // ),
+    ],doyouwantActionButton: true,
     actiononTapfuction: () {
-      meetingController.updateMeeting(data.meetingId, context);
+      meetingController.updateMeeting(
+        data.meetingId, context);
+        print("okaaaaaaaaaa");
     },
-    doyouwantActionButton: false,
+    
     actiontext: 'Update',
   );
 }
 
 deleteFunctionOfMeetings(BuildContext context, MeetingModel data) {
-  showDialog(
+  final MeetingController meetingController = Get.put(MeetingController());
+  customDeleteShowDialog(
     context: context,
-    barrierDismissible: false, // user must tap button!
-    builder: (context) => AlertDialog(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0)),
-      title: const Text(
-        "Delete",
-        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-      ),
-      content: const Text(
-        "Are you sure do you want to delete ?",
-        style: TextStyle(fontSize: 14),
-      ),
-      actions: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            GestureDetector(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: BlueContainerWidget(
-                    title: "No", fontSize: 12, color: adminePrimayColor, width: 100)),
-            GestureDetector(
-                onTap: () {
-                  meetingController.deleteMeeting(data.meetingId, context);
-                },
-                child: BlueContainerWidget(
-                    title: "Yes", fontSize: 12, color: adminePrimayColor, width: 100)),
-          ],
-        ),
-      ],
-    ),
+    onTap: () {
+      meetingController.deleteMeeting(data.meetingId, context);
+    },
   );
 
   // customShowDilogBox(
@@ -184,7 +183,8 @@ allviewFunctionOfMeeting(BuildContext context, MeetingModel data) {
                       alignment: Alignment.centerLeft,
                       child: Padding(
                         padding: const EdgeInsets.only(left: 10),
-                        child: TextFontWidget(text: data.category, fontsize: 13),
+                        child:
+                            TextFontWidget(text: data.category, fontsize: 13),
                       )),
                 ],
               ),
@@ -241,7 +241,8 @@ allviewFunctionOfMeeting(BuildContext context, MeetingModel data) {
                       alignment: Alignment.centerLeft,
                       child: Padding(
                         padding: const EdgeInsets.only(left: 10),
-                        child: TextFontWidget(text: data.specialGuest, fontsize: 13),
+                        child: TextFontWidget(
+                            text: data.specialGuest, fontsize: 13),
                       )),
                 ],
               ),

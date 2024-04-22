@@ -2,10 +2,11 @@ import 'package:awesome_side_sheet/Enums/sheet_position.dart';
 import 'package:awesome_side_sheet/side_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vidyaveechi_website/constants/colors/app_colors.dart';
 import 'package:vidyaveechi_website/controller/notice_controller/notice_controller.dart';
+import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
-import 'package:vidyaveechi_website/view/users/admin/screens/notice/noticebutton_container.dart';
+import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
+import 'package:vidyaveechi_website/view/widgets/progess_button/progress_button.dart';
 import 'package:vidyaveechi_website/view/widgets/routeSelectedTextContainer/routeSelectedTextContainer.dart';
 import 'package:vidyaveechi_website/view/widgets/textformFiledContainer/textformFiledBlueContainer.dart';
 
@@ -116,7 +117,7 @@ class CreateNotice extends StatelessWidget {
                 children: [
                   GestureDetector(
                       onTap: () {
-                        {
+                     
                           aweSideSheet(
                               context: context,
                               sheetPosition: SheetPosition.right,
@@ -140,44 +141,7 @@ class CreateNotice extends StatelessWidget {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            // Row(
-                                            //   mainAxisAlignment:
-                                            //       MainAxisAlignment.center,
-                                            //   children: [
-                                            //     Checkbox(
-                                            //       value: valuefirst,
-                                            //       onChanged: (bool? value) {
-                                            //         setState(() {
-                                            //           valuefirst = value ??
-                                            //               false; // Update the value of valuefirst
-                                            //         });
-                                            //       },
-                                            //     ),
-                                            //     GooglePoppinsWidgets(
-                                            //       text: 'Custom Content',
-                                            //       fontsize: 14,
-                                            //     ),
-                                            //   ],
-                                            // ), //////////////////////////////////////////////////0
-                                            // Row(
-                                            //   children: [
-                                            //     Expanded(
-                                            //       child: GooglePoppinsWidgets(
-                                            //         text:
-                                            //             '(If you select this, the other contents will disappear)',
-                                            //         fontsize: 11,
-                                            //       ),
-                                            //     )
-                                            //   ],
-                                            // ), /////////////////////////////////////1
-                                            // if (valuefirst != null && valuefirst!)
-                                            //   Column(
-                                            //     children: [
-                                            //       textformWidget[0],
-                                            //       textformWidget[1],
-                                            //     ],
-                                            //   )
-                                            // else
+                                          
                                             Column(
                                               children: [
                                                 Padding(
@@ -194,11 +158,14 @@ class CreateNotice extends StatelessWidget {
                                                 Padding(
                                                   padding:const EdgeInsets.only( top: 5,left: 10, right: 10),
                                                   child:  TextFormFiledWithoutColorEight(
+                                                    onTap: () {
+                                                      noticeController.selectDate(context, noticeController .noticePublishedDateController);
+                                                    },
                                                     width: 500,
-                                                    controller: noticeController  .noticePublishedDateController,
-                                                    validator: checkFieldDateIsValid,
-                                                    hintText: 'Published Date',
+                                                    controller: noticeController .noticePublishedDateController,
+                                                    validator: checkFieldEmpty,
                                                     title: 'Published Date',
+                                                    hintText:'Published Date', /////////////////////////////////////////0
                                                   ),
                                                 ), ////////////////////////////////////////////////////////2
                                                 Padding(
@@ -213,12 +180,15 @@ class CreateNotice extends StatelessWidget {
                                                 ), ///////////////////////////////////////////////3
                                                 Padding(
                                                   padding:  const EdgeInsets.only( top: 5,left: 10, right: 10),
-                                                  child: TextFormFiledWithoutColorEight(
+                                                  child:    TextFormFiledWithoutColorEight(
+                                                    onTap: () {
+                                                      noticeController.selectDate(context, noticeController .noticeDateofoccationController);
+                                                    },
                                                     width: 500,
-                                                    validator: checkFieldDateIsValid,
-                                                    controller: noticeController .noticeDateofoccationontroller,
-                                                    title: 'Date of occation',
-                                                    hintText: 'Date of occation',
+                                                    controller: noticeController .noticeDateofoccationController,
+                                                    validator: checkFieldEmpty,
+                                                    title: ' Date of occasion',
+                                                    hintText:' Date of occasion', /////////////////////////////////////////0
                                                   ),
                                                 ), ////////////////////////////////////4
                                                 Padding(
@@ -253,12 +223,15 @@ class CreateNotice extends StatelessWidget {
                                                 ), ////////////////////////////////////7
                                                 Padding(
                                                   padding: const EdgeInsets.only( top: 5, left: 10,right: 10),
-                                                  child: TextFormFiledWithoutColorEight(
+                                                  child:     TextFormFiledWithoutColorEight(
+                                                    onTap: () {
+                                                      noticeController.selectDate(context, noticeController .noticeDateofSubmissionController);
+                                                    },
                                                     width: 500,
-                                                    validator:checkFieldDateIsValid,
-                                                    controller: noticeController.noticeDateofSubmissionontroller,
-                                                    title: 'Date of Submission',
-                                                    hintText: 'Date of Submission',
+                                                    controller: noticeController .noticeDateofSubmissionController,
+                                                    validator: checkFieldEmpty,
+                                                    title: ' Date of submission',
+                                                    hintText:' Date of submission', /////////////////////////////////////////0
                                                   ),
                                                 ),
                                                 Padding(
@@ -284,37 +257,37 @@ class CreateNotice extends StatelessWidget {
                                               padding: const EdgeInsets.only( top: 10, bottom: 10),
                                               child: Center(
                                                   child: 
-                                                 // Obx(() =>
-                                                      // ProgressButtonWidget(
-                                                      //     function: () async {
-                                                      //       if (noticeController
-                                                      //           .formKey
-                                                      //           .currentState!
-                                                      //           .validate()) {
-                                                      //         noticeController
-                                                      //             .createNotice();
-                                                      //         print("object");
-                                                      //       }
-                                                      //     },
-                                                      //     buttonstate: noticeController .buttonstate.value,
-                                                      //     text: 'Create Notice'))
-                                                      NoticeButtonContainerWidget(
-                                                                text: 'Submit',
-                                                               width: 300,
-                                                              height: 50,
-                                                              fontSize: 18,
-                                                              onTap: () {
-                                                                 if (noticeController
-                                                              .formKey
-                                                              .currentState!
-                                                              .validate()) {
-                                                            noticeController
-                                                                .createNotice();
-                                                            print("object");
-                                                          }
-                                                              },
-                                                              color: AppColors.darkBlueColor,
-                                                        ),
+                                                 Obx(() =>
+                                                      ProgressButtonWidget(
+                                                          function: () async {
+                                                            if (noticeController
+                                                                .formKey
+                                                                .currentState!
+                                                                .validate()) {
+                                                              noticeController
+                                                                  .createNotice();
+                                                              print("object");
+                                                            }
+                                                          },
+                                                          buttonstate: noticeController .buttonstate.value,
+                                                          text: 'Create Notice'))
+                                                      // NoticeButtonContainerWidget(
+                                                      //           text: 'Submit',
+                                                      //          width: 300,
+                                                      //         height: 50,
+                                                      //         fontSize: 18,
+                                                      //         onTap: () {
+                                                      //            if (noticeController
+                                                      //         .formKey
+                                                      //         .currentState!
+                                                      //         .validate()) {
+                                                      //       noticeController
+                                                      //           .createNotice();
+                                                      //       print("object");
+                                                      //     }
+                                                      //         },
+                                                      //         color: adminePrimayColor,
+                                                      //   ),
                                                   ),
                                             )
                                           ],
@@ -326,7 +299,7 @@ class CreateNotice extends StatelessWidget {
                               ),
                               showCloseButton: false,
                               footer: Container());
-                        }
+                        
                       },
                       child: const RouteSelectedTextContainer(
                           width: 140, title: 'Create')),

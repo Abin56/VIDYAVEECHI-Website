@@ -64,7 +64,7 @@ class AdminProfileController extends GetxController {
   TextEditingController emailController = TextEditingController();
 
   Future updateAdminProfile() async {
-    print('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<${getImageCtr.image.value}');
+    // print('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<${getImageCtr.image.value}');
     String image =
         await getImageCtr.uploapImageToFirebase(getImageCtr.image.value!);
     print('Image converted');
@@ -72,7 +72,7 @@ class AdminProfileController extends GetxController {
     final Map<String, dynamic> updateData = {
       "image": image,
       "adminUserName": nameController.text,
-      "designation": nameController.text,
+      "designation": designationController.text,
       "about": aboutController.text,
       "phoneNumber": phoneController.text,
       "email": emailController.text,

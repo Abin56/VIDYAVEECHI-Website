@@ -3,7 +3,9 @@ import 'package:awesome_side_sheet/side_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vidyaveechi_website/controller/event_controller/event_controller.dart';
+import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
+import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 import 'package:vidyaveechi_website/view/widgets/progess_button/progress_button.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 import 'package:vidyaveechi_website/view/widgets/routeSelectedTextContainer/routeSelectedTextContainer.dart';
@@ -139,19 +141,22 @@ class CreateEvent extends StatelessWidget {
                                                             top: 10,
                                                             left: 10,
                                                             right: 10),
-                                                    child:
-                                                        TextFormFiledWithoutColorEight(
+                                                    child:TextFormFiledWithoutColorEight(
+                                                      onTap: () {
+                                                        eventController.selectDate(context, eventController
+                                                          .eventdateController);
+                                                      },
                                                       width: ResponsiveWebSite
                                                               .isMobile(context)
                                                           ? double.infinity
                                                           : 500,
                                                       validator:
-                                                          checkFieldDateIsValid,
+                                                          checkFieldEmpty,
                                                       controller: eventController
                                                           .eventdateController,
-                                                      hintText: 'Date',
                                                       title: 'Date',
-                                                    ),
+                                                      hintText: 'Date',
+                                                    ), 
                                                   ), ////////////////////////////////////////////////////////1
                                                   Padding(
                                                     padding:

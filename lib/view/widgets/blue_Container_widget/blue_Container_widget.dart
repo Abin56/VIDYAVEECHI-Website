@@ -28,7 +28,7 @@ class BlueContainerWidget extends StatelessWidget {
         color: color,
       ),
       child: Center(
-        child: TextFontWidget(
+        child: TextFontWidgetRouter(
             text: title,
             fontsize: fontSize,
             color: cWhite,

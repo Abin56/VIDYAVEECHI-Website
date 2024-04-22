@@ -35,8 +35,9 @@ class GeneralInsructionController extends GetxController {
         }  catch (e) { showToast(msg: 'Instruction Not Created');}
     }
 
-     Future<void> removeInstruction( ) async {
+     Future<void> removeInstruction(String instructionId,BuildContext context ) async {
              final uuid =const  Uuid().v1();
+       // ignore: unused_local_variable
        final generalInstructionsDetails = GeneralInstructionsModel(
         instruction: instructionController.text, 
         instructionId: uuid, 
@@ -49,8 +50,9 @@ class GeneralInsructionController extends GetxController {
           .collection(UserCredentialsController.batchId!)
           .doc(UserCredentialsController.batchId!)
           .collection('Admin_general_instructions')
-          .doc(generalInstructionsDetails.instructionId)
-          .delete();
+          .doc(instructionId)
+          .delete()
+          .then((value) => Navigator.pop(context ));
       isLoading.value = false;
       showToast(msg: 'Deleted Successfully');
     } catch (e) {
@@ -59,9 +61,9 @@ class GeneralInsructionController extends GetxController {
     }
   }
 
-  Future<void> updateInstructions(
-      String instructionId,  String instructions) async {
+  Future<void> updateInstructions(String instructionId,BuildContext context) async {
        final uuid =const  Uuid().v1();
+       // ignore: unused_local_variable
        final generalInstructionsDetails = GeneralInstructionsModel(
         instruction: instructionController.text, 
         instructionId: uuid, 
@@ -74,13 +76,14 @@ class GeneralInsructionController extends GetxController {
           .collection(UserCredentialsController.batchId!)
           .doc(UserCredentialsController.batchId!)
           .collection('Admin_general_instructions')
-          .doc(generalInstructionsDetails.instructionId)
+          .doc(instructionId)
           .update(
         {
-          "instruction": instructions,
+         "instruction": instructionController.text,
           "time": DateTime.now().toString(),
         },
-      );
+      )
+      .then((value) => Navigator.pop(context ));
       isLoading.value = false;
       instructionController.clear();
       showToast(msg: 'Updated Succesfully');

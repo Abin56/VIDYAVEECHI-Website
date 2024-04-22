@@ -14,7 +14,7 @@ import 'package:vidyaveechi_website/view/users/admin/screens/students/student_de
 import 'package:vidyaveechi_website/view/widgets/routeSelectedTextContainer/routeSelectedTextContainer.dart';
 import 'package:vidyaveechi_website/view/widgets/routeSelectedTextContainer/route_NonSelectedContainer.dart';
 import 'package:vidyaveechi_website/view/widgets/textformFiledContainer/textformFiledContainer.dart';
-
+//////
 class AttendanceAddingList extends StatelessWidget {
   final AttendenceController attendenceController = Get.put(AttendenceController());
   final CalenderController calenderController = Get.put(CalenderController());
@@ -211,7 +211,7 @@ class AttendanceAddingList extends StatelessWidget {
                               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 3),
                               child: Row(
                                 children: [
-                                  TextFontWidget(
+                                  TextFontWidgetRouter(
                                       text: "Check Attendance", fontsize: 14, color: cWhite),
                                   sw10,
                                   Icon(

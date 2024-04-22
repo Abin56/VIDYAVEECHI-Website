@@ -64,7 +64,7 @@ class AllClassListView extends StatelessWidget {
                                 height: 40,
                                 width: 180,
                                 child: const Center(
-                                  child: TextFontWidget(
+                                  child: TextFontWidgetRouter(
                                     text: 'Create / EDIT',
                                     fontsize: 14,
                                     fontWeight: FontWeight.bold,
@@ -101,6 +101,13 @@ class AllClassListView extends StatelessWidget {
                                   flex: 2,
                                   child: CatrgoryTableHeaderWidget(
                                       headerTitle: 'Last Class Active Status')),
+                              SizedBox(
+                                width: 01,
+                              ),
+                              Expanded(
+                                  flex: 2,
+                                  child: CatrgoryTableHeaderWidget(
+                                      headerTitle: 'Total Working Days')),
                               SizedBox(
                                 width: 01,
                               ),

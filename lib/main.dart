@@ -8,10 +8,10 @@ import 'package:vidyaveechi_website/view/home/screens/footer/privacypolicy.dart'
 import 'package:vidyaveechi_website/view/splash_screen/splash_screen.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
 import 'package:vidyaveechi_website/view/widgets/scroll_on_web_widget.dart';
-// import 'dart:html' as html;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -19,8 +19,8 @@ Future<void> main() async {
   await SharedPreferencesHelper.initPrefs();
 
   runApp(const MyApp());
-
-      Get.put(UserLoginController());
+  
+  Get.put(UserLoginController());
 
   // html.window.onBeforeUnload.listen((html.Event e) {
   //   // Perform logout operation here

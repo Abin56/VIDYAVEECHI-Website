@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:progress_state_button/progress_button.dart';
 import 'package:uuid/uuid.dart';
 import 'package:vidyaveechi_website/model/meeting_model/meeting_model.dart';
@@ -11,14 +12,17 @@ import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_creden
 
 class MeetingController extends GetxController{
   TextEditingController topicController = TextEditingController();
-  TextEditingController dateController = TextEditingController();
+ // Rx<String> dateController =  ''.obs;
   TextEditingController timeController = TextEditingController();
+   TextEditingController dateController = TextEditingController();
+     TextEditingController editdateController = TextEditingController();
   TextEditingController categoryController = TextEditingController();
   TextEditingController memberController = TextEditingController();
   TextEditingController specialguestController = TextEditingController();
   TextEditingController venueController = TextEditingController();
     Rx<ButtonState> buttonstate = ButtonState.idle.obs;
-      RxBool ontapMeeting = false.obs;
+    RxBool ontapMeeting = false.obs;
+   final Rxn<DateTime> dateSelected = Rxn<DateTime>();
        final formKey = GlobalKey<FormState>();
 
   Future<void> createMeeting() async {
@@ -54,7 +58,7 @@ class MeetingController extends GetxController{
         venueController.clear();
         buttonstate.value = ButtonState.success;
 
-
+print(meetingDetails.meetingId);
         showToast(msg: "Meeting Created Successfully");
         await Future.delayed(const Duration(seconds: 2)).then((vazlue) {
           buttonstate.value = ButtonState.idle;
@@ -81,7 +85,7 @@ class MeetingController extends GetxController{
         .doc(meetingId)
         .update({
         'topic':  topicController.text,
-        'date': dateController.text,
+        'date': editdateController.text,
         'time': timeController.text,
         'category': categoryController.text,
         'member': memberController.text,
@@ -106,4 +110,19 @@ class MeetingController extends GetxController{
         .delete()
         .then((value) => Navigator.pop(context ));
   }
+
+
+     Future<void> selectDate(BuildContext context, TextEditingController controller) async {
+  final DateTime? pickedDate = await showDatePicker(
+    context: context,
+    initialDate: DateTime.now(),
+    firstDate: DateTime(2000),
+    lastDate: DateTime(2101),
+  );
+
+  if (pickedDate != null) {
+    String formattedDate = DateFormat('dd-MM-yyyy').format(pickedDate);
+    controller.text = formattedDate;
+  }
+}
 }

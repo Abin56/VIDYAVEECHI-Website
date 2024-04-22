@@ -1,32 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:vidyaveechi_website/controller/event_controller/event_controller.dart';
 import 'package:vidyaveechi_website/model/event_models/events_model.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/events/events.dart';
 import 'package:vidyaveechi_website/view/widgets/custom_showdialouge/custom_showdialouge.dart';
 
 editFunctionOfEvent(BuildContext context, EventModel data) {
+  final EventController eventController = Get.put(EventController());
   customShowDilogBox(
       context: context,
       title: 'Edit',
       children: [
         TextFormFiledBlueContainerWidgetEvent(
+          controller: eventController.eventnameController,
             hintText: data.eventName,
             title: 'Event'),
         TextFormFiledBlueContainerWidgetEvent(
+          onTap: () {
+            eventController.selectDate(context, eventController.editeventdateController);
+          },
+          controller: eventController.editeventdateController,
             hintText: data.eventDate,
             title: 'Date'),
         TextFormFiledBlueContainerWidgetEvent(
+          controller: eventController.eventvenueController,
             hintText: data.venue,
             title: 'Venue'),
         TextFormFiledBlueContainerWidgetEvent(
+          controller: eventController.eventdescriptionController,
             hintText: data.eventDescription,
             title: 'Description'),
         TextFormFiledBlueContainerWidgetEvent(
+          controller: eventController.eventsignedByController,
             hintText: data.signedBy,
             title: 'Signed by')
       ],
       doyouwantActionButton: true,
       actiononTapfuction: () {
-        eventController.updateEvent(data.id,context );
+        eventController.updateEvent(data.eventDate,data.eventName,data.eventDescription,data.venue,data.signedBy,
+          data.id,context );
         //      // ignore: unused_local_variable
         //      String edit = snapshot.data!
         //     .docs[index]['eventName'];

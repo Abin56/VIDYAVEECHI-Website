@@ -12,7 +12,6 @@ import 'package:vidyaveechi_website/view/users/admin/screens/students/student_de
 import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
 import 'package:vidyaveechi_website/view/widgets/button_container/button_container.dart';
-import 'package:vidyaveechi_website/view/widgets/data_list_widgets/tableheaderWidget.dart';
 import 'package:vidyaveechi_website/view/widgets/routeSelectedTextContainer/routeSelectedTextContainer.dart';
 
 class AllExamNotificationListView extends StatelessWidget {
@@ -66,7 +65,7 @@ class AllExamNotificationListView extends StatelessWidget {
                           height: 40,
                           width: 180,
                           child: const Center(
-                            child: TextFontWidget(
+                            child: TextFontWidgetRouter(
                               text: 'Create / E D I T',
                               fontsize: 14,
                               fontWeight: FontWeight.bold,
@@ -112,65 +111,68 @@ class AllExamNotificationListView extends StatelessWidget {
               Expanded(
                 child: SizedBox(
                   width: 1200,
-                  child: StreamBuilder(
-                    stream: server
-                        .collection('SchoolListCollection')
-                        .doc(UserCredentialsController.schoolId)
-                        .collection(UserCredentialsController.batchId!)
-                        .doc(UserCredentialsController.batchId!)
-                        .collection('ExamNotification')
-                        .snapshots(),
-                    builder: (context, snaps) {
-                      if (snaps.hasData) {
-                        if (snaps.data!.docs.isEmpty) {
-                          return const Center(
-                            child: TextFontWidget(
-                                text: "No exam found, add new exams", fontsize: 12.5),
-                          );
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10, right: 10),
+                    child: StreamBuilder(
+                      stream: server
+                          .collection('SchoolListCollection')
+                          .doc(UserCredentialsController.schoolId)
+                          .collection(UserCredentialsController.batchId!)
+                          .doc(UserCredentialsController.batchId!)
+                          .collection('ExamNotification')
+                          .snapshots(),
+                      builder: (context, snaps) {
+                        if (snaps.hasData) {
+                          if (snaps.data!.docs.isEmpty) {
+                            return const Center(
+                              child: TextFontWidget(
+                                  text: "No exam found, add new exams", fontsize: 12.5),
+                            );
+                          } else {
+                            return ListView.separated(
+                                itemBuilder: (context, index) {
+                                  final data =
+                                      ExamNotificationModel.fromMap(snaps.data!.docs[index].data());
+                                  return
+                                      // GestureDetector(
+                                      //   onTap: () => classController
+                                      //       .ontapClass.value = true,
+                                      //   child:
+                                      InkWell(
+                                    onTap: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (context) {
+                                          getExamNotificationCtr.startDateCtr.text = '';
+                                          getExamNotificationCtr.endDateCtr.text = '';
+                                          getExamNotificationCtr.startTimeCtr.text = '';
+                                          getExamNotificationCtr.endTimeCtr.text = '';
+                                          return ExamTimeTableAddWidget(
+                                              examId: data.docId,
+                                              size: size,
+                                              getExamNotificationCtr: getExamNotificationCtr);
+                                        },
+                                      );
+                                    },
+                                    child: ExamNotificationDataListWidget(
+                                      data: data,
+                                      index: index,
+                                      //   ),
+                                    ),
+                                  );
+                                },
+                                separatorBuilder: (context, index) {
+                                  return const SizedBox(
+                                    height: 02,
+                                  );
+                                },
+                                itemCount: snaps.data!.docs.length);
+                          } //
                         } else {
-                          return ListView.separated(
-                              itemBuilder: (context, index) {
-                                final data =
-                                    ExamNotificationModel.fromMap(snaps.data!.docs[index].data());
-                                return
-                                    // GestureDetector(
-                                    //   onTap: () => classController
-                                    //       .ontapClass.value = true,
-                                    //   child:
-                                    InkWell(
-                                  onTap: () {
-                                    showDialog(
-                                      context: context,
-                                      builder: (context) {
-                                        getExamNotificationCtr.startDateCtr.text = '';
-                                        getExamNotificationCtr.endDateCtr.text = '';
-                                        getExamNotificationCtr.startTimeCtr.text = '';
-                                        getExamNotificationCtr.endTimeCtr.text = '';
-                                        return ExamTimeTableAddWidget(
-                                            examId: data.docId,
-                                            size: size,
-                                            getExamNotificationCtr: getExamNotificationCtr);
-                                      },
-                                    );
-                                  },
-                                  child: ExamNotificationDataListWidget(
-                                    data: data,
-                                    index: index,
-                                    //   ),
-                                  ),
-                                );
-                              },
-                              separatorBuilder: (context, index) {
-                                return const SizedBox(
-                                  height: 02,
-                                );
-                              },
-                              itemCount: snaps.data!.docs.length);
-                        } //
-                      } else {
-                        return circularProgressIndicator;
-                      }
-                    },
+                          return circularProgressIndicator;
+                        }
+                      },
+                    ),
                   ), //
                 ),
               ), /////////////////////////////////////

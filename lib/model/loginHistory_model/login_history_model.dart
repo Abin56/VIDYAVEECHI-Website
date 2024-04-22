@@ -1,43 +1,55 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-
 class AdminLoginDetailHistoryModel {
-  String loginTime;
-  String adminuser;
-  String? logOutTime;
+ String adminID;
+  String adminuserName;
+   String docid;
+    String loginTime;
+     String logoutTime;
+
   AdminLoginDetailHistoryModel({
+    required this.adminID,
+    required this.adminuserName,
+    required this.docid,
     required this.loginTime,
-    required this.adminuser,
-    this.logOutTime,
+    required this.logoutTime,
   });
 
 
   AdminLoginDetailHistoryModel copyWith({
+    String? adminID,
+    String? adminuserName,
+    String? docid,
     String? loginTime,
-    String? adminuser,
-    String? logOutTime,
+    String? logoutTime,
   }) {
     return AdminLoginDetailHistoryModel(
+      adminID: adminID ?? this.adminID,
+      adminuserName: adminuserName ?? this.adminuserName,
+      docid: docid ?? this.docid,
       loginTime: loginTime ?? this.loginTime,
-      adminuser: adminuser ?? this.adminuser,
-      logOutTime: logOutTime ?? this.logOutTime,
+      logoutTime: logoutTime ?? this.logoutTime,
     );
   }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'adminID': adminID,
+      'adminuserName': adminuserName,
+      'docid': docid,
       'loginTime': loginTime,
-      'adminuser': adminuser,
-      'logOutTime': logOutTime,
+      'logoutTime': logoutTime,
     };
   }
 
   factory AdminLoginDetailHistoryModel.fromMap(Map<String, dynamic> map) {
     return AdminLoginDetailHistoryModel(
-      loginTime: map['loginTime'] as String,
-      adminuser: map['adminuser'] as String,
-      logOutTime: map['logOutTime'] != null ? map['logOutTime'] as String : null,
+      adminID: map['adminID'] ??'',
+      adminuserName: map['adminuserName'] ??'',
+      docid: map['docid'] ??'',
+      loginTime: map['loginTime'] ??'',
+      logoutTime: map['logoutTime'] ??'',
     );
   }
 
@@ -46,20 +58,30 @@ class AdminLoginDetailHistoryModel {
   factory AdminLoginDetailHistoryModel.fromJson(String source) => AdminLoginDetailHistoryModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
-  String toString() => 'AdminLoginDetailHistoryModel(loginTime: $loginTime, adminuser: $adminuser, logOutTime: $logOutTime)';
+  String toString() {
+    return 'AdminLoginDetailHistoryModel(adminID: $adminID, adminuserName: $adminuserName, docid: $docid, loginTime: $loginTime, logoutTime: $logoutTime)';
+  }
 
   @override
   bool operator ==(covariant AdminLoginDetailHistoryModel other) {
     if (identical(this, other)) return true;
   
     return 
+      other.adminID == adminID &&
+      other.adminuserName == adminuserName &&
+      other.docid == docid &&
       other.loginTime == loginTime &&
-      other.adminuser == adminuser &&
-      other.logOutTime == logOutTime;
+      other.logoutTime == logoutTime;
   }
 
   @override
-  int get hashCode => loginTime.hashCode ^ adminuser.hashCode ^ logOutTime.hashCode;
+  int get hashCode {
+    return adminID.hashCode ^
+      adminuserName.hashCode ^
+      docid.hashCode ^
+      loginTime.hashCode ^
+      logoutTime.hashCode;
+  }
 }
 
 

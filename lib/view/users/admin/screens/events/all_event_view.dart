@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:vidyaveechi_website/controller/event_controller/event_controller.dart';
 import 'package:vidyaveechi_website/model/event_models/events_model.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/fonts/google_poppins_widget.dart';
@@ -16,10 +18,11 @@ class AllEventsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
       child: Container(
         color: screenContainerbackgroundColor,
         height: 1000,
-        width: 1150,
+        width: 1200,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -103,7 +106,7 @@ class AllEventsList extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.only(left: 10, right: 10),
                 child: Container(
-                  width: 1250,
+                  width: 1200,
                   decoration: BoxDecoration(
                     color: cWhite,
                     border: Border.all(color: cWhite),
@@ -112,51 +115,47 @@ class AllEventsList extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 5, right: 5),
                     child: SizedBox(
                         // width: 1100,
-                        child:
-                             StreamBuilder(
-                              stream: server
-                                  .collection('SchoolListCollection')
-                                 .doc(UserCredentialsController.schoolId)
-                                 .collection(UserCredentialsController.batchId!)
-                                 .doc(UserCredentialsController.batchId!)
-                                 .collection('AdminEvents')
-                                  .snapshots(),
-                              builder: (context, snaPS) {
-                                if (snaPS.hasData) {
-                                  return
-                            ListView.separated(
-                                itemBuilder: (context, index) {
-                                  final data = EventModel.fromMap(
-                                      snaPS.data!.docs[index].data());
-                                  return GestureDetector(
-                                    onTap: () {
-                                      // parentController
-                                      //     .parentModelData
-                                      //     .value = data;
-                                      // parentController
-                                      //     .ontapviewParent
-                                      //     .value = true;
+                        child: StreamBuilder(
+                            stream: server
+                                .collection('SchoolListCollection')
+                                .doc(UserCredentialsController.schoolId)
+                                .collection(UserCredentialsController.batchId!)
+                                .doc(UserCredentialsController.batchId!)
+                                .collection('AdminEvents')
+                                .snapshots(),
+                            builder: (context, snaPS) {
+                              if (snaPS.hasData) {
+                                return ListView.separated(
+                                    itemBuilder: (context, index) {
+                                      final data = EventModel.fromMap(
+                                          snaPS.data!.docs[index].data());
+                                      return GestureDetector(
+                                        onTap: () {
+                                          // parentController
+                                          //     .parentModelData
+                                          //     .value = data;
+                                          // parentController
+                                          //     .ontapviewParent
+                                          //     .value = true;
+                                        },
+                                        child: AllEventsDataList(
+                                          data: data,
+                                          color: Colors.transparent,
+                                          index: index,
+                                        ),
+                                      );
                                     },
-                                    child: AllEventsDataList(
-                                      data: data,
-                                      color: Colors.transparent,
-                                      index: index,
-                                    ),
-                                  );
-                                },
-                                separatorBuilder: (context, index) {
-                                  return const SizedBox(
-                                    height: 02,
-                                  );
-                                },
-                                itemCount: 
-                        snaPS.data!.docs.length);
-                        //           ////////
-                            } else {
-                              return const LoadingWidget();
-                            }
-                          }
-                        )////
+                                    separatorBuilder: (context, index) {
+                                      return const SizedBox(
+                                        height: 02,
+                                      );
+                                    },
+                                    itemCount: snaPS.data!.docs.length);
+                                //           ////////
+                              } else {
+                                return const LoadingWidget();
+                              }
+                            }) ////
                         ),
                   ),
                 ),
@@ -168,3 +167,4 @@ class AllEventsList extends StatelessWidget {
     );
   }
 }
+final EventController eventController = Get.put(EventController());

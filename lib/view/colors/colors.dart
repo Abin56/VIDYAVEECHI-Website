@@ -24,3 +24,4 @@ const Color cred = Color.fromARGB(255, 255, 0, 0);
 const Color cgreen = Colors.green;
 const Color dujothemeColor = Color(0xFF26A69A);
 const Color screenContainerbackgroundColor = Color.fromARGB(255, 240, 241, 243);
+const Color white = Colors.white;

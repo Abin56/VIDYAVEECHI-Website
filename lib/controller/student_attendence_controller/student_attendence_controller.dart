@@ -60,6 +60,7 @@ class StudentAttendenceController extends GetxController {
 
   getSingleStudentAttendadance(
       {required String ClassId, required String studentId}) async {
+    int count = 0;
     final studentAttendanceData = await server
         .collection('SchoolListCollection')
         .doc(UserCredentialsController.schoolId)
@@ -72,5 +73,13 @@ class StudentAttendenceController extends GetxController {
         .collection('MyAttendenceList')
         .get();
     totalStudentAttendance.value = studentAttendanceData.docs.length;
+    for (var element in studentAttendanceData.docs) {
+      if (element['present'] == true) {
+        count++;
+      }
+    }
+    presentStudentAttendance.value = count;
+    absentStudentAttendance.value =
+        studentAttendanceData.docs.length - presentStudentAttendance.value;
   }
 }

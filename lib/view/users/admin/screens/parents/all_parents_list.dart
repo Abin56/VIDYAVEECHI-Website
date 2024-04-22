@@ -71,7 +71,7 @@ class AllParentsListContainer extends StatelessWidget {
                                       height: 35,
                                       width: 150,
                                       child: const Center(
-                                        child: TextFontWidget(
+                                        child: TextFontWidgetRouter(
                                           text: 'Create New Parent',
                                           fontsize: 12,
                                           fontWeight: FontWeight.bold,
@@ -133,7 +133,7 @@ class AllParentsListContainer extends StatelessWidget {
                                     Expanded(
                                         flex: 3,
                                         child: CatrgoryTableHeaderWidget(
-                                            headerTitle: 'Class')),
+                                            headerTitle: 'Class ')),
                                     SizedBox(
                                       width: 02,
                                     ),

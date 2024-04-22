@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:progress_state_button/progress_button.dart';
 import 'package:vidyaveechi_website/model/class_model/class_model.dart';
+import 'package:vidyaveechi_website/model/registation_student_count_model.dart/registration_studentCount_model.dart';
 import 'package:vidyaveechi_website/model/student_model/student_model.dart';
 import 'package:vidyaveechi_website/view/constant/const.dart';
 import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
@@ -225,4 +226,39 @@ class RegistrationController extends GetxController {
       }
     });
   }
+  List<RegistrationStudentCountModel> allClasswiseRegStudents = [];
+  RxString classRegClassID ='dds'.obs;
+    RxString classRegClassName =''.obs;
+        RxInt classRegClassCount =0.obs;
+Future<List<RegistrationStudentCountModel>> fetchClassStudent() async {
+  await server
+      .collection('SchoolListCollection')
+      .doc(UserCredentialsController.schoolId)
+      .collection(UserCredentialsController.batchId!)
+      .doc(UserCredentialsController.batchId!)
+      .collection('classes')
+      .get()
+      .then((value) async {
+    for (var i = 0; i < value.docs.length; i++) {
+      final regiStudent = await server
+          .collection('SchoolListCollection')
+          .doc(UserCredentialsController.schoolId)
+          .collection(UserCredentialsController.batchId!)
+          .doc(UserCredentialsController.batchId!)
+          .collection('classes')
+          .doc(value.docs[i].data()['docid'])
+          .collection('RegTemp_Students')
+          .get();
+      final RegistrationStudentCountModel detail =
+          RegistrationStudentCountModel(
+              className: value.docs[i].data()['className'],
+              classID: value.docs[i].data()['docid'],
+              studentCount: regiStudent.docs.length);
+      allClasswiseRegStudents.add(detail);
+    }
+  });
+
+  return allClasswiseRegStudents;
+}
+
 }

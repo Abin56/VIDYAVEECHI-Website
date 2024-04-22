@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:progress_state_button/progress_button.dart';
 import 'package:uuid/uuid.dart';
 import 'package:vidyaveechi_website/model/notice_model/notice_model.dart';
@@ -19,11 +20,22 @@ class NoticeController extends GetxController {
 
   Rx<ButtonState> buttonstate = ButtonState.idle.obs;
 
+  final Rxn<DateTime> dateSelectedPublished = Rxn<DateTime>();
+  final Rxn<DateTime> dateSelectedSubmission = Rxn<DateTime>();
+  final Rxn<DateTime> dateSelectedOccasion = Rxn<DateTime>();
+
+  // final Rx<String> noticePublishedDateController = ''.obs;
+  // final Rx<String> noticeSubmissionDateController = ''.obs;
+  // final Rx<String> noticeOccasionDateController = ''.obs;
+
    TextEditingController noticeHeadingController = TextEditingController();
    TextEditingController noticePublishedDateController = TextEditingController();
    TextEditingController noticeSubjectController = TextEditingController();
-   TextEditingController noticeDateofoccationontroller = TextEditingController();
-   TextEditingController noticeDateofSubmissionontroller = TextEditingController();
+   TextEditingController noticeDateofoccationController = TextEditingController();
+   TextEditingController noticeDateofSubmissionController = TextEditingController();
+    TextEditingController editnoticePublishedDateController = TextEditingController();
+   TextEditingController editnoticeDateofoccationController = TextEditingController();
+   TextEditingController editnoticeDateofSubmissionController = TextEditingController();
    TextEditingController noticevenueController = TextEditingController();
    TextEditingController noticeGuestController = TextEditingController();
    TextEditingController noticeSignedByController = TextEditingController();
@@ -34,10 +46,10 @@ class NoticeController extends GetxController {
       subject: noticeSubjectController.text,
       publishedDate: noticePublishedDateController.text, 
       heading: noticeHeadingController.text, 
-      dateofoccation: noticeDateofoccationontroller.text, 
+      dateofoccation: noticeDateofoccationController.text, 
       venue: noticevenueController.text, 
       chiefGuest: noticeGuestController.text, 
-      dateOfSubmission: noticeDateofSubmissionontroller.text, 
+      dateOfSubmission: noticeDateofSubmissionController.text, 
       signedBy: noticeSignedByController.text, 
       noticeId: uuid);
 
@@ -56,10 +68,10 @@ class NoticeController extends GetxController {
         noticeSubjectController.clear();
         noticePublishedDateController.clear();
         noticeHeadingController.clear();
-        noticeDateofoccationontroller.clear();
+        noticeDateofoccationController.clear();
         noticevenueController.clear();
         noticeGuestController.clear();
-        noticeDateofSubmissionontroller.clear();
+        noticeDateofSubmissionController.clear();
         noticeSignedByController.clear();
         buttonstate.value = ButtonState.success;
         print(UserCredentialsController.batchId!);
@@ -90,12 +102,12 @@ class NoticeController extends GetxController {
         .doc(noticeId)
         .update({
         'subject':  noticeSubjectController.text,
-        'publishedDate': noticePublishedDateController.text,
+        'publishedDate': editnoticePublishedDateController.text,
         'heading': noticeHeadingController.text,
-        'dateofoccation': noticeDateofoccationontroller.text,
+        'dateofoccation': editnoticeDateofoccationController,
         'venue': noticevenueController.text,
         'chiefGuest': noticeGuestController.text,
-        'dateOfSubmission': noticeDateofSubmissionontroller.text,
+        'dateOfSubmission': editnoticeDateofSubmissionController,
         'signedBy': noticeSignedByController.text,
         })
         .then((value) => Navigator.pop(context ))
@@ -118,4 +130,19 @@ class NoticeController extends GetxController {
         
   }
 
+  
+
+   Future<void> selectDate(BuildContext context, TextEditingController controller) async {
+  final DateTime? pickedDate = await showDatePicker(
+    context: context,
+    initialDate: DateTime.now(),
+    firstDate: DateTime(2000),
+    lastDate: DateTime(2101),
+  );
+
+  if (pickedDate != null) {
+    String formattedDate = DateFormat('dd-MM-yyyy').format(pickedDate);
+    controller.text = formattedDate;
+  }
+}
 }

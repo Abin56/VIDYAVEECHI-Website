@@ -12,10 +12,10 @@ import 'package:vidyaveechi_website/view/users/admin/screens/fees_bills/create_f
 import 'package:vidyaveechi_website/view/users/admin/screens/students/student_details/widgets/category_tableHeader.dart';
 import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
+import 'package:vidyaveechi_website/view/widgets/button_container/button_container.dart';
 import 'package:vidyaveechi_website/view/widgets/data_list_widgets/data_container.dart';
 import 'package:vidyaveechi_website/view/widgets/loading_widget/loading_widget.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
-import 'package:vidyaveechi_website/view/widgets/button_container/button_container.dart';
 import 'package:vidyaveechi_website/view/widgets/routeSelectedTextContainer/routeSelectedTextContainer.dart';
 
 class CreatedFeesStatus extends StatelessWidget {
@@ -29,193 +29,198 @@ class CreatedFeesStatus extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() => feesAndBillsController.ontapviewclasswiseFees.value == true
         ? const ClassWiseFeesStatus()
-        : Container(
-            color: screenContainerbackgroundColor,
-            height: 700,
-            width: double.infinity,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 25, top: 25, right: 25),
-                  child: Row(
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.only(left: 05, right: 05),
-                        child: RouteSelectedTextContainer(
-                            title: 'All Fees & Bills'),
-                      ),
-                      const Spacer(),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 10),
-                        child: SizedBox(
-                          width: 250,
-                          height: ResponsiveWebSite.isMobile(context) ? 80 : 80,
-                          //color: cWhite,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const TextFontWidget(
-                                  text: 'Month *', fontsize: 12.5),
-                              const SizedBox(
-                                height: 05,
-                              ),
-                              SizedBox(
-                                height: 40,
-                                child: SelectFeeMonthDropDown(),
-                              ),
-                            ],
-                          ),
+        : SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Container(
+              color: screenContainerbackgroundColor,
+              height: 700,
+              width: 1200,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(left: 25, top: 25, right: 25),
+                    child: Row(
+                      children: [
+                        const Padding(
+                          padding: EdgeInsets.only(left: 05, right: 05),
+                          child: RouteSelectedTextContainer(
+                              title: 'All Fees & Bills'),
                         ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          createFeesFunction(context);
-                        },
-                        child: ButtonContainerWidget(
-                            curving: 30,
-                            colorindex: 0,
-                            height: 40,
-                            width: 180,
-                            child: const Center(
-                              child: TextFontWidget(
-                                text: 'Create Fee',
-                                fontsize: 14,
-                                fontWeight: FontWeight.bold,
-                                color: cWhite,
-                              ),
-                            )),
-                      )
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 10, right: 10, top: 25),
-                  child: Container(
-                      width: double.infinity,
-                      height: ResponsiveWebSite.isMobile(context) ? 800 : 500,
-                      color: cWhite,
-                      child: Column(
-                        children: [
-                          const Padding(
-                            padding: EdgeInsets.only(top: 8, left: 8, right: 8),
-                            child: Row(
+                        const Spacer(),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 10),
+                          child: SizedBox(
+                            width: 250,
+                            height:
+                                ResponsiveWebSite.isMobile(context) ? 80 : 80,
+                            //color: cWhite,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Expanded(
-                                    flex: 1,
-                                    child: CatrgoryTableHeaderWidget(
-                                        headerTitle: 'No')),
-                                SizedBox(
-                                  width: 01,
+                                const TextFontWidget(
+                                    text: 'Month *', fontsize: 12.5),
+                                const SizedBox(
+                                  height: 05,
                                 ),
-                                Expanded(
-                                    flex: 3,
-                                    child: CatrgoryTableHeaderWidget(
-                                        headerTitle: 'Fee Type Name')),
                                 SizedBox(
-                                  width: 01,
-                                ),
-                                Expanded(
-                                    flex: 2,
-                                    child: CatrgoryTableHeaderWidget(
-                                        headerTitle: 'Created Date')),
-                                SizedBox(
-                                  width: 01,
-                                ),
-                                Expanded(
-                                    flex: 2,
-                                    child: CatrgoryTableHeaderWidget(
-                                        headerTitle: 'Due Date')),
-                                SizedBox(
-                                  width: 01,
-                                ),
-                                Expanded(
-                                    flex: 2,
-                                    child: CatrgoryTableHeaderWidget(
-                                        headerTitle: 'Fee per student')),
-                                SizedBox(
-                                  width: 01,
-                                ),
-                                Expanded(
-                                    flex: 2,
-                                    child: CatrgoryTableHeaderWidget(
-                                        headerTitle: 'Collected')),
-                                SizedBox(
-                                  width: 01,
-                                ),
-                                Expanded(
-                                    flex: 2,
-                                    child: CatrgoryTableHeaderWidget(
-                                        headerTitle: 'Pending')),
-                                SizedBox(
-                                  width: 01,
-                                ),
-                                Expanded(
-                                    flex: 2,
-                                    child: CatrgoryTableHeaderWidget(
-                                        headerTitle: 'Total')),
-                                SizedBox(
-                                  width: 01,
+                                  height: 40,
+                                  child: SelectFeeMonthDropDown(),
                                 ),
                               ],
                             ),
                           ),
-                          Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  bottom: 8, left: 8, right: 8),
-                              child: StreamBuilder(
-                                  stream: server
-                                      .collection('SchoolListCollection')
-                                      .doc(UserCredentialsController.schoolId)
-                                      .collection(
-                                          UserCredentialsController.batchId!)
-                                      .doc(UserCredentialsController.batchId!)
-                                      .collection('FeesCollection')
-                                      .doc(feesAndBillsController
-                                          .feeMonthData.value)
-                                      .collection(feesAndBillsController
-                                          .feeMonthData.value)
-                                      .snapshots(),
-                                  builder: (context, snaps) {
-                                    if (snaps.hasData) {
-                                      return ListView.separated(
-                                          itemBuilder: (context, index) {
-                                            final data =
-                                                snaps.data!.docs[index].data();
-                                            return GestureDetector(
-                                              onTap: () {
-                                                feesAndBillsController
-                                                    .feeDateData
-                                                    .value = data['docid'];
-                                                feesAndBillsController
-                                                    .ontapviewclasswiseFees
-                                                    .value = true;
-                                              },
-                                              child: AllClassessFeesDataList(
-                                                data: data,
-                                                index: index,
-                                              ),
-                                            );
-                                          },
-                                          separatorBuilder: (context, index) {
-                                            return const SizedBox(
-                                              height: 02,
-                                            );
-                                          },
-                                          itemCount: snaps.data!.docs.length);
-                                    } else if (snaps.data == null) {
-                                      return const LoadingWidget();
-                                    } else {
-                                      return const LoadingWidget();
-                                    }
-                                  }),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            createFeesFunction(context);
+                          },
+                          child: ButtonContainerWidget(
+                              curving: 30,
+                              colorindex: 0,
+                              height: 40,
+                              width: 180,
+                              child: const Center(
+                                child: TextFontWidgetRouter(
+                                  text: 'Create Fee',
+                                  fontsize: 14,
+                                  fontWeight: FontWeight.bold,
+                                  color: cWhite,
+                                ),
+                              )),
+                        )
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(left: 10, right: 10, top: 25),
+                    child: Container(
+                        width: 1200,
+                        height: ResponsiveWebSite.isMobile(context) ? 800 : 500,
+                        color: cWhite,
+                        child: Column(
+                          children: [
+                            const Padding(
+                              padding:
+                                  EdgeInsets.only(top: 8, left: 8, right: 8),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                      flex: 1,
+                                      child: CatrgoryTableHeaderWidget(
+                                          headerTitle: 'No')),
+                                  SizedBox(
+                                    width: 01,
+                                  ),
+                                  Expanded(
+                                      flex: 3,
+                                      child: CatrgoryTableHeaderWidget(
+                                          headerTitle: 'Fee Type Name')),
+                                  SizedBox(
+                                    width: 01,
+                                  ),
+                                  Expanded(
+                                      flex: 2,
+                                      child: CatrgoryTableHeaderWidget(
+                                          headerTitle: 'Created Date')),
+                                  SizedBox(
+                                    width: 01,
+                                  ),
+                                  Expanded(
+                                      flex: 2,
+                                      child: CatrgoryTableHeaderWidget(
+                                          headerTitle: 'Due Date')),
+                                  SizedBox(
+                                    width: 01,
+                                  ),
+                                  Expanded(
+                                      flex: 2,
+                                      child: CatrgoryTableHeaderWidget(
+                                          headerTitle: 'Fee per student')),
+                                  SizedBox(
+                                    width: 01,
+                                  ),
+                                  Expanded(
+                                      flex: 2,
+                                      child: CatrgoryTableHeaderWidget(
+                                          headerTitle: 'Collected')),
+                                  SizedBox(
+                                    width: 01,
+                                  ),
+                                  Expanded(
+                                      flex: 2,
+                                      child: CatrgoryTableHeaderWidget(
+                                          headerTitle: 'Pending')),
+                                  SizedBox(
+                                    width: 01,
+                                  ),
+                                  Expanded(
+                                      flex: 2,
+                                      child: CatrgoryTableHeaderWidget(
+                                          headerTitle: 'Total')),
+                                ],
+                              ),
                             ),
-                          )
-                        ],
-                      )),
-                ),
-              ],
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    bottom: 8, left: 8, right: 8),
+                                child: StreamBuilder(
+                                    stream: server
+                                        .collection('SchoolListCollection')
+                                        .doc(UserCredentialsController.schoolId)
+                                        .collection(
+                                            UserCredentialsController.batchId!)
+                                        .doc(UserCredentialsController.batchId!)
+                                        .collection('FeesCollection')
+                                        .doc(feesAndBillsController
+                                            .feeMonthData.value)
+                                        .collection(feesAndBillsController
+                                            .feeMonthData.value)
+                                        .snapshots(),
+                                    builder: (context, snaps) {
+                                      if (snaps.hasData) {
+                                        return ListView.separated(
+                                            itemBuilder: (context, index) {
+                                              final data = snaps
+                                                  .data!.docs[index]
+                                                  .data();
+                                              return GestureDetector(
+                                                onTap: () {
+                                                  feesAndBillsController
+                                                      .feeDateData
+                                                      .value = data['docid'];
+                                                  feesAndBillsController
+                                                      .ontapviewclasswiseFees
+                                                      .value = true;
+                                                },
+                                                child: AllClassessFeesDataList(
+                                                  data: data,
+                                                  index: index,
+                                                ),
+                                              );
+                                            },
+                                            separatorBuilder: (context, index) {
+                                              return const SizedBox(
+                                                height: 02,
+                                              );
+                                            },
+                                            itemCount: snaps.data!.docs.length);
+                                      } else if (snaps.data == null) {
+                                        return const LoadingWidget();
+                                      } else {
+                                        return const LoadingWidget();
+                                      }
+                                    }),
+                              ),
+                            )
+                          ],
+                        )),
+                  ),
+                ],
+              ),
             ),
           ));
   }
