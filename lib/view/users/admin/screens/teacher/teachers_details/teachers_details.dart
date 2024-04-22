@@ -19,7 +19,8 @@ class TeachersDetailsContainer extends StatelessWidget {
     //  final data = teacherController.teacherModelData.value;
     // List<Widget> widgetList = [];
     return DefaultTabController(
-      length: 2,
+      length: 0,
+      //2,
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Container(
@@ -29,7 +30,7 @@ class TeachersDetailsContainer extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Padding(
+               Padding(
                 padding: EdgeInsets.only(left: 25, top: 25),
                 child: TextFontWidget(
                   text: 'Teacher Details',

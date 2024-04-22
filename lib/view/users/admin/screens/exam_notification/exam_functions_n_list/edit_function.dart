@@ -22,7 +22,7 @@ editFunctionOfExam(BuildContext context, ExamNotificationModel data) {
     builder: (context) {
       return AlertDialog(
         backgroundColor: cWhite,
-        title: const Row(
+        title:  Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             BackButton(),
@@ -44,7 +44,7 @@ editFunctionOfExam(BuildContext context, ExamNotificationModel data) {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const TextFontWidget(
+                       TextFontWidget(
                           text: ' Exam Name *', fontsize: 12.5),
                       const SizedBox(
                         height: 05,
@@ -223,7 +223,7 @@ editFunctionOfExam(BuildContext context, ExamNotificationModel data) {
                         color: themeColorBlue,
                         border: Border.all(color: themeColorBlue),
                         borderRadius: BorderRadius.circular(05)),
-                    child: const Center(
+                    child:  Center(
                       child: TextFontWidget(
                         text: "Edit",
                         fontsize: 14,

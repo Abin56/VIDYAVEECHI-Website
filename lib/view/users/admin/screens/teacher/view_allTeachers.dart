@@ -36,7 +36,7 @@ class AllTeacherListContainer extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const TextFontWidget(
+                      TextFontWidget(
                         text: 'All Teacher List',
                         fontsize: 18,
                         fontWeight: FontWeight.bold,

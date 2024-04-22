@@ -14,7 +14,7 @@ class StudentExamResult extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final resultListWidget = [
-      const TextFontWidget(
+       TextFontWidget(
         text: 'Exam Results',
         fontsize: 18,
         fontWeight: FontWeight.bold,
@@ -26,7 +26,7 @@ class StudentExamResult extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const TextFontWidget(text: 'Class *', fontsize: 12.5),
+            TextFontWidget(text: 'Class *', fontsize: 12.5),
             const SizedBox(
               height: 05,
             ),
@@ -46,7 +46,7 @@ class StudentExamResult extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const TextFontWidget(text: 'Exam*', fontsize: 12.5),
+             TextFontWidget(text: 'Exam*', fontsize: 12.5),
             const SizedBox(
               height: 05,
             ),
@@ -67,7 +67,7 @@ class StudentExamResult extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
+           Padding(
             padding: EdgeInsets.only(left: 25, top: 25),
             child: TextFontWidget(
               text: 'Class Wise Student Results',

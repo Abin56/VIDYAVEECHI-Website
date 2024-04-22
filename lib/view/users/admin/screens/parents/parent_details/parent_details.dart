@@ -33,7 +33,7 @@ class ParentDetailsContainer extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Padding(
+             Padding(
                 padding: EdgeInsets.only(left: 25, top: 25),
                 child: TextFontWidget(
                   text: 'Parent Details',
@@ -267,12 +267,12 @@ class ParentDetailsContainer extends StatelessWidget {
                         labelStyle: TextStyle(
                             fontWeight: FontWeight.w400, fontSize: 14),
                         tabs: [
-                          Tab(
-                            text: 'FEES',
-                          ),
-                          Tab(
-                            text: 'ATTENDANCE',
-                          ),
+                          // Tab(
+                          //   text: 'FEES',
+                          // ),
+                          // Tab(
+                          //   text: 'ATTENDANCE',
+                          // ),
                           Tab(
                             text: 'EXAM ',
                           )
@@ -300,8 +300,8 @@ class ParentDetailsContainer extends StatelessWidget {
 
                   // height: 300,
                   child: TabBarView(children: [
-                    PerStudentFeesHistory(), //........................ Student FEES
-                    PerStudentAttendenceHistory(), //.......................... Student Attendence
+                    // PerStudentFeesHistory(), //........................ Student FEES
+                    // PerStudentAttendenceHistory(), //.......................... Student Attendence
                     PerStudentExamHistory() //............................ Student Exam History
                   ]),
                 ),

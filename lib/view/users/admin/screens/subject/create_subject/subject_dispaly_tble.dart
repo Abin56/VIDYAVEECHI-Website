@@ -19,7 +19,7 @@ class SubjectDisplayTable extends StatelessWidget {
                 height: 40,
                 width: 1200,
                 color: Colors.blue.withOpacity(0.1),
-                child: const Padding(
+                child:  Padding(
                   padding: EdgeInsets.all(8.0),
                   child: TextFontWidget(
                     text: 'Subject',
@@ -156,7 +156,7 @@ class SubjectDataListContainer extends StatelessWidget {
                 decoration: BoxDecoration(
                     border: Border.all(color: cBlack.withOpacity(0.2))),
                 width: 50,
-                child: const Center(
+                child:  Center(
                   child: TextFontWidget(
                     text: " English",
                     fontsize: 13,

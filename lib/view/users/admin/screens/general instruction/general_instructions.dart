@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vidyaveechi_website/controller/general%20instruction/general_instruction.dart';
@@ -15,7 +16,8 @@ import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 import 'package:vidyaveechi_website/view/widgets/textformFiledContainer/textformFiledBlueContainer.dart';
 
 class GeneralInsructions extends StatelessWidget {
-  final GeneralInsructionController generalInsructionController =  Get.put(GeneralInsructionController());
+  final GeneralInsructionController generalInsructionController =
+      Get.put(GeneralInsructionController());
   GeneralInsructions({super.key});
 
   @override
@@ -33,7 +35,7 @@ class GeneralInsructions extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 25, top: 25),
                 child: Row(
                   children: [
-                    const TextFontWidget(
+                     TextFontWidget(
                       text: 'General Instructions',
                       fontsize: 18,
                       fontWeight: FontWeight.bold,
@@ -47,8 +49,7 @@ class GeneralInsructions extends StatelessWidget {
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                color: adminePrimayColor),
+                                borderRadius: BorderRadius.circular(5), color: adminePrimayColor),
                             height: 38,
                             width: 100,
                             child: Center(
@@ -64,9 +65,8 @@ class GeneralInsructions extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(
-                    top: 25,
-                    left: ResponsiveWebSite.isMobile(context) ? 05 : 10),
+                padding:
+                    EdgeInsets.only(top: 25, left: ResponsiveWebSite.isMobile(context) ? 05 : 10),
               ),
               // Obx(() {
               //   return generalInsructionController.isLoading.value
@@ -78,8 +78,7 @@ class GeneralInsructions extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
-                    decoration: BoxDecoration(
-                        color: cWhite, border: Border.all(color: cBlue)),
+                    decoration: BoxDecoration(color: cWhite, border: Border.all(color: cBlue)),
                     height: 700,
                     width: double.infinity,
                     child: StreamBuilder(
@@ -113,7 +112,7 @@ class GeneralInsructions extends StatelessWidget {
                                         : 3, // Number of columns in the grid
                                     crossAxisSpacing: 3, // Spacing between columns
                                     mainAxisSpacing: 5, // Spacing between rows
-                                    mainAxisExtent: 200,
+                                    // mainAxisExtent: 200,
                                   ),
                                   itemCount: snapshot.data!.docs.length,
                                   itemBuilder: (context, index) {
@@ -130,136 +129,148 @@ class GeneralInsructions extends StatelessWidget {
                                       child: Container(
                                         // height: 200,
                                         padding: const EdgeInsets.only(
-                                            top: 30,
-                                            bottom: 15,
-                                            right: 20,
-                                            left: 20),
+                                            top: 30, bottom: 15, right: 20, left: 20),
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(10),
                                           color: screenContainerbackgroundColor,
                                         ),
                                         child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          // mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          mainAxisSize: MainAxisSize.min,
                                           children: [
-                                            TextFontWidget(
-                                              text: ' ${data.instruction}',
-                                              fontsize: 14,
-                                              fontWeight: FontWeight.bold,
+                                            Expanded(
+                                              child: SingleChildScrollView(
+                                                child: TextFontWidget(
+                                                  text: ' ${data.instruction}',
+                                                  fontsize: 14,
+                                                  fontWeight: FontWeight.bold,
+                                                  overflow: TextOverflow.clip,
+                                                ),
+                                              ),
                                             ),
-                                            const Spacer(),
-                                            Row(
-                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                              children: [
-                                                GestureDetector(
-                                                  onTap: () {
-                                                    customShowDilogBox(
-                                                        context: context,
-                                                        title: 'Edit',
-                                                        children: [
-                                                          TextFormFiledBlueContainerWidgetWithOutColor(
-                                                            controller: generalInsructionController.instructionController,
-                                                              hintText: generalInsructionController
-                                                                  .instructionController.text,
-                                                              title: 'General Instruction')
-                                                        ],
-                                                        actiononTapfuction: () {
-                                                          generalInsructionController
-                                                              .updateInstructions(
-                                                                  data.instructionId,
-                                                                  context);
-                                                        },
-                                                        doyouwantActionButton: true,
-                                                        actiontext: 'Update');
-                                                  },
-                                                  child: Text(
-                                                    'Edit',
-                                                    style: TextStyle(
-                                                        color: cgreen, fontWeight: FontWeight.bold),
-                                                  ),
-                                                ),
-                                                const SizedBox(
-                                                  width: 10,
-                                                ),
-                                                GestureDetector(
-                                                  child: Text(
-                                                    'Delete',
-                                                    style: TextStyle(
-                                                        color: Colors.red,
-                                                        fontWeight: FontWeight.bold),
-                                                  ),
-                                                  // child: Icon(
-                                                  //   Icons.delete,
-                                                  //   color: cred.withOpacity(1),
-                                                  // ),
-                                                  onTap: () {
-                                                    showDialog(
-                                                      context: context,
-                                                      barrierDismissible:
-                                                          false, // user must tap button!
-                                                      builder: (context) => AlertDialog(
-                                                        shape: RoundedRectangleBorder(
-                                                            borderRadius: BorderRadius.circular(0)),
-                                                        title: const Text(
-                                                          "Delete",
-                                                          style: TextStyle(
-                                                              fontSize: 16,
-                                                              fontWeight: FontWeight.w600),
-                                                        ),
-                                                        content: const Text(
-                                                          "Are you sure do you want to delete ?",
-                                                          style: TextStyle(fontSize: 14),
-                                                        ),
-                                                        actions: [
-                                                          Row(
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment.spaceBetween,
-                                                            children: [
-                                                              GestureDetector(
-                                                                  onTap: () {
-                                                                    Navigator.pop(context);
-                                                                  },
-                                                                  child: BlueContainerWidget(
-                                                                      title: "No",
-                                                                      fontSize: 12,
-                                                                      color: adminePrimayColor,
-                                                                      width: 100)),
-                                                              GestureDetector(
-                                                                  onTap: () {
+                                            // const Spacer(),
+                                            Padding(
+                                              padding: const EdgeInsets.all(8.0),
+                                              child: Row(
+                                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                children: [
+                                                  GestureDetector(
+                                                    onTap: () {
+                                                      customShowDilogBox(
+                                                          context: context,
+                                                          title: 'Edit',
+                                                          children: [
+                                                            TextFormFiledBlueContainerWidgetWithOutColor(
+                                                                controller:
                                                                     generalInsructionController
-                                                                        .removeInstruction(data.instructionId,context);
-                                                                  },
-                                                                  child: BlueContainerWidget(
-                                                                      title: "Yes",
-                                                                      fontSize: 12,
-                                                                      color: adminePrimayColor,
-                                                                      width: 100)),
-                                                            ],
+                                                                        .instructionController,
+                                                                hintText:
+                                                                    generalInsructionController
+                                                                        .instructionController.text,
+                                                                title: 'General Instruction')
+                                                          ],
+                                                          actiononTapfuction: () {
+                                                            generalInsructionController
+                                                                .updateInstructions(
+                                                                    data.instructionId, context);
+                                                          },
+                                                          doyouwantActionButton: true,
+                                                          actiontext: 'Update');
+                                                    },
+                                                    child: Text(
+                                                      'Edit',
+                                                      style: TextStyle(
+                                                          color: cgreen,
+                                                          fontWeight: FontWeight.bold),
+                                                    ),
+                                                  ),
+                                                  const SizedBox(
+                                                    width: 10,
+                                                  ),
+                                                  GestureDetector(
+                                                    child: Text(
+                                                      'Delete',
+                                                      style: TextStyle(
+                                                          color: Colors.red,
+                                                          fontWeight: FontWeight.bold),
+                                                    ),
+                                                    // child: Icon(
+                                                    //   Icons.delete,
+                                                    //   color: cred.withOpacity(1),
+                                                    // ),
+                                                    onTap: () {
+                                                      showDialog(
+                                                        context: context,
+                                                        barrierDismissible:
+                                                            false, // user must tap button!
+                                                        builder: (context) => AlertDialog(
+                                                          shape: RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius.circular(0)),
+                                                          title: const Text(
+                                                            "Delete",
+                                                            style: TextStyle(
+                                                                fontSize: 16,
+                                                                fontWeight: FontWeight.w600),
                                                           ),
-                                                        ],
-                                                      ),
-                                                    );
+                                                          content: const Text(
+                                                            "Are you sure do you want to delete ?",
+                                                            style: TextStyle(fontSize: 14),
+                                                          ),
+                                                          actions: [
+                                                            Row(
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment.spaceBetween,
+                                                              children: [
+                                                                GestureDetector(
+                                                                    onTap: () {
+                                                                      Navigator.pop(context);
+                                                                    },
+                                                                    child: BlueContainerWidget(
+                                                                        title: "No",
+                                                                        fontSize: 12,
+                                                                        color: adminePrimayColor,
+                                                                        width: 100)),
+                                                                GestureDetector(
+                                                                    onTap: () {
+                                                                      generalInsructionController
+                                                                          .removeInstruction(
+                                                                              data.instructionId,
+                                                                              context);
+                                                                    },
+                                                                    child: BlueContainerWidget(
+                                                                        title: "Yes",
+                                                                        fontSize: 12,
+                                                                        color: adminePrimayColor,
+                                                                        width: 100)),
+                                                              ],
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      );
 
-                                                    // customShowDilogBox(
-                                                    //     context: context,
-                                                    //     title: 'Delete',
-                                                    //     children: [
-                                                    //       GooglePoppinsWidgets(
-                                                    //           text:
-                                                    //               'Are you sure to want delete',
-                                                    //           fontsize: ResponsiveWebSite
-                                                    //                   .isMobile(context)
-                                                    //               ? 12
-                                                    //               : 15)
-                                                    //     ],
-                                                    //     doyouwantActionButton: true,
-                                                    //     actiononTapfuction: () {
-                                                    //       generalInsructionController.removeInstruction();
-                                                    //     },
-                                                    //     );
-                                                  },
-                                                )
-                                              ],
+                                                      // customShowDilogBox(
+                                                      //     context: context,
+                                                      //     title: 'Delete',
+                                                      //     children: [
+                                                      //       GooglePoppinsWidgets(
+                                                      //           text:
+                                                      //               'Are you sure to want delete',
+                                                      //           fontsize: ResponsiveWebSite
+                                                      //                   .isMobile(context)
+                                                      //               ? 12
+                                                      //               : 15)
+                                                      //     ],
+                                                      //     doyouwantActionButton: true,
+                                                      //     actiononTapfuction: () {
+                                                      //       generalInsructionController.removeInstruction();
+                                                      //     },
+                                                      //     );
+                                                    },
+                                                  )
+                                                ],
+                                              ),
                                             ),
                                           ],
                                         ),
@@ -424,4 +435,3 @@ class GeneralInsructions extends StatelessWidget {
 }
 
 // ignore: must_be_immutable
-

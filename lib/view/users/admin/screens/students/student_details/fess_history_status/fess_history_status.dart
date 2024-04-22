@@ -28,7 +28,7 @@ class PerStudentFeesHistory extends StatelessWidget {
           height: 40,
           width: 1200,
           color: Colors.blue.withOpacity(0.1),
-          child: const Padding(
+          child: Padding(
             padding: EdgeInsets.all(8.0),
             child: TextFontWidget(
               text: 'Fees section',
@@ -42,7 +42,7 @@ class PerStudentFeesHistory extends StatelessWidget {
           padding: const EdgeInsets.all(10.0),
           child: Row(
             children: [
-              const Expanded(
+               Expanded(
                 flex: 1,
                 child: Align(
                   alignment: Alignment.centerRight,
@@ -61,7 +61,7 @@ class PerStudentFeesHistory extends StatelessWidget {
           padding: const EdgeInsets.all(10.0),
           child: Row(
             children: [
-              const Expanded(
+             Expanded(
                 flex: 1,
                 child: Align(
                   alignment: Alignment.centerRight,

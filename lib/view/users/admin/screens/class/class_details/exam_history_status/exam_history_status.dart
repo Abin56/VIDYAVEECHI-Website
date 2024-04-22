@@ -29,7 +29,7 @@ class ExamHistory extends StatelessWidget {
           height: 40,
           width: 1200,
           color: themeColorBlue.withOpacity(0.1),
-          child: const Padding(
+          child:  Padding(
             padding: EdgeInsets.all(8.0),
             child: TextFontWidget(
               text: 'Exams section',
@@ -43,7 +43,7 @@ class ExamHistory extends StatelessWidget {
           padding: const EdgeInsets.all(10.0),
           child: Row(
             children: [
-              const Expanded(
+               Expanded(
                   flex: 1,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -70,7 +70,7 @@ class ExamHistory extends StatelessWidget {
           padding: const EdgeInsets.all(10.0),
           child: Row(
             children: [
-              const Expanded(
+               Expanded(
                   flex: 1,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,

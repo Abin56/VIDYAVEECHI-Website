@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vidyaveechi_website/model/loginHistory_model/login_history_model.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
+import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 import 'package:vidyaveechi_website/view/widgets/data_list_widgets/data_container.dart';
 
@@ -79,7 +80,7 @@ class AllLoginLogoutDataList extends StatelessWidget {
               children: [
                 Expanded(
                   child: TextFontWidget(
-                    text: "  ${data.loginTime}",
+                    text:  "  ${timeConvert(DateTime.parse(data.loginTime))}",
                     fontsize: 12,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -96,7 +97,7 @@ class AllLoginLogoutDataList extends StatelessWidget {
               children: [
                 Expanded(
                   child: TextFontWidget(
-                    text:data.logoutTime==''?'Not found':data.logoutTime,
+                    text:data.logoutTime==''?'Not found':timeConvert(DateTime.parse(data.logoutTime)),
                     fontsize: 12,
                     overflow: TextOverflow.ellipsis,
                   ),

@@ -35,7 +35,7 @@ createExamNotificationFunction(BuildContext context) {
         key: fkey,
         child: Column(
           children: [
-            const Row(
+             Row(
               children: [
                 BackButton(),
                 Padding(
@@ -169,7 +169,7 @@ createExamNotificationFunction(BuildContext context) {
                   builder: (context, snap) {
                     if (snap.hasData) {
                       if (snap.data!.docs.isEmpty) {
-                        return const Center(
+                        return  Center(
                           child: TextFontWidget(
                               text: "No Exam found, add new exams",
                               fontsize: 12.5),

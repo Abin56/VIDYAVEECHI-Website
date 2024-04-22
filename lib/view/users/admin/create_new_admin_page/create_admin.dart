@@ -8,6 +8,9 @@ import 'package:vidyaveechi_website/view/constant/const.dart';
 import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
 import 'package:vidyaveechi_website/view/widgets/progess_button/progress_button.dart';
+
+
+
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 import 'package:vidyaveechi_website/view/widgets/routeSelectedTextContainer/routeSelectedTextContainer.dart';
 import 'package:vidyaveechi_website/view/widgets/routeSelectedTextContainer/route_NonSelectedContainer.dart';
@@ -36,7 +39,7 @@ class CreateAdmin extends StatelessWidget {
         ),
       ), ////////////////////..................1
       SizedBox(
-        height: 35,
+        height: 50,
         width: ResponsiveWebSite.isMobile(context) ? 80 : 150,
         child: TextFormField(
           controller: adminController.nameController,
@@ -71,7 +74,7 @@ class CreateAdmin extends StatelessWidget {
                 fontWeight: FontWeight.bold),
           )), //////////////////////..............3
       Container(
-        height: 35,
+        height: 50,
         color: screenContainerbackgroundColor,
         child: TextFormField(
           controller: adminController.emailController,
@@ -97,7 +100,7 @@ class CreateAdmin extends StatelessWidget {
         ),
       ), //////////////////////////////............4
       SizedBox(
-          height: 35,
+          height: 50,
           width: ResponsiveWebSite.isMobile(context) ? 80 : 150,
           child: Text(
             "Gender",
@@ -109,7 +112,7 @@ class CreateAdmin extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            height: 35,
+            height: 50,
             color: screenContainerbackgroundColor,
             child: DropdownSearch(
               //   validator: (value) {
@@ -147,7 +150,7 @@ class CreateAdmin extends StatelessWidget {
                 fontWeight: FontWeight.bold),
           )), /////////////////////////////....................7
       Container(
-        height: 35,
+        height: 50,
         color: screenContainerbackgroundColor,
         child: TextFormField(
           controller: adminController.phoneNumberController,
@@ -182,7 +185,7 @@ class CreateAdmin extends StatelessWidget {
                 fontWeight: FontWeight.bold),
           )), ////////////////////////////........................9
       Container(
-        height: 35,
+        height: 50,
         color: screenContainerbackgroundColor,
         child: TextFormField(
           controller: adminController.passwordController,
@@ -208,7 +211,7 @@ class CreateAdmin extends StatelessWidget {
                 fontWeight: FontWeight.bold),
           )), ///////////////////////.....................11
       Container(
-        height: 35,
+        height: 50,
         color: screenContainerbackgroundColor,
         child: TextFormField(
           validator: checkFieldPasswordIsValid,

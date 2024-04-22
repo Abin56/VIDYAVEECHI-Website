@@ -6,7 +6,7 @@ import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 allEventListFinction(BuildContext context, EventModel data){
  showDialog(context: context,
   builder: (context) {
-    return AlertDialog(title: const Row(mainAxisAlignment: MainAxisAlignment.start,
+    return AlertDialog(title:  Row(mainAxisAlignment: MainAxisAlignment.start,
       children: [
         BackButton(),
         TextFontWidget(text: "     Event", fontsize: 18,fontWeight: FontWeight.bold,),

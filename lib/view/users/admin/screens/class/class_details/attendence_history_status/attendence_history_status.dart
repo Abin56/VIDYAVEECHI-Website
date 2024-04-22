@@ -53,7 +53,7 @@ class AttendenceHistory extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Row(
+                          Row(
                             children: [
                               Padding(
                                 padding: EdgeInsets.only(left: 20, top: 20),
@@ -214,7 +214,7 @@ class AttendenceHistory extends StatelessWidget {
                                                                         CrossAxisAlignment
                                                                             .start,
                                                                     children: [
-                                                                      const TextFontWidget(
+                                                                      TextFontWidget(
                                                                           text:
                                                                               'Month *',
                                                                           fontsize:
@@ -252,7 +252,7 @@ class AttendenceHistory extends StatelessWidget {
                                                                         CrossAxisAlignment
                                                                             .start,
                                                                     children: [
-                                                                      const TextFontWidget(
+                                                                      TextFontWidget(
                                                                           text:
                                                                               'Date *',
                                                                           fontsize:
@@ -391,7 +391,7 @@ class AttendenceHistory extends StatelessWidget {
                                           ),
                                         );
                                       } else if (snaps.data == null) {
-                                        return const Center(
+                                        return  Center(
                                           child: TextFontWidget(
                                               text: "No recordes found",
                                               fontsize: 16),

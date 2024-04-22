@@ -157,12 +157,12 @@ class AllAttendanceDataList extends StatelessWidget {
                   ),
                 ),
                 studentData.present
-                    ? const TextFontWidget(
+                    ?  TextFontWidget(
                         text: "  Present ",
                         fontsize: 12,
                         overflow: TextOverflow.ellipsis,
                       )
-                    : const TextFontWidget(
+                    :  TextFontWidget(
                         text: "  Absent ",
                         fontsize: 12,
                         overflow: TextOverflow.ellipsis,

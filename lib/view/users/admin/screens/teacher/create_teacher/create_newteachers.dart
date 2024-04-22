@@ -30,13 +30,22 @@ createTeacherFunction(BuildContext context) {
       validator: checkFieldEmpty,
     ), ///////////////////4.......................
     Obx(() => ProgressButtonWidget(
+    
         function: () async {
-     teacherController.createNewTeacher(
-                 TeacherModel(
+           if (teacherController.formKey.currentState!.validate()) {
+              teacherController.createNewTeacher( TeacherModel(
               teacherName: teacherController.teacherNameController.text,
               employeeID: teacherController.teacherIDController.text.trim(),
               teacherPhNo: teacherController.teacherPhoneNumeber.text.trim())
               );
+            }
+          
+    //  teacherController.createNewTeacher(
+    //              TeacherModel(
+    //           teacherName: teacherController.teacherNameController.text,
+    //           employeeID: teacherController.teacherIDController.text.trim(),
+    //           teacherPhNo: teacherController.teacherPhoneNumeber.text.trim())
+    //           );
         },
         buttonstate: teacherController.buttonstate.value,
         text: 'Create Teacher')),
@@ -45,7 +54,7 @@ createTeacherFunction(BuildContext context) {
     context: context,
     builder: (context) {
       return AlertDialog(
-        title: const Column(
+        title:  Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             BackButtonContainerWidget(),
@@ -62,13 +71,16 @@ createTeacherFunction(BuildContext context) {
         content: SizedBox(
           height: 380,
           width: 300,
-          child: Column(
-            children: [
-              createTeacherList[0],
-              createTeacherList[1],
-              createTeacherList[2],
-              createTeacherList[3],
-            ],
+          child: Form(
+            key: teacherController.formKey,
+            child: Column(
+              children: [
+                createTeacherList[0],
+                createTeacherList[1],
+                createTeacherList[2],
+                createTeacherList[3],
+              ],
+            ),
           ),
         ),
       );

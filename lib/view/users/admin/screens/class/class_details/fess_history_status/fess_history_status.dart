@@ -18,7 +18,7 @@ class FeesHistory extends StatelessWidget {
           height: 40,
           width: 1200,
           color: themeColorBlue.withOpacity(0.1),
-          child: const Padding(
+          child: Padding(
             padding: EdgeInsets.all(8.0),
             child: TextFontWidget(
               text: 'Fees section',

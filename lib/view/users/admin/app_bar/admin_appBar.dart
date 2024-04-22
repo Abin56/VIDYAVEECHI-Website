@@ -455,7 +455,7 @@ class AppBarAdminPanel extends StatelessWidget {
                         child: Image.asset('webassets/png/avathar.png'),
                       ),
                     ),
-                    const TextFontWidget(
+                   TextFontWidget(
                       text: 'Stevne Zone',
                       fontsize: 12,
                       color: cBlack,
@@ -469,7 +469,7 @@ class AppBarAdminPanel extends StatelessWidget {
                 width: 200,
                 decoration: BoxDecoration(
                     border: Border.all(color: cBlack.withOpacity(0.4))),
-                child: const Row(
+                child:  Row(
                   children: [
                     Padding(
                       padding: EdgeInsets.only(left: 10, right: 10),
@@ -493,7 +493,7 @@ class AppBarAdminPanel extends StatelessWidget {
                 width: 200,
                 decoration: BoxDecoration(
                     border: Border.all(color: cBlack.withOpacity(0.4))),
-                child: const Row(
+                child:  Row(
                   children: [
                     Padding(
                       padding: EdgeInsets.only(left: 10, right: 10),
