@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:vidyaveechi_website/controller/admin_section/student_controller/student_controller.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
@@ -7,7 +6,6 @@ import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/students/student_details/attendence_history_status/attendence_history_status.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/students/student_details/exam_history_status/exam_history_status.dart';
-import 'package:vidyaveechi_website/view/users/admin/screens/students/student_details/fess_history_status/fess_history_status.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/students/student_details/widgets/detail_tileContainer.dart';
 import 'package:vidyaveechi_website/view/widgets/routeSelectedTextContainer/routeSelectedTextContainer.dart';
 import 'package:vidyaveechi_website/view/widgets/routeSelectedTextContainer/route_NonSelectedContainer.dart';
@@ -256,9 +254,9 @@ class StudentDetailsContainer extends StatelessWidget {
                         labelStyle: TextStyle(
                             fontWeight: FontWeight.w400, fontSize: 14),
                         tabs: [
-                          Tab(
-                            text: 'FEES',
-                          ),
+                          // Tab(
+                          //   text: 'FEES',
+                          // ),
                           Tab(
                             text: 'ATTENDANCE',
                           ),
@@ -289,7 +287,7 @@ class StudentDetailsContainer extends StatelessWidget {
 
                   // height: 300,
                   child: TabBarView(children: [
-                    PerStudentFeesHistory(), //........................ Student FEES
+                    // PerStudentFeesHistory(), //........................ Student FEES
                     PerStudentAttendenceHistory(), //.......................... Student Attendence
                     PerStudentExamHistory() //............................ Student Exam History
                   ]),

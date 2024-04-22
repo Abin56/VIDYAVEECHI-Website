@@ -38,83 +38,81 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
   int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
-    return Builder(
-      builder: (context) {
-        return Scaffold(
-          backgroundColor: cWhite,
-          body: SafeArea(
-            child: SidebarDrawer(
-                body: ListView(
-                  children: [
-                    AppBarAdminPanel(),
-                    pages[selectedIndex],
-                  ],
-                ),
-                drawer: Container(
-                  color: Colors.white,
-                  child: SingleChildScrollView(
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(0),
-                            child: Row(
-                              children: [
-                                SizedBox(
-                                  height: 60,
-                                  child: Image.asset(
-                                    'webassets/images/vidyaveechi_logo.png',
-                                    fit: BoxFit.fill,
-                                  ),
+    return Builder(builder: (context) {
+      return Scaffold(
+        backgroundColor: cWhite,
+        body: SafeArea(
+          child: SidebarDrawer(
+              body: ListView(
+                children: [
+                  AppBarAdminPanel(),
+                  pages[selectedIndex],
+                ],
+              ),
+              drawer: Container(
+                color: Colors.white,
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(0),
+                          child: Row(
+                            children: [
+                              SizedBox(
+                                height: 60,
+                                child: Image.asset(
+                                  'webassets/images/vidyaveechi_logo.png',
+                                  fit: BoxFit.fill,
                                 ),
-                                GooglePoppinsWidgets(
-                                  text: "VIDYAVEECHI",
-                                  fontsize:
-                                      ResponsiveWebSite.isMobile(context) ? 18 : 20,
-                                  fontWeight: FontWeight.w500,
-                                )
-                              ],
-                            ),
+                              ),
+                              GooglePoppinsWidgets(
+                                text: "VIDYAVEECHI",
+                                fontsize: ResponsiveWebSite.isMobile(context)
+                                    ? 18
+                                    : 20,
+                                fontWeight: FontWeight.w500,
+                              )
+                            ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10, top: 12),
-                            child: Text(
-                              "Main Menu",
-                              style: TextStyle(
-                                  color: cBlack.withOpacity(
-                                    0.4,
-                                  ),
-                                  fontSize: 12),
-                            ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10, top: 12),
+                          child: Text(
+                            "Main Menu",
+                            style: TextStyle(
+                                color: cBlack.withOpacity(
+                                  0.4,
+                                ),
+                                fontSize: 12),
                           ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          DrawerSelectedPagesSection(
-                            selectedIndex: selectedIndex,
-                            onTap: (index) {
-                              setState(() {
-                                selectedIndex = index;
-                              });
-                            },
-                          )
-                        ],
-                      ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        DrawerSelectedPagesSection(
+                          selectedIndex: selectedIndex,
+                          onTap: (index) {
+                            setState(() {
+                              selectedIndex = index;
+                            });
+                          },
+                        )
+                      ],
                     ),
                   ),
-                )),
-          ),
-        );
-      }
-    );
+                ),
+              )),
+        ),
+      );
+    });
   }
 }
 
 List<Widget> pages = [
-
-   AdminDashBoardSections(),
+  const AdminDashBoardSections(),
   RegistrationStudentList(),
   AllStudentListContainer(),
 
@@ -124,7 +122,7 @@ List<Widget> pages = [
   AllClassListView(),
   CreatedFeesStatus(),
   PeriodWiseStudentsAttendance(),
-   AllTeachersAttendance(),
+  AllTeachersAttendance(),
 
   AllExamNotificationListView(),
  // const StudentExamResult(),

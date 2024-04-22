@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -80,7 +78,6 @@ class AllClassListViewContainer extends StatelessWidget {
             .snapshots(),
         builder: (context, snaps) {
           if (snaps.hasData) {
-            Get.find<DashBoardController>().subjectID.clear();
             return snaps.data!.docs.isEmpty
                 ? const Text('Please take attendece in application !!!')
                 : ListView.separated(
@@ -106,29 +103,6 @@ class AllClassListViewContainer extends StatelessWidget {
                                   .snapshots(),
                               builder: (context, classSnap) {
                                 if (classSnap.hasData) {
-                                  server
-                                      .collection('SchoolListCollection')
-                                      .doc(UserCredentialsController.schoolId)
-                                      .collection(
-                                          UserCredentialsController.batchId!)
-                                      .doc(UserCredentialsController.batchId)
-                                      .collection('classes')
-                                      .doc(data['docid'])
-                                      .collection('Attendence')
-                                      .doc(monthwise)
-                                      .collection(monthwise)
-                                      .doc(formatted)
-                                      .collection('Subjects')
-                                      .get()
-                                      .then((value) async {
-                                    Get.find<DashBoardController>()
-                                        .subjectID
-                                        .add(value.docs[0].data()['docid']);
-                                    log("message......${Get.find<DashBoardController>().subjectID + [
-                                          index
-                                        ]}");
-                                  });
-
                                   return TextFontWidget(
                                     text: classSnap.data!.data()!['className'],
                                     fontsize:
@@ -151,141 +125,74 @@ class AllClassListViewContainer extends StatelessWidget {
                           trailing: SizedBox(
                             width:
                                 ResponsiveWebSite.isMobile(context) ? 100 : 200,
-                            child: Obx(() => SizedBox(
-                                  child: Get.find<DashBoardController>()
-                                          .subjectID
-                                          .isEmpty
-                                      ? const SizedBox()
-                                      : StreamBuilder(
-                                          stream: server
-                                              .collection(
-                                                  'SchoolListCollection')
-                                              .doc(UserCredentialsController
-                                                  .schoolId)
-                                              .collection(
-                                                  UserCredentialsController
-                                                      .batchId!)
-                                              .doc(UserCredentialsController
-                                                  .batchId)
-                                              .collection('classes')
-                                              .doc(data['docid'])
-                                              .collection('Attendence')
-                                              .doc(monthwise)
-                                              .collection(monthwise)
-                                              .doc(formatted)
-                                              .collection('Subjects')
-                                              .doc(Get.find<
-                                                      DashBoardController>()
-                                                  .subjectID[index])
-                                              .collection('AttendenceList')
-                                              .snapshots(),
-                                          builder: (context, attendenceSnap) {
-                                            if (attendenceSnap.hasData) {
-                                              int presentCount = 0;
-                                              int absentCount = 0;
-
-                                              for (var i = 0;
-                                                  i <
-                                                      attendenceSnap
-                                                          .data!.docs.length;
-                                                  i++) {
-                                                if (attendenceSnap.data!.docs[i]
-                                                        ['present'] ==
-                                                    true) {
-                                                  presentCount =
-                                                      presentCount + 1;
-                                                }
-                                              }
-                                              absentCount = attendenceSnap
-                                                      .data!.docs.length -
-                                                  presentCount;
-                                              return Row(
-                                                children: [
-                                                  Expanded(
-                                                    flex: 1,
-                                                    child: Container(
-                                                      color: Colors.green
-                                                          .withOpacity(0.2),
-                                                      child: Column(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceAround,
-                                                        children: [
-                                                          const TextFontWidget(
-                                                            text: "Pr",
-                                                            fontsize: 12,
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                          ),
-                                                          TextFontWidget(
-                                                            text: presentCount
-                                                                .toString(),
-                                                            fontsize: 10,
-                                                          )
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Expanded(
-                                                    flex: 1,
-                                                    child: Container(
-                                                      color: Colors.red
-                                                          .withOpacity(0.2),
-                                                      child: Column(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceAround,
-                                                        children: [
-                                                          const TextFontWidget(
-                                                            text: "Ab",
-                                                            fontsize: 12,
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                          ),
-                                                          TextFontWidget(
-                                                            text: absentCount
-                                                                .toString(),
-                                                            fontsize: 10,
-                                                          )
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Expanded(
-                                                    flex: 1,
-                                                    child: Container(
-                                                      color: Colors.blue
-                                                          .withOpacity(0.4),
-                                                      child: Column(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceAround,
-                                                        children: [
-                                                          const TextFontWidget(
-                                                            text: "Total",
-                                                            fontsize: 12,
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                          ),
-                                                          TextFontWidget(
-                                                            text: attendenceSnap
-                                                                .data!
-                                                                .docs
-                                                                .length
-                                                                .toString(),
-                                                            fontsize: 10,
-                                                          )
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              );
-                                            } else {
-                                              return const LoadingWidget();
-                                            }
-                                          }),
-                                )),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  flex: 1,
+                                  child: Container(
+                                    color: Colors.green.withOpacity(0.2),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: [
+                                        const TextFontWidget(
+                                          text: "Pr",
+                                          fontsize: 12,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                        TextFontWidget(
+                                          text:data['presentStudents'].toString(),
+                                          fontsize: 10,
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 1,
+                                  child: Container(
+                                    color: Colors.red.withOpacity(0.2),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: [
+                                        const TextFontWidget(
+                                          text: "Ab",
+                                          fontsize: 12,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                        TextFontWidget(
+                                          text: data['absentStudents'].toString(),
+                                          fontsize: 10,
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 1,
+                                  child: Container(
+                                    color: Colors.blue.withOpacity(0.4),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: [
+                                        const TextFontWidget(
+                                          text: "Total",
+                                          fontsize: 12,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                        TextFontWidget(
+                                          text: data['totalStudent']
+                                              .toString(),
+                                          fontsize: 10,
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                           subtitle: Row(
                             children: [

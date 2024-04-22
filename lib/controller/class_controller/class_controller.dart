@@ -370,12 +370,13 @@ class ClassController extends GetxController {
   }
 
   getClassBoyCount() async {
+    log("Batch ID ${UserCredentialsController.batchId}");
     int count = 0;
     final classData = await server
         .collection('SchoolListCollection')
         .doc(UserCredentialsController.schoolId)
         .collection(UserCredentialsController.batchId!)
-        .doc(UserCredentialsController.batchId!)
+        .doc(UserCredentialsController.batchId)
         .collection('classes')
         .doc(classModelData.value!.docid)
         .collection('Students')
