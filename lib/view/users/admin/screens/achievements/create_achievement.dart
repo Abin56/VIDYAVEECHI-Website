@@ -29,10 +29,30 @@ class _CreateAchievementState extends State<CreateAchievement> {
       Padding(
           padding: const EdgeInsets.only(top: 5, right: 10, left: 10),
           child:
-              SelectClassDropDown()), ///////////////////////////////////////////////////////////////////////0
+             
+      Container(
+        
+        height: ResponsiveWebSite.isMobile(context) ? 80 : 100,
+        color: cWhite,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+             TextFontWidget(text: 'Select Class *', fontsize: 12.5),
+            const SizedBox(
+              height: 05,
+            ),
+            SizedBox(
+              
+              height: 50,
+              child: SelectClassDropDown(),
+            ),
+          ],
+        ),
+      ),), ///////////////////////////////////////////////////////////////////////0
       Padding(
         padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
         child: TextFormFiledBlueContainerWidgetAchievement(
+          
           controller: achievementsController.studentNameController,
           validator: checkFieldEmpty,
           width: ResponsiveWebSite.isMobile(context) ? double.infinity : 500,
@@ -118,6 +138,7 @@ class _CreateAchievementState extends State<CreateAchievement> {
                                               (achievementsController.afile ==
                                                       null)
                                                   ? const CircleAvatar(
+                                                    
                                                       radius: 60,
                                                       backgroundImage: NetworkImage(
                                                           'https://via.placeholder.com/150'),
@@ -127,12 +148,14 @@ class _CreateAchievementState extends State<CreateAchievement> {
                                                     )
                                                   : CircleAvatar(
                                                       radius: 60,
+                                                      
                                                       backgroundImage: MemoryImage(
                                                           achievementsController
                                                               .afile!)
                                                       //
                                                       //   .image,
                                                       ),
+                                                  
 
                                               // }
                                               // }),

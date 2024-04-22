@@ -26,14 +26,14 @@ class TimeTableMainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final timetableCtrl = Get.put(TimeTableController());
     List<Widget> textformWidget = [
-      const Padding(
+       Padding(
         padding: EdgeInsets.only(top: 5, left: 10, right: 10),
         child: TextFontWidget(text: 'Select class *', fontsize: 12.5),
       ),
       Padding(
           padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
           child: SelectClassDropDown()),
-      const Padding(
+       Padding(
         padding: EdgeInsets.only(top: 15, left: 10, right: 10),
         child: TextFontWidget(text: 'Select Day *', fontsize: 12.5),
       ),
@@ -73,7 +73,7 @@ class TimeTableMainScreen extends StatelessWidget {
             )),
       ),
       ////////////////////////////////////////////////////////1
-      const Padding(
+       Padding(
         padding: EdgeInsets.only(top: 15, left: 10, right: 10),
         child: TextFontWidget(text: 'Select subject *', fontsize: 12.5),
       ),
@@ -148,7 +148,7 @@ class TimeTableMainScreen extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    const Padding(
+                     Padding(
                       padding: EdgeInsets.only(left: 20, top: 20),
                       child: TextFontWidget(
                         text: 'TimeTable',
@@ -168,7 +168,7 @@ class TimeTableMainScreen extends StatelessWidget {
                             colorindex: 0,
                             height: 40,
                             width: 180,
-                            child: const Center(
+                            child:  Center(
                               child: TextFontWidget(
                                 text: 'Add TimeTable ',
                                 fontsize: 14,
@@ -187,7 +187,7 @@ class TimeTableMainScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const TextFontWidget(
+                               TextFontWidget(
                                   text: "Select Class *", fontsize: 12),
                               SizedBox(
                                   height: 40, child: SelectClassDropDown()),
@@ -291,7 +291,7 @@ class TimeTableMainScreen extends StatelessWidget {
                                 ),
                               );
                             } else if (timesnaps.data == null) {
-                              return const Center(
+                              return  Center(
                                 child: TextFontWidget(
                                     text: "No recordes found", fontsize: 16),
                               );

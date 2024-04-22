@@ -1,6 +1,7 @@
 import 'package:awesome_side_sheet/Enums/sheet_position.dart';
 import 'package:awesome_side_sheet/side_sheet.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:vidyaveechi_website/controller/notice_controller/notice_controller.dart';
 import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
@@ -18,7 +19,7 @@ class CreateNotice extends StatelessWidget {
     // List<Widget> textformWidget = [
     //   Padding(
     //     padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
-    //     child: TextFormFiledWithoutColorEight(
+    //     child: TextFormFiledHeightnoColor(
     //       width: 500,
     //       controller: noticeController.noticeHeadingController,
     //       validator: checkFieldEmpty,
@@ -29,7 +30,7 @@ class CreateNotice extends StatelessWidget {
 
     //   Padding(
     //     padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
-    //     child: TextFormFiledWithoutColorEight(
+    //     child: TextFormFiledHeightnoColor(
     //       width: 500,
     //       controller: noticeController.noticePublishedDateController,
     //       validator: checkFieldDateIsValid,
@@ -39,7 +40,7 @@ class CreateNotice extends StatelessWidget {
     //   ), ////////////////////////////////////////////////////////2
     //   Padding(
     //     padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
-    //     child: TextFormFiledWithoutColorEight(
+    //     child: TextFormFiledHeightnoColor(
     //       width: 500,
     //       validator: checkFieldEmpty,
     //       controller: noticeController.noticeSubjectController,
@@ -49,7 +50,7 @@ class CreateNotice extends StatelessWidget {
     //   ), ///////////////////////////////////////////////3
     //   Padding(
     //     padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
-    //     child: TextFormFiledWithoutColorEight(
+    //     child: TextFormFiledHeightnoColor(
     //       width: 500,
     //       validator: checkFieldDateIsValid,
     //       controller: noticeController.noticeDateofoccationontroller,
@@ -59,7 +60,7 @@ class CreateNotice extends StatelessWidget {
     //   ), ////////////////////////////////////4
     //   Padding(
     //     padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
-    //     child: TextFormFiledWithoutColorEight(
+    //     child: TextFormFiledHeightnoColor(
     //       width: 500,
     //       validator: checkFieldEmpty,
     //       controller: noticeController.noticevenueController,
@@ -69,7 +70,7 @@ class CreateNotice extends StatelessWidget {
     //   ), ////////////////////////////////////5
     //   Padding(
     //     padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
-    //     child: TextFormFiledWithoutColorEight(
+    //     child: TextFormFiledHeightnoColor(
     //       width: 500,
     //       validator: checkFieldEmpty,
     //       controller: noticeController.noticeGuestController,
@@ -79,7 +80,7 @@ class CreateNotice extends StatelessWidget {
     //   ), ////////////////////////////////////6
     //   Padding(
     //     padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
-    //     child: TextFormFiledWithoutColorEight(
+    //     child: TextFormFiledHeightnoColor(
     //       width: 500,
     //       validator: checkFieldEmpty,
     //       controller: noticeController.noticeSignedByController,
@@ -89,7 +90,7 @@ class CreateNotice extends StatelessWidget {
     //   ), ////////////////////////////////////7
     //   Padding(
     //     padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
-    //     child: TextFormFiledWithoutColorEight(
+    //     child: TextFormFiledHeightnoColor(
     //       width: 500,
     //       validator: checkFieldDateIsValid,
     //       controller: noticeController.noticeDateofSubmissionontroller,
@@ -140,115 +141,118 @@ class CreateNotice extends StatelessWidget {
                                               CrossAxisAlignment.start,
                                           children: [
                                           
-                                            Column(
-                                              children: [
-                                                Padding(
-                                                  padding:const EdgeInsets.only(top: 5, left: 10,right: 10),
-                                                  child: TextFormFiledWithoutColorEight(
-                                                    width: 500,
-                                                    controller: noticeController .noticeHeadingController,
-                                                    validator: checkFieldEmpty,
-                                                    title: 'Heading',
-                                                    hintText:'Heading', /////////////////////////////////////////0
+                                            Form(
+                                              key:noticeController.formKey,
+                                              child: Column(
+                                                children: [
+                                                  Padding(
+                                                    padding:const EdgeInsets.only(top: 5, left: 10,right: 10),
+                                                    child: TextFormFiledHeightnoColor(
+                                                      width: 500,
+                                                      controller: noticeController .noticeHeadingController,
+                                                      validator: checkFieldEmpty,
+                                                      title: 'Heading',
+                                                      hintText:'Heading', /////////////////////////////////////////0
+                                                    ),
                                                   ),
-                                                ),
-
-                                                Padding(
-                                                  padding:const EdgeInsets.only( top: 5,left: 10, right: 10),
-                                                  child:  TextFormFiledWithoutColorEight(
-                                                    onTap: () {
-                                                      noticeController.selectDate(context, noticeController .noticePublishedDateController);
-                                                    },
-                                                    width: 500,
-                                                    controller: noticeController .noticePublishedDateController,
-                                                    validator: checkFieldEmpty,
-                                                    title: 'Published Date',
-                                                    hintText:'Published Date', /////////////////////////////////////////0
+                                              
+                                                  Padding(
+                                                    padding:const EdgeInsets.only( top: 5,left: 10, right: 10),
+                                                    child:  TextFormFiledHeightnoColor(
+                                                      onTap: () {
+                                                        noticeController.selectDate(context, noticeController .noticePublishedDateController);
+                                                      },
+                                                      width: 500,
+                                                      controller: noticeController .noticePublishedDateController,
+                                                      validator: checkFieldEmpty,
+                                                      title: 'Published Date',
+                                                      hintText:'Published Date', /////////////////////////////////////////0
+                                                    ),
+                                                  ), ////////////////////////////////////////////////////////2
+                                                  Padding(
+                                                    padding:  const EdgeInsets.only(  top: 5, left: 10,right: 10),
+                                                    child:  TextFormFiledHeightnoColor(
+                                                      width: 500,
+                                                      validator: checkFieldEmpty,
+                                                      controller: noticeController .noticeSubjectController,
+                                                      title: 'Subject',
+                                                      hintText: 'Subject',
+                                                    ),
+                                                  ), ///////////////////////////////////////////////3
+                                                  Padding(
+                                                    padding:  const EdgeInsets.only( top: 5,left: 10, right: 10),
+                                                    child:    TextFormFiledHeightnoColor(
+                                                      onTap: () {
+                                                        noticeController.selectDate(context, noticeController .noticeDateofoccationController);
+                                                      },
+                                                      width: 500,
+                                                      controller: noticeController .noticeDateofoccationController,
+                                                      validator: checkFieldEmpty,
+                                                      title: ' Date of occasion',
+                                                      hintText:' Date of occasion', /////////////////////////////////////////0
+                                                    ),
+                                                  ), ////////////////////////////////////4
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 5,
+                                                            left: 10,
+                                                            right: 10),
+                                                    child:
+                                                        TextFormFiledHeightnoColor(
+                                                      width: 500,
+                                                      validator: checkFieldEmpty,
+                                                      controller: noticeController
+                                                          .noticevenueController,
+                                                      title: 'Venue',
+                                                      hintText: 'Venue',
+                                                    ),
+                                                  ), ////////////////////////////////////5
+                                                   Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 5,
+                                                            left: 10,
+                                                            right: 10),
+                                                    child:TextFormFiledHeightnoColor(
+                                                      width: 500,
+                                                      validator: checkFieldEmpty,
+                                                      controller: noticeController .noticeSignedByController,
+                                                      title: 'Signed by',
+                                                      hintText: 'Signed by',
+                                                    ),
+                                                  ), ////////////////////////////////////7
+                                                  Padding(
+                                                    padding: const EdgeInsets.only( top: 5, left: 10,right: 10),
+                                                    child:     TextFormFiledHeightnoColor(
+                                                      onTap: () {
+                                                        noticeController.selectDate(context, noticeController .noticeDateofSubmissionController);
+                                                      },
+                                                      width: 500,
+                                                      controller: noticeController .noticeDateofSubmissionController,
+                                                      validator: checkFieldEmpty,
+                                                      title: ' Date of submission',
+                                                      hintText:' Date of submission', /////////////////////////////////////////0
+                                                    ),
                                                   ),
-                                                ), ////////////////////////////////////////////////////////2
-                                                Padding(
-                                                  padding:  const EdgeInsets.only(  top: 5, left: 10,right: 10),
-                                                  child:  TextFormFiledWithoutColorEight(
-                                                    width: 500,
-                                                    validator: checkFieldEmpty,
-                                                    controller: noticeController .noticeSubjectController,
-                                                    title: 'Subject',
-                                                    hintText: 'Subject',
-                                                  ),
-                                                ), ///////////////////////////////////////////////3
-                                                Padding(
-                                                  padding:  const EdgeInsets.only( top: 5,left: 10, right: 10),
-                                                  child:    TextFormFiledWithoutColorEight(
-                                                    onTap: () {
-                                                      noticeController.selectDate(context, noticeController .noticeDateofoccationController);
-                                                    },
-                                                    width: 500,
-                                                    controller: noticeController .noticeDateofoccationController,
-                                                    validator: checkFieldEmpty,
-                                                    title: ' Date of occasion',
-                                                    hintText:' Date of occasion', /////////////////////////////////////////0
-                                                  ),
-                                                ), ////////////////////////////////////4
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          top: 5,
-                                                          left: 10,
-                                                          right: 10),
-                                                  child:
-                                                      TextFormFiledWithoutColorEight(
-                                                    width: 500,
-                                                    validator: checkFieldEmpty,
-                                                    controller: noticeController
-                                                        .noticevenueController,
-                                                    title: 'Venue',
-                                                    hintText: 'Venue',
-                                                  ),
-                                                ), ////////////////////////////////////5
-                                                 Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          top: 5,
-                                                          left: 10,
-                                                          right: 10),
-                                                  child:TextFormFiledWithoutColorEight(
-                                                    width: 500,
-                                                    validator: checkFieldEmpty,
-                                                    controller: noticeController .noticeSignedByController,
-                                                    title: 'Signed by',
-                                                    hintText: 'Signed by',
-                                                  ),
-                                                ), ////////////////////////////////////7
-                                                Padding(
-                                                  padding: const EdgeInsets.only( top: 5, left: 10,right: 10),
-                                                  child:     TextFormFiledWithoutColorEight(
-                                                    onTap: () {
-                                                      noticeController.selectDate(context, noticeController .noticeDateofSubmissionController);
-                                                    },
-                                                    width: 500,
-                                                    controller: noticeController .noticeDateofSubmissionController,
-                                                    validator: checkFieldEmpty,
-                                                    title: ' Date of submission',
-                                                    hintText:' Date of submission', /////////////////////////////////////////0
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          top: 5,
-                                                          left: 10,
-                                                          right: 10),
-                                                  child:
-                                                      TextFormFiledWithoutColorEight(
-                                                    width: 500,
-                                                    validator: checkFieldEmpty,
-                                                    controller: noticeController.noticeGuestController,
-                                                    title: 'Cheif guest',
-                                                    hintText: 'Cheif guest',
-                                                  ),
-                                                ), ////////////////////////////////////6
-                                               
-                                              ],
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 5,
+                                                            left: 10,
+                                                            right: 10),
+                                                    child:
+                                                        TextFormFiledHeightnoColor(
+                                                      width: 500,
+                                                      validator: checkFieldEmpty,
+                                                      controller: noticeController.noticeGuestController,
+                                                      title: 'Cheif guest',
+                                                      hintText: 'Cheif guest',
+                                                    ),
+                                                  ), ////////////////////////////////////6
+                                                 
+                                                ],
+                                              ),
                                             ),
 
                                             Padding(

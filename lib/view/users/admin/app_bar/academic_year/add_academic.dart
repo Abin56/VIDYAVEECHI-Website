@@ -10,7 +10,7 @@ addAcademicYearFunction(BuildContext context) {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: const TextFontWidget(text: 'Add Academic Year',fontsize: 14),
+        title:  TextFontWidget(text: 'Add Academic Year',fontsize: 14),
         content: SizedBox(
           height: 110,
           child: SingleChildScrollView(

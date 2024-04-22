@@ -35,7 +35,7 @@ class GeneralInsructions extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 25, top: 25),
                 child: Row(
                   children: [
-                    const TextFontWidget(
+                     TextFontWidget(
                       text: 'General Instructions',
                       fontsize: 18,
                       fontWeight: FontWeight.bold,

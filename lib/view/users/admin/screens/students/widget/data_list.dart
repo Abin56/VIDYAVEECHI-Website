@@ -161,7 +161,7 @@ class AllStudentDataList extends StatelessWidget {
                     'webassets/png/active.png',
                   ),
                 ),
-                const TextFontWidget(
+                 TextFontWidget(
                   text: "  Active",
                   fontsize: 12,
                   overflow: TextOverflow.ellipsis,

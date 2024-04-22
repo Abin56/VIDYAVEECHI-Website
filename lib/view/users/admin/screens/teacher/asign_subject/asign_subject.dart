@@ -31,7 +31,7 @@ aSignSubjectFunction(
       // t
       body: Column(
         children: [
-          const Row(
+           Row(
             children: [
               BackButton(),
               Padding(
@@ -48,7 +48,7 @@ aSignSubjectFunction(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const TextFontWidget(text: "Select Class *", fontsize: 12),
+               TextFontWidget(text: "Select Class *", fontsize: 12),
                 SelectClassDropDown(),
               ],
             ),
@@ -58,7 +58,7 @@ aSignSubjectFunction(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const TextFontWidget(text: "Select Subject *", fontsize: 12),
+               TextFontWidget(text: "Select Subject *", fontsize: 12),
                 SelectClassWiseSubjectDropDown(),
               ],
             ),
@@ -119,7 +119,7 @@ aSignSubjectFunction(
                                         ? 'Please Select a class'
                                         : 'Class Selected = ${Get.find<ClassController>().className.value}',
                                     fontsize: 12.5),
-                                const TextFontWidget(
+                                 TextFontWidget(
                                     text: "No subjects found add new subjects",
                                     fontsize: 12.5),
                               ],
@@ -186,7 +186,7 @@ aSignSubjectFunction(
                                                             context: context,
                                                             title: 'Alert',
                                                             children: [
-                                                              const TextFontWidget(
+                                                               TextFontWidget(
                                                                   text:
                                                                       'Do you remove this subject from teacher?\nOnce you remove all data will related this subject will be delete!!',
                                                                   fontsize: 12)

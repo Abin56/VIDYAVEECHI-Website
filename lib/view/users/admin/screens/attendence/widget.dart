@@ -38,7 +38,7 @@ class AttendanceDataTile extends StatelessWidget {
           const SizedBox(
             width: 01,
           ),
-          const Expanded(
+           Expanded(
             flex: 2,
             child: Center(
               child: TextFontWidget(text: "0015", fontsize: 12),
@@ -86,12 +86,12 @@ class AttendanceDataTile extends StatelessWidget {
                   ),
                 ),
                 studentData.present
-                    ? const TextFontWidget(
+                    ?  TextFontWidget(
                         text: "  Present ",
                         fontsize: 12,
                         overflow: TextOverflow.ellipsis,
                       )
-                    : const TextFontWidget(
+                    :  TextFontWidget(
                         text: "  Absent ",
                         fontsize: 12,
                         overflow: TextOverflow.ellipsis,
@@ -134,7 +134,7 @@ class EditAttendanceAddingDialog extends StatelessWidget {
                   width: double.infinity,
                   height: 60,
                   color: screenContainerbackgroundColor,
-                  child: const Center(
+                  child: Center(
                     child: TextFontWidget(text: 'Add Attendance', fontsize: 25),
                   ),
                 ),

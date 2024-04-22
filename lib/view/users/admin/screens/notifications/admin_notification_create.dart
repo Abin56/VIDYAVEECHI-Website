@@ -1,7 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:vidyaveechi_website/controller/notification_controller/notification_Controller.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
+import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
 import 'package:vidyaveechi_website/view/drop_down/select_class.dart';
 import 'package:vidyaveechi_website/view/widgets/blue_Container_widget/blue_Container_widget.dart';
 import 'package:vidyaveechi_website/view/widgets/progess_button/progress_button.dart';
@@ -111,7 +114,8 @@ class AdminNotificationCreate extends StatelessWidget {
       ), ////////////////////..................3
       SizedBox(
         width: ResponsiveWebSite.isMobile(context) ? 80 : 150,
-        child: TextField(
+        child: TextFormField(
+          validator: checkFieldEmpty,
           controller: notificationCntrl.headingController,
           maxLines: 1,
           style: const TextStyle(fontSize: 14),
@@ -133,7 +137,8 @@ class AdminNotificationCreate extends StatelessWidget {
       ), ////////////////////..................5
       SizedBox(
         width: ResponsiveWebSite.isMobile(context) ? 80 : 150,
-        child: TextField(
+        child: TextFormField(
+          validator: checkFieldEmpty,
           controller: notificationCntrl.messageController,
           maxLines: 10,
           style: const TextStyle(fontSize: 14),
@@ -150,12 +155,22 @@ class AdminNotificationCreate extends StatelessWidget {
         width: 180,
         child: Obx(() => ProgressButtonWidget(
             function: () async {
-              notificationCntrl.sendMessageSelectedUSers().then((value) async {
-                await notificationCntrl.sendNotificationSelectedUsers(
-                    icon: Icons.warning_rounded,
-                    whiteshadeColor: InfoNotification().whiteshadeColor,
-                    containerColor: InfoNotification().containerColor);
-              });
+              if (notificationCntrl.formKey.currentState!.validate()) {
+                notificationCntrl
+                    .sendMessageSelectedUSers()
+                    .then((value) async {
+                  await notificationCntrl.sendNotificationSelectedUsers(
+                      icon: Icons.warning_rounded,
+                      whiteshadeColor: InfoNotification().whiteshadeColor,
+                      containerColor: InfoNotification().containerColor);
+                });
+              }
+              // notificationCntrl.sendMessageSelectedUSers().then((value) async {
+              //   await notificationCntrl.sendNotificationSelectedUsers(
+              //       icon: Icons.warning_rounded,
+              //       whiteshadeColor: InfoNotification().whiteshadeColor,
+              //       containerColor: InfoNotification().containerColor);
+              // });
             },
             buttonstate: notificationCntrl.buttonstate.value,
             text: 'Send Message')),
@@ -290,220 +305,226 @@ class AdminNotificationCreate extends StatelessWidget {
     return SafeArea(
         child: SingleChildScrollView(
       child: ResponsiveWebSite.isMobile(context)
-          ? Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                    width: double.infinity,
-                    height: 50,
-                    color: screenContainerbackgroundColor,
-                    child: Padding(
-                        padding: const EdgeInsets.only(top: 10, left: 20),
-                        child: adminSendNotificationWidgets[
-                            0] ///////////////////....................Send Notifications
-                        )),
-                Padding(
-                  padding: const EdgeInsets.only(top: 05, left: 10),
-                  child: adminSendNotificationWidgets[8],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 30),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                          padding: const EdgeInsets.only(
-                              bottom: 20, left: 20, right: 10),
-                          child: adminSendNotificationWidgets[
-                              1] ////////////////............category
-                          ),
-                      Expanded(
-                        child: Container(
-                            // width: 200,
-                            padding: const EdgeInsets.only(right: 10),
-                            color: cWhite,
-                            child: adminSendNotificationWidgets[
-                                9] ///////////////////////...............category select
-                            ),
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  color: cWhite,
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 20),
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  top: 20, bottom: 20, left: 20, right: 10),
-                              child: adminSendNotificationWidgets[
-                                  3], /////////////////.....................heading
-                            ),
-                            Expanded(
-                              child: Padding(
-                                  padding: const EdgeInsets.only(right: 10),
-                                  child: adminSendNotificationWidgets[
-                                      4] ///////////////////.....................heading type
-                                  ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Container(
-                  color: cWhite,
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 20),
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  top: 20, bottom: 20, left: 20, right: 10),
-                              child: adminSendNotificationWidgets[
-                                  5], /////////////////.....................Content
-                            ),
-                            Expanded(
-                              child: Padding(
-                                  padding: const EdgeInsets.only(right: 10),
-                                  child: adminSendNotificationWidgets[
-                                      6] ///////////////////.....................Content type
-                                  ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Padding(
-                    padding: const EdgeInsets.only(bottom: 15, top: 25),
-                    child: Center(
-                      child: adminSendNotificationWidgets[7],
-                    ) ///////////////////////.................submit button
-                    ),
-              ],
-            )
-          : ////////////////////////////////////////////////////............................................mobile view
-
-          Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 29),
-                  child: Container(
+          ? Form(
+            key: notificationCntrl.formKey,
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
                       width: double.infinity,
-                      height: 48,
+                      height: 50,
                       color: screenContainerbackgroundColor,
                       child: Padding(
-                          padding: const EdgeInsets.only(top: 10, left: 25),
+                          padding: const EdgeInsets.only(top: 10, left: 20),
                           child: adminSendNotificationWidgets[
                               0] ///////////////////....................Send Notifications
                           )),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 05, left: 10),
-                  child: adminSendNotificationWidgets[8],
-                ), ///////////////////................... choose class wise message
-                Padding(
-                  padding: const EdgeInsets.only(top: 10),
-                  child: Row(
-                    children: [
-                      Padding(
-                          padding: const EdgeInsets.only(
-                              top: 10, bottom: 20, left: 20, right: 10),
-                          child: adminSendNotificationWidgets[
-                              1] ////////////////............Category
-                          ),
-                      Expanded(
-                        flex: 1,
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 10),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 05, left: 10),
+                    child: adminSendNotificationWidgets[8],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 30),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                            padding: const EdgeInsets.only(
+                                bottom: 20, left: 20, right: 10),
+                            child: adminSendNotificationWidgets[
+                                1] ////////////////............category
+                            ),
+                        Expanded(
                           child: Container(
-                              width: 200,
+                              // width: 200,
+                              padding: const EdgeInsets.only(right: 10),
                               color: cWhite,
                               child: adminSendNotificationWidgets[
-                                  2] ///////////////////////...............Category select
+                                  9] ///////////////////////...............category select
                               ),
                         ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    color: cWhite,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 20),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 20, bottom: 20, left: 20, right: 10),
+                                child: adminSendNotificationWidgets[
+                                    3], /////////////////.....................heading
+                              ),
+                              Expanded(
+                                child: Padding(
+                                    padding: const EdgeInsets.only(right: 10),
+                                    child: adminSendNotificationWidgets[
+                                        4] ///////////////////.....................heading type
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                ),
-                Container(
-                  color: cWhite,
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 20),
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  top: 20, bottom: 20, left: 20, right: 10),
-                              child: adminSendNotificationWidgets[
-                                  3], /////////////////.....................heading
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: Padding(
-                                  padding: const EdgeInsets.only(right: 10),
-                                  child: adminSendNotificationWidgets[
-                                      4] ///////////////////..................heading Text
-                                  ),
-                            ),
-                            Expanded(flex: 1, child: Container()),
-                          ],
-                        ),
-                      ],
                     ),
                   ),
-                ),
-                Container(
-                  color: cWhite,
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 20),
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  top: 20, bottom: 20, left: 20, right: 10),
-                              child: adminSendNotificationWidgets[
-                                  5], /////////////////.....................Content
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: Padding(
-                                  padding: const EdgeInsets.only(right: 10),
-                                  child: adminSendNotificationWidgets[
-                                      6] ///////////////////..................Content Text
-                                  ),
-                            ),
-                            Expanded(flex: 1, child: Container()),
-                          ],
-                        ),
-                      ],
+                  Container(
+                    color: cWhite,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 20),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 20, bottom: 20, left: 20, right: 10),
+                                child: adminSendNotificationWidgets[
+                                    5], /////////////////.....................Content
+                              ),
+                              Expanded(
+                                child: Padding(
+                                    padding: const EdgeInsets.only(right: 10),
+                                    child: adminSendNotificationWidgets[
+                                        6] ///////////////////.....................Content type
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                Padding(
-                    padding:
-                        const EdgeInsets.only(left: 20, bottom: 15, top: 30),
+                  Padding(
+                      padding: const EdgeInsets.only(bottom: 15, top: 25),
+                      child: Center(
+                        child: adminSendNotificationWidgets[7],
+                      ) ///////////////////////.................submit button
+                      ),
+                ],
+              ),
+          )
+          : ////////////////////////////////////////////////////............................................mobile view
+
+          Form(
+            key: notificationCntrl.formKey,
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 29),
                     child: Container(
-                      child: adminSendNotificationWidgets[7],
-                    ) ///////////////////////.................submit button
+                        width: double.infinity,
+                        height: 48,
+                        color: screenContainerbackgroundColor,
+                        child: Padding(
+                            padding: const EdgeInsets.only(top: 10, left: 25),
+                            child: adminSendNotificationWidgets[
+                                0] ///////////////////....................Send Notifications
+                            )),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 05, left: 10),
+                    child: adminSendNotificationWidgets[8],
+                  ), ///////////////////................... choose class wise message
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10),
+                    child: Row(
+                      children: [
+                        Padding(
+                            padding: const EdgeInsets.only(
+                                top: 10, bottom: 20, left: 20, right: 10),
+                            child: adminSendNotificationWidgets[
+                                1] ////////////////............Category
+                            ),
+                        Expanded(
+                          flex: 1,
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 10),
+                            child: Container(
+                                width: 200,
+                                color: cWhite,
+                                child: adminSendNotificationWidgets[
+                                    2] ///////////////////////...............Category select
+                                ),
+                          ),
+                        ),
+                      ],
                     ),
-              ],
-            ),
+                  ),
+                  Container(
+                    color: cWhite,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 20),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 20, bottom: 20, left: 20, right: 10),
+                                child: adminSendNotificationWidgets[
+                                    3], /////////////////.....................heading
+                              ),
+                              Expanded(
+                                flex: 1,
+                                child: Padding(
+                                    padding: const EdgeInsets.only(right: 10),
+                                    child: adminSendNotificationWidgets[
+                                        4] ///////////////////..................heading Text
+                                    ),
+                              ),
+                              Expanded(flex: 1, child: Container()),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Container(
+                    color: cWhite,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 20),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 20, bottom: 20, left: 20, right: 10),
+                                child: adminSendNotificationWidgets[
+                                    5], /////////////////.....................Content
+                              ),
+                              Expanded(
+                                flex: 1,
+                                child: Padding(
+                                    padding: const EdgeInsets.only(right: 10),
+                                    child: adminSendNotificationWidgets[
+                                        6] ///////////////////..................Content Text
+                                    ),
+                              ),
+                              Expanded(flex: 1, child: Container()),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Padding(
+                      padding:
+                          const EdgeInsets.only(left: 20, bottom: 15, top: 30),
+                      child: Container(
+                        child: adminSendNotificationWidgets[7],
+                      ) ///////////////////////.................submit button
+                      ),
+                ],
+              ),
+          ),
     ) /////////////////////////////////////////////////////////.......................................web view
 
         );

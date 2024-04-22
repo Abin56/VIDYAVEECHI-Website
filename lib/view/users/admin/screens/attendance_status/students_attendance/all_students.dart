@@ -21,7 +21,7 @@ class AllStudentsAttendance extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const TextFontWidget(text: 'Class *', fontsize: 12.5),
+             TextFontWidget(text: 'Class *', fontsize: 12.5),
             const SizedBox(
               height: 05,
             ),
@@ -40,7 +40,7 @@ class AllStudentsAttendance extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const TextFontWidget(text: 'Subject*', fontsize: 12.5),
+             TextFontWidget(text: 'Subject*', fontsize: 12.5),
             const SizedBox(
               height: 05,
             ),
@@ -59,7 +59,7 @@ class AllStudentsAttendance extends StatelessWidget {
         height: ResponsiveWebSite.isMobile(context) ? 840 : 820,
         width: double.infinity,
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          const Padding(
+           Padding(
             padding: EdgeInsets.only(left: 25, top: 25),
             child: TextFontWidget(
               text: 'All Students Attendance ',

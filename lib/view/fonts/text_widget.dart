@@ -7,7 +7,9 @@ class TextFontWidget extends StatelessWidget {
   final double? letterSpacing;
   final Color? color;
   final TextOverflow? overflow;
-  const TextFontWidget({
+  String? Function(String?)? validator;
+   TextFontWidget({
+    this.validator,
     required this.text,
     required this.fontsize,
     this.fontWeight,

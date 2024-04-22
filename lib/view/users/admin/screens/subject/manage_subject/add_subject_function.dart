@@ -19,7 +19,7 @@ body: Column(
               padding: const EdgeInsets.only(top: 10),
               child: Column(
                 children: [
-                  const Row(children: [ 
+                  Row(children: [ 
                     BackButton(),
                     TextFontWidget(text: "Add New Subject", fontsize: 17,fontWeight: FontWeight.bold,)
                   ],),
@@ -40,7 +40,7 @@ body: Column(
                           color: themeColorBlue,
                           border: Border.all(color: themeColorBlue),
                           borderRadius: BorderRadius.circular(05)),
-                      child: const Center(
+                      child:  Center(
                         child: TextFontWidget(
                           text: "Create Subject",
                           fontsize: 14,
@@ -76,7 +76,7 @@ body: Column(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
-                                          const Expanded(
+                                           Expanded(
                                             flex: 3,
                                             child: SizedBox(
                                               height: 35,

@@ -51,7 +51,7 @@ class AllTeacherDataList extends StatelessWidget {
                     ),
                   ),
                 ),
-                const Expanded(
+                 Expanded(
                   child: TextFontWidget(
                     text: "  Reshma Suresh",
                     fontsize: 12,
@@ -76,7 +76,7 @@ class AllTeacherDataList extends StatelessWidget {
                     ),
                   ),
                 ),
-                const Expanded(
+                 Expanded(
                   child: TextFontWidget(
                     text: "  reshmaSuresh1006@gmail.com",
                     fontsize: 12,
@@ -101,7 +101,7 @@ class AllTeacherDataList extends StatelessWidget {
                     ),
                   ),
                 ),
-                const Expanded(
+                 Expanded(
                   child: TextFontWidget(
                     text: "  +9180892625634",
                     fontsize: 12,
@@ -126,7 +126,7 @@ class AllTeacherDataList extends StatelessWidget {
                     'webassets/png/active.png',
                   ),
                 ),
-                const TextFontWidget(
+              TextFontWidget(
                   text: "  Active",
                   fontsize: 12,
                   overflow: TextOverflow.ellipsis,

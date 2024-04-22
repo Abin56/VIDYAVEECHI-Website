@@ -65,11 +65,11 @@ class BatchHistroyPage extends StatelessWidget {
                                   "webassets/images/next-week.png",
                                   height: 20,
                                 ),
-                                const TextFontWidget(
+                                 TextFontWidget(
                                     text: " Batch", fontsize: 14),
                               ],
                             )),
-                        const TextFontWidget(text: "2019-2020", fontsize: 14)
+                         TextFontWidget(text: "2019-2020", fontsize: 14)
                       ],
                     ),
                     Row(
@@ -84,11 +84,11 @@ class BatchHistroyPage extends StatelessWidget {
                                   "webassets/images/next-week.png",
                                   height: 20,
                                 ),
-                                const TextFontWidget(
+                                TextFontWidget(
                                     text: " Total Class", fontsize: 14),
                               ],
                             )),
-                        const TextFontWidget(text: "20", fontsize: 14)
+                         TextFontWidget(text: "20", fontsize: 14)
                       ],
                     ),
                     Row(
@@ -103,11 +103,11 @@ class BatchHistroyPage extends StatelessWidget {
                                   "webassets/images/next-week.png",
                                   height: 20,
                                 ),
-                                const TextFontWidget(
+                                TextFontWidget(
                                     text: " Total Students", fontsize: 14),
                               ],
                             )),
-                        const TextFontWidget(text: "201", fontsize: 14)
+                         TextFontWidget(text: "201", fontsize: 14)
                       ],
                     ),
                     Row(
@@ -122,11 +122,11 @@ class BatchHistroyPage extends StatelessWidget {
                                   "webassets/images/next-week.png",
                                   height: 20,
                                 ),
-                                const TextFontWidget(
+                                 TextFontWidget(
                                     text: " Total Staff", fontsize: 14),
                               ],
                             )),
-                        const TextFontWidget(text: "20", fontsize: 14)
+                       TextFontWidget(text: "20", fontsize: 14)
                       ],
                     ),
                     Row(
@@ -141,11 +141,11 @@ class BatchHistroyPage extends StatelessWidget {
                                   "webassets/images/next-week.png",
                                   height: 20,
                                 ),
-                                const TextFontWidget(
+                                 TextFontWidget(
                                     text: " Total Full A+", fontsize: 14),
                               ],
                             )),
-                        const TextFontWidget(text: "51", fontsize: 14)
+                         TextFontWidget(text: "51", fontsize: 14)
                       ],
                     ),
                   ],

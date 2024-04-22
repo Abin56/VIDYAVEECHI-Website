@@ -59,7 +59,7 @@ class CreatedFeesStatus extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const TextFontWidget(
+                                 TextFontWidget(
                                     text: 'Month *', fontsize: 12.5),
                                 const SizedBox(
                                   height: 05,

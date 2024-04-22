@@ -25,7 +25,7 @@ Future<void> createFeesFunction(BuildContext context) async {
       padding: const EdgeInsets.all(8.0),
       child: Column(
         children: [
-          const Row(
+         Row(
             children: [
               BackButton(),
               TextFontWidget(
@@ -146,7 +146,7 @@ Future<void> createFeesFunction(BuildContext context) async {
                                                                   .allClassList[
                                                               index]);
                                                     },
-                                                    child: const TextFontWidget(
+                                                    child:  TextFontWidget(
                                                       text: 'Select',
                                                       fontsize: 12,
                                                       color: cBlack,
@@ -277,7 +277,7 @@ genrateFeesForClasses(BuildContext context) async {
                                         feesAndBillsController.selectedClassList
                                             .removeAt(index);
                                       },
-                                      child: const TextFontWidget(
+                                      child: TextFontWidget(
                                           text: "Remove", fontsize: 12)))
                             ],
                           ),
@@ -391,7 +391,7 @@ createCustomFeesForClasses(BuildContext context) async {
                                         feesAndBillsController.selectedClassList
                                             .removeAt(index);
                                       },
-                                      child: const TextFontWidget(
+                                      child:  TextFontWidget(
                                           text: "Remove", fontsize: 12)))
                             ],
                           ),

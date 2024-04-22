@@ -19,7 +19,7 @@ class ClassWiseStudentCreation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final classSWiseCreationList = [
-      const TextFontWidget(
+       TextFontWidget(
         text: 'Add New Student',
         fontsize: 18,
         fontWeight: FontWeight.bold,
@@ -30,7 +30,7 @@ class ClassWiseStudentCreation extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const TextFontWidget(text: 'Class *', fontsize: 12.5),
+             TextFontWidget(text: 'Class *', fontsize: 12.5),
             const SizedBox(
               height: 05,
             ),

@@ -135,7 +135,7 @@ class AllClassListViewContainer extends StatelessWidget {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceAround,
                                       children: [
-                                        const TextFontWidget(
+                                         TextFontWidget(
                                           text: "Pr",
                                           fontsize: 12,
                                           fontWeight: FontWeight.w500,
@@ -156,7 +156,7 @@ class AllClassListViewContainer extends StatelessWidget {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceAround,
                                       children: [
-                                        const TextFontWidget(
+                                         TextFontWidget(
                                           text: "Ab",
                                           fontsize: 12,
                                           fontWeight: FontWeight.w500,
@@ -177,7 +177,7 @@ class AllClassListViewContainer extends StatelessWidget {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceAround,
                                       children: [
-                                        const TextFontWidget(
+                                         TextFontWidget(
                                           text: "Total",
                                           fontsize: 12,
                                           fontWeight: FontWeight.w500,
@@ -249,7 +249,7 @@ class AllClassListViewContainer extends StatelessWidget {
                     },
                     itemCount: snaps.data!.docs.length);
           } else if (snaps.data == null) {
-            return const Center(
+            return  Center(
               child:
                   TextFontWidget(text: 'Please take attendence', fontsize: 12),
             );

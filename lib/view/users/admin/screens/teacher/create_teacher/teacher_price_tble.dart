@@ -19,7 +19,7 @@ class TeacherSubjectPriceTable extends StatelessWidget {
                 height: 40,
                 width: 1200,
                 color: Colors.blue.withOpacity(0.1),
-                child: const Padding(
+                child:  Padding(
                   padding: EdgeInsets.all(8.0),
                   child: TextFontWidget(
                     text: 'Subject',
@@ -148,7 +148,7 @@ class TeacherSubjectDataListContainer extends StatelessWidget {
                       decoration: BoxDecoration(
                           border: Border.all(color: cBlack.withOpacity(0.2))),
                       width: 50,
-                      child: const Center(
+                      child:  Center(
                         child: TextFontWidget(
                           text: " English",
                           fontsize: 10,
@@ -218,10 +218,10 @@ deleteFunctionOfTeacherSubject(BuildContext context) {
     context: context,
     builder: (context) {
       return AlertDialog(
-        title: const Row(
+        title:  Row(
           children: [BackButton(), TextFontWidget(text: "Alert", fontsize: 15)],
         ),
-        content: const TextFontWidget(
+        content:  TextFontWidget(
             text: "Do you want to delete this subject", fontsize: 14),
         actions: [
           Row(
@@ -232,7 +232,7 @@ deleteFunctionOfTeacherSubject(BuildContext context) {
                     height: 30,
                     color: Colors.grey.withOpacity(0.5),
                     alignment: Alignment.center,
-                    child: const TextFontWidget(
+                    child:  TextFontWidget(
                       text: "Yes",
                       fontsize: 12,
                       fontWeight: FontWeight.w700,
@@ -249,7 +249,7 @@ deleteFunctionOfTeacherSubject(BuildContext context) {
                     color: Colors.grey.withOpacity(0.5),
                     height: 30,
                     alignment: Alignment.center,
-                    child: const TextFontWidget(
+                    child:  TextFontWidget(
                       text: "Cancel",
                       fontsize: 12,
                       fontWeight: FontWeight.w700,
