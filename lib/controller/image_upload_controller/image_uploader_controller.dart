@@ -10,7 +10,6 @@ import 'package:vidyaveechi_website/view/constant/const.dart';
 import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
 
 class ImageController extends GetxController {
-  // RxString image = "".obs;
   Rxn<Uint8List> image = Rxn();
 
   // for Picking images from gallery //
@@ -21,12 +20,12 @@ class ImageController extends GetxController {
       if (pickimage != null) {
         print("<>>>>>>>>>>>>>>>>>>>>>>>.gasudgisa");
         print(pickimage.readAsBytes());
-        // image.value = pickimage.readAsBytes();
-        return await pickimage.readAsBytes();
+        image.value = await pickimage.readAsBytes();
+        updateProfilePicture();
+        // return await pickimage.readAsBytes();
       }
     } catch (e) {
       log(e.toString());
-      // log(e.toString());
     }
   }
 
@@ -42,13 +41,32 @@ class ImageController extends GetxController {
       // final Uint8List imageByte = await image.readAsBytes();
       await storageRef.putData(image).whenComplete(
         () async {
-          String url = await storageRef.getDownloadURL();
-          imageUrl = url;
+          imageUrl = await storageRef.getDownloadURL();
         },
       );
       return imageUrl;
     } catch (e) {
       return "error";
+    }
+  }
+
+  Future updateProfilePicture() async {
+    // print('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<${image.value}');
+    String uploadedImage = await uploapImageToFirebase(image.value!);
+    print('Image converted');
+
+    final Map<String, dynamic> updateData = {
+      "image": uploadedImage,
+    };
+    try {
+      await FirebaseFirestore.instance
+          .collection('SchoolListCollection')
+          .doc(serverAuth.currentUser!.uid)
+          .update(updateData);
+      showToast(msg: 'Profile picture updated');
+    } catch (e) {
+      log('Error updating profile picture: $e');
+      showToast(msg: 'Failed to update profile picture');
     }
   }
 }
@@ -64,13 +82,7 @@ class AdminProfileController extends GetxController {
   TextEditingController emailController = TextEditingController();
 
   Future updateAdminProfile() async {
-    // print('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<${getImageCtr.image.value}');
-    String image =
-        await getImageCtr.uploapImageToFirebase(getImageCtr.image.value!);
-    print('Image converted');
-
     final Map<String, dynamic> updateData = {
-      "image": image,
       "adminUserName": nameController.text,
       "designation": designationController.text,
       "about": aboutController.text,
@@ -83,10 +95,11 @@ class AdminProfileController extends GetxController {
       await FirebaseFirestore.instance
           .collection('SchoolListCollection')
           .doc(serverAuth.currentUser!.uid)
-          .update(updateData);
+          .update(updateData)
+          .then((_) => onTapEdit.value = false);
       showToast(msg: 'Profile updated');
     } catch (e) {
-      log('Error updating profile');
+      log('Error updating profile: $e');
       showToast(msg: 'Failed to update profile');
     }
   }
