@@ -75,32 +75,32 @@ class LeptonLogoVidyaveechi extends StatelessWidget {
                       ],
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: 60, left: screenSize.width / 10),
+                      padding: EdgeInsets.only(top: 60, left: screenSize.width / 20),
                       child: const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Padding(
-                            padding: EdgeInsets.only(left: 20, right: 20),
+                            padding: EdgeInsets.only(left: 15, right: 15),
                             child: ContentsHomePage1(),
                           ),
                           Padding(
-                            padding: EdgeInsets.only(right: 20),
+                            padding: EdgeInsets.only(right: 15),
                             child: ContentsHomePage2(),
                           ),
                           Padding(
-                            padding: EdgeInsets.only(right: 20),
+                            padding: EdgeInsets.only(right: 15),
                             child: ContentsHomePage3(),
                           ),
                           Padding(
-                            padding: EdgeInsets.only(right: 20),
+                            padding: EdgeInsets.only(right: 15),
                             child: ContentsHomePage4(),
                           ),
                           Padding(
-                            padding: EdgeInsets.only(right: 20),
+                            padding: EdgeInsets.only(right: 15),
                             child: ContentsHomePage5(),
                           ),
                           Padding(
-                            padding: EdgeInsets.only(right: 20),
+                            padding: EdgeInsets.only(right: 15),
                             child: ContentsHomePage6(),
                           ),
                         ],

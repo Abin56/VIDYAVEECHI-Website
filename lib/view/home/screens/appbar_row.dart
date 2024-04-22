@@ -7,13 +7,14 @@ class ContentsHomePage1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
     return InkWell(
       onTap: () {},
       child: Text(
         "About",
         style: GoogleFonts.roboto(
-            fontSize: ResponsiveWebSite.isDesktop(context) ? 16 : 12,
-            fontWeight: ResponsiveWebSite.isDesktop(context) ? FontWeight.w500 : FontWeight.w400,
+            fontSize: ResponsiveWebSite.isDesktop(context) ? screenSize.width / 90 : 6.5,
+            fontWeight: ResponsiveWebSite.isDesktop(context) ? FontWeight.w500 : FontWeight.bold,
             color: Colors.black),
       ),
     );
@@ -25,14 +26,15 @@ class ContentsHomePage2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
     return Expanded(
       child: InkWell(
         onTap: () {},
         child: Text(
           "Schools",
           style: GoogleFonts.roboto(
-              fontSize: ResponsiveWebSite.isDesktop(context) ? 16 : 12,
-              fontWeight: ResponsiveWebSite.isDesktop(context) ? FontWeight.w500 : FontWeight.w400,
+              fontSize: ResponsiveWebSite.isDesktop(context) ? screenSize.width / 90 : 6.5,
+              fontWeight: ResponsiveWebSite.isDesktop(context) ? FontWeight.w500 : FontWeight.bold,
               color: Colors.black),
         ),
       ),
@@ -45,13 +47,14 @@ class ContentsHomePage3 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
     return InkWell(
       onTap: () {},
       child: Text(
         "Colleges",
         style: GoogleFonts.roboto(
-            fontSize: ResponsiveWebSite.isDesktop(context) ? 16 : 12,
-            fontWeight: ResponsiveWebSite.isDesktop(context) ? FontWeight.w500 : FontWeight.w400,
+            fontSize: ResponsiveWebSite.isDesktop(context) ? screenSize.width / 90 : 6.5,
+            fontWeight: ResponsiveWebSite.isDesktop(context) ? FontWeight.w500 : FontWeight.bold,
             color: Colors.black),
       ),
     );
@@ -63,13 +66,14 @@ class ContentsHomePage4 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
     return InkWell(
       onTap: () {},
       child: Text(
         "Study Materials",
         style: GoogleFonts.roboto(
-            fontSize: ResponsiveWebSite.isDesktop(context) ? 16 : 12,
-            fontWeight: ResponsiveWebSite.isDesktop(context) ? FontWeight.w500 : FontWeight.w400,
+            fontSize: ResponsiveWebSite.isDesktop(context) ? screenSize.width / 90 : 6.5,
+            fontWeight: ResponsiveWebSite.isDesktop(context) ? FontWeight.w500 : FontWeight.bold,
             color: Colors.black),
       ),
     );
@@ -81,13 +85,14 @@ class ContentsHomePage5 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
     return InkWell(
       onTap: () {},
       child: Text(
         "Carriers",
         style: GoogleFonts.roboto(
-            fontSize: ResponsiveWebSite.isDesktop(context) ? 16 : 12,
-            fontWeight: ResponsiveWebSite.isDesktop(context) ? FontWeight.w500 : FontWeight.w400,
+            fontSize: ResponsiveWebSite.isDesktop(context) ? screenSize.width / 90 : 6.5,
+            fontWeight: ResponsiveWebSite.isDesktop(context) ? FontWeight.w500 : FontWeight.bold,
             color: Colors.black),
       ),
     );
@@ -99,13 +104,14 @@ class ContentsHomePage6 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
     return InkWell(
       onTap: () {},
       child: Text(
         "Contact Us",
         style: GoogleFonts.roboto(
-            fontSize: ResponsiveWebSite.isDesktop(context) ? 16 : 12,
-            fontWeight: ResponsiveWebSite.isDesktop(context) ? FontWeight.w500 : FontWeight.w400,
+            fontSize: ResponsiveWebSite.isDesktop(context) ? screenSize.width / 90 : 6.5,
+            fontWeight: ResponsiveWebSite.isDesktop(context) ? FontWeight.w500 : FontWeight.bold,
             color: Colors.black),
       ),
     );

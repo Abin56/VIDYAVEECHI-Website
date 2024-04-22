@@ -263,10 +263,11 @@ class VidhyaVeechiHomePageResponsive extends StatelessWidget {
                                       child: LayoutBuilder(
                                         builder:
                                             (BuildContext context, BoxConstraints constraints) {
+                                          double fontSize = constraints.maxWidth > 1528 ? 8 : 11;
                                           return Text(
                                             'STUDENT REGISTRATION',
                                             style: GoogleFonts.poppins(
-                                              fontSize: constraints.maxWidth > 1000 ? 3 : 11,
+                                              fontSize: fontSize,
                                               fontWeight: FontWeight.w500,
                                               color: Colors.white,
                                             ),
@@ -304,7 +305,7 @@ class VidhyaVeechiHomePageResponsive extends StatelessWidget {
                                         return Text(
                                           'SCHOOL REGISTRATION',
                                           style: GoogleFonts.poppins(
-                                            fontSize: constraints.maxWidth > 1000 ? 3 : 11,
+                                            fontSize: constraints.maxWidth > 1528 ? 8 : 11,
                                             fontWeight: FontWeight.w500,
                                             color: Colors.white,
                                           ),
