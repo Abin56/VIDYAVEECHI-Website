@@ -130,8 +130,6 @@ class AllStudentDataList extends StatelessWidget {
                 stream: server
                     .collection('SchoolListCollection')
                     .doc(UserCredentialsController.schoolId)
-                    .collection(UserCredentialsController.batchId!)
-                    .doc(UserCredentialsController.batchId!)
                     .collection('classes')
                     .doc(data.classId)
                     .snapshots(),

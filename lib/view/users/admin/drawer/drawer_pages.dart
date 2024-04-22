@@ -73,18 +73,23 @@ class DrawerSelectedPagesSection extends StatelessWidget {
                   .snapshots(),
               builder: (context, classSnap) {
                 if (classSnap.hasData) {
-                  return classSnap.data?.data()?['counter']==0?const SizedBox(): CircleAvatar(
-                    radius: 11,
-                    backgroundColor: const Color.fromARGB(255, 37, 211, 102),
-                    child: Center(
-                      child: TextFontWidget(
-                        color: cWhite,
-                        text: "${classSnap.data?.data()?['counter']}",
-                        fontsize: 10,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  );
+                  return classSnap.data?.data() == null
+                      ? const SizedBox()
+                      : classSnap.data?.data()?['counter'] == 0
+                          ? const SizedBox()
+                          : CircleAvatar(
+                              radius: 11,
+                              backgroundColor:
+                                  const Color.fromARGB(255, 37, 211, 102),
+                              child: Center(
+                                child: TextFontWidget(
+                                  color: cWhite,
+                                  text: "${classSnap.data?.data()?['counter']}",
+                                  fontsize: 10,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            );
                 } else if (classSnap.data == null) {
                   return const SizedBox();
                 } else {

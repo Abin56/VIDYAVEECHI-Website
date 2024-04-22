@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vidyaveechi_website/controller/admin_details_controller/admin_details_controller.dart';
-
 import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
-
 import 'package:vidyaveechi_website/view/widgets/data_list_widgets/data_container.dart';
 
 class AdminDataList extends StatelessWidget {
@@ -51,9 +49,9 @@ class AdminDataList extends StatelessWidget {
                     ),
                   ),
                 ),
-                Expanded(
+                const Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(8.0),
                     child: TextFontWidget(
                       text: '  Admin',
                       fontsize: 12,
@@ -79,9 +77,9 @@ class AdminDataList extends StatelessWidget {
                     ),
                   ),
                 ),
-                Expanded(
+                const Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(8.0),
                     child: TextFontWidget(
                       text: "  Admin@gmail.com",
                       fontsize: 12,
@@ -109,7 +107,7 @@ class AdminDataList extends StatelessWidget {
                 ),
                 const Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(8.0),
                     child: TextFontWidget(
                       text: " 987654321",
                       fontsize: 12,

@@ -78,7 +78,6 @@ class AllClassListViewContainer extends StatelessWidget {
             .snapshots(),
         builder: (context, snaps) {
           if (snaps.hasData) {
-            Get.find<DashBoardController>().subjectID.clear();
             return snaps.data!.docs.isEmpty
                 ? const Text('Please take attendece in application !!!')
                 : ListView.separated(
