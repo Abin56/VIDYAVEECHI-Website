@@ -55,7 +55,7 @@ class AdminDataList extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextFontWidget(
-                      text: '  Admin',
+                      text: 'Admin',
                       fontsize: 12,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -83,7 +83,7 @@ class AdminDataList extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextFontWidget(
-                      text: "  Admin@gmail.com",
+                      text: "Admin@gmail.com",
                       fontsize: 12,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -107,7 +107,7 @@ class AdminDataList extends StatelessWidget {
                     ),
                   ),
                 ),
-                const Expanded(
+                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextFontWidget(
