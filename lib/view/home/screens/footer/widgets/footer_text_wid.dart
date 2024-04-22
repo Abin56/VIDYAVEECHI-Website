@@ -11,6 +11,7 @@ import 'package:vidyaveechi_website/view/home/screens/footer/widgets/cancellatio
 import 'package:vidyaveechi_website/view/home/screens/footer/widgets/trademark.dart';
 import 'package:vidyaveechi_website/view/home/screens/footer/widgets/who_we_are.dart';
 import 'package:vidyaveechi_website/view/home/screens/footer/widgets/why_choose_us.dart';
+import 'package:vidyaveechi_website/view/users/super_admin/lepton_Admin/admin_panel_Screen.dart';
 import 'package:vidyaveechi_website/view/widgets/hover-text/hovertext.dart';
 
 import '../family_policy.dart';
@@ -249,7 +250,7 @@ class WhoWeAreWidget extends StatelessWidget {
   }
 }
 
-List<String> constechDUjo = ['Who We Are', 'Why choose us'];
+List<String> constechDUjo = ['Who We Are', 'Why choose us','SUPER ADMIN'];
 List<String> connect = ['Facebook', 'Instagram', 'Twitter', 'Youtube'];
 List<String> legal = [
   'Terms & Conditions',
@@ -269,6 +270,7 @@ List<String> address = [
 var costechdujonav = [
   const WhyChooseUs(),
   const WhoWeAre(),
+  LeptonAdminLoginScreen()
 ];
 final Uri _faceBookUrl =
     Uri.parse('https://www.facebook.com/profile.php?id=100091062978371');

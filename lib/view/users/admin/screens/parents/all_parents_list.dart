@@ -37,7 +37,7 @@ class AllParentsListContainer extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                         Padding(
+                        const Padding(
                           padding: EdgeInsets.only(left: 25, top: 25),
                           child: SizedBox(
                             height: 60,
@@ -70,8 +70,8 @@ class AllParentsListContainer extends StatelessWidget {
                                       colorindex: 0,
                                       height: 35,
                                       width: 150,
-                                      child:  Center(
-                                        child: TextFontWidget(
+                                      child: const Center(
+                                        child: TextFontWidgetRouter(
                                           text: 'Create New Parent',
                                           fontsize: 12,
                                           fontWeight: FontWeight.bold,

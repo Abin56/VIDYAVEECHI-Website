@@ -6,7 +6,7 @@ import 'package:vidyaveechi_website/controller/class_controller/class_controller
 import 'package:vidyaveechi_website/controller/registration_controller/registation_controller.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
-import 'package:vidyaveechi_website/view/drop_down/select_class.dart';
+import 'package:vidyaveechi_website/view/drop_down/registration/regi_studentCount.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/students/student_details/widgets/category_tableHeader.dart';
 import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
@@ -64,7 +64,7 @@ class RegistrationStudentList extends StatelessWidget {
                             }),
                       ),
                     )),
-                Padding(
+                 Padding(
                   padding: const EdgeInsets.only(top: 20, right: 20),
                   child: SizedBox(
                       height: 60,
@@ -77,7 +77,9 @@ class RegistrationStudentList extends StatelessWidget {
                           const SizedBox(
                             height: 05,
                           ),
-                          SizedBox(height: 40, child: SelectClassDropDown()),
+                          SizedBox(
+                              height: 40,
+                              child: SelectRegClassStudntCountDropDown()),
                         ],
                       )),
                 )
@@ -102,7 +104,7 @@ class RegistrationStudentList extends StatelessWidget {
                   const Padding(
                     padding: EdgeInsets.only(top: 30),
                     child: RouteSelectedTextContainer(
-                        width: 200, title: 'Registred Students'),
+                        width: 200, title: 'Registered Students'),
                   ),
                 ],
               ),
@@ -171,8 +173,8 @@ class RegistrationStudentList extends StatelessWidget {
                                 .collection(UserCredentialsController.batchId!)
                                 .doc(UserCredentialsController.batchId!)
                                 .collection('classes')
-                                .doc(Get.find<ClassController>()
-                                    .classDocID
+                                .doc(Get.find<RegistrationController>()
+                                    .classRegClassID
                                     .value)
                                 .collection('RegTemp_Students')
                                 .snapshots(),

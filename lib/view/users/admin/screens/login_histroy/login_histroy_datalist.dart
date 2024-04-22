@@ -36,32 +36,14 @@ class AllLoginLogoutDataList extends StatelessWidget {
           const SizedBox(
             width: 01,
           ),
-          // Expanded(
-          //   flex: 2,
-          //   child: DataContainerWidget(
-          //       rowMainAccess: MainAxisAlignment.center,
-          //       color: cWhite,
-          //       index: index,
-          //       headerTitle: "99578"),
-          // ), //................................................. Parent ID
-          // const SizedBox(
-          //   width: 01,
-          // ),
+
           Expanded(
             flex: 4,
             child: Row(
               children: [
-                SizedBox(
-                  width: 20,
-                  child: Center(
-                    child: Image.asset(
-                      'webassets/flact_png/icons8-parent-100.png',
-                    ),
-                  ),
-                ),
                 Expanded(
                   child: TextFontWidget(
-                    text: "  ${data.adminuser}",
+                    text: "  ${data.adminuserName}",
                     // "  Name of the Person",
                     fontsize: 12,
                     overflow: TextOverflow.ellipsis,
@@ -77,17 +59,9 @@ class AllLoginLogoutDataList extends StatelessWidget {
             flex: 4,
             child: Row(
               children: [
-                SizedBox(
-                  width: 15,
-                  child: Center(
-                    child: Image.asset(
-                      'webassets/stickers/icons8-student-100 (1).png',
-                    ),
-                  ),
-                ),
                 Expanded(
                   child: TextFontWidget(
-                    text: "  ${data.adminuser}",
+                    text: "  ${data.adminuserName}",
                     //  "  @gmail.com",
                     fontsize: 12,
                     overflow: TextOverflow.ellipsis,
@@ -103,18 +77,9 @@ class AllLoginLogoutDataList extends StatelessWidget {
             flex: 3,
             child: Row(
               children: [
-                SizedBox(
-                  width: 20,
-                  child: Center(
-                    child: Image.asset(
-                      'webassets/png/login.png',
-                    ),
-                  ),
-                ),
                 Expanded(
                   child: TextFontWidget(
                     text: "  ${data.loginTime}",
-                    //  "  12:45 pm",
                     fontsize: 12,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -129,17 +94,9 @@ class AllLoginLogoutDataList extends StatelessWidget {
             flex: 3,
             child: Row(
               children: [
-                SizedBox(
-                  width: 20,
-                  child: Center(
-                    child: Image.asset(
-                      'webassets/png/logout.t.png',
-                    ),
-                  ),
-                ),
                 Expanded(
                   child: TextFontWidget(
-                    text: "  ${data.logOutTime}",
+                    text:data.logoutTime==''?'Not found':data.logoutTime,
                     fontsize: 12,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -151,25 +108,6 @@ class AllLoginLogoutDataList extends StatelessWidget {
           const SizedBox(
             width: 01,
           ),
-          // Expanded(
-          //   flex: 3,
-          //   child: Row(
-          //     mainAxisAlignment: MainAxisAlignment.center,
-          //     children: [
-          //       SizedBox(
-          //         width: 15,
-          //         child: Image.asset(
-          //           'webassets/png/active.png',
-          //         ),
-          //       ),
-          //       const TextFontWidget(
-          //         text: "  Active",
-          //         fontsize: 12,
-          //         overflow: TextOverflow.ellipsis,
-          //       ),
-          //     ],
-          //   ),
-          // ), //............................. Status [Active or DeActivate]
         ],
       ),
     );

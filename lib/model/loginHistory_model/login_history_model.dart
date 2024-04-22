@@ -2,60 +2,54 @@
 import 'dart:convert';
 
 class AdminLoginDetailHistoryModel {
-  String docid;
-  String loginTime;
-  String adminuser;
-  String? logOutTime;
-   String date;
-    String month;
+ String adminID;
+  String adminuserName;
+   String docid;
+    String loginTime;
+     String logoutTime;
 
   AdminLoginDetailHistoryModel({
+    required this.adminID,
+    required this.adminuserName,
     required this.docid,
     required this.loginTime,
-    required this.adminuser,
-    this.logOutTime,
-    required this.date,
-    required this.month,
+    required this.logoutTime,
   });
 
 
   AdminLoginDetailHistoryModel copyWith({
+    String? adminID,
+    String? adminuserName,
     String? docid,
     String? loginTime,
-    String? adminuser,
-    String? logOutTime,
-    String? date,
-    String? month,
+    String? logoutTime,
   }) {
     return AdminLoginDetailHistoryModel(
+      adminID: adminID ?? this.adminID,
+      adminuserName: adminuserName ?? this.adminuserName,
       docid: docid ?? this.docid,
       loginTime: loginTime ?? this.loginTime,
-      adminuser: adminuser ?? this.adminuser,
-      logOutTime: logOutTime ?? this.logOutTime,
-      date: date ?? this.date,
-      month: month ?? this.month,
+      logoutTime: logoutTime ?? this.logoutTime,
     );
   }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'adminID': adminID,
+      'adminuserName': adminuserName,
       'docid': docid,
       'loginTime': loginTime,
-      'adminuser': adminuser,
-      'logOutTime': logOutTime,
-      'date': date,
-      'month': month,
+      'logoutTime': logoutTime,
     };
   }
 
   factory AdminLoginDetailHistoryModel.fromMap(Map<String, dynamic> map) {
     return AdminLoginDetailHistoryModel(
-      docid: map['docid'] as String,
-      loginTime: map['loginTime'] as String,
-      adminuser: map['adminuser'] as String,
-      logOutTime: map['logOutTime'] != null ? map['logOutTime'] as String : null,
-      date: map['date'] as String,
-      month: map['month'] as String,
+      adminID: map['adminID'] ??'',
+      adminuserName: map['adminuserName'] ??'',
+      docid: map['docid'] ??'',
+      loginTime: map['loginTime'] ??'',
+      logoutTime: map['logoutTime'] ??'',
     );
   }
 
@@ -65,7 +59,7 @@ class AdminLoginDetailHistoryModel {
 
   @override
   String toString() {
-    return 'AdminLoginDetailHistoryModel(docid: $docid, loginTime: $loginTime, adminuser: $adminuser, logOutTime: $logOutTime, date: $date, month: $month)';
+    return 'AdminLoginDetailHistoryModel(adminID: $adminID, adminuserName: $adminuserName, docid: $docid, loginTime: $loginTime, logoutTime: $logoutTime)';
   }
 
   @override
@@ -73,22 +67,20 @@ class AdminLoginDetailHistoryModel {
     if (identical(this, other)) return true;
   
     return 
+      other.adminID == adminID &&
+      other.adminuserName == adminuserName &&
       other.docid == docid &&
       other.loginTime == loginTime &&
-      other.adminuser == adminuser &&
-      other.logOutTime == logOutTime &&
-      other.date == date &&
-      other.month == month;
+      other.logoutTime == logoutTime;
   }
 
   @override
   int get hashCode {
-    return docid.hashCode ^
+    return adminID.hashCode ^
+      adminuserName.hashCode ^
+      docid.hashCode ^
       loginTime.hashCode ^
-      adminuser.hashCode ^
-      logOutTime.hashCode ^
-      date.hashCode ^
-      month.hashCode;
+      logoutTime.hashCode;
   }
 }
 

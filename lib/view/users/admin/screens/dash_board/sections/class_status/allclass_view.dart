@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:vidyaveechi_website/controller/dashBoard_controller/dashBoard_controller.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
@@ -8,7 +10,7 @@ import 'package:vidyaveechi_website/view/widgets/loading_widget/loading_widget.d
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 
 class TotalClassViewContainer extends StatelessWidget {
-  const   TotalClassViewContainer({super.key});
+  const TotalClassViewContainer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -76,186 +78,179 @@ class AllClassListViewContainer extends StatelessWidget {
             .snapshots(),
         builder: (context, snaps) {
           if (snaps.hasData) {
-            return ListView.separated(
-                itemBuilder: (context, index) {
-                  final data = snaps.data!.docs[index].data();
-                  return Container(
-                    height: 60,
-                    decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 176, 238, 178)
-                            .withOpacity(0.1),
-                        border:
-                            Border.all(color: Colors.grey.withOpacity(0.1))),
-                    child: ListTile(
-                      title: StreamBuilder(
-                          stream: server
-                              .collection('SchoolListCollection')
-                              .doc(UserCredentialsController.schoolId)
-                              .collection(UserCredentialsController.batchId!)
-                              .doc(UserCredentialsController.batchId)
-                              .collection('classes')
-                              .doc(data['docid'])
-                              .snapshots(),
-                          builder: (context, classSnap) {
-                            if (classSnap.hasData) {
-                              return TextFontWidget(
-                                text: classSnap.data!.data()!['className'],
-                                fontsize: ResponsiveWebSite.isMobile(context)
-                                    ? 12
-                                    : 14,
-                                fontWeight: FontWeight.w600,
-                              );
-                            } else {
-                              return TextFontWidget(
-                                text: ' ......',
-                                fontsize: ResponsiveWebSite.isMobile(context)
-                                    ? 12
-                                    : 14,
-                                fontWeight: FontWeight.w600,
-                              );
-                            }
-                          }),
-                      trailing: SizedBox(
-                        width: ResponsiveWebSite.isMobile(context) ? 100 : 200,
-                        child: Row(
-                          children: [
-                            Expanded(
-                              flex: 1,
-                              child: Container(
-                                color: Colors.green.withOpacity(0.2),
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    TextFontWidget(
-                                      text: "Pr",
-                                      fontsize: 12,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                    TextFontWidget(
-                                      text: "50",
-                                      fontsize: 10,
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: StreamBuilder(
-                                  stream: server
-                                      .collection('SchoolListCollection')
-                                      .doc(UserCredentialsController.schoolId)
-                                      .collection(
-                                          UserCredentialsController.batchId!)
-                                      .doc(UserCredentialsController.batchId)
-                                      .collection('classes')
-                                      .doc(data['docid'])
-                                      .collection('Attendence')
-                                      .doc(monthwise)
-                                      .collection(monthwise)
-                                      .doc(formatted)
-                                      .collection('Subjects')
-                                      .doc(data['subjectDocid']).collection('AttendenceList').snapshots(),
-                                  builder: (context, attendeceSnaps) {
-                                    return Container(
-                                      color: Colors.red.withOpacity(0.2),
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        children: [
-                                          TextFontWidget(
-                                            text: "Ab",
-                                            fontsize: 12,
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                          TextFontWidget(
-                                            text: "50",
-                                            fontsize: 10,
-                                          )
-                                        ],
-                                      ),
-                                    );
-                                  }),
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: Container(
-                                color: Colors.blue.withOpacity(0.4),
-                                child:  Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    TextFontWidget(
-                                      text: "Total",
-                                      fontsize: 12,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                    TextFontWidget(
-                                      text: "100",
-                                      fontsize: 10,
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      subtitle: Row(
-                        children: [
-                          SizedBox(
-                            height:
-                                ResponsiveWebSite.isMobile(context) ? 20 : 25,
+            Get.find<DashBoardController>().subjectID.clear();
+            return snaps.data!.docs.isEmpty
+                ? const Text('Please take attendece in application !!!')
+                : ListView.separated(
+                    itemBuilder: (context, index) {
+                      final data = snaps.data!.docs[index].data();
+                      return Container(
+                        height: 60,
+                        decoration: BoxDecoration(
+                            color: const Color.fromARGB(255, 176, 238, 178)
+                                .withOpacity(0.1),
+                            border: Border.all(
+                                color: Colors.grey.withOpacity(0.1))),
+                        child: ListTile(
+                          title: StreamBuilder(
+                              stream: server
+                                  .collection('SchoolListCollection')
+                                  .doc(UserCredentialsController.schoolId)
+                                  .collection(
+                                      UserCredentialsController.batchId!)
+                                  .doc(UserCredentialsController.batchId)
+                                  .collection('classes')
+                                  .doc(data['docid'])
+                                  .snapshots(),
+                              builder: (context, classSnap) {
+                                if (classSnap.hasData) {
+                                  return TextFontWidget(
+                                    text: classSnap.data!.data()!['className'],
+                                    fontsize:
+                                        ResponsiveWebSite.isMobile(context)
+                                            ? 12
+                                            : 14,
+                                    fontWeight: FontWeight.w600,
+                                  );
+                                } else {
+                                  return TextFontWidget(
+                                    text: ' ......',
+                                    fontsize:
+                                        ResponsiveWebSite.isMobile(context)
+                                            ? 12
+                                            : 14,
+                                    fontWeight: FontWeight.w600,
+                                  );
+                                }
+                              }),
+                          trailing: SizedBox(
                             width:
-                                ResponsiveWebSite.isMobile(context) ? 20 : 35,
-                            child: Image.asset(
-                                'webassets/stickers/icons8-school-director-100.png'),
+                                ResponsiveWebSite.isMobile(context) ? 100 : 200,
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  flex: 1,
+                                  child: Container(
+                                    color: Colors.green.withOpacity(0.2),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: [
+                                        const TextFontWidget(
+                                          text: "Pr",
+                                          fontsize: 12,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                        TextFontWidget(
+                                          text:data['presentStudents'].toString(),
+                                          fontsize: 10,
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 1,
+                                  child: Container(
+                                    color: Colors.red.withOpacity(0.2),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: [
+                                        const TextFontWidget(
+                                          text: "Ab",
+                                          fontsize: 12,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                        TextFontWidget(
+                                          text: data['absentStudents'].toString(),
+                                          fontsize: 10,
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 1,
+                                  child: Container(
+                                    color: Colors.blue.withOpacity(0.4),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: [
+                                        const TextFontWidget(
+                                          text: "Total",
+                                          fontsize: 12,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                        TextFontWidget(
+                                          text: data['totalStudent']
+                                              .toString(),
+                                          fontsize: 10,
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                          Expanded(
-                            child: StreamBuilder(
-                                stream: server
-                                    .collection('SchoolListCollection')
-                                    .doc(UserCredentialsController.schoolId)
-                                    .collection('Teachers')
-                                    .doc(data['teacherDocid'])
-                                    .snapshots(),
-                                builder: (context, teacherSnap) {
-                                  if (teacherSnap.hasData) {
-                                    return TextFontWidget(
-                                      text: teacherSnap.data!
-                                          .data()!['teacherName'],
-                                      fontsize:
-                                          ResponsiveWebSite.isMobile(context)
+                          subtitle: Row(
+                            children: [
+                              SizedBox(
+                                height: ResponsiveWebSite.isMobile(context)
+                                    ? 20
+                                    : 25,
+                                width: ResponsiveWebSite.isMobile(context)
+                                    ? 20
+                                    : 35,
+                                child: Image.asset(
+                                    'webassets/stickers/icons8-school-director-100.png'),
+                              ),
+                              Expanded(
+                                child: StreamBuilder(
+                                    stream: server
+                                        .collection('SchoolListCollection')
+                                        .doc(UserCredentialsController.schoolId)
+                                        .collection('Teachers')
+                                        .doc(data['teacherDocid'])
+                                        .snapshots(),
+                                    builder: (context, teacherSnap) {
+                                      if (teacherSnap.hasData) {
+                                        return TextFontWidget(
+                                          text: teacherSnap.data!
+                                              .data()!['teacherName'],
+                                          fontsize: ResponsiveWebSite.isMobile(
+                                                  context)
                                               ? 11
                                               : 12,
-                                      fontWeight: FontWeight.w500,
-                                    );
-                                  } else {
-                                    return TextFontWidget(
-                                      text: '........',
-                                      fontsize:
-                                          ResponsiveWebSite.isMobile(context)
+                                          fontWeight: FontWeight.w500,
+                                        );
+                                      } else {
+                                        return TextFontWidget(
+                                          text: '........',
+                                          fontsize: ResponsiveWebSite.isMobile(
+                                                  context)
                                               ? 11
                                               : 12,
-                                      fontWeight: FontWeight.w500,
-                                    );
-                                  }
-                                }),
+                                          fontWeight: FontWeight.w500,
+                                        );
+                                      }
+                                    }),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                    ),
-                  );
-                },
-                separatorBuilder: (context, index) {
-                  return const SizedBox(
-                    height: 05,
-                  );
-                },
-                itemCount: snaps.data!.docs.length);
+                        ),
+                      );
+                    },
+                    separatorBuilder: (context, index) {
+                      return const SizedBox(
+                        height: 05,
+                      );
+                    },
+                    itemCount: snaps.data!.docs.length);
           } else if (snaps.data == null) {
-            return Center(
+            return const Center(
               child:
                   TextFontWidget(text: 'Please take attendence', fontsize: 12),
             );

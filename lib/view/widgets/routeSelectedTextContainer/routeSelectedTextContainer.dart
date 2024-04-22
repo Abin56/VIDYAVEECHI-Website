@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
@@ -18,11 +19,11 @@ class RouteSelectedTextContainer extends StatelessWidget {
       height: 30,
       width: width ?? 120,
       child: Center(
-        child: TextFontWidget(
+        child: TextFontWidgetRouter(
           text: title,
           fontsize: 14,
           fontWeight: FontWeight.w500,
-          color: cWhite,
+          color: Colors.white,
         ),
       ),
     );

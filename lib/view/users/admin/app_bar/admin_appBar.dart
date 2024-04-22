@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sidebar_drawer/sidebar_drawer.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
-import 'package:vidyaveechi_website/view/fonts/google_poppins_widget.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 import 'package:vidyaveechi_website/view/users/admin/app_bar/academic_year/academic_year.dart';
 import 'package:vidyaveechi_website/view/users/admin/app_bar/admin_profile/admin_profile.dart';
-import 'package:vidyaveechi_website/view/users/admin/app_bar/message_notication/message_showing.dart';
-import 'package:vidyaveechi_website/view/users/admin/app_bar/message_notication/notification_show.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/notification_time_setting/notification.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
@@ -174,89 +171,89 @@ class AppBarAdminPanel extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(
-                  width: 70,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Stack(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(top: 15, right: 10),
-                            child: IconButton(
-                                focusNode: textButtonFocusNode,
-                                onPressed: () {
-                                  messagesShowingFunction(context);
-                                },
-                                icon: Icon(
-                                  Icons.mail_outline_outlined,
-                                  color: cBlack.withOpacity(0.4),
-                                )),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 07, left: 22),
-                            child: CircleAvatar(
-                              backgroundColor: Colors.white,
-                              radius: 12,
-                              child: CircleAvatar(
-                                backgroundColor:
-                                    const Color.fromARGB(255, 42, 215, 197),
-                                radius: 10,
-                                child: GooglePoppinsWidgets(
-                                  text: '5',
-                                  fontsize: 11,
-                                  fontWeight: FontWeight.w600,
-                                  color: cWhite,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  width: 50,
-                  child: Column(
-                    children: [
-                      Stack(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(top: 15, right: 10),
-                            child: IconButton(
-                                focusNode: textButtonFocusNode1,
-                                onPressed: () {
-                                  notificationShowingFunctionOnAppBar(context);
-                                },
-                                icon: Icon(
-                                  Icons.notifications_none_outlined,
-                                  color: cBlack.withOpacity(0.4),
-                                )),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 07, left: 22),
-                            child: CircleAvatar(
-                              backgroundColor: Colors.white,
-                              radius: 12,
-                              child: CircleAvatar(
-                                backgroundColor:
-                                    const Color.fromARGB(255, 255, 49, 49),
-                                radius: 10,
-                                child: GooglePoppinsWidgets(
-                                  text: '8',
-                                  fontsize: 11,
-                                  fontWeight: FontWeight.w600,
-                                  color: cWhite,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
+                // SizedBox(
+                //   width: 70,
+                //   child: Column(
+                //     crossAxisAlignment: CrossAxisAlignment.end,
+                //     children: [
+                //       Stack(
+                //         children: [
+                //           Padding(
+                //             padding: const EdgeInsets.only(top: 15, right: 10),
+                //             child: IconButton(
+                //                 focusNode: textButtonFocusNode,
+                //                 onPressed: () {
+                //                   messagesShowingFunction(context);
+                //                 },
+                //                 icon: Icon(
+                //                   Icons.mail_outline_outlined,
+                //                   color: cBlack.withOpacity(0.4),
+                //                 )),
+                //           ),
+                //           Padding(
+                //             padding: const EdgeInsets.only(top: 07, left: 22),
+                //             child: CircleAvatar(
+                //               backgroundColor: Colors.white,
+                //               radius: 12,
+                //               child: CircleAvatar(
+                //                 backgroundColor:
+                //                     const Color.fromARGB(255, 42, 215, 197),
+                //                 radius: 10,
+                //                 child: GooglePoppinsWidgets(
+                //                   text: '5',
+                //                   fontsize: 11,
+                //                   fontWeight: FontWeight.w600,
+                //                   color: cWhite,
+                //                 ),
+                //               ),
+                //             ),
+                //           ),
+                //         ],
+                //       ),
+                //     ],
+                //   ),
+                // ),
+                // SizedBox(
+                //   width: 50,
+                //   child: Column(
+                //     children: [
+                //       Stack(
+                //         children: [
+                //           Padding(
+                //             padding: const EdgeInsets.only(top: 15, right: 10),
+                //             child: IconButton(
+                //                 focusNode: textButtonFocusNode1,
+                //                 onPressed: () {
+                //                   notificationShowingFunctionOnAppBar(context);
+                //                 },
+                //                 icon: Icon(
+                //                   Icons.notifications_none_outlined,
+                //                   color: cBlack.withOpacity(0.4),
+                //                 )),
+                //           ),
+                //           Padding(
+                //             padding: const EdgeInsets.only(top: 07, left: 22),
+                //             child: CircleAvatar(
+                //               backgroundColor: Colors.white,
+                //               radius: 12,
+                //               child: CircleAvatar(
+                //                 backgroundColor:
+                //                     const Color.fromARGB(255, 255, 49, 49),
+                //                 radius: 10,
+                //                 child: GooglePoppinsWidgets(
+                //                   text: '8',
+                //                   fontsize: 11,
+                //                   fontWeight: FontWeight.w600,
+                //                   color: cWhite,
+                //                 ),
+                //               ),
+                //             ),
+                //           ),
+                //         ],
+                //       ),
+                //     ],
+                //   ),
+                // ),
               ],
             ),
             ResponsiveWebSite.isMobile(context)

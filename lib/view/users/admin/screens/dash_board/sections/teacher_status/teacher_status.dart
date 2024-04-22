@@ -64,7 +64,9 @@ class AllTeacherStatusListView extends StatelessWidget {
             .snapshots(),
         builder: (context, snaps) {
           if (snaps.hasData) {
-            return ListView.separated(
+            return  snaps.data!.docs.isEmpty
+                ? const Text('Please take attendece in application !!!')
+                :   ListView.separated(
                 itemBuilder: (context, index) {
                   final data = snaps.data!.docs[index].data();
                   return Container(

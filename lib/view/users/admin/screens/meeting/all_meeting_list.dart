@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vidyaveechi_website/controller/meeting_controller/meeting_controller.dart';
@@ -6,73 +8,104 @@ import 'package:vidyaveechi_website/model/meeting_model/meeting_model.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/meeting/view_of_allmeetings/all_view_data_list.dart';
+import 'package:vidyaveechi_website/view/users/admin/screens/meeting/creating_meeting/create_meeting.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/students/student_details/widgets/category_tableHeader.dart';
 import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
+import 'package:vidyaveechi_website/view/widgets/button_container/button_container.dart';
+import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 import 'package:vidyaveechi_website/view/widgets/routeSelectedTextContainer/routeSelectedTextContainer.dart';
-import 'package:vidyaveechi_website/view/widgets/routeSelectedTextContainer/route_NonSelectedContainer.dart';
 
-class MeetingEditRemove extends StatelessWidget {
+class AllMeetingsListPage extends StatelessWidget {
   final MeetingController meetingController = Get.put(MeetingController());
-  MeetingEditRemove({
-    Key? key,
-    // required this.schoolID
-  }) : super(key: key);
-
-  // String schoolID;
+  final formKey = GlobalKey<FormState>();
+  AllMeetingsListPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Container(
-        color: screenContainerbackgroundColor,
-        height: 800,
-        width: 1200,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-           Padding(
-              padding: EdgeInsets.only(left: 25, top: 25),
-              child: TextFontWidget(
-                text: 'View All Meeting',
-                fontsize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 25, right: 25),
-              child: Row(
-                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      meetingController.ontapMeeting.value = false;
-                    },
-                    child: const RouteNonSelectedTextContainer(title: 'Home'),
-                  ),
-                  // const Spacer(),
-                  const RouteSelectedTextContainer(
-                      width: 140, title: 'Meeting Deatils'),
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Padding(
+  
+    //////////////////////////////////////////////////////////////////////////////
+    ///...............................................................///
+    /////////////////////////////////////////////////////////////////
+    //  final Size size = MediaQuery.of(context).size;
+    return Obx(() => meetingController.ontapMeeting.value == true
+        ? CreateMeetinPage()
+        : SingleChildScrollView(
+            child: Container(
+              color: screenContainerbackgroundColor,
+              height: 920,
+              width: double.infinity,
+              child: Form(
+                key: meetingController.formKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.only(left: 25, top: 25),
+                      child: TextFontWidget(
+                        text: "Meeting",
+                        fontsize: 21,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        top: 40,
+                        left: 8,
+                        right: 8,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(right: 05, bottom: 5),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    //   meetingController.ontapMeeting.value = true;
+                                  },
+                                  child: const RouteSelectedTextContainer(
+                                      width: 150, title: 'ALL MEETINGS'),
+                                ),
+                              ),
+                              Spacer(),
+                              GestureDetector(
+                                onTap: () {
+                                  meetingController.ontapMeeting.value = true;
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.only(right: 25, bottom: 5),
+                                  child: ButtonContainerWidget(
+                                      curving: 30,
+                                      colorindex: 0,
+                                      height: 35,
+                                      width: 150,
+                                      child: const Center(
+                                        child: TextFontWidgetRouter(
+                                          text: 'Create Meetings',
+                                          fontsize: 12,
+                                          fontWeight: FontWeight.bold,
+                                          color: cWhite,
+                                        ),
+                                      )),
+                                ),
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                           Padding(
               padding: const EdgeInsets.only(right: 25, left: 25),
               child: Container(
                 color: cWhite,
-                height: 600,
+                height: 700,
                 width: 1200,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.all(20),
                       child: TextFontWidget(
                         text: 'Meeting ',
@@ -106,7 +139,7 @@ class MeetingEditRemove extends StatelessWidget {
                             }
                             return Container(
                               color: screenContainerbackgroundColor,
-                              height: 1000,
+                              height: 650,
                               width: 1200,
                               child: Column(
                                 children: [
@@ -353,101 +386,38 @@ class MeetingEditRemove extends StatelessWidget {
                 ),
               ),
             ),
-          ],
-        ),
-      ),
-    );
+                          
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ));
   }
 }
 
-// ignore: must_be_immutable
-class TextFormFiledBlueContainerWidgetMeeting extends StatelessWidget {
-  TextEditingController? controller = TextEditingController();
-  final String title;
-  final String hintText;
-  final Widget? widget;
-  final double? width;
-  Function(String)? onChanged;
-  Iterable<String>? autofillHints;
-  String? Function(String?)? validator;
-  Function()? onTap;
-  TextInputType? keyboardType;
-  TextFormFiledBlueContainerWidgetMeeting({
-    this.width,
-    this.widget,
-    required this.hintText,
-    required this.title,
-    this.keyboardType,
-    this.controller,
-    this.autofillHints,
-    this.onChanged,
-    this.validator,
-    this.onTap,
+class ContainerTitleWidget extends StatelessWidget {
+  final String text;
+  const ContainerTitleWidget({
+    required this.text,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 80,
-      width: 350,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              TextFontWidget(text: '$title *', fontsize: 12.5),
-              widget == null ? const SizedBox() : widget!,
-            ],
-          ),
-          const SizedBox(
-            height: 05,
-          ),
-          Container(
-            // height: 40,
-            width: width,
-            color: screenContainerbackgroundColor,
-            child: Center(
-              child: TextFormField(
-                onChanged: onChanged,
-                autofillHints: autofillHints,
-                onTap: onTap,
-                validator: validator,
-                keyboardType: keyboardType,
-                controller: controller,
-                decoration: InputDecoration(
-                  contentPadding:
-                      const EdgeInsets.symmetric(vertical: 01, horizontal: 01),
-                  errorBorder: const OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(0)),
-                      borderSide: BorderSide(
-                        width: 1,
-                        style: BorderStyle.none,
-                        color: Colors.red,
-                      )),
-                  focusedErrorBorder: const OutlineInputBorder(
-                    // borderRadius: BorderRadius.all(Radius.circular(4)),
-                    borderSide: BorderSide(
-                      width: 1,
-                      style: BorderStyle.none,
-                      color: Colors.red,
-                    ),
-                  ),
-                  // contentPadding: const EdgeInsets.all(8.0),
-                  enabledBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(width: 0.4)),
-                  hintStyle: const TextStyle(fontSize: 13),
-                  hintText: hintText,
-                  focusedBorder: const OutlineInputBorder(
-                    //<-- SEE HERE
-                    borderSide: BorderSide(width: 1, color: Colors.green),
-                  ),
-                ),
-              ),
-            ),
-          )
-        ],
+    return Container(
+      height: 35,
+      width: ResponsiveWebSite.isDesktop(context) ? 90 : 70,
+      color: cWhite,
+      child: Padding(
+        padding: const EdgeInsets.only(top: 5),
+        child: TextFontWidget(
+          text: text,
+          fontsize: 15,
+          fontWeight: FontWeight.w500,
+        ),
       ),
     );
   }

@@ -1,7 +1,5 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 import 'package:vidyaveechi_website/view/users/admin/app_bar/academic_year/add_academic.dart';
@@ -24,8 +22,8 @@ academicYearSettingFunction(BuildContext context) {
             color: themeColorBlue,
             border: Border.all(color: themeColorBlue),
             borderRadius: BorderRadius.circular(05)),
-        child:  Center(
-          child: TextFontWidget(
+        child: const Center(
+          child: TextFontWidgetRouter(
             text: "Add Academic Year",
             fontsize: 14,
             // fontWeight: FontWeight.w600,
@@ -45,8 +43,8 @@ academicYearSettingFunction(BuildContext context) {
             color: themeColorBlue,
             border: Border.all(color: themeColorBlue),
             borderRadius: BorderRadius.circular(05)),
-        child: Center(
-          child: TextFontWidget(
+        child: const Center(
+          child: TextFontWidgetRouter(
             text: "Set Academic Year",
             fontsize: 14,
             // fontWeight: FontWeight.w600,
@@ -66,8 +64,8 @@ academicYearSettingFunction(BuildContext context) {
             color: themeColorBlue,
             border: Border.all(color: themeColorBlue),
             borderRadius: BorderRadius.circular(05)),
-        child:  Center(
-          child: TextFontWidget(
+        child: const Center(
+          child: TextFontWidgetRouter(
             text: "Cancel",
             fontsize: 14,
             // fontWeight: FontWeight.w600,
@@ -81,8 +79,7 @@ academicYearSettingFunction(BuildContext context) {
     context: context,
     builder: (context) {
       return AlertDialog(
-        title:  TextFontWidget(text: "Change Academic Year", fontsize: 15),
-        // title: const TextFontWidget(text: "demic Year", fontsize: 15),
+        title: const TextFontWidget(text: "Academic Year", fontsize: 15),
         backgroundColor: cWhite,
         content: SizedBox(
           height: ResponsiveWebSite.isMobile(context)? 220: 140,
@@ -90,12 +87,12 @@ academicYearSettingFunction(BuildContext context) {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               SizedBox(
-                height: 70,
+                height: 75,
                 // color: cWhite,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                     TextFontWidget(
+                    const TextFontWidget(
                         text: 'Select Academic Year*', fontsize: 12.5),
                     const SizedBox(
                       height: 05,

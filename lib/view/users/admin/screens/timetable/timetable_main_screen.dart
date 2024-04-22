@@ -8,17 +8,17 @@ import 'package:vidyaveechi_website/controller/class_controller/class_controller
 import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/drop_down/select_class.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
-import 'package:vidyaveechi_website/view/users/admin/screens/timetable/view_timetable.dart/period/period_wise_timetable.dart';
+import 'package:vidyaveechi_website/view/users/admin/screens/timetable/period_wise_timetable.dart';
 import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
 import 'package:vidyaveechi_website/view/widgets/button_container/button_container.dart';
 import 'package:vidyaveechi_website/view/widgets/loading_widget/loading_widget.dart';
+import 'package:vidyaveechi_website/view/widgets/progess_button/progress_button.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 
-import '../../../../../../controller/timetable_controller/timetable_controller.dart';
-import '../../../../../drop_down/class_wise_subject.dart';
-import '../../../../../widgets/textformFiledContainer/textformFiledBlueContainer.dart';
-import '../../notice/noticebutton_container.dart';
+import '../../../../../controller/timetable_controller/timetable_controller.dart';
+import '../../../../drop_down/class_wise_subject.dart';
+import '../../../../widgets/textformFiledContainer/textformFiledBlueContainer.dart';
 
 class TimeTableMainScreen extends StatelessWidget {
   const TimeTableMainScreen({super.key});
@@ -62,7 +62,7 @@ class TimeTableMainScreen extends StatelessWidget {
                   'Thursday',
                   'Friday',
                   'Saturday',
-                  'Sunday'
+                  'Sunday',
                 ].map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
@@ -214,7 +214,7 @@ class TimeTableMainScreen extends StatelessWidget {
                               .collection('classes')
                               .doc(Get.find<ClassController>().classDocID.value)
                               .collection('timetables')
-                              .orderBy('day', descending: false)
+                              .orderBy('day', descending: true)
                               .snapshots(),
                           builder: (context, timesnaps) {
                             log("class id ${Get.find<ClassController>().classDocID.value}");
@@ -346,17 +346,25 @@ class TimeTableMainScreen extends StatelessWidget {
                               padding:
                                   const EdgeInsets.only(top: 10, bottom: 10),
                               child: Center(
-                                child: NoticeButtonContainerWidget(
-                                  text: 'Submit',
-                                  width: 300,
-                                  height: 50,
-                                  fontSize: 18,
-                                  onTap: () {
-                                    timetableCtrl.addTimeTableDataToFirebase();
-                                  },
-                                  color: adminePrimayColor,
-                                ),
-                              ),
+                                  child: ProgressButtonWidget(
+                                      buttonstate:
+                                          timetableCtrl.buttonstate.value,
+                                      text: 'Submit',
+                                      function: () {
+                                        timetableCtrl
+                                            .addTimeTableDataToFirebase();
+                                      })
+                                  //  NoticeButtonContainerWidget(
+                                  //   text: 'Submit',
+                                  //   width: 300,
+                                  //   height: 50,
+                                  //   fontSize: 18,
+                                  //   onTap: () {
+                                  //     timetableCtrl.addTimeTableDataToFirebase();
+                                  //   },
+                                  //   color: adminePrimayColor,
+                                  // ),
+                                  ),
                             )
                             // }),
                           ]),

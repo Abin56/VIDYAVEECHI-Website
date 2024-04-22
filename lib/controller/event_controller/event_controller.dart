@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:progress_state_button/progress_button.dart';
-import 'package:uuid/uuid.dart';
+import 'package:uuid/uuid.dart';  
 import 'package:vidyaveechi_website/model/event_models/events_model.dart';
 import 'package:vidyaveechi_website/view/constant/const.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/events/all_event_view.dart';
@@ -13,20 +13,21 @@ import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_creden
 class EventController extends GetxController {
   Rx<ButtonState> buttonstate = ButtonState.idle.obs;
   TextEditingController eventnameController = TextEditingController();
- // TextEditingController eventdateController = TextEditingController();
+  TextEditingController eventdateController = TextEditingController();
+  TextEditingController editeventdateController = TextEditingController();
   TextEditingController eventdescriptionController = TextEditingController();
   TextEditingController eventvenueController = TextEditingController();
   TextEditingController eventsignedByController = TextEditingController();
   final formKey = GlobalKey<FormState>();
    final Rxn<DateTime> dateSelected = Rxn<DateTime>();
-    final Rx<String> eventdateController = ''.obs;
+  //  final Rx<String> eventdateController = ''.obs;
    
   //EventModel? model;
 
   Future<void> createEvent() async {
     final uuid =const  Uuid().v1();
     final eventDetails = EventModel(
-        eventDate: eventdateController.value,
+        eventDate: eventdateController.text,
         eventName: eventnameController.text,
         eventDescription: eventdescriptionController.text,
         venue: eventvenueController.text,
@@ -47,7 +48,7 @@ class EventController extends GetxController {
           .set(eventDetails.toMap())
           .then((value) async {
         eventnameController.clear();
-        eventdateController.value = '';
+        eventdateController.clear();
         eventdescriptionController.clear();
         eventvenueController.clear();
         eventsignedByController.clear();
@@ -82,7 +83,7 @@ class EventController extends GetxController {
         .collection('AdminEvents')
         .doc(id)
         .update({
-          'eventDate': eventController.eventdateController.value,
+          'eventDate': eventController.editeventdateController.text,
           'eventName': eventController.eventnameController.text,
           'eventDescription': eventController.eventdescriptionController.text,
           'venue': eventController.eventvenueController.text,
@@ -107,24 +108,17 @@ class EventController extends GetxController {
   }
 
 
-   selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: dateSelected.value ?? DateTime.now(),
-      firstDate: DateTime(1920),
-      lastDate: DateTime(2100),
-      // builder: (context, child) {
-      //   return Container();
-      // },
-    );
-    if (picked != null && picked != dateSelected.value) {
-      dateSelected.value = picked;
-      DateTime parseDate = DateTime.parse(dateSelected.value.toString());
-      final DateFormat formatter = DateFormat('yyyy-MMMM-dd');
-      String formatted = formatter.format(parseDate);
+   Future<void> selectDate(BuildContext context, TextEditingController controller) async {
+  final DateTime? pickedDate = await showDatePicker(
+    context: context,
+    initialDate: DateTime.now(),
+    firstDate: DateTime(2000),
+    lastDate: DateTime(2101),
+  );
 
-      eventdateController.value = formatted.toString();
-      log(formatted.toString());
-    }
+  if (pickedDate != null) {
+    String formattedDate = DateFormat('dd-MM-yyyy').format(pickedDate);
+    controller.text = formattedDate;
   }
+}
 }

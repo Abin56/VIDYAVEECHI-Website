@@ -7,6 +7,9 @@ import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_creden
 class StudentFeeController extends GetxController {
   final RxMap<String, dynamic> studentdata = {'': ''}.obs;
   TextEditingController updateFeeController = TextEditingController();
+  RxInt totalStudentFee = 0.obs;
+  RxInt paidStudentFee = 0.obs;
+  RxInt unpaidStudentFee = 0.obs;
 
   Future<void> feeEditController(
     String studentID,
@@ -87,5 +90,30 @@ class StudentFeeController extends GetxController {
         .collection('Students')
         .doc(studentID)
         .update({'feepaid': status, 'paid': fee});
+  }
+
+  getStudentFeeDetails(String studentId) async {
+    print('fee start');
+    print(studentId);
+    print(Get.find<FeesAndBillsController>().feeMonthData.value);
+    print(Get.find<FeesAndBillsController>().feeDateData.value);
+    final studentFeeData = await server
+        .collection('SchoolListCollection')
+        .doc(UserCredentialsController.schoolId)
+        .collection(UserCredentialsController.batchId!)
+        .doc(UserCredentialsController.batchId!)
+        .collection('FeesCollection')
+        .doc(Get.find<FeesAndBillsController>().feeMonthData.value)
+        .collection(Get.find<FeesAndBillsController>().feeMonthData.value)
+        .doc(Get.find<FeesAndBillsController>().feeDateData.value)
+        .collection('Students')
+        .doc(studentId)
+        .get();
+
+    totalStudentFee.value = studentFeeData.data()!['fee'];
+    paidStudentFee.value = studentFeeData.data()!['paid'];
+    unpaidStudentFee.value = totalStudentFee.value - paidStudentFee.value;
+
+    print(totalStudentFee.value);
   }
 }

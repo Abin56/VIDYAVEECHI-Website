@@ -157,39 +157,16 @@ class CreateNotice extends StatelessWidget {
 
                                                 Padding(
                                                   padding:const EdgeInsets.only( top: 5,left: 10, right: 10),
-                                                  child:   Column(
-                                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                                      children: [
-                                                        TextFontWidget(text: 'Published Date *', fontsize: 12.5),
-                                                        GestureDetector(
-                                                          onTap: () =>
-                                                              noticeController.selectPublishedDate( context),
-                                                          child: Container(
-                                                            height: 40,
-                                                            decoration: BoxDecoration(
-                                                                borderRadius:
-                                                                    BorderRadius .circular(  05),
-                                                                color:
-                                                                    screenContainerbackgroundColor,
-                                                                border: Border.all(
-                                                                    color: cBlack  .withOpacity(0.4))),
-                                                            width: double.infinity,
-                                                            child: Padding(
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                      .all(8.0),
-                                                              child: Obx(() => TextFontWidget(
-                                                                  text: noticeController .noticePublishedDateController .value ==   ''
-                                                                      ? 'DD/MM/YYYY *'
-                                                                      : noticeController
-                                                                          .noticePublishedDateController
-                                                                          .value,
-                                                                  fontsize: 12.5)),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
+                                                  child:  TextFormFiledWithoutColorEight(
+                                                    onTap: () {
+                                                      noticeController.selectDate(context, noticeController .noticePublishedDateController);
+                                                    },
+                                                    width: 500,
+                                                    controller: noticeController .noticePublishedDateController,
+                                                    validator: checkFieldEmpty,
+                                                    title: 'Published Date',
+                                                    hintText:'Published Date', /////////////////////////////////////////0
+                                                  ),
                                                 ), ////////////////////////////////////////////////////////2
                                                 Padding(
                                                   padding:  const EdgeInsets.only(  top: 5, left: 10,right: 10),
@@ -203,39 +180,16 @@ class CreateNotice extends StatelessWidget {
                                                 ), ///////////////////////////////////////////////3
                                                 Padding(
                                                   padding:  const EdgeInsets.only( top: 5,left: 10, right: 10),
-                                                  child:   Column(
-                                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                                      children: [
-                                                        TextFontWidget(text: 'Date of occasion*', fontsize: 12.5),
-                                                        GestureDetector(
-                                                          onTap: () =>
-                                                              noticeController.selectOccasionDate( context),
-                                                          child: Container(
-                                                            height: 40,
-                                                            decoration: BoxDecoration(
-                                                                borderRadius:
-                                                                    BorderRadius .circular(  05),
-                                                                color:
-                                                                    screenContainerbackgroundColor,
-                                                                border: Border.all(
-                                                                    color: cBlack  .withOpacity(0.4))),
-                                                            width: double.infinity,
-                                                            child: Padding(
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                      .all(8.0),
-                                                              child: Obx(() => TextFontWidget(
-                                                                  text: noticeController .noticeOccasionDateController .value ==   ''
-                                                                      ? 'DD/MM/YYYY *'
-                                                                      : noticeController
-                                                                          .noticeOccasionDateController
-                                                                          .value,
-                                                                  fontsize: 12.5)),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
+                                                  child:    TextFormFiledWithoutColorEight(
+                                                    onTap: () {
+                                                      noticeController.selectDate(context, noticeController .noticeDateofoccationController);
+                                                    },
+                                                    width: 500,
+                                                    controller: noticeController .noticeDateofoccationController,
+                                                    validator: checkFieldEmpty,
+                                                    title: ' Date of occasion',
+                                                    hintText:' Date of occasion', /////////////////////////////////////////0
+                                                  ),
                                                 ), ////////////////////////////////////4
                                                 Padding(
                                                   padding:
@@ -269,39 +223,16 @@ class CreateNotice extends StatelessWidget {
                                                 ), ////////////////////////////////////7
                                                 Padding(
                                                   padding: const EdgeInsets.only( top: 5, left: 10,right: 10),
-                                                  child:   Column(
-                                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                                      children: [
-                                                        TextFontWidget(text: 'Date of submission*', fontsize: 12.5),
-                                                        GestureDetector(
-                                                          onTap: () =>
-                                                              noticeController.selectSubmissionDate( context),
-                                                          child: Container(
-                                                            height: 40,
-                                                            decoration: BoxDecoration(
-                                                                borderRadius:
-                                                                    BorderRadius .circular(  05),
-                                                                color:
-                                                                    screenContainerbackgroundColor,
-                                                                border: Border.all(
-                                                                    color: cBlack  .withOpacity(0.4))),
-                                                            width: double.infinity,
-                                                            child: Padding(
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                      .all(8.0),
-                                                              child: Obx(() => TextFontWidget(
-                                                                  text: noticeController .noticeSubmissionDateController .value ==   ''
-                                                                      ? 'DD/MM/YYYY *'
-                                                                      : noticeController
-                                                                          .noticeSubmissionDateController
-                                                                          .value,
-                                                                  fontsize: 12.5)),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
+                                                  child:     TextFormFiledWithoutColorEight(
+                                                    onTap: () {
+                                                      noticeController.selectDate(context, noticeController .noticeDateofSubmissionController);
+                                                    },
+                                                    width: 500,
+                                                    controller: noticeController .noticeDateofSubmissionController,
+                                                    validator: checkFieldEmpty,
+                                                    title: ' Date of submission',
+                                                    hintText:' Date of submission', /////////////////////////////////////////0
+                                                  ),
                                                 ),
                                                 Padding(
                                                   padding:

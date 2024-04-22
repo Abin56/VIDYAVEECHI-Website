@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -34,6 +36,8 @@ class SelectLoginDateDropDown extends StatelessWidget {
       onChanged: (value) async {
         if (value != null) {
           loginHCtrl.loginHDayValue.value = value;
+          log(loginHCtrl.loginHDayValue.value);
+
         }
       },
       popupProps: const PopupProps.menu(

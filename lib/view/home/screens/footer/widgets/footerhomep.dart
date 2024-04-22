@@ -1,7 +1,7 @@
 // ignore_for_file: must_be_immutable, unused_local_variable, prefer_final_fields
 
-import 'package:flutter/material.dart';
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -154,30 +154,7 @@ class FooterHomeP extends StatelessWidget {
                           //   ),
                           // ),
 
-                          // GestureDetector(
-                          //   onTap: () {
-                          //     //  Navigator.push(context, MaterialPageRoute(builder: ((context) =>RequestedSchoolsApproval())));
-                          //     Navigator.push(
-                          //         context,
-                          //         MaterialPageRoute(
-                          //             builder: ((context) =>
-                          //                 LeptonAdminLoginScreen())));
-                          //   },
-                          //   child: OnHoverText(
-                          //     builder: (isHoverd) {
-                          //       final color = isHoverd
-                          //           ? const Color.fromARGB(255, 255, 0, 0)
-                          //           : Colors.black;
-                          //       return SizedBox(
-                          //           width: 170.w,
-                          //           child: Text(
-                          //             'Super Admin',
-                          //             style: TextStyle(
-                          //                 fontSize: 17.h, color: color),
-                          //           ));
-                          //     },
-                          //   ),
-                          // ),
+                
                         ],
                       ),
                       Column(

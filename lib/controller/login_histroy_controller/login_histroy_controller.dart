@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 
 import '../../model/loginHistory_model/login_history_model.dart';
@@ -15,51 +16,12 @@ class AdminLoginHistroyController extends GetxController {
       Rxn<AdminLoginDetailHistoryModel>();
 
   RxBool loginHistroyontapped = false.obs;
-  Future<void> getLoginHistory(String date, String month) async {
-    final loginData = await server
-        .collection('SchoolListCollection')
-        .doc(UserCredentialsController.schoolId)
-        .collection(UserCredentialsController.batchId!)
-        .doc(UserCredentialsController.batchId!)
-        .collection("LoginHistory")
-        .doc(month)
-        .collection(month)
-        .doc(date)
-        .collection(date)
-        .get();
-    print(date);
+  RxBool selectedMonth=false.obs;
 
-    loginHistorylistMonth = loginData.docs
-        .map((e) => AdminLoginDetailHistoryModel.fromMap(e.data()))
-        .toList();
-    print(loginHistorylistMonth);
-  }
-
-  Future<List<AdminLoginDetailHistoryModel>> fetchTeacher(
-      String date, String month, String docid) async {
-    final firebase = await server
-        .collection('SchoolListCollection')
-        .doc(UserCredentialsController.schoolId)
-        .collection(UserCredentialsController.batchId!)
-        .doc(UserCredentialsController.batchId!)
-        .collection("LoginHistory")
-        .doc(month)
-        .collection(month)
-        .doc(date)
-        .collection(date)
-        .get();
-    print(month);
-    print(month);
-    loginHistorylistMonth = firebase.docs
-        .map((e) => AdminLoginDetailHistoryModel.fromMap(e.data()))
-        .toList();
-
-    return loginHistorylistMonth;
-  }
 
   /////////////////////////////////////////\
   List<String> allLoginMonthList = [];
-  RxString loginHMonthValue = ''.obs;
+  RxString loginHMonthValue = 'dd'.obs;
   Future<List<String>> fetchLoginHMonth() async {
     final firebase = await server
         .collection('SchoolListCollection')
@@ -70,7 +32,7 @@ class AdminLoginHistroyController extends GetxController {
         .get();
 
     for (var i = 0; i < firebase.docs.length; i++) {
-      final list = firebase.docs[i].data()['docid'];
+      final list = firebase.docs[i].data()['docid'] ;
       allLoginMonthList.add(list);
       print(list);
     }
@@ -78,7 +40,7 @@ class AdminLoginHistroyController extends GetxController {
   }
 
   List<String> allLoginDayList = [];
-  RxString loginHDayValue = ''.obs;
+  RxString loginHDayValue = 'dd'.obs;
   Future<List<String>> fetchLoginHDay() async {
     final firebase = await server
         .collection('SchoolListCollection')

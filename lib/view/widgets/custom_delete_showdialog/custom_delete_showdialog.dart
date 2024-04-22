@@ -36,6 +36,7 @@ customDeleteShowDialog({
                     width: ResponsiveWebSite.isMobile(context) ? 80 : 100)),
             GestureDetector(
                 onTap: onTap,
+                
                 child: BlueContainerWidget(
                     title: "Yes",
                     fontSize: 12,

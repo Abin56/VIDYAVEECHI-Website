@@ -73,7 +73,7 @@ class DrawerSelectedPagesSection extends StatelessWidget {
                   .snapshots(),
               builder: (context, classSnap) {
                 if (classSnap.hasData) {
-                  return CircleAvatar(
+                  return classSnap.data?.data()?['counter']==0?const SizedBox(): CircleAvatar(
                     radius: 11,
                     backgroundColor: const Color.fromARGB(255, 37, 211, 102),
                     child: Center(

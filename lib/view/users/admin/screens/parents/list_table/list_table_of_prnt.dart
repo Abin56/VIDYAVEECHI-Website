@@ -128,7 +128,8 @@ final ParentController parentController = Get.put(ParentController());
           ),
           Expanded(
             flex: 2,
-            child: FutureBuilder(
+            child: 
+            FutureBuilder(
               future: FirebaseFirestore.instance
                           .collection('SchoolListCollection')
                           .doc(UserCredentialsController.schoolId)

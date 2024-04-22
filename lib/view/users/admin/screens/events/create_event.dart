@@ -141,39 +141,22 @@ class CreateEvent extends StatelessWidget {
                                                             top: 10,
                                                             left: 10,
                                                             right: 10),
-                                                    child: Column(
-                                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                                      children: [
-                                                        TextFontWidget(text: 'Date *', fontsize: 12.5),
-                                                        GestureDetector(
-                                                          onTap: () =>
-                                                              eventController.selectDate( context),
-                                                          child: Container(
-                                                            height: 40,
-                                                            decoration: BoxDecoration(
-                                                                borderRadius:
-                                                                    BorderRadius .circular(  05),
-                                                                color:
-                                                                    screenContainerbackgroundColor,
-                                                                border: Border.all(
-                                                                    color: cBlack  .withOpacity(0.4))),
-                                                            width: double.infinity,
-                                                            child: Padding(
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                      .all(8.0),
-                                                              child: Obx(() => TextFontWidget(
-                                                                  text: eventController .eventdateController .value ==   ''
-                                                                      ? 'DD/MM/YYYY *'
-                                                                      : eventController
-                                                                          .eventdateController
-                                                                          .value,
-                                                                  fontsize: 12.5)),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
+                                                    child:TextFormFiledWithoutColorEight(
+                                                      onTap: () {
+                                                        eventController.selectDate(context, eventController
+                                                          .eventdateController);
+                                                      },
+                                                      width: ResponsiveWebSite
+                                                              .isMobile(context)
+                                                          ? double.infinity
+                                                          : 500,
+                                                      validator:
+                                                          checkFieldEmpty,
+                                                      controller: eventController
+                                                          .eventdateController,
+                                                      title: 'Date',
+                                                      hintText: 'Date',
+                                                    ), 
                                                   ), ////////////////////////////////////////////////////////1
                                                   Padding(
                                                     padding:

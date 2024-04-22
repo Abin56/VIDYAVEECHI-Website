@@ -37,7 +37,7 @@ class AllClassListView extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                       SizedBox(
+                      const SizedBox(
                         height: 40,
                         width: double.infinity,
                         child: TextFontWidget(
@@ -63,8 +63,8 @@ class AllClassListView extends StatelessWidget {
                                 colorindex: 0,
                                 height: 40,
                                 width: 180,
-                                child: Center(
-                                  child: TextFontWidget(
+                                child: const Center(
+                                  child: TextFontWidgetRouter(
                                     text: 'Create / EDIT',
                                     fontsize: 14,
                                     fontWeight: FontWeight.bold,
@@ -107,6 +107,13 @@ class AllClassListView extends StatelessWidget {
                               Expanded(
                                   flex: 2,
                                   child: CatrgoryTableHeaderWidget(
+                                      headerTitle: 'Total Working Days')),
+                              SizedBox(
+                                width: 01,
+                              ),
+                              Expanded(
+                                  flex: 2,
+                                  child: CatrgoryTableHeaderWidget(
                                       headerTitle: 'Total Students')),
                               SizedBox(
                                 width: 01,
@@ -134,7 +141,7 @@ class AllClassListView extends StatelessWidget {
                               builder: (context, snaps) {
                                 if (snaps.hasData) {
                                   if (snaps.data!.docs.isEmpty) {
-                                    return  Center(
+                                    return const Center(
                                       child: TextFontWidget(
                                           text:
                                               "No class found add new classes",

@@ -51,7 +51,7 @@ class AllStudentListContainer extends StatelessWidget {
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  TextFontWidget(
+                                  const TextFontWidget(
                                     text: 'All Student List',
                                     fontsize: 18,
                                     fontWeight: FontWeight.bold,
@@ -66,7 +66,7 @@ class AllStudentListContainer extends StatelessWidget {
                                           borderRadius:
                                               BorderRadius.circular(10),
                                           color: Colors.grey.withOpacity(0.2)),
-                                      child: Row(
+                                      child: const Row(
                                         children: [
                                           Padding(
                                             padding: EdgeInsets.all(8.0),
@@ -92,7 +92,7 @@ class AllStudentListContainer extends StatelessWidget {
                                                 BorderRadius.circular(10),
                                             color:
                                                 Colors.grey.withOpacity(0.2)),
-                                        child:  Row(
+                                        child: const Row(
                                           children: [
                                             Padding(
                                               padding: EdgeInsets.all(8.0),
@@ -139,7 +139,7 @@ class AllStudentListContainer extends StatelessWidget {
                                                     BorderRadius.circular(10),
                                                 color: Colors.grey
                                                     .withOpacity(0.2)),
-                                            child:  Row(
+                                            child: const Row(
                                               children: [
                                                 Padding(
                                                   padding: EdgeInsets.all(8.0),
@@ -187,8 +187,8 @@ class AllStudentListContainer extends StatelessWidget {
                                       colorindex: 0,
                                       height: 35,
                                       width: 200,
-                                      child:  Center(
-                                        child: TextFontWidget(
+                                      child: const Center(
+                                        child: TextFontWidgetRouter(
                                           text: 'Create New Student',
                                           fontsize: 12,
                                           fontWeight: FontWeight.bold,

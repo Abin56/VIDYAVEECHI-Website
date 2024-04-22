@@ -16,7 +16,7 @@ class ClassController extends GetxController {
   final TextEditingController classNameEditController = TextEditingController();
   final TextEditingController classFeeController = TextEditingController();
   final TextEditingController classFeeEditController = TextEditingController();
-  Rx<String> lastClassStatus ='......'.obs;
+  Rx<String> lastClassStatus = '......'.obs;
   Rx<ButtonState> buttonstate = ButtonState.idle.obs;
   List<StudentModel> allstudentList = [];
   List<ClassModel> allclassList = [];
@@ -41,6 +41,7 @@ class ClassController extends GetxController {
     buttonstate.value = ButtonState.loading;
     try {
       final data = ClassModel(
+          workingDaysCount: 0,
           classfee: int.parse(classFeeController.text.trim()),
           feeeditoption: false,
           editoption: false,
@@ -76,6 +77,7 @@ class ClassController extends GetxController {
   setClassForbatchYear(String className, String docid, int classfee) async {
     try {
       final data = ClassModel(
+          workingDaysCount: 0,
           docid: docid,
           className: className,
           editoption: false,
@@ -312,7 +314,7 @@ class ClassController extends GetxController {
       final list =
           firebase.docs.map((e) => ClassModel.fromMap(e.data())).toList();
       allclassList.add(list[i]);
-           allclassList.sort((a, b) => a.className.compareTo(b.className));
+      allclassList.sort((a, b) => a.className.compareTo(b.className));
     }
     return allclassList;
   }
@@ -386,5 +388,4 @@ class ClassController extends GetxController {
     boysCount = count;
     girlsCount = classData.docs.length - boysCount;
   }
-
 }

@@ -13,38 +13,40 @@ class SelectBatchYearDropDown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: DropdownSearch<String>(
-      validator: (item) {
-        if (item == null) {
-          return "Required field";
-        } else {
-          return null;
-        }
-      },
-
-      // autoValidateMode: AutovalidateMode.always,
-
-      asyncItems: (value) {
-        batchCtrl.allbatchList.clear();
-
-        return batchCtrl.fetchBatchyear();
-      },
-      itemAsString: (value) => value,
-      onChanged: (value) async {
-        if (value != null) {
-          batchCtrl.batchyearValue.value = value;
-        }
-      },
-      popupProps: const PopupProps.menu(
-          searchFieldProps: TextFieldProps(
-              decoration: InputDecoration(
-                  hintText: "Search Batch Year", border: OutlineInputBorder())),
-          showSearchBox: true,
-          searchDelay: Duration(microseconds: 10)),
-      dropdownDecoratorProps: DropDownDecoratorProps(
-          baseStyle: GoogleFonts.poppins(
-              fontSize: 13, color: Colors.black.withOpacity(0.7))),
-    ));
+    return SingleChildScrollView(
+      child: Center(
+          child: DropdownSearch<String>(
+        validator: (item) {
+          if (item == null) {
+            return "Required field";
+          } else {
+            return null;
+          }
+        },
+      
+        // autoValidateMode: AutovalidateMode.always,
+      
+        asyncItems: (value) {
+          batchCtrl.allbatchList.clear();
+      
+          return batchCtrl.fetchBatchyear();
+        },
+        itemAsString: (value) => value,
+        onChanged: (value) async {
+          if (value != null) {
+            batchCtrl.batchyearValue.value = value;
+          }
+        },
+        popupProps: const PopupProps.menu(
+            searchFieldProps: TextFieldProps(
+                decoration: InputDecoration(
+                    hintText: "Search Batch Year", border: OutlineInputBorder())),
+            showSearchBox: true,
+            searchDelay: Duration(microseconds: 10)),
+        dropdownDecoratorProps: DropDownDecoratorProps(
+            baseStyle: GoogleFonts.poppins(
+                fontSize: 13, color: Colors.black.withOpacity(0.7))),
+      )),
+    );
   }
 }

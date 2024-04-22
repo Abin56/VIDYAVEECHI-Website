@@ -136,42 +136,54 @@ class PerStudentAttendenceHistory extends StatelessWidget {
                 ),
               ),
               Expanded(
-                  child: SizedBox(
-                      child: StreamBuilder(
-                          stream: server
-                              .collection('SchoolListCollection')
-                              .doc(UserCredentialsController.schoolId)
-                              .collection(UserCredentialsController.batchId!)
-                              .doc(UserCredentialsController.batchId!)
-                              .collection('classes')
-                              .doc(studentController
-                                  .studentModelData.value!.classId)
-                              .collection("Students")
-                              .doc(studentController
-                                  .studentModelData.value!.docid)
-                              .collection('MyAttendenceList')
-                              .orderBy('date')
-                              .snapshots(),
-                          builder: (context, snapshot) {
-                            return ListView.separated(
-                                itemBuilder: (context, index) {
-                                  final attendanceData =
-                                      snapshot.data!.docs[index];
-                                  return Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 10, right: 10),
-                                    child: AttendenceDataListContainer(
-                                        index: index,
-                                        attendanceData: attendanceData),
-                                  );
-                                },
-                                separatorBuilder: (context, index) {
-                                  return const SizedBox(
-                                    height: 02,
-                                  );
-                                },
-                                itemCount: snapshot.data!.docs.length);
-                          })))
+                child: SizedBox(
+                  child: StreamBuilder(
+                    stream: server
+                        .collection('SchoolListCollection')
+                        .doc(UserCredentialsController.schoolId)
+                        .collection(UserCredentialsController.batchId!)
+                        .doc(UserCredentialsController.batchId!)
+                        .collection('classes')
+                        .doc(studentController.studentModelData.value!.classId)
+                        .collection("Students")
+                        .doc(studentController.studentModelData.value!.docid)
+                        .collection('MyAttendenceList')
+                        .orderBy('date')
+                        .snapshots(),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const Center(child: CircularProgressIndicator());
+                      } else if (snapshot.data!.docs.isEmpty) {
+                        return const Center(
+                          child: Text("No data"),
+                        );
+                      } else if (!snapshot.hasData) {
+                        return const Center(
+                          child: Text("No data"),
+                        );
+                      } else {
+                        return ListView.separated(
+                            itemBuilder: (context, index) {
+                              final attendanceData = snapshot.data!.docs[index];
+                              return Padding(
+                                padding:
+                                    const EdgeInsets.only(left: 10, right: 10),
+                                child: AttendenceDataListContainer(
+                                    index: index,
+                                    attendanceData: attendanceData),
+                              );
+                            },
+                            separatorBuilder: (context, index) {
+                              return const SizedBox(
+                                height: 02,
+                              );
+                            },
+                            itemCount: snapshot.data!.docs.length);
+                      }
+                    },
+                  ),
+                ),
+              ),
             ],
           ),
         )
