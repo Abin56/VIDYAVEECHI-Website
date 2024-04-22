@@ -37,7 +37,7 @@ class LoginHistroyContainer extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                  Padding(
-                  padding: EdgeInsets.only(left: 25, top: 25),
+                  padding: const EdgeInsets.only(left: 25, top: 25),
                   child: SizedBox(
                     height: 30,
                     width: double.infinity,
@@ -198,7 +198,7 @@ class LoginHistroyContainer extends StatelessWidget {
                                 .collection(
                                     Get.find<AdminLoginHistroyController>()
                                         .loginHDayValue
-                                        .value)
+                                        .value).orderBy('loginTime',descending: true)
                                 .snapshots(),
                             builder: (context, snaPS) {
                               if (snaPS.hasData) {

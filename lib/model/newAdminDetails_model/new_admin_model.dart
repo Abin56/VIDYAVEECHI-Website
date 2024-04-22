@@ -2,14 +2,14 @@
 import 'dart:convert';
 
 class AdminDetailsModel {
-  String adminId;
+  String docid;
   String username;
   String email;
   String phoneNumber;
   bool active;
 
   AdminDetailsModel({
-    required this.adminId,
+    required this.docid,
     required this.username,
     required this.email,
     required this.phoneNumber,
@@ -17,14 +17,14 @@ class AdminDetailsModel {
   });
 
   AdminDetailsModel copyWith({
-    String? adminId,
+    String? docid,
     String? username,
     String? email,
     String? phoneNumber,
     bool? active,
   }) {
     return AdminDetailsModel(
-      adminId: adminId ?? this.adminId,
+      docid: docid ?? this.docid,
       username: username ?? this.username,
       email: email ?? this.email,
       phoneNumber: phoneNumber ?? this.phoneNumber,
@@ -34,7 +34,7 @@ class AdminDetailsModel {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'adminId': adminId,
+      'docid': docid,
       'username': username,
       'email': email,
       'phoneNumber': phoneNumber,
@@ -44,10 +44,10 @@ class AdminDetailsModel {
 
   factory AdminDetailsModel.fromMap(Map<String, dynamic> map) {
     return AdminDetailsModel(
-      adminId: map['adminId'] ??'',
-      username: map['username'] ??'',
-      email: map['email'] ??'',
-      phoneNumber: map['phoneNumber'] ??'',
+      docid: map['docid'] as String,
+      username: map['username'] as String,
+      email: map['email'] as String,
+      phoneNumber: map['phoneNumber'] as String,
       active: map['active'] as bool,
     );
   }
@@ -58,7 +58,7 @@ class AdminDetailsModel {
 
   @override
   String toString() {
-    return 'AdminDetailsModel(adminId: $adminId, username: $username, email: $email, phoneNumber: $phoneNumber, active: $active)';
+    return 'AdminDetailsModel(docid: $docid, username: $username, email: $email, phoneNumber: $phoneNumber, active: $active)';
   }
 
   @override
@@ -66,7 +66,7 @@ class AdminDetailsModel {
     if (identical(this, other)) return true;
   
     return 
-      other.adminId == adminId &&
+      other.docid == docid &&
       other.username == username &&
       other.email == email &&
       other.phoneNumber == phoneNumber &&
@@ -75,7 +75,7 @@ class AdminDetailsModel {
 
   @override
   int get hashCode {
-    return adminId.hashCode ^
+    return docid.hashCode ^
       username.hashCode ^
       email.hashCode ^
       phoneNumber.hashCode ^

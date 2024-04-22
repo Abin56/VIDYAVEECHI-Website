@@ -3,26 +3,32 @@ import 'package:get/get.dart';
 import 'package:vidyaveechi_website/controller/admin_details_controller/admin_details_controller.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
+import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
+import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
+import 'package:vidyaveechi_website/view/widgets/custom_showDilog/custom_showdilog.dart';
 import 'package:vidyaveechi_website/view/widgets/data_list_widgets/data_container.dart';
 
 import '../../../../../model/newAdminDetails_model/new_admin_model.dart';
 
 class AdminDataList extends StatelessWidget {
-   final AdminDetailsModel data;
+  final AdminDetailsModel data;
 
   final int index;
   AdminDataList({
-   required this.data,
+    required this.data,
     required this.index,
     super.key,
   });
-  final adminDetailsController adminController = Get.put(adminDetailsController());
+  final adminDetailsController adminController =
+      Get.put(adminDetailsController());
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 45,
       decoration: BoxDecoration(
-        color: index % 2 == 0 ? const Color.fromARGB(255, 246, 246, 246) : Colors.blue[50],
+        color: index % 2 == 0
+            ? const Color.fromARGB(255, 246, 246, 246)
+            : Colors.blue[50],
       ),
       child: Row(
         children: [
@@ -38,7 +44,6 @@ class AdminDataList extends StatelessWidget {
           const SizedBox(
             width: 01,
           ),
-
           Expanded(
             flex: 4,
             child: Row(
@@ -79,7 +84,7 @@ class AdminDataList extends StatelessWidget {
                     ),
                   ),
                 ),
-                 Expanded(
+                Expanded(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextFontWidget(
@@ -91,7 +96,7 @@ class AdminDataList extends StatelessWidget {
                 ),
               ],
             ),
-          ),  
+          ),
           const SizedBox(
             width: 01,
           ),
@@ -107,7 +112,7 @@ class AdminDataList extends StatelessWidget {
                     ),
                   ),
                 ),
-                 Expanded(
+                Expanded(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextFontWidget(
@@ -120,17 +125,50 @@ class AdminDataList extends StatelessWidget {
               ],
             ),
           ),
-
           const SizedBox(
             width: 01,
           ),
           Expanded(
-            flex: 3,
-            child: Obx(() {
-              final isActive = adminController.active.value;
-              return GestureDetector(
+              flex: 3,
+              child: GestureDetector(
                 onTap: () {
-                  adminController.active.toggle();
+                  data.active == true
+                      ? customShowDilogBox2(
+                          children: [
+                            TextFontWidget(
+                                text: "Do you want deactive this admin now ?",
+                                fontsize: 14)
+                          ],
+                          doyouwantActionButton: true,
+                          context: context,
+                          title: "Alert",
+                          actiononTapfuction: () async {
+                            server
+                                .collection('SchoolListCollection')
+                                .doc(UserCredentialsController.schoolId)
+                                .collection('Admins')
+                                .doc(data.docid)
+                                .update({"active": false}).then((value) => Navigator.pop(context));
+                          },
+                        )
+                      : customShowDilogBox2(
+                          children: [
+                              TextFontWidget(
+                                  text: "Do you want active this admin now ?",
+                                  fontsize: 14)
+                            ],
+                          doyouwantActionButton: true,
+                          context: context,
+                          title: "Alert",
+                          actiononTapfuction: () async {
+                                      server
+                                .collection('SchoolListCollection')
+                                .doc(UserCredentialsController.schoolId)
+                                .collection('Admins')
+                                .doc(data.docid)
+                                .update({"active": true}).then((value) => Navigator.pop(context));
+                            
+                          });
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -138,22 +176,22 @@ class AdminDataList extends StatelessWidget {
                     SizedBox(
                       width: 15,
                       child: Image.asset(
-                         data.active==true ? 'webassets/png/active.png' : 'webassets/png/shape.png',
+                        data.active == true
+                            ? 'webassets/png/active.png'
+                            : 'webassets/png/shape.png',
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TextFontWidget(
-                        text: data.active==true ? "Active" : "Deactive",
+                        text: data.active == true ? "Active" : "Deactive",
                         fontsize: 12,
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
                   ],
                 ),
-              );
-            }),
-          ),
+              )),
         ],
       ),
     );
