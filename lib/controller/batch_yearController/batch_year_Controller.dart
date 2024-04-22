@@ -14,6 +14,8 @@ import '../../view/constant/const.dart';
 class BatchYearController extends GetxController {
     TextEditingController frombatchController = TextEditingController();
   TextEditingController tobatchController = TextEditingController();
+ final formKey = GlobalKey<FormState>();
+
   List<String> allbatchList = [];
   RxString batchyearValue = ''.obs;
   Future<List<String>> fetchBatchyear() async {

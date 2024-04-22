@@ -127,7 +127,7 @@ List<Widget> pages = [
    AllTeachersAttendance(),
 
   AllExamNotificationListView(),
-  const StudentExamResult(),
+ // const StudentExamResult(),
 
   NoticeEditRemove(),
 

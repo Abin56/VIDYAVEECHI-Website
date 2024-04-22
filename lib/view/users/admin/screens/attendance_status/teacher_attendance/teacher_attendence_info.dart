@@ -168,8 +168,7 @@ class TeacherAttendenceHistoryInfo extends StatelessWidget {
                                   height: 480,
                                   color: cWhite,
                           
-                                  child:TeacherAttendanceDataList(
-                                  )
+                                  child:TeacherAttendanceDataList()
                                 ),
                               )
                             ],
