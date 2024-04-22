@@ -191,3 +191,16 @@ showDialogWidget(
     },
   );
 }
+
+String timeConvert(DateTime date) {
+  try {
+    String formattedTime = DateFormat('hh:mm:a').format(date);
+    return formattedTime;
+  } catch (e) {
+    // Handle any potential errors
+    if (kDebugMode) {
+      print('Error converting time: $e');
+    }
+  }
+  return '';
+}

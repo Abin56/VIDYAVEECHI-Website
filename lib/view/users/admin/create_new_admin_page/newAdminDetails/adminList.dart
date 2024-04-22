@@ -5,12 +5,14 @@ import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 import 'package:vidyaveechi_website/view/widgets/data_list_widgets/data_container.dart';
 
+import '../../../../../model/newAdminDetails_model/new_admin_model.dart';
+
 class AdminDataList extends StatelessWidget {
-  // final AdminDetailsModel data;
+   final AdminDetailsModel data;
 
   final int index;
   AdminDataList({
-    // required this.data,
+   required this.data,
     required this.index,
     super.key,
   });
@@ -49,11 +51,11 @@ class AdminDataList extends StatelessWidget {
                     ),
                   ),
                 ),
-                const Expanded(
+                Expanded(
                   child: Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: TextFontWidget(
-                      text: '  Admin',
+                      text: data.username,
                       fontsize: 12,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -77,11 +79,11 @@ class AdminDataList extends StatelessWidget {
                     ),
                   ),
                 ),
-                const Expanded(
+                 Expanded(
                   child: Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: TextFontWidget(
-                      text: "  Admin@gmail.com",
+                      text: data.email,
                       fontsize: 12,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -105,11 +107,11 @@ class AdminDataList extends StatelessWidget {
                     ),
                   ),
                 ),
-                const Expanded(
+                 Expanded(
                   child: Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: TextFontWidget(
-                      text: " 987654321",
+                      text: data.phoneNumber,
                       fontsize: 12,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -136,13 +138,13 @@ class AdminDataList extends StatelessWidget {
                     SizedBox(
                       width: 15,
                       child: Image.asset(
-                        isActive ? 'webassets/png/active.png' : 'webassets/png/turnofficon.png',
+                         data.active==true ? 'webassets/png/active.png' : 'webassets/png/shape.png',
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TextFontWidget(
-                        text: isActive ? "Active" : "Deactive",
+                        text: data.active==true ? "Active" : "Deactive",
                         fontsize: 12,
                         overflow: TextOverflow.ellipsis,
                       ),
