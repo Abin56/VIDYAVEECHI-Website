@@ -8,7 +8,9 @@ import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
 import 'package:vidyaveechi_website/view/fonts/google_poppins_widget.dart';
 import 'package:vidyaveechi_website/view/widgets/textformFiledContainer/textformFiledContainer.dart';
 
-addFunctionGenernalInstruction(BuildContext context,) {
+addFunctionGenernalInstruction(
+  BuildContext context,
+) {
   final GeneralInsructionController generalInsructionController =
       Get.put(GeneralInsructionController());
   aweSideSheet(
@@ -22,11 +24,11 @@ addFunctionGenernalInstruction(BuildContext context,) {
             SizedBox(
               height: 550,
               child: Container(
-                margin: const EdgeInsets.only(top: 10),
-                child: 
-                // Obx(() {
-                //   return 
-                  Column(
+                  margin: const EdgeInsets.only(top: 10),
+                  child:
+                      // Obx(() {
+                      //   return
+                      Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -50,12 +52,11 @@ addFunctionGenernalInstruction(BuildContext context,) {
                               padding: const EdgeInsets.only(top: 28, left: 20),
                               child: GestureDetector(
                                   onTap: () {
-                                    if(generalInsructionController.formKey.currentState!.validate()){
-
-                                    generalInsructionController.addGeneralInstructions();
-
-
-
+                                    if (generalInsructionController
+                                        .formKey.currentState!
+                                        .validate()) {
+                                      generalInsructionController
+                                          .addGeneralInstructions();
                                     }
                                   },
                                   child: Padding(
@@ -174,8 +175,8 @@ addFunctionGenernalInstruction(BuildContext context,) {
                       //     )))
                     ],
                   )
-               // }),
-              ),
+                  // }),
+                  ),
             ),
           ],
         ),
