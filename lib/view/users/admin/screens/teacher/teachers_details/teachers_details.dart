@@ -19,7 +19,8 @@ class TeachersDetailsContainer extends StatelessWidget {
     //  final data = teacherController.teacherModelData.value;
     // List<Widget> widgetList = [];
     return DefaultTabController(
-      length: 2,
+      length: 0,
+      //2,
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Container(
