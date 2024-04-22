@@ -33,6 +33,7 @@ class UserAuthController extends GetxController {
       Get.offAll(() => const MainScreen());
     } else {
       if (UserCredentialsController.userRole == 'admin') {
+                log("userlogin ID :  ${FirebaseAuth.instance.currentUser?.uid}");
         log("SchoolID :  ${UserCredentialsController.schoolId}");
         log("BatchID :  ${UserCredentialsController.batchId}");
         log("userrole :  ${UserCredentialsController.userRole}");

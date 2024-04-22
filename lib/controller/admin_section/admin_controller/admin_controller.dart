@@ -58,6 +58,7 @@ class AdminController extends GetxController {
               },
             )
             .then((value) => {
+        
                   nameController.clear(),
                   conformpassController.clear(),
                   passwordController.clear(),

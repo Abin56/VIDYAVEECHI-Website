@@ -1,9 +1,12 @@
 import 'package:dropdown_search/dropdown_search.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vidyaveechi_website/controller/admin_section/admin_controller/admin_controller.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
+import 'package:vidyaveechi_website/view/constant/const.dart';
 import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
+import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
 import 'package:vidyaveechi_website/view/widgets/progess_button/progress_button.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 import 'package:vidyaveechi_website/view/widgets/routeSelectedTextContainer/routeSelectedTextContainer.dart';
@@ -122,8 +125,8 @@ class CreateAdmin extends StatelessWidget {
                       labelStyle: TextStyle(
                         fontSize: ResponsiveWebSite.isMobile(context) ? 13 : 15,
                       ),
-                      contentPadding: EdgeInsets.only(top: 5, bottom: 5),
-                      prefixIcon: Icon(
+                      contentPadding: const EdgeInsets.only(top: 5, bottom: 5),
+                      prefixIcon: const Icon(
                         Icons.person_2,
                         size: 20,
                       ))),
@@ -222,11 +225,17 @@ class CreateAdmin extends StatelessWidget {
           ),
         ),
       ), ///////////////////......................12
-      Obx(() => ProgressButtonWidget(
+      Obx(() =>  ProgressButtonWidget(
           function: () async {
-            if (adminController.formKey.currentState!.validate()) {
+            if (UserCredentialsController.schoolId ==
+                FirebaseAuth.instance.currentUser!.uid) {
+                     if (adminController.formKey.currentState!.validate()) {
               adminController.createNewAdmin(context);
             }
+            }else{
+              showToast(msg: "You are not a SuperAdmin");
+            }
+     
           },
           buttonstate: adminController.buttonstate.value,
           text: 'Create Admin')),
