@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vidyaveechi_website/controller/event_controller/event_controller.dart';
 import 'package:vidyaveechi_website/model/event_models/events_model.dart';
+import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/events/events.dart';
 import 'package:vidyaveechi_website/view/widgets/custom_showdialouge/custom_showdialouge.dart';
 
@@ -14,6 +15,7 @@ editFunctionOfEvent(BuildContext context, EventModel data) {
         TextFormFiledBlueContainerWidgetEvent(
           controller: eventController.eventnameController,
             hintText: data.eventName,
+            validator: checkFieldEmpty,
             title: 'Event'),
         TextFormFiledBlueContainerWidgetEvent(
           onTap: () {
@@ -21,24 +23,32 @@ editFunctionOfEvent(BuildContext context, EventModel data) {
           },
           controller: eventController.editeventdateController,
             hintText: data.eventDate,
+            validator: checkFieldEmpty,
             title: 'Date'),
         TextFormFiledBlueContainerWidgetEvent(
           controller: eventController.eventvenueController,
             hintText: data.venue,
+            validator: checkFieldEmpty,
             title: 'Venue'),
         TextFormFiledBlueContainerWidgetEvent(
           controller: eventController.eventdescriptionController,
             hintText: data.eventDescription,
+            validator: checkFieldEmpty,
             title: 'Description'),
         TextFormFiledBlueContainerWidgetEvent(
           controller: eventController.eventsignedByController,
+          validator: checkFieldEmpty,
             hintText: data.signedBy,
             title: 'Signed by')
       ],
       doyouwantActionButton: true,
       actiononTapfuction: () {
-        eventController.updateEvent(data.eventDate,data.eventName,data.eventDescription,data.venue,data.signedBy,
+         if (eventController.formKey.currentState!.validate()) {
+              eventController.updateEvent(data.eventDate,data.eventName,data.eventDescription,data.venue,data.signedBy,
           data.id,context );
+            }
+        // eventController.updateEvent(data.eventDate,data.eventName,data.eventDescription,data.venue,data.signedBy,
+        //   data.id,context );
         //      // ignore: unused_local_variable
         //      String edit = snapshot.data!
         //     .docs[index]['eventName'];

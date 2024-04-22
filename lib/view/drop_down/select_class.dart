@@ -18,14 +18,16 @@ class SelectClassDropDown extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
         child: DropdownSearch<ClassModel>(
+
         //  dropdownDecoratorProps: DropDownDecoratorProps(dropdownSearchDecoration: InputDecoration(labelText: 'Select Class')),
       validator: (item) {
         if (item == null) {
-          return "Required field";
+          return "Select Class";
         } else {
           return null;
         }
       },
+
 
       // autoValidateMode: AutovalidateMode.always,
 

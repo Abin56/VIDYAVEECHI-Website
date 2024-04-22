@@ -346,4 +346,6 @@ class TeacherAttendanceList extends StatelessWidget {
           ),
         ));
   }
+  
+  TeachersAttendanceDataList() {}
 }

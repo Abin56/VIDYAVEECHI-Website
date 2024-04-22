@@ -11,7 +11,7 @@ await showMenu(
   position: const RelativeRect.fromLTRB(150, 50, 115, 10),
   items: [
      PopupMenuItem(
-      child: const TextFontWidget(text: "Settings",
+      child: TextFontWidget(text: "Settings",
        fontsize: 14,fontWeight: FontWeight.w500,),
       onTap: () {
         notificationFunction(context);
@@ -36,7 +36,7 @@ notificationFunction( BuildContext context){
             },
             child: const Icon(Icons.arrow_back)),
          // BackButton(),
-          const TextFontWidget(text: "  Attendance Notification", 
+           TextFontWidget(text: "  Attendance Notification", 
           fontsize: 17,fontWeight: FontWeight.bold,)
         ],
       ),
@@ -54,7 +54,7 @@ notificationFunction( BuildContext context){
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                         const TextFontWidget(
+                          TextFontWidget(
                           text: "Attendance Notification Time *", fontsize: 12.5),
                       const SizedBox(
                         height: 05,

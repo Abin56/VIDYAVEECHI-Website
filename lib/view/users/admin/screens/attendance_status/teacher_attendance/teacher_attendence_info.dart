@@ -37,7 +37,7 @@ class TeacherAttendenceHistoryInfo extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Padding(
+             Padding(
               padding: EdgeInsets.only(left: 20, top: 20),
               child: TextFontWidget(
                 text: 'All History Teacher Attendance with Info 📶',
@@ -175,7 +175,7 @@ class TeacherAttendenceHistoryInfo extends StatelessWidget {
                             ],
                           );
                         } else if (snaps.data == null) {
-                          return const Center(
+                          return  Center(
                             child: TextFontWidget(
                                 text: "No recordes found", fontsize: 16),
                           );

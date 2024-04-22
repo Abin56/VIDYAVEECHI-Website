@@ -11,6 +11,7 @@ class GeneralInsructionController extends GetxController {
       TextEditingController timeController =TextEditingController();
     RxList<String> instructionList = <String>[].obs;
     RxBool isLoading = false.obs;
+      final formKey = GlobalKey<FormState>();
 
 
     Future<void> addGeneralInstructions() async{

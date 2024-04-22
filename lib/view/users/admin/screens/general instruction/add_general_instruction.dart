@@ -34,19 +34,29 @@ addFunctionGenernalInstruction(BuildContext context,) {
                         children: [
                           Expanded(
                               flex: 3,
-                              child: TextFormFiledContainerWidget(
-                                  hintText: 'General Instruction',
-                                  title: 'Enter general instruction',
-                                  width: 500,validator: checkFieldEmpty,
-                                  controller: generalInsructionController
-                                      .instructionController)),
+                              child: Form(
+                                key: generalInsructionController.formKey,
+                                child: TextFormFiledContainerWidget(
+                                    hintText: 'General Instruction',
+                                    title: 'Enter general instruction',
+                                    width: 500,
+                                    validator: checkFieldEmpty,
+                                    controller: generalInsructionController
+                                        .instructionController),
+                              )),
                           Expanded(
                             flex: 1,
                             child: Padding(
                               padding: const EdgeInsets.only(top: 28, left: 20),
                               child: GestureDetector(
                                   onTap: () {
+                                    if(generalInsructionController.formKey.currentState!.validate()){
+
                                     generalInsructionController.addGeneralInstructions();
+
+
+
+                                    }
                                   },
                                   child: Padding(
                                     padding: const EdgeInsets.only(right: 10),

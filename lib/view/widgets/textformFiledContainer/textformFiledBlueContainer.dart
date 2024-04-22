@@ -132,7 +132,7 @@ class TextFormFiledBlueContainerWidgetWithOutColor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: ResponsiveWebSite.isMobile(context) ? 75 : 80,
+      height: ResponsiveWebSite.isMobile(context) ? 75 : 95,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -226,7 +226,7 @@ class TextFormFiledWithoutColorEight extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 75,
+      height: 95,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

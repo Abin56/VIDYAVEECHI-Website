@@ -145,7 +145,7 @@ class ManualStudentCreation extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-             TextFontWidget(text: 'Class *', fontsize: 12.5),
+             TextFontWidget(text: 'Select Class *', fontsize: 12.5),
             const SizedBox(
               height: 05,
             ),
