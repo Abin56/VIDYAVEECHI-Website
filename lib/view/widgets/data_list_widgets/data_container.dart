@@ -33,17 +33,19 @@ class DataContainerWidget extends StatelessWidget {
                 ? const Color.fromARGB(255, 246, 246, 246)
                 : Colors.blue[50],
       ),
-      child: Row(
-        mainAxisAlignment: rowMainAccess,
-        children: [
-          Text(
-            headerTitle,
-            style: const TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 12.5,
-                overflow: TextOverflow.ellipsis),
-          ),
-        ],
+      child: SingleChildScrollView(scrollDirection: Axis.horizontal,
+        child: Row(
+          mainAxisAlignment: rowMainAccess,
+          children: [
+            Text(
+              headerTitle,
+              style: const TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 12.5,
+                  overflow: TextOverflow.ellipsis),
+            ),
+          ],
+        ),
       ),
     );
   }

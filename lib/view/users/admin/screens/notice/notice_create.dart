@@ -260,12 +260,8 @@ class CreateNotice extends StatelessWidget {
                                                  Obx(() =>
                                                       ProgressButtonWidget(
                                                           function: () async {
-                                                            if (noticeController
-                                                                .formKey
-                                                                .currentState!
-                                                                .validate()) {
-                                                              noticeController
-                                                                  .createNotice();
+                                                            if (noticeController .formKey .currentState! .validate()) {
+                                                              noticeController.createNotice();
                                                               print("object");
                                                             }
                                                           },

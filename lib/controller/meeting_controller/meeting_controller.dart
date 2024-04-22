@@ -14,16 +14,17 @@ class MeetingController extends GetxController{
   TextEditingController topicController = TextEditingController();
  // Rx<String> dateController =  ''.obs;
   TextEditingController timeController = TextEditingController();
-   TextEditingController dateController = TextEditingController();
-     TextEditingController editdateController = TextEditingController();
+  TextEditingController dateController = TextEditingController();
+  TextEditingController editdateController = TextEditingController();
   TextEditingController categoryController = TextEditingController();
   TextEditingController memberController = TextEditingController();
   TextEditingController specialguestController = TextEditingController();
   TextEditingController venueController = TextEditingController();
     Rx<ButtonState> buttonstate = ButtonState.idle.obs;
     RxBool ontapMeeting = false.obs;
-   final Rxn<DateTime> dateSelected = Rxn<DateTime>();
+  // final Rxn<DateTime> dateSelected = Rxn<DateTime>();
        final formKey = GlobalKey<FormState>();
+
 
   Future<void> createMeeting() async {
     final uuid =const  Uuid().v1();
@@ -58,7 +59,8 @@ class MeetingController extends GetxController{
         venueController.clear();
         buttonstate.value = ButtonState.success;
 
-print(meetingDetails.meetingId);
+        print(meetingDetails.meetingId);
+
         showToast(msg: "Meeting Created Successfully");
         await Future.delayed(const Duration(seconds: 2)).then((vazlue) {
           buttonstate.value = ButtonState.idle;

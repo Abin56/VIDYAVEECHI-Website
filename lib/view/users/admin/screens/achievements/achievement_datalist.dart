@@ -93,11 +93,12 @@ class AchievementDataList extends StatelessWidget {
                   editFunctionOfAchievements(context, data);
                   // editFunctionOfNotice(context, data);
                 },
-                child: const Icon(
-                  Icons.edit,
-                  size: 15,
-                  color: cgreen,
-                ),
+                child:DataContainerWidget(
+                    rowMainAccess: MainAxisAlignment.center,
+                    color: cWhite,
+                    // width: 150,
+                    index: index,
+                    headerTitle: 'Update🖋️'),
               ),
             ),
           ), //........................................... edit
@@ -111,11 +112,12 @@ class AchievementDataList extends StatelessWidget {
                 onTap: () {
                   deleteFunctionOfAchievement(context, data);
                 },
-                child: const Icon(
-                  Icons.delete,
-                  size: 15,
-                  color: cred,
-                ),
+                child: DataContainerWidget(
+                    rowMainAccess: MainAxisAlignment.center,
+                    color: cWhite,
+                    // width: 150,
+                    index: index,
+                    headerTitle: ' Remove 🗑️'),
               ),
             ),
           ), //........................................... delete

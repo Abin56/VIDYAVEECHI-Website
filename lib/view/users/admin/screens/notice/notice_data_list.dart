@@ -122,7 +122,7 @@ class AllNoticeDataList extends StatelessWidget {
                       noticeController.deleteNotice(
                         data.noticeId,
                         context,
-                      );
+                      );Navigator.pop(context );
                     },
                   );
                 },

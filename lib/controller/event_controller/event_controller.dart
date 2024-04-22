@@ -18,6 +18,12 @@ class EventController extends GetxController {
   TextEditingController eventdescriptionController = TextEditingController();
   TextEditingController eventvenueController = TextEditingController();
   TextEditingController eventsignedByController = TextEditingController();
+
+   TextEditingController editnameController = TextEditingController();
+  TextEditingController editdateController = TextEditingController();
+  TextEditingController editdescriptionController = TextEditingController();
+  TextEditingController editvenueController = TextEditingController();
+  TextEditingController editsignedByController = TextEditingController();
   final formKey = GlobalKey<FormState>();
    final Rxn<DateTime> dateSelected = Rxn<DateTime>();
   //  final Rx<String> eventdateController = ''.obs;
@@ -84,10 +90,10 @@ class EventController extends GetxController {
         .doc(id)
         .update({
           'eventDate': eventController.editeventdateController.text,
-          'eventName': eventController.eventnameController.text,
-          'eventDescription': eventController.eventdescriptionController.text,
-          'venue': eventController.eventvenueController.text,
-          'signedBy': eventController.eventsignedByController.text,
+          'eventName': eventController.editnameController.text,
+          'eventDescription': eventController.editdescriptionController.text,
+          'venue': eventController.editvenueController.text,
+          'signedBy': eventController.editsignedByController.text,
         })
         .then((value) => Navigator.pop(context ))
         .then((value) => showToast(msg: 'Event Updated!'));

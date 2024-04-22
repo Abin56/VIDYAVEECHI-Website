@@ -47,7 +47,7 @@ class NoticeController extends GetxController {
       publishedDate: noticePublishedDateController.text, 
       heading: noticeHeadingController.text, 
       dateofoccation: noticeDateofoccationController.text, 
-      venue: noticevenueController.text, 
+      venue: noticevenueController.text,  
       chiefGuest: noticeGuestController.text, 
       dateOfSubmission: noticeDateofSubmissionController.text, 
       signedBy: noticeSignedByController.text, 
