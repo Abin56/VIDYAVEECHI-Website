@@ -104,10 +104,10 @@ class NoticeController extends GetxController {
         'subject':  noticeSubjectController.text,
         'publishedDate': editnoticePublishedDateController.text,
         'heading': noticeHeadingController.text,
-        'dateofoccation': editnoticeDateofoccationController,
+        'dateofoccation': editnoticeDateofoccationController.text,
         'venue': noticevenueController.text,
         'chiefGuest': noticeGuestController.text,
-        'dateOfSubmission': editnoticeDateofSubmissionController,
+        'dateOfSubmission': editnoticeDateofSubmissionController.text,
         'signedBy': noticeSignedByController.text,
         })
         .then((value) => Navigator.pop(context ))
