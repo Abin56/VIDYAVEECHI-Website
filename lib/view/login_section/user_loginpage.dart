@@ -6,7 +6,6 @@ import 'package:vidyaveechi_website/controller/user_login_Controller/user_login_
 import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/fonts/google_poppins_widget.dart';
 import 'package:vidyaveechi_website/view/users/parent_panel/parent_home.dart';
-import 'package:vidyaveechi_website/view/users/student/student_home.dart';
 import 'package:vidyaveechi_website/view/users/teacher/teacher_home.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 
@@ -83,7 +82,9 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
                   children: <Widget>[
                     GestureDetector(
                       onTap: () {
-                        Get.offAll(() => const StudentHomeScreen());
+                   loginController.askUserDetailsBottomSheet(context);
+
+                        // Get.offAll(() => const StudentHomeScreen());
                       },
                       child: SizedBox(
                         height: ResponsiveWebSite.isMobile(context) ? 100 : 200,

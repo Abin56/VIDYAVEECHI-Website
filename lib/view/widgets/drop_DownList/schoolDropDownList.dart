@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
 
 var schoolListValue;
 
@@ -64,6 +65,7 @@ class _GetSchoolListDropDownButtonState
                     .toList()
                     .first;
                 log(categoryIDObject["schoolName"]);
+                UserCredentialsController.schoolId = categoryIDObject['docid'];
 
                 setState(
                   () {
