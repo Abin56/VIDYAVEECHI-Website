@@ -8,13 +8,14 @@ import 'package:intl/intl.dart';
 import 'package:vidyaveechi_website/view/splash_screen/splash_screen.dart';
 import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
+import 'package:vidyaveechi_website/view/widgets/drop_DownList/schoolDropDownList.dart';
 
 import '../../view/constant/const.dart';
 
 class BatchYearController extends GetxController {
-    TextEditingController frombatchController = TextEditingController();
+  TextEditingController frombatchController = TextEditingController();
   TextEditingController tobatchController = TextEditingController();
- final formKey = GlobalKey<FormState>();
+  final formKey = GlobalKey<FormState>();
 
   List<String> allbatchList = [];
   RxString batchyearValue = ''.obs;
@@ -39,6 +40,7 @@ class BatchYearController extends GetxController {
       Get.offAll(() => SplashScreen());
     });
   }
+
   Future<void> addBatchyear() async {
     // final userDetails =CreateNewAdninModel(docid: user!.uid, name: adminUserNameController.text, gender: gender.value, password: passwordController.text, email: emailController.text, phoneNumber: phoneNumberController.text);
     // setState(() {
@@ -88,18 +90,32 @@ class BatchYearController extends GetxController {
     );
   }
 
+  Future<void> selectDate(
+      BuildContext context, TextEditingController controller) async {
+    final DateTime? pickedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2101),
+    );
 
-   Future<void> selectDate(BuildContext context, TextEditingController controller) async {
-  final DateTime? pickedDate = await showDatePicker(
-    context: context,
-    initialDate: DateTime.now(),
-    firstDate: DateTime(2000),
-    lastDate: DateTime(2101),
-  );
-
-  if (pickedDate != null) {
-    String formattedDate = DateFormat('yyyy-MMMM').format(pickedDate);
-    controller.text = formattedDate;
+    if (pickedDate != null) {
+      String formattedDate = DateFormat('yyyy-MMMM').format(pickedDate);
+      controller.text = formattedDate;
+    }
   }
-}
+
+  Future<List<String>> userloginfetchBatchyear() async {
+    final firebase = await server
+        .collection('SchoolListCollection')
+        .doc(schoolListValue['docid'])
+        .collection("BatchYear")
+        .get();
+
+    for (var i = 0; i < firebase.docs.length; i++) {
+      final list = firebase.docs[i].data()['id'];
+      allbatchList.add(list);
+    }
+    return allbatchList;
+  }
 }

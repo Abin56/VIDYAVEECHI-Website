@@ -4,12 +4,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:progress_state_button/progress_button.dart';
+import 'package:vidyaveechi_website/controller/batch_yearController/batch_year_Controller.dart';
 import 'package:vidyaveechi_website/model/class_model/class_model.dart';
 import 'package:vidyaveechi_website/model/student_model/student_model.dart';
 import 'package:vidyaveechi_website/view/constant/const.dart';
 import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
 import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
+import 'package:vidyaveechi_website/view/widgets/drop_DownList/schoolDropDownList.dart';
 
 class ClassController extends GetxController {
   final TextEditingController classNameController = TextEditingController();
@@ -318,7 +320,23 @@ class ClassController extends GetxController {
     }
     return allclassList;
   }
+  Future<List<ClassModel>> userloginfetchClass() async {
+    final firebase = await server
+        .collection('SchoolListCollection')
+        .doc(schoolListValue['docid'])
+        .collection(Get.find<BatchYearController>().batchyearValue.value )
+        .doc(Get.find<BatchYearController>().batchyearValue.value )
+        .collection('classes')
+        .get();
 
+    for (var i = 0; i < firebase.docs.length; i++) {
+      final list =
+          firebase.docs.map((e) => ClassModel.fromMap(e.data())).toList();
+      allclassList.add(list[i]);
+      allclassList.sort((a, b) => a.className.compareTo(b.className));
+    }
+    return allclassList;
+  }
   Future<List<StudentModel>> fetchAllStudents() async {
     final firebase = await server
         .collection('SchoolListCollection')
