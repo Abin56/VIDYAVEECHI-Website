@@ -2,12 +2,14 @@ import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vidyaveechi_website/controller/user_login_Controller/user_login_controller.dart';
 import 'package:vidyaveechi_website/model/parent_model/parent_model.dart';
 import 'package:vidyaveechi_website/model/student_model/student_model.dart';
 import 'package:vidyaveechi_website/model/teacher_model/teacher_model.dart';
 import 'package:vidyaveechi_website/view/constant/const.dart';
+import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 import 'package:vidyaveechi_website/view/home/main_screen.dart';
 import 'package:vidyaveechi_website/view/splash_screen/splash_screen.dart';
 import 'package:vidyaveechi_website/view/users/admin/admin_home.dart';
@@ -15,8 +17,6 @@ import 'package:vidyaveechi_website/view/users/parent_panel/parent_home.dart';
 import 'package:vidyaveechi_website/view/users/student/student_home.dart';
 import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
-
-import '../../view/users/teacher/teacher_home.dart';
 
 class UserAuthController extends GetxController {
   RxBool loginAuthState = false.obs;
@@ -154,18 +154,19 @@ Future<void> checkTeacher(FirebaseAuth auth) async {
   final teacherModel = await server
       .collection('SchoolListCollection')
       .doc(UserCredentialsController.schoolId)
-      .collection(UserCredentialsController.batchId ?? "")
-      .doc(UserCredentialsController.batchId)
-      .collection('classes')
-      .doc(UserCredentialsController.classId)
-      .collection('teachers')
+
+      .collection('Teachers')
       .doc(auth.currentUser?.uid)
       .get();
 
   if (teacherModel.data() != null) {
     UserCredentialsController.teacherModel =
         TeacherModel.fromMap(teacherModel.data()!);
-    Get.offAll(() => const TeachersHomeScreen());
+    Get.offAll(() =>  Scaffold(
+      body: SafeArea(child: Center(
+        child: TextFontWidget(text: "under Maintenance.........", fontsize: 20),
+      )),
+    ));
     // Get.off(() => const StudentsMainHomeScreen());
   } else {
     showToast(msg: "Please login again");
