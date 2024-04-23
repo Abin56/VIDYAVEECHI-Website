@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:vidyaveechi_website/model/event_models/events_model.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
-import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/events/functions/all_list.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/events/functions/delete.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/events/functions/edit.dart';
@@ -75,14 +74,14 @@ class AllEventsDataList extends StatelessWidget {
           //     )
           child:     GestureDetector(
              onTap: () {
-                                  allEventListFinction(context, data);
+                         allEventListFinction(context, data);
                                 },
             child: DataContainerWidget(
                     rowMainAccess: MainAxisAlignment.center,
                     color: cWhite,
                     // width: 150,
                     index: index,
-                    headerTitle: 'Event Description'),
+                    headerTitle: data.eventDescription),
           ),
               ), // ...................................Event Description
           const SizedBox(

@@ -4,6 +4,7 @@ import 'package:vidyaveechi_website/controller/notice_controller/notice_controll
 import 'package:vidyaveechi_website/model/notice_model/notice_model.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/events/events.dart';
 import 'package:vidyaveechi_website/view/widgets/custom_showdialouge/custom_showdialouge.dart';
+import 'package:vidyaveechi_website/view/widgets/textformFiledContainer/textformFiledBlueContainer.dart';
 
 editFunctionOfNotice(BuildContext context, NoticeModel data) {
   final NoticeController noticeController = Get.put(NoticeController());
@@ -11,37 +12,37 @@ editFunctionOfNotice(BuildContext context, NoticeModel data) {
       context: context,
       title: 'Edit',
       children: [
-        TextFormFiledBlueContainerWidgetEvent(
+        TextFormFiledHeightnoColor(
           controller: noticeController.noticeHeadingController,
             hintText: data.heading, title: 'Heading'),
-        TextFormFiledBlueContainerWidgetEvent(
+        TextFormFiledHeightnoColor(
           onTap: () {
             noticeController.selectDate(context, noticeController.editnoticePublishedDateController,);
           },
           controller: noticeController.editnoticePublishedDateController,
             hintText: data.publishedDate, title: 'Published Date'),
-        TextFormFiledBlueContainerWidgetEvent(
+        TextFormFiledHeightnoColor(
            controller: noticeController.noticeSubjectController,
             hintText: data.subject, title: 'Subject'),
-        TextFormFiledBlueContainerWidgetEvent(
+        TextFormFiledHeightnoColor(
            onTap: () {
             noticeController.selectDate(context, noticeController.editnoticeDateofoccationController,);
           },
           controller: noticeController.editnoticeDateofoccationController,
             hintText: data.dateofoccation, title: 'Date Of Occation'),
-        TextFormFiledBlueContainerWidgetEvent(
+        TextFormFiledHeightnoColor(
            controller: noticeController.noticevenueController,
             hintText: data.venue, title: 'Venue'),
-        TextFormFiledBlueContainerWidgetEvent(
+        TextFormFiledHeightnoColor(
            onTap: () {
             noticeController.selectDate(context, noticeController.editnoticeDateofSubmissionController,);
           },
           controller: noticeController.editnoticeDateofSubmissionController,
             hintText: data.dateOfSubmission, title: 'Date Of Submission'),
-        TextFormFiledBlueContainerWidgetEvent(
+        TextFormFiledHeightnoColor(
            controller: noticeController.noticeGuestController,
             hintText: data.chiefGuest, title: 'Cheif guest'),
-        TextFormFiledBlueContainerWidgetEvent(
+        TextFormFiledHeightnoColor(
            controller: noticeController.noticeSignedByController,
             hintText: data.signedBy, title: 'Signed by'),
       ],
