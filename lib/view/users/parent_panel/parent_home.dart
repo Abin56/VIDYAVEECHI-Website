@@ -24,7 +24,7 @@ class ParentHomeScreen extends StatefulWidget {
 
 class _ParentHomeScreenState extends State<ParentHomeScreen> {
   int selectedIndex = 0;
-  @override 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: cWhite,
@@ -40,15 +40,12 @@ class _ParentHomeScreenState extends State<ParentHomeScreen> {
               color: cWhite,
               child: SingleChildScrollView(
                 child: Padding(
-                  padding: const EdgeInsets.only(
-                    left: 0,bottom: 550
-                  ),
+                  padding: const EdgeInsets.only(left: 0, bottom: 550),
                   child: Column(
-                     crossAxisAlignment: CrossAxisAlignment.start,
-                     
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(0),
+                        padding: const EdgeInsets.only(bottom: 30),
                         child: Row(
                           children: [
                             SizedBox(

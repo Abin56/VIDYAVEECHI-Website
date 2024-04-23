@@ -38,12 +38,12 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
               color: cWhite,
               child: SingleChildScrollView(
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 10, right: 10,bottom: 550),
+                  padding: const EdgeInsets.only(left: 10, right: 10, bottom: 550),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(0),
+                        padding: const EdgeInsets.only(bottom: 30),
                         child: Row(
                           children: [
                             SizedBox(

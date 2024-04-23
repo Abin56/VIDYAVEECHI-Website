@@ -82,6 +82,7 @@ class HomePageDesign extends StatelessWidget {
                   ),
                 )),
           ),
+
           // Positioned(
           //     top: screenSize.width / 5,
           //     right: screenSize.width / 15,
@@ -91,6 +92,7 @@ class HomePageDesign extends StatelessWidget {
           //           fontSize: screenSize.width / 40,
           //           fontWeight: FontWeight.w700),
           //     )),
+
           Positioned(
             top: screenSize.width / 60,
             right: screenSize.width / 50,
