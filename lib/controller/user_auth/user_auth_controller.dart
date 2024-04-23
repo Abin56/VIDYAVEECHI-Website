@@ -4,14 +4,19 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:vidyaveechi_website/controller/user_login_Controller/user_login_controller.dart';
+import 'package:vidyaveechi_website/model/parent_model/parent_model.dart';
 import 'package:vidyaveechi_website/model/student_model/student_model.dart';
+import 'package:vidyaveechi_website/model/teacher_model/teacher_model.dart';
 import 'package:vidyaveechi_website/view/constant/const.dart';
 import 'package:vidyaveechi_website/view/home/main_screen.dart';
 import 'package:vidyaveechi_website/view/splash_screen/splash_screen.dart';
 import 'package:vidyaveechi_website/view/users/admin/admin_home.dart';
+import 'package:vidyaveechi_website/view/users/parent_panel/parent_home.dart';
 import 'package:vidyaveechi_website/view/users/student/student_home.dart';
 import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
+
+import '../../view/users/teacher/teacher_home.dart';
 
 class UserAuthController extends GetxController {
   RxBool loginAuthState = false.obs;
@@ -56,7 +61,11 @@ class UserAuthController extends GetxController {
       } else if (UserCredentialsController.userRole == 'student') {
         await checkStudent(auth);
       } else if (UserCredentialsController.userRole == 'parent') {
-      } else {
+        await checkParent(auth);
+      } else if (UserCredentialsController.userRole == 'teacher') {
+        await checkTeacher(auth);
+      } 
+      else {
         if (kDebugMode) {
           print("shared pref Auth null");
         }
@@ -98,6 +107,65 @@ Future<void> checkStudent(FirebaseAuth auth) async {
     UserCredentialsController.studentModel =
         StudentModel.fromMap(studentData.data()!);
     Get.offAll(() => const StudentHomeScreen());
+    // Get.off(() => const StudentsMainHomeScreen());
+  } else {
+    showToast(msg: "Please login again");
+    Get.offAll(() => const MainScreen());
+    // Get.off(() => const DujoLoginScren());
+  }
+}
+
+//////////////////////////////////////////////////////////////////////////////
+Future<void> checkParent(FirebaseAuth auth) async {
+  log("userlogin ID :  ${FirebaseAuth.instance.currentUser?.uid}");
+  log("SchoolID :  ${UserCredentialsController.schoolId}");
+  log("BatchID :  ${UserCredentialsController.batchId}");
+  log("userrole :  ${UserCredentialsController.userRole}");
+  log("Class iD :  ${UserCredentialsController.classId}");
+  final parentData = await server
+      .collection('SchoolListCollection')
+      .doc(UserCredentialsController.schoolId)
+      .collection(UserCredentialsController.batchId ?? "")
+      .doc(UserCredentialsController.batchId)
+      .collection('classes')
+      .doc(UserCredentialsController.classId)
+      .collection('Parents')
+      .doc(auth.currentUser?.uid)
+      .get();
+
+  if (parentData.data() != null) {
+    UserCredentialsController.parentModel =
+        ParentModel.fromMap(parentData.data()!);
+    Get.offAll(() => const ParentHomeScreen());
+    // Get.off(() => const StudentsMainHomeScreen());
+  } else {
+    showToast(msg: "Please login again");
+    Get.offAll(() => const MainScreen());
+    // Get.off(() => const DujoLoginScren());
+  }
+}
+////////////////////////////////////////////////////////////////////////
+Future<void> checkTeacher(FirebaseAuth auth) async {
+  log("userlogin ID :  ${FirebaseAuth.instance.currentUser?.uid}");
+  log("SchoolID :  ${UserCredentialsController.schoolId}");
+  log("BatchID :  ${UserCredentialsController.batchId}");
+  log("userrole :  ${UserCredentialsController.userRole}");
+  log("Class iD :  ${UserCredentialsController.classId}");
+  final teacherModel = await server
+      .collection('SchoolListCollection')
+      .doc(UserCredentialsController.schoolId)
+      .collection(UserCredentialsController.batchId ?? "")
+      .doc(UserCredentialsController.batchId)
+      .collection('classes')
+      .doc(UserCredentialsController.classId)
+      .collection('teachers')
+      .doc(auth.currentUser?.uid)
+      .get();
+
+  if (teacherModel.data() != null) {
+    UserCredentialsController.teacherModel =
+        TeacherModel.fromMap(teacherModel.data()!);
+    Get.offAll(() => const TeachersHomeScreen());
     // Get.off(() => const StudentsMainHomeScreen());
   } else {
     showToast(msg: "Please login again");

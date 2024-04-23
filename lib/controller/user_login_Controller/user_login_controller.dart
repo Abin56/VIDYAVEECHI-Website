@@ -8,7 +8,9 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:vidyaveechi_website/controller/batch_yearController/batch_year_Controller.dart';
 import 'package:vidyaveechi_website/controller/class_controller/class_controller.dart';
+import 'package:vidyaveechi_website/model/parent_model/parent_model.dart';
 import 'package:vidyaveechi_website/model/student_model/student_model.dart';
+import 'package:vidyaveechi_website/model/teacher_model/teacher_model.dart';
 import 'package:vidyaveechi_website/view/constant/const.dart';
 import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
 import 'package:vidyaveechi_website/view/drop_down/user_login/select_class.dart';
@@ -277,34 +279,210 @@ class UserLoginController extends GetxController {
     }
   }
 
-  Future<void> parentLoginController() async {
-    //....... ........................................teacher  Login Function
 
-    try {
-      // userLoginFunction().then((value) async {
-      //   server
-      //       .collection('SchoolListCollection')
-      //       .doc(schoolID)
-      //       .collection('Teachers')
-      //       .where('docid', isEqualTo: userUID.value);
-      //   if (parentAuth.value == true) {
-      //     showToast(msg: "Teacher Login Success");
 
-      //     teacherAuth.value = false;
-      //     useruserEmailIDController.clear();
-      //     userPasswordController.clear();
-      //     Get.offAll(() => const ParentHomePage());
-      //   } else {
-      //     showToast(msg: "School Login failed !!");
-      //   }
-      // });
+
+
+
+
+    askUserDetailsParentBottomSheet(BuildContext context) {
+    return customShowDilogBox(
+        context: context,
+        title: "Slelct the options",
+        children: [
+          SizedBox(
+            height: 150,
+            width: 400,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TextFontWidget(text: 'Select Batch year *', fontsize: 12),
+                SizedBox(
+                  height: 45,
+                  child: SelectBatchYearDropDownLogin(),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextFontWidget(text: 'Select Class *', fontsize: 12),
+                SizedBox(
+                  height: 45,
+                  child: SelectClassDropDownLogin(),
+                ),
+              ],
+            ),
+          )
+        ],
+        actiononTapfuction: () async {
+          await parentLoginController(context);
+        },
+        doyouwantActionButton: true);
+  }
+
+  Future<void> parentLoginController(BuildContext context) async {
+    //....... ........................................parent  Login Function
+
+     try {
+      await FirebaseAuth.instance
+          .signInWithEmailAndPassword(
+        email: userEmailIDController.text.trim(),
+        password: userPasswordController.text.trim(),
+      )
+          .then((value) async {
+        final user = await server
+            .collection('SchoolListCollection')
+            .doc(schoolListValue['docid'])
+            .collection(batchCtrl.batchyearValue.value)
+            .doc(batchCtrl.batchyearValue.value)
+            .collection('classes')
+            .doc( classCtrl.classDocID.value)
+            .collection('Parents')
+            .doc(value.user?.uid)
+            .get();
+
+        if (user.data() != null) {
+          UserCredentialsController.parentModel =
+              ParentModel.fromMap(user.data()!);
+        }
+
+        if (UserCredentialsController.parentModel?.userRole == "parent") {
+          await SharedPreferencesHelper.setString(
+              SharedPreferencesHelper.userRoleKey, 'parent');
+                          await SharedPreferencesHelper.setString(
+                SharedPreferencesHelper.schoolIdKey, schoolID!);
+            await SharedPreferencesHelper.setString(
+                SharedPreferencesHelper.schoolNameKey, schoolName!);
+            await SharedPreferencesHelper.setString(
+                    SharedPreferencesHelper.batchIdKey,batchCtrl.batchyearValue.value);
+                            await SharedPreferencesHelper.setString(
+                    SharedPreferencesHelper.classIdKey,classCtrl.classDocID.value);
+          if (context.mounted) {
+            Navigator.pushAndRemoveUntil(context,
+                MaterialPageRoute(builder: (context) {
+              return  SplashScreen();
+            }), (route) => false);
+          }
+          isLoading.value = false;
+        } else {
+          showToast(msg: "You are not a parent");
+          isLoading.value = false;
+        }
+      }).catchError((error) {
+        if (error is FirebaseAuthException) {
+          isLoading.value = false;
+          handleFirebaseError(error);
+        }
+      });
     } catch (e) {
-      log(e.toString());
-      showToast(msg: "School Login failed !!");
+      isLoading.value = false;
+      // showToast(msg: e.toString());
+      showToast(msg: "Sign in failed");
     }
   }
 
+
+
+
+
   //////////////////////////////////
+  
+    askUserDetailsTeacherBottomSheet(BuildContext context) {
+    return customShowDilogBox(
+        context: context,
+        title: "Slelct the options",
+        children: [
+          SizedBox(
+            height: 150,
+            width: 400,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TextFontWidget(text: 'Select Batch year *', fontsize: 12),
+                SizedBox(
+                  height: 45,
+                  child: SelectBatchYearDropDownLogin(),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextFontWidget(text: 'Select Class *', fontsize: 12),
+                SizedBox(
+                  height: 45,
+                  child: SelectClassDropDownLogin(),
+                ),
+              ],
+            ),
+          )
+        ],
+        actiononTapfuction: () async {
+          await parentLoginController(context);
+        },
+        doyouwantActionButton: true);
+  }
+
+  Future<void> teachereLoginController(BuildContext context) async {
+    //....... ........................................techer  Login Function
+
+     try {
+      await FirebaseAuth.instance
+          .signInWithEmailAndPassword(
+        email: userEmailIDController.text.trim(),
+        password: userPasswordController.text.trim(),
+      )
+          .then((value) async {
+        final user = await server
+             .collection('SchoolListCollection')
+            .doc(schoolListValue['docid'])
+            .collection(batchCtrl.batchyearValue.value)
+            .doc(batchCtrl.batchyearValue.value)
+            .collection('classes')
+            .doc( classCtrl.classDocID.value)
+            .collection('teachers')
+            .doc(value.user?.uid)
+            .get();
+
+        if (user.data() != null) {
+          UserCredentialsController.teacherModel =
+              TeacherModel.fromMap(user.data()!);
+
+ 
+        }
+
+        if (UserCredentialsController.teacherModel?.userRole == "teacher"||UserCredentialsController.teacherModel?.userRole == "classTeacher") {
+          await SharedPreferencesHelper.setString(
+              SharedPreferencesHelper.userRoleKey, 'teacher');
+                          await SharedPreferencesHelper.setString(
+                SharedPreferencesHelper.schoolIdKey, schoolID!);
+            await SharedPreferencesHelper.setString(
+                SharedPreferencesHelper.schoolNameKey, schoolName!);
+            await SharedPreferencesHelper.setString(
+                    SharedPreferencesHelper.batchIdKey,batchCtrl.batchyearValue.value);
+                            await SharedPreferencesHelper.setString(
+                    SharedPreferencesHelper.classIdKey,classCtrl.classDocID.value);
+          if (context.mounted) {
+            Navigator.pushAndRemoveUntil(context,
+                MaterialPageRoute(builder: (context) {
+              return  SplashScreen();
+            }), (route) => false);
+          }
+          isLoading.value = false;
+        } else {
+          showToast(msg: "You are not a teacher");
+          isLoading.value = false;
+        }
+      }).catchError((error) {
+        if (error is FirebaseAuthException) {
+          isLoading.value = false;
+          handleFirebaseError(error);
+        }
+      });
+    } catch (e) {
+      isLoading.value = false;
+      // showToast(msg: e.toString());
+      showToast(msg: "Sign in failed");
+    }
+  }
+
 
   TextEditingController applynewBatchYearContoller = TextEditingController();
   TextEditingController selectedToDaterContoller = TextEditingController();
