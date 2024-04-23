@@ -18,7 +18,7 @@ editFunctionOfMeeting(BuildContext context, MeetingModel data) {
     title: 'Edit Meeting',
     children: [
       TextFormFiledBlueContainerWidgetMeeting(
-        controller: meetingController.topicController,
+        controller: meetingController.edittopicController,
           hintText: data.topic, title: 'Topic'),
       TextFormFiledBlueContainerWidgetMeeting(
         onTap: () {
@@ -27,19 +27,19 @@ editFunctionOfMeeting(BuildContext context, MeetingModel data) {
          controller: meetingController.editdateController,
           hintText: data.date, title: 'Date🗓️ '),
       TextFormFiledBlueContainerWidgetMeeting(
-         controller: meetingController.timeController,
+         controller: meetingController.edittimeController,
           hintText: data.time, title: 'Time '),
       TextFormFiledBlueContainerWidgetMeeting(
-         controller: meetingController.categoryController,
+         controller: meetingController.editcategoryController,
           hintText: data.category, title: 'Category'),
       TextFormFiledBlueContainerWidgetMeeting(
-         controller: meetingController.venueController,
+         controller: meetingController.editvenueController,
           hintText: data.venue, title: 'Venue'),
       TextFormFiledBlueContainerWidgetMeeting(
-         controller: meetingController.memberController,
+         controller: meetingController.editmemberController,
           hintText: data.members, title: 'Expected Members'),
       TextFormFiledBlueContainerWidgetMeeting(
-         controller: meetingController.specialguestController,
+         controller: meetingController.editspecialguestController,
           hintText: data.specialGuest, title: 'Special Guest'),
       // Row(
       //   mainAxisAlignment: MainAxisAlignment.end,
@@ -69,10 +69,11 @@ editFunctionOfMeeting(BuildContext context, MeetingModel data) {
       //   ],
       // ),
     ],doyouwantActionButton: true,
-    actiononTapfuction: () {
-      meetingController.updateMeeting(
+    actiononTapfuction: ()async {
+   await   meetingController.updateMeeting(
         data.meetingId, context);
         print("okaaaaaaaaaa");
+             print(data.meetingId);
     },
     
     actiontext: 'Update',

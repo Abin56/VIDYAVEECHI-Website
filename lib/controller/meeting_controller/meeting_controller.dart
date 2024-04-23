@@ -14,17 +14,26 @@ class MeetingController extends GetxController{
   TextEditingController topicController = TextEditingController();
  // Rx<String> dateController =  ''.obs;
   TextEditingController timeController = TextEditingController();
-  TextEditingController dateController = TextEditingController();
-  TextEditingController editdateController = TextEditingController();
+   TextEditingController dateController = TextEditingController();
+
   TextEditingController categoryController = TextEditingController();
   TextEditingController memberController = TextEditingController();
   TextEditingController specialguestController = TextEditingController();
   TextEditingController venueController = TextEditingController();
+
+  TextEditingController edittopicController = TextEditingController();
+   TextEditingController edittimeController = TextEditingController();
+   TextEditingController editdateController = TextEditingController();
+   TextEditingController editcategoryController = TextEditingController();
+    TextEditingController editmemberController = TextEditingController();
+    TextEditingController editspecialguestController = TextEditingController();
+    TextEditingController editvenueController = TextEditingController();
+   
+
     Rx<ButtonState> buttonstate = ButtonState.idle.obs;
     RxBool ontapMeeting = false.obs;
-  // final Rxn<DateTime> dateSelected = Rxn<DateTime>();
+   final Rxn<DateTime> dateSelected = Rxn<DateTime>();
        final formKey = GlobalKey<FormState>();
-
 
   Future<void> createMeeting() async {
     final uuid =const  Uuid().v1();
@@ -59,8 +68,7 @@ class MeetingController extends GetxController{
         venueController.clear();
         buttonstate.value = ButtonState.success;
 
-        print(meetingDetails.meetingId);
-
+print(meetingDetails.meetingId);
         showToast(msg: "Meeting Created Successfully");
         await Future.delayed(const Duration(seconds: 2)).then((vazlue) {
           buttonstate.value = ButtonState.idle;
@@ -83,16 +91,16 @@ class MeetingController extends GetxController{
         .doc(UserCredentialsController.schoolId)
         .collection(UserCredentialsController.batchId!)
         .doc(UserCredentialsController.batchId!)
-        .collection('AdminMeeting')
+        .collection('AdminMeetings')
         .doc(meetingId)
         .update({
-        'topic':  topicController.text,
+        'topic':  edittopicController.text,
         'date': editdateController.text,
-        'time': timeController.text,
-        'category': categoryController.text,
-        'member': memberController.text,
-        'specialguest': specialguestController.text,
-        'venue': venueController.text,  
+        'time': edittimeController.text,
+        'category': editcategoryController.text,
+        'member': editmemberController.text,
+        'specialguest': editspecialguestController.text,
+        'venue': editvenueController.text,  
         })
         .then((value) => Navigator.pop(context ))
         .then((value) => showToast(msg: 'Meeting Updated!'));
