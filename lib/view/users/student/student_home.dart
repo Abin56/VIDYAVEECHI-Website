@@ -33,7 +33,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
               child: SingleChildScrollView(
                 child: Padding(
                   padding:
-                      const EdgeInsets.only(left: 10, right: 10, bottom: 550),
+                      const EdgeInsets.only(left: 10, right: 10, bottom: 590),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

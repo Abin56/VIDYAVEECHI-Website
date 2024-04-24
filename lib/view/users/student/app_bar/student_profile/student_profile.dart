@@ -335,8 +335,9 @@ class StudentProfileView extends StatelessWidget {
                       child: CircleAvatar(
                         radius: ResponsiveWebSite.isMobile(context) ? 50 : 70,
                         backgroundColor: cred,
-                        backgroundImage: data['image'] != null
-                            ? NetworkImage(data['image'])
+                        backgroundImage: data['profileImageUrl'] != "" &&
+                                data['profileImageUrl'] != null
+                            ? NetworkImage(data['profileImageUrl'])
                             : const AssetImage('webassets/png/avathar.png')
                                 as ImageProvider,
                       ),
@@ -344,7 +345,7 @@ class StudentProfileView extends StatelessWidget {
                   ),
                 ],
               ),
-
+              // user name
               Padding(
                 padding: const EdgeInsets.only(top: 10),
                 child: Center(
@@ -357,23 +358,24 @@ class StudentProfileView extends StatelessWidget {
                       fontWeight: FontWeight.bold),
                 )),
               ),
+              // user role
               Padding(
                 padding: const EdgeInsets.only(top: 10, bottom: 10),
                 child: Center(
                     child: Text(
-                  data['dateofBirth'] != "" && data['dateofBirth'] != null
-                      ? data['dateofBirth']
-                      : "dateofBirth",
+                  data['userRole'] != "" && data['userRole'] != null
+                      ? data['userRole']
+                      : "userRole",
                   style: TextStyle(
                       fontSize: ResponsiveWebSite.isMobile(context) ? 14 : 16,
                       fontWeight: FontWeight.bold),
                 )),
               ),
-
+              // dob
               Padding(
                 padding: const EdgeInsets.only(left: 20, top: 20, bottom: 20),
                 child: Text(
-                  "serRole",
+                  "Date of birth",
                   style: TextStyle(
                       fontSize: ResponsiveWebSite.isMobile(context) ? 14 : 17,
                       fontWeight: FontWeight.bold),
@@ -382,18 +384,16 @@ class StudentProfileView extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 20, right: 20),
                 child: Text(
-                  data['userRole'] != "" && data['userRole'] != null
-                      ? data['userRole']
-                      : "userRole",
+                  data['dateofBirth'] != "" && data['dateofBirth'] != null
+                      ? data['dateofBirth']
+                      : "dateofBirth",
                   textAlign: TextAlign.justify,
                   style: TextStyle(
                       fontSize: ResponsiveWebSite.isMobile(context) ? 12 : 15,
                       fontWeight: FontWeight.bold),
                 ),
               ),
-              const Divider(
-                color: Colors.grey,
-              ),
+              // contacts
               Padding(
                 padding: const EdgeInsets.only(left: 20, top: 20, bottom: 20),
                 child: Text(
@@ -403,6 +403,7 @@ class StudentProfileView extends StatelessWidget {
                       fontWeight: FontWeight.bold),
                 ),
               ),
+              //  phone no.
               Padding(
                 padding: const EdgeInsets.only(bottom: 10),
                 child: Row(
@@ -430,6 +431,7 @@ class StudentProfileView extends StatelessWidget {
                   ],
                 ),
               ),
+              //  email
               Padding(
                 padding: const EdgeInsets.only(bottom: 10),
                 child: Row(
@@ -458,6 +460,7 @@ class StudentProfileView extends StatelessWidget {
                   ],
                 ),
               ),
+              //  gender
               Padding(
                 padding: const EdgeInsets.only(bottom: 10),
                 child: Row(
