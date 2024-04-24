@@ -421,7 +421,7 @@ class UserLoginController extends GetxController {
   }
 
   Future<void> teachereLoginController(BuildContext context) async {
-    //....... ........................................techer  Login Function
+    //....... ........................................parent  Login Function
 
      try {
       await FirebaseAuth.instance

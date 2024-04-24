@@ -82,9 +82,9 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
                   children: <Widget>[
                     GestureDetector(
                       onTap: () {
-                   loginController.askUserDetailsBottomSheet(context);
+                 //  loginController.askUserDetailsBottomSheet(context);
 
-                       //  Get.offAll(() => const StudentHomeScreen());
+                        Get.offAll(() => const StudentHomeScreen());
                       },
                       child: SizedBox(
                         height: ResponsiveWebSite.isMobile(context) ? 100 : 200,
