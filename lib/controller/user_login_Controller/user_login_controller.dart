@@ -234,7 +234,7 @@ class UserLoginController extends GetxController {
             .collection(batchCtrl.batchyearValue.value)
             .doc(batchCtrl.batchyearValue.value)
             .collection('classes')
-            .doc( classCtrl.classDocID.value)
+            .doc(classCtrl.classDocID.value)
             .collection('Students')
             .doc(value.user?.uid)
             .get();
@@ -247,18 +247,19 @@ class UserLoginController extends GetxController {
         if (UserCredentialsController.studentModel?.userRole == "student") {
           await SharedPreferencesHelper.setString(
               SharedPreferencesHelper.userRoleKey, 'student');
-                          await SharedPreferencesHelper.setString(
-                SharedPreferencesHelper.schoolIdKey, schoolID!);
-            await SharedPreferencesHelper.setString(
-                SharedPreferencesHelper.schoolNameKey, schoolName!);
-            await SharedPreferencesHelper.setString(
-                    SharedPreferencesHelper.batchIdKey,batchCtrl.batchyearValue.value);
-                            await SharedPreferencesHelper.setString(
-                    SharedPreferencesHelper.classIdKey,classCtrl.classDocID.value);
+          await SharedPreferencesHelper.setString(
+              SharedPreferencesHelper.schoolIdKey, schoolID!);
+          await SharedPreferencesHelper.setString(
+              SharedPreferencesHelper.schoolNameKey, schoolName!);
+          await SharedPreferencesHelper.setString(
+              SharedPreferencesHelper.batchIdKey,
+              batchCtrl.batchyearValue.value);
+          await SharedPreferencesHelper.setString(
+              SharedPreferencesHelper.classIdKey, classCtrl.classDocID.value);
           if (context.mounted) {
             Navigator.pushAndRemoveUntil(context,
                 MaterialPageRoute(builder: (context) {
-              return  SplashScreen();
+              return SplashScreen();
             }), (route) => false);
           }
           isLoading.value = false;
@@ -279,13 +280,7 @@ class UserLoginController extends GetxController {
     }
   }
 
-
-
-
-
-
-
-    askUserDetailsParentBottomSheet(BuildContext context) {
+  askUserDetailsParentBottomSheet(BuildContext context) {
     return customShowDilogBox(
         context: context,
         title: "Slelct the options",
@@ -322,7 +317,7 @@ class UserLoginController extends GetxController {
   Future<void> parentLoginController(BuildContext context) async {
     //....... ........................................parent  Login Function
 
-     try {
+    try {
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(
         email: userEmailIDController.text.trim(),
@@ -335,7 +330,7 @@ class UserLoginController extends GetxController {
             .collection(batchCtrl.batchyearValue.value)
             .doc(batchCtrl.batchyearValue.value)
             .collection('classes')
-            .doc( classCtrl.classDocID.value)
+            .doc(classCtrl.classDocID.value)
             .collection('Parents')
             .doc(value.user?.uid)
             .get();
@@ -348,18 +343,19 @@ class UserLoginController extends GetxController {
         if (UserCredentialsController.parentModel?.userRole == "parent") {
           await SharedPreferencesHelper.setString(
               SharedPreferencesHelper.userRoleKey, 'parent');
-                          await SharedPreferencesHelper.setString(
-                SharedPreferencesHelper.schoolIdKey, schoolID!);
-            await SharedPreferencesHelper.setString(
-                SharedPreferencesHelper.schoolNameKey, schoolName!);
-            await SharedPreferencesHelper.setString(
-                    SharedPreferencesHelper.batchIdKey,batchCtrl.batchyearValue.value);
-                            await SharedPreferencesHelper.setString(
-                    SharedPreferencesHelper.classIdKey,classCtrl.classDocID.value);
+          await SharedPreferencesHelper.setString(
+              SharedPreferencesHelper.schoolIdKey, schoolID!);
+          await SharedPreferencesHelper.setString(
+              SharedPreferencesHelper.schoolNameKey, schoolName!);
+          await SharedPreferencesHelper.setString(
+              SharedPreferencesHelper.batchIdKey,
+              batchCtrl.batchyearValue.value);
+          await SharedPreferencesHelper.setString(
+              SharedPreferencesHelper.classIdKey, classCtrl.classDocID.value);
           if (context.mounted) {
             Navigator.pushAndRemoveUntil(context,
                 MaterialPageRoute(builder: (context) {
-              return  SplashScreen();
+              return SplashScreen();
             }), (route) => false);
           }
           isLoading.value = false;
@@ -380,13 +376,9 @@ class UserLoginController extends GetxController {
     }
   }
 
-
-
-
-
   //////////////////////////////////
-  
-    askUserDetailsTeacherBottomSheet(BuildContext context) {
+
+  askUserDetailsTeacherBottomSheet(BuildContext context) {
     return customShowDilogBox(
         context: context,
         title: "Slelct the options",
@@ -415,7 +407,7 @@ class UserLoginController extends GetxController {
           )
         ],
         actiononTapfuction: () async {
-          await parentLoginController(context);
+          await teachereLoginController(context);
         },
         doyouwantActionButton: true);
   }
@@ -423,7 +415,7 @@ class UserLoginController extends GetxController {
   Future<void> teachereLoginController(BuildContext context) async {
     //....... ........................................parent  Login Function
 
-     try {
+    try {
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(
         email: userEmailIDController.text.trim(),
@@ -431,41 +423,41 @@ class UserLoginController extends GetxController {
       )
           .then((value) async {
         final user = await server
-             .collection('SchoolListCollection')
+            .collection('SchoolListCollection')
             .doc(schoolListValue['docid'])
-            .collection(batchCtrl.batchyearValue.value)
-            .doc(batchCtrl.batchyearValue.value)
-            .collection('classes')
-            .doc( classCtrl.classDocID.value)
-            .collection('teachers')
+            .collection('Teachers')
             .doc(value.user?.uid)
             .get();
 
         if (user.data() != null) {
           UserCredentialsController.teacherModel =
               TeacherModel.fromMap(user.data()!);
-
- 
         }
 
-        if (UserCredentialsController.teacherModel?.userRole == "teacher"||UserCredentialsController.teacherModel?.userRole == "classTeacher") {
-          await SharedPreferencesHelper.setString(
-              SharedPreferencesHelper.userRoleKey, 'teacher');
-                          await SharedPreferencesHelper.setString(
-                SharedPreferencesHelper.schoolIdKey, schoolID!);
-            await SharedPreferencesHelper.setString(
-                SharedPreferencesHelper.schoolNameKey, schoolName!);
-            await SharedPreferencesHelper.setString(
-                    SharedPreferencesHelper.batchIdKey,batchCtrl.batchyearValue.value);
-                            await SharedPreferencesHelper.setString(
-                    SharedPreferencesHelper.classIdKey,classCtrl.classDocID.value);
-          if (context.mounted) {
-            Navigator.pushAndRemoveUntil(context,
-                MaterialPageRoute(builder: (context) {
-              return  SplashScreen();
-            }), (route) => false);
-          }
-          isLoading.value = false;
+        if (UserCredentialsController.teacherModel?.userRole == "teacher") {
+          Scaffold(
+      body: SafeArea(child: Center(
+        child: TextFontWidget(text: "under Maintenance.........", fontsize: 20),
+      )),
+    );
+          // await SharedPreferencesHelper.setString(
+          //     SharedPreferencesHelper.userRoleKey, 'teacher');
+          // await SharedPreferencesHelper.setString(
+          //     SharedPreferencesHelper.schoolIdKey, schoolID!);
+          // await SharedPreferencesHelper.setString(
+          //     SharedPreferencesHelper.schoolNameKey, schoolName!);
+          // await SharedPreferencesHelper.setString(
+          //     SharedPreferencesHelper.batchIdKey,
+          //     batchCtrl.batchyearValue.value);
+          // await SharedPreferencesHelper.setString(
+          //     SharedPreferencesHelper.classIdKey, classCtrl.classDocID.value);
+          // if (context.mounted) {
+          //   Navigator.pushAndRemoveUntil(context,
+          //       MaterialPageRoute(builder: (context) {
+          //     return SplashScreen();
+          //   }), (route) => false);
+          // }
+          // isLoading.value = false;
         } else {
           showToast(msg: "You are not a teacher");
           isLoading.value = false;
@@ -482,7 +474,6 @@ class UserLoginController extends GetxController {
       showToast(msg: "Sign in failed");
     }
   }
-
 
   TextEditingController applynewBatchYearContoller = TextEditingController();
   TextEditingController selectedToDaterContoller = TextEditingController();
