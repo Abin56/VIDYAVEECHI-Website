@@ -1,20 +1,22 @@
+
 import 'package:flutter/material.dart';
 import 'package:sidebar_drawer/sidebar_drawer.dart';
-import 'package:vidyaveechi_website/view/colors/colors.dart';
-import 'package:vidyaveechi_website/view/constantvalidate.dart';
-import 'package:vidyaveechi_website/view/fonts/google_poppins_widget.dart';
-import 'package:vidyaveechi_website/view/users/student/app_bar/student_appBar.dart';
-import 'package:vidyaveechi_website/view/users/student/drawer/student_drawer.dart';
-import 'package:vidyaveechi_website/view/users/student/student_dashboard/dashboard.dart';
+import 'package:vidyaveechi_website/view/users/teacher/drawer/teacher_drawer_pages.dart';
 
-class StudentHomeScreen extends StatefulWidget {
-  const StudentHomeScreen({super.key});
+import '../../../colors/colors.dart';
+import '../../../constantvalidate.dart';
+import '../../../fonts/google_poppins_widget.dart';
+import '../app_bar/teacher_appBar.dart';
+import 'pages/teacher_dash_board/teachers_dashboard.dart';
+
+class TeachersHomeScreen extends StatefulWidget {
+  const TeachersHomeScreen({super.key});
 
   @override
-  State<StudentHomeScreen> createState() => _StudentHomeScreenState();
+  State<TeachersHomeScreen> createState() => _TeachersHomeScreenState();
 }
 
-class _StudentHomeScreenState extends State<StudentHomeScreen> {
+class _TeachersHomeScreenState extends State<TeachersHomeScreen> {
   int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -22,10 +24,9 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
       backgroundColor: cWhite,
       body: SafeArea(
         child: SidebarDrawer(
-            body: 
-            ListView(
+            body: ListView(
               children: [
-                AppBarStudentPanel(),
+               AppBarTeacherPanel(),
                 pages[selectedIndex],
               ],
             ),
@@ -33,8 +34,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
               color: cWhite,
               child: SingleChildScrollView(
                 child: Padding(
-                  padding:
-                      const EdgeInsets.only(left: 10, right: 10, bottom: 590),
+                  padding: const EdgeInsets.only(left: 10,bottom: 630),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -43,16 +43,18 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                         child: Row(
                           children: [
                             SizedBox(
-                              height: 30,
+                              height: 60,
                               child: Image.asset(
                                 'webassets/images/leptonlogo.png',
                                 fit: BoxFit.fill,
                               ),
                             ),
-                            GooglePoppinsWidgets(
-                              text: "LEPTON VIDYAVEECHI",
-                              fontsize: 20,
-                              fontWeight: FontWeight.w500,
+                            Expanded(
+                              child: GooglePoppinsWidgets(
+                                text: "LEPTON VIDYAVEECHI",
+                                fontsize: 18,
+                                fontWeight: FontWeight.w500,
+                              ),
                             )
                           ],
                         ),
@@ -69,7 +71,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                         ),
                       ),
                       sHeight10,
-                      DrawerSelectedPagesSectionOfStudent(
+                      DrawerSelectedPagesSectionOfTeacher(
                         selectedIndex: selectedIndex,
                         onTap: (index) {
                           setState(() {
@@ -88,7 +90,10 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
 }
 
 List<Widget> pages = [
-  const StudentDashBoardScreen(),
+  const TeacherDashBoardScreen(),
+  Center(
+    child: Text(sideMenu[1]),
+  ),
   Center(
     child: Text(sideMenu[2]),
   ),

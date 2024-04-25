@@ -25,6 +25,7 @@ import 'package:vidyaveechi_website/view/widgets/custom_showdialouge/custom_show
 import 'package:vidyaveechi_website/view/widgets/drop_DownList/schoolDropDownList.dart';
 
 import '../../view/drop_down/user_login/batch_year.dart';
+import '../../view/users/teacher/teachers_panel/teachers_home.dart';
 
 class UserLoginController extends GetxController {
   final classCtrl = Get.put(ClassController());
@@ -413,7 +414,7 @@ class UserLoginController extends GetxController {
   }
 
   Future<void> teachereLoginController(BuildContext context) async {
-    //....... ........................................techer  Login Function
+    //....... ........................................parent  Login Function
 
     try {
       await FirebaseAuth.instance

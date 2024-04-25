@@ -10,6 +10,9 @@ import 'package:vidyaveechi_website/view/constant/const.dart';
 import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
 
+import '../../view/utils/shared_pref/user_auth/user_credentials.dart';
+import '../../view/widgets/drop_DownList/schoolDropDownList.dart';
+
 class ImageController extends GetxController {
   Rxn<Uint8List> image = Rxn();
 
@@ -186,3 +189,43 @@ class AdminProfileController extends GetxController {
     }
   }
 }
+class StudentProfileController extends GetxController {
+  final getImageCtr = Get.put(ImageController());
+  RxBool onTapEdit = false.obs;
+  RxString gender = ''.obs;
+  TextEditingController nameController = TextEditingController();
+  TextEditingController dateofbirthController = TextEditingController();
+  TextEditingController aboutController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+
+  Future updateAdminProfile() async {
+    final Map<String, dynamic> updateData = {
+      "studentName": nameController.text,
+      "dateofBirth": dateofbirthController.text,
+      
+      "phoneNumber": phoneController.text,
+      "email": emailController.text,
+      "gender": gender.value,
+    };
+
+    try {
+      await FirebaseFirestore.instance
+          .collection('SchoolListCollection')
+      .doc(UserCredentialsController.schoolId)
+      .collection(UserCredentialsController.batchId ?? "")
+      .doc(UserCredentialsController.batchId)
+      .collection('classes')
+      .doc(UserCredentialsController.classId)
+      .collection('Students')
+          .doc(serverAuth.currentUser!.uid)
+          .update(updateData)
+          .then((_) => onTapEdit.value = false);
+      showToast(msg: 'Profile updated');
+    } catch (e) {
+      log('Error updating profile: $e');
+      showToast(msg: 'Failed to update profile');
+    }
+  }
+}
+
