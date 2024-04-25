@@ -7,13 +7,12 @@
 import 'package:flutter/material.dart';
 import 'package:sidebar_drawer/sidebar_drawer.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
-import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
 import 'package:vidyaveechi_website/view/constantvalidate.dart';
 import 'package:vidyaveechi_website/view/fonts/google_poppins_widget.dart';
-import 'package:vidyaveechi_website/view/users/admin/app_bar/admin_appBar.dart';
 // import 'package:vidyaveechi_website/view/users/admin/drawer/drawer_pages.dart';
 import 'package:vidyaveechi_website/view/users/parent_panel/pages/parent_dashboard/parent_dashboard.dart';
 import 'package:vidyaveechi_website/view/users/parent_panel/pages/parent_dashboard/sections/parent_drawer/parent_drawer.dart';
+import 'package:vidyaveechi_website/view/users/parent_panel/parent_appbar/parent_appBar.dart';
 
 class ParentHomeScreen extends StatefulWidget {
   const ParentHomeScreen({super.key});
@@ -24,7 +23,7 @@ class ParentHomeScreen extends StatefulWidget {
 
 class _ParentHomeScreenState extends State<ParentHomeScreen> {
   int selectedIndex = 0;
-  @override 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: cWhite,
@@ -32,7 +31,7 @@ class _ParentHomeScreenState extends State<ParentHomeScreen> {
         child: SidebarDrawer(
             body: ListView(
               children: [
-                AppBarAdminPanel(),
+                const AppBarParentPanel(),
                 pages[selectedIndex],
               ],
             ),
@@ -40,12 +39,9 @@ class _ParentHomeScreenState extends State<ParentHomeScreen> {
               color: cWhite,
               child: SingleChildScrollView(
                 child: Padding(
-                  padding: const EdgeInsets.only(
-                    left: 0,bottom: 550
-                  ),
+                  padding: const EdgeInsets.only(left: 0, bottom: 550),
                   child: Column(
-                     crossAxisAlignment: CrossAxisAlignment.start,
-                     
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(0),
