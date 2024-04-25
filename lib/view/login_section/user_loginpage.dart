@@ -8,6 +8,7 @@ import 'package:vidyaveechi_website/view/fonts/google_poppins_widget.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 
 import '../users/student/student_home.dart';
+import '../users/teacher/teachers_panel/teachers_home.dart';
 
 class UserLoginPageScreen extends StatefulWidget {
   const UserLoginPageScreen({super.key});
@@ -82,7 +83,7 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
                   children: <Widget>[
                     GestureDetector(
                       onTap: () {
-                 //  loginController.askUserDetailsBottomSheet(context);
+                  // loginController.askUserDetailsBottomSheet(context);
 
                         Get.offAll(() => const StudentHomeScreen());
                       },
@@ -154,9 +155,9 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
                     ),
                     GestureDetector(
                       onTap: () {
-                        loginController.askUserDetailsTeacherBottomSheet(context);
-                        // loginController.teacherLoginController(context);
-                     //   Get.offAll(() => const TeachersHomeScreen());
+                       //loginController.askUserDetailsTeacherBottomSheet(context);
+                       //  loginController.teacherLoginController();
+                       Get.offAll(() => const TeachersHomeScreen());
                       },
                       child: SizedBox(
                         height: ResponsiveWebSite.isMobile(context) ? 100 : 200,
