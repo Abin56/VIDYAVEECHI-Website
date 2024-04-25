@@ -26,7 +26,7 @@ notificationShowingFunctionOnAppBar(BuildContext context) {
                   ),
                 ],
               ),
-              Container(
+              SizedBox(
                 height: 500,
                 child: TabBarView(children: [
                   Container(
