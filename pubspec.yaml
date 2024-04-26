@@ -82,7 +82,7 @@ dependencies:
   universal_html:
   url_launcher:
   uuid:
-  sidebar_drawer:
+  sidebar_drawer: 
   visibility_detector:
   syncfusion_flutter_charts:
   syncfusion_flutter_calendar:
