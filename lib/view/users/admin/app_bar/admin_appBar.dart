@@ -8,6 +8,10 @@ import 'package:vidyaveechi_website/view/users/admin/screens/notification_time_s
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 
+import '../../../fonts/google_poppins_widget.dart';
+import 'message_notication/message_showing.dart';
+import 'message_notication/notification_show.dart';
+
 // ignore: must_be_immutable
 class AppBarAdminPanel extends StatelessWidget {
   AppBarAdminPanel({
@@ -213,47 +217,47 @@ class AppBarAdminPanel extends StatelessWidget {
                 //     ],
                 //   ),
                 // ),
-                // SizedBox(
-                //   width: 50,
-                //   child: Column(
-                //     children: [
-                //       Stack(
-                //         children: [
-                //           Padding(
-                //             padding: const EdgeInsets.only(top: 15, right: 10),
-                //             child: IconButton(
-                //                 focusNode: textButtonFocusNode1,
-                //                 onPressed: () {
-                //                   notificationShowingFunctionOnAppBar(context);
-                //                 },
-                //                 icon: Icon(
-                //                   Icons.notifications_none_outlined,
-                //                   color: cBlack.withOpacity(0.4),
-                //                 )),
-                //           ),
-                //           Padding(
-                //             padding: const EdgeInsets.only(top: 07, left: 22),
-                //             child: CircleAvatar(
-                //               backgroundColor: Colors.white,
-                //               radius: 12,
-                //               child: CircleAvatar(
-                //                 backgroundColor:
-                //                     const Color.fromARGB(255, 255, 49, 49),
-                //                 radius: 10,
-                //                 child: GooglePoppinsWidgets(
-                //                   text: '8',
-                //                   fontsize: 11,
-                //                   fontWeight: FontWeight.w600,
-                //                   color: cWhite,
-                //                 ),
-                //               ),
-                //             ),
-                //           ),
-                //         ],
-                //       ),
-                //     ],
-                //   ),
-                // ),
+                SizedBox(
+                  width: 50,
+                  child: Column(
+                    children: [
+                      Stack(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(top: 15, right: 10),
+                            child: IconButton(
+                                focusNode: textButtonFocusNode1,
+                                onPressed: () {
+                                  notificationShowingFunctionOnAppBar(context);
+                                },
+                                icon: Icon(
+                                  Icons.notifications_none_outlined,
+                                  color: cBlack.withOpacity(0.4),
+                                )),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 07, left: 22),
+                            child: CircleAvatar(
+                              backgroundColor: Colors.white,
+                              radius: 12,
+                              child: CircleAvatar(
+                                backgroundColor:
+                                    const Color.fromARGB(255, 255, 49, 49),
+                                radius: 10,
+                                child: GooglePoppinsWidgets(
+                                  text: '8',
+                                  fontsize: 11,
+                                  fontWeight: FontWeight.w600,
+                                  color: cWhite,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
             ResponsiveWebSite.isMobile(context)
@@ -471,7 +475,7 @@ class AppBarAdminPanel extends StatelessWidget {
                     border: Border.all(color: cBlack.withOpacity(0.4))),
                 child:  Row(
                   children: [
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.only(left: 10, right: 10),
                       child: Icon(
                         Icons.account_circle_outlined,
@@ -495,7 +499,7 @@ class AppBarAdminPanel extends StatelessWidget {
                     border: Border.all(color: cBlack.withOpacity(0.4))),
                 child:  Row(
                   children: [
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.only(left: 10, right: 10),
                       child: Icon(
                         Icons.power_settings_new,
