@@ -13,7 +13,7 @@ import 'package:vidyaveechi_website/view/fonts/google_poppins_widget.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 import 'package:vidyaveechi_website/view/users/admin/app_bar/web_hover_dialogues/admin_profile_Box.dart';
 import 'package:vidyaveechi_website/view/users/admin/app_bar/web_hover_dialogues/mail_show_dil_Box.dart';
-import 'package:vidyaveechi_website/view/users/admin/app_bar/web_hover_dialogues/notification_show_dil_Box.dart';
+import 'package:vidyaveechi_website/view/users/parent_panel/pages/parent_dashboard/sections/parent_profile_showlist/parent_profile_showlist.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 
 class AppBarParentPanel extends StatefulWidget {

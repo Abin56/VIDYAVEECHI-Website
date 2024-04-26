@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:vidyaveechi_website/info/info.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/fonts/google_poppins_widget.dart';
 import 'package:vidyaveechi_website/view/home/screens/footer/privacypolicy.dart';
@@ -205,7 +206,7 @@ class WhoWeAreWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           GooglePoppinsWidgets(
-            text: 'LEPTON VIDYAVEECHI',
+            text: name,
             fontsize: 18,
             fontWeight: FontWeight.bold,
             color: cWhite,

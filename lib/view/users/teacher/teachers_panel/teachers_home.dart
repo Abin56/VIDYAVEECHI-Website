@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:sidebar_drawer/sidebar_drawer.dart';
+import 'package:vidyaveechi_website/info/info.dart';
 import 'package:vidyaveechi_website/view/users/teacher/drawer/teacher_drawer_pages.dart';
 
 import '../../../colors/colors.dart';
@@ -44,14 +45,13 @@ class _TeachersHomeScreenState extends State<TeachersHomeScreen> {
                           children: [
                             SizedBox(
                               height: 60,
-                              child: Image.asset(
-                                'webassets/images/leptonlogo.png',
+                              child: Image.asset(logoImage,
                                 fit: BoxFit.fill,
                               ),
                             ),
                             Expanded(
                               child: GooglePoppinsWidgets(
-                                text: "LEPTON VIDYAVEECHI",
+                                text: name,
                                 fontsize: 18,
                                 fontWeight: FontWeight.w500,
                               ),

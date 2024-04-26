@@ -10,7 +10,7 @@ import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_creden
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 
 class StudentsDetailsPart extends StatelessWidget {
-   StudentsDetailsPart({super.key});
+   const StudentsDetailsPart({super.key});
   @override
   Widget build(BuildContext context) {
     return ResponsiveWebSite.isMobile(context)
@@ -72,7 +72,7 @@ List<Widget> studentsDetailsPartList = [
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                TextFontWidget(text: "Welcome,", fontsize:17,fontWeight: FontWeight.w700,),
+             //   TextFontWidget(text: "Welcome,", fontsize:17,fontWeight: FontWeight.w700,),
                 TextFontWidget(
                   text: UserCredentialsController .studentModel!.studentName,
                   fontsize: 15,

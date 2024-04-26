@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:vidyaveechi_website/info/info.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/home/screens/footer/family_policy.dart';
 import 'package:vidyaveechi_website/view/home/screens/footer/terms%20_and_condition.dart';
@@ -80,9 +81,8 @@ class FooterHomeP extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            'Lepton VIDYAVEECHI',
-                            style: GoogleFonts.poppins(
+                          Text(name,
+                               style: GoogleFonts.poppins(
                               fontSize: 25.w,
                               fontWeight: FontWeight.bold,
                               color: const Color.fromRGBO(103, 53, 107, 1),
