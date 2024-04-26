@@ -24,16 +24,18 @@ class TimeTableMainScreen extends StatelessWidget {
   const TimeTableMainScreen({super.key});
   @override
   Widget build(BuildContext context) {
+
     final timetableCtrl = Get.put(TimeTableController());
+
     List<Widget> textformWidget = [
-       Padding(
+       const Padding(
         padding: EdgeInsets.only(top: 5, left: 10, right: 10),
         child: TextFontWidget(text: 'Select class *', fontsize: 12.5),
       ),
       Padding(
           padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
           child: SelectClassDropDown()),
-       Padding(
+       const Padding(
         padding: EdgeInsets.only(top: 15, left: 10, right: 10),
         child: TextFontWidget(text: 'Select Day *', fontsize: 12.5),
       ),
@@ -73,7 +75,7 @@ class TimeTableMainScreen extends StatelessWidget {
             )),
       ),
       ////////////////////////////////////////////////////////1
-       Padding(
+       const Padding(
         padding: EdgeInsets.only(top: 15, left: 10, right: 10),
         child: TextFontWidget(text: 'Select subject *', fontsize: 12.5),
       ),
@@ -148,7 +150,7 @@ class TimeTableMainScreen extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                     Padding(
+                     const Padding(
                       padding: EdgeInsets.only(left: 20, top: 20),
                       child: TextFontWidget(
                         text: 'TimeTable',
@@ -161,14 +163,14 @@ class TimeTableMainScreen extends StatelessWidget {
                       padding: const EdgeInsets.only(top: 20, right: 25),
                       child: GestureDetector(
                         onTap: () {
-                          timetable_Creation(context, textformWidget);
+                          timetableCreation(context, textformWidget);
                         },
                         child: ButtonContainerWidget(
                             curving: 30,
                             colorindex: 0,
                             height: 40,
                             width: 180,
-                            child:  Center(
+                            child:  const Center(
                               child: TextFontWidget(
                                 text: 'Add TimeTable ',
                                 fontsize: 14,
@@ -187,7 +189,7 @@ class TimeTableMainScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                               TextFontWidget(
+                               const TextFontWidget(
                                   text: "Select Class *", fontsize: 12),
                               SizedBox(
                                   height: 40, child: SelectClassDropDown()),
@@ -291,7 +293,7 @@ class TimeTableMainScreen extends StatelessWidget {
                                 ),
                               );
                             } else if (timesnaps.data == null) {
-                              return  Center(
+                              return  const Center(
                                 child: TextFontWidget(
                                     text: "No recordes found", fontsize: 16),
                               );
@@ -308,7 +310,7 @@ class TimeTableMainScreen extends StatelessWidget {
         ));
   }
 
-  Future<void> timetable_Creation(
+  Future<void> timetableCreation(
       BuildContext context, List<Widget> textformWidget) {
     final timetableCtrl = Get.put(TimeTableController());
     return aweSideSheet(
@@ -377,3 +379,8 @@ class TimeTableMainScreen extends StatelessWidget {
         footer: Container());
   }
 }
+
+
+List<String> weekdays = [
+  'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'
+];

@@ -17,7 +17,7 @@ import 'package:vidyaveechi_website/view/users/admin/app_bar/web_hover_dialogues
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 
 class AppBarParentPanel extends StatefulWidget {
-  const AppBarParentPanel({
+  const  AppBarParentPanel({
     super.key,
   });
 
@@ -134,7 +134,7 @@ class _AppBarParentPanelState extends State<AppBarParentPanel> {
               backgroundColor: Colors.transparent,
               radius: 20,
               child: Image.asset(
-                'assests/png/avathar.png',
+                'webassests/png/avathar.png',
                 fit: BoxFit.cover,
               ),
             ),
@@ -410,7 +410,7 @@ class _AppBarParentPanelState extends State<AppBarParentPanel> {
                       child: CircleAvatar(
                         radius: 20,
                         backgroundColor: Colors.transparent,
-                        child: Image.asset('assests/png/avathar.png'),
+                        child: Image.asset('webassests/png/avathar.png'),
                       ),
                     ),
                     TextFontWidget(
@@ -462,7 +462,7 @@ class _AppBarParentPanelState extends State<AppBarParentPanel> {
                       ),
                     ),
                     TextFontWidget(
-                      text: 'Log Ouit',
+                      text: 'Log Out',
                       fontsize: 12,
                       color: cBlack,
                       fontWeight: FontWeight.w500,

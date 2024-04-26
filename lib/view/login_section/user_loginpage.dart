@@ -154,8 +154,8 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
                     ),
                     GestureDetector(
                       onTap: () {
-                        loginController.askUserDetailsTeacherBottomSheet(context);
-                        // loginController.teacherLoginController(context);
+                       // loginController.askUserDetailsTeacherBottomSheet(context);
+                      loginController.teacherLoginController();
                      //   Get.offAll(() => const TeachersHomeScreen());
                       },
                       child: SizedBox(

@@ -22,7 +22,7 @@ class ParentDashBoardContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Widget> parentDashBoardWidgets = [
-      const ParentProfileWidget(), //  1
+       ParentProfileWidget(), //  1
       SizedBox(
         height: 160,
         width: ResponsiveWebSite.isMobile(context) ? double.infinity : 200,

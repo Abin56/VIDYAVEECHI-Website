@@ -218,7 +218,6 @@ class AppBarTeacherPanel extends StatelessWidget {
                             child: IconButton(
                                 focusNode: textButtonFocusNode1,
                                 onPressed: () {
-                                  notificationShowingFunctionOnAppBar(context);
                                 },
                                 icon: Icon(
                                   Icons.notifications_none_outlined,

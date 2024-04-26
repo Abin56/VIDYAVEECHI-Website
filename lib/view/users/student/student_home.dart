@@ -4,14 +4,10 @@ import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
 import 'package:vidyaveechi_website/view/constantvalidate.dart';
 import 'package:vidyaveechi_website/view/fonts/google_poppins_widget.dart';
+import 'package:vidyaveechi_website/view/users/student/app_bar/student_appBar.dart';
 import 'package:vidyaveechi_website/view/users/student/drawer/student_drawer.dart';
 // import 'package:vidyaveechi_website/view/users/admin/admin_home.dart';
 import 'package:vidyaveechi_website/view/users/student/student_dashboard/dashboard.dart';
-import 'package:vidyaveechi_website/view/users/teacher/app_bar/teacher_appBar.dart';
-// import 'package:vidyaveechi_website/view/users/admin/drawer/drawer_pages.dart';
-// import 'package:vidyaveechi_website/view/users/teacher/app_bar/teacher_appBar.dart';
-// import 'package:vidyaveechi_website/view/users/teacher/drawer/teacher_drawer_pages.dart';
-// import 'package:vidyaveechi_website/view/users/teacher/widget/teacherwidget.dart';
 
 class StudentHomeScreen extends StatefulWidget {
   const StudentHomeScreen({super.key});
@@ -30,7 +26,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
         child: SidebarDrawer(
             body: ListView(
               children: [
-                AppBarTeacherPanel(),
+                AppBarStudentPanel(),
                 pages[selectedIndex],
               ],
             ),
