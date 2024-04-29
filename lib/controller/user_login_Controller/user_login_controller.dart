@@ -436,29 +436,29 @@ class UserLoginController extends GetxController {
         }
 
         if (UserCredentialsController.teacherModel?.userRole == "teacher") {
-          Scaffold(
-      body: SafeArea(child: Center(
-        child: TextFontWidget(text: "under Maintenance.........", fontsize: 20),
-      )),
-    );
-          // await SharedPreferencesHelper.setString(
-          //     SharedPreferencesHelper.userRoleKey, 'teacher');
-          // await SharedPreferencesHelper.setString(
-          //     SharedPreferencesHelper.schoolIdKey, schoolID!);
-          // await SharedPreferencesHelper.setString(
-          //     SharedPreferencesHelper.schoolNameKey, schoolName!);
-          // await SharedPreferencesHelper.setString(
-          //     SharedPreferencesHelper.batchIdKey,
-          //     batchCtrl.batchyearValue.value);
-          // await SharedPreferencesHelper.setString(
-          //     SharedPreferencesHelper.classIdKey, classCtrl.classDocID.value);
-          // if (context.mounted) {
-          //   Navigator.pushAndRemoveUntil(context,
-          //       MaterialPageRoute(builder: (context) {
-          //     return SplashScreen();
-          //   }), (route) => false);
-          // }
-          // isLoading.value = false;
+    //       Scaffold(
+    //   body: SafeArea(child: Center(
+    //     child: TextFontWidget(text: "under Maintenance.........", fontsize: 20),
+    //   )),
+    // );
+          await SharedPreferencesHelper.setString(
+              SharedPreferencesHelper.userRoleKey, 'teacher');
+          await SharedPreferencesHelper.setString(
+              SharedPreferencesHelper.schoolIdKey, schoolID!);
+          await SharedPreferencesHelper.setString(
+              SharedPreferencesHelper.schoolNameKey, schoolName!);
+          await SharedPreferencesHelper.setString(
+              SharedPreferencesHelper.batchIdKey,
+              batchCtrl.batchyearValue.value);
+          await SharedPreferencesHelper.setString(
+              SharedPreferencesHelper.classIdKey, classCtrl.classDocID.value);
+          if (context.mounted) {
+            Navigator.pushAndRemoveUntil(context,
+                MaterialPageRoute(builder: (context) {
+              return SplashScreen();
+            }), (route) => false);
+          }
+          isLoading.value = false;
         } else {
           showToast(msg: "You are not a teacher");
           isLoading.value = false;

@@ -56,68 +56,68 @@ class AppBarTeacherPanel extends StatelessWidget {
                 ////
                 ///....
                 ///
-                ResponsiveWebSite.isMobile(context)
-                    ? const SizedBox(
-                        height: 0,
-                      )
-                    : Padding(
-                        padding: const EdgeInsets.only(top: 5),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                bottom: 5,
-                              ),
-                              child: Container(
-                                height: 45,
-                                width: 280,
-                                decoration: BoxDecoration(
-                                  color: Colors.grey.withOpacity(0.2),
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: Row(
-                                  children: [
-                                    // const TextFontWidget(text: '🗓️', fontsize: 12),
-                                    const Padding(
-                                      padding: EdgeInsets.all(8.0),
-                                      child:
-                                          Icon(Icons.calendar_month_outlined),
-                                    ),
-                                    TextFontWidget(
-                                        text:
-                                            '${UserCredentialsController.batchId}',
-                                        fontsize: 12),
-                                    const Spacer(),
-                                    Padding(
-                                      padding: const EdgeInsets.only(right: 10),
-                                      child: GestureDetector(
-                                        onTap: () =>
-                                            academicYearSettingFunction(
-                                                context),
-                                        child: Container(
-                                          height: 34,
-                                          width: 34,
-                                          decoration: BoxDecoration(
-                                              color: cWhite,
-                                              borderRadius:
-                                                  BorderRadius.circular(20)),
-                                          child: const Center(
-                                            child: Icon(
-                                              Icons.settings_outlined,
-                                              color: cBlack,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                // ResponsiveWebSite.isMobile(context)
+                //     ? const SizedBox(
+                //         height: 0,
+                //       )
+                //     : Padding(
+                //         padding: const EdgeInsets.only(top: 5),
+                //         child: Row(
+                //           mainAxisAlignment: MainAxisAlignment.center,
+                //           children: [
+                //             Padding(
+                //               padding: const EdgeInsets.only(
+                //                 bottom: 5,
+                //               ),
+                //               child: Container(
+                //                 height: 45,
+                //                 width: 280,
+                //                 decoration: BoxDecoration(
+                //                   color: Colors.grey.withOpacity(0.2),
+                //                   borderRadius: BorderRadius.circular(10),
+                //                 ),
+                //                 child: Row(
+                //                   children: [
+                //                     // const TextFontWidget(text: '🗓️', fontsize: 12),
+                //                     const Padding(
+                //                       padding: EdgeInsets.all(8.0),
+                //                       child:
+                //                           Icon(Icons.calendar_month_outlined),
+                //                     ),
+                //                     TextFontWidget(
+                //                         text:
+                //                             '${UserCredentialsController.batchId}',
+                //                         fontsize: 12),
+                //                     const Spacer(),
+                //                     Padding(
+                //                       padding: const EdgeInsets.only(right: 10),
+                //                       child: GestureDetector(
+                //                         onTap: () =>
+                //                             academicYearSettingFunction(
+                //                                 context),
+                //                         child: Container(
+                //                           height: 34,
+                //                           width: 34,
+                //                           decoration: BoxDecoration(
+                //                               color: cWhite,
+                //                               borderRadius:
+                //                                   BorderRadius.circular(20)),
+                //                           child: const Center(
+                //                             child: Icon(
+                //                               Icons.settings_outlined,
+                //                               color: cBlack,
+                //                             ),
+                //                           ),
+                //                         ),
+                //                       ),
+                //                     )
+                //                   ],
+                //                 ),
+                //               ),
+                //             ),
+                //           ],
+                //         ),
+                //       ),
                 const SizedBox(
                   width: 10,
                 ),
@@ -149,7 +149,7 @@ class AppBarTeacherPanel extends StatelessWidget {
                           IconButton(
                               focusNode: textButtonFocusNode2,
                               onPressed: () {
-                                showPopupMenu(context);
+                             //   showPopupMenu(context);
                               },
                               icon: const Icon(
                                 Icons.arrow_drop_down,
@@ -186,7 +186,7 @@ class AppBarTeacherPanel extends StatelessWidget {
                             child: IconButton(
                                 focusNode: textButtonFocusNode,
                                 onPressed: () {
-                                  messagesShowingFunction(context);
+                               //   messagesShowingFunction(context);
                                 },
                                 icon: Icon(
                                   Icons.mail_outline_outlined,
@@ -227,6 +227,7 @@ class AppBarTeacherPanel extends StatelessWidget {
                             child: IconButton(
                                 focusNode: textButtonFocusNode1,
                                 onPressed: () {
+                                  notificationShowingFunctionOnAppBar(context);
                                 },
                                 icon: Icon(
                                   Icons.notifications_none_outlined,
@@ -258,62 +259,62 @@ class AppBarTeacherPanel extends StatelessWidget {
                 ),
               ],
             ),
-            ResponsiveWebSite.isMobile(context)
-                ? Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          bottom: 5,
-                        ),
-                        child: Container(
-                          height: 45,
-                          width: 280,
-                          decoration: BoxDecoration(
-                            color: Colors.grey.withOpacity(0.2),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Row(
-                            children: [
-                              // const TextFontWidget(text: '🗓️', fontsize: 12),
-                              const Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: Icon(Icons.calendar_month_outlined),
-                              ),
-                              TextFontWidget(
-                                  text: '${UserCredentialsController.batchId}',
-                                  fontsize: 12),
-                              const Spacer(),
-                              Padding(
-                                padding: const EdgeInsets.only(right: 10),
-                                child: GestureDetector(
-                                  onTap: () =>
-                                      academicYearSettingFunction(context),
-                                  child: Container(
-                                    height: 34,
-                                    width: 34,
-                                    decoration: BoxDecoration(
-                                        color: cWhite,
-                                        borderRadius:
-                                            BorderRadius.circular(20)),
-                                    child: const Center(
-                                      child: Icon(
-                                        Icons.settings_outlined,
-                                        color: cBlack,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  )
-                : const SizedBox(
-                    width: 0,
-                  )
+            // ResponsiveWebSite.isMobile(context)
+            //     ? Row(
+            //         mainAxisAlignment: MainAxisAlignment.center,
+            //         children: [
+            //           Padding(
+            //             padding: const EdgeInsets.only(
+            //               bottom: 5,
+            //             ),
+            //             child: Container(
+            //               height: 45,
+            //               width: 280,
+            //               decoration: BoxDecoration(
+            //                 color: Colors.grey.withOpacity(0.2),
+            //                 borderRadius: BorderRadius.circular(10),
+            //               ),
+            //               child: Row(
+            //                 children: [
+            //                   // const TextFontWidget(text: '🗓️', fontsize: 12),
+            //                   const Padding(
+            //                     padding: EdgeInsets.all(8.0),
+            //                     child: Icon(Icons.calendar_month_outlined),
+            //                   ),
+            //                   TextFontWidget(
+            //                       text: '${UserCredentialsController.batchId}',
+            //                       fontsize: 12),
+            //                   const Spacer(),
+            //                   Padding(
+            //                     padding: const EdgeInsets.only(right: 10),
+            //                     child: GestureDetector(
+            //                       onTap: () =>
+            //                           academicYearSettingFunction(context),
+            //                       child: Container(
+            //                         height: 34,
+            //                         width: 34,
+            //                         decoration: BoxDecoration(
+            //                             color: cWhite,
+            //                             borderRadius:
+            //                                 BorderRadius.circular(20)),
+            //                         child: const Center(
+            //                           child: Icon(
+            //                             Icons.settings_outlined,
+            //                             color: cBlack,
+            //                           ),
+            //                         ),
+            //                       ),
+            //                     ),
+            //                   )
+            //                 ],
+            //               ),
+            //             ),
+            //           ),
+            //         ],
+            //       )
+            //     : const SizedBox(
+            //         width: 0,
+            //       )
             /////////////////////////////////////////////////////////////////////
           ],
         ),
