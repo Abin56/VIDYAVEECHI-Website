@@ -16,8 +16,6 @@ import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
 import 'package:vidyaveechi_website/view/drop_down/user_login/select_class.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 import 'package:vidyaveechi_website/view/splash_screen/splash_screen.dart';
-import 'package:vidyaveechi_website/view/users/teacher/teacher_home.dart';
-// import 'package:vidyaveechi_website/view/users/teacher/teacher.dart';
 import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
 import 'package:vidyaveechi_website/view/utils/utils.dart';
@@ -25,7 +23,7 @@ import 'package:vidyaveechi_website/view/widgets/custom_showdialouge/custom_show
 import 'package:vidyaveechi_website/view/widgets/drop_DownList/schoolDropDownList.dart';
 
 import '../../view/drop_down/user_login/batch_year.dart';
-import '../../view/users/teacher/teachers_panel/teachers_home.dart';
+import '../../view/users/teacher/teachers_home.dart';
 
 class UserLoginController extends GetxController {
   final classCtrl = Get.put(ClassController());

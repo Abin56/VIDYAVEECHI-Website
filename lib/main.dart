@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vidyaveechi_website/controller/user_login_Controller/user_login_controller.dart';
 import 'package:vidyaveechi_website/firebase_options.dart';
-import 'package:vidyaveechi_website/view/home/screens/footer/privacypolicy.dart';
+import 'package:vidyaveechi_website/view/home/screens/footer/legal/privacypolicy.dart';
 import 'package:vidyaveechi_website/view/splash_screen/splash_screen.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
 import 'package:vidyaveechi_website/view/widgets/scroll_on_web_widget.dart';

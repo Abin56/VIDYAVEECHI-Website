@@ -6,9 +6,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:vidyaveechi_website/info/info.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
-import 'package:vidyaveechi_website/view/home/screens/footer/family_policy.dart';
-import 'package:vidyaveechi_website/view/home/screens/footer/privacypolicy.dart';
-import 'package:vidyaveechi_website/view/home/screens/footer/terms%20_and_condition.dart';
+import 'package:vidyaveechi_website/view/home/screens/footer/legal/family_policy.dart';
+import 'package:vidyaveechi_website/view/home/screens/footer/legal/terms%20_and_condition.dart';
+import 'package:vidyaveechi_website/view/home/screens/footer/legal/privacypolicy.dart';
 
 class FooterMob extends StatelessWidget {
   final Uri _faceBookUrl =

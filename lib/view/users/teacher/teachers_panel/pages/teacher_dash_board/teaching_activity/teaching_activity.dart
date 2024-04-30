@@ -49,7 +49,7 @@ class TeachingActivity extends StatelessWidget {
                 child: const TeacherActivityGraph()),
           ),
           const Text(
-            "mcxn cm c ncmnmbjknnbkjvjhvkjb",
+            "Progress",
             style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
           ),
           Padding(

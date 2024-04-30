@@ -11,8 +11,8 @@ import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/constantvalidate.dart';
 import 'package:vidyaveechi_website/view/fonts/google_poppins_widget.dart';
 // import 'package:vidyaveechi_website/view/users/admin/drawer/drawer_pages.dart';
-import 'package:vidyaveechi_website/view/users/parent_panel/pages/parent_dashboard/parent_dashboard.dart';
-import 'package:vidyaveechi_website/view/users/parent_panel/pages/parent_dashboard/sections/parent_drawer/parent_drawer.dart';
+import 'package:vidyaveechi_website/view/users/parent_panel/pages/parent_dashboard.dart';
+import 'package:vidyaveechi_website/view/users/parent_panel/pages/parent_dashboard/parent_drawer/parent_drawer.dart';
 import 'package:vidyaveechi_website/view/users/parent_panel/parent_appbar/parent_appBar.dart';
 
 class ParentHomeScreen extends StatefulWidget {

@@ -2,14 +2,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
-class FamilyPolicyScreen extends StatefulWidget {
+class FamilyPolicyScreen extends StatelessWidget {
   const FamilyPolicyScreen({super.key});
 
-  @override
-  State<FamilyPolicyScreen> createState() => _FamilyPolicyScreenState();
-}
-
-class _FamilyPolicyScreenState extends State<FamilyPolicyScreen> {
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;

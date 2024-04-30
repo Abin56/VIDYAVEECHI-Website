@@ -8,8 +8,6 @@ import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/fonts/google_poppins_widget.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 
-import '../users/student/student_home.dart';
-import '../users/teacher/teachers_panel/teachers_home.dart';
 
 class UserLoginPageScreen extends StatefulWidget {
   const UserLoginPageScreen({super.key});
