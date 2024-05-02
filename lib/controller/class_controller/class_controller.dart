@@ -34,9 +34,9 @@ class ClassController extends GetxController {
   RxString studentDocID = ''.obs;
   RxBool ontapClass = false.obs;
 
-  final _schoolserver = server
-      .collection('SchoolListCollection')
-      .doc(UserCredentialsController.schoolId);
+  // final server.collection(collectionPath) = server
+  //     .collection('SchoolListCollection')
+  //     .doc(UserCredentialsController.schoolId);
 
   Future<void> addNewClass() async {
     //.. Create New Class
@@ -49,7 +49,9 @@ class ClassController extends GetxController {
           editoption: false,
           docid: classNameController.text.trim() + uuid.v1(),
           className: classNameController.text.trim());
-      _schoolserver
+      server
+          .collection('SchoolListCollection')
+          .doc(UserCredentialsController.schoolId)
           .collection("classes")
           .doc(data.docid)
           .set(data.toMap())
@@ -85,7 +87,9 @@ class ClassController extends GetxController {
           editoption: false,
           feeeditoption: false,
           classfee: classfee);
-      await _schoolserver
+      server
+          .collection('SchoolListCollection')
+          .doc(UserCredentialsController.schoolId)
           .collection(UserCredentialsController.batchId!)
           .doc(UserCredentialsController.batchId!)
           .collection('classes')
@@ -103,18 +107,30 @@ class ClassController extends GetxController {
     String docid,
     bool status,
   ) async {
-    await _schoolserver.collection("classes").doc(docid).update({data: status});
+      server
+          .collection('SchoolListCollection')
+          .doc(UserCredentialsController.schoolId)
+        .collection("classes")
+        .doc(docid)
+        .update({data: status});
   }
 
   Future<void> updateClassFees(String docid) async {
     //................. Update Class Name
     //.... Update Class Name
     try {
-      _schoolserver.collection("classes").doc(docid).update({
+          server
+          .collection('SchoolListCollection')
+          .doc(UserCredentialsController.schoolId)
+          .collection("classes")
+          .doc(docid)
+          .update({
         'classfee': int.parse(classFeeEditController.text.trim()),
         'feeeditoption': false,
       }).then((value) {
-        _schoolserver
+      server
+          .collection('SchoolListCollection')
+          .doc(UserCredentialsController.schoolId)
             .collection(UserCredentialsController.batchId!)
             .doc(UserCredentialsController.batchId!)
             .collection('classes')
@@ -136,11 +152,18 @@ class ClassController extends GetxController {
     //................. Update Class Name
     //.... Update Class Name
     try {
-      _schoolserver.collection("classes").doc(docid).update({
+       server
+          .collection('SchoolListCollection')
+          .doc(UserCredentialsController.schoolId)
+          .collection("classes")
+          .doc(docid)
+          .update({
         'className': classNameEditController.text.trim(),
         'editoption': false,
       }).then((value) {
-        _schoolserver
+      server
+          .collection('SchoolListCollection')
+          .doc(UserCredentialsController.schoolId)
             .collection(UserCredentialsController.batchId!)
             .doc(UserCredentialsController.batchId!)
             .collection('classes')
@@ -186,7 +209,9 @@ class ClassController extends GetxController {
                 child: const Text('Ok'),
                 onPressed: () async {
                   try {
-                    _schoolserver
+        server
+          .collection('SchoolListCollection')
+          .doc(UserCredentialsController.schoolId)
                         .collection("classes")
                         .doc(docid)
                         .delete()
@@ -258,7 +283,9 @@ class ClassController extends GetxController {
                 child: const Text('Ok'),
                 onPressed: () async {
                   try {
-                    await _schoolserver
+             server
+          .collection('SchoolListCollection')
+          .doc(UserCredentialsController.schoolId)
                         .collection(UserCredentialsController.batchId!)
                         .doc(UserCredentialsController.batchId!)
                         .collection('classes')
@@ -320,12 +347,13 @@ class ClassController extends GetxController {
     }
     return allclassList;
   }
+
   Future<List<ClassModel>> userloginfetchClass() async {
     final firebase = await server
         .collection('SchoolListCollection')
         .doc(schoolListValue['docid'])
-        .collection(Get.find<BatchYearController>().batchyearValue.value )
-        .doc(Get.find<BatchYearController>().batchyearValue.value )
+        .collection(Get.find<BatchYearController>().batchyearValue.value)
+        .doc(Get.find<BatchYearController>().batchyearValue.value)
         .collection('classes')
         .get();
 
@@ -337,6 +365,7 @@ class ClassController extends GetxController {
     }
     return allclassList;
   }
+
   Future<List<StudentModel>> fetchAllStudents() async {
     final firebase = await server
         .collection('SchoolListCollection')
@@ -356,17 +385,23 @@ class ClassController extends GetxController {
     try {
       log("studentDocID.value ${studentDocID.value}");
       log("sclassDocid $classDocid");
-      final studentResult = await _schoolserver
+      final studentResult = await       server
+          .collection('SchoolListCollection')
+          .doc(UserCredentialsController.schoolId)
           .collection('AllStudents')
           .doc(studentDocID.value)
           .get();
       if (studentDocID.value != '') {
         final data = StudentModel.fromMap(studentResult.data()!);
-        await _schoolserver
+        await       server
+          .collection('SchoolListCollection')
+          .doc(UserCredentialsController.schoolId)
             .collection('AllStudents')
             .doc(studentDocID.value)
             .update({'classId': classDocid}).then((value) async {
-          await _schoolserver
+          await       server
+          .collection('SchoolListCollection')
+          .doc(UserCredentialsController.schoolId)
               .collection(UserCredentialsController.batchId!)
               .doc(UserCredentialsController.batchId!)
               .collection('classes')

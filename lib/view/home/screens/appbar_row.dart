@@ -27,16 +27,14 @@ class ContentsHomePage2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
-    return Expanded(
-      child: InkWell(
-        onTap: () {},
-        child: Text(
-          "Schools",
-          style: GoogleFonts.roboto(
-              fontSize: ResponsiveWebSite.isDesktop(context) ? screenSize.width / 90 : 6.5,
-              fontWeight: ResponsiveWebSite.isDesktop(context) ? FontWeight.w500 : FontWeight.bold,
-              color: Colors.black),
-        ),
+    return InkWell(
+      onTap: () {},
+      child: Text(
+        "Schools",
+        style: GoogleFonts.roboto(
+            fontSize: ResponsiveWebSite.isDesktop(context) ? screenSize.width / 90 : 6.5,
+            fontWeight: ResponsiveWebSite.isDesktop(context) ? FontWeight.w500 : FontWeight.bold,
+            color: Colors.black),
       ),
     );
   }
