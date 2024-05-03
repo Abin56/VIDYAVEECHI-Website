@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
-import 'package:vidyaveechi_website/view/fonts/google_lora.dart';
-import 'package:vidyaveechi_website/view/fonts/google_poppins_widget.dart';
 
+// ignore: must_be_immutable
 class TableListContainers extends StatelessWidget {
   final int flex;
   final String text;
