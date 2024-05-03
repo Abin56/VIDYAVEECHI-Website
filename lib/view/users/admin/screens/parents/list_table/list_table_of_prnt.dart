@@ -145,10 +145,12 @@ final ParentController parentController = Get.put(ParentController());
                     color: cWhite,
                     // width: 150,
                     index: index,
-                    headerTitle: 'Std : ${snaps.data?.data()?['className']}',
+                    headerTitle: 'Std : ${snaps.data!.data()!['className']}',
                     // Get.find<StudentController>().stNameController.text.trim()
                   //  parentController.studentName.string
                     );
+                }else  if (snaps.hasError){
+                  return const Text('Class');
                     } else {
                           return const Text('');
                         }
