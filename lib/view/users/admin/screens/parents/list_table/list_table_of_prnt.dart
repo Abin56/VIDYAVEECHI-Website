@@ -151,7 +151,7 @@ class AllParentsDataList extends StatelessWidget {
                             // width: 150,
                             index: index,
                             headerTitle:
-                                'Std : ${snapshot.data!.data()!['className']}',
+                                ' ${snapshot.data?.data()?['className']??'Not Found'}',
                             // Get.find<StudentController>().stNameController.text.trim()
                             //  parentController.studentName.string
                           );
