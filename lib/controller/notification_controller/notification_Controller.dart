@@ -12,6 +12,7 @@ import 'package:vidyaveechi_website/controller/class_controller/class_controller
 import 'package:vidyaveechi_website/model/notification_model/notification_model.dart';
 import 'package:vidyaveechi_website/model/userDeviceModel/userDeviceModel.dart';
 import 'package:vidyaveechi_website/view/constant/const.dart';
+import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
 import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
 
@@ -178,8 +179,8 @@ class NotificationController extends GetxController {
 
       final uuid = const Uuid().v1();
       NotificationModel messageDetails = NotificationModel(
-        dateTime: DateTime.now().toString(),
-        docid: uuid,
+          dateTime: DateTime.now().toString(),
+          docid: uuid,
           open: false,
           icon: icon,
           messageText: messageController.text,
@@ -272,6 +273,64 @@ class NotificationController extends GetxController {
         log("error push Notification");
       }
     }
+  }
+
+  Future<void> userparentNotification({
+    required String parentID,
+    required IconData icon,
+    required String messageText,
+    required String headerText,
+    required Color whiteshadeColor,
+    required Color containerColor,
+  }) async {
+    final String docid = uuid.v1();
+    try {
+      log('Calling user notification');
+      final details = NotificationModel(
+          icon: icon,
+          messageText: messageText,
+          headerText: headerText,
+          whiteshadeColor: whiteshadeColor,
+          containerColor: containerColor,
+          open: false,
+          docid: docid,
+          dateTime: DateTime.now().toString());
+      await server
+          .collection("AllUsersDeviceID")
+          .doc(parentID)
+          .collection("Notification_Message")
+          .doc(docid)
+          .set(details.toMap());
+    } catch (e) {}
+  }
+
+  Future<void> userStudentNotification({
+    required String studentID,
+    required IconData icon,
+    required String messageText,
+    required String headerText,
+    required Color whiteshadeColor,
+    required Color containerColor,
+  }) async {
+    final String docid = uuid.v1();
+    try {
+      log('Calling user notification');
+      final details = NotificationModel(
+          icon: icon,
+          messageText: messageText,
+          headerText: headerText,
+          whiteshadeColor: whiteshadeColor,
+          containerColor: containerColor,
+          open: false,
+          docid: docid,
+          dateTime: DateTime.now().toString());
+      await server
+          .collection("AllUsersDeviceID")
+          .doc(studentID)
+          .collection("Notification_Message")
+          .doc(docid)
+          .set(details.toMap());
+    } catch (e) {}
   }
 }
 
