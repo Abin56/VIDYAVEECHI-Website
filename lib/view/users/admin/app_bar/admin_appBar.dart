@@ -533,7 +533,7 @@ class AppBarAdminPanel extends StatelessWidget {
                       ),
                     ),
                     TextFontWidget(
-                      text: 'Log Ouit',
+                      text: 'Log Out',
                       fontsize: 12,
                       color: cBlack,
                       fontWeight: FontWeight.w500,
