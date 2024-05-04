@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:vidyaveechi_website/controller/attendence_controller/attendence_controller.dart';
@@ -14,7 +12,6 @@ import 'package:vidyaveechi_website/view/users/admin/screens/attendence/attenden
 import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
 import 'package:vidyaveechi_website/view/widgets/blue_Container_widget/blue_Container_widget.dart';
-import 'package:vidyaveechi_website/view/widgets/button_container/button_container.dart';
 import 'package:vidyaveechi_website/view/widgets/loading_widget/loading_widget.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 
@@ -23,8 +20,7 @@ class AttendenceHistory extends StatelessWidget {
     super.key,
   });
 
-  final AttendenceController attendenceController =
-      Get.put(AttendenceController());
+  final AttendenceController attendenceController = Get.put(AttendenceController());
   final ClassController classController = Get.put(ClassController());
 
   @override
@@ -38,7 +34,7 @@ class AttendenceHistory extends StatelessWidget {
     final DateFormat formatter = DateFormat('dd-MM-yyyy');
     String formatted = formatter.format(parseDate);
     return SingleChildScrollView(
-      child: Container(
+      child: SizedBox(
         height: 850,
         width: double.infinity,
         child: Column(
@@ -56,14 +52,14 @@ class AttendenceHistory extends StatelessWidget {
                           Row(
                             children: [
                               Padding(
-                                padding: EdgeInsets.only(left: 20, top: 20),
+                                padding: const EdgeInsets.only(left: 20, top: 20),
                                 child: TextFontWidget(
                                   text: 'Students Attendance ',
                                   fontsize: 18,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              Spacer(),
+                              const Spacer(),
                               // Padding(
                               //   padding:
                               //       const EdgeInsets.only(top: 20, right: 25),
@@ -91,35 +87,23 @@ class AttendenceHistory extends StatelessWidget {
                             ],
                           ),
                           Padding(
-                            padding: EdgeInsets.only(
-                                top: ResponsiveWebSite.isMobile(context)
-                                    ? 20
-                                    : 10),
+                            padding:
+                                EdgeInsets.only(top: ResponsiveWebSite.isMobile(context) ? 20 : 10),
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Container(
                                 color: cWhite,
-                                height: ResponsiveWebSite.isMobile(context)
-                                    ? 750
-                                    : 680,
+                                height: ResponsiveWebSite.isMobile(context) ? 750 : 680,
                                 width: double.infinity,
                                 child: StreamBuilder(
-                                    stream: attendenceController
-                                                .todayAttendence.value ==
-                                            true
+                                    stream: attendenceController.todayAttendence.value == true
                                         ? server
                                             .collection('SchoolListCollection')
-                                            .doc(UserCredentialsController
-                                                .schoolId)
-                                            .collection(
-                                                UserCredentialsController
-                                                    .batchId!)
-                                            .doc(UserCredentialsController
-                                                .batchId!)
+                                            .doc(UserCredentialsController.schoolId)
+                                            .collection(UserCredentialsController.batchId!)
+                                            .doc(UserCredentialsController.batchId!)
                                             .collection('classes')
-                                            .doc(Get.find<ClassController>()
-                                                .classDocID
-                                                .value)
+                                            .doc(Get.find<ClassController>().classDocID.value)
                                             .collection('Attendence')
                                             .doc(monthwise)
                                             .collection(monthwise)
@@ -129,24 +113,17 @@ class AttendenceHistory extends StatelessWidget {
                                             .snapshots()
                                         : server
                                             .collection('SchoolListCollection')
-                                            .doc(UserCredentialsController
-                                                .schoolId)
-                                            .collection(
-                                                UserCredentialsController
-                                                    .batchId!)
-                                            .doc(UserCredentialsController
-                                                .batchId!)
+                                            .doc(UserCredentialsController.schoolId)
+                                            .collection(UserCredentialsController.batchId!)
+                                            .doc(UserCredentialsController.batchId!)
                                             .collection('classes')
-                                            .doc(Get.find<ClassController>()
-                                                .classDocID
-                                                .value)
+                                            .doc(Get.find<ClassController>().classDocID.value)
                                             .collection('Attendence')
-                                            .doc(attendenceController
-                                                .fetchClassWiseMonthvalue.value)
-                                            .collection(attendenceController
-                                                .fetchClassWiseMonthvalue.value)
-                                            .doc(attendenceController
-                                                .fetchClassWiseDatevalue.value)
+                                            .doc(
+                                                attendenceController.fetchClassWiseMonthvalue.value)
+                                            .collection(
+                                                attendenceController.fetchClassWiseMonthvalue.value)
+                                            .doc(attendenceController.fetchClassWiseDatevalue.value)
                                             .collection('Subjects')
                                             .orderBy('period')
                                             .snapshots(),
@@ -155,37 +132,29 @@ class AttendenceHistory extends StatelessWidget {
                                         return DefaultTabController(
                                           length: snaps.data!.docs.length,
                                           child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                            crossAxisAlignment: CrossAxisAlignment.start,
                                             children: [
                                               SizedBox(
                                                 height: 80,
                                                 child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
+                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                   children: [
                                                     const Spacer(),
-                                                    attendenceController
-                                                                .todayAttendence
-                                                                .value ==
+                                                    attendenceController.todayAttendence.value ==
                                                             true
                                                         ? Row(
                                                             children: [
                                                               BlueContainerWidget(
-                                                                  title:
-                                                                      "Today Status",
+                                                                  title: "Today Status",
                                                                   fontSize: 16,
-                                                                  color:
-                                                                      themeColorBlue,
+                                                                  color: themeColorBlue,
                                                                   width: 180),
                                                               const SizedBox(
                                                                 width: 20,
                                                               ),
                                                               Checkbox(
                                                                 value: true,
-                                                                onChanged:
-                                                                    (value) {
+                                                                onChanged: (value) {
                                                                   attendenceController
                                                                       .todayAttendence
                                                                       .value = false;
@@ -196,36 +165,27 @@ class AttendenceHistory extends StatelessWidget {
                                                         : Row(
                                                             children: [
                                                               Padding(
-                                                                padding:
-                                                                    const EdgeInsets
-                                                                        .all(
-                                                                        8.0),
-                                                                child:
-                                                                    Container(
+                                                                padding: const EdgeInsets.all(8.0),
+                                                                child: Container(
                                                                   width: 250,
-                                                                  height: ResponsiveWebSite
-                                                                          .isMobile(
+                                                                  height:
+                                                                      ResponsiveWebSite.isMobile(
                                                                               context)
-                                                                      ? 80
-                                                                      : 100,
+                                                                          ? 80
+                                                                          : 100,
                                                                   color: cWhite,
                                                                   child: Column(
                                                                     crossAxisAlignment:
-                                                                        CrossAxisAlignment
-                                                                            .start,
+                                                                        CrossAxisAlignment.start,
                                                                     children: [
                                                                       TextFontWidget(
-                                                                          text:
-                                                                              'Month *',
-                                                                          fontsize:
-                                                                              12.5),
+                                                                          text: 'Month *',
+                                                                          fontsize: 12.5),
                                                                       const SizedBox(
-                                                                        height:
-                                                                            05,
+                                                                        height: 05,
                                                                       ),
                                                                       SizedBox(
-                                                                        height:
-                                                                            40,
+                                                                        height: 40,
                                                                         child:
                                                                             SelectClassAttendenceMonthDropDown(),
                                                                       ),
@@ -234,36 +194,27 @@ class AttendenceHistory extends StatelessWidget {
                                                                 ),
                                                               ),
                                                               Padding(
-                                                                padding:
-                                                                    const EdgeInsets
-                                                                        .all(
-                                                                        8.0),
-                                                                child:
-                                                                    Container(
+                                                                padding: const EdgeInsets.all(8.0),
+                                                                child: Container(
                                                                   width: 200,
-                                                                  height: ResponsiveWebSite
-                                                                          .isMobile(
+                                                                  height:
+                                                                      ResponsiveWebSite.isMobile(
                                                                               context)
-                                                                      ? 80
-                                                                      : 100,
+                                                                          ? 80
+                                                                          : 100,
                                                                   color: cWhite,
                                                                   child: Column(
                                                                     crossAxisAlignment:
-                                                                        CrossAxisAlignment
-                                                                            .start,
+                                                                        CrossAxisAlignment.start,
                                                                     children: [
                                                                       TextFontWidget(
-                                                                          text:
-                                                                              'Date *',
-                                                                          fontsize:
-                                                                              12.5),
+                                                                          text: 'Date *',
+                                                                          fontsize: 12.5),
                                                                       const SizedBox(
-                                                                        height:
-                                                                            05,
+                                                                        height: 05,
                                                                       ),
                                                                       SizedBox(
-                                                                        height:
-                                                                            40,
+                                                                        height: 40,
                                                                         child:
                                                                             SelectClassAttendenceDayDropDown(),
                                                                       ),
@@ -275,19 +226,15 @@ class AttendenceHistory extends StatelessWidget {
                                                                 width: 20,
                                                               ),
                                                               BlueContainerWidget(
-                                                                  title:
-                                                                      "Today ? ",
+                                                                  title: "Today ? ",
                                                                   fontSize: 12,
-                                                                  color:
-                                                                      themeColorBlue,
+                                                                  color: themeColorBlue,
                                                                   width: 80),
                                                               Checkbox(
                                                                 value: false,
-                                                                onChanged:
-                                                                    (value) {
+                                                                onChanged: (value) {
                                                                   attendenceController
-                                                                      .todayAttendence
-                                                                      .value = true;
+                                                                      .todayAttendence.value = true;
                                                                 },
                                                               )
                                                             ],
@@ -297,9 +244,7 @@ class AttendenceHistory extends StatelessWidget {
                                               ),
                                               Padding(
                                                 padding: const EdgeInsets.only(
-                                                    top: 0,
-                                                    left: 20,
-                                                    right: 20),
+                                                    top: 0, left: 20, right: 20),
                                                 child: Column(
                                                   children: [
                                                     Container(
@@ -307,19 +252,14 @@ class AttendenceHistory extends StatelessWidget {
                                                       height: 40,
                                                       child: TabBar(
                                                         indicatorColor: cWhite,
-                                                        tabAlignment:
-                                                            TabAlignment.start,
+                                                        tabAlignment: TabAlignment.start,
                                                         isScrollable: true,
                                                         labelColor: Colors.blue,
-                                                        labelStyle:
-                                                            const TextStyle(
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w400,
-                                                                fontSize: 10),
+                                                        labelStyle: const TextStyle(
+                                                            fontWeight: FontWeight.w400,
+                                                            fontSize: 10),
                                                         tabs: List.generate(
-                                                          snaps.data!.docs
-                                                              .length,
+                                                          snaps.data!.docs.length,
                                                           (index) => Tab(
                                                             text:
                                                                 '${snaps.data!.docs[index].data()['period']} Period',
@@ -333,21 +273,16 @@ class AttendenceHistory extends StatelessWidget {
                                               // ),
                                               Padding(
                                                 padding: const EdgeInsets.only(
-                                                    top: 0,
-                                                    left: 20,
-                                                    right: 20),
+                                                    top: 0, left: 20, right: 20),
                                                 child: Container(
                                                   width: double.infinity,
-                                                  color:
-                                                      screenContainerbackgroundColor,
+                                                  color: screenContainerbackgroundColor,
                                                   height: 02,
                                                 ),
                                               ),
                                               Padding(
                                                 padding: const EdgeInsets.only(
-                                                    top: 0,
-                                                    left: 05,
-                                                    right: 05),
+                                                    top: 0, left: 05, right: 05),
                                                 child: Container(
                                                   height: 480,
                                                   color: cWhite,
@@ -355,15 +290,10 @@ class AttendenceHistory extends StatelessWidget {
                                                   //// height: 300,
                                                   child: TabBarView(
                                                       children: List.generate(
-                                                          snaps.data!.docs
-                                                              .length,
-                                                          (index) =>
-                                                              StudentAttendanceDataList(
-                                                                subjectID: snaps
-                                                                        .data!
-                                                                        .docs[index]
-                                                                        .data()[
-                                                                    'docid'],
+                                                          snaps.data!.docs.length,
+                                                          (index) => StudentAttendanceDataList(
+                                                                subjectID: snaps.data!.docs[index]
+                                                                    .data()['docid'],
                                                                 formatted: attendenceController
                                                                             .todayAttendence
                                                                             .value ==
@@ -380,10 +310,8 @@ class AttendenceHistory extends StatelessWidget {
                                                                     : attendenceController
                                                                         .fetchClassWiseMonthvalue
                                                                         .value,
-                                                                data: snaps
-                                                                    .data!
-                                                                    .docs[index]
-                                                                    .data(),
+                                                                data:
+                                                                    snaps.data!.docs[index].data(),
                                                               ))),
                                                 ),
                                               )
@@ -391,10 +319,9 @@ class AttendenceHistory extends StatelessWidget {
                                           ),
                                         );
                                       } else if (snaps.data == null) {
-                                        return  Center(
+                                        return Center(
                                           child: TextFontWidget(
-                                              text: "No recordes found",
-                                              fontsize: 16),
+                                              text: "No recordes found", fontsize: 16),
                                         );
                                       } else {
                                         return const LoadingWidget();

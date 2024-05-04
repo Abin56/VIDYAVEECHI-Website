@@ -1,8 +1,6 @@
 import 'dart:developer';
 
 import 'package:get/get.dart';
-import 'package:get/get_rx/get_rx.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';
 import 'package:vidyaveechi_website/controller/calender_controller/calender_controller.dart';
@@ -20,6 +18,8 @@ class AttendenceController extends GetxController {
   List<String> fetchClassWiseMonth = [];
   List<String> fetchClassWiseDate = [];
   RxBool todayAttendence = true.obs;
+  
+
   RxBool ontapaddAttendence = false.obs;
   RxBool fetchClassMonthActivate = false.obs;
   RxString fetchClassWiseMonthvalue = 'dd'.obs;
@@ -175,10 +175,7 @@ class AttendenceController extends GetxController {
 
     allStudentAttenanceList.value = studentData.docs.map((e) {
       return StudentAttendanceModel(
-          date: '',
-          present: false,
-          studentName: e['studentName'],
-          uid: e['docid']);
+          date: '', present: false, studentName: e['studentName'], uid: e['docid']);
     }).toList();
   }
 
@@ -195,8 +192,7 @@ class AttendenceController extends GetxController {
         .collection(Get.find<CalenderController>().monthYear)
         .doc(Get.find<CalenderController>().dateCtr.text)
         .collection('Subjects')
-        .where('period',
-            isEqualTo: Get.find<PeriodController>().periodName.value)
+        .where('period', isEqualTo: Get.find<PeriodController>().periodName.value)
         .get();
 
     className.value = Get.find<ClassController>().className.value;
@@ -224,10 +220,7 @@ class AttendenceController extends GetxController {
       studentAttenanceList.value = studentData.docs.map((e) {
         print(e['present']);
         return StudentAttendanceModel(
-            date: '',
-            present: e['present'],
-            studentName: e['studentName'],
-            uid: e['uid']);
+            date: '', present: e['present'], studentName: e['studentName'], uid: e['uid']);
       }).toList();
     } else {
       isAttendanceNotAvail.value = true;
@@ -249,7 +242,7 @@ class AttendenceController extends GetxController {
   }
 
   uploadAttendanceList() async {
-    final docId = Uuid().v1();
+    final docId = const Uuid().v1();
     final date = DateTime.now().toString();
     await server
         .collection('SchoolListCollection')
@@ -310,8 +303,7 @@ class AttendenceController extends GetxController {
         .collection(Get.find<CalenderController>().monthYear)
         .doc(Get.find<CalenderController>().dateCtr.text)
         .collection('Subjects')
-        .where('period',
-            isEqualTo: Get.find<PeriodController>().periodName.value)
+        .where('period', isEqualTo: Get.find<PeriodController>().periodName.value)
         .get();
 
     if (attandanceData.docs.isNotEmpty) {
@@ -334,10 +326,7 @@ class AttendenceController extends GetxController {
       allStudentAttenanceList.value = studentData.docs.map((e) {
         print(e['present']);
         return StudentAttendanceModel(
-            date: e['Date'],
-            present: e['present'],
-            studentName: e['studentName'],
-            uid: e['uid']);
+            date: e['Date'], present: e['present'], studentName: e['studentName'], uid: e['uid']);
       }).toList();
     }
     // isShowDialogLoading.value = false;
@@ -356,8 +345,7 @@ class AttendenceController extends GetxController {
         .collection(Get.find<CalenderController>().monthYear)
         .doc(Get.find<CalenderController>().dateCtr.text)
         .collection('Subjects')
-        .where('period',
-            isEqualTo: Get.find<PeriodController>().periodName.value)
+        .where('period', isEqualTo: Get.find<PeriodController>().periodName.value)
         .get();
 
     if (attandanceData.docs.isNotEmpty) {
