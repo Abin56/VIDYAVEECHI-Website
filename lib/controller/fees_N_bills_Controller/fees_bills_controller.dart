@@ -435,7 +435,7 @@ class FeesAndBillsController extends GetxController {
           .doc(dateDocID)
           .get()
           .then((value) async {
-        int totalAmount = value.data()!['totalAmount'] ?? 0;
+        int totalAmount = value.data()?['totalAmount'] ?? 0;
         int result = totalAmount - paidFee.value;
 
         await server
