@@ -13,6 +13,7 @@ import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_creden
 import 'package:vidyaveechi_website/view/widgets/custom_showDilog/custom_showdilog.dart';
 import 'package:vidyaveechi_website/view/widgets/data_list_widgets/data_container.dart';
 import 'package:vidyaveechi_website/view/widgets/loading_widget/loading_widget.dart';
+import 'package:vidyaveechi_website/view/widgets/notification_color/notification_color_widget.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 import 'package:vidyaveechi_website/view/widgets/routeSelectedTextContainer/routeSelectedTextContainer.dart';
 import 'package:vidyaveechi_website/view/widgets/routeSelectedTextContainer/route_NonSelectedContainer.dart';
@@ -323,6 +324,51 @@ class ClassWiseFeesDataListContainer extends StatelessWidget {
                         padding: const EdgeInsets.only(bottom: 10),
                         child: IconButton(
                             onPressed: () async {
+                              
+                                    await server
+                                        .collection('schoolListCollection')
+                                        .doc(UserCredentialsController.schoolId)
+                                        .collection("AllStudents")
+                                        .doc(studentdata['docid'])
+                                        .get()
+                                        .then((value) async {
+                                    await  notificationController
+                                          .userStudentNotification(
+                                              studentID: studentdata['docid'],
+                                              icon: SuccessNotifierSetup().icon,
+                                              messageText:
+                                                  ''' Your ${Get.find<FeesAndBillsController>().feetypeName.value} rupees $studentFee/- is due on ${Get.find<FeesAndBillsController>().feeDueDateName.value} ,Please pay on or before the due date.
+                                                   നിങ്ങളുടെ ${Get.find<FeesAndBillsController>().feetypeName.value} ആയ $studentFee/ രൂപ, ദയവായി ${Get.find<FeesAndBillsController>().feeDueDateName.value} തിയതിക്കുള്ളിൽ അടക്കേണ്ടതാണ്''',
+                                              // ,
+                                              headerText:
+                                                  "${Get.find<FeesAndBillsController>().feetypeName.value} Due Fee",
+                                              whiteshadeColor:
+                                                  SuccessNotifierSetup()
+                                                      .whiteshadeColor,
+                                              containerColor:
+                                                  SuccessNotifierSetup()
+                                                      .containerColor);
+
+                                    await  notificationController
+                                          .userparentNotification(
+                                              parentID: value['parentId'],
+                                              icon: SuccessNotifierSetup().icon,
+                                              messageText:
+                                                  ''' Your ${Get.find<FeesAndBillsController>().feetypeName.value} rupees $studentFee/- is paid successfully.${"\n"}
+                                                   നിങ്ങളുടെ ${Get.find<FeesAndBillsController>().feetypeName.value} ആയ $studentFee/ രൂപ വിജയകരമായി അടച്ചിരിക്കുന്നു''',
+                                              // ,
+                                              headerText:
+                                                  "${Get.find<FeesAndBillsController>().feetypeName.value} Due Fee",
+                                              whiteshadeColor:
+                                                  SuccessNotifierSetup()
+                                                      .whiteshadeColor,
+                                              containerColor:
+                                                  SuccessNotifierSetup()
+                                                      .containerColor);
+                                    });
+
+                                  
+
                               Get.find<StudentFeeController>()
                                   .updateStudentFeeStatus(studentdata['docid'],
                                       true, studentdata['fee']);
@@ -376,21 +422,39 @@ class ClassWiseFeesDataListContainer extends StatelessWidget {
                                         .doc(studentdata['docid'])
                                         .get()
                                         .then((value) async {
-                                      notificationController
+                                     await notificationController
                                           .userStudentNotification(
                                               studentID: studentdata['docid'],
-                                              icon: WaringNotification().icon,
+                                              icon: WarningNotifierSetup().icon,
                                               messageText:
-                                                  ''' Your ${Get.find<FeesAndBillsController>().feetypeName.value} rupees $studentFee/- is due on ${Get.find<FeesAndBillsController>().feeDueDateName.value} ,Please p-ay on or before the due date.''',
+                                                  ''' Your ${Get.find<FeesAndBillsController>().feetypeName.value} rupees $studentFee/- is due on ${Get.find<FeesAndBillsController>().feeDueDateName.value} ,Please pay on or before the due date.
+                                                   നിങ്ങളുടെ ${Get.find<FeesAndBillsController>().feetypeName.value} ആയ $studentFee/ രൂപ, ദയവായി ${Get.find<FeesAndBillsController>().feeDueDateName.value} തിയതിക്കുള്ളിൽ അടക്കേണ്ടതാണ്''',
                                               // ,
                                               headerText:
                                                   "${Get.find<FeesAndBillsController>().feetypeName.value} Due Fee",
                                               whiteshadeColor:
-                                                  WaringNotification()
+                                                  WarningNotifierSetup()
                                                       .whiteshadeColor,
                                               containerColor:
-                                                  WaringNotification()
+                                                  WarningNotifierSetup()
                                                       .containerColor);
+
+                                    await  notificationController
+                                          .userparentNotification(
+                                              parentID: value['parentId'],
+                                              icon: WarningNotifierSetup().icon,
+                                              messageText:
+                                                  ''' Your ${Get.find<FeesAndBillsController>().feetypeName.value} rupees $studentFee/- is due on ${Get.find<FeesAndBillsController>().feeDueDateName.value} ,Please pay on or before the due date.${"\n"}
+                                                   നിങ്ങളുടെ ${Get.find<FeesAndBillsController>().feetypeName.value} ആയ $studentFee/ രൂപ, ദയവായി ${Get.find<FeesAndBillsController>().feeDueDateName.value} തിയതിക്കുള്ളിൽ അടക്കേണ്ടതാണ്''',
+                                              // ,
+                                              headerText:
+                                                  "${Get.find<FeesAndBillsController>().feetypeName.value} Due Fee",
+                                              whiteshadeColor:
+                                                  WarningNotifierSetup()
+                                                      .whiteshadeColor,
+                                              containerColor:
+                                                  WarningNotifierSetup()
+                                                      .containerColor).then((value) => Navigator.pop(context));
                                     });
 
                                     Get.find<StudentFeeController>()
