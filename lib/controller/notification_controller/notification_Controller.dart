@@ -296,11 +296,24 @@ class NotificationController extends GetxController {
           docid: docid,
           dateTime: DateTime.now().toString());
       await server
+          .collection('SchoolListCollection')
+          .doc(UserCredentialsController.schoolId)
           .collection("AllUsersDeviceID")
           .doc(parentID)
           .collection("Notification_Message")
           .doc(docid)
-          .set(details.toMap());
+          .set(details.toMap())
+          .then((value) async {
+        await server
+            .collection('SchoolListCollection')
+            .doc(UserCredentialsController.schoolId)
+            .collection("AllUsersDeviceID")
+            .doc(parentID)
+            .get()
+            .then((value) async {
+          await sendPushMessage(value['devideID'], messageText, headerText);
+        });
+      });
     } catch (e) {}
   }
 
@@ -314,6 +327,7 @@ class NotificationController extends GetxController {
   }) async {
     final String docid = uuid.v1();
     try {
+      print(messageText);
       log('Calling user notification');
       final details = NotificationModel(
           icon: icon,
@@ -325,12 +339,27 @@ class NotificationController extends GetxController {
           docid: docid,
           dateTime: DateTime.now().toString());
       await server
+          .collection('SchoolListCollection')
+          .doc(UserCredentialsController.schoolId)
           .collection("AllUsersDeviceID")
           .doc(studentID)
           .collection("Notification_Message")
           .doc(docid)
-          .set(details.toMap());
-    } catch (e) {}
+          .set(details.toMap())
+          .then((value) async {
+        await server
+            .collection('SchoolListCollection')
+            .doc(UserCredentialsController.schoolId)
+            .collection("AllUsersDeviceID")
+            .doc(studentID)
+            .get()
+            .then((value) async {
+          await sendPushMessage(value['devideID'], messageText, headerText);
+        });
+      });
+    } catch (e) {
+      log(e.toString());
+    }
   }
 }
 

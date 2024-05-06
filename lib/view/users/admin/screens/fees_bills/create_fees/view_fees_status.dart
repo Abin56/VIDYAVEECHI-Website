@@ -23,12 +23,12 @@ class CreatedFeesStatus extends StatelessWidget {
       Get.put(FeesAndBillsController());
   final StudentFeeController studentFeeController =
       Get.put(StudentFeeController());
-   CreatedFeesStatus({super.key});
+  CreatedFeesStatus({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Obx(() => feesAndBillsController.ontapviewclasswiseFees.value == true
-        ?  ClassWiseFeesStatus()
+        ? ClassWiseFeesStatus()
         : SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Container(
@@ -59,8 +59,7 @@ class CreatedFeesStatus extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                 TextFontWidget(
-                                    text: 'Month *', fontsize: 12.5),
+                                TextFontWidget(text: 'Month *', fontsize: 12.5),
                                 const SizedBox(
                                   height: 05,
                                 ),
@@ -192,16 +191,21 @@ class CreatedFeesStatus extends StatelessWidget {
                                                   feesAndBillsController
                                                       .feeDateData
                                                       .value = data['docid'];
-                                               
+
                                                   feesAndBillsController
                                                       .ontapviewclasswiseFees
                                                       .value = true;
 
-                                                      
-                                                      feesAndBillsController.feetypeName.value = data['feestypeName'];
-                                                        DateTime duedate = DateTime.fromMillisecondsSinceEpoch(data['dueDate']);
-                                                        feesAndBillsController.feeDueDateName.value=duedate.toString();
-
+                                                  feesAndBillsController
+                                                          .feetypeName.value =
+                                                      data['feestypeName'];
+                                                  DateTime duedate = DateTime
+                                                      .fromMillisecondsSinceEpoch(
+                                                          data['dueDate']);
+                                                  feesAndBillsController
+                                                          .feeDueDateName
+                                                          .value =
+                                                      duedate.toString();
                                                 },
                                                 child: AllClassessFeesDataList(
                                                   data: data,
