@@ -363,6 +363,9 @@ class FeesAndBillsController extends GetxController {
 
   RxString feeMonthData = 'd'.obs;
   RxString feeDateData = 'd'.obs;
+  RxString feetypeName = ''.obs;
+  RxString feeDueDateName =''.obs;
+
   Future<List> fetchFeeMonthData() async {
     await server
         .collection('SchoolListCollection')

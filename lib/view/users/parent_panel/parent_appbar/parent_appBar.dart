@@ -418,8 +418,8 @@ class _AppBarParentPanelState extends State<AppBarParentPanel> {
                         child: Image.asset('assests/png/avathar.png'),
                       ),
                     ),
-                    TextFontWidget(
-                      text: 'Stevne Zone',
+                    const TextFontWidget(
+                      text: 'Stevne Zone', 
                       fontsize: 12,
                       color: cBlack,
                       fontWeight: FontWeight.w400,
@@ -432,9 +432,9 @@ class _AppBarParentPanelState extends State<AppBarParentPanel> {
                 width: 200,
                 decoration: BoxDecoration(
                     border: Border.all(color: cBlack.withOpacity(0.4))),
-                child: Row(
+                child: const Row(
                   children: [
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.only(left: 10, right: 10),
                       child: Icon(
                         Icons.account_circle_outlined,
@@ -456,9 +456,9 @@ class _AppBarParentPanelState extends State<AppBarParentPanel> {
                 width: 200,
                 decoration: BoxDecoration(
                     border: Border.all(color: cBlack.withOpacity(0.4))),
-                child: Row(
+                child: const Row(
                   children: [
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.only(left: 10, right: 10),
                       child: Icon(
                         Icons.power_settings_new,

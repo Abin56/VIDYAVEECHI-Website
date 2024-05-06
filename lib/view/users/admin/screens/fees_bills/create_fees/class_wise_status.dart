@@ -2,21 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vidyaveechi_website/controller/fees_N_bills_Controller/feeStudent_controller.dart';
 import 'package:vidyaveechi_website/controller/fees_N_bills_Controller/fees_bills_controller.dart';
+import 'package:vidyaveechi_website/controller/notification_controller/notification_Controller.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/constant/const.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/students/student_details/widgets/category_tableHeader.dart';
+import 'package:vidyaveechi_website/view/users/super_admin/widgets/buttonContainer.dart';
 import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
+import 'package:vidyaveechi_website/view/widgets/custom_showDilog/custom_showdilog.dart';
 import 'package:vidyaveechi_website/view/widgets/data_list_widgets/data_container.dart';
 import 'package:vidyaveechi_website/view/widgets/loading_widget/loading_widget.dart';
+import 'package:vidyaveechi_website/view/widgets/notification_color/notification_color_widget.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 import 'package:vidyaveechi_website/view/widgets/routeSelectedTextContainer/routeSelectedTextContainer.dart';
 import 'package:vidyaveechi_website/view/widgets/routeSelectedTextContainer/route_NonSelectedContainer.dart';
 
 class ClassWiseFeesStatus extends StatelessWidget {
   const ClassWiseFeesStatus({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -28,7 +31,7 @@ class ClassWiseFeesStatus extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-           Padding(
+            const Padding(
               padding: EdgeInsets.only(left: 25, top: 25),
               child: TextFontWidget(
                 text: 'Fee Details',
@@ -56,6 +59,26 @@ class ClassWiseFeesStatus extends StatelessWidget {
                   ),
                   const RouteSelectedTextContainer(
                       width: 140, title: 'Fees Deatils'),
+                  const Spacer(),
+                  GestureDetector(
+                    onTap: () {},
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: ButtonContainerWidget(
+                          curving: 0,
+                          colorindex: 6,
+                          height: 35,
+                          width: 220,
+                          child: const Center(
+                            child: TextFontWidgetRouter(
+                              text: 'Send Message For Unpaid Students',
+                              fontsize: 12,
+                              fontWeight: FontWeight.bold,
+                              color: cWhite,
+                            ),
+                          )),
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -146,7 +169,9 @@ class ClassWiseFeesStatus extends StatelessWidget {
                                         padding: const EdgeInsets.only(
                                             left: 10, right: 10),
                                         child: ClassWiseFeesDataListContainer(
-                                            studentdata: data, index: index),
+                                            studentFee: data['fee'],
+                                            studentdata: data,
+                                            index: index),
                                       );
                                     },
                                     separatorBuilder: (context, index) {
@@ -173,11 +198,16 @@ class ClassWiseFeesStatus extends StatelessWidget {
 class ClassWiseFeesDataListContainer extends StatelessWidget {
   final Map<String, dynamic> studentdata;
   final int index;
-  const ClassWiseFeesDataListContainer({
+  final int studentFee;
+  ClassWiseFeesDataListContainer({
     required this.index,
     super.key,
     required this.studentdata,
+    required this.studentFee,
   });
+
+  final NotificationController notificationController =
+      Get.put(NotificationController());
 
   @override
   Widget build(BuildContext context) {
@@ -284,7 +314,7 @@ class ClassWiseFeesDataListContainer extends StatelessWidget {
                           'webassets/png/not_active.png',
                         ),
                       ),
-                       TextFontWidget(
+                      const TextFontWidget(
                         text: " Pending",
                         fontsize: 12,
                         overflow: TextOverflow.ellipsis,
@@ -294,6 +324,51 @@ class ClassWiseFeesDataListContainer extends StatelessWidget {
                         padding: const EdgeInsets.only(bottom: 10),
                         child: IconButton(
                             onPressed: () async {
+                              
+                                    await server
+                                        .collection('schoolListCollection')
+                                        .doc(UserCredentialsController.schoolId)
+                                        .collection("AllStudents")
+                                        .doc(studentdata['docid'])
+                                        .get()
+                                        .then((value) async {
+                                    await  notificationController
+                                          .userStudentNotification(
+                                              studentID: studentdata['docid'],
+                                              icon: SuccessNotifierSetup().icon,
+                                              messageText:
+                                                  ''' Your ${Get.find<FeesAndBillsController>().feetypeName.value} rupees $studentFee/- is due on ${Get.find<FeesAndBillsController>().feeDueDateName.value} ,Please pay on or before the due date.
+                                                   നിങ്ങളുടെ ${Get.find<FeesAndBillsController>().feetypeName.value} ആയ $studentFee/ രൂപ, ദയവായി ${Get.find<FeesAndBillsController>().feeDueDateName.value} തിയതിക്കുള്ളിൽ അടക്കേണ്ടതാണ്''',
+                                              // ,
+                                              headerText:
+                                                  "${Get.find<FeesAndBillsController>().feetypeName.value} Due Fee",
+                                              whiteshadeColor:
+                                                  SuccessNotifierSetup()
+                                                      .whiteshadeColor,
+                                              containerColor:
+                                                  SuccessNotifierSetup()
+                                                      .containerColor);
+
+                                    await  notificationController
+                                          .userparentNotification(
+                                              parentID: value['parentId'],
+                                              icon: SuccessNotifierSetup().icon,
+                                              messageText:
+                                                  ''' Your ${Get.find<FeesAndBillsController>().feetypeName.value} rupees $studentFee/- is paid successfully.${"\n"}
+                                                   നിങ്ങളുടെ ${Get.find<FeesAndBillsController>().feetypeName.value} ആയ $studentFee/ രൂപ വിജയകരമായി അടച്ചിരിക്കുന്നു''',
+                                              // ,
+                                              headerText:
+                                                  "${Get.find<FeesAndBillsController>().feetypeName.value} Due Fee",
+                                              whiteshadeColor:
+                                                  SuccessNotifierSetup()
+                                                      .whiteshadeColor,
+                                              containerColor:
+                                                  SuccessNotifierSetup()
+                                                      .containerColor);
+                                    });
+
+                                  
+
                               Get.find<StudentFeeController>()
                                   .updateStudentFeeStatus(studentdata['docid'],
                                       true, studentdata['fee']);
@@ -304,7 +379,7 @@ class ClassWiseFeesDataListContainer extends StatelessWidget {
                               size: 20,
                             )),
                       ),
-                       TextFontWidget(
+                      const TextFontWidget(
                         text: 'Paid?',
                         fontsize: 12,
                         color: cgreen,
@@ -321,7 +396,7 @@ class ClassWiseFeesDataListContainer extends StatelessWidget {
                           'webassets/png/active.png',
                         ),
                       ),
-                       TextFontWidget(
+                      const TextFontWidget(
                         text: " Full Paid",
                         fontsize: 12,
                         overflow: TextOverflow.ellipsis,
@@ -331,9 +406,65 @@ class ClassWiseFeesDataListContainer extends StatelessWidget {
                         padding: const EdgeInsets.only(bottom: 10),
                         child: IconButton(
                             onPressed: () async {
-                              Get.find<StudentFeeController>()
-                                  .updateStudentFeeStatus(
-                                      studentdata['docid'], false, 0);
+                              customShowDilogBox2(
+                                  context: context,
+                                  title: 'ALert',
+                                  children: [
+                                    const TextFontWidget(
+                                        text: "Are you confirmed to Unpaid ?",
+                                        fontsize: 15)
+                                  ],
+                                  actiononTapfuction: () async {
+                                    await server
+                                        .collection('schoolListCollection')
+                                        .doc(UserCredentialsController.schoolId)
+                                        .collection("AllStudents")
+                                        .doc(studentdata['docid'])
+                                        .get()
+                                        .then((value) async {
+                                     await notificationController
+                                          .userStudentNotification(
+                                              studentID: studentdata['docid'],
+                                              icon: WarningNotifierSetup().icon,
+                                              messageText:
+                                                  ''' Your ${Get.find<FeesAndBillsController>().feetypeName.value} rupees $studentFee/- is due on ${Get.find<FeesAndBillsController>().feeDueDateName.value} ,Please pay on or before the due date.
+                                                   നിങ്ങളുടെ ${Get.find<FeesAndBillsController>().feetypeName.value} ആയ $studentFee/ രൂപ, ദയവായി ${Get.find<FeesAndBillsController>().feeDueDateName.value} തിയതിക്കുള്ളിൽ അടക്കേണ്ടതാണ്''',
+                                              // ,
+                                              headerText:
+                                                  "${Get.find<FeesAndBillsController>().feetypeName.value} Due Fee",
+                                              whiteshadeColor:
+                                                  WarningNotifierSetup()
+                                                      .whiteshadeColor,
+                                              containerColor:
+                                                  WarningNotifierSetup()
+                                                      .containerColor);
+
+                                    await  notificationController
+                                          .userparentNotification(
+                                              parentID: value['parentId'],
+                                              icon: WarningNotifierSetup().icon,
+                                              messageText:
+                                                  ''' Your ${Get.find<FeesAndBillsController>().feetypeName.value} rupees $studentFee/- is due on ${Get.find<FeesAndBillsController>().feeDueDateName.value} ,Please pay on or before the due date.${"\n"}
+                                                   നിങ്ങളുടെ ${Get.find<FeesAndBillsController>().feetypeName.value} ആയ $studentFee/ രൂപ, ദയവായി ${Get.find<FeesAndBillsController>().feeDueDateName.value} തിയതിക്കുള്ളിൽ അടക്കേണ്ടതാണ്''',
+                                              // ,
+                                              headerText:
+                                                  "${Get.find<FeesAndBillsController>().feetypeName.value} Due Fee",
+                                              whiteshadeColor:
+                                                  WarningNotifierSetup()
+                                                      .whiteshadeColor,
+                                              containerColor:
+                                                  WarningNotifierSetup()
+                                                      .containerColor).then((value) => Navigator.pop(context));
+                                    });
+
+                                    Get.find<StudentFeeController>()
+                                        .updateStudentFeeStatus(
+                                            studentdata['docid'], false, 0);
+                                  },
+                                  doyouwantActionButton: true);
+                              // Get.find<StudentFeeController>()
+                              //     .updateStudentFeeStatus(
+                              //         studentdata['docid'], false, 0);
                             },
                             icon: const Icon(
                               Icons.close,
@@ -341,7 +472,7 @@ class ClassWiseFeesDataListContainer extends StatelessWidget {
                               size: 20,
                             )),
                       ),
-                      TextFontWidget(
+                      const TextFontWidget(
                         text: 'Not Paid?',
                         fontsize: 12,
                         color: cgreen,
@@ -421,7 +552,7 @@ class StudentFeesEditWidget extends StatelessWidget {
               height: 35,
               decoration: BoxDecoration(
                   border: Border.all(color: cBlack.withOpacity(0.2))),
-              child:  Center(
+              child: const Center(
                 child: TextFontWidget(
                   text: '✔️',
                   fontsize: 12,
@@ -448,7 +579,7 @@ class StudentFeesEditWidget extends StatelessWidget {
               height: 35,
               decoration: BoxDecoration(
                   border: Border.all(color: cBlack.withOpacity(0.2))),
-              child:  Center(
+              child: const Center(
                 child: TextFontWidget(
                   text: '✖️',
                   fontsize: 12,
