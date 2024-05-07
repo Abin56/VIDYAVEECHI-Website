@@ -34,7 +34,7 @@ class SelectLeaveApplicationDate extends StatelessWidget {
       onChanged: (value) async {
         if (value != null) {
           leaveapplicationcontroller.fetchClassWiseDatevalue.value = value;
-          print(leaveapplicationcontroller.fetchClassWiseDatevalue.value);
+          // print(leaveapplicationcontroller.fetchClassWiseDatevalue.value);
         }
       },
       popupProps: const PopupProps.menu(
@@ -46,5 +46,4 @@ class SelectLeaveApplicationDate extends StatelessWidget {
           baseStyle: GoogleFonts.poppins(fontSize: 13, color: Colors.black.withOpacity(0.7))),
     ));
   }
-  
 }

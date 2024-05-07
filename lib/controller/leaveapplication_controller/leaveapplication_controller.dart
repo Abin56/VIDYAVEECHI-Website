@@ -24,7 +24,7 @@ RxString fetchClassWiseDatevalue = 'dd'.obs;
           .then((value) {
         for (var i = 0; i < value.docs.length; i++) {
           fetchClassWiseDate.add(value.docs[i].data()['docid']);
-        }
+        } 
       });
     } catch (e) {
       log(e.toString());

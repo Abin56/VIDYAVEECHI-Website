@@ -34,7 +34,7 @@ class LeaveApplicationList extends StatelessWidget {
     String formatted = formatter.format(parseDate);
 
     return SingleChildScrollView(
-      // scrollDirection: Axis.horizontal,
+      scrollDirection: Axis.horizontal,
       child: Container(
         color: screenContainerbackgroundColor,
         height: 1000,
@@ -71,7 +71,6 @@ class LeaveApplicationList extends StatelessWidget {
                   ),
                   const RouteSelectedTextContainer(
                     title: 'Leave Application',
-                    width: 200,
                   ),
                   const Spacer(),
                   SizedBox(
@@ -82,21 +81,27 @@ class LeaveApplicationList extends StatelessWidget {
                             // const Spacer(),
                             leaveApplicationController.leaveApplication.value == true
                                 ? Row(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
                                     children: [
-                                      BlueContainerWidget(
-                                          title: "Today Status",
-                                          fontSize: 16,
-                                          color: themeColorBlue,
-                                          width: 180),
-                                      const SizedBox(
-                                        width: 20,
+                                      const Padding(
+                                        padding: EdgeInsets.all(8.0),
+                                        child: SizedBox(
+                                          height: 40,
+                                          child: RouteSelectedTextContainer(
+                                            title: "Today Status",
+                                            fontSize: 12,
+                                            color: themeColorBlue,
+                                          ),
+                                        ),
                                       ),
+                                      const SizedBox(width: 20),
                                       Checkbox(
                                         value: true,
                                         onChanged: (value) {
                                           leaveApplicationController.leaveApplication.value = false;
                                         },
-                                      )
+                                      ),
+                                      const SizedBox(width: 8), // Adding some additional spacing
                                     ],
                                   )
                                 : Row(
@@ -105,7 +110,7 @@ class LeaveApplicationList extends StatelessWidget {
                                         padding: const EdgeInsets.all(8.0),
                                         child: SizedBox(
                                           width: 200,
-                                          height: ResponsiveWebSite.isMobile(context) ? 80 : 100,
+                                          height: ResponsiveWebSite.isMobile(context) ? 80 : 90,
                                           // color: cWhite,
                                           child: Column(
                                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -129,10 +134,10 @@ class LeaveApplicationList extends StatelessWidget {
                                         width: 20,
                                       ),
                                       BlueContainerWidget(
-                                          title: "Today ? ",
-                                          fontSize: 12,
-                                          color: themeColorBlue,
-                                          width: 80),
+                                        title: "Today ? ",
+                                        fontSize: 12,
+                                        color: themeColorBlue,
+                                      ),
                                       Checkbox(
                                         value: false,
                                         onChanged: (value) {
@@ -171,8 +176,7 @@ class LeaveApplicationList extends StatelessWidget {
                           width: 02,
                         ),
                         Expanded(
-                            flex: 2,
-                            child: CatrgoryTableHeaderWidget(headerTitle: 'Leave Days')),
+                            flex: 2, child: CatrgoryTableHeaderWidget(headerTitle: 'Leave Days')),
                         SizedBox(
                           width: 02,
                         ),
