@@ -4,9 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/home/screens/create_school/Registration/registrationpage.dart';
 import 'package:vidyaveechi_website/view/home/screens/create_school/create_school.dart';
-import 'package:vidyaveechi_website/view/home/screens/home_page_contents%20.dart';
-import 'package:vidyaveechi_website/view/home/screens/lepton_logo_appbar.dart';
-import 'package:vidyaveechi_website/view/home/screens/tree_part.dart';
+import 'package:vidyaveechi_website/view/home/screens/home_parts/home_page_contents%20.dart';
+import 'package:vidyaveechi_website/view/home/screens/home_parts/lepton_logo_appbar.dart';
+import 'package:vidyaveechi_website/view/home/screens/home_parts/tree_part.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 
 class VidhyaVeechiHomePageResponsive extends StatelessWidget {

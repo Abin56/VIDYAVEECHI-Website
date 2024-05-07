@@ -3,12 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vidyaveechi_website/controller/user_login_Controller/user_login_controller.dart';
+import 'package:vidyaveechi_website/info/info.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/fonts/google_poppins_widget.dart';
-import 'package:vidyaveechi_website/view/users/parent_panel/parent_home.dart';
-import 'package:vidyaveechi_website/view/users/student/student_home.dart';
-import 'package:vidyaveechi_website/view/users/teacher/teacher_home.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
+
 
 class UserLoginPageScreen extends StatefulWidget {
   const UserLoginPageScreen({super.key});
@@ -83,7 +82,9 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
                   children: <Widget>[
                     GestureDetector(
                       onTap: () {
-                        Get.offAll(() => const StudentHomeScreen());
+                  // loginController.askUserDetailsBottomSheet(context);
+                      loginController.askUserDetailsBottomSheet(context);
+                     //   Get.offAll(() => const StudentHomeScreen());
                       },
                       child: SizedBox(
                         height: ResponsiveWebSite.isMobile(context) ? 100 : 200,
@@ -119,8 +120,8 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
                       height: 20,
                     ),
                     GestureDetector(
-                      onTap: () {
-                        Get.offAll(() => const ParentHomeScreen());
+                      onTap: () {loginController.askUserDetailsParentBottomSheet(context);
+                       // Get.offAll(() => const ParentHomeScreen());
                       },
                       child: SizedBox(
                         height: ResponsiveWebSite.isMobile(context) ? 100 : 200,
@@ -153,8 +154,9 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
                     ),
                     GestureDetector(
                       onTap: () {
-                        // loginController.teacherLoginController(context);
-                        Get.offAll(() => const TeachersHomeScreen());
+                       loginController.askUserDetailsTeacherBottomSheet(context);
+                      // loginController.teacherLoginController();
+                      // Get.offAll(() => const TeachersHomeScreen());
                       },
                       child: SizedBox(
                         height: ResponsiveWebSite.isMobile(context) ? 100 : 200,
@@ -262,14 +264,12 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
                                           width: ResponsiveWebSite.isMobile(context) ? 20 : 40,
                                           decoration: const BoxDecoration(
                                             image: DecorationImage(
-                                              image: AssetImage(
-                                                  "webassets/images/vidyaveechi_logo.png"),
+                                              image: AssetImage(logoImage),
                                               fit: BoxFit.fill,
                                             ),
                                           ),
                                         ),
-                                        Text(
-                                          "VidyaVeechi",
+                                        Text(smallLetterIN,
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold,
                                               color: cgreen.withOpacity(1),
@@ -431,13 +431,12 @@ class _UserLoginPageScreenState extends State<UserLoginPageScreen>
                                     width: ResponsiveWebSite.isMobile(context) ? 20 : 40,
                                     decoration: const BoxDecoration(
                                       image: DecorationImage(
-                                        image: AssetImage("webassets/images/vidyaveechi_logo.png"),
+                                        image: AssetImage(logoImage),
                                         fit: BoxFit.fill,
                                       ),
                                     ),
                                   ),
-                                  Text(
-                                    "VidyaVeechi",
+                                  Text(smallLetterIN ,
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         color: cgreen.withOpacity(1),

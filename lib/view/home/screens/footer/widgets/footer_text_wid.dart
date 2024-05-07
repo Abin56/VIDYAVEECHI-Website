@@ -1,20 +1,19 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:vidyaveechi_website/info/info.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/fonts/google_poppins_widget.dart';
-import 'package:vidyaveechi_website/view/home/screens/footer/privacypolicy.dart';
-import 'package:vidyaveechi_website/view/home/screens/footer/terms%20_and_condition.dart';
-import 'package:vidyaveechi_website/view/home/screens/footer/widgets/cancellation.dart';
-import 'package:vidyaveechi_website/view/home/screens/footer/widgets/trademark.dart';
+import 'package:vidyaveechi_website/view/home/screens/footer/legal/terms%20_and_condition.dart';
+import 'package:vidyaveechi_website/view/home/screens/footer/legal/trademark.dart';
+import 'package:vidyaveechi_website/view/home/screens/footer/legal/privacypolicy.dart';
+import 'package:vidyaveechi_website/view/home/screens/footer/legal/cancellation.dart';
 import 'package:vidyaveechi_website/view/home/screens/footer/widgets/who_we_are.dart';
 import 'package:vidyaveechi_website/view/home/screens/footer/widgets/why_choose_us.dart';
 import 'package:vidyaveechi_website/view/users/super_admin/lepton_Admin/admin_panel_Screen.dart';
 import 'package:vidyaveechi_website/view/widgets/hover-text/hovertext.dart';
 
-import '../family_policy.dart';
+import '../legal/family_policy.dart';
 
 class AddressWidget extends StatelessWidget {
   const AddressWidget({
@@ -64,7 +63,7 @@ class AddressWidget extends StatelessWidget {
 }
 
 class LegalWidget extends StatelessWidget {
-  const LegalWidget({
+  const  LegalWidget({
     super.key,
   });
 
@@ -92,10 +91,10 @@ class LegalWidget extends StatelessWidget {
                     return GestureDetector(
                       onTap: () {
                         if (index == 1) {
-                       Get.toNamed('/PrivacyPolicy');
+                      Navigator.pushNamed(context,'/PrivacyPolicy');
                         } else if (index == 2) {
                           log("privacy ..................");
-                          Get.toNamed('/PrivacyPolicy');
+                          Navigator.pushNamed(context,'/PrivacyPolicy');
                         } else {
                           Navigator.push(context, MaterialPageRoute(
                             builder: (context) {
@@ -205,7 +204,7 @@ class WhoWeAreWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           GooglePoppinsWidgets(
-            text: 'LEPTON VIDYAVEECHI',
+            text: name,
             fontsize: 18,
             fontWeight: FontWeight.bold,
             color: cWhite,

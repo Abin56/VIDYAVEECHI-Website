@@ -183,10 +183,13 @@ class PeriodWiseTimeTable extends StatelessWidget {
                                                         height: 500,
                                                         child: Form(
                                                           key: formKey,
-                                                          child: SingleChildScrollView(
+                                                          child:
+                                                              SingleChildScrollView(
                                                             child: Column(
                                                               children: [
-                                                                TextFormFiledBlueContainerWidgetWithOutColor(validator: checkFieldEmpty,
+                                                                TextFormFiledBlueContainerWidgetWithOutColor(
+                                                                  validator:
+                                                                      checkFieldEmpty,
                                                                   hintText:
                                                                       ' ${data.periodNumber}',
                                                                   title:
@@ -194,8 +197,13 @@ class PeriodWiseTimeTable extends StatelessWidget {
                                                                   controller:
                                                                       timeTableController
                                                                           .periodController,
-                                                                ),const SizedBox(height: 20,),
-                                                                TextFormFiledBlueContainerWidgetWithOutColor(validator: checkFieldEmpty,
+                                                                ),
+                                                                const SizedBox(
+                                                                  height: 20,
+                                                                ),
+                                                                TextFormFiledBlueContainerWidgetWithOutColor(
+                                                                  validator:
+                                                                      checkFieldEmpty,
                                                                   hintText:
                                                                       ' ${data.subjectName}',
                                                                   title:
@@ -203,14 +211,19 @@ class PeriodWiseTimeTable extends StatelessWidget {
                                                                   controller:
                                                                       timeTableController
                                                                           .subjectNamecontroller,
-                                                                ),const SizedBox(height: 10,),
-                                                                TextFormFiledBlueContainerWidgetWithOutColor(validator: checkFieldEmpty,
-                                                                  onTap: () async {
-                                                                    await timeTableController
-                                                                        .selectTimesec(
-                                                                            context,
-                                                                            timeTableController
-                                                                                .startTimeviewController);
+                                                                ),
+                                                                const SizedBox(
+                                                                  height: 10,
+                                                                ),
+                                                                TextFormFiledBlueContainerWidgetWithOutColor(
+                                                                  validator:
+                                                                      checkFieldEmpty,
+                                                                  onTap:
+                                                                      () async {
+                                                                    await timeTableController.selectTimesec(
+                                                                        context,
+                                                                        timeTableController
+                                                                            .startTimeviewController);
                                                                   },
                                                                   hintText:
                                                                       ' ${data.startTime}',
@@ -219,22 +232,31 @@ class PeriodWiseTimeTable extends StatelessWidget {
                                                                   controller:
                                                                       timeTableController
                                                                           .startTimeviewController,
-                                                                ),const SizedBox(height: 10,),
-                                                                TextFormFiledBlueContainerWidgetWithOutColor(validator: checkFieldEmpty,
-                                                                  onTap: () async {
-                                                                    await timeTableController
-                                                                        .selectTimesec(
-                                                                            context,
-                                                                            timeTableController
-                                                                                .endTimeviewController);
+                                                                ),
+                                                                const SizedBox(
+                                                                  height: 10,
+                                                                ),
+                                                                TextFormFiledBlueContainerWidgetWithOutColor(
+                                                                  validator:
+                                                                      checkFieldEmpty,
+                                                                  onTap:
+                                                                      () async {
+                                                                    await timeTableController.selectTimesec(
+                                                                        context,
+                                                                        timeTableController
+                                                                            .endTimeviewController);
                                                                   },
                                                                   hintText:
                                                                       ' ${data.endTime}',
-                                                                  title: 'End Time',
+                                                                  title:
+                                                                      'End Time',
                                                                   controller:
                                                                       timeTableController
                                                                           .endTimeviewController,
-                                                                ),const SizedBox(height: 10,),
+                                                                ),
+                                                                const SizedBox(
+                                                                  height: 10,
+                                                                ),
                                                               ],
                                                             ),
                                                           ),
@@ -243,15 +265,16 @@ class PeriodWiseTimeTable extends StatelessWidget {
                                                     ],
                                                     doyouwantActionButton: true,
                                                     actiontext: 'Update',
-                                                    actiononTapfuction: () {if(formKey.currentState!.validate()){
-                                                       timeTableController
-                                                          .enableUpdate(
-                                                              data.docid,
-                                                              data.dayName!);
-                                                      Navigator.of(context)
-                                                          .pop();
-                                                    }
-                                                     
+                                                    actiononTapfuction: () {
+                                                      if (formKey.currentState!
+                                                          .validate()) {
+                                                        timeTableController
+                                                            .enableUpdate(
+                                                                data.docid,
+                                                                data.dayName!);
+                                                        Navigator.of(context)
+                                                            .pop();
+                                                      }
                                                     });
                                               },
                                               child: DataContainerMarksWidget(

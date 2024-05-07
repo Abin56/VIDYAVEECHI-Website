@@ -4,12 +4,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:progress_state_button/progress_button.dart';
+import 'package:vidyaveechi_website/controller/batch_yearController/batch_year_Controller.dart';
 import 'package:vidyaveechi_website/model/class_model/class_model.dart';
 import 'package:vidyaveechi_website/model/student_model/student_model.dart';
 import 'package:vidyaveechi_website/view/constant/const.dart';
 import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
 import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
+import 'package:vidyaveechi_website/view/widgets/drop_DownList/schoolDropDownList.dart';
 
 class ClassController extends GetxController {
   final TextEditingController classNameController = TextEditingController();
@@ -31,10 +33,10 @@ class ClassController extends GetxController {
   RxString studentName = ''.obs;
   RxString studentDocID = ''.obs;
   RxBool ontapClass = false.obs;
-  RxBool ontapLeaveApplication = false.obs;
 
-  final _schoolserver =
-      server.collection('SchoolListCollection').doc(UserCredentialsController.schoolId);
+  // final server.collection(collectionPath) = server
+  //     .collection('SchoolListCollection')
+  //     .doc(UserCredentialsController.schoolId);
 
   Future<void> addNewClass() async {
     //.. Create New Class
@@ -47,7 +49,13 @@ class ClassController extends GetxController {
           editoption: false,
           docid: classNameController.text.trim() + uuid.v1(),
           className: classNameController.text.trim());
-      _schoolserver.collection("classes").doc(data.docid).set(data.toMap()).then((value) async {
+      server
+          .collection('SchoolListCollection')
+          .doc(UserCredentialsController.schoolId)
+          .collection("classes")
+          .doc(data.docid)
+          .set(data.toMap())
+          .then((value) async {
         classNameController.clear();
         classFeeController.clear();
         buttonstate.value = ButtonState.success;
@@ -79,7 +87,9 @@ class ClassController extends GetxController {
           editoption: false,
           feeeditoption: false,
           classfee: classfee);
-      await _schoolserver
+      server
+          .collection('SchoolListCollection')
+          .doc(UserCredentialsController.schoolId)
           .collection(UserCredentialsController.batchId!)
           .doc(UserCredentialsController.batchId!)
           .collection('classes')
@@ -97,24 +107,37 @@ class ClassController extends GetxController {
     String docid,
     bool status,
   ) async {
-    await _schoolserver.collection("classes").doc(docid).update({data: status});
+      server
+          .collection('SchoolListCollection')
+          .doc(UserCredentialsController.schoolId)
+        .collection("classes")
+        .doc(docid)
+        .update({data: status});
   }
 
   Future<void> updateClassFees(String docid) async {
     //................. Update Class Name
     //.... Update Class Name
     try {
-      _schoolserver.collection("classes").doc(docid).update({
+          server
+          .collection('SchoolListCollection')
+          .doc(UserCredentialsController.schoolId)
+          .collection("classes")
+          .doc(docid)
+          .update({
         'classfee': int.parse(classFeeEditController.text.trim()),
         'feeeditoption': false,
       }).then((value) {
-        _schoolserver
+      server
+          .collection('SchoolListCollection')
+          .doc(UserCredentialsController.schoolId)
             .collection(UserCredentialsController.batchId!)
             .doc(UserCredentialsController.batchId!)
             .collection('classes')
             .doc(docid)
-            .update({'classfee': int.parse(classFeeEditController.text.trim())}).then(
-                (value) => showToast(msg: 'Class Name Changed'));
+            .update({
+          'classfee': int.parse(classFeeEditController.text.trim())
+        }).then((value) => showToast(msg: 'Class Name Changed'));
         classFeeEditController.clear();
       });
     } catch (e) {
@@ -129,11 +152,18 @@ class ClassController extends GetxController {
     //................. Update Class Name
     //.... Update Class Name
     try {
-      _schoolserver.collection("classes").doc(docid).update({
+       server
+          .collection('SchoolListCollection')
+          .doc(UserCredentialsController.schoolId)
+          .collection("classes")
+          .doc(docid)
+          .update({
         'className': classNameEditController.text.trim(),
         'editoption': false,
       }).then((value) {
-        _schoolserver
+      server
+          .collection('SchoolListCollection')
+          .doc(UserCredentialsController.schoolId)
             .collection(UserCredentialsController.batchId!)
             .doc(UserCredentialsController.batchId!)
             .collection('classes')
@@ -163,7 +193,8 @@ class ClassController extends GetxController {
             content: const SingleChildScrollView(
               child: ListBody(
                 children: <Widget>[
-                  Text('Once you delete a class all data will be lost \n Are you sure ?')
+                  Text(
+                      'Once you delete a class all data will be lost \n Are you sure ?')
                 ],
               ),
             ),
@@ -178,7 +209,9 @@ class ClassController extends GetxController {
                 child: const Text('Ok'),
                 onPressed: () async {
                   try {
-                    _schoolserver
+        server
+          .collection('SchoolListCollection')
+          .doc(UserCredentialsController.schoolId)
                         .collection("classes")
                         .doc(docid)
                         .delete()
@@ -234,7 +267,8 @@ class ClassController extends GetxController {
             content: const SingleChildScrollView(
               child: ListBody(
                 children: <Widget>[
-                  Text('Once you delete a class all data will be lost \n Are you sure ?')
+                  Text(
+                      'Once you delete a class all data will be lost \n Are you sure ?')
                 ],
               ),
             ),
@@ -249,7 +283,9 @@ class ClassController extends GetxController {
                 child: const Text('Ok'),
                 onPressed: () async {
                   try {
-                    await _schoolserver
+             server
+          .collection('SchoolListCollection')
+          .doc(UserCredentialsController.schoolId)
                         .collection(UserCredentialsController.batchId!)
                         .doc(UserCredentialsController.batchId!)
                         .collection('classes')
@@ -304,7 +340,26 @@ class ClassController extends GetxController {
         .get();
 
     for (var i = 0; i < firebase.docs.length; i++) {
-      final list = firebase.docs.map((e) => ClassModel.fromMap(e.data())).toList();
+      final list =
+          firebase.docs.map((e) => ClassModel.fromMap(e.data())).toList();
+      allclassList.add(list[i]);
+      allclassList.sort((a, b) => a.className.compareTo(b.className));
+    }
+    return allclassList;
+  }
+
+  Future<List<ClassModel>> userloginfetchClass() async {
+    final firebase = await server
+        .collection('SchoolListCollection')
+        .doc(schoolListValue['docid'])
+        .collection(Get.find<BatchYearController>().batchyearValue.value)
+        .doc(Get.find<BatchYearController>().batchyearValue.value)
+        .collection('classes')
+        .get();
+
+    for (var i = 0; i < firebase.docs.length; i++) {
+      final list =
+          firebase.docs.map((e) => ClassModel.fromMap(e.data())).toList();
       allclassList.add(list[i]);
       allclassList.sort((a, b) => a.className.compareTo(b.className));
     }
@@ -319,7 +374,8 @@ class ClassController extends GetxController {
         .get();
 
     for (var i = 0; i < firebase.docs.length; i++) {
-      final list = firebase.docs.map((e) => StudentModel.fromMap(e.data())).toList();
+      final list =
+          firebase.docs.map((e) => StudentModel.fromMap(e.data())).toList();
       allstudentList.add(list[i]);
     }
     return allstudentList;
@@ -329,15 +385,23 @@ class ClassController extends GetxController {
     try {
       log("studentDocID.value ${studentDocID.value}");
       log("sclassDocid $classDocid");
-      final studentResult =
-          await _schoolserver.collection('AllStudents').doc(studentDocID.value).get();
+      final studentResult = await       server
+          .collection('SchoolListCollection')
+          .doc(UserCredentialsController.schoolId)
+          .collection('AllStudents')
+          .doc(studentDocID.value)
+          .get();
       if (studentDocID.value != '') {
         final data = StudentModel.fromMap(studentResult.data()!);
-        await _schoolserver
+        await       server
+          .collection('SchoolListCollection')
+          .doc(UserCredentialsController.schoolId)
             .collection('AllStudents')
             .doc(studentDocID.value)
             .update({'classId': classDocid}).then((value) async {
-          await _schoolserver
+          await       server
+          .collection('SchoolListCollection')
+          .doc(UserCredentialsController.schoolId)
               .collection(UserCredentialsController.batchId!)
               .doc(UserCredentialsController.batchId!)
               .collection('classes')

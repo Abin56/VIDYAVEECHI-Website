@@ -4,12 +4,12 @@ import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/fonts/google_monstre.dart';
 import 'package:vidyaveechi_website/view/fonts/google_poppins_widget.dart';
 import 'package:vidyaveechi_website/view/home/screens/create_school/create_school.dart';
-import 'package:vidyaveechi_website/view/home/screens/dujo_ourFeatures_widget.dart';
+import 'package:vidyaveechi_website/view/home/screens/home_parts/dujo_ourFeatures_widget.dart';
 import 'package:vidyaveechi_website/view/home/screens/footer/footer.dart';
 import 'package:vidyaveechi_website/view/home/screens/footer/lepton_footerbar.dart';
 import 'package:vidyaveechi_website/view/home/screens/footer/widgets/alertDilogueBox.dart';
 import 'package:vidyaveechi_website/view/home/screens/footer/widgets/copyright_widget.dart';
-import 'package:vidyaveechi_website/view/home/screens/vidyaveechi_home.dart';
+import 'package:vidyaveechi_website/view/home/screens/home_parts/vidyaveechi_home.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 
 class HomeScreen extends StatelessWidget {

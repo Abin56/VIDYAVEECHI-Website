@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:vidyaveechi_website/info/info.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
-import 'package:vidyaveechi_website/view/home/screens/footer/family_policy.dart';
-import 'package:vidyaveechi_website/view/home/screens/footer/privacypolicy.dart';
-import 'package:vidyaveechi_website/view/home/screens/footer/terms%20_and_condition.dart';
+import 'package:vidyaveechi_website/view/home/screens/footer/legal/family_policy.dart';
+import 'package:vidyaveechi_website/view/home/screens/footer/legal/terms%20_and_condition.dart';
+import 'package:vidyaveechi_website/view/home/screens/footer/legal/privacypolicy.dart';
 
 class FooterMob extends StatelessWidget {
   final Uri _faceBookUrl =
@@ -58,8 +59,7 @@ class FooterMob extends StatelessWidget {
           children: [
             Column(
               children: [
-                Text(
-                  'Lepton VIDYAVEECHI',
+                Text(name,
                   style: GoogleFonts.poppins(
                       fontSize: 10.h, fontWeight: FontWeight.bold, color: cWhite
                       //  color: const Color.fromRGBO(103, 53, 107, 1),

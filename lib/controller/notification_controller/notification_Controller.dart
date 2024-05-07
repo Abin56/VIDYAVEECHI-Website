@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,6 +12,7 @@ import 'package:vidyaveechi_website/controller/class_controller/class_controller
 import 'package:vidyaveechi_website/model/notification_model/notification_model.dart';
 import 'package:vidyaveechi_website/model/userDeviceModel/userDeviceModel.dart';
 import 'package:vidyaveechi_website/view/constant/const.dart';
+import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
 import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
 
@@ -19,7 +21,7 @@ class NotificationController extends GetxController {
   TextEditingController messageController = TextEditingController();
   List<UserDeviceIDModel> selectedUSerUIDList = [];
   Rx<ButtonState> buttonstate = ButtonState.idle.obs;
- final formKey = GlobalKey<FormState>();
+  final formKey = GlobalKey<FormState>();
   RxBool ontapClassWiseSender = false.obs;
   RxBool selectStudent = false.obs;
   RxBool selectParent = false.obs;
@@ -68,7 +70,7 @@ class NotificationController extends GetxController {
         .collection('AllUsersDeviceID')
         .get()
         .then((value) async {
-            for (var i = 0; i < value.docs.length; i++) {
+      for (var i = 0; i < value.docs.length; i++) {
         if (selectClass.value == true) {
           if (selectStudent.value == true &&
               selectTeacher.value == true &&
@@ -104,7 +106,7 @@ class NotificationController extends GetxController {
         .collection('AllUsersDeviceID')
         .get()
         .then((value) async {
-        for (var i = 0; i < value.docs.length; i++) {
+      for (var i = 0; i < value.docs.length; i++) {
         if (selectClass.value == true) {
           if (selectClass.value == true &&
               selectParent.value == true &&
@@ -174,11 +176,15 @@ class NotificationController extends GetxController {
       required Color containerColor}) async {
     try {
       log('selectedUSerUIDList  $selectedUSerUIDList');
+
       final uuid = const Uuid().v1();
-      final messageDetails = NotificationModel(
+      NotificationModel messageDetails = NotificationModel(
+          dateTime: DateTime.now().toString(),
+          docid: uuid,
+          open: false,
           icon: icon,
           messageText: messageController.text,
-          headerText: '',
+          headerText: headingController.text,
           whiteshadeColor: whiteshadeColor,
           containerColor: containerColor);
       for (var i = 0; i < selectedUSerUIDList.length; i++) {
@@ -187,26 +193,34 @@ class NotificationController extends GetxController {
             .doc(UserCredentialsController.schoolId)
             .collection('AllUsersDeviceID')
             .doc(selectedUSerUIDList[i].uid)
-            .get()
-            .then((value) async {
-          await sendPushMessage(selectedUSerUIDList[i].devideID,
-              messageController.text, headingController.text);
-        }).then((value) async {
+            .set({'message': true}, SetOptions(merge: true)).then(
+                (value) async {
           await server
               .collection('SchoolListCollection')
               .doc(UserCredentialsController.schoolId)
               .collection('AllUsersDeviceID')
               .doc(selectedUSerUIDList[i].uid)
-              .collection("Notification_Message")
-              .doc(uuid)
-              .set(messageDetails.toMap());
+              .get()
+              .then((value) async {
+            await sendPushMessage(selectedUSerUIDList[i].devideID,
+                messageController.text, headingController.text);
+          }).then((value) async {
+            await server
+                .collection('SchoolListCollection')
+                .doc(UserCredentialsController.schoolId)
+                .collection('AllUsersDeviceID')
+                .doc(selectedUSerUIDList[i].uid)
+                .collection("Notification_Message")
+                .doc(uuid)
+                .set(messageDetails.toMap());
+          });
         });
       }
       ontapClassWiseSender.value == false;
       selectParent.value = false;
       selectStudent.value = false;
       selectTeacher.value = false;
-      selectClass.value= false;
+      selectClass.value = false;
       selectedUSerUIDList.clear();
       headingController.clear();
       messageController.clear();
@@ -258,6 +272,93 @@ class NotificationController extends GetxController {
       if (kDebugMode) {
         log("error push Notification");
       }
+    }
+  }
+
+  Future<void> userparentNotification({
+    required String parentID,
+    required IconData icon,
+    required String messageText,
+    required String headerText,
+    required Color whiteshadeColor,
+    required Color containerColor,
+  }) async {
+    final String docid = uuid.v1();
+    try {
+      log('Calling user notification');
+      final details = NotificationModel(
+          icon: icon,
+          messageText: messageText,
+          headerText: headerText,
+          whiteshadeColor: whiteshadeColor,
+          containerColor: containerColor,
+          open: false,
+          docid: docid,
+          dateTime: DateTime.now().toString());
+      await server
+          .collection('SchoolListCollection')
+          .doc(UserCredentialsController.schoolId)
+          .collection("AllUsersDeviceID")
+          .doc(parentID)
+          .collection("Notification_Message")
+          .doc(docid)
+          .set(details.toMap())
+          .then((value) async {
+        await server
+            .collection('SchoolListCollection')
+            .doc(UserCredentialsController.schoolId)
+            .collection("AllUsersDeviceID")
+            .doc(parentID)
+            .get()
+            .then((value) async {
+          await sendPushMessage(value['devideID'], messageText, headerText);
+        });
+      });
+    } catch (e) {}
+  }
+
+  Future<void> userStudentNotification({
+    required String studentID,
+    required IconData icon,
+    required String messageText,
+    required String headerText,
+    required Color whiteshadeColor,
+    required Color containerColor,
+  }) async {
+    final String docid = uuid.v1();
+    try {
+      print(messageText);
+      log('Calling user notification');
+      final details = NotificationModel(
+          icon: icon,
+          messageText: messageText,
+          headerText: headerText,
+          whiteshadeColor: whiteshadeColor,
+          containerColor: containerColor,
+          open: false,
+          docid: docid,
+          dateTime: DateTime.now().toString());
+      await server
+          .collection('SchoolListCollection')
+          .doc(UserCredentialsController.schoolId)
+          .collection("AllUsersDeviceID")
+          .doc(studentID)
+          .collection("Notification_Message")
+          .doc(docid)
+          .set(details.toMap())
+          .then((value) async {
+        await server
+            .collection('SchoolListCollection')
+            .doc(UserCredentialsController.schoolId)
+            .collection("AllUsersDeviceID")
+            .doc(studentID)
+            .get()
+            .then((value) async {
+          await sendPushMessage(value['devideID'], messageText, headerText);
+        });
+      });
+    } catch (e) {
+      log(e.toString());
     }
   }
 }

@@ -2,16 +2,14 @@ import 'package:flutter/material.dart';
 
 class TextFontWidget extends StatelessWidget {
   final String text;
-  final int? index;
   final double fontsize;
   final FontWeight? fontWeight;
   final double? letterSpacing;
   final Color? color;
   final TextOverflow? overflow;
-  String? Function(String?)? validator;
-  TextFontWidget({
+ final String? Function(String?)? validator;
+   const TextFontWidget({
     this.validator,
-    this.index,
     required this.text,
     required this.fontsize,
     this.fontWeight,
@@ -23,22 +21,22 @@ class TextFontWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        text,
-        overflow: overflow,
-        // maxLines: 1,
-        style: TextStyle(
-          decoration: TextDecoration.none,
-          letterSpacing: letterSpacing,
-          fontSize: fontsize,
-          fontWeight: fontWeight,
-          color: Colors.black,
-        ),
+    return Text(
+      text,
+      overflow: overflow,
+      // maxLines: 1,
+      style: TextStyle(
+        decoration: TextDecoration.none,
+        letterSpacing: letterSpacing,
+        fontSize: fontsize,
+        fontWeight: fontWeight,
+        color: Colors.black,
       ),
     );
   }
 }
+
+
 
 class TextFontWidgetRouter extends StatelessWidget {
   final String text;
