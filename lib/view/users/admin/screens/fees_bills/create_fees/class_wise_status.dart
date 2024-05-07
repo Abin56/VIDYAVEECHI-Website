@@ -341,7 +341,7 @@ class ClassWiseFeesDataListContainer extends StatelessWidget {
                                                    നിങ്ങളുടെ ${Get.find<FeesAndBillsController>().feetypeName.value} ആയ $studentFee/ രൂപ, ദയവായി ${Get.find<FeesAndBillsController>().feeDueDateName.value} തിയതിക്കുള്ളിൽ അടക്കേണ്ടതാണ്''',
                                               // ,
                                               headerText:
-                                                  "${Get.find<FeesAndBillsController>().feetypeName.value} Due Fee",
+                                                  "${Get.find<FeesAndBillsController>().feetypeName.value} is Due ",
                                               whiteshadeColor:
                                                   SuccessNotifierSetup()
                                                       .whiteshadeColor,
@@ -358,7 +358,7 @@ class ClassWiseFeesDataListContainer extends StatelessWidget {
                                                    നിങ്ങളുടെ ${Get.find<FeesAndBillsController>().feetypeName.value} ആയ $studentFee/ രൂപ വിജയകരമായി അടച്ചിരിക്കുന്നു''',
                                               // ,
                                               headerText:
-                                                  "${Get.find<FeesAndBillsController>().feetypeName.value} Due Fee",
+                                                  "${Get.find<FeesAndBillsController>().feetypeName.value} is Due ",
                                               whiteshadeColor:
                                                   SuccessNotifierSetup()
                                                       .whiteshadeColor,
@@ -431,7 +431,7 @@ class ClassWiseFeesDataListContainer extends StatelessWidget {
                                                    നിങ്ങളുടെ ${Get.find<FeesAndBillsController>().feetypeName.value} ആയ $studentFee/ രൂപ, ദയവായി ${Get.find<FeesAndBillsController>().feeDueDateName.value} തിയതിക്കുള്ളിൽ അടക്കേണ്ടതാണ്''',
                                               // ,
                                               headerText:
-                                                  "${Get.find<FeesAndBillsController>().feetypeName.value} Due Fee",
+                                                  "${Get.find<FeesAndBillsController>().feetypeName.value} is Due ",
                                               whiteshadeColor:
                                                   WarningNotifierSetup()
                                                       .whiteshadeColor,
@@ -448,7 +448,7 @@ class ClassWiseFeesDataListContainer extends StatelessWidget {
                                                    നിങ്ങളുടെ ${Get.find<FeesAndBillsController>().feetypeName.value} ആയ $studentFee/ രൂപ, ദയവായി ${Get.find<FeesAndBillsController>().feeDueDateName.value} തിയതിക്കുള്ളിൽ അടക്കേണ്ടതാണ്''',
                                               // ,
                                               headerText:
-                                                  "${Get.find<FeesAndBillsController>().feetypeName.value} Due Fee",
+                                                  "${Get.find<FeesAndBillsController>().feetypeName.value} is Due ",
                                               whiteshadeColor:
                                                   WarningNotifierSetup()
                                                       .whiteshadeColor,
