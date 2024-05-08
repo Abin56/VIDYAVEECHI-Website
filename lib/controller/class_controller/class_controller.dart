@@ -34,7 +34,7 @@ RxBool ontapLeaveApplication =false.obs;
   RxString studentName = ''.obs;
   RxString studentDocID = ''.obs;
   RxBool ontapClass = false.obs;
-  RxBool ontapLeaveApplication = false.obs;
+  
   // final server.collection(collectionPath) = server
   //     .collection('SchoolListCollection')
   //     .doc(UserCredentialsController.schoolId);
