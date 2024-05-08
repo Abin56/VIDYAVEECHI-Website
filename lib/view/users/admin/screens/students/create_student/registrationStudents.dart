@@ -40,7 +40,7 @@ class RegistrationStudentList extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
+                const Padding(
                   padding: EdgeInsets.only(left: 10, top: 25, bottom: 10),
                   child: TextFontWidget(
                     text: 'Student Registation List',
@@ -73,7 +73,7 @@ class RegistrationStudentList extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          TextFontWidget(text: 'Class *', fontsize: 10),
+                          const TextFontWidget(text: 'Class *', fontsize: 10),
                           const SizedBox(
                             height: 05,
                           ),
@@ -316,7 +316,7 @@ class RegStudentListDataList extends StatelessWidget {
               onTap: () {
                 Get.find<RegistrationController>().removeRegiStudent(
                     context,
-                    Get.find<ClassController>().classDocID.value,
+                    Get.find<RegistrationController>().classRegClassID.value,
                     data['docid']);
               },
               child: BlueContainerWidget(

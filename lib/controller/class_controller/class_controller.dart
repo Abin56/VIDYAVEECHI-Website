@@ -371,7 +371,7 @@ RxBool ontapLeaveApplication =false.obs;
     final firebase = await server
         .collection('SchoolListCollection')
         .doc(UserCredentialsController.schoolId)
-        .collection(' ')
+        .collection('AllStudents')
         .get();
 
     for (var i = 0; i < firebase.docs.length; i++) {

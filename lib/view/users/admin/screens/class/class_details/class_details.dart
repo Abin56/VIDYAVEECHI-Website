@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:vidyaveechi_website/controller/class_controller/class_controller.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
@@ -40,7 +39,7 @@ class ClassDetailsContainer extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(left: 25, top: 25),
                         child: TextFontWidget(
                           text: 'Class Details',
@@ -219,7 +218,7 @@ class ClassDetailsContainer extends StatelessWidget {
                                                   Row(
                                                     children: [
                                                       const Icon(Icons.person),
-                                                      TextFontWidget(
+                                                      const TextFontWidget(
                                                         text: " Reshma Suresh ",
                                                         fontsize: 12,
                                                         color: themeColorBlue,
@@ -270,7 +269,7 @@ class ClassDetailsContainer extends StatelessWidget {
                                                       ),
                                                     ],
                                                   ),
-                                                  Row(
+                                                  const Row(
                                                     children: [
                                                       Icon(Icons.call),
                                                       TextFontWidget(
