@@ -2,14 +2,12 @@
 import 'dart:convert';
 
 class AchievementModel {
-  String photoUrl;
   String studentName;
   String dateofAchievement;
   String achievementHead;
   String admissionNumber; 
   String uid;
   AchievementModel({
-    required this.photoUrl,
     required this.studentName,
     required this.dateofAchievement,
     required this.achievementHead,
@@ -18,7 +16,6 @@ class AchievementModel {
   });
 
   AchievementModel copyWith({
-    String? photoUrl,
     String? studentName,
     String? dateofAchievement,
     String? achievementHead,
@@ -26,7 +23,6 @@ class AchievementModel {
     String? uid,
   }) {
     return AchievementModel(
-      photoUrl: photoUrl ?? this.photoUrl,
       studentName: studentName ?? this.studentName,
       dateofAchievement: dateofAchievement ?? this.dateofAchievement,
       achievementHead: achievementHead ?? this.achievementHead,
@@ -37,7 +33,6 @@ class AchievementModel {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'photoUrl': photoUrl,
       'studentName': studentName,
       'dateofAchievement': dateofAchievement,
       'achievementHead': achievementHead,
@@ -48,7 +43,6 @@ class AchievementModel {
 
   factory AchievementModel.fromMap(Map<String, dynamic> map) {
     return AchievementModel(
-      photoUrl: map['photoUrl'] as String,
       studentName: map['studentName'] as String,
       dateofAchievement: map['dateofAchievement'] as String,
       achievementHead: map['achievementHead'] as String,
@@ -63,7 +57,7 @@ class AchievementModel {
 
   @override
   String toString() {
-    return 'AchievementModel(photoUrl: $photoUrl, studentName: $studentName, dateofAchievement: $dateofAchievement, achievementHead: $achievementHead, admissionNumber: $admissionNumber, uid: $uid)';
+    return 'AchievementModel(studentName: $studentName, dateofAchievement: $dateofAchievement, achievementHead: $achievementHead, admissionNumber: $admissionNumber, uid: $uid)';
   }
 
   @override
@@ -71,7 +65,6 @@ class AchievementModel {
     if (identical(this, other)) return true;
   
     return 
-      other.photoUrl == photoUrl &&
       other.studentName == studentName &&
       other.dateofAchievement == dateofAchievement &&
       other.achievementHead == achievementHead &&
@@ -81,8 +74,7 @@ class AchievementModel {
 
   @override
   int get hashCode {
-    return photoUrl.hashCode ^
-      studentName.hashCode ^
+    return studentName.hashCode ^
       dateofAchievement.hashCode ^
       achievementHead.hashCode ^
       admissionNumber.hashCode ^

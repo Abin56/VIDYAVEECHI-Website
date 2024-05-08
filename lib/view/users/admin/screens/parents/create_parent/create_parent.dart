@@ -63,7 +63,7 @@ class CreateParent extends StatelessWidget {
                       return null;
                     }
                   },
-                  items: const ['Sruthy', 'Abin'],
+                  items: const ['', ''],
                   onChanged: (value) {
                     parentController.studentName.value = value ?? '';
                   },

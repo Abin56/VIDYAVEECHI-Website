@@ -106,7 +106,6 @@ class CreateMeetinPage extends StatelessWidget {
           function: () async {
             if (meetingController .formKey .currentState! .validate()) {
               meetingController.createMeeting();
-              print("object");
             }
           },
           buttonstate: meetingController.buttonstate.value,

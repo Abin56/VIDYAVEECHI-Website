@@ -37,21 +37,21 @@ class AchievementsController extends GetxController {
    final Rx<String> dateControllerr = ''.obs;
      final Rxn<DateTime> dateSelected = Rxn<DateTime>();
 
-  Future<Map<String, String>> uploadImageToStorage(
+  Future<void> uploadImageToStorage(
    // file
     ) async {
     try {
       String uid = const Uuid().v1();
-      UploadTask uploadTask = FirebaseStorage.instance
-          .ref()
-          .child("files/achievements/$uid")
-          .putData(file!);
+      // UploadTask uploadTask = FirebaseStorage.instance
+      //     .ref()
+      //     .child("files/achievements/$uid")
+      //     .putData(file!);
 
-      final TaskSnapshot snap = await uploadTask;
-      final String downloadUrl = await snap.ref.getDownloadURL();
+    //  final TaskSnapshot snap = await uploadTask;
+   //   final String downloadUrl = await snap.ref.getDownloadURL();
 
       AchievementModel achievementDetails = AchievementModel(
-          photoUrl: downloadUrl,
+        //  photoUrl: downloadUrl,
           studentName: studentNameController.text,
           dateofAchievement: dateControllerr.value,
           achievementHead: achievementController.text,
@@ -85,10 +85,10 @@ class AchievementsController extends GetxController {
           buttonstate.value = ButtonState.idle;
         });
 
-      return {
-        "downloadUrl": downloadUrl,
-        "imageUid": uid,
-      };
+      // return {
+      // //  "downloadUrl": downloadUrl,
+      //   "imageUid": uid,
+      // };
       //}
       //  else {
       //   return {};
@@ -99,7 +99,7 @@ class AchievementsController extends GetxController {
         buttonstate.value = ButtonState.idle;
       });
       log(e.toString());
-      return {};
+   //   return {};
     }
   }
 

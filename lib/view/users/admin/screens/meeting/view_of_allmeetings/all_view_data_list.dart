@@ -174,23 +174,12 @@ class AllMeetingsDataList extends StatelessWidget {
               onTap: () {
                 editFunctionOfMeeting(context, data);
               },
-              child: Row(
-                children: [
-                  SizedBox(
-                    width: 20,
-                    child: Center(
-                      child: Image.asset(
-                        'webassets/png/logout.t.png',
-                      ),
-                    ),
-                  ),
-                   TextFontWidget(
-                     text: "  Update",
-                     fontsize: 12,
-                     overflow: TextOverflow.ellipsis,
-                   ),
-                ],
-              ),
+              child:DataContainerWidget(
+                    rowMainAccess: MainAxisAlignment.center,
+                    color: cWhite,
+                    // width: 150,
+                    index: index,
+                    headerTitle: ' Update 🖋️')
             ),
           ),  //............................. Student Class
 
@@ -203,22 +192,12 @@ class AllMeetingsDataList extends StatelessWidget {
               onTap: () {
                 deleteFunctionOfMeetings(context,data);
               },
-              child: Row(
-              //  mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: 15,
-                    child: Image.asset(
-                      'webassets/png/active.png',
-                    ),
-                  ),
-                 TextFontWidget(
-                    text: "  Delete",
-                    fontsize: 12,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ],
-              ),
+              child:DataContainerWidget(
+                    rowMainAccess: MainAxisAlignment.center,
+                    color: cWhite,
+                    // width: 150,
+                    index: index,
+                    headerTitle: ' Remove 🗑️'),
             ),
           ), //............................. Status [Active or DeActivate]
         ],
