@@ -8,12 +8,14 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:open_document/my_files/init.dart';
 import 'package:progress_state_button/progress_button.dart';
+import 'package:vidyaveechi_website/controller/notification_controller/notification_Controller.dart';
 import 'package:vidyaveechi_website/model/class_model/class_model.dart';
 import 'package:vidyaveechi_website/model/fees_model/fees_model_controller.dart';
 import 'package:vidyaveechi_website/model/student_model/student_model.dart';
 import 'package:vidyaveechi_website/view/constant/const.dart';
 import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
+import 'package:vidyaveechi_website/view/widgets/notification_color/notification_color_widget.dart';
 
 class FeesAndBillsController extends GetxController {
   RxList<ClassModel> allClassList = RxList<ClassModel>();
@@ -364,7 +366,8 @@ class FeesAndBillsController extends GetxController {
   RxString feeMonthData = 'd'.obs;
   RxString feeDateData = 'd'.obs;
   RxString feetypeName = ''.obs;
-  RxString feeDueDateName =''.obs;
+  RxString feeDueDateName = ''.obs;
+  RxBool feessendingMessage = false.obs;
 
   Future<List> fetchFeeMonthData() async {
     await server
@@ -438,7 +441,7 @@ class FeesAndBillsController extends GetxController {
           .doc(dateDocID)
           .get()
           .then((value) async {
-        int totalAmount = value.data()!['totalAmount'] ?? 0;
+        int totalAmount = value.data()?['totalAmount'] ?? 0;
         int result = totalAmount - paidFee.value;
 
         await server
@@ -544,5 +547,60 @@ class FeesAndBillsController extends GetxController {
             .update({'collectedAmount': collectedFee.value});
       });
     });
+  }
+RxString currentStudentFee = ''.obs;
+RxBool sendMessageForUnPaidStudentandParentsbool = false.obs;
+  Future<void> sendMessageForUnPaidStudentandParents(
+      ) async {
+    await server
+        .collection('SchoolListCollection')
+        .doc(UserCredentialsController.schoolId)
+        .collection(UserCredentialsController.batchId!)
+        .doc(UserCredentialsController.batchId!)
+        .collection('FeesCollection')
+        .doc(feeMonthData.value)
+        .collection(feeMonthData.value)
+        .doc(feeDateData.value)
+        .collection('Students')
+        .get()
+        .then((value) async {
+      showToast(msg: "Please wait while a sec ...");
+      for (var i = 0; i < value.docs.length; i++) {
+        int studentFee = value.docs[i]['fee'];
+        if (value.docs[i]['feepaid'] == false) {
+          server
+              .collection('SchoolListCollection')
+              .doc(UserCredentialsController.schoolId)
+              .collection('AllStudents')
+              .doc(value.docs[i]['docid'])
+              .get()
+              .then((value) async {
+            Get.find<NotificationController>().userStudentNotification(
+                studentID: value['docid'],
+                icon: WarningNotifierSetup().icon,
+                messageText:
+                    'Your ${Get.find<FeesAndBillsController>().feetypeName.value} rupees $studentFee /- is due on ${Get.find<FeesAndBillsController>().feeDueDateName.value} ,Please pay on or before the due date.\nനിങ്ങളുടെ ${Get.find<FeesAndBillsController>().feetypeName.value} ആയ $studentFee /- രൂപ, ദയവായി ${Get.find<FeesAndBillsController>().feeDueDateName.value} തിയതിക്കുള്ളിൽ അടക്കേണ്ടതാണ്',
+                // ,
+                headerText:
+                    "${Get.find<FeesAndBillsController>().feetypeName.value} Due Fee",
+                whiteshadeColor: WarningNotifierSetup().whiteshadeColor,
+                containerColor: WarningNotifierSetup().containerColor);
+
+            Get.find<NotificationController>().userparentNotification(
+                parentID: value['parentId'],
+                icon: WarningNotifierSetup().icon,
+                messageText:
+                    'Your ${Get.find<FeesAndBillsController>().feetypeName.value} rupees $studentFee /- is due on ${Get.find<FeesAndBillsController>().feeDueDateName.value} ,Please pay on or before the due date.\nനിങ്ങളുടെ ${Get.find<FeesAndBillsController>().feetypeName.value} ആയ $studentFee /- രൂപ, ദയവായി ${Get.find<FeesAndBillsController>().feeDueDateName.value} തിയതിക്കുള്ളിൽ അടക്കേണ്ടതാണ്',
+                headerText:
+                    "${Get.find<FeesAndBillsController>().feetypeName.value} Due Fee",
+                whiteshadeColor: WarningNotifierSetup().whiteshadeColor,
+                containerColor: WarningNotifierSetup().containerColor);
+          });
+        }
+      }
+    }).then((value){
+      showToast(msg: "Notification Sended !!");
+      sendMessageForUnPaidStudentandParentsbool.value=false;
+    } );
   }
 }

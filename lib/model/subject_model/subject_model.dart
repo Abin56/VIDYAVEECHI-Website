@@ -55,11 +55,11 @@ class SubjectModel {
 
   factory SubjectModel.fromMap(Map<String, dynamic> map) {
     return SubjectModel(
-      docid: map['docid'] as String,
-      subjectName: map['subjectName'] as String,
+      docid: map['docid'] ??"",
+      subjectName: map['subjectName'] ??"",
       subjectNameedit: map['subjectNameedit'] as bool,
-      teacherId: map['teacherId'] != null ? map['teacherId'] as String : null,
-      teacherName: map['teacherName'] != null ? map['teacherName'] as String : null,
+      teacherId: map['teacherId'] != null ? map['teacherId'] ??"" : null,
+      teacherName: map['teacherName'] != null ? map['teacherName'] ??"" : null,
       subjectFeefortr: map['subjectFeefortr'] != null ? map['subjectFeefortr'] as int : null,
       subjectColor: Color(map['subjectColor'] as int),
     );

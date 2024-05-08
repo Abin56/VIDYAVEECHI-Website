@@ -13,8 +13,8 @@ class WarningNotifierSetup {
 }
 
 class SuccessNotifierSetup {
-  final Color whiteshadeColor = const Color.fromARGB(255, 209, 250, 223);
-  final Color containerColor = const Color.fromARGB(255, 18, 183, 106);
+  final Color whiteshadeColor =  const Color.fromARGB(255, 18, 183, 106);
+  final Color containerColor =Colors.green;
   final IconData icon = Icons.task_alt;
 }
 
