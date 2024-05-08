@@ -32,7 +32,6 @@ class LeaveApplicationList extends StatelessWidget {
     // String monthwise = month.format(parseDate);
     final DateFormat formatter = DateFormat('dd-MM-yyyy');
     String formatted = formatter.format(parseDate);
-
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Container(

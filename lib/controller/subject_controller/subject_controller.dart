@@ -39,30 +39,39 @@ class SubjectController extends GetxController {
           subjectName: subjectName.value,
           teacherId: teacherDocid,
           teacherName: teacherName);
-log("Color value ${asignSubDetail}");
-      _firebase
+      log("Color value $asignSubDetail");
+      await _firebase
           .doc(Get.find<ClassController>().classDocID.value)
           .collection('teachers')
           .doc(teacherDocid)
-          .collection('teacherSubject')
-          .doc(subjectID.value)
-          .set(asignSubDetail.toMap())
-          .then((value) async {
-        _firebase
+          .set({
+        'teacherId': asignSubDetail.teacherId,
+        'teacherName': asignSubDetail.teacherName
+      }, SetOptions(merge: true)).then((value) async {
+        await _firebase
             .doc(Get.find<ClassController>().classDocID.value)
-            .collection('subjects')
-            .doc(subjectID.value)
             .collection('teachers')
             .doc(teacherDocid)
-            .set({
-          'teacherId': asignSubDetail.teacherId,
-          'teacherName': asignSubDetail.teacherName
-        }).then((value) async {
-          buttonstate.value = ButtonState.success;
-          showToast(msg: 'Subject added to this teacher');
-          subFeeController.clear();
-          await Future.delayed(const Duration(seconds: 2)).then((value) {
-            buttonstate.value = ButtonState.idle;
+            .collection('teacherSubject')
+            .doc(subjectID.value)
+            .set(asignSubDetail.toMap())
+            .then((value) async {
+          await _firebase
+              .doc(Get.find<ClassController>().classDocID.value)
+              .collection('subjects')
+              .doc(subjectID.value)
+              .collection('teachers')
+              .doc(teacherDocid)
+              .set({
+            'teacherId': asignSubDetail.teacherId,
+            'teacherName': asignSubDetail.teacherName
+          }, SetOptions(merge: true)).then((value) async {
+            buttonstate.value = ButtonState.success;
+            showToast(msg: 'Subject added to this teacher');
+            subFeeController.clear();
+            await Future.delayed(const Duration(seconds: 2)).then((value) {
+              buttonstate.value = ButtonState.idle;
+            });
           });
         });
       });

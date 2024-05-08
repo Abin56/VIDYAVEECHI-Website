@@ -20,7 +20,8 @@ import 'package:vidyaveechi_website/view/widgets/routeSelectedTextContainer/rout
 import 'package:vidyaveechi_website/view/widgets/routeSelectedTextContainer/route_NonSelectedContainer.dart';
 
 class RegistrationStudentList extends StatelessWidget {
-  final RegistrationController registrationController = Get.put(RegistrationController());
+  final RegistrationController registrationController =
+      Get.put(RegistrationController());
   RegistrationStudentList({
     super.key,
   });
@@ -54,7 +55,8 @@ class RegistrationStudentList extends StatelessWidget {
                         height: 60,
                         width: 200,
                         child: ProgressButtonWidget(
-                            buttonstate: registrationController.buttonstate.value,
+                            buttonstate:
+                                registrationController.buttonstate.value,
                             text: 'Add All Students',
                             function: () {
                               registrationController.addAllRegStudentToClass(
@@ -75,7 +77,9 @@ class RegistrationStudentList extends StatelessWidget {
                           const SizedBox(
                             height: 05,
                           ),
-                          SizedBox(height: 40, child: SelectRegClassStudntCountDropDown()),
+                          SizedBox(
+                              height: 40,
+                              child: SelectRegClassStudntCountDropDown()),
                         ],
                       )),
                 )
@@ -99,7 +103,8 @@ class RegistrationStudentList extends StatelessWidget {
                   ),
                   const Padding(
                     padding: EdgeInsets.only(top: 30),
-                    child: RouteSelectedTextContainer(width: 200, title: 'Registered Students'),
+                    child: RouteSelectedTextContainer(
+                        width: 200, title: 'Registered Students'),
                   ),
                 ],
               ),
@@ -115,31 +120,45 @@ class RegistrationStudentList extends StatelessWidget {
                       padding: EdgeInsets.only(left: 10, right: 10, top: 20),
                       child: Row(
                         children: [
-                          Expanded(flex: 1, child: CatrgoryTableHeaderWidget(headerTitle: 'No')),
+                          Expanded(
+                              flex: 1,
+                              child:
+                                  CatrgoryTableHeaderWidget(headerTitle: 'No')),
                           SizedBox(
                             width: 02,
                           ),
                           Expanded(
                               flex: 5,
-                              child: CatrgoryTableHeaderWidget(headerTitle: 'Student Name')),
-                          SizedBox(
-                            width: 02,
-                          ),
-                          Expanded(flex: 3, child: CatrgoryTableHeaderWidget(headerTitle: 'Class')),
-                          SizedBox(
-                            width: 02,
-                          ),
-                          Expanded(flex: 5, child: CatrgoryTableHeaderWidget(headerTitle: 'Mail')),
+                              child: CatrgoryTableHeaderWidget(
+                                  headerTitle: 'Student Name')),
                           SizedBox(
                             width: 02,
                           ),
                           Expanded(
-                              flex: 3, child: CatrgoryTableHeaderWidget(headerTitle: 'Phone No')),
+                              flex: 3,
+                              child: CatrgoryTableHeaderWidget(
+                                  headerTitle: 'Class')),
                           SizedBox(
                             width: 02,
                           ),
                           Expanded(
-                              flex: 3, child: CatrgoryTableHeaderWidget(headerTitle: 'Options')),
+                              flex: 5,
+                              child: CatrgoryTableHeaderWidget(
+                                  headerTitle: 'Mail')),
+                          SizedBox(
+                            width: 02,
+                          ),
+                          Expanded(
+                              flex: 3,
+                              child: CatrgoryTableHeaderWidget(
+                                  headerTitle: 'Phone No')),
+                          SizedBox(
+                            width: 02,
+                          ),
+                          Expanded(
+                              flex: 3,
+                              child: CatrgoryTableHeaderWidget(
+                                  headerTitle: 'Options')),
                           SizedBox(
                             width: 02,
                           ),
@@ -154,38 +173,31 @@ class RegistrationStudentList extends StatelessWidget {
                                 .collection(UserCredentialsController.batchId!)
                                 .doc(UserCredentialsController.batchId!)
                                 .collection('classes')
-                                .doc(Get.find<RegistrationController>().classRegClassID.value)
+                                .doc(Get.find<RegistrationController>()
+                                    .classRegClassID
+                                    .value)
                                 .collection('RegTemp_Students')
                                 .snapshots(),
+                                
                             builder: (context, snaps) {
                               if (snaps.hasData) {
                                 return ListView.separated(
-                                  itemBuilder: (context, index) {
-                                    if (snaps.data!.docs.isEmpty) {
-                                      return const Center(
-                                        child: Padding(
-                                          padding: EdgeInsets.all(8.0),
-                                          child: Text(
-                                            "Please select the class",
-                                            style: TextStyle(fontWeight: FontWeight.w400),
-                                          ),
-                                        ),
-                                      );
-                                    } else {
-                                      final data = snaps.data!.docs[index].data();
+                                    itemBuilder: (context, index) {
+                                      final data =
+                                          snaps.data!.docs[index].data();
                                       return Padding(
-                                        padding: const EdgeInsets.only(left: 10, right: 10),
-                                        child: RegStudentListDataList(data: data, index: index),
+                                        padding: const EdgeInsets.only(
+                                            left: 10, right: 10),
+                                        child: RegStudentListDataList(
+                                            data: data, index: index),
                                       );
-                                    }
-                                  },
-                                  separatorBuilder: (context, index) {
-                                    return const SizedBox(
-                                      height: 2,
-                                    );
-                                  },
-                                  itemCount: snaps.data!.docs.isEmpty ? 1 : snaps.data!.docs.length,
-                                );
+                                    },
+                                    separatorBuilder: (context, index) {
+                                      return const SizedBox(
+                                        height: 02,
+                                      );
+                                    },
+                                    itemCount: snaps.data!.docs.length);
                               } else if (snaps.data == null) {
                                 return const LoadingWidget();
                               } else {
@@ -274,7 +286,9 @@ class RegStudentListDataList extends StatelessWidget {
           Expanded(
             flex: 5,
             child: Container(
-              color: index % 2 == 0 ? const Color.fromARGB(255, 246, 246, 246) : Colors.blue[50],
+              color: index % 2 == 0
+                  ? const Color.fromARGB(255, 246, 246, 246)
+                  : Colors.blue[50],
               child: DataContainerWidget(
                   rowMainAccess: MainAxisAlignment.center,
                   color: cWhite,
@@ -301,10 +315,15 @@ class RegStudentListDataList extends StatelessWidget {
             child: GestureDetector(
               onTap: () {
                 Get.find<RegistrationController>().removeRegiStudent(
-                    context, Get.find<ClassController>().classDocID.value, data['docid']);
+                    context,
+                    Get.find<RegistrationController>().classRegClassID.value,
+                    data['docid']);
               },
               child: BlueContainerWidget(
-                  title: 'Remove', fontSize: 12, color: themeColorBlue, width: 200),
+                  title: 'Remove',
+                  fontSize: 12,
+                  color: themeColorBlue,
+                  width: 200),
             ),
           ), // ................................... Fees Required
           const SizedBox(

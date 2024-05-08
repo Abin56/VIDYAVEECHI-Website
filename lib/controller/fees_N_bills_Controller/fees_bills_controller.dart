@@ -151,6 +151,7 @@ class FeesAndBillsController extends GetxController {
             .add(Duration(days: int.parse(feesDueContoller.text.trim()))));
     try {
       for (var i = 0; i < selectedClassList.length; i++) {
+        log('Class Length:${selectedClassList[i].className}');
         await fetchInitalClassFee(selectedClassList[i].docid)
             .then((value) async {
           feesDetail.fees = classinitalFee.value;
