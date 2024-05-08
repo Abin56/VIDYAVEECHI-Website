@@ -66,7 +66,6 @@ editFunctionOfNotice(BuildContext context, NoticeModel data) {
           data.noticeId,
           context,
         );
-        print('idddddddddddddddddddddddddddddddddddddddd${data.noticeId}');
                                     }
       },
       actiontext: 'Update');
