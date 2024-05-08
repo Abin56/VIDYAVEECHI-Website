@@ -53,7 +53,7 @@ class AchievementsController extends GetxController {
       AchievementModel achievementDetails = AchievementModel(
         //  photoUrl: downloadUrl,
           studentName: studentNameController.text,
-          dateofAchievement: dateControllerr.value,
+          dateofAchievement: dateController.text,
           achievementHead: achievementController.text,
           admissionNumber: admissionNumberController.text,
           uid: uid,
