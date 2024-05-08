@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class TextFontWidget extends StatelessWidget {
+  final int? index;
   final String text;
   final double fontsize;
   final FontWeight? fontWeight;
@@ -16,7 +17,7 @@ class TextFontWidget extends StatelessWidget {
     this.color,
     this.letterSpacing,
     this.overflow,
-    super.key,
+    super.key, this.index,
   });
 
   @override

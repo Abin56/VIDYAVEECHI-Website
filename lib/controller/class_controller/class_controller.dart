@@ -24,6 +24,7 @@ class ClassController extends GetxController {
   List<ClassModel> allclassList = [];
   List<ClassModel> classwiseSubjectList = [];
   Rxn<ClassModel> classModelData = Rxn<ClassModel>();
+RxBool ontapLeaveApplication =false.obs;
 
   int boysCount = 0;
   int girlsCount = 0;
