@@ -133,21 +133,29 @@ class LeaveApplicationData extends StatelessWidget {
           children: [
             Expanded(
               flex: 1,
-              child: TextFontWidget(
-                  fontsize: 12,
-                  color: cWhite,
-                  // width: 150,
-                  index: index,
-                  text: '${index + 1}'), //....................No
+              child: Center(
+                child: TextFontWidget(
+                    fontsize: 12,
+                    color: cWhite,
+                    // width: 150,
+                    index: index,
+                    text: '${index + 1}'),
+              ), //....................No
             ),
             const SizedBox(
               width: 02,
             ),
             Expanded(
               flex: 2,
-              child: TextFontWidget(
-                  fontsize: 12, color: cWhite, index: index, text: data['id'] ?? 'List is Empty'),
-            ), //................................................. Student ID
+              child: Center(
+                child: TextFontWidget(
+                  fontsize: 12,
+                  color: cWhite,
+                  index: index,
+                  text: data['id'] != null ? data['id'].toString() : 'List is Empty',
+                ),
+              ),
+            ),
             const SizedBox(
               width: 02,
             ),
@@ -168,46 +176,52 @@ class LeaveApplicationData extends StatelessWidget {
                   ),
                   Expanded(
                     child: DataContainerWidget(
-                      headerTitle: data['studentName'] ?? 'List is Empty',
+                      headerTitle: data['studentName'] != null
+                          ? data['studentName'].toString()
+                          : 'List is Empty',
                       rowMainAccess: MainAxisAlignment.start,
                       index: index,
                     ),
                   ),
                 ],
               ),
-            ), //........................................... Teacher Name
+            ),
             const SizedBox(
               width: 02,
             ),
             Expanded(
               flex: 2,
-              child: TextFontWidget(
+              child: Center(
+                child: TextFontWidget(
                   fontsize: 12.5,
                   color: cWhite,
                   // width: 150,
                   index: index,
-                  text: compare.toString()), //....................Teacher attendence count
+                  // ignore: unnecessary_null_comparison
+                  text: compare == null ? 'Compare value not available' : '$compare Days',
+                ),
+                //  compare != null ? '$compare Days' : 'Compare value not available',
+              ),
             ),
-
             const SizedBox(
               width: 02,
             ),
-
             Expanded(
               flex: 2,
-              child: TextFontWidget(
-                  fontsize: 12.5,
-                  color: cWhite,
-                  // width: 150,
-                  index: index,
-                  text: data['applyLeaveDate'] ??
-                      'List is Empty'), //....................Teacher attendence count
+              child: Center(
+                child: TextFontWidget(
+                    fontsize: 12.5,
+                    color: cWhite,
+                    // width: 150,
+                    index: index,
+                    text: data['applyLeaveDate'] != null
+                        ? data['applyLeaveDate'].toString()
+                        : 'List is Empty'),
+              ),
             ),
-
             const SizedBox(
               width: 02,
             ),
-
             Expanded(
               flex: 3,
               child: Row(
@@ -222,10 +236,17 @@ class LeaveApplicationData extends StatelessWidget {
                   const SizedBox(
                     width: 05,
                   ),
-                  TextFontWidget(fontsize: 12, color: cWhite, index: index, text: 'phoneNumber'),
+                  TextFontWidget(
+                      fontsize: 12,
+                      color: cWhite,
+                      index: index,
+                      text: data['phoneNumber'] != null
+                          ? data['phoneNumber'].toString()
+                          : 'Phone Number not available'),
+                   
                 ],
               ),
-            ), //....................................... Student Phone Number
+            ),
             const SizedBox(
               width: 02,
             ),

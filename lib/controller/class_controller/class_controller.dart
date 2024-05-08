@@ -33,7 +33,7 @@ class ClassController extends GetxController {
   RxString studentName = ''.obs;
   RxString studentDocID = ''.obs;
   RxBool ontapClass = false.obs;
-
+  RxBool ontapLeaveApplication = false.obs;
   // final server.collection(collectionPath) = server
   //     .collection('SchoolListCollection')
   //     .doc(UserCredentialsController.schoolId);
@@ -107,9 +107,9 @@ class ClassController extends GetxController {
     String docid,
     bool status,
   ) async {
-      server
-          .collection('SchoolListCollection')
-          .doc(UserCredentialsController.schoolId)
+    server
+        .collection('SchoolListCollection')
+        .doc(UserCredentialsController.schoolId)
         .collection("classes")
         .doc(docid)
         .update({data: status});
@@ -119,7 +119,7 @@ class ClassController extends GetxController {
     //................. Update Class Name
     //.... Update Class Name
     try {
-          server
+      server
           .collection('SchoolListCollection')
           .doc(UserCredentialsController.schoolId)
           .collection("classes")
@@ -128,16 +128,15 @@ class ClassController extends GetxController {
         'classfee': int.parse(classFeeEditController.text.trim()),
         'feeeditoption': false,
       }).then((value) {
-      server
-          .collection('SchoolListCollection')
-          .doc(UserCredentialsController.schoolId)
+        server
+            .collection('SchoolListCollection')
+            .doc(UserCredentialsController.schoolId)
             .collection(UserCredentialsController.batchId!)
             .doc(UserCredentialsController.batchId!)
             .collection('classes')
             .doc(docid)
-            .update({
-          'classfee': int.parse(classFeeEditController.text.trim())
-        }).then((value) => showToast(msg: 'Class Name Changed'));
+            .update({'classfee': int.parse(classFeeEditController.text.trim())}).then(
+                (value) => showToast(msg: 'Class Name Changed'));
         classFeeEditController.clear();
       });
     } catch (e) {
@@ -152,7 +151,7 @@ class ClassController extends GetxController {
     //................. Update Class Name
     //.... Update Class Name
     try {
-       server
+      server
           .collection('SchoolListCollection')
           .doc(UserCredentialsController.schoolId)
           .collection("classes")
@@ -161,9 +160,9 @@ class ClassController extends GetxController {
         'className': classNameEditController.text.trim(),
         'editoption': false,
       }).then((value) {
-      server
-          .collection('SchoolListCollection')
-          .doc(UserCredentialsController.schoolId)
+        server
+            .collection('SchoolListCollection')
+            .doc(UserCredentialsController.schoolId)
             .collection(UserCredentialsController.batchId!)
             .doc(UserCredentialsController.batchId!)
             .collection('classes')
@@ -193,8 +192,7 @@ class ClassController extends GetxController {
             content: const SingleChildScrollView(
               child: ListBody(
                 children: <Widget>[
-                  Text(
-                      'Once you delete a class all data will be lost \n Are you sure ?')
+                  Text('Once you delete a class all data will be lost \n Are you sure ?')
                 ],
               ),
             ),
@@ -209,9 +207,9 @@ class ClassController extends GetxController {
                 child: const Text('Ok'),
                 onPressed: () async {
                   try {
-        server
-          .collection('SchoolListCollection')
-          .doc(UserCredentialsController.schoolId)
+                    server
+                        .collection('SchoolListCollection')
+                        .doc(UserCredentialsController.schoolId)
                         .collection("classes")
                         .doc(docid)
                         .delete()
@@ -267,8 +265,7 @@ class ClassController extends GetxController {
             content: const SingleChildScrollView(
               child: ListBody(
                 children: <Widget>[
-                  Text(
-                      'Once you delete a class all data will be lost \n Are you sure ?')
+                  Text('Once you delete a class all data will be lost \n Are you sure ?')
                 ],
               ),
             ),
@@ -283,9 +280,9 @@ class ClassController extends GetxController {
                 child: const Text('Ok'),
                 onPressed: () async {
                   try {
-             server
-          .collection('SchoolListCollection')
-          .doc(UserCredentialsController.schoolId)
+                    server
+                        .collection('SchoolListCollection')
+                        .doc(UserCredentialsController.schoolId)
                         .collection(UserCredentialsController.batchId!)
                         .doc(UserCredentialsController.batchId!)
                         .collection('classes')
@@ -340,8 +337,7 @@ class ClassController extends GetxController {
         .get();
 
     for (var i = 0; i < firebase.docs.length; i++) {
-      final list =
-          firebase.docs.map((e) => ClassModel.fromMap(e.data())).toList();
+      final list = firebase.docs.map((e) => ClassModel.fromMap(e.data())).toList();
       allclassList.add(list[i]);
       allclassList.sort((a, b) => a.className.compareTo(b.className));
     }
@@ -358,8 +354,7 @@ class ClassController extends GetxController {
         .get();
 
     for (var i = 0; i < firebase.docs.length; i++) {
-      final list =
-          firebase.docs.map((e) => ClassModel.fromMap(e.data())).toList();
+      final list = firebase.docs.map((e) => ClassModel.fromMap(e.data())).toList();
       allclassList.add(list[i]);
       allclassList.sort((a, b) => a.className.compareTo(b.className));
     }
@@ -374,8 +369,7 @@ class ClassController extends GetxController {
         .get();
 
     for (var i = 0; i < firebase.docs.length; i++) {
-      final list =
-          firebase.docs.map((e) => StudentModel.fromMap(e.data())).toList();
+      final list = firebase.docs.map((e) => StudentModel.fromMap(e.data())).toList();
       allstudentList.add(list[i]);
     }
     return allstudentList;
@@ -385,7 +379,7 @@ class ClassController extends GetxController {
     try {
       log("studentDocID.value ${studentDocID.value}");
       log("sclassDocid $classDocid");
-      final studentResult = await       server
+      final studentResult = await server
           .collection('SchoolListCollection')
           .doc(UserCredentialsController.schoolId)
           .collection('AllStudents')
@@ -393,15 +387,15 @@ class ClassController extends GetxController {
           .get();
       if (studentDocID.value != '') {
         final data = StudentModel.fromMap(studentResult.data()!);
-        await       server
-          .collection('SchoolListCollection')
-          .doc(UserCredentialsController.schoolId)
+        await server
+            .collection('SchoolListCollection')
+            .doc(UserCredentialsController.schoolId)
             .collection('AllStudents')
             .doc(studentDocID.value)
             .update({'classId': classDocid}).then((value) async {
-          await       server
-          .collection('SchoolListCollection')
-          .doc(UserCredentialsController.schoolId)
+          await server
+              .collection('SchoolListCollection')
+              .doc(UserCredentialsController.schoolId)
               .collection(UserCredentialsController.batchId!)
               .doc(UserCredentialsController.batchId!)
               .collection('classes')

@@ -7,8 +7,9 @@ class TextFontWidget extends StatelessWidget {
   final double? letterSpacing;
   final Color? color;
   final TextOverflow? overflow;
- final String? Function(String?)? validator;
-   const TextFontWidget({
+  final int? index;
+  final String? Function(String?)? validator;
+  const TextFontWidget({
     this.validator,
     required this.text,
     required this.fontsize,
@@ -16,6 +17,7 @@ class TextFontWidget extends StatelessWidget {
     this.color,
     this.letterSpacing,
     this.overflow,
+    this.index,
     super.key,
   });
 
@@ -35,8 +37,6 @@ class TextFontWidget extends StatelessWidget {
     );
   }
 }
-
-
 
 class TextFontWidgetRouter extends StatelessWidget {
   final String text;

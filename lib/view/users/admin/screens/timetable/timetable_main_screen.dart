@@ -26,15 +26,15 @@ class TimeTableMainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final timetableCtrl = Get.put(TimeTableController());
     List<Widget> textformWidget = [
-       Padding(
-        padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
+      const Padding(
+        padding: EdgeInsets.only(top: 5, left: 10, right: 10),
         child: TextFontWidget(text: 'Select class *', fontsize: 12.5),
       ),
       Padding(
           padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
           child: SelectClassDropDown()),
-       Padding(
-        padding: const EdgeInsets.only(top: 15, left: 10, right: 10),
+      const Padding(
+        padding: EdgeInsets.only(top: 15, left: 10, right: 10),
         child: TextFontWidget(text: 'Select Day *', fontsize: 12.5),
       ),
       Padding(
@@ -73,8 +73,8 @@ class TimeTableMainScreen extends StatelessWidget {
             )),
       ),
       ////////////////////////////////////////////////////////1
-       Padding(
-        padding: const EdgeInsets.only(top: 15, left: 10, right: 10),
+      const Padding(
+        padding: EdgeInsets.only(top: 15, left: 10, right: 10),
         child: TextFontWidget(text: 'Select subject *', fontsize: 12.5),
       ),
       Padding(
@@ -109,8 +109,7 @@ class TimeTableMainScreen extends StatelessWidget {
             }
           },
           onTap: () async {
-            await timetableCtrl.selectTimesec(
-                context, timetableCtrl.startTimeController);
+            await timetableCtrl.selectTimesec(context, timetableCtrl.startTimeController);
           },
 
           // onTap: () async {
@@ -126,8 +125,7 @@ class TimeTableMainScreen extends StatelessWidget {
           hintText: 'End time',
           title: 'End time',
           onTap: () async {
-            await timetableCtrl.selectTimesec(
-                context, timetableCtrl.endTimeController);
+            await timetableCtrl.selectTimesec(context, timetableCtrl.endTimeController);
           },
           // onTap: () async {
 
@@ -148,8 +146,8 @@ class TimeTableMainScreen extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                     Padding(
-                      padding: const EdgeInsets.only(left: 20, top: 20),
+                    const Padding(
+                      padding: EdgeInsets.only(left: 20, top: 20),
                       child: TextFontWidget(
                         text: 'TimeTable',
                         fontsize: 18,
@@ -168,7 +166,7 @@ class TimeTableMainScreen extends StatelessWidget {
                             colorindex: 0,
                             height: 40,
                             width: 180,
-                            child:  Center(
+                            child: const Center(
                               child: TextFontWidget(
                                 text: 'Add TimeTable ',
                                 fontsize: 14,
@@ -187,18 +185,15 @@ class TimeTableMainScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                               TextFontWidget(
-                                  text: "Select Class *", fontsize: 12),
-                              SizedBox(
-                                  height: 40, child: SelectClassDropDown()),
+                              const TextFontWidget(text: "Select Class *", fontsize: 12),
+                              SizedBox(height: 40, child: SelectClassDropDown()),
                             ],
                           )),
                     )
                   ],
                 ),
                 Padding(
-                  padding: EdgeInsets.only(
-                      top: ResponsiveWebSite.isMobile(context) ? 20 : 10),
+                  padding: EdgeInsets.only(top: ResponsiveWebSite.isMobile(context) ? 20 : 10),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
@@ -219,81 +214,88 @@ class TimeTableMainScreen extends StatelessWidget {
                           builder: (context, timesnaps) {
                             log("class id ${Get.find<ClassController>().classDocID.value}");
                             if (timesnaps.hasData) {
-                              return DefaultTabController(
-                                length: timesnaps.data!.docs.length,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          top: 0, left: 20, right: 20),
+                              return timesnaps.data!.docs.isEmpty
+                                  ? const Column(
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Padding(
+                                          padding: EdgeInsets.all(8.0),
+                                          child: Text(
+                                            "Please select the class",
+                                            style: TextStyle(fontWeight: FontWeight.w400),
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                  : DefaultTabController(
+                                      length: timesnaps.data!.docs.length,
                                       child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
-                                          Container(
-                                            color: cWhite,
-                                            height: 40,
-                                            child: TabBar(
-                                              indicatorColor: cWhite,
-                                              tabAlignment: TabAlignment.start,
-                                              isScrollable: true,
-                                              labelColor: Colors.blue,
-                                              labelStyle: const TextStyle(
-                                                  fontWeight: FontWeight.w400,
-                                                  fontSize: 12),
-                                              tabs: List.generate(
-                                                timesnaps.data!.docs.length,
-                                                (index) => Tab(
-                                                  text:
-                                                      '${timesnaps.data!.docs[index].data()['docid']}',
+                                          Padding(
+                                            padding:
+                                                const EdgeInsets.only(top: 0, left: 20, right: 20),
+                                            child: Column(
+                                              children: [
+                                                Container(
+                                                  color: cWhite,
+                                                  height: 40,
+                                                  child: TabBar(
+                                                    indicatorColor: cWhite,
+                                                    tabAlignment: TabAlignment.start,
+                                                    isScrollable: true,
+                                                    labelColor: Colors.blue,
+                                                    labelStyle: const TextStyle(
+                                                        fontWeight: FontWeight.w400, fontSize: 12),
+                                                    tabs: List.generate(
+                                                      timesnaps.data!.docs.length,
+                                                      (index) => Tab(
+                                                        text:
+                                                            '${timesnaps.data!.docs[index].data()['docid']}',
+                                                      ),
+                                                    ),
+                                                  ),
                                                 ),
-                                              ),
+                                              ],
                                             ),
                                           ),
+                                          // ),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsets.only(top: 0, left: 20, right: 20),
+                                            child: Container(
+                                              width: double.infinity,
+                                              color: screenContainerbackgroundColor,
+                                              height: 02,
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsets.only(top: 0, left: 05, right: 05),
+                                            child: Container(
+                                              height: 480,
+                                              color: cWhite,
+                                              // color: Colors.amber,
+                                              //// height: 300,
+                                              child: TabBarView(
+                                                children: List.generate(
+                                                    timesnaps.data!.docs.length,
+                                                    (index) => PeriodWiseTimeTable(
+                                                          subjectID: timesnaps.data!.docs[index]
+                                                              .data()['docid'],
+                                                          data: timesnaps.data!.docs[index].data(),
+                                                          docid: timesnaps.data!.docs[index]
+                                                              .data()['docid'],
+                                                        )),
+                                              ),
+                                            ),
+                                          )
                                         ],
                                       ),
-                                    ),
-                                    // ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          top: 0, left: 20, right: 20),
-                                      child: Container(
-                                        width: double.infinity,
-                                        color: screenContainerbackgroundColor,
-                                        height: 02,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          top: 0, left: 05, right: 05),
-                                      child: Container(
-                                        height: 480,
-                                        color: cWhite,
-                                        // color: Colors.amber,
-                                        //// height: 300,
-                                        child: TabBarView(
-                                          children: List.generate(
-                                              timesnaps.data!.docs.length,
-                                              (index) => PeriodWiseTimeTable(
-                                                    subjectID: timesnaps
-                                                        .data!.docs[index]
-                                                        .data()['docid'],
-                                                    data: timesnaps
-                                                        .data!.docs[index]
-                                                        .data(),
-                                                    docid: timesnaps
-                                                        .data!.docs[index]
-                                                        .data()['docid'],
-                                                  )),
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              );
+                                    );
                             } else if (timesnaps.data == null) {
-                              return  Center(
-                                child: TextFontWidget(
-                                    text: "No recordes found", fontsize: 16),
+                              return const Center(
+                                child: TextFontWidget(text: "No recordes found", fontsize: 16),
                               );
                             } else {
                               return const LoadingWidget();
@@ -308,8 +310,7 @@ class TimeTableMainScreen extends StatelessWidget {
         ));
   }
 
-  Future<void> timetable_Creation(
-      BuildContext context, List<Widget> textformWidget) {
+  Future<void> timetable_Creation(BuildContext context, List<Widget> textformWidget) {
     final timetableCtrl = Get.put(TimeTableController());
     return aweSideSheet(
         context: context,
@@ -343,16 +344,13 @@ class TimeTableMainScreen extends StatelessWidget {
                             textformWidget[8],
 
                             Padding(
-                              padding:
-                                  const EdgeInsets.only(top: 10, bottom: 10),
+                              padding: const EdgeInsets.only(top: 10, bottom: 10),
                               child: Center(
                                   child: ProgressButtonWidget(
-                                      buttonstate:
-                                          timetableCtrl.buttonstate.value,
+                                      buttonstate: timetableCtrl.buttonstate.value,
                                       text: 'Submit',
                                       function: () {
-                                        timetableCtrl
-                                            .addTimeTableDataToFirebase();
+                                        timetableCtrl.addTimeTableDataToFirebase();
                                       })
                                   //  NoticeButtonContainerWidget(
                                   //   text: 'Submit',
@@ -388,12 +386,12 @@ final List<String> weekdays = [
   'Sunday',
 ];
 
- List<String> weekList = [
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-    'Sunday',
-  ];
+List<String> weekList = [
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+  'Sunday',
+];
