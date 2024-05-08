@@ -1,6 +1,5 @@
 import 'package:awesome_side_sheet/Enums/sheet_position.dart';
 import 'package:awesome_side_sheet/side_sheet.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vidyaveechi_website/controller/achievements_controller/achievements.dart';
@@ -37,7 +36,7 @@ class _CreateAchievementState extends State<CreateAchievement> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-             TextFontWidget(text: 'Select Class *', fontsize: 12.5),
+             const TextFontWidget(text: 'Select Class *', fontsize: 12.5),
             const SizedBox(
               height: 05,
             ),
@@ -132,62 +131,62 @@ class _CreateAchievementState extends State<CreateAchievement> {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.center,
                                             children: [
-                                          Stack(
-                                            children: [
-                                              // Obx(() {
-                                              (achievementsController.afile ==
-                                                      null)
-                                                  ? const CircleAvatar(
+                                          // Stack(
+                                          //   children: [
+                                          //     // Obx(() {
+                                          //     (achievementsController.afile ==
+                                          //             null)
+                                          //         ? const CircleAvatar(
                                                     
-                                                      radius: 60,
-                                                      backgroundImage: NetworkImage(
-                                                          'https://via.placeholder.com/150'),
-                                                      backgroundColor:
-                                                          Color.fromARGB(241,
-                                                              54, 225, 248),
-                                                    )
-                                                  : CircleAvatar(
-                                                      radius: 60,
+                                          //             radius: 60,
+                                          //             backgroundImage: NetworkImage(
+                                          //                 'https://via.placeholder.com/150'),
+                                          //             backgroundColor:
+                                          //                 Color.fromARGB(241,
+                                          //                     54, 225, 248),
+                                          //           )
+                                          //         : CircleAvatar(
+                                          //             radius: 60,
                                                       
-                                                      backgroundImage: MemoryImage(
-                                                          achievementsController
-                                                              .afile!)
-                                                      //
-                                                      //   .image,
-                                                      ),
+                                          //             backgroundImage: MemoryImage(
+                                          //                 achievementsController
+                                          //                     .afile!)
+                                          //             //
+                                          //             //   .image,
+                                          //             ),
                                                   
 
-                                              // }
-                                              // }),
-                                              Positioned(
-                                                  bottom: -10,
-                                                  left: 80,
-                                                  child: IconButton(
-                                                      onPressed: () async {
-                                                        FilePickerResult?
-                                                            result =
-                                                            await FilePicker
-                                                                .platform
-                                                                .pickFiles(
-                                                                    type: FileType
-                                                                        .image);
-                                                        if (result != null) {
-                                                          achievementsController
-                                                                  .file =
-                                                              result.files.first
-                                                                  .bytes;
-                                                          setState(() {
-                                                            achievementsController
-                                                                    .afile =
-                                                                achievementsController
-                                                                    .file;
-                                                          });
-                                                        }
-                                                      },
-                                                      icon: const Icon(
-                                                          Icons.add_a_photo)))
-                                            ],
-                                          ),
+                                          //     // }
+                                          //     // }),
+                                          //     Positioned(
+                                          //         bottom: -10,
+                                          //         left: 80,
+                                          //         child: IconButton(
+                                          //             onPressed: () async {
+                                          //               FilePickerResult?
+                                          //                   result =
+                                          //                   await FilePicker
+                                          //                       .platform
+                                          //                       .pickFiles(
+                                          //                           type: FileType
+                                          //                               .image);
+                                          //               if (result != null) {
+                                          //                 achievementsController
+                                          //                         .file =
+                                          //                     result.files.first
+                                          //                         .bytes;
+                                          //                 setState(() {
+                                          //                   achievementsController
+                                          //                           .afile =
+                                          //                       achievementsController
+                                          //                           .file;
+                                          //                 });
+                                          //               }
+                                          //             },
+                                          //             icon: const Icon(
+                                          //                 Icons.add_a_photo)))
+                                          //   ],
+                                          // ),
                                           textformWidget[0],
                                           textformWidget[1],
                                           textformWidget[2],
