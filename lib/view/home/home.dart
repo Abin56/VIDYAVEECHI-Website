@@ -17,8 +17,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:
-          const Color.fromARGB(255, 249, 247, 235).withOpacity(0.4),
+      backgroundColor: const Color.fromARGB(255, 249, 247, 235).withOpacity(0.4),
       body: ResponsiveWebSite.isMobile(context)
           ? ListView(
               children: const [
@@ -55,8 +54,7 @@ class DujoHOmeScreen extends StatelessWidget {
       width: double.infinity,
       decoration: const BoxDecoration(
         image: DecorationImage(
-            image: AssetImage('webassets/images/websiteHomepage.jpg'),
-            fit: BoxFit.fill),
+            image: AssetImage('webassets/images/websiteHomepage.jpg'), fit: BoxFit.fill),
       ),
       child: Column(
         children: [
@@ -73,9 +71,7 @@ class DujoHOmeScreen extends StatelessWidget {
                           children: [
                             GoogleMonstserratWidgets(
                                 text: 'Customer support',
-                                fontsize: ResponsiveWebSite.isMobile(context)
-                                    ? 12
-                                    : 15,
+                                fontsize: ResponsiveWebSite.isMobile(context) ? 12 : 15,
                                 color: adminePrimayColor,
                                 fontWeight: FontWeight.w500),
                             // Padding(
@@ -107,13 +103,10 @@ class DujoHOmeScreen extends StatelessWidget {
                             ),
 
                             Padding(
-                              padding:
-                                  const EdgeInsets.only(right: 50, top: 10),
+                              padding: const EdgeInsets.only(right: 50, top: 10),
                               child: GoogleMonstserratWidgets(
                                   text: '080 696 21 222',
-                                  fontsize: ResponsiveWebSite.isMobile(context)
-                                      ? 20
-                                      : 20,
+                                  fontsize: ResponsiveWebSite.isMobile(context) ? 20 : 20,
                                   fontWeight: FontWeight.w700,
                                   color: cred),
                             ),
@@ -125,8 +118,7 @@ class DujoHOmeScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Padding(
-                                padding:
-                                    const EdgeInsets.only(top: 40, left: 20),
+                                padding: const EdgeInsets.only(top: 40, left: 20),
                                 child: Text(
                                   "Watch And Guide,\n" "Let Them Study !",
                                   style: GoogleFonts.montserrat(
@@ -202,8 +194,7 @@ class DujoHOmeScreen extends StatelessWidget {
                               //   ),
                               // ),
                               Padding(
-                                padding:
-                                    const EdgeInsets.only(top: 40, left: 20),
+                                padding: const EdgeInsets.only(top: 40, left: 20),
                                 child: Text(
                                   "Watch And Guide,\n" "Let Them Study !",
                                   style: GoogleFonts.montserrat(
@@ -220,8 +211,7 @@ class DujoHOmeScreen extends StatelessWidget {
                                   minWidth: 250,
                                   onPressed: () {
                                     ResponsiveWebSite.isDesktop(context)
-                                        ? Navigator.pushNamed(
-                                            context, SchoolProfile.route)
+                                        ? Navigator.pushNamed(context, SchoolProfile.route)
                                         : mobileandTabAlert(context);
                                   },
                                   color: adminePrimayColor,
@@ -275,8 +265,7 @@ class DujoHOmeScreen extends StatelessWidget {
                             ),
 
                             Padding(
-                              padding:
-                                  const EdgeInsets.only(right: 50, top: 10),
+                              padding: const EdgeInsets.only(right: 50, top: 10),
                               child: GoogleMonstserratWidgets(
                                   text: '080 696 21 222',
                                   fontsize: 25,
@@ -310,8 +299,7 @@ class DujoHomeWebSiteDetails extends StatelessWidget {
                     : const Color.fromARGB(255, 235, 227, 227),
                 image: ResponsiveWebSite.isDesktop(context)
                     ? const DecorationImage(
-                        image: AssetImage(
-                            'webassets/images/dujo_schools_image.png'),
+                        image: AssetImage('webassets/images/dujo_schools_image.png'),
                         fit: BoxFit.fill)
                     : null),
             child: ResponsiveWebSite.isDesktop(context)
@@ -356,9 +344,8 @@ class WebSiteDiscriptionWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(right: 10),
       child: Column(
-        mainAxisAlignment: ResponsiveWebSite.isDesktop(context)
-            ? MainAxisAlignment.end
-            : MainAxisAlignment.center,
+        mainAxisAlignment:
+            ResponsiveWebSite.isDesktop(context) ? MainAxisAlignment.end : MainAxisAlignment.center,
         crossAxisAlignment: ResponsiveWebSite.isDesktop(context)
             ? CrossAxisAlignment.end
             : CrossAxisAlignment.center,
@@ -366,8 +353,7 @@ class WebSiteDiscriptionWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(bottom: 20),
             child: SizedBox(
-              width:
-                  ResponsiveWebSite.isDesktop(context) ? 800 : double.infinity,
+              width: ResponsiveWebSite.isDesktop(context) ? 800 : double.infinity,
               height: ResponsiveWebSite.isDesktop(context) ? 200 : 300,
               child: Center(
                 child: GooglePoppinsWidgets(
@@ -399,10 +385,8 @@ class WebSiteDiscriptionWidget extends StatelessWidget {
                     child: ListView.separated(
                         itemBuilder: (context, index) {
                           return SizedBox(
-                            height:
-                                ResponsiveWebSite.isDesktop(context) ? 40 : 27,
-                            width:
-                                ResponsiveWebSite.isDesktop(context) ? 100 : 80,
+                            height: ResponsiveWebSite.isDesktop(context) ? 40 : 27,
+                            width: ResponsiveWebSite.isDesktop(context) ? 100 : 80,
                             child: Row(
                               children: [
                                 const CircleAvatar(
@@ -413,10 +397,7 @@ class WebSiteDiscriptionWidget extends StatelessWidget {
                                   padding: const EdgeInsets.only(left: 10),
                                   child: GoogleMonstserratWidgets(
                                     text: text1[index],
-                                    fontsize:
-                                        ResponsiveWebSite.isDesktop(context)
-                                            ? 13
-                                            : 11,
+                                    fontsize: ResponsiveWebSite.isDesktop(context) ? 13 : 11,
                                     fontWeight: FontWeight.w500,
                                   ),
                                 ),
@@ -426,8 +407,7 @@ class WebSiteDiscriptionWidget extends StatelessWidget {
                         },
                         separatorBuilder: (context, index) {
                           return SizedBox(
-                            height:
-                                ResponsiveWebSite.isDesktop(context) ? 05 : 00,
+                            height: ResponsiveWebSite.isDesktop(context) ? 05 : 00,
                           );
                         },
                         itemCount: text1.length),
@@ -438,10 +418,8 @@ class WebSiteDiscriptionWidget extends StatelessWidget {
                     child: ListView.separated(
                         itemBuilder: (context, index) {
                           return SizedBox(
-                            height:
-                                ResponsiveWebSite.isDesktop(context) ? 40 : 27,
-                            width:
-                                ResponsiveWebSite.isDesktop(context) ? 100 : 80,
+                            height: ResponsiveWebSite.isDesktop(context) ? 40 : 27,
+                            width: ResponsiveWebSite.isDesktop(context) ? 100 : 80,
                             child: Row(
                               children: [
                                 const CircleAvatar(
@@ -452,10 +430,7 @@ class WebSiteDiscriptionWidget extends StatelessWidget {
                                   padding: const EdgeInsets.only(left: 10),
                                   child: GoogleMonstserratWidgets(
                                     text: text2[index],
-                                    fontsize:
-                                        ResponsiveWebSite.isDesktop(context)
-                                            ? 13
-                                            : 11,
+                                    fontsize: ResponsiveWebSite.isDesktop(context) ? 13 : 11,
                                     fontWeight: FontWeight.w500,
                                   ),
                                 ),
@@ -465,8 +440,7 @@ class WebSiteDiscriptionWidget extends StatelessWidget {
                         },
                         separatorBuilder: (context, index) {
                           return SizedBox(
-                            height:
-                                ResponsiveWebSite.isDesktop(context) ? 05 : 00,
+                            height: ResponsiveWebSite.isDesktop(context) ? 05 : 00,
                           );
                         },
                         itemCount: text2.length),

@@ -24,6 +24,7 @@ class ClassController extends GetxController {
   List<ClassModel> allclassList = [];
   List<ClassModel> classwiseSubjectList = [];
   Rxn<ClassModel> classModelData = Rxn<ClassModel>();
+RxBool ontapLeaveApplication =false.obs;
 
   int boysCount = 0;
   int girlsCount = 0;
@@ -370,7 +371,7 @@ class ClassController extends GetxController {
     final firebase = await server
         .collection('SchoolListCollection')
         .doc(UserCredentialsController.schoolId)
-        .collection(' ')
+        .collection('AllStudents')
         .get();
 
     for (var i = 0; i < firebase.docs.length; i++) {

@@ -30,7 +30,7 @@ class PerStudentExamHistory extends StatelessWidget {
           height: 40,
           width: 1200,
           color: Colors.blue.withOpacity(0.1),
-          child:  Padding(
+          child:  const Padding(
             padding: EdgeInsets.all(8.0),
             child: TextFontWidget(
               text: 'Exams section',
@@ -132,7 +132,7 @@ class PerStudentExamHistory extends StatelessWidget {
                 child: SizedBox(
                   child: Obx(
                     () => examController.examId.value == ' empty '
-                        ?  Center(
+                        ?  const Center(
                             child: TextFontWidget(
                                 text: "Please select exam", fontsize: 16),
                           )
@@ -156,12 +156,12 @@ class PerStudentExamHistory extends StatelessWidget {
                                 return const Center(
                                     child: CircularProgressIndicator());
                               } else if (snapshot.data!.docs.isEmpty) {
-                                return Center(
+                                return const Center(
                                   child: TextFontWidget(
                                       text: "No data", fontsize: 16),
                                 );
                               } else if (!snapshot.hasData) {
-                                return Center(
+                                return const Center(
                                   child: TextFontWidget(
                                       text: "No data", fontsize: 16),
                                 );

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:awesome_side_sheet/Enums/sheet_position.dart';
 import 'package:awesome_side_sheet/side_sheet.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +27,7 @@ Future<void> createFeesFunction(BuildContext context) async {
       padding: const EdgeInsets.all(8.0),
       child: Column(
         children: [
-         Row(
+         const Row(
             children: [
               BackButton(),
               TextFontWidget(
@@ -146,7 +148,7 @@ Future<void> createFeesFunction(BuildContext context) async {
                                                                   .allClassList[
                                                               index]);
                                                     },
-                                                    child:  TextFontWidget(
+                                                    child:  const TextFontWidget(
                                                       text: 'Select',
                                                       fontsize: 12,
                                                       color: cBlack,
@@ -173,7 +175,7 @@ Future<void> createFeesFunction(BuildContext context) async {
             child: GestureDetector(
               onTap: () => genrateFeesForClasses(context),
               child: BlueContainerWidget(
-                  title: "Genrate Class Fee",
+                  title: "Generate Class Fee",
                   fontSize: 12,
                   color: cBlack,
                   width: 200),
@@ -277,7 +279,7 @@ genrateFeesForClasses(BuildContext context) async {
                                         feesAndBillsController.selectedClassList
                                             .removeAt(index);
                                       },
-                                      child: TextFontWidget(
+                                      child: const TextFontWidget(
                                           text: "Remove", fontsize: 12)))
                             ],
                           ),
@@ -295,7 +297,10 @@ genrateFeesForClasses(BuildContext context) async {
         Obx(() => ProgressButtonWidget(
             buttonstate: feesAndBillsController.buttonstate.value,
             text: 'Genrate Fees',
-            function: () => feesAndBillsController.addFessAsignToClass()))
+            function: ()async{
+             
+           await   feesAndBillsController.addFessAsignToClass();
+            } ))
       ],
       doyouwantActionButton: false);
 }
@@ -391,7 +396,7 @@ createCustomFeesForClasses(BuildContext context) async {
                                         feesAndBillsController.selectedClassList
                                             .removeAt(index);
                                       },
-                                      child:  TextFontWidget(
+                                      child:  const TextFontWidget(
                                           text: "Remove", fontsize: 12)))
                             ],
                           ),

@@ -344,7 +344,7 @@ class VidhyaVeechiHomePageResponsive extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
-                                height: 650,
+                                height: 850,
                                 width: screenSize.width,
                                 decoration: const BoxDecoration(
                                   gradient: LinearGradient(

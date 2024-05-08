@@ -25,12 +25,16 @@ class CatrgoryTableHeaderWidget extends StatelessWidget {
         child: Text(
           headerTitle,
           style: const TextStyle(
-              fontWeight: FontWeight.w500, fontSize: 12, color: cWhite),
+              fontWeight: FontWeight.w500,
+              fontSize: 12,
+              color: cWhite,
+              decoration: TextDecoration.none),
         ),
       ),
     );
   }
 }
+
 class CatrgoryTableHeaderColorWidget extends StatelessWidget {
   final String headerTitle;
   final double? width;
@@ -41,7 +45,7 @@ class CatrgoryTableHeaderColorWidget extends StatelessWidget {
     this.width,
     required this.headerTitle,
     required this.color,
-     required this.textcolor,
+    required this.textcolor,
     super.key,
   });
 
@@ -50,16 +54,15 @@ class CatrgoryTableHeaderColorWidget extends StatelessWidget {
     return Container(
       height: 35,
       width: width,
-      decoration:  BoxDecoration(
+      decoration: BoxDecoration(
           color: color,
           border: const Border.symmetric(
-           // horizontal: BorderSide(color: Colors.blue),
-          )),
+              // horizontal: BorderSide(color: Colors.blue),
+              )),
       child: Center(
         child: Text(
           headerTitle,
-          style:  TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 13, color: textcolor),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: textcolor),
         ),
       ),
     );

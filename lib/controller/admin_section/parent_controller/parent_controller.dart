@@ -1,4 +1,5 @@
 import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:progress_state_button/progress_button.dart';
@@ -77,7 +78,7 @@ class ParentController extends GetxController {
       ParentModel data = ParentModel(
           parentName: parentNameController.text.trim(),
           parentPhoneNumber: parentPhNOController.text.trim(),
-          studentID: Get.find<StudentController>().stdClassWiseValue.value,
+          studentID: Get.find<ClassController>().studentDocID.value,
           createdate: DateTime.now().toString(),
           docid: docUID);
 
