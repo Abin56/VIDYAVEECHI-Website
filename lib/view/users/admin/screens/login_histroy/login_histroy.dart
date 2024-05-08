@@ -36,8 +36,8 @@ class LoginHistroyContainer extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                 Padding(
-                  padding: const EdgeInsets.only(left: 25, top: 25),
+                const Padding(
+                  padding: EdgeInsets.only(left: 25, top: 25),
                   child: SizedBox(
                     height: 30,
                     width: double.infinity,
@@ -54,8 +54,7 @@ class LoginHistroyContainer extends StatelessWidget {
                     children: [
                       const Padding(
                         padding: EdgeInsets.only(left: 20, right: 05),
-                        child:
-                            RouteSelectedTextContainer(title: 'Login Histroy'),
+                        child: RouteSelectedTextContainer(title: 'Login Histroy'),
                       ),
                       const Spacer(),
                       Padding(
@@ -67,8 +66,7 @@ class LoginHistroyContainer extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                               TextFontWidget(
-                                  text: 'Month *', fontsize: 12.5),
+                              const TextFontWidget(text: 'Month *', fontsize: 12.5),
                               const SizedBox(
                                 height: 05,
                               ),
@@ -89,16 +87,13 @@ class LoginHistroyContainer extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                             TextFontWidget(
-                                  text: 'Date *', fontsize: 12.5),
+                              const TextFontWidget(text: 'Date *', fontsize: 12.5),
                               const SizedBox(
                                 height: 05,
                               ),
                               SizedBox(
                                   height: 40,
-                                  child: adminLoginHistroyController
-                                              .selectedMonth.value ==
-                                          true
+                                  child: adminLoginHistroyController.selectedMonth.value == true
                                       ? SelectLoginDateDropDown()
                                       : const Row(
                                           children: [
@@ -124,38 +119,29 @@ class LoginHistroyContainer extends StatelessWidget {
                         height: 40,
                         child: const Row(
                           children: [
-                            Expanded(
-                                flex: 1,
-                                child: CatrgoryTableHeaderWidget(
-                                    headerTitle: 'No')),
+                            Expanded(flex: 1, child: CatrgoryTableHeaderWidget(headerTitle: 'No')),
                             SizedBox(
                               width: 01,
                             ),
                             Expanded(
-                                flex: 4,
-                                child: CatrgoryTableHeaderWidget(
-                                    headerTitle: 'Name')),
+                                flex: 4, child: CatrgoryTableHeaderWidget(headerTitle: 'Name')),
                             SizedBox(
                               width: 02,
                             ),
                             Expanded(
-                                flex: 4,
-                                child: CatrgoryTableHeaderWidget(
-                                    headerTitle: 'E mail')),
-                            SizedBox(
-                              width: 02,
-                            ),
-                            Expanded(
-                                flex: 3,
-                                child: CatrgoryTableHeaderWidget(
-                                    headerTitle: 'Login Time')),
+                                flex: 4, child: CatrgoryTableHeaderWidget(headerTitle: 'E mail')),
                             SizedBox(
                               width: 02,
                             ),
                             Expanded(
                                 flex: 3,
-                                child: CatrgoryTableHeaderWidget(
-                                    headerTitle: 'Logout Time')),
+                                child: CatrgoryTableHeaderWidget(headerTitle: 'Login Time')),
+                            SizedBox(
+                              width: 02,
+                            ),
+                            Expanded(
+                                flex: 3,
+                                child: CatrgoryTableHeaderWidget(headerTitle: 'Logout Time')),
                             SizedBox(
                               width: 02,
                             ),
@@ -185,33 +171,33 @@ class LoginHistroyContainer extends StatelessWidget {
                                 .collection(UserCredentialsController.batchId!)
                                 .doc(UserCredentialsController.batchId)
                                 .collection('LoginHistory')
-                                .doc(Get.find<AdminLoginHistroyController>()
-                                    .loginHMonthValue
-                                    .value)
+                                .doc(Get.find<AdminLoginHistroyController>().loginHMonthValue.value)
                                 .collection(
-                                    Get.find<AdminLoginHistroyController>()
-                                        .loginHMonthValue
-                                        .value)
-                                .doc(Get.find<AdminLoginHistroyController>()
-                                    .loginHDayValue
-                                    .value)
+                                    Get.find<AdminLoginHistroyController>().loginHMonthValue.value)
+                                .doc(Get.find<AdminLoginHistroyController>().loginHDayValue.value)
                                 .collection(
-                                    Get.find<AdminLoginHistroyController>()
-                                        .loginHDayValue
-                                        .value).orderBy('loginTime',descending: true)
+                                    Get.find<AdminLoginHistroyController>().loginHDayValue.value)
+                                .orderBy('loginTime', descending: true)
                                 .snapshots(),
                             builder: (context, snaPS) {
                               if (snaPS.hasData) {
                                 return snaPS.data!.docs.isEmpty
-                                    ? const Text(
-                                        'Please select the month and date')
+                                    ? const Column(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          Padding(
+                                            padding: EdgeInsets.all(8.0),
+                                            child: Text(
+                                              "Please select the month and date",
+                                              style: TextStyle(fontWeight: FontWeight.w400),
+                                            ),
+                                          ),
+                                        ],
+                                      )
                                     : ListView.separated(
                                         itemBuilder: (context, index) {
-                                          final data =
-                                              AdminLoginDetailHistoryModel
-                                                  .fromMap(snaPS
-                                                      .data!.docs[index]
-                                                      .data());
+                                          final data = AdminLoginDetailHistoryModel.fromMap(
+                                              snaPS.data!.docs[index].data());
                                           return GestureDetector(
                                             onTap: () {},
                                             child: AllLoginLogoutDataList(
@@ -230,7 +216,7 @@ class LoginHistroyContainer extends StatelessWidget {
                                             snaPS.data!.docs.length);
                                 //           //////////
                               } else if (snaPS.data == null) {
-                                return  const LoadingWidget();
+                                return const LoadingWidget();
                               } else {
                                 return const LoadingWidget();
                               }
