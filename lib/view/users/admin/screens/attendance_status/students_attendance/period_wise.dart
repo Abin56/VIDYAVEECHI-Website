@@ -20,6 +20,7 @@ import '../../../../../widgets/blue_Container_widget/blue_Container_widget.dart'
 
 class PeriodWiseStudentsAttendance extends StatelessWidget {
   final AttendenceController attendenceController = Get.put(AttendenceController());
+  final ClassController classController = Get.put(ClassController());
   PeriodWiseStudentsAttendance({super.key});
   @override
   Widget build(BuildContext context) {
@@ -163,7 +164,6 @@ class PeriodWiseStudentsAttendance extends StatelessWidget {
                                                         )
                                                       ],
                                                     )
-                                                    
                                                   : Row(
                                                       children: [
                                                         Padding(
@@ -270,44 +270,81 @@ class PeriodWiseStudentsAttendance extends StatelessWidget {
                                         ),
                                         // ),
                                         Padding(
-                                          padding:
-                                              const EdgeInsets.only(top: 0, left: 20, right: 20),
-                                          child: Container(
-                                            width: double.infinity,
-                                            color: screenContainerbackgroundColor,
-                                            height: 02,
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(top: 0, left: 05, right: 05),
-                                          child: Container(
-                                            height: 480,
-                                            color: cWhite,
-                                            // color: Colors.amber,
-                                            //// height: 300,
-                                            child: TabBarView(
-                                                children: List.generate(
-                                                    snaps.data!.docs.length,
-                                                    (index) => StudentAttendanceDataList(
-                                                          subjectID: snaps.data!.docs[index]
-                                                              .data()['docid'],
-                                                          formatted: attendenceController
-                                                                      .todayAttendence.value ==
-                                                                  true
-                                                              ? formatted
-                                                              : attendenceController
-                                                                  .fetchClassWiseDatevalue.value,
-                                                          monthwise: attendenceController
-                                                                      .todayAttendence.value ==
-                                                                  true
-                                                              ? monthwise
-                                                              : attendenceController
-                                                                  .fetchClassWiseMonthvalue.value,
-                                                          data: snaps.data!.docs[index].data(),
-                                                        ))),
-                                          ),
-                                        )
+                                            padding:
+                                                const EdgeInsets.only(top: 0, left: 20, right: 20),
+                                            child: Container(
+                                              height: 480,
+                                              color: cWhite,
+                                              child: (attendenceController.todayAttendence.value &&
+                                                          classController.className.value == '') ||
+                                                      (!attendenceController
+                                                              .todayAttendence.value &&
+                                                          (attendenceController
+                                                                      .fetchClassWiseMonthvalue
+                                                                      .value ==
+                                                                  'dd' ||
+                                                              attendenceController
+                                                                      .fetchClassWiseDatevalue
+                                                                      .value ==
+                                                                  'dd'))
+                                                  ? Column(
+                                                      children: [
+                                                        Padding(
+                                                          padding: const EdgeInsets.all(8.0),
+                                                          child: Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment.center,
+                                                            children: [
+                                                              Text(
+                                                                classController.className.value ==
+                                                                        ''
+                                                                    ? "Please select the class"
+                                                                    : "Please select month and date",
+                                                                style: const TextStyle(
+                                                                    fontWeight: FontWeight.w400),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    )
+                                                  : snaps.data!.docs.isEmpty
+                                                      ? const Column(
+                                                          children: [
+                                                            Row(
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment.center,
+                                                              children: [
+                                                                Text("Please take attendence"),
+                                                              ],
+                                                            ),
+                                                          ],
+                                                        )
+                                                      : TabBarView(
+                                                          children: List.generate(
+                                                            snaps.data!.docs.length,
+                                                            (index) => StudentAttendanceDataList(
+                                                              subjectID: snaps.data!.docs[index]
+                                                                  .data()['docid'],
+                                                              formatted: attendenceController
+                                                                          .todayAttendence.value ==
+                                                                      true
+                                                                  ? formatted
+                                                                  : attendenceController
+                                                                      .fetchClassWiseDatevalue
+                                                                      .value,
+                                                              monthwise: attendenceController
+                                                                          .todayAttendence.value ==
+                                                                      true
+                                                                  ? monthwise
+                                                                  : attendenceController
+                                                                      .fetchClassWiseMonthvalue
+                                                                      .value,
+                                                              data: snaps.data!.docs[index].data(),
+                                                            ),
+                                                          ),
+                                                        ),
+                                            ))
                                       ],
                                     ),
                                   );
