@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:vidyaveechi_website/controller/notification_controller/notification_Controller.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';

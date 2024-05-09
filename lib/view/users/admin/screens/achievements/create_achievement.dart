@@ -94,11 +94,11 @@ class _CreateAchievementState extends State<CreateAchievement> {
         ),
       ), ////////////////////////////////////4
 
-      const Expanded(
-          child: SizedBox(
-        height: 40,
-        width: 400,
-      ))
+      // const Expanded(
+      //     child: SizedBox(
+      //   height: 40,
+      //   width: 400,
+      // ))
     ];
     return Padding(
       padding: const EdgeInsets.only(top: 10, bottom: 10),
@@ -112,22 +112,22 @@ class _CreateAchievementState extends State<CreateAchievement> {
                     sheetPosition: SheetPosition.right,
                     title: "Acheivements",
                     body: Padding(
-                      padding: const EdgeInsets.only(left: 10, top: 10),
+                      padding: const EdgeInsets.only(left: 10, top: 0),
                       child: SingleChildScrollView(
                         child: Form(
                           key: achievementsController.formKey,
                           child: Column(
                             children: [
                               SizedBox(
-                                  height: 800,
+                                  height: 700,
                                   child: Container(
-                                    margin: const EdgeInsets.only(top: 10),
+                                    margin: const EdgeInsets.only(top:10),
                                     child:
                                         //  Obx(() {
                                         // return
                                         Column(
                                             mainAxisAlignment:
-                                                MainAxisAlignment.center,
+                                                MainAxisAlignment.start,
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.center,
                                             children: [
