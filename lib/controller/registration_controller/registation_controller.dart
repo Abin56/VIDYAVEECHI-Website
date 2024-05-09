@@ -22,6 +22,7 @@ class RegistrationController extends GetxController {
   RxString className = ''.obs;
   RxString classDocID = ''.obs;
   Rx<ButtonState> buttonstate = ButtonState.idle.obs;
+   final formKey = GlobalKey<FormState>();
   Future<List<ClassModel>> fetchClass() async {
     await server
         .collection('SchoolListCollection')
