@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sidebar_drawer/sidebar_drawer.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/fonts/google_poppins_widget.dart';
@@ -26,6 +27,7 @@ import 'package:vidyaveechi_website/view/users/admin/screens/students/create_stu
 import 'package:vidyaveechi_website/view/users/admin/screens/students/view_allStudents.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/teacher/view_allTeachers.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/timetable/timetable_main_screen.dart';
+import 'package:vidyaveechi_website/view/users/super_admin/lepton_Admin/card%20registration/card%20registration.dart';
 import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
 import 'package:vidyaveechi_website/view/widgets/loading_widget/loading_widget.dart';
@@ -176,16 +178,21 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                                   ],
                                 ),
                               ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 10, top: 12),
-                                child: Text(
-                                  "Main Menu",
-                                  style: TextStyle(
-                                      color: cBlack.withOpacity(
-                                        0.4,
-                                      ),
-                                      fontSize: 12),
+                              GestureDetector(
+                                onTap: (){
+                                 Get.to(() =>  CardRegistration());
+                                },
+                                child: Padding(
+                                  padding:
+                                      const EdgeInsets.only(left: 10, top: 12),
+                                  child: Text(
+                                    "Main Menu",
+                                    style: TextStyle(
+                                        color: cBlack.withOpacity(
+                                          0.4,
+                                        ),
+                                        fontSize: 12),
+                                  ),
                                 ),
                               ),
                               const SizedBox(

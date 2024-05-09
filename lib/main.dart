@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vidyaveechi_website/controller/user_login_Controller/user_login_controller.dart';
+import 'package:vidyaveechi_website/firebase_api/firebase_api.dart';
 import 'package:vidyaveechi_website/firebase_options.dart';
 import 'package:vidyaveechi_website/view/home/screens/footer/privacypolicy.dart';
 import 'package:vidyaveechi_website/view/splash_screen/splash_screen.dart';
@@ -16,6 +17,7 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+   await FirebaseApi().initNotifications();
   await SharedPreferencesHelper.initPrefs();
 
   runApp(const MyApp());

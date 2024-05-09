@@ -60,5 +60,6 @@ class DefaultFirebaseOptions {
     authDomain: 'vidya-veechi-8-feb-2024.firebaseapp.com',
     storageBucket: 'vidya-veechi-8-feb-2024.appspot.com',
     measurementId: 'G-8L84N6SGWW',
+    databaseURL: 'https://vidya-veechi-8-feb-2024-default-rtdb.firebaseio.com',
   );
 }

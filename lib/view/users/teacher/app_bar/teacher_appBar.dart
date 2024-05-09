@@ -5,10 +5,9 @@ import 'package:vidyaveechi_website/view/fonts/google_poppins_widget.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 import 'package:vidyaveechi_website/view/users/admin/app_bar/academic_year/academic_year.dart';
 import 'package:vidyaveechi_website/view/users/admin/app_bar/admin_profile/admin_profile.dart';
+import 'package:vidyaveechi_website/view/users/admin/app_bar/message_notication/message_showing.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/notification_time_setting/notification.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
-import 'package:vidyaveechi_website/view/users/admin/app_bar/message_notication/message_showing.dart';
-import 'package:vidyaveechi_website/view/users/admin/app_bar/message_notication/notification_show.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 
 // ignore: must_be_immutable
@@ -218,7 +217,7 @@ class AppBarTeacherPanel extends StatelessWidget {
                             child: IconButton(
                                 focusNode: textButtonFocusNode1,
                                 onPressed: () {
-                                  notificationShowingFunctionOnAppBar(context);
+                                //  notificationShowingFunctionOnAppBar(context);
                                 },
                                 icon: Icon(
                                   Icons.notifications_none_outlined,
@@ -455,7 +454,7 @@ class AppBarTeacherPanel extends StatelessWidget {
                 decoration: BoxDecoration(border: Border.all(color: cBlack.withOpacity(0.4))),
                 child:  Row(
                   children: [
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.only(left: 10, right: 10),
                       child: Icon(
                         Icons.account_circle_outlined,
@@ -478,7 +477,7 @@ class AppBarTeacherPanel extends StatelessWidget {
                 decoration: BoxDecoration(border: Border.all(color: cBlack.withOpacity(0.4))),
                 child:  Row(
                   children: [
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.only(left: 10, right: 10),
                       child: Icon(
                         Icons.power_settings_new,

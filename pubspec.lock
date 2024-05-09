@@ -441,6 +441,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.16.0"
+  firebase_database:
+    dependency: "direct main"
+    description:
+      name: firebase_database
+      sha256: "082ff524397e82743938fb65e4286bbafdb6d596265662229807f970507fb149"
+      url: "https://pub.dev"
+    source: hosted
+    version: "10.5.3"
+  firebase_database_platform_interface:
+    dependency: transitive
+    description:
+      name: firebase_database_platform_interface
+      sha256: "1a8cfdcd9eba500c192fec802bbea12fbcbb475e596e267b5be1b9f69ac82364"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.5+31"
+  firebase_database_web:
+    dependency: transitive
+    description:
+      name: firebase_database_web
+      sha256: b68feb157e8d5ae5ac7bf12b3f6bdb375b9a4689a1db22a662bf0bbcc697dcb3
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.5+3"
   firebase_dynamic_links:
     dependency: transitive
     description:
@@ -457,6 +481,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.2.6+31"
+  firebase_messaging:
+    dependency: "direct main"
+    description:
+      name: firebase_messaging
+      sha256: d8b12bcfe535f9bf8e24b4f9685036a8614f11b6fdcdff54ce9758ea8585a8a9
+      url: "https://pub.dev"
+    source: hosted
+    version: "14.9.0"
+  firebase_messaging_platform_interface:
+    dependency: transitive
+    description:
+      name: firebase_messaging_platform_interface
+      sha256: "8355f089bfc06691f00e0bc01c4214bc0aeff22acabdb5090b734a551d33ca43"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.5.33"
+  firebase_messaging_web:
+    dependency: transitive
+    description:
+      name: firebase_messaging_web
+      sha256: d6f3ea91e0aae479a09355af91e65b19cfbc485d596c5448a87356af4923e582
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.8.3"
   firebase_storage:
     dependency: "direct main"
     description:

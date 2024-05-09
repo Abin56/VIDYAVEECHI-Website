@@ -99,6 +99,8 @@ dependencies:
   progress_state_button: ^1.0.4
   skeletonizer: ^1.1.0
   syncfusion_flutter_xlsio:
+  firebase_database: 
+  firebase_messaging: 
 
 dev_dependencies:
   flutter_test:
