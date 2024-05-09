@@ -219,10 +219,10 @@ class ParentProfileEdit extends StatelessWidget {
               controller: profileCtr.nameController,
               hintText: ' Enter your name',
               title: 'Name'),
-          TextFormFiledBlueContainerWidgetWithOutColor(
-              controller: profileCtr.userRoleController,
-              hintText: ' userRole',
-              title: 'UserRole'),
+          // TextFormFiledBlueContainerWidgetWithOutColor(
+          //     controller: profileCtr.userRoleController,
+          //     hintText: ' userRole',
+          //     title: 'UserRole'),
           TextFormFiledBlueContainerWidgetWithOutColor(
               controller: profileCtr.phoneController,
               hintText: ' phone no.',

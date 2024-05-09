@@ -1,12 +1,12 @@
 
 import 'package:flutter/material.dart';
 
-import '../../../../../fonts/text_widget.dart';
-import '../../../../../widgets/responsive/responsive.dart';
-import 'teacher_class_attendence_graph_container/teacher_class_attendence.dart';
-import 'teacher_classes_students_details/t_statistics_of_horizontal_container.dart';
-import 'teacher_exam_details/teacher_exam_details.dart';
-import 'teaching_activity/teaching_activity.dart';
+import '../../../../fonts/text_widget.dart';
+import '../../../../widgets/responsive/responsive.dart';
+import 'teacher_dash_board/teacher_class_attendence_graph_container/teacher_class_attendence.dart';
+import 'teacher_dash_board/teacher_classes_students_details/t_statistics_of_horizontal_container.dart';
+import 'teacher_dash_board/teacher_exam_details/teacher_exam_details.dart';
+import 'teacher_dash_board/teaching_activity/teaching_activity.dart';
 
 class TeacherDashBoardScreen extends StatelessWidget {
   const TeacherDashBoardScreen({super.key});

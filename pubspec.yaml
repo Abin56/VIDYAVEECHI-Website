@@ -98,6 +98,7 @@ dependencies:
   any_animated_button:
   progress_state_button: ^1.0.4
   skeletonizer: ^1.1.0
+  firebase_app_check:
   syncfusion_flutter_xlsio:
   firebase_database: 
   firebase_messaging: 

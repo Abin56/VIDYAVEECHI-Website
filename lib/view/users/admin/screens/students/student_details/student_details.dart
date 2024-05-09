@@ -19,7 +19,7 @@ class StudentDetailsContainer extends StatelessWidget {
     final data = studentController.studentModelData.value;
 
     return DefaultTabController(
-      length: 3,
+      length: 2,
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Container(
@@ -29,7 +29,7 @@ class StudentDetailsContainer extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-             Padding(
+             const Padding(
                 padding: EdgeInsets.only(left: 25, top: 25),
                 child: TextFontWidget(
                   text: 'Student Details',

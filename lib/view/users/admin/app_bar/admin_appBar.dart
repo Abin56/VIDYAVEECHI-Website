@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:sidebar_drawer/sidebar_drawer.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
+import 'package:vidyaveechi_website/view/fonts/google_poppins_widget.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 import 'package:vidyaveechi_website/view/users/admin/app_bar/academic_year/academic_year.dart';
 import 'package:vidyaveechi_website/view/users/admin/app_bar/admin_profile/admin_profile.dart';
+import 'package:vidyaveechi_website/view/users/admin/app_bar/message_notication/notification_show.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/notification_time_setting/notification.dart';
+import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
-
-import '../../../fonts/google_poppins_widget.dart';
-import 'message_notication/notification_show.dart';
 
 // ignore: must_be_immutable
 class AppBarAdminPanel extends StatelessWidget {
@@ -29,7 +29,6 @@ class AppBarAdminPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return PreferredSize(
       preferredSize: const Size.fromHeight(100.0),
       child: Container(
@@ -228,11 +227,14 @@ class AppBarAdminPanel extends StatelessWidget {
                             child: IconButton(
                                 focusNode: textButtonFocusNode1,
                                 onPressed: () {
-                                 notificationShowingFunctionOnAppBar(context);
+                                  notificationShowingFunctionOnAppBar(context);
                                 },
-                                icon: Icon(
-                                  Icons.notifications_none_outlined,
-                                  color: cBlack.withOpacity(0.4),
+                                icon: Tooltip(
+                                  message: 'Registered Student Requests',
+                                  child: Icon(
+                                    Icons.notifications_none_outlined,
+                                    color: cBlack.withOpacity(0.4),
+                                  ),
                                 )),
                           ),
                           Padding(
@@ -244,12 +246,35 @@ class AppBarAdminPanel extends StatelessWidget {
                                 backgroundColor:
                                     const Color.fromARGB(255, 255, 49, 49),
                                 radius: 10,
-                                child: GooglePoppinsWidgets(
-                                  text: '8',
-                                  fontsize: 11,
-                                  fontWeight: FontWeight.w600,
-                                  color: cWhite,
-                                ),
+                                child: StreamBuilder(
+                                    stream: server
+                                        .collection('SchoolListCollection')
+                                        .doc(UserCredentialsController.schoolId)
+                                        .collection(
+                                            UserCredentialsController.batchId!)
+                                        .doc(UserCredentialsController.batchId)
+                                        .collection(
+                                            'RegStudentsNotifierCounter')
+                                        .doc('count')
+                                        .snapshots(),
+                                    builder: (context, classSnap) {
+                                      if (classSnap.hasData) {
+                                        return classSnap.data?.data() == null
+                                            ? const SizedBox()
+                                            : classSnap.data?.data()?['counter'] == 0
+                                                ? const SizedBox()
+                                                : GooglePoppinsWidgets(
+                                                    text: "${classSnap.data?.data()?['counter']}",
+                                                    fontsize: 11,
+                                                    fontWeight: FontWeight.w600,
+                                                    color: cWhite,
+                                                  );
+                                      } else if (classSnap.data == null) {
+                                        return const SizedBox();
+                                      } else {
+                                        return const SizedBox();
+                                      }
+                                    }),
                               ),
                             ),
                           ),
@@ -459,7 +484,7 @@ class AppBarAdminPanel extends StatelessWidget {
                         child: Image.asset('webassets/png/avathar.png'),
                       ),
                     ),
-                   TextFontWidget(
+                    const TextFontWidget(
                       text: 'Stevne Zone',
                       fontsize: 12,
                       color: cBlack,
@@ -473,9 +498,9 @@ class AppBarAdminPanel extends StatelessWidget {
                 width: 200,
                 decoration: BoxDecoration(
                     border: Border.all(color: cBlack.withOpacity(0.4))),
-                child:  Row(
+                child: const Row(
                   children: [
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.only(left: 10, right: 10),
                       child: Icon(
                         Icons.account_circle_outlined,
@@ -497,9 +522,9 @@ class AppBarAdminPanel extends StatelessWidget {
                 width: 200,
                 decoration: BoxDecoration(
                     border: Border.all(color: cBlack.withOpacity(0.4))),
-                child:  Row(
+                child: const Row(
                   children: [
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.only(left: 10, right: 10),
                       child: Icon(
                         Icons.power_settings_new,
@@ -508,7 +533,7 @@ class AppBarAdminPanel extends StatelessWidget {
                       ),
                     ),
                     TextFontWidget(
-                      text: 'Log Ouit',
+                      text: 'Log Out',
                       fontsize: 12,
                       color: cBlack,
                       fontWeight: FontWeight.w500,

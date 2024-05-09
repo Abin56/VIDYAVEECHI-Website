@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:vidyaveechi_website/view/home/screens/appbar_row.dart';
+import 'package:vidyaveechi_website/view/home/screens/home_parts/appbar_row.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 
 class LeptonLogoVidyaveechi extends StatelessWidget {

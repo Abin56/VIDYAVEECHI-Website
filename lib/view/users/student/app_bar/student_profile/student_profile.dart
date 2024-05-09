@@ -156,7 +156,7 @@ studentProfileshowlist(BuildContext context) {
                                 width: 80),
                           ),
                   ),
-                ),
+                ), 
                 Obx(
                   () => profileCtr.onTapEdit.value == true
                       ? StudentProfileEdit()
@@ -223,10 +223,10 @@ class StudentProfileEdit extends StatelessWidget {
               controller: profileCtr.dobController,
               hintText: ' Date of Birth',
               title: 'Date of Birth'),
-          TextFormFiledBlueContainerWidgetWithOutColor(
-              controller: profileCtr.userRoleController,
-              hintText: ' userRole',
-              title: 'UserRole'),
+          // TextFormFiledBlueContainerWidgetWithOutColor(
+          //     controller: profileCtr.userRoleController,
+          //     hintText: ' userRole',
+          //     title: 'UserRole'),
           TextFormFiledBlueContainerWidgetWithOutColor(
               controller: profileCtr.phoneController,
               hintText: ' phone no.',

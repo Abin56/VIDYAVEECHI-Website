@@ -18,7 +18,7 @@ class HomePageContents extends StatelessWidget {
         Padding(
           padding: EdgeInsets.only(
             left: ResponsiveWebSite.isDesktop(context) ? screenSize.width / 20 : 40,
-            top: ResponsiveWebSite.isDesktop(context) ? screenSize.width / 15 : 125,
+            top: ResponsiveWebSite.isDesktop(context) ? screenSize.width / 15 : 100,
           ),
           child: Text(
             "VIDYAVEECHI",

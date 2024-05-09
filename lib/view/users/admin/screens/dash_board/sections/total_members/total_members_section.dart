@@ -9,13 +9,13 @@ import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 
 class TotalMembersSection extends StatelessWidget {
   final controller = Get.put(AdminGraphController());
-   TotalMembersSection({super.key});
+  TotalMembersSection({super.key});
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
-      child:FutureBuilder(
+      child: FutureBuilder(
           future: Future.wait([
             controller.getSchoolAllStudentsCount(),
             controller.getSchoolAllTeachersCount(),
@@ -24,55 +24,54 @@ class TotalMembersSection extends StatelessWidget {
             controller.getSchoolAttendacne()
           ]),
           builder: (context, snapshot) {
-        if (snapshot.hasData) {
-            return Row(
-            children: [
-              GestureDetector(
-                onTap: () {
-                //  addAttendance(context);
-                },
-                child: TotalMemberContainerWidget(
-                    imageradius: 20,
-                    imagepath: 'webassets/png/student.png',
-                    imageColor: const Color.fromARGB(255, 60, 184, 120),
-                    color: const Color.fromARGB(255, 209, 243, 224),
-                   count: (snapshot.data![0] as Map<String, dynamic>)["total"],
-                    title: 'Students'),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 10),
-                child: TotalMemberContainerWidget(
-                    imageradius: 18,
-                    imagepath: 'webassets/png/teacher.png',
-                    imageColor: const Color.fromARGB(255, 63, 122, 252),
-                    color: const Color.fromARGB(255, 225, 241, 255),
-                  count: (snapshot.data?[1] as int),
-                    title: 'Teachers'),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 10),
-                child: TotalMemberContainerWidget(
-                    imageradius: 18,
-                    imagepath: 'webassets/png/parent.png',
-                    imageColor: const Color.fromARGB(255, 255, 160, 1),
-                    color: const Color.fromARGB(255, 255, 242, 216),
-              count: (snapshot.data?[2] as int),
-                    title: 'Parents'),
-              ),
-            ],
-          );
-        }else{
-          return circularProgressIndicator;
-        }
-        }
-      ),
+            if (snapshot.hasData) {
+              return Row(
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      //  addAttendance(context);
+                    },
+                    child: TotalMemberContainerWidget(
+                        imageradius: 20,
+                        imagepath: 'webassets/png/student.png',
+                        imageColor: const Color.fromARGB(255, 60, 184, 120),
+                        color: const Color.fromARGB(255, 209, 243, 224),
+                        count: (snapshot.data![0] as Map<String, dynamic>)["total"],
+                        title: 'Students'),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: TotalMemberContainerWidget(
+                        imageradius: 18,
+                        imagepath: 'webassets/png/teacher.png',
+                        imageColor: const Color.fromARGB(255, 63, 122, 252),
+                        color: const Color.fromARGB(255, 225, 241, 255),
+                        count: (snapshot.data?[1] as int),
+                        title: 'Teachers'),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: TotalMemberContainerWidget(
+                        imageradius: 18,
+                        imagepath: 'webassets/png/parent.png',
+                        imageColor: const Color.fromARGB(255, 255, 160, 1),
+                        color: const Color.fromARGB(255, 255, 242, 216),
+                        count: (snapshot.data?[2] as int),
+                        title: 'Parents'),
+                  ),
+                ],
+              );
+            } else {
+              return circularProgressIndicator;
+            }
+          }),
     );
   }
 }
 
 class TotalMemberContainerWidget extends StatelessWidget {
   double? h;
-  double?w;
+  double? w;
   String imagepath;
   String title;
   int count;
@@ -95,10 +94,9 @@ class TotalMemberContainerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height:h?? 85,
-      width:w?? 250,
-      decoration: BoxDecoration(
-          color: cWhite, border: Border.all(color: cBlack.withOpacity(0.1))),
+      height: h ?? 85,
+      width: w ?? 250,
+      decoration: BoxDecoration(color: cWhite, border: Border.all(color: cBlack.withOpacity(0.1))),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

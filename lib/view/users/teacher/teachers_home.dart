@@ -1,13 +1,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:sidebar_drawer/sidebar_drawer.dart';
+import 'package:vidyaveechi_website/info/info.dart';
 import 'package:vidyaveechi_website/view/users/teacher/drawer/teacher_drawer_pages.dart';
 
-import '../../../colors/colors.dart';
-import '../../../constantvalidate.dart';
-import '../../../fonts/google_poppins_widget.dart';
-import '../app_bar/teacher_appBar.dart';
-import 'pages/teacher_dash_board/teachers_dashboard.dart';
+import '../../colors/colors.dart';
+import '../../constantvalidate.dart';
+import '../../fonts/google_poppins_widget.dart';
+import 'teachers_panel/teachers_appbar/teacher_appBar.dart';
+import 'teachers_panel/pages/teachers_dashboard.dart';
 
 class TeachersHomeScreen extends StatefulWidget {
   const TeachersHomeScreen({super.key});
@@ -44,14 +45,13 @@ class _TeachersHomeScreenState extends State<TeachersHomeScreen> {
                           children: [
                             SizedBox(
                               height: 60,
-                              child: Image.asset(
-                                'webassets/images/leptonlogo.png',
+                              child: Image.asset(logoImage,
                                 fit: BoxFit.fill,
                               ),
                             ),
                             Expanded(
                               child: GooglePoppinsWidgets(
-                                text: "LEPTON VIDYAVEECHI",
+                                text: name,
                                 fontsize: 18,
                                 fontWeight: FontWeight.w500,
                               ),

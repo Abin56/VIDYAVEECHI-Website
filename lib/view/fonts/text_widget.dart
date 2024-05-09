@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
 class TextFontWidget extends StatelessWidget {
+  final int? index;
   final String text;
   final double fontsize;
   final FontWeight? fontWeight;
   final double? letterSpacing;
   final Color? color;
   final TextOverflow? overflow;
-  String? Function(String?)? validator;
-   TextFontWidget({
+ final String? Function(String?)? validator;
+   const TextFontWidget({
     this.validator,
     required this.text,
     required this.fontsize,
@@ -16,7 +17,7 @@ class TextFontWidget extends StatelessWidget {
     this.color,
     this.letterSpacing,
     this.overflow,
-    super.key,
+    super.key, this.index,
   });
 
   @override

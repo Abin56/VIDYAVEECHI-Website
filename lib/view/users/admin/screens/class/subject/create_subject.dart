@@ -32,7 +32,7 @@ createSubjectFunction(BuildContext context, String classId) {
         child: SingleChildScrollView(
           child: Column(
             children: [
-               Row(
+               const Row(
                 children: [
                   BackButton(),
                   Padding(

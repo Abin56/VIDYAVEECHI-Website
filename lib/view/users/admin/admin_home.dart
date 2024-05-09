@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sidebar_drawer/sidebar_drawer.dart';
+import 'package:vidyaveechi_website/info/info.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/fonts/google_poppins_widget.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
@@ -89,13 +90,12 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                                         children: [
                                           SizedBox(
                                             height: 60,
-                                            child: Image.asset(
-                                              'webassets/images/vidyaveechi_logo.png',
+                                            child: Image.asset(logoImage,
                                               fit: BoxFit.fill,
                                             ),
                                           ),
                                           GooglePoppinsWidgets(
-                                            text: "VIDYAVEECHI",
+                                            text: institutionName,
                                             fontsize:
                                                 ResponsiveWebSite.isMobile(
                                                         context)
@@ -162,13 +162,12 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                                   children: [
                                     SizedBox(
                                       height: 60,
-                                      child: Image.asset(
-                                        'webassets/images/vidyaveechi_logo.png',
+                                      child: Image.asset(logoImage,
                                         fit: BoxFit.fill,
                                       ),
                                     ),
                                     GooglePoppinsWidgets(
-                                      text: "VIDYAVEECHI",
+                                      text: institutionName,
                                       fontsize:
                                           ResponsiveWebSite.isMobile(context)
                                               ? 18
