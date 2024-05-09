@@ -521,7 +521,7 @@ class FeesAndBillsController extends GetxController {
         totalAmount += totaladdesult;
       }
 
-      collectedFee.value = totalAmount;
+      collectedFee.value = totalAmount; 
 
       // .update({'totalAmount': totalResult.value});
     }).then((value) async {
@@ -569,16 +569,16 @@ RxBool sendMessageForUnPaidStudentandParentsbool = false.obs;
       for (var i = 0; i < value.docs.length; i++) {
         int studentFee = value.docs[i]['fee'];
         if (value.docs[i]['feepaid'] == false) {
-          server
-              .collection('SchoolListCollection')
-              .doc(UserCredentialsController.schoolId)
-              .collection('AllStudents')
-              .doc(value.docs[i]['docid'])
-              .get()
-              .then((value) async {
-            Get.find<NotificationController>().userStudentNotification(
-                studentID: value['docid'],
-                icon: WarningNotifierSetup().icon,
+          server 
+              .collection('SchoolListCollection') 
+              .doc(UserCredentialsController.schoolId) 
+              .collection('AllStudents') 
+              .doc(value.docs[i]['docid']) 
+              .get() 
+              .then((value) async { 
+            Get.find<NotificationController>().userStudentNotification( 
+                studentID: value['docid'], 
+                icon: WarningNotifierSetup().icon, 
                 messageText:
                     'Your ${Get.find<FeesAndBillsController>().feetypeName.value} rupees $studentFee /- is due on ${Get.find<FeesAndBillsController>().feeDueDateName.value} ,Please pay on or before the due date.\nനിങ്ങളുടെ ${Get.find<FeesAndBillsController>().feetypeName.value} ആയ $studentFee /- രൂപ, ദയവായി ${Get.find<FeesAndBillsController>().feeDueDateName.value} തിയതിക്കുള്ളിൽ അടക്കേണ്ടതാണ്',
                 // ,
@@ -587,10 +587,10 @@ RxBool sendMessageForUnPaidStudentandParentsbool = false.obs;
                 whiteshadeColor: WarningNotifierSetup().whiteshadeColor,
                 containerColor: WarningNotifierSetup().containerColor);
 
-            Get.find<NotificationController>().userparentNotification(
-                parentID: value['parentId'],
-                icon: WarningNotifierSetup().icon,
-                messageText:
+            Get.find<NotificationController>().userparentNotification( 
+                parentID: value['parentId'], 
+                icon: WarningNotifierSetup().icon, 
+                messageText: 
                     'Your ${Get.find<FeesAndBillsController>().feetypeName.value} rupees $studentFee /- is due on ${Get.find<FeesAndBillsController>().feeDueDateName.value} ,Please pay on or before the due date.\nനിങ്ങളുടെ ${Get.find<FeesAndBillsController>().feetypeName.value} ആയ $studentFee /- രൂപ, ദയവായി ${Get.find<FeesAndBillsController>().feeDueDateName.value} തിയതിക്കുള്ളിൽ അടക്കേണ്ടതാണ്',
                 headerText:
                     "${Get.find<FeesAndBillsController>().feetypeName.value} Due Fee",

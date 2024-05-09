@@ -22,8 +22,7 @@ customShowDilogBox2(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               headerchild ?? const SizedBox(),
-              GooglePoppinsWidgets(
-                  text: title, fontsize: 13, fontWeight: FontWeight.w600),
+              GooglePoppinsWidgets(text: title, fontsize: 13, fontWeight: FontWeight.w600),
               const Padding(
                 padding: EdgeInsets.only(top: 10),
                 child: BackButtonContainerWidget(),
@@ -38,7 +37,12 @@ customShowDilogBox2(
           actions: doyouwantActionButton == true
               ? <Widget>[
                   GestureDetector(
-                    onTap: actiononTapfuction,
+                    onTap: () {
+                      if (actiononTapfuction != null) {
+                        actiononTapfuction(); // Call the original onTap function if it's not null
+                      }
+                      Navigator.pop(context);
+                    },
                     child: Container(
                       height: 40,
                       width: 250,

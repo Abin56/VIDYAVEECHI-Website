@@ -54,28 +54,28 @@ class PeriodWiseStudentsAttendance extends StatelessWidget {
                           ),
                         ),
                         const Spacer(),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 20, right: 25),
-                          child: GestureDetector(
-                            onTap: () {
-                              attendenceController.ontapaddAttendence.value = true;
-                            },
-                            child: ButtonContainerWidget(
-                              curving: 30,
-                              colorindex: 0,
-                              height: 40,
-                              width: 180,
-                              child: const Center(
-                                child: TextFontWidgetRouter(
-                                  text: 'Add Attendance ',
-                                  fontsize: 14,
-                                  fontWeight: FontWeight.bold,
-                                  color: cWhite,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
+                        // Padding(
+                        //   padding: const EdgeInsets.only(top: 20, right: 25),
+                        //   child: GestureDetector(
+                        //     onTap: () {
+                        //       attendenceController.ontapaddAttendence.value = true;
+                        //     },
+                        //     child: ButtonContainerWidget(
+                        //       curving: 30,
+                        //       colorindex: 0,
+                        //       height: 40,
+                        //       width: 180,
+                        //       child: const Center(
+                        //         child: TextFontWidgetRouter(
+                        //           text: 'Add Attendance ',
+                        //           fontsize: 14,
+                        //           fontWeight: FontWeight.bold,
+                        //           color: cWhite,
+                        //         ),
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
                         Padding(
                           padding: const EdgeInsets.only(right: 20),
                           child: SizedBox(

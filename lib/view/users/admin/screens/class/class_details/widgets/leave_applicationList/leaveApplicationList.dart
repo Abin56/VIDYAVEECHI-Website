@@ -217,13 +217,13 @@ class LeaveApplicationList extends StatelessWidget {
                                       .doc(UserCredentialsController.schoolId)
                                       .collection(UserCredentialsController.batchId!)
                                       .doc(UserCredentialsController.batchId!)
-                                      .collection('classes')
+                                      .collection('classes') 
                                       .doc(Get.find<ClassController>().classDocID.value)
                                       .collection('LeaveApplication')
                                       .doc(formatted)
                                       .collection('StudentsList')
                                       .snapshots()
-                                  : server
+                                  : server 
                                       .collection('SchoolListCollection')
                                       .doc(UserCredentialsController.schoolId)
                                       .collection(UserCredentialsController.batchId!)
