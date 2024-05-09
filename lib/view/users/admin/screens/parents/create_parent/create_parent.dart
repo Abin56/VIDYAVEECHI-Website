@@ -54,16 +54,16 @@ class CreateParent extends StatelessWidget {
               height: 05,
             ),
             SizedBox(
-                height: 40,
-                child:AllStudentDropDown(),
-                // child: SelectStudentsDropDown()
-                //  DropdownSearch(
-                //   items: const ['Sruthy', 'Abin'],
-                //   onChanged: (value) {
-                //     parentController.studentName.value = value ?? '';
-                //   },
-                // ),
-                ),
+              height: 40,
+              child: AllStudentDropDown(),
+              // child: SelectStudentsDropDown()
+              //  DropdownSearch(
+              //   items: const ['Sruthy', 'Abin'],
+              //   onChanged: (value) {
+              //     parentController.studentName.value = value ?? '';
+              //   },
+              // ),
+            ),
           ],
         ),
       ), ////////////////////2..............slect.student..........
@@ -109,15 +109,13 @@ class CreateParent extends StatelessWidget {
               height: 25,
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 GestureDetector(
                     onTap: () {
                       parentController.ontapParent.value = false;
                     },
                     child: const RouteNonSelectedTextContainer(title: 'Home')),
-                const SizedBox(
-                  width: 20,
-                ),
                 const RouteSelectedTextContainer(
                     width: 140, title: 'Create Parent'),
               ],

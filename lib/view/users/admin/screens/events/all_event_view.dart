@@ -39,31 +39,36 @@ class AllEventsList extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-             Row(
-              children: [
-               const RouteSelectedTextContainer(
-                   width: 180, title: 'All Events'),
-               const Spacer(),
-               GestureDetector(
-                 onTap: () {
-                    createEventAdmin(context);
-                 },
-                 child: ButtonContainerWidget(
-                     curving: 30,
-                     colorindex: 0,
-                     height: 40,
-                     width: 180,
-                     child: const Center(
-                      child: TextFontWidgetRouter(
-                        text: 'Create Event',
-                        fontsize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: cWhite,
-                    ),
-                  )),
-               )
-             ],
-                      ),
+            Padding(
+              padding: EdgeInsets.all(
+                ResponsiveWebSite.isMobile(context) ? 10 : 20,
+              ),
+              child: Row(
+                children: [
+                  const RouteSelectedTextContainer(
+                      width: 180, title: 'All Events'),
+                  const Spacer(),
+                  GestureDetector(
+                    onTap: () {
+                      createEventAdmin(context);
+                    },
+                    child: ButtonContainerWidget(
+                        curving: 30,
+                        colorindex: 0,
+                        height: 40,
+                        width: 180,
+                        child: const Center(
+                          child: TextFontWidgetRouter(
+                            text: 'Create Event',
+                            fontsize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: cWhite,
+                          ),
+                        )),
+                  )
+                ],
+              ),
+            ),
             // Padding(
             //   padding: EdgeInsets.all(
             //     ResponsiveWebSite.isMobile(context) ? 10 : 20,
@@ -71,7 +76,7 @@ class AllEventsList extends StatelessWidget {
             //   child: CreateEvent(),
             // ),
             Padding(
-              padding: const EdgeInsets.only(left: 10, right: 10,top: 15),
+              padding: const EdgeInsets.only(left: 10, right: 10, top: 15),
               child: Container(
                 color: cWhite,
                 child: Padding(
@@ -195,4 +200,5 @@ class AllEventsList extends StatelessWidget {
     );
   }
 }
+
 final EventController eventController = Get.put(EventController());

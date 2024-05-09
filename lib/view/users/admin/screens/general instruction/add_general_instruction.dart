@@ -6,6 +6,7 @@ import 'package:vidyaveechi_website/controller/general%20instruction/general_ins
 import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
 import 'package:vidyaveechi_website/view/fonts/google_poppins_widget.dart';
+import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 import 'package:vidyaveechi_website/view/widgets/textformFiledContainer/textformFiledContainer.dart';
 
 addFunctionGenernalInstruction(
@@ -16,11 +17,25 @@ addFunctionGenernalInstruction(
   aweSideSheet(
       context: context,
       sheetPosition: SheetPosition.right,
-      title: "General Instructions",
+      header: Container(),
+      // title: "General Instructions",
       body: Padding(
         padding: const EdgeInsets.only(left: 10, top: 10),
         child: Column(
           children: [
+            const Row(
+              children: [
+                BackButton(),
+                SizedBox(
+                  width: 20,
+                ),
+                TextFontWidget(
+                  text: 'General Instruction',
+                  fontsize: 17,
+                  fontWeight: FontWeight.bold,
+                ),
+              ],
+            ),
             SizedBox(
               height: 550,
               child: Container(
