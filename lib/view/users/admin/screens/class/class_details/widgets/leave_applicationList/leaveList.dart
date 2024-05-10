@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:vidyaveechi_website/controller/class_controller/class_controller.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
+import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
 import 'package:vidyaveechi_website/view/widgets/data_list_widgets/data_container.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
@@ -236,14 +239,26 @@ class LeaveApplicationData extends StatelessWidget {
                   const SizedBox(
                     width: 05,
                   ),
-                  TextFontWidget(
-                      fontsize: 12,
-                      color: cWhite,
-                      index: index,
-                      text: data['phoneNumber'] != null
-                          ? data['phoneNumber'].toString()
-                          : 'Phone Number not available'),
-                   
+                  StreamBuilder(
+                      stream: server
+                          .collection('SchoolListCollection')
+                          .doc(UserCredentialsController.schoolId)
+                          .collection(UserCredentialsController.batchId!)
+                          .doc(UserCredentialsController.batchId!)
+                          .collection('classes')
+                          .doc(Get.find<ClassController>().classDocID.value)
+                          .collection('Students')
+                          .where('studentName', isEqualTo: data['studentname'])
+                          .snapshots(),
+                      builder: (context, snapshot) {
+                        return TextFontWidget(
+                            fontsize: 12,
+                            color: cWhite,
+                            index: index,
+                            text: snapshot.data!.docs[index]['parentPhoneNumber'] == null
+                                ? 'Phone Number not available'
+                                : snapshot.data!.docs[index]['parentPhoneNumber'].toString());
+                      }),
                 ],
               ),
             ),

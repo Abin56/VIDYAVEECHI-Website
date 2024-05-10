@@ -37,7 +37,7 @@ class ClassWiseFeesStatus extends StatelessWidget {
             children: [
               const Padding(
                 padding: EdgeInsets.only(left: 25, top: 25),
-                child: TextFontWidget(
+                child: TextFontWidget( 
                   text: 'Fee Details',
                   fontsize: 18,
                   fontWeight: FontWeight.bold,
