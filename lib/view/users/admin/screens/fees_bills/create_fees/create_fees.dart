@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:awesome_side_sheet/Enums/sheet_position.dart';
 import 'package:awesome_side_sheet/side_sheet.dart';
 import 'package:flutter/material.dart';
@@ -14,8 +12,7 @@ import 'package:vidyaveechi_website/view/widgets/progess_button/progress_button.
 import 'package:vidyaveechi_website/view/widgets/textformFiledContainer/textformFiledBlueContainer.dart';
 
 Future<void> createFeesFunction(BuildContext context) async {
-  final FeesAndBillsController feesAndBillsController =
-      Get.put(FeesAndBillsController());
+  final FeesAndBillsController feesAndBillsController = Get.put(FeesAndBillsController());
 
   return aweSideSheet(
     context: context,
@@ -27,7 +24,7 @@ Future<void> createFeesFunction(BuildContext context) async {
       padding: const EdgeInsets.all(8.0),
       child: Column(
         children: [
-         const Row(
+          const Row(
             children: [
               BackButton(),
               TextFontWidget(
@@ -40,11 +37,7 @@ Future<void> createFeesFunction(BuildContext context) async {
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              BlueContainerWidget(
-                  title: "Add All Class",
-                  fontSize: 12,
-                  color: cBlack,
-                  width: 100),
+              BlueContainerWidget(title: "Add All Class", fontSize: 12, color: cBlack, width: 100),
               const SizedBox(
                 width: 10,
               ),
@@ -81,11 +74,9 @@ Future<void> createFeesFunction(BuildContext context) async {
                             final data = snapshot.data![index];
 
                             return Obx(() => Container(
-                                  color: feesAndBillsController
-                                          .selectedClassList
-                                          .where((element) => element.docid
-                                              .contains(feesAndBillsController
-                                                  .allClassList[index].docid))
+                                  color: feesAndBillsController.selectedClassList
+                                          .where((element) => element.docid.contains(
+                                              feesAndBillsController.allClassList[index].docid))
                                           .isNotEmpty
                                       ? Colors.green.withOpacity(0.1)
                                       : Colors.blue.withOpacity(0.2),
@@ -94,23 +85,16 @@ Future<void> createFeesFunction(BuildContext context) async {
                                     padding: const EdgeInsets.all(8.0),
                                     child: Row(
                                       children: [
-                                        TextFontWidget(
-                                            text: data.className, fontsize: 12),
+                                        TextFontWidget(text: data.className, fontsize: 12),
                                         const Spacer(),
                                         Container(
                                             decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color: cBlack
-                                                        .withOpacity(0.1))),
+                                                border: Border.all(color: cBlack.withOpacity(0.1))),
                                             height: 30,
-                                            child: feesAndBillsController
-                                                    .selectedClassList
-                                                    .where((element) =>
-                                                        element.docid.contains(
-                                                            feesAndBillsController
-                                                                .allClassList[
-                                                                    index]
-                                                                .docid))
+                                            child: feesAndBillsController.selectedClassList
+                                                    .where((element) => element.docid.contains(
+                                                        feesAndBillsController
+                                                            .allClassList[index].docid))
                                                     .isNotEmpty
                                                 ? Checkbox(
                                                     checkColor: cWhite,
@@ -122,33 +106,26 @@ Future<void> createFeesFunction(BuildContext context) async {
                                                           .indexWhere((element) =>
                                                               element.docid ==
                                                               feesAndBillsController
-                                                                  .allClassList[
-                                                                      index]
-                                                                  .docid);
+                                                                  .allClassList[index].docid);
 
                                                       if (indexx != -1) {
                                                         //condition means hasdata in list
-                                                        feesAndBillsController
-                                                            .selectedClassList
+                                                        feesAndBillsController.selectedClassList
                                                             .removeAt(indexx);
                                                       } else {
-                                                        feesAndBillsController
-                                                            .selectedClassList
+                                                        feesAndBillsController.selectedClassList
                                                             .add(feesAndBillsController
-                                                                    .allClassList[
-                                                                index]);
+                                                                .allClassList[index]);
                                                       }
                                                     },
                                                   )
                                                 : GestureDetector(
                                                     onTap: () {
-                                                      feesAndBillsController
-                                                          .selectedClassList
-                                                          .add(feesAndBillsController
-                                                                  .allClassList[
-                                                              index]);
+                                                      feesAndBillsController.selectedClassList.add(
+                                                          feesAndBillsController
+                                                              .allClassList[index]);
                                                     },
-                                                    child:  const TextFontWidget(
+                                                    child: const TextFontWidget(
                                                       text: 'Select',
                                                       fontsize: 12,
                                                       color: cBlack,
@@ -175,10 +152,7 @@ Future<void> createFeesFunction(BuildContext context) async {
             child: GestureDetector(
               onTap: () => genrateFeesForClasses(context),
               child: BlueContainerWidget(
-                  title: "Generate Class Fee",
-                  fontSize: 12,
-                  color: cBlack,
-                  width: 200),
+                  title: "Generate Class Fee", fontSize: 12, color: cBlack, width: 200),
             ),
           ),
           Padding(
@@ -186,10 +160,7 @@ Future<void> createFeesFunction(BuildContext context) async {
             child: GestureDetector(
               onTap: () => createCustomFeesForClasses(context),
               child: BlueContainerWidget(
-                  title: "Create Custom Fee",
-                  fontSize: 12,
-                  color: cBlack,
-                  width: 200),
+                  title: "Create Custom Fee", fontSize: 12, color: cBlack, width: 200),
             ),
           )
         ],
@@ -199,8 +170,7 @@ Future<void> createFeesFunction(BuildContext context) async {
 }
 
 genrateFeesForClasses(BuildContext context) async {
-  final FeesAndBillsController feesAndBillsController =
-      Get.find<FeesAndBillsController>();
+  final FeesAndBillsController feesAndBillsController = Get.find<FeesAndBillsController>();
   return customShowDilogBox2(
       context: context,
       title: "Create Fees",
@@ -265,22 +235,18 @@ genrateFeesForClasses(BuildContext context) async {
                           child: Row(
                             children: [
                               TextFontWidget(
-                                  text: feesAndBillsController
-                                      .selectedClassList[index].className,
+                                  text: feesAndBillsController.selectedClassList[index].className,
                                   fontsize: 12),
                               const Spacer(),
                               Container(
                                   decoration: BoxDecoration(
-                                      border: Border.all(
-                                          color: cBlack.withOpacity(0.1))),
+                                      border: Border.all(color: cBlack.withOpacity(0.1))),
                                   height: 30,
                                   child: GestureDetector(
                                       onTap: () {
-                                        feesAndBillsController.selectedClassList
-                                            .removeAt(index);
+                                        feesAndBillsController.selectedClassList.removeAt(index);
                                       },
-                                      child: const TextFontWidget(
-                                          text: "Remove", fontsize: 12)))
+                                      child: const TextFontWidget(text: "Remove", fontsize: 12)))
                             ],
                           ),
                         ),
@@ -296,18 +262,16 @@ genrateFeesForClasses(BuildContext context) async {
         ),
         Obx(() => ProgressButtonWidget(
             buttonstate: feesAndBillsController.buttonstate.value,
-            text: 'Genrate Fees',
-            function: ()async{
-             
-           await   feesAndBillsController.addFessAsignToClass();
-            } ))
+            text: 'Generate Fees',
+            function: () async {
+              await feesAndBillsController.addFessAsignToClass();
+            }))
       ],
       doyouwantActionButton: false);
 }
 
 createCustomFeesForClasses(BuildContext context) async {
-  final FeesAndBillsController feesAndBillsController =
-      Get.find<FeesAndBillsController>();
+  final FeesAndBillsController feesAndBillsController = Get.find<FeesAndBillsController>();
   return customShowDilogBox2(
       context: context,
       title: "Create Fees",
@@ -382,22 +346,18 @@ createCustomFeesForClasses(BuildContext context) async {
                           child: Row(
                             children: [
                               TextFontWidget(
-                                  text: feesAndBillsController
-                                      .selectedClassList[index].className,
+                                  text: feesAndBillsController.selectedClassList[index].className,
                                   fontsize: 12),
                               const Spacer(),
                               Container(
                                   decoration: BoxDecoration(
-                                      border: Border.all(
-                                          color: cBlack.withOpacity(0.1))),
+                                      border: Border.all(color: cBlack.withOpacity(0.1))),
                                   height: 30,
                                   child: GestureDetector(
                                       onTap: () {
-                                        feesAndBillsController.selectedClassList
-                                            .removeAt(index);
+                                        feesAndBillsController.selectedClassList.removeAt(index);
                                       },
-                                      child:  const TextFontWidget(
-                                          text: "Remove", fontsize: 12)))
+                                      child: const TextFontWidget(text: "Remove", fontsize: 12)))
                             ],
                           ),
                         ),
@@ -413,7 +373,7 @@ createCustomFeesForClasses(BuildContext context) async {
         ),
         Obx(() => ProgressButtonWidget(
             buttonstate: feesAndBillsController.buttonstate.value,
-            text: 'Genrate Fees',
+            text: 'Generate Fees',
             function: () => feesAndBillsController.addCustomFessAsignToClass()))
       ],
       doyouwantActionButton: false);

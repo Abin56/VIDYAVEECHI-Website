@@ -23,7 +23,7 @@ class BlueContainerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: MediaQuery.of(context).size.height * 0.04,
-      width: MediaQuery.of(context).size.height * 0.16,
+      width: MediaQuery.of(context).size.height * 0.18,
       decoration: BoxDecoration(
         color: color,
       ),

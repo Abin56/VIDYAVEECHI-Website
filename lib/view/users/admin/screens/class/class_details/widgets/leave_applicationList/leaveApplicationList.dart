@@ -234,13 +234,13 @@ class LeaveApplicationList extends StatelessWidget {
                                       .doc(leaveApplicationController.fetchClassWiseDatevalue.value)
                                       .collection('StudentsList')
                                       .snapshots(),
-                              builder: (context, snapshot) { 
+                              builder: (context, snapshot) {
                                 if (snapshot.hasData) { 
                                   // Data is available, proceed with ListView
-                                  return ListView.separated( 
-                                    itemBuilder: (context, index) { 
+                                  return ListView.separated(
+                                    itemBuilder: (context, index) {
                                       final data = snapshot.data!.docs[index].data();
-                                      final DateTime dfromdate = 
+                                      final DateTime dfromdate =
                                           DateTime.parse(data['dleaveFromDate']);
                                       final DateTime dtodate = DateTime.parse(data['dleaveToDate']);
                                       final int compare = dtodate.difference(dfromdate).inDays;
