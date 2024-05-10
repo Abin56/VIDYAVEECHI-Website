@@ -309,7 +309,7 @@ class AdminProfileWidgetOne extends StatelessWidget {
           final data = snapshot.data;
           if (data != null && data.containsKey('collection1')) {
             profileCtr.nameController.text =
-                data['collection1']['adminUserName'] ?? "";
+                data['collection1']['adminUserName'] ?? "admin";
             profileCtr.designationController.text =
                 data['collection1']['designation'] ?? "";
             profileCtr.aboutController.text =
@@ -347,7 +347,8 @@ class AdminProfileWidgetOne extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 10),
                   child: Center(
                       child: Text(
-                    data['collection1']['adminUserName'] != ""
+                    data['collection1']['adminUserName'] != "" &&
+                            data['collection1']['adminUserName'] != null
                         ? data['collection1']['adminUserName']
                         : "admin",
                     style: TextStyle(
@@ -359,7 +360,8 @@ class AdminProfileWidgetOne extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 10, bottom: 10),
                   child: Center(
                       child: Text(
-                    data['collection1']['designation'] != ""
+                    data['collection1']['designation'] != "" &&
+                            data['collection1']['designation'] != null
                         ? data['collection1']['designation']
                         : "designation",
                     // 'Designation',
@@ -383,7 +385,8 @@ class AdminProfileWidgetOne extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20),
                   child: Text(
-                    data['collection1']['about'] != ""
+                    data['collection1']['about'] != "" &&
+                            data['collection1']['about'] != null
                         ? data['collection1']['about']
                         : "About",
                     // "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -420,7 +423,8 @@ class AdminProfileWidgetOne extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(left: 10, right: 10),
                         child: Text(
-                          data['collection1']['phoneNumber'] != ""
+                          data['collection1']['phoneNumber'] != "" &&
+                                  data['collection1']['phoneNumber'] != null
                               ? data['collection1']['phoneNumber']
                               : "contacts",
                           // '46545645665465',
@@ -448,7 +452,8 @@ class AdminProfileWidgetOne extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(left: 10, right: 10),
                         child: Text(
-                          data['collection1']['email'] != ""
+                          data['collection1']['email'] != "" &&
+                                  data['collection1']['email'] != null
                               ? data['collection1']['email']
                               : "email",
                           //  'lepton@gmail.com',
@@ -479,7 +484,8 @@ class AdminProfileWidgetOne extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(left: 10, right: 10),
                         child: Text(
-                          data['collection1']['gender'] != ""
+                          data['collection1']['gender'] != "" &&
+                                  data['collection1']['gender'] != null
                               ? data['collection1']['gender']
                               : "gender",
                           // 'Gender',

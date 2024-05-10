@@ -85,30 +85,37 @@ class RegistrationStudentList extends StatelessWidget {
                 )
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 30),
-              child: Row(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      registrationController.ontapRegiStudentList.value = false;
-                    },
-                    child: const Padding(
-                      padding: EdgeInsets.only(top: 30, left: 10),
-                      child: RouteNonSelectedTextContainer(title: 'Home'),
+            registrationController.ontapRegiStudentList.value == true
+                ? Padding(
+                    padding: const EdgeInsets.only(bottom: 30),
+                    child: Row(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            registrationController.ontapRegiStudentList.value =
+                                false;
+                          },
+                          child: const Padding(
+                            padding: EdgeInsets.only(top: 30, left: 10),
+                            child: RouteNonSelectedTextContainer(title: 'Home'),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 50,
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.only(top: 30),
+                          child: RouteSelectedTextContainer(
+                              width: 200, title: 'Registered Students'),
+                        ),
+                      ],
                     ),
-                  ),
-                  const SizedBox(
-                    width: 50,
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 30),
+                  )
+                : const Padding(
+                    padding: EdgeInsets.only(top: 30, left: 10, bottom: 30),
                     child: RouteSelectedTextContainer(
                         width: 200, title: 'Registered Students'),
                   ),
-                ],
-              ),
-            ),
             Expanded(
               child: Container(
                 width: 1200,
@@ -178,7 +185,6 @@ class RegistrationStudentList extends StatelessWidget {
                                     .value)
                                 .collection('RegTemp_Students')
                                 .snapshots(),
-                                
                             builder: (context, snaps) {
                               if (snaps.hasData) {
                                 return ListView.separated(

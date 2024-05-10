@@ -37,14 +37,14 @@ class CreateParent extends StatelessWidget {
               height: 05,
             ),
             SizedBox(
-              height: 40,
+              height: 55,
               child: SelectClassDropDown(),
             ),
           ],
         ),
       ), ////////////////////1..............class...........
       Container(
-        height: 80,
+        height: ResponsiveWebSite.isMobile(context) ? 80 : 100,
         color: cWhite,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,7 +54,7 @@ class CreateParent extends StatelessWidget {
               height: 05,
             ),
             SizedBox(
-              height: 40,
+              height: 55,
               child: AllStudentDropDown(),
               // child: SelectStudentsDropDown()
               //  DropdownSearch(
@@ -143,15 +143,13 @@ class CreateParent extends StatelessWidget {
                               children: [
                                 Padding(
                                     padding: const EdgeInsets.only(
-                                        right: 20, left: 10, top: 10),
+                                        right: 20, left: 10, top: 5),
                                     child: createStudentListWidget[
                                         1] ///////////class
                                     ),
                                 Padding(
                                     padding: const EdgeInsets.only(
-                                      right: 20,
-                                      left: 10,
-                                    ),
+                                        right: 20, left: 10, top: 5),
                                     child: createStudentListWidget[
                                         2] ////////std name............
                                     ),
@@ -226,10 +224,7 @@ class CreateParent extends StatelessWidget {
                                 flex: 1,
                                 child: Padding(
                                     padding: const EdgeInsets.only(
-                                      top: 10,
-                                      right: 20,
-                                      left: 10,
-                                    ),
+                                        right: 20, left: 10, top: 30),
                                     child: createStudentListWidget[
                                         2] /////////////////////stdent name....
                                     ),
