@@ -26,7 +26,7 @@ class ClassDetailsContainer extends StatelessWidget {
     final data = classController.classModelData.value;
     classController.getClassBoyCount();
     return DefaultTabController(
-      length: 3,
+      length: 2,
       child: Obx(() {
         return classController.ontapLeaveApplication.value == true
             ? LeaveApplicationList()

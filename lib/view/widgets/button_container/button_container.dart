@@ -8,10 +8,10 @@ class ButtonContainerWidget extends StatelessWidget {
   int colorindex;
   double height;
   double width;
-  Widget child;
+  Widget? child;
   ButtonContainerWidget({
     required this.curving,
-    required this.child,
+    this.child,
     required this.colorindex,
     required this.height,
     required this.width,

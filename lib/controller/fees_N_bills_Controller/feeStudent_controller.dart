@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vidyaveechi_website/controller/fees_N_bills_Controller/fees_bills_controller.dart';
@@ -78,6 +80,9 @@ class StudentFeeController extends GetxController {
 
   Future<void> updateStudentFeeStatus(
       String studentID, bool status, int fee) async {
+        log("Fee Month ${Get.find<FeesAndBillsController>().feeMonthData.value}");
+         log("Fee Docid  ${Get.find<FeesAndBillsController>().feeDateData.value}");
+          log("Student ID  $studentID");
     await server
         .collection('SchoolListCollection')
         .doc(UserCredentialsController.schoolId)

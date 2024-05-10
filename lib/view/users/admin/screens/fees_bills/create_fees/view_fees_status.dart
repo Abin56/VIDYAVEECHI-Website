@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -31,7 +33,7 @@ class CreatedFeesStatus extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             child: Container(
               color: screenContainerbackgroundColor,
-              height: 700,
+              height: 1000,
               width: 1200,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -181,6 +183,7 @@ class CreatedFeesStatus extends StatelessWidget {
                                               final data = snaps.data!.docs[index].data();
                                               return GestureDetector(
                                                 onTap: () {
+                                                log("Fee IDD ${ feesAndBillsController.feeDateData.value}");
                                                   feesAndBillsController.feeDateData.value =
                                                       data['docid'];
                                                   feesAndBillsController

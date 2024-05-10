@@ -38,7 +38,12 @@ customShowDilogBox2(
           actions: doyouwantActionButton == true
               ? <Widget>[
                   GestureDetector(
-                    onTap: actiononTapfuction,
+                    onTap: () {
+                      if (actiononTapfuction != null) {
+                        actiononTapfuction(); // Call the original onTap function if it's not null
+                      }
+                      Navigator.pop(context);
+                    },
                     child: Container(
                       height: 40,
                       width: 250,
@@ -54,20 +59,26 @@ customShowDilogBox2(
                       ),
                     ),
                   ),
+                  const SizedBox(
+                    height: 10,
+                    width: 10,
+                  ),
                   GestureDetector(
                     onTap: () => Navigator.pop(context),
-                    child: Container(
-                      height: 40,
-                      width: 250,
-                      decoration: const BoxDecoration(
-                        color: themeColorBlue,
-                      ),
-                      child: Center(
-                        child: GooglePoppinsWidgets(
-                            text: actiontext ?? 'Cancel',
-                            color: cWhite,
-                            fontsize: 12,
-                            fontWeight: FontWeight.w500),
+                    child: Center(
+                      child: Container(
+                        height: 40,
+                        width: 250,
+                        decoration: const BoxDecoration(
+                          color: themeColorBlue,
+                        ),
+                        child: Center(
+                          child: GooglePoppinsWidgets(
+                              text: actiontext ?? 'Cancel',
+                              color: cWhite,
+                              fontsize: 12,
+                              fontWeight: FontWeight.w500),
+                        ),
                       ),
                     ),
                   )
