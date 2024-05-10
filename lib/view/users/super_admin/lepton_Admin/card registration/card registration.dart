@@ -12,10 +12,14 @@ import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_creden
 
 import '../../../../../card/controller/card_controller.dart';
 import '../../../../../card/view/assigning process/assigning_process.dart';
+import '../../../../../controller/notification_controller/notification_Controller.dart';
 import '../../../../constant/const.dart';
+import '../../../../widgets/notification_color/notification_color_widget.dart';
 
 class CardRegistration extends StatefulWidget {
   final StudentController cntrl = Get.put(StudentController());
+    final NotificationController noticntrl = Get.put(NotificationController());
+   
   CardRegistration({super.key});
 
   @override
@@ -188,8 +192,27 @@ class _CardRegistrationState extends State<CardRegistration> {
             'CardId': cardId,
             'DeviceId': deviceId,
             'Time': time+input,
-          }, SetOptions(merge: true)).then(
-                  (value) => showToast(msg: 'Card Registered'));
+          }, SetOptions(merge: true));
+          //  Get.find<NotificationController>()
+          //     .userStudentNotification(
+          //         studentID:value.docs[i].data()['docid'],
+          //         icon: cardNotifierSetup().icon,
+          //         messageText: "${value.docs[i].data()['studentName'] } is onboarded at ${time+input}",
+          //         // ,
+          //         headerText: "Onboarding",
+          //         whiteshadeColor: cardNotifierSetup().whiteshadeColor,
+          //         containerColor: cardNotifierSetup().containerColor);
+          
+                          Get.find<NotificationController>().userparentNotification(
+                parentID: value.docs[i].data()['parentId'],
+                icon: cardNotifierSetup().icon,
+                messageText:
+                    'Your child ${value.docs[i].data()['studentName']  } is onboarded at ${time+input} ',
+                headerText:
+                    "Onboarding",
+                whiteshadeColor: cardNotifierSetup().whiteshadeColor,
+                containerColor: cardNotifierSetup().containerColor).then((value) => showToast(msg: 'Card Registered'));
+                print("${   value.docs[i].data()['parentId']     }");
         } else {
           print(false);
         }
