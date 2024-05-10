@@ -18,11 +18,11 @@ class AdmissionNumberAssigning extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                  decoration: BoxDecoration(
-                      color: Colors.grey[10],
+                  decoration: BoxDecoration( color: Colors.grey[50],
                       borderRadius: const BorderRadius.all(
-                        Radius.elliptical(10, 10),
+                        Radius.circular(4),
                       ),
+                  
                       border: Border.all(width: 1)),
                   child: TextButton(
                     onPressed: () {
