@@ -72,14 +72,14 @@ class TextFormFiledBlueContainerWidget extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(0)),
                       borderSide: BorderSide(
                         width: 1,
-                        style: BorderStyle.none,
+                        // style: BorderStyle.none,
                         color: Colors.red,
                       )),
                   focusedErrorBorder: const OutlineInputBorder(
                     // borderRadius: BorderRadius.all(Radius.circular(4)),
                     borderSide: BorderSide(
                       width: 1,
-                      style: BorderStyle.none,
+                      // style: BorderStyle.none,
                       color: Colors.red,
                     ),
                   ),
@@ -254,7 +254,8 @@ class TextFormFiledWithoutColorEight extends StatelessWidget {
                 keyboardType: keyboardType,
                 controller: controller,
                 decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.symmetric(vertical: 01, horizontal: 01),
+                  contentPadding:
+                      const EdgeInsets.symmetric(vertical: 01, horizontal: 01),
                   errorBorder: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(0)),
                       borderSide: BorderSide(
@@ -271,7 +272,8 @@ class TextFormFiledWithoutColorEight extends StatelessWidget {
                     ),
                   ),
                   // contentPadding: const EdgeInsets.all(8.0),
-                  enabledBorder: const OutlineInputBorder(borderSide: BorderSide(width: 0.4)),
+                  enabledBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(width: 0.4)),
                   hintStyle: const TextStyle(fontSize: 13),
                   hintText: hintText,
                   focusedBorder: const OutlineInputBorder(
@@ -335,7 +337,6 @@ class DisplayingText extends StatelessWidget {
     );
   }
 }
-
 
 class TextFormFiledHeightnoColor extends StatelessWidget {
   TextEditingController? controller = TextEditingController();

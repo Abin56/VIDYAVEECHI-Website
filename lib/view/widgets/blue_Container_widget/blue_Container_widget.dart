@@ -23,13 +23,16 @@ class BlueContainerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: MediaQuery.of(context).size.height * 0.04,
-      width: MediaQuery.of(context).size.height * 0.18,
+      width: width ?? MediaQuery.of(context).size.height * 0.16,
       decoration: BoxDecoration(
         color: color,
       ),
       child: Center(
         child: TextFontWidgetRouter(
-            text: title, fontsize: fontSize, color: cWhite, fontWeight: fontWeight),
+            text: title,
+            fontsize: fontSize,
+            color: cWhite,
+            fontWeight: fontWeight),
       ),
     );
   }

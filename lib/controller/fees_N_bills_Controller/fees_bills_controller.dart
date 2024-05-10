@@ -238,7 +238,7 @@ class FeesAndBillsController extends GetxController {
       lastDate: DateTime(2100),
       // builder: (context, child) {},
     );
-    if (picked != null && picked != _selectedMonth.value) {
+    if (picked != null) {
       _selectedMonth.value = picked;
       DateTime parseDate = DateTime.parse(_selectedMonth.value.toString());
       final DateFormat formatter = DateFormat('yyyy-MMMM');
@@ -255,7 +255,7 @@ class FeesAndBillsController extends GetxController {
       firstDate: DateTime(2000),
       lastDate: DateTime(2100),
     );
-    if (picked != null && picked != _selectedFeeDate.value) {
+    if (picked != null) {
       _selectedFeeDate.value = picked;
       DateTime parseDate = DateTime.parse(_selectedFeeDate.value.toString());
       final DateFormat formatter = DateFormat('dd-MM-yyyy');

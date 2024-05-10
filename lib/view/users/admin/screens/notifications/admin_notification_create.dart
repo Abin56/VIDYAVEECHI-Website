@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:vidyaveechi_website/controller/notification_controller/notification_Controller.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
@@ -306,8 +304,8 @@ class AdminNotificationCreate extends StatelessWidget {
         child: SingleChildScrollView(
       child: ResponsiveWebSite.isMobile(context)
           ? Form(
-            key: notificationCntrl.formKey,
-            child: Column(
+              key: notificationCntrl.formKey,
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
@@ -408,12 +406,12 @@ class AdminNotificationCreate extends StatelessWidget {
                       ),
                 ],
               ),
-          )
+            )
           : ////////////////////////////////////////////////////............................................mobile view
 
           Form(
-            key: notificationCntrl.formKey,
-            child: Column(
+              key: notificationCntrl.formKey,
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
@@ -524,7 +522,7 @@ class AdminNotificationCreate extends StatelessWidget {
                       ),
                 ],
               ),
-          ),
+            ),
     ) /////////////////////////////////////////////////////////.......................................web view
 
         );

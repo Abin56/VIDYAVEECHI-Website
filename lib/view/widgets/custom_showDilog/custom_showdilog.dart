@@ -22,7 +22,8 @@ customShowDilogBox2(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               headerchild ?? const SizedBox(),
-              GooglePoppinsWidgets(text: title, fontsize: 13, fontWeight: FontWeight.w600),
+              GooglePoppinsWidgets(
+                  text: title, fontsize: 13, fontWeight: FontWeight.w600),
               const Padding(
                 padding: EdgeInsets.only(top: 10),
                 child: BackButtonContainerWidget(),
@@ -58,20 +59,26 @@ customShowDilogBox2(
                       ),
                     ),
                   ),
+                  const SizedBox(
+                    height: 10,
+                    width: 10,
+                  ),
                   GestureDetector(
                     onTap: () => Navigator.pop(context),
-                    child: Container(
-                      height: 40,
-                      width: 250,
-                      decoration: const BoxDecoration(
-                        color: themeColorBlue,
-                      ),
-                      child: Center(
-                        child: GooglePoppinsWidgets(
-                            text: actiontext ?? 'Cancel',
-                            color: cWhite,
-                            fontsize: 12,
-                            fontWeight: FontWeight.w500),
+                    child: Center(
+                      child: Container(
+                        height: 40,
+                        width: 250,
+                        decoration: const BoxDecoration(
+                          color: themeColorBlue,
+                        ),
+                        child: Center(
+                          child: GooglePoppinsWidgets(
+                              text: actiontext ?? 'Cancel',
+                              color: cWhite,
+                              fontsize: 12,
+                              fontWeight: FontWeight.w500),
+                        ),
                       ),
                     ),
                   )
