@@ -41,8 +41,7 @@ class RegistrationController extends GetxController {
           .get()
           .then((value) {
         for (var i = 0; i < value.docs.length; i++) {
-          final list =
-              value.docs.map((e) => ClassModel.fromMap(e.data())).toList();
+          final list = value.docs.map((e) => ClassModel.fromMap(e.data())).toList();
           allclassList.add(list[i]);
         }
         allclassList.sort((a, b) => a.className.compareTo(b.className));
@@ -66,8 +65,7 @@ class RegistrationController extends GetxController {
           .get()
           .then((value) async {
         for (var i = 0; i < value.docs.length; i++) {
-          final list =
-              value.docs.map((e) => StudentModel.fromMap(e.data())).toList();
+          final list = value.docs.map((e) => StudentModel.fromMap(e.data())).toList();
           await server
               .collection('SchoolListCollection')
               .doc(UserCredentialsController.schoolId)
@@ -109,14 +107,12 @@ class RegistrationController extends GetxController {
     }
   }
 
-  Future<void> removeRegiStudent(
-      BuildContext context, String classID, String studentDocID) async {
+  Future<void> removeRegiStudent(BuildContext context, String classID, String studentDocID) async {
     customShowDilogBox2(
         context: context,
         title: "Alert",
         children: [
-           TextFontWidget(
-              text: "Do you want remove this student now?", fontsize: 12)
+          const TextFontWidget(text: "Do you want remove this student now?", fontsize: 12)
         ],
         actiononTapfuction: () async {
           await server
@@ -227,39 +223,38 @@ class RegistrationController extends GetxController {
       }
     });
   }
+
   List<RegistrationStudentCountModel> allClasswiseRegStudents = [];
-  RxString classRegClassID ='dds'.obs;
-    RxString classRegClassName =''.obs;
-        RxInt classRegClassCount =0.obs;
-Future<List<RegistrationStudentCountModel>> fetchClassStudent() async {
-  await server
-      .collection('SchoolListCollection')
-      .doc(UserCredentialsController.schoolId)
-      .collection(UserCredentialsController.batchId!)
-      .doc(UserCredentialsController.batchId!)
-      .collection('classes')
-      .get()
-      .then((value) async {
-    for (var i = 0; i < value.docs.length; i++) {
-      final regiStudent = await server
-          .collection('SchoolListCollection')
-          .doc(UserCredentialsController.schoolId)
-          .collection(UserCredentialsController.batchId!)
-          .doc(UserCredentialsController.batchId!)
-          .collection('classes')
-          .doc(value.docs[i].data()['docid'])
-          .collection('RegTemp_Students')
-          .get();
-      final RegistrationStudentCountModel detail =
-          RegistrationStudentCountModel(
-              className: value.docs[i].data()['className'],
-              classID: value.docs[i].data()['docid'],
-              studentCount: regiStudent.docs.length);
-      allClasswiseRegStudents.add(detail);
-    }
-  });
+  RxString classRegClassID = 'dds'.obs;
+  RxString classRegClassName = ''.obs;
+  RxInt classRegClassCount = 0.obs;
+  Future<List<RegistrationStudentCountModel>> fetchClassStudent() async {
+    await server
+        .collection('SchoolListCollection')
+        .doc(UserCredentialsController.schoolId)
+        .collection(UserCredentialsController.batchId!)
+        .doc(UserCredentialsController.batchId!)
+        .collection('classes')
+        .get()
+        .then((value) async {
+      for (var i = 0; i < value.docs.length; i++) {
+        final regiStudent = await server
+            .collection('SchoolListCollection')
+            .doc(UserCredentialsController.schoolId)
+            .collection(UserCredentialsController.batchId!)
+            .doc(UserCredentialsController.batchId!)
+            .collection('classes')
+            .doc(value.docs[i].data()['docid'])
+            .collection('RegTemp_Students')
+            .get();
+        final RegistrationStudentCountModel detail = RegistrationStudentCountModel(
+            className: value.docs[i].data()['className'],
+            classID: value.docs[i].data()['docid'],
+            studentCount: regiStudent.docs.length);
+        allClasswiseRegStudents.add(detail);
+      }
+    });
 
-  return allClasswiseRegStudents;
-}
-
+    return allClasswiseRegStudents;
+  }
 }

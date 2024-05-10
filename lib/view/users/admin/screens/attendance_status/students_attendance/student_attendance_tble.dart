@@ -60,8 +60,7 @@ class StudentAttendanceDataList extends StatelessWidget {
                               Row(
                                 children: [
                                   TextFontWidget(
-                                    text:
-                                        '${Get.find<ClassController>().className.value} - ',
+                                    text: '${Get.find<ClassController>().className.value} - ',
                                     fontsize: 30,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -87,17 +86,11 @@ class StudentAttendanceDataList extends StatelessWidget {
                                     StreamBuilder(
                                         stream: server
                                             .collection('SchoolListCollection')
-                                            .doc(UserCredentialsController
-                                                .schoolId)
-                                            .collection(
-                                                UserCredentialsController
-                                                    .batchId!)
-                                            .doc(UserCredentialsController
-                                                .batchId!)
+                                            .doc(UserCredentialsController.schoolId)
+                                            .collection(UserCredentialsController.batchId!)
+                                            .doc(UserCredentialsController.batchId!)
                                             .collection('classes')
-                                            .doc(Get.find<ClassController>()
-                                                .classDocID
-                                                .value)
+                                            .doc(Get.find<ClassController>().classDocID.value)
                                             .collection('Attendence')
                                             .doc(monthwise)
                                             .collection(monthwise)
@@ -107,17 +100,13 @@ class StudentAttendanceDataList extends StatelessWidget {
                                             .collection('AttendenceList')
                                             .snapshots(),
                                         builder: (context, snapshot) {
-                                          getStudentAttendenceController
-                                              .getStudentsAttendanceData(
-                                                  monthwise: monthwise,
-                                                  formatted: formatted,
-                                                  subjectID: subjectID);
-                                          if (snapshot.connectionState ==
-                                              ConnectionState.waiting) {
-                                            return const Center(
-                                                child: SizedBox());
-                                          } else if (snapshot
-                                              .data!.docs.isEmpty) {
+                                          getStudentAttendenceController.getStudentsAttendanceData(
+                                              monthwise: monthwise,
+                                              formatted: formatted,
+                                              subjectID: subjectID);
+                                          if (snapshot.connectionState == ConnectionState.waiting) {
+                                            return const Center(child: SizedBox());
+                                          } else if (snapshot.data!.docs.isEmpty) {
                                             return const Center(
                                               child: SizedBox(),
                                             );
@@ -127,47 +116,39 @@ class StudentAttendanceDataList extends StatelessWidget {
                                             );
                                           } else {
                                             return Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
+                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              crossAxisAlignment: CrossAxisAlignment.start,
                                               children: [
-                                                TextFontWidget(
+                                                const TextFontWidget(
                                                   text: 'Total Students',
                                                   fontsize: 12,
                                                   fontWeight: FontWeight.w400,
                                                 ),
                                                 TextFontWidget(
-                                                  text: snapshot
-                                                      .data!.docs.length
-                                                      .toString(),
+                                                  text: snapshot.data!.docs.length.toString(),
                                                   fontsize: 12,
                                                   fontWeight: FontWeight.w600,
                                                 ),
-                                                TextFontWidget(
+                                                const TextFontWidget(
                                                   text: 'Present Students',
                                                   fontsize: 12,
                                                   fontWeight: FontWeight.w400,
                                                 ),
                                                 TextFontWidget(
-                                                  text:
-                                                      getStudentAttendenceController
-                                                          .presentStudent
-                                                          .toString(),
+                                                  text: getStudentAttendenceController
+                                                      .presentStudent
+                                                      .toString(),
                                                   fontsize: 12,
                                                   fontWeight: FontWeight.w600,
                                                 ),
-                                                 TextFontWidget(
+                                                const TextFontWidget(
                                                   text: 'Absent Students',
                                                   fontsize: 12,
                                                   fontWeight: FontWeight.w400,
                                                 ),
                                                 TextFontWidget(
-                                                  text:
-                                                      getStudentAttendenceController
-                                                          .absentStudent
-                                                          .toString(),
+                                                  text: getStudentAttendenceController.absentStudent
+                                                      .toString(),
                                                   fontsize: 12,
                                                   fontWeight: FontWeight.w600,
                                                 ),
@@ -186,48 +167,35 @@ class StudentAttendanceDataList extends StatelessWidget {
                 ),
                 const Row(
                   children: [
-                    Expanded(
-                        flex: 1,
-                        child: CatrgoryTableHeaderWidget(headerTitle: 'No')),
+                    Expanded(flex: 1, child: CatrgoryTableHeaderWidget(headerTitle: 'No')),
                     SizedBox(
                       width: 1,
                     ),
                     Expanded(
-                        flex: 6,
-                        child: CatrgoryTableHeaderWidget(
-                            headerTitle: "Student Name")),
+                        flex: 6, child: CatrgoryTableHeaderWidget(headerTitle: "Student Name")),
+                    SizedBox(
+                      width: 1,
+                    ),
+                    Expanded(flex: 2, child: CatrgoryTableHeaderWidget(headerTitle: "Class")),
+                    SizedBox(
+                      width: 1,
+                    ),
+                    Expanded(flex: 2, child: CatrgoryTableHeaderWidget(headerTitle: "Date")),
+                    SizedBox(
+                      width: 1,
+                    ),
+                    Expanded(flex: 2, child: CatrgoryTableHeaderWidget(headerTitle: "Time")),
                     SizedBox(
                       width: 1,
                     ),
                     Expanded(
-                        flex: 2,
-                        child: CatrgoryTableHeaderWidget(headerTitle: "Class")),
-                    SizedBox(
-                      width: 1,
-                    ),
-                    Expanded(
-                        flex: 2,
-                        child: CatrgoryTableHeaderWidget(headerTitle: "Date")),
-                    SizedBox(
-                      width: 1,
-                    ),
-                    Expanded(
-                        flex: 2,
-                        child: CatrgoryTableHeaderWidget(headerTitle: "Time")),
+                        flex: 2, child: CatrgoryTableHeaderWidget(headerTitle: "Status from app")),
                     SizedBox(
                       width: 1,
                     ),
                     Expanded(
                         flex: 2,
-                        child: CatrgoryTableHeaderWidget(
-                            headerTitle: "Status from app")),
-                    SizedBox(
-                      width: 1,
-                    ),
-                    Expanded(
-                        flex: 2,
-                        child: CatrgoryTableHeaderWidget(
-                            headerTitle: "Status from machine")),
+                        child: CatrgoryTableHeaderWidget(headerTitle: "Status from machine")),
                   ],
                 ),
                 SizedBox(
@@ -252,8 +220,7 @@ class StudentAttendanceDataList extends StatelessWidget {
                         if (snapshot.hasData) {
                           return ListView.separated(
                             itemBuilder: (context, index) {
-                              final studentData =
-                                  snapshot.data!.docs[index].data();
+                              final studentData = snapshot.data!.docs[index].data();
                               return Container(
                                 color: studentData['present'] == true
                                     ? Colors.green.withOpacity(0.1)
@@ -267,8 +234,7 @@ class StudentAttendanceDataList extends StatelessWidget {
                                               ? Colors.green.withOpacity(0.1)
                                               : Colors.red.withOpacity(0.1),
                                           wantColor: false,
-                                          rowMainAccess:
-                                              MainAxisAlignment.center,
+                                          rowMainAccess: MainAxisAlignment.center,
                                           index: index,
                                           headerTitle: "${index + 1}"),
                                     ),
@@ -281,11 +247,9 @@ class StudentAttendanceDataList extends StatelessWidget {
                                           color: studentData['present'] == true
                                               ? Colors.green.withOpacity(0.1)
                                               : Colors.red.withOpacity(0.1),
-                                          rowMainAccess:
-                                              MainAxisAlignment.start,
+                                          rowMainAccess: MainAxisAlignment.start,
                                           index: index,
-                                          headerTitle:
-                                              " ${studentData['studentName']}"),
+                                          headerTitle: " ${studentData['studentName']}"),
                                     ),
                                     const SizedBox(
                                       width: 1,
@@ -296,8 +260,7 @@ class StudentAttendanceDataList extends StatelessWidget {
                                           color: studentData['present'] == true
                                               ? Colors.green.withOpacity(0.1)
                                               : Colors.red.withOpacity(0.1),
-                                          rowMainAccess:
-                                              MainAxisAlignment.start,
+                                          rowMainAccess: MainAxisAlignment.start,
                                           index: index,
                                           headerTitle:
                                               " ${Get.find<ClassController>().className.value}"),
@@ -311,8 +274,7 @@ class StudentAttendanceDataList extends StatelessWidget {
                                           color: studentData['present'] == true
                                               ? Colors.green.withOpacity(0.1)
                                               : Colors.red.withOpacity(0.1),
-                                          rowMainAccess:
-                                              MainAxisAlignment.start,
+                                          rowMainAccess: MainAxisAlignment.start,
                                           index: index,
                                           headerTitle: "   $formatted"),
                                     ),
@@ -325,8 +287,7 @@ class StudentAttendanceDataList extends StatelessWidget {
                                           color: studentData['present'] == true
                                               ? Colors.green.withOpacity(0.1)
                                               : Colors.red.withOpacity(0.1),
-                                          rowMainAccess:
-                                              MainAxisAlignment.start,
+                                          rowMainAccess: MainAxisAlignment.start,
                                           index: index,
                                           headerTitle:
                                               " ${stringTimeConvert(DateTime.parse(studentData['Date']))}"),
@@ -340,13 +301,11 @@ class StudentAttendanceDataList extends StatelessWidget {
                                           color: studentData['present'] == true
                                               ? Colors.green.withOpacity(0.1)
                                               : Colors.red.withOpacity(0.1),
-                                          rowMainAccess:
-                                              MainAxisAlignment.start,
+                                          rowMainAccess: MainAxisAlignment.start,
                                           index: index,
-                                          headerTitle:
-                                              studentData['present'] == true
-                                                  ? ' Present'
-                                                  : ' Absent'),
+                                          headerTitle: studentData['present'] == true
+                                              ? ' Present'
+                                              : ' Absent'),
                                     ),
                                     const SizedBox(
                                       width: 1,
@@ -357,28 +316,24 @@ class StudentAttendanceDataList extends StatelessWidget {
                                           color: studentData['present'] == true
                                               ? Colors.green.withOpacity(0.1)
                                               : Colors.red.withOpacity(0.1),
-                                          rowMainAccess:
-                                              MainAxisAlignment.start,
+                                          rowMainAccess: MainAxisAlignment.start,
                                           index: index,
-                                          headerTitle:
-                                              studentData['present'] == true
-                                                  ? ' Present'
-                                                  : ' Absent'),
+                                          headerTitle: studentData['present'] == true
+                                              ? ' Present'
+                                              : ' Absent'),
                                     ),
                                   ],
                                 ),
                               );
                             },
                             itemCount: snapshot.data!.docs.length,
-                            separatorBuilder: (context, index) =>
-                                const SizedBox(
+                            separatorBuilder: (context, index) => const SizedBox(
                               height: 1,
                             ),
                           );
                         } else if (snapshot.data == null) {
-                          return  Center(
-                            child: TextFontWidget(
-                                text: "No result found", fontsize: 12),
+                          return const Center(
+                            child: TextFontWidget(text: "No result found", fontsize: 12),
                           );
                         } else {
                           return const LoadingWidget();

@@ -1,6 +1,8 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:vidyaveechi_website/controller/registration_controller/registation_controller.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
@@ -20,6 +22,8 @@ class DrawerSelectedPagesSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final RegistrationController registrationController =
+        Get.put(RegistrationController());
     return Column(
       children: [
         Container(
@@ -57,6 +61,7 @@ class DrawerSelectedPagesSection extends StatelessWidget {
               : Colors.transparent,
           onTap: () {
             index = 1;
+            registrationController.ontapRegiStudentList.value = false;
             onTap.call(index);
           },
           title: DashboardTextFontWidget(
@@ -258,7 +263,7 @@ class DrawerSelectedPagesSection extends StatelessWidget {
         //   title: DashboardTextFontWidget(
         //     title: 'Results',
         //   ),
-      //  ),
+        //  ),
         /////////////////////////////////////////////////.................
         const SizedBox(
           height: 10,

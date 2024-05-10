@@ -260,14 +260,26 @@ class LeaveApplicationData extends StatelessWidget {
                   const SizedBox(
                     width: 05,
                   ),
-                  TextFontWidget(
-                      fontsize: 12,
-                      color: cWhite,
-                      index: index,
-                      text: data['phoneNumber'] != null
-                          ? data['phoneNumber'].toString()
-                          : 'Phone Number not available'),
-                   
+                  StreamBuilder(
+                      stream: server
+                          .collection('SchoolListCollection')
+                          .doc(UserCredentialsController.schoolId)
+                          .collection(UserCredentialsController.batchId!)
+                          .doc(UserCredentialsController.batchId!)
+                          .collection('classes')
+                          .doc(Get.find<ClassController>().classDocID.value)
+                          .collection('Students')
+                          .where('studentName', isEqualTo: data['studentname'])
+                          .snapshots(),
+                      builder: (context, snapshot) {
+                        return TextFontWidget(
+                            fontsize: 12,
+                            color: cWhite,
+                            index: index,
+                            text: snapshot.data!.docs[index]['parentPhoneNumber'] == null
+                                ? 'Phone Number not available'
+                                : snapshot.data!.docs[index]['parentPhoneNumber'].toString());
+                      }),
                 ],
               ),
             ),

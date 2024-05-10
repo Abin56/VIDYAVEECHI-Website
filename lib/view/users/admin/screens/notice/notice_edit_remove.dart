@@ -25,28 +25,30 @@ class NoticeEditRemove extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: screenContainerbackgroundColor,
-      height: 800,
-      width: 1200,
-      padding: const EdgeInsets.only(left: 25, right: 25, top: 20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            'Notice ',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Container(
+        color: screenContainerbackgroundColor,
+        height: 800,
+        width: 1200,
+        padding: const EdgeInsets.only(left: 25, right: 25, top: 20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Notice ',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          // Padding(
-          //   padding: const EdgeInsets.only(top: 20, bottom: 20),
-          //   child: CreateNotice(),
-          // ),
-           Padding(
-             padding: const EdgeInsets.only(bottom: 10),
-             child: Row(
+            // Padding(
+            //   padding: const EdgeInsets.only(top: 20, bottom: 20),
+            //   child: CreateNotice(),
+            // ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: Row(
                 children: [
                  const RouteSelectedTextContainer(
                      width: 180, title: 'All Notices'),

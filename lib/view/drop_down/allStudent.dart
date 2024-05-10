@@ -23,7 +23,7 @@ class AllStudentDropDown extends StatelessWidget {
           return null;
         }
       },
-      autoValidateMode: AutovalidateMode.always,
+      // autoValidateMode: AutovalidateMode.always,
       asyncItems: (value) {
         classCntrl.classwiseSubjectList.clear();
 

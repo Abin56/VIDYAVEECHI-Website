@@ -27,6 +27,7 @@ class AllStudentListContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    regiControl.ontapRegiStudentList.value = false;
     return Obx(() => regiControl.ontapRegiStudentList.value == true
         ? RegistrationStudentList()
         : studentController.ontapStudent.value == true
@@ -51,7 +52,7 @@ class AllStudentListContainer extends StatelessWidget {
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                   const TextFontWidget(
+                                  const TextFontWidget(
                                     text: 'All Student List',
                                     fontsize: 18,
                                     fontWeight: FontWeight.bold,
@@ -66,7 +67,7 @@ class AllStudentListContainer extends StatelessWidget {
                                           borderRadius:
                                               BorderRadius.circular(10),
                                           color: Colors.grey.withOpacity(0.2)),
-                                      child:  const Row(
+                                      child: const Row(
                                         children: [
                                           Padding(
                                             padding: EdgeInsets.all(8.0),
@@ -92,7 +93,7 @@ class AllStudentListContainer extends StatelessWidget {
                                                 BorderRadius.circular(10),
                                             color:
                                                 Colors.grey.withOpacity(0.2)),
-                                        child:  const Row(
+                                        child: const Row(
                                           children: [
                                             Padding(
                                               padding: EdgeInsets.all(8.0),
@@ -139,7 +140,7 @@ class AllStudentListContainer extends StatelessWidget {
                                                     BorderRadius.circular(10),
                                                 color: Colors.grey
                                                     .withOpacity(0.2)),
-                                            child:  const Row(
+                                            child: const Row(
                                               children: [
                                                 Padding(
                                                   padding: EdgeInsets.all(8.0),

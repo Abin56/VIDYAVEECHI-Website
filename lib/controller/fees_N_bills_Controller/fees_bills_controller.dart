@@ -13,6 +13,7 @@ import 'package:vidyaveechi_website/model/class_model/class_model.dart';
 import 'package:vidyaveechi_website/model/fees_model/fees_model_controller.dart';
 import 'package:vidyaveechi_website/model/student_model/student_model.dart';
 import 'package:vidyaveechi_website/view/constant/const.dart';
+import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
 import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
 import 'package:vidyaveechi_website/view/widgets/notification_color/notification_color_widget.dart';
@@ -66,9 +67,11 @@ class FeesAndBillsController extends GetxController {
   TextEditingController feesContoller = TextEditingController();
   TextEditingController feesDueContoller = TextEditingController();
   Future<void> addCustomFessAsignToClass() async {
+    final String docid = '${feestypeNameContoller.text}${uuid.v1()}';
+
     buttonstate.value = ButtonState.loading;
     final ClassFeesModel feesDetail = ClassFeesModel(
-        docid: seletedFeeDateContoller.text.trim(),
+        docid: docid,
         feestypeName: feestypeNameContoller.text,
         fees: int.parse(feesContoller.text.trim()),
         createdDate: DateTime.now(),
@@ -90,13 +93,13 @@ class FeesAndBillsController extends GetxController {
           await feesCollection(
                   data: feesDetail,
                   docid: selectedFeeMonthContoller.text.trim(),
-                  dateDocid: feesDetail.docid)
+                  feeDocid: docid)
               .then((value) async {
             await getStudentClassWiseCount(
                 selectedClassList[i].docid,
                 selectedFeeMonthContoller.text.trim(),
-                classinitalFee.value,
-                feesDetail.docid);
+                int.parse(feesContoller.text.trim()),
+                docid);
           });
           await server
               .collection('SchoolListCollection')
@@ -107,8 +110,8 @@ class FeesAndBillsController extends GetxController {
               .doc(selectedClassList[i].docid)
               .collection("ClassFees")
               .doc(selectedFeeMonthContoller.text.trim())
-              .collection(seletedFeeDateContoller.text.trim())
-              .doc(feesDetail.docid)
+              .collection('StudentsFees')
+              .doc(docid)
               .set(feesDetail.toMap())
               .then((value) async {
             feestypeNameContoller.clear();
@@ -141,9 +144,11 @@ class FeesAndBillsController extends GetxController {
   }
 
   Future<void> addFessAsignToClass() async {
+    final String docid = '${feestypeNameContoller.text}${uuid.v1()}';
+
     buttonstate.value = ButtonState.loading;
     final ClassFeesModel feesDetail = ClassFeesModel(
-        docid: seletedFeeDateContoller.text.trim(),
+        docid: docid,
         feestypeName: feestypeNameContoller.text,
         fees: classinitalFee.value,
         createdDate: DateTime.now(),
@@ -168,14 +173,14 @@ class FeesAndBillsController extends GetxController {
                   (value) async {
             await feesCollection(
                     data: feesDetail,
-                    dateDocid: feesDetail.docid,
+                    feeDocid: docid,
                     docid: selectedFeeMonthContoller.text.trim())
                 .then((value) async {
               await getStudentClassWiseCount(
                   selectedClassList[i].docid,
                   selectedFeeMonthContoller.text.trim(),
                   classinitalFee.value,
-                  feesDetail.docid);
+                  docid);
             });
             await server
                 .collection('SchoolListCollection')
@@ -186,8 +191,8 @@ class FeesAndBillsController extends GetxController {
                 .doc(selectedClassList[i].docid)
                 .collection("ClassFees")
                 .doc(selectedFeeMonthContoller.text.trim())
-                .collection(seletedFeeDateContoller.text.trim())
-                .doc(feesDetail.docid)
+                .collection('StudentsFees')
+                .doc(docid)
                 .set(feesDetail.toMap())
                 .then((value) async {
               feestypeNameContoller.clear();
@@ -233,7 +238,7 @@ class FeesAndBillsController extends GetxController {
       lastDate: DateTime(2100),
       // builder: (context, child) {},
     );
-    if (picked != null && picked != _selectedMonth.value) {
+    if (picked != null) {
       _selectedMonth.value = picked;
       DateTime parseDate = DateTime.parse(_selectedMonth.value.toString());
       final DateFormat formatter = DateFormat('yyyy-MMMM');
@@ -250,7 +255,7 @@ class FeesAndBillsController extends GetxController {
       firstDate: DateTime(2000),
       lastDate: DateTime(2100),
     );
-    if (picked != null && picked != _selectedFeeDate.value) {
+    if (picked != null) {
       _selectedFeeDate.value = picked;
       DateTime parseDate = DateTime.parse(_selectedFeeDate.value.toString());
       final DateFormat formatter = DateFormat('dd-MM-yyyy');
@@ -263,7 +268,7 @@ class FeesAndBillsController extends GetxController {
   Future<void> feesCollection(
       {required ClassFeesModel data,
       required String docid,
-      required String dateDocid}) async {
+      required String feeDocid}) async {
     await server
         .collection('SchoolListCollection')
         .doc(UserCredentialsController.schoolId)
@@ -280,7 +285,7 @@ class FeesAndBillsController extends GetxController {
         .collection('FeesCollection')
         .doc(docid)
         .collection(docid)
-        .doc(dateDocid)
+        .doc(feeDocid)
         .set(data.toMap(), SetOptions(merge: true));
   }
 
@@ -405,9 +410,10 @@ class FeesAndBillsController extends GetxController {
     return feeDateList;
   }
 
-  final RxInt paidFee = 0.obs;
   pendingAmountCalculate(String dateDocID) async {
-    int totalAmount = 0;
+    int paidFee = 0;
+
+    int studenttotalAmount = 0;
 
     await server
         .collection('SchoolListCollection')
@@ -423,14 +429,12 @@ class FeesAndBillsController extends GetxController {
         .then((value) async {
       for (var i = 0; i < value.docs.length; i++) {
         final int totaladdesult = value.docs[i].data()['paid'];
-        log("totaladdesult $totaladdesult");
-        totalAmount += totaladdesult;
+
+        studenttotalAmount = studenttotalAmount + totaladdesult;
       }
 
-      paidFee.value = totalAmount;
-
-      // .update({'totalAmount': totalResult.value});
-    }).then((value) async {
+      paidFee = studenttotalAmount;
+      log("kkkkkkkk$studenttotalAmount");
       await server
           .collection('SchoolListCollection')
           .doc(UserCredentialsController.schoolId)
@@ -443,7 +447,7 @@ class FeesAndBillsController extends GetxController {
           .get()
           .then((value) async {
         int totalAmount = value.data()?['totalAmount'] ?? 0;
-        int result = totalAmount - paidFee.value;
+        int result = totalAmount - paidFee;
 
         await server
             .collection('SchoolListCollection')
@@ -456,15 +460,17 @@ class FeesAndBillsController extends GetxController {
             .doc(dateDocID)
             .update({'pendingAmount': result});
       });
+
+      // .update({'totalAmount': totalResult.value});
     });
   }
 
-  final RxInt initialFeeResult = 0.obs;
-  final RxInt totalResult = 0.obs;
+  int initialFeeResult = 0;
+  int totalResult = 0;
 
   bugCalculateTotalamount(String dateDocID, int totalStudent) async {
     int totalAmount = 0;
-
+    log('dateDocID$dateDocID');
     await server
         .collection('SchoolListCollection')
         .doc(UserCredentialsController.schoolId)
@@ -479,12 +485,12 @@ class FeesAndBillsController extends GetxController {
         .then((value) async {
       for (var i = 0; i < value.docs.length; i++) {
         final int totaladdesult = value.docs[i].data()['fee'];
-        log("totaladdesult $totaladdesult");
-        totalAmount += totaladdesult;
+
+        totalAmount = totalAmount + totaladdesult;
       }
 
-      totalResult.value = totalAmount;
-      log("totalResult ${totalResult.value}");
+      totalResult = totalAmount;
+      log("totalResult $totalResult");
 
       await server
           .collection('SchoolListCollection')
@@ -495,12 +501,13 @@ class FeesAndBillsController extends GetxController {
           .doc(feeMonthData.value)
           .collection(feeMonthData.value)
           .doc(dateDocID)
-          .update({'totalAmount': totalResult.value});
+          .update({'totalAmount': totalResult});
     });
   }
 
-  final RxInt collectedFee = 0.obs;
   collectedAmountCalculate(String dateDocID) async {
+    int collectedFee = 0;
+
     int totalAmount = 0;
 
     await server
@@ -517,14 +524,11 @@ class FeesAndBillsController extends GetxController {
         .then((value) async {
       for (var i = 0; i < value.docs.length; i++) {
         final int totaladdesult = value.docs[i].data()['paid'];
-        log("totaladdesult $totaladdesult");
-        totalAmount += totaladdesult;
+
+        totalAmount = totalAmount + totaladdesult;
       }
 
-      collectedFee.value = totalAmount;
-
-      // .update({'totalAmount': totalResult.value});
-    }).then((value) async {
+      collectedFee = totalAmount;
       await server
           .collection('SchoolListCollection')
           .doc(UserCredentialsController.schoolId)
@@ -545,14 +549,16 @@ class FeesAndBillsController extends GetxController {
             .doc(feeMonthData.value)
             .collection(feeMonthData.value)
             .doc(dateDocID)
-            .update({'collectedAmount': collectedFee.value});
+            .update({'collectedAmount': collectedFee});
       });
+
+      // .update({'totalAmount': totalResult.value});
     });
   }
-RxString currentStudentFee = ''.obs;
-RxBool sendMessageForUnPaidStudentandParentsbool = false.obs;
-  Future<void> sendMessageForUnPaidStudentandParents(
-      ) async {
+
+  RxString currentStudentFee = ''.obs;
+  RxBool sendMessageForUnPaidStudentandParentsbool = false.obs;
+  Future<void> sendMessageForUnPaidStudentandParents() async {
     await server
         .collection('SchoolListCollection')
         .doc(UserCredentialsController.schoolId)
@@ -599,9 +605,9 @@ RxBool sendMessageForUnPaidStudentandParentsbool = false.obs;
           });
         }
       }
-    }).then((value){
+    }).then((value) {
       showToast(msg: "Notification Sended !!");
-      sendMessageForUnPaidStudentandParentsbool.value=false;
-    } );
+      sendMessageForUnPaidStudentandParentsbool.value = false;
+    });
   }
 }
