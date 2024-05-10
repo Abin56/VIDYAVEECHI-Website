@@ -61,8 +61,8 @@ class ClassWiseFeesStatus extends StatelessWidget {
                     ),
                     const RouteSelectedTextContainer(width: 140, title: 'Fees Deatils'),
                     const Spacer(),
-                    GestureDetector(
-                      onTap: () async {
+                    GestureDetector( 
+                      onTap: () async { 
                         Get.find<FeesAndBillsController>()
                             .sendMessageForUnPaidStudentandParentsbool
                             .value = true;
@@ -73,7 +73,7 @@ class ClassWiseFeesStatus extends StatelessWidget {
                             padding: const EdgeInsets.only(right: 10),
                             child: Get.find<FeesAndBillsController>() 
                                         .sendMessageForUnPaidStudentandParentsbool 
-                                        .value ==
+                                        .value == 
                                     true
                                 ? const SizedBox(
                                     child: CircularProgressIndicator.adaptive(),
