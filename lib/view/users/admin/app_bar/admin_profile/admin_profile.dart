@@ -36,7 +36,7 @@ adminProfileshowlist(BuildContext context) {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const BackButton(),
-                    TextFontWidget(
+                    const TextFontWidget(
                       text: "Profile",
                       fontsize: 17,
                       fontWeight: FontWeight.bold,
@@ -105,7 +105,7 @@ adminProfileshowlist(BuildContext context) {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const BackButton(),
-                    TextFontWidget(
+                    const TextFontWidget(
                       text: "Profile",
                       fontsize: 17,
                       fontWeight: FontWeight.bold,
@@ -180,39 +180,42 @@ class AdminProfileEdit extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Stack(
-            children: [
-              Center(
-                child: CircleAvatar(
-                  radius: ResponsiveWebSite.isMobile(context) ? 50 : 70,
-                  backgroundColor: cred,
-                  // backgroundImage: NetworkImage(profileCtr.image.value),
-                  child: Image.asset('webassets/png/avathar.png'),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 90, top: 60),
-                child: Center(
+          Obx(
+            () => Stack(
+              children: [
+                Center(
                   child: CircleAvatar(
-                    radius: ResponsiveWebSite.isMobile(context) ? 12 : 15,
-                    backgroundColor: Colors.cyanAccent,
+                    radius: ResponsiveWebSite.isMobile(context) ? 50 : 70,
+                    backgroundImage: imageCtr.selectedImage.isNotEmpty
+                        ? NetworkImage(imageCtr.selectedImage.value)
+                        : const AssetImage('webassets/png/avathar.png')
+                            as ImageProvider,
                   ),
                 ),
-              ),
-              Center(
-                  child: Padding(
-                padding: const EdgeInsets.only(top: 65, left: 90),
-                child: GestureDetector(
-                  onTap: () async {
-                    imageCtr.pickImage();
-                  },
-                  child: Icon(
-                    Icons.edit_square,
-                    size: ResponsiveWebSite.isMobile(context) ? 15 : 18,
+                Padding(
+                  padding: const EdgeInsets.only(left: 90, top: 60),
+                  child: Center(
+                    child: CircleAvatar(
+                      radius: ResponsiveWebSite.isMobile(context) ? 12 : 15,
+                      backgroundColor: Colors.cyanAccent,
+                    ),
                   ),
                 ),
-              )),
-            ],
+                Center(
+                    child: Padding(
+                  padding: const EdgeInsets.only(top: 65, left: 90),
+                  child: GestureDetector(
+                    onTap: () async {
+                      imageCtr.pickImage();
+                    },
+                    child: Icon(
+                      Icons.edit_square,
+                      size: ResponsiveWebSite.isMobile(context) ? 15 : 18,
+                    ),
+                  ),
+                )),
+              ],
+            ),
           ),
           TextFormFiledBlueContainerWidgetWithOutColor(
               controller: profileCtr.nameController,
@@ -234,7 +237,7 @@ class AdminProfileEdit extends StatelessWidget {
               controller: profileCtr.emailController,
               hintText: ' Email',
               title: 'Email'),
-          TextFontWidget(text: 'Gender *', fontsize: 12.5),
+          const TextFontWidget(text: 'Gender *', fontsize: 12.5),
           const SizedBox(height: 5),
           Container(
             color: screenContainerbackgroundColor,

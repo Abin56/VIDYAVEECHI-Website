@@ -2,14 +2,12 @@ import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vidyaveechi_website/controller/user_login_Controller/user_login_controller.dart';
 import 'package:vidyaveechi_website/model/parent_model/parent_model.dart';
 import 'package:vidyaveechi_website/model/student_model/student_model.dart';
 import 'package:vidyaveechi_website/model/teacher_model/teacher_model.dart';
 import 'package:vidyaveechi_website/view/constant/const.dart';
-import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 import 'package:vidyaveechi_website/view/home/main_screen.dart';
 import 'package:vidyaveechi_website/view/splash_screen/splash_screen.dart';
 import 'package:vidyaveechi_website/view/users/admin/admin_home.dart';
@@ -65,8 +63,7 @@ class UserAuthController extends GetxController {
         await checkParent(auth);
       } else if (UserCredentialsController.userRole == 'teacher') {
         await checkTeacher(auth);
-      } 
-      else {
+      } else {
         if (kDebugMode) {
           print("shared pref Auth null");
         }
@@ -107,8 +104,13 @@ Future<void> checkStudent(FirebaseAuth auth) async {
   if (studentData.data() != null) {
     UserCredentialsController.studentModel =
         StudentModel.fromMap(studentData.data()!);
-    Get.offAll(() => const StudentHomeScreen());
-    // Get.off(() => const StudentsMainHomeScreen());
+    if (Get.find<UserLoginController>().logined.value == true) {
+      Get.find<UserLoginController>()
+          .loginSaveData()
+          .then((value) => Get.offAll(() => SplashScreen()));
+    } else {
+      Get.offAll(() => const StudentHomeScreen());
+    }
   } else {
     showToast(msg: "Please login again");
     Get.offAll(() => const MainScreen());
@@ -137,7 +139,13 @@ Future<void> checkParent(FirebaseAuth auth) async {
   if (parentData.data() != null) {
     UserCredentialsController.parentModel =
         ParentModel.fromMap(parentData.data()!);
-    Get.offAll(() => const ParentHomeScreen());
+    if (Get.find<UserLoginController>().logined.value == true) {
+      Get.find<UserLoginController>()
+          .loginSaveData()
+          .then((value) => Get.offAll(() => SplashScreen()));
+    } else {
+      Get.offAll(() => const ParentHomeScreen());
+    }
     // Get.off(() => const StudentsMainHomeScreen());
   } else {
     showToast(msg: "Please login again");
@@ -145,6 +153,7 @@ Future<void> checkParent(FirebaseAuth auth) async {
     // Get.off(() => const DujoLoginScren());
   }
 }
+
 ////////////////////////////////////////////////////////////////////////
 Future<void> checkTeacher(FirebaseAuth auth) async {
   log("userlogin ID :  ${FirebaseAuth.instance.currentUser?.uid}");
@@ -155,7 +164,6 @@ Future<void> checkTeacher(FirebaseAuth auth) async {
   final teacherModel = await server
       .collection('SchoolListCollection')
       .doc(UserCredentialsController.schoolId)
-
       .collection('Teachers')
       .doc(auth.currentUser?.uid)
       .get();
@@ -163,13 +171,13 @@ Future<void> checkTeacher(FirebaseAuth auth) async {
   if (teacherModel.data() != null) {
     UserCredentialsController.teacherModel =
         TeacherModel.fromMap(teacherModel.data()!);
-    Get.offAll(() => TeachersHomeScreen()
-    //  Scaffold(
-    //   body: SafeArea(child: Center(
-    //     child: TextFontWidget(text: "under Maintenance.........", fontsize: 20),
-    //   )),
-    // )
-    );
+    if (Get.find<UserLoginController>().logined.value == true) {
+      Get.find<UserLoginController>()
+          .loginSaveData()
+          .then((value) => Get.offAll(() => SplashScreen()));
+    } else {
+      Get.offAll(() => const TeachersHomeScreen());
+    }
     // Get.off(() => const StudentsMainHomeScreen());
   } else {
     showToast(msg: "Please login again");
