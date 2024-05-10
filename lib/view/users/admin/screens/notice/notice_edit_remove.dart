@@ -162,7 +162,7 @@ class NoticeEditRemove extends StatelessWidget {
                     if (snapshot.data!.docs.length == 0) {
                       return const Center(
                           child: Text(
-                        'No Notices',
+                        'No Notices Created',
                         style: TextStyle(
                             fontSize: 20, fontWeight: FontWeight.w500),
                       ));

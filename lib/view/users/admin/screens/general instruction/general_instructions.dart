@@ -284,7 +284,8 @@ class GeneralInsructions extends StatelessWidget {
                               )
                             ],
                           );
-                        }),
+                        }
+                        ),
                   ),
                 ),
 
