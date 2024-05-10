@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vidyaveechi_website/controller/class_controller/class_controller.dart';
 import 'package:vidyaveechi_website/controller/registration_controller/registation_controller.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
@@ -58,9 +57,12 @@ class RegistrationStudentList extends StatelessWidget {
                             buttonstate:
                                 registrationController.buttonstate.value,
                             text: 'Add All Students',
-                            function: () {
-                              registrationController.addAllRegStudentToClass(
-                                  Get.find<ClassController>().classDocID.value);
+                            function: () async {
+                              await registrationController
+                                  .addAllRegStudentToClass(
+                                      Get.find<RegistrationController>()
+                                          .classRegClassID
+                                          .value);
                             }),
                       ),
                     )),
