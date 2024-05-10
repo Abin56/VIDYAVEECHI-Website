@@ -19,14 +19,11 @@ class AdmissionNumberAssigning extends StatelessWidget {
             children: [
               Container(
                   decoration: BoxDecoration(
-                     // color: Colors.grey[10],
-                      borderRadius:  const BorderRadius.all(
+                      color: Colors.grey[10],
+                      borderRadius: const BorderRadius.all(
                         Radius.elliptical(10, 10),
                       ),
-                      border: Border.all(width: 1),boxShadow:   [BoxShadow(
-            color: Colors.black.withOpacity(0.01),
-            blurRadius: 1.0,
-          ),]),
+                      border: Border.all(width: 1)),
                   child: TextButton(
                     onPressed: () {
                       cardController.increaseFunction();
