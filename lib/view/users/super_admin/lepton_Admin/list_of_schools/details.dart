@@ -11,7 +11,7 @@ import '../../controllers/super_admin_Controller/super_admin_controller.dart';
 import '../../widgets/buttonContainer.dart';
 
 class DetailsSchoolsScreen extends StatefulWidget {
-  static const String route = '/schoolDetails';
+  
   final SuperAdminController superAdminController =
       Get.put(SuperAdminController());
   DetailsSchoolsScreen({super.key, required this.schoolSnap});
