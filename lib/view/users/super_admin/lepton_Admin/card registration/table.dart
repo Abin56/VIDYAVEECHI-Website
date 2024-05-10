@@ -20,7 +20,7 @@ class ListofCard extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-         TextFontWidget(
+         const TextFontWidget(
           text: 'List Of Card',
           fontsize: 18,
           fontWeight: FontWeight.bold,
@@ -28,17 +28,17 @@ class ListofCard extends StatelessWidget {
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: SizedBox(
-            width: 870,
+            width: 980,
             height: 800,
             child: Column(
               children: [
                 const Row(
                   children: [
                     HeaderOfTable(text: "No.", flex: 1),
-                    HeaderOfTable(text: "Student name", flex: 3),
-                    HeaderOfTable(text: "Admission number", flex: 3),
-                       HeaderOfTable(text: "Card Id", flex: 3),
-                    HeaderOfTable(text: "Time", flex: 3),
+                    HeaderOfTable(text: "Student name", flex: 5),
+                    HeaderOfTable(text: "Admission number", flex: 5),
+                       HeaderOfTable(text: "Card Id", flex: 5),
+                    HeaderOfTable(text: "Time", flex: 5),
                       
                     //  HeaderOfTable(text: "Create By", flex: 2),
                     // HeaderOfTable(text: "Total Students", flex: 2),
@@ -60,7 +60,7 @@ class ListofCard extends StatelessWidget {
                                 final data = snapshot.data!.docs[index].data();
 
                                 return SizedBox(
-                                  width: 870,
+                                  width: 980,
                                   height: 45,
                                   child: Row(
                                     children: [
@@ -68,20 +68,20 @@ class ListofCard extends StatelessWidget {
                                           text: '${index + 1}', flex: 1),
                                       TableListContainers(
                                         text: data['studentName'] ?? '',
-                                        flex: 3,
+                                        flex: 5,
                                       ),
                                         TableListContainers(
                                         text: data['admissionNumber'] ?? '',
-                                        flex: 3,
+                                        flex: 5,
                                       ),
                                       TableListContainers(
                                         text: data['CardId'] ?? '',
-                                        flex: 3,
+                                        flex: 5,
                                       ),
                                       TableListContainers(
                                        
                                         text:   data['Time'] ?? '',
-                                        flex: 4,
+                                        flex: 5,
                                       ),
                                     
                                     //  TableListContainers(text: text, flex: flex)

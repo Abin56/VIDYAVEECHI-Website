@@ -5,21 +5,62 @@ import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
 import 'package:vidyaveechi_website/view/fonts/google_poppins_widget.dart';
 
 class AdmissionNumberAssigning extends StatelessWidget {
-  final CardController cardController=Get.put(CardController());
-   AdmissionNumberAssigning({super.key});
+  final CardController cardController = Get.put(CardController());
+  AdmissionNumberAssigning({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return  Obx(() => 
-       Row(mainAxisAlignment: MainAxisAlignment.center,crossAxisAlignment: CrossAxisAlignment.center,
+    return Obx(
+      () => Column(
         children: [
-          GooglePoppinsWidgets(text:'000${cardController.onTapValue.value.toString()}',fontsize: 20,),sw20,
-          Column(mainAxisAlignment: MainAxisAlignment.center,crossAxisAlignment: CrossAxisAlignment.center,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(decoration: BoxDecoration(borderRadius: const BorderRadius.all(Radius.circular(4),),border: Border.all(width: 1)),child: TextButton(onPressed: (){cardController.increaseFunction();}, child:  GooglePoppinsWidgets(text:'+',fontsize: 20,),)),sh10,
-                Container(decoration: BoxDecoration(borderRadius: const BorderRadius.all(Radius.circular(4),),border: Border.all(width: 1)),child: TextButton(onPressed: (){cardController.decreaseFunction();}, child: GooglePoppinsWidgets(text:'-',fontsize: 20,),)),
+              Container(
+                  decoration: BoxDecoration(
+                     // color: Colors.grey[10],
+                      borderRadius:  const BorderRadius.all(
+                        Radius.elliptical(10, 10),
+                      ),
+                      border: Border.all(width: 1),boxShadow:   [BoxShadow(
+            color: Colors.black.withOpacity(0.01),
+            blurRadius: 1.0,
+          ),]),
+                  child: TextButton(
+                    onPressed: () {
+                      cardController.increaseFunction();
+                    },
+                    child: GooglePoppinsWidgets(
+                      text: '+',
+                      fontsize: 20,
+                      color: Colors.red,
+                    ),
+                  )),
+              sw10,
+              GooglePoppinsWidgets(
+                text: '000${cardController.onTapValue.value.toString()}',
+                fontsize: 20,
+              ),
+              sw20,
+              Container(
+                  decoration: BoxDecoration(
+                      color: Colors.grey[50],
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(4),
+                      ),
+                      border: Border.all(width: 1)),
+                  child: TextButton(
+                    onPressed: () {
+                      cardController.decreaseFunction();
+                    },
+                    child: GooglePoppinsWidgets(
+                      text: '-',
+                      fontsize: 20,
+                    ),
+                  ))
             ],
-          )
+          ),
         ],
       ),
     );

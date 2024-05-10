@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
 import 'package:intl/intl.dart';
 import 'package:vidyaveechi_website/controller/admin_section/student_controller/student_controller.dart';
+import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/constantvalidate.dart';
 import 'package:vidyaveechi_website/view/fonts/google_poppins_widget.dart';
 import 'package:vidyaveechi_website/view/users/super_admin/lepton_Admin/card%20registration/table.dart';
@@ -81,70 +82,80 @@ class _CardRegistrationState extends State<CardRegistration> {
                     //addDataToFirebase(cardId, deviceId, time);
           
                     return Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.only(right: 30),
-                            child: Container(
-                              child: Column(
-                                children: [
-                                  ListTile(
-                                      leading: const Icon(Icons.circle),
-                                      title: GooglePoppinsWidgets(
-                                          text: 'Card Id', fontsize: 12),
-                                      subtitle: GooglePoppinsWidgets(
-                                          text: 'Card ID: $cardId',
-                                          fontsize: 18)),
-                                  ListTile(
-                                      leading: const Icon(Icons.circle),
-                                      title: GooglePoppinsWidgets(
-                                          text: 'Time', fontsize: 12),
-                                      subtitle: GooglePoppinsWidgets(
-                                          text: 'TIME : $time \n $input',
-                                          fontsize: 18)),
-                                  ListTile(
-                                      leading: const Icon(Icons.circle),
-                                      title: GooglePoppinsWidgets(
-                                          text: 'DeviceID', fontsize: 12),
-                                      subtitle: GooglePoppinsWidgets(
-                                          text: 'DeviceID: $deviceId',
-                                          fontsize: 18)),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: GestureDetector(
-                            child: Container(
-                              child: Column(
-                                children: [
-                                  GooglePoppinsWidgets(
-                                      text: 'Assign cards for each ad.no',
-                                      fontsize: 18),
-                                  sh10,
-                                  AdmissionNumberAssigning(),
-                                  GestureDetector(
-                                    onTap: () async {
-                                      addDataToFirebase(cardId, deviceId, time,input);
-                                    },
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(top: 20),
-                                      child: Container(
-                                        height: 50,
-                                        width: 200,
-                                        decoration: BoxDecoration(
-                                          color: Colors.purple[200],
-                                          borderRadius: BorderRadius.circular(10),
-                                        ),
-                                        child:
-                                            const Center(child: Text("Register")),
+                        // Expanded(
+                        //   child: Padding(
+                        //     padding: const EdgeInsets.only(right: 30),
+                        //     child: Container(
+                        //       child: const Column(
+                        //         children: [
+                        //           // ListTile(
+                        //           //     leading: const Icon(Icons.circle),
+                        //           //     title: GooglePoppinsWidgets(
+                        //           //         text: 'Card Id', fontsize: 12),
+                        //           //     subtitle: GooglePoppinsWidgets(
+                        //           //         text: 'Card ID: $cardId',
+                        //           //         fontsize: 18)),
+                        //           // ListTile(
+                        //           //     leading: const Icon(Icons.circle),
+                        //           //     title: GooglePoppinsWidgets(
+                        //           //         text: 'Time', fontsize: 12),
+                        //           //     subtitle: GooglePoppinsWidgets(
+                        //           //         text: 'TIME : $time \n $input',
+                        //           //         fontsize: 18)),
+                        //           // ListTile(
+                        //           //     leading: const Icon(Icons.circle),
+                        //           //     title: GooglePoppinsWidgets(
+                        //           //         text: 'DeviceID', fontsize: 12),
+                        //           //     subtitle: GooglePoppinsWidgets(
+                        //           //         text: 'DeviceID: $deviceId',
+                        //           //         fontsize: 18)),
+                        //         ],
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
+                        GestureDetector(
+                          child: Container(height: 280,width: 350,decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),border: Border.all(width: 0.4),color: Colors.blue[100]),
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: GooglePoppinsWidgets(
+                                      text: 'Assign cards for each students',
+                                      fontsize: 14),
+                                ),
+                                sh10,
+                                AdmissionNumberAssigning(),sh10,
+                                 GooglePoppinsWidgets(text:'Card Id: $cardId',fontsize: 15,fontWeight: FontWeight.w600,),sw20,
+                                GestureDetector(
+                                  onTap: () async {
+                                    addDataToFirebase(cardId, deviceId, time,input);
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(top: 20),
+                                    child: Container(
+                                      height: 50,
+                                      width: 200,
+                                      decoration: BoxDecoration(
+                                        color: adminePrimayColor,
+                                        borderRadius: BorderRadius.circular(10),
                                       ),
+                                      child:
+                                          const Center(child: Text("Register")),
                                     ),
                                   ),
-                                ],
-                              ),
+                                ),
+                                Row(
+                                  children: [
+                                    Expanded(child: Padding(
+                                      padding: const EdgeInsets.all(20),
+                                      child: GooglePoppinsWidgets(text: 'Here is the process to assign cards to each students by adding thier ad.no', fontsize: 12),
+                                    )),
+                                  ],
+                                )
+                              ],
                             ),
                           ),
                         )
