@@ -176,7 +176,7 @@ class ExamHistory extends StatelessWidget {
                           child: CatrgoryTableHeaderColorWidget(
                               color: themeColorBlue,
                               textcolor: cWhite,
-                              headerTitle: 'Pass mark')),
+                              headerTitle: 'Total  mark')),
                       SizedBox(
                         width: 02,
                       ),
