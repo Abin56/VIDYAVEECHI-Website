@@ -283,7 +283,7 @@ class CreateAdmin extends StatelessWidget {
               padding: const EdgeInsets.only(left: 25, right: 25,bottom: 10),
               child: Row(
                 // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
+                children: [  
                   GestureDetector(
                     onTap: () {
                       adminController.ontapCreateAdmin.value = false;
