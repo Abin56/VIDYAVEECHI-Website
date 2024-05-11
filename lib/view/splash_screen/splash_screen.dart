@@ -6,6 +6,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:vidyaveechi_website/controller/user_auth/user_auth_controller.dart';
 import 'package:vidyaveechi_website/controller/user_login_Controller/user_login_controller.dart';
+import 'package:vidyaveechi_website/info/info.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/fonts/google_monstre.dart';
 
@@ -46,7 +47,7 @@ class SplashScreen extends StatelessWidget {
                     decoration: const BoxDecoration(
                         image: DecorationImage(
                       image: AssetImage(
-                        'webassets/images/logo5.png',
+                        logoImage,
                       ),
                     )),
                   ),
@@ -67,13 +68,13 @@ class SplashScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       GoogleMonstserratWidgets(
-                        text: 'LEPTON',
+                        text: separate,
                         fontsize: 25,
                         color: const Color.fromARGB(255, 230, 18, 3),
                         fontWeight: FontWeight.bold,
                       ),
                       GoogleMonstserratWidgets(
-                        text: ' vidyaveechi',
+                        text: separatetwo,
                         fontsize: 25,
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
