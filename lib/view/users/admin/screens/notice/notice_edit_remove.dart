@@ -185,6 +185,7 @@ class NoticeEditRemove extends StatelessWidget {
           ),
         ],
       ),
+      )
     );
   }
 }
