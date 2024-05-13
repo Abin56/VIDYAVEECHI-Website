@@ -19,7 +19,8 @@ import 'package:vidyaveechi_website/view/widgets/routeSelectedTextContainer/rout
 import 'package:vidyaveechi_website/view/widgets/routeSelectedTextContainer/route_NonSelectedContainer.dart';
 
 class RegistrationStudentList extends StatelessWidget {
-  final RegistrationController registrationController = Get.put(RegistrationController());
+  final RegistrationController registrationController =
+      Get.put(RegistrationController());
   RegistrationStudentList({
     super.key,
   });
@@ -53,7 +54,8 @@ class RegistrationStudentList extends StatelessWidget {
                         height: 60,
                         width: 200,
                         child: ProgressButtonWidget(
-                            buttonstate: registrationController.buttonstate.value,
+                            buttonstate:
+                                registrationController.buttonstate.value,
                             text: 'Add All Students',
                             function: () async {
                               await registrationController
@@ -77,35 +79,45 @@ class RegistrationStudentList extends StatelessWidget {
                           const SizedBox(
                             height: 05,
                           ),
-                          SizedBox(height: 40, child: SelectRegClassStudntCountDropDown()),
+                          SizedBox(
+                              height: 40,
+                              child: SelectRegClassStudntCountDropDown()),
                         ],
                       )),
                 )
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 30),
-              child: Row(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      registrationController.ontapRegiStudentList.value = false;
-                    },
-                    child: const Padding(
-                      padding: EdgeInsets.only(top: 30, left: 10),
-                      child: RouteNonSelectedTextContainer(title: 'Home'),
+            registrationController.ontapRegiStudentList.value == true
+                ? Padding(
+                    padding: const EdgeInsets.only(bottom: 30),
+                    child: Row(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            registrationController.ontapRegiStudentList.value =
+                                false;
+                          },
+                          child: const Padding(
+                            padding: EdgeInsets.only(top: 30, left: 10),
+                            child: RouteNonSelectedTextContainer(title: 'Home'),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 50,
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.only(top: 30),
+                          child: RouteSelectedTextContainer(
+                              width: 200, title: 'Registered Students'),
+                        ),
+                      ],
                     ),
+                  )
+                : const Padding(
+                    padding: EdgeInsets.only(top: 30, bottom: 30, left: 10),
+                    child: RouteSelectedTextContainer(
+                        width: 200, title: 'Registered Students'),
                   ),
-                  const SizedBox(
-                    width: 50,
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 30),
-                    child: RouteSelectedTextContainer(width: 200, title: 'Registered Students'),
-                  ),
-                ],
-              ),
-            ),
             Expanded(
               child: Container(
                 width: 1200,
@@ -117,31 +129,45 @@ class RegistrationStudentList extends StatelessWidget {
                       padding: EdgeInsets.only(left: 10, right: 10, top: 20),
                       child: Row(
                         children: [
-                          Expanded(flex: 1, child: CatrgoryTableHeaderWidget(headerTitle: 'No')),
+                          Expanded(
+                              flex: 1,
+                              child:
+                                  CatrgoryTableHeaderWidget(headerTitle: 'No')),
                           SizedBox(
                             width: 02,
                           ),
                           Expanded(
                               flex: 5,
-                              child: CatrgoryTableHeaderWidget(headerTitle: 'Student Name')),
-                          SizedBox(
-                            width: 02,
-                          ),
-                          Expanded(flex: 3, child: CatrgoryTableHeaderWidget(headerTitle: 'Class')),
-                          SizedBox(
-                            width: 02,
-                          ),
-                          Expanded(flex: 5, child: CatrgoryTableHeaderWidget(headerTitle: 'Mail')),
+                              child: CatrgoryTableHeaderWidget(
+                                  headerTitle: 'Student Name')),
                           SizedBox(
                             width: 02,
                           ),
                           Expanded(
-                              flex: 3, child: CatrgoryTableHeaderWidget(headerTitle: 'Phone No')),
+                              flex: 3,
+                              child: CatrgoryTableHeaderWidget(
+                                  headerTitle: 'Class')),
                           SizedBox(
                             width: 02,
                           ),
                           Expanded(
-                              flex: 3, child: CatrgoryTableHeaderWidget(headerTitle: 'Options')),
+                              flex: 5,
+                              child: CatrgoryTableHeaderWidget(
+                                  headerTitle: 'Mail')),
+                          SizedBox(
+                            width: 02,
+                          ),
+                          Expanded(
+                              flex: 3,
+                              child: CatrgoryTableHeaderWidget(
+                                  headerTitle: 'Phone No')),
+                          SizedBox(
+                            width: 02,
+                          ),
+                          Expanded(
+                              flex: 3,
+                              child: CatrgoryTableHeaderWidget(
+                                  headerTitle: 'Options')),
                           SizedBox(
                             width: 02,
                           ),
@@ -156,30 +182,37 @@ class RegistrationStudentList extends StatelessWidget {
                                 .collection(UserCredentialsController.batchId!)
                                 .doc(UserCredentialsController.batchId!)
                                 .collection('classes')
-                                .doc(Get.find<RegistrationController>().classRegClassID.value)
+                                .doc(Get.find<RegistrationController>()
+                                    .classRegClassID
+                                    .value)
                                 .collection('RegTemp_Students')
                                 .snapshots(),
                             builder: (context, snaps) {
                               if (snaps.hasData) {
                                 return snaps.data!.docs.isEmpty
                                     ? const Column(
-                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
                                         children: [
                                           Padding(
                                             padding: EdgeInsets.all(8.0),
                                             child: Text(
                                               "Please select the class",
-                                              style: TextStyle(fontWeight: FontWeight.w400),
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w400),
                                             ),
                                           ),
                                         ],
                                       )
                                     : ListView.separated(
                                         itemBuilder: (context, index) {
-                                          final data = snaps.data!.docs[index].data();
+                                          final data =
+                                              snaps.data!.docs[index].data();
                                           return Padding(
-                                            padding: const EdgeInsets.only(left: 10, right: 10),
-                                            child: RegStudentListDataList(data: data, index: index),
+                                            padding: const EdgeInsets.only(
+                                                left: 10, right: 10),
+                                            child: RegStudentListDataList(
+                                                data: data, index: index),
                                           );
                                         },
                                         separatorBuilder: (context, index) {
@@ -276,7 +309,9 @@ class RegStudentListDataList extends StatelessWidget {
           Expanded(
             flex: 5,
             child: Container(
-              color: index % 2 == 0 ? const Color.fromARGB(255, 246, 246, 246) : Colors.blue[50],
+              color: index % 2 == 0
+                  ? const Color.fromARGB(255, 246, 246, 246)
+                  : Colors.blue[50],
               child: DataContainerWidget(
                   rowMainAccess: MainAxisAlignment.center,
                   color: cWhite,
@@ -302,11 +337,16 @@ class RegStudentListDataList extends StatelessWidget {
             flex: 3,
             child: GestureDetector(
               onTap: () {
-                Get.find<RegistrationController>().removeRegiStudent(context,
-                    Get.find<RegistrationController>().classRegClassID.value, data['docid']);
+                Get.find<RegistrationController>().removeRegiStudent(
+                    context,
+                    Get.find<RegistrationController>().classRegClassID.value,
+                    data['docid']);
               },
               child: BlueContainerWidget(
-                  title: 'Remove', fontSize: 12, color: themeColorBlue, width: 200),
+                  title: 'Remove',
+                  fontSize: 12,
+                  color: themeColorBlue,
+                  width: 200),
             ),
           ), // ................................... Fees Required
           const SizedBox(
