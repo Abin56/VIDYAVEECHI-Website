@@ -7,6 +7,7 @@ import 'package:vidyaveechi_website/controller/user_login_Controller/user_login_
 import 'package:vidyaveechi_website/firebase_options.dart';
 import 'package:vidyaveechi_website/view/home/screens/footer/legal/privacypolicy.dart';
 import 'package:vidyaveechi_website/view/splash_screen/splash_screen.dart';
+import 'package:vidyaveechi_website/view/users/super_admin/lepton_Admin/id_cards_section/id_cards_section.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
 import 'package:vidyaveechi_website/view/widgets/scroll_on_web_widget.dart';
 
@@ -53,8 +54,8 @@ class MyApp extends StatelessWidget {
             },
 
             home:
-                //  NewEventsPage(),
-                SplashScreen(),
+                  IDCardsAdminPage(),
+                //  SplashScreen(),
             // home: Scaffold(
             //   body: AllExamNotificationListView(),
             // ),

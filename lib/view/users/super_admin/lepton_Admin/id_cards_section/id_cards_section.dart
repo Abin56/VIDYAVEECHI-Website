@@ -1,82 +1,16 @@
-// import 'package:flutter/material.dart';
-// import 'package:get/get.dart';
-// import 'package:google_fonts/google_fonts.dart';
-// import 'package:vidyaveechi_website/view/users/super_admin/lepton_Admin/requested_list/req_list_screen.dart';
-
-// import '../widgets/buttonContainer.dart';
-// import 'list_of_schools/list_of_schools_screen.dart';
-
-// class LeptonHomePage extends StatelessWidget {
-//   const LeptonHomePage({super.key});
-//   static const String route = '/homePage';
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: SafeArea(
-//           child: Center(
-//         child: Row(
-//           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//           children: [
-//             GestureDetector(
-//               onTap: () {
-//                             Get.off(const SchoolsListScreen());
-
-//               },
-//               child: ButtonContainerWidget(
-//                 curving: 30,
-//                 colorindex: 0,
-//                 height: 200,
-//                 width: 400,
-//                 child: Center(
-//                     child: Text(
-//                   'List of Schools',
-//                   style: GoogleFonts.montserrat(
-//                       color: Colors.white,
-//                       fontSize: 18,
-//                       fontWeight: FontWeight.bold),
-//                 )),
-//               ),
-//             ),
-//             GestureDetector(
-//               onTap: () {
-//              Get.off(RequestedSchoolsListScreen());
-//               },
-//               child: ButtonContainerWidget(
-//                 curving: 30,
-//                 colorindex: 6,
-//                 height: 200,
-//                 width: 400,
-//                 child: Center(
-//                     child: Text(
-//                   'Requested List',
-//                   style: GoogleFonts.montserrat(
-//                       color: Colors.white,
-//                       fontSize: 18,
-//                       fontWeight: FontWeight.bold),
-//                 )),
-//               ),
-//             ),
-//           ],
-//         ),
-//       )),
-//     );
-//   }
-// }
-// ignore_for_file: sort_child_properties_last, camel_case_types
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/home/screens/footer/widgets/Iconbackbutton.dart';
-import 'package:vidyaveechi_website/view/users/super_admin/lepton_Admin/id_cards_section/id_cards_section.dart';
 import 'package:vidyaveechi_website/view/users/super_admin/lepton_Admin/list_of_schools/list_of_schools_screen.dart';
 import 'package:vidyaveechi_website/view/users/super_admin/lepton_Admin/requested_list/req_list_screen.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 
-class SuperAdminPage extends StatelessWidget {
-  const SuperAdminPage({super.key});
+class IDCardsAdminPage extends StatelessWidget {
+  const IDCardsAdminPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -86,9 +20,9 @@ class SuperAdminPage extends StatelessWidget {
           child: Column(
         children: [
           ResponsiveWebSite.isMobile(context)
-              ? superAdminPageMobileView(screenSize: screenSize)
+              ? IDCardsAdminPageMobileView(screenSize: screenSize)
               : ////////////////////////////////////////////.................Mobile View
-              superAdminPageWebView(
+              IDCardsAdminPageWebView(
                   screenSize:
                       screenSize) ///////////////////////..............Web view
         ],
@@ -97,8 +31,8 @@ class SuperAdminPage extends StatelessWidget {
   }
 }
 
-class superAdminPageMobileView extends StatelessWidget {
-  const superAdminPageMobileView({
+class IDCardsAdminPageMobileView extends StatelessWidget {
+  const IDCardsAdminPageMobileView({
     super.key,
     required this.screenSize,
   });
@@ -114,23 +48,51 @@ class superAdminPageMobileView extends StatelessWidget {
           width: screenSize.width,
           decoration: const BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('webassets/images/70264.jpg'),
+                  image: AssetImage('webassets/images/id_card.jpg'),
                   fit: BoxFit.fill)),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              Column(
                 children: [
-                  IconButtonBackWidget(
-                    color: Colors.white,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      IconButtonBackWidget(
+                        color: Colors.blue,
+                      ),
+                    ],
                   ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Container(
+                          height: 30,
+                          width: 100,
+                          child: Center(
+                              child: Text(
+                            "Register",
+                            style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white),
+                          )),
+                          decoration: BoxDecoration(color: Colors.blue),
+                        ),
+                      ),
+                    ],
+                  )
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 50),
+                padding: EdgeInsets.only(top: screenSize.height / 2.25),
                 child: Container(
-                  height: screenSize.height / 9,
+                  height: screenSize.height / 12,
                   width: screenSize.width / 1.5,
                   child: Center(
                       child: GestureDetector(
@@ -138,9 +100,9 @@ class superAdminPageMobileView extends StatelessWidget {
                       Get.to(() => const SchoolsListScreen());
                     },
                     child: const Text(
-                      "List of Schools",
+                      "Students Cards",
                       style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 18,
                           fontWeight: FontWeight.bold,
                           color: Color.fromARGB(255, 5, 52, 91)),
                     ),
@@ -164,7 +126,7 @@ class superAdminPageMobileView extends StatelessWidget {
                 height: 20,
               ),
               Container(
-                height: screenSize.height / 9,
+                height: screenSize.height / 12,
                 width: screenSize.width / 1.5,
                 child: Center(
                     child: GestureDetector(
@@ -172,9 +134,9 @@ class superAdminPageMobileView extends StatelessWidget {
                     Get.to(() => RequestedSchoolsListScreen());
                   },
                   child: const Text(
-                    "Requested Lists",
+                    "Teachers Cards",
                     style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 18,
                         fontWeight: FontWeight.bold,
                         color: Color.fromARGB(255, 5, 52, 91)),
                   ),
@@ -196,20 +158,15 @@ class superAdminPageMobileView extends StatelessWidget {
                 height: 20,
               ),
               Container(
-                height: screenSize.height / 9,
+                height: screenSize.height / 12,
                 width: screenSize.width / 1.5,
-                child: Center(
-                    child: GestureDetector(
-                  onTap: () {
-                    Get.to(() => IDCardsAdminPage());
-                  },
-                  child: Text(
-                    "ID Cards",
-                    style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 5, 52, 91)),
-                  ),
+                child: const Center(
+                    child: Text(
+                  "Non Teaching Staffs Cards",
+                  style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 5, 52, 91)),
                 )),
                 decoration: const BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -232,8 +189,8 @@ class superAdminPageMobileView extends StatelessWidget {
   }
 } //////////////////////////////////............................Mobile view
 
-class superAdminPageWebView extends StatelessWidget {
-  const superAdminPageWebView({
+class IDCardsAdminPageWebView extends StatelessWidget {
+  const IDCardsAdminPageWebView({
     super.key,
     required this.screenSize,
   });
@@ -248,24 +205,47 @@ class superAdminPageWebView extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              IconButtonBackWidget(
-                color: const Color.fromARGB(255, 2, 71, 167),
-              ),
+              IconButtonBackWidget(color: Colors.white),
             ],
           ),
           height: screenSize.height,
           width: screenSize.width / 2,
           decoration: const BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('webassets/images/102029.jpg'),
+                  image: AssetImage('webassets/images/id_cards.jpg'),
                   fit: BoxFit.fill)),
         ),
         Container(
           height: screenSize.height,
           width: screenSize.width / 2,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(
+                      left: 20,
+                      top: 20,
+                      bottom: screenSize.height / 5,
+                    ),
+                    child: Container(
+                      height: 40,
+                      width: 120,
+                      child: Center(
+                          child: Text(
+                        "Register",
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      )),
+                      decoration: BoxDecoration(color: Colors.blue),
+                    ),
+                  ),
+                ],
+              ),
               Container(
                 height: screenSize.height / 6,
                 width: screenSize.width / 3,
@@ -275,7 +255,7 @@ class superAdminPageWebView extends StatelessWidget {
                     Get.to(const SchoolsListScreen());
                   },
                   child: Text(
-                    "List of Schools",
+                    "Students Cards",
                     style: TextStyle(
                         fontSize: ResponsiveWebSite.isTablet(context) ? 20 : 30,
                         fontWeight: FontWeight.bold,
@@ -288,11 +268,11 @@ class superAdminPageWebView extends StatelessWidget {
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                         colors: <Color>[
-                          Color.fromARGB(255, 133, 202, 211),
-                          Color.fromARGB(255, 179, 252, 208),
-                          Color.fromARGB(255, 149, 242, 226),
+                          Color.fromARGB(255, 28, 168, 207),
+                          Color.fromARGB(255, 10, 144, 135),
+                          Color.fromARGB(255, 140, 162, 232),
                           // Color.fromARGB(255, 202, 244, 203),
-                          Color.fromARGB(255, 167, 234, 240),
+                          Color.fromARGB(255, 30, 214, 128),
                           Color.fromARGB(255, 238, 227, 231)
                         ])),
               ),
@@ -308,7 +288,7 @@ class superAdminPageWebView extends StatelessWidget {
                     Get.to(RequestedSchoolsListScreen());
                   },
                   child: Text(
-                    "Requested Lists",
+                    "Teachers Cards",
                     style: TextStyle(
                         fontSize: ResponsiveWebSite.isTablet(context) ? 20 : 30,
                         fontWeight: FontWeight.bold,
@@ -321,11 +301,11 @@ class superAdminPageWebView extends StatelessWidget {
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                         colors: <Color>[
-                          Color.fromARGB(255, 135, 195, 244),
-                          Color.fromARGB(255, 243, 215, 248),
-                          Color.fromARGB(255, 202, 244, 203),
-                          Color.fromARGB(255, 221, 216, 171),
-                          Color.fromARGB(255, 241, 216, 225)
+                          Color.fromARGB(255, 67, 215, 171),
+                          Color.fromARGB(255, 53, 164, 212),
+                          Color.fromARGB(255, 201, 159, 235),
+                          Color.fromARGB(255, 224, 216, 142),
+                          Color.fromARGB(255, 156, 213, 229)
                         ])),
               ),
               const SizedBox(
@@ -335,17 +315,12 @@ class superAdminPageWebView extends StatelessWidget {
                 height: screenSize.height / 6,
                 width: screenSize.width / 3,
                 child: Center(
-                    child: GestureDetector(
-                  onTap: () {
-                    Get.to(IDCardsAdminPage());
-                  },
-                  child: Text(
-                    "ID Cards",
-                    style: TextStyle(
-                        fontSize: ResponsiveWebSite.isTablet(context) ? 20 : 30,
-                        fontWeight: FontWeight.bold,
-                        color: const Color.fromARGB(255, 5, 52, 91)),
-                  ),
+                    child: Text(
+                  "Non Teaching Staffs Cards",
+                  style: TextStyle(
+                      fontSize: ResponsiveWebSite.isTablet(context) ? 20 : 30,
+                      fontWeight: FontWeight.bold,
+                      color: const Color.fromARGB(255, 5, 52, 91)),
                 )),
                 decoration: const BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -353,11 +328,11 @@ class superAdminPageWebView extends StatelessWidget {
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                         colors: <Color>[
-                          Color.fromARGB(255, 202, 230, 195),
-                          Color.fromARGB(255, 195, 218, 238),
-                          Color.fromARGB(255, 202, 244, 203),
-                          Color.fromARGB(255, 133, 181, 207),
-                          Color.fromARGB(255, 224, 165, 226)
+                          Color.fromARGB(255, 198, 242, 187),
+                          Color.fromARGB(255, 182, 214, 242),
+                          Color.fromARGB(255, 101, 196, 166),
+                          Color.fromARGB(255, 155, 207, 236),
+                          Color.fromARGB(255, 234, 155, 237)
                         ])),
               ),
             ],
