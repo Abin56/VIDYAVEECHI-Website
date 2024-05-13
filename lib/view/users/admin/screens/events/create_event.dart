@@ -4,23 +4,35 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vidyaveechi_website/controller/event_controller/event_controller.dart';
 import 'package:vidyaveechi_website/view/constant/constant.validate.dart';
+import 'package:vidyaveechi_website/view/fonts/text_widget.dart';
 import 'package:vidyaveechi_website/view/widgets/progess_button/progress_button.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
 import 'package:vidyaveechi_website/view/widgets/textformFiledContainer/textformFiledBlueContainer.dart';
-
-
 
 createEventAdmin(BuildContext context) {
   final EventController eventController = Get.put(EventController());
   aweSideSheet(
       context: context,
       sheetPosition: SheetPosition.right,
-      title: "Events",
+      header: Container(),
       body: Padding(
         padding: const EdgeInsets.only(left: 10, top: 10),
         child: SingleChildScrollView(
           child: Column(
             children: [
+              const Row(
+                children: [
+                  BackButton(),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  TextFontWidget(
+                    text: 'Events',
+                    fontsize: 17,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ],
+              ),
               SizedBox(
                   height: 800,
                   child: Container(

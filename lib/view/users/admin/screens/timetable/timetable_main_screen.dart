@@ -109,7 +109,8 @@ class TimeTableMainScreen extends StatelessWidget {
             }
           },
           onTap: () async {
-            await timetableCtrl.selectTimesec(context, timetableCtrl.startTimeController);
+            await timetableCtrl.selectTimesec(
+                context, timetableCtrl.startTimeController);
           },
 
           // onTap: () async {
@@ -125,7 +126,8 @@ class TimeTableMainScreen extends StatelessWidget {
           hintText: 'End time',
           title: 'End time',
           onTap: () async {
-            await timetableCtrl.selectTimesec(context, timetableCtrl.endTimeController);
+            await timetableCtrl.selectTimesec(
+                context, timetableCtrl.endTimeController);
           },
           // onTap: () async {
 
@@ -185,15 +187,18 @@ class TimeTableMainScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const TextFontWidget(text: "Select Class *", fontsize: 12),
-                              SizedBox(height: 40, child: SelectClassDropDown()),
+                              const TextFontWidget(
+                                  text: "Select Class *", fontsize: 12),
+                              SizedBox(
+                                  height: 40, child: SelectClassDropDown()),
                             ],
                           )),
                     )
                   ],
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: ResponsiveWebSite.isMobile(context) ? 20 : 10),
+                  padding: EdgeInsets.only(
+                      top: ResponsiveWebSite.isMobile(context) ? 20 : 10),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
@@ -216,13 +221,15 @@ class TimeTableMainScreen extends StatelessWidget {
                             if (timesnaps.hasData) {
                               return timesnaps.data!.docs.isEmpty
                                   ? const Column(
-                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
                                       children: [
                                         Padding(
                                           padding: EdgeInsets.all(8.0),
                                           child: Text(
                                             "Please select the class",
-                                            style: TextStyle(fontWeight: FontWeight.w400),
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w400),
                                           ),
                                         ),
                                       ],
@@ -230,11 +237,12 @@ class TimeTableMainScreen extends StatelessWidget {
                                   : DefaultTabController(
                                       length: timesnaps.data!.docs.length,
                                       child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Padding(
-                                            padding:
-                                                const EdgeInsets.only(top: 0, left: 20, right: 20),
+                                            padding: const EdgeInsets.only(
+                                                top: 0, left: 20, right: 20),
                                             child: Column(
                                               children: [
                                                 Container(
@@ -242,13 +250,17 @@ class TimeTableMainScreen extends StatelessWidget {
                                                   height: 40,
                                                   child: TabBar(
                                                     indicatorColor: cWhite,
-                                                    tabAlignment: TabAlignment.start,
+                                                    tabAlignment:
+                                                        TabAlignment.start,
                                                     isScrollable: true,
                                                     labelColor: Colors.blue,
                                                     labelStyle: const TextStyle(
-                                                        fontWeight: FontWeight.w400, fontSize: 12),
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        fontSize: 12),
                                                     tabs: List.generate(
-                                                      timesnaps.data!.docs.length,
+                                                      timesnaps
+                                                          .data!.docs.length,
                                                       (index) => Tab(
                                                         text:
                                                             '${timesnaps.data!.docs[index].data()['docid']}',
@@ -261,17 +273,18 @@ class TimeTableMainScreen extends StatelessWidget {
                                           ),
                                           // ),
                                           Padding(
-                                            padding:
-                                                const EdgeInsets.only(top: 0, left: 20, right: 20),
+                                            padding: const EdgeInsets.only(
+                                                top: 0, left: 20, right: 20),
                                             child: Container(
                                               width: double.infinity,
-                                              color: screenContainerbackgroundColor,
+                                              color:
+                                                  screenContainerbackgroundColor,
                                               height: 02,
                                             ),
                                           ),
                                           Padding(
-                                            padding:
-                                                const EdgeInsets.only(top: 0, left: 05, right: 05),
+                                            padding: const EdgeInsets.only(
+                                                top: 0, left: 05, right: 05),
                                             child: Container(
                                               height: 480,
                                               color: cWhite,
@@ -280,11 +293,16 @@ class TimeTableMainScreen extends StatelessWidget {
                                               child: TabBarView(
                                                 children: List.generate(
                                                     timesnaps.data!.docs.length,
-                                                    (index) => PeriodWiseTimeTable(
-                                                          subjectID: timesnaps.data!.docs[index]
+                                                    (index) =>
+                                                        PeriodWiseTimeTable(
+                                                          subjectID: timesnaps
+                                                              .data!.docs[index]
                                                               .data()['docid'],
-                                                          data: timesnaps.data!.docs[index].data(),
-                                                          docid: timesnaps.data!.docs[index]
+                                                          data: timesnaps
+                                                              .data!.docs[index]
+                                                              .data(),
+                                                          docid: timesnaps
+                                                              .data!.docs[index]
                                                               .data()['docid'],
                                                         )),
                                               ),
@@ -295,7 +313,8 @@ class TimeTableMainScreen extends StatelessWidget {
                                     );
                             } else if (timesnaps.data == null) {
                               return const Center(
-                                child: TextFontWidget(text: "No recordes found", fontsize: 16),
+                                child: TextFontWidget(
+                                    text: "No recordes found", fontsize: 16),
                               );
                             } else {
                               return const LoadingWidget();
@@ -310,17 +329,31 @@ class TimeTableMainScreen extends StatelessWidget {
         ));
   }
 
-  Future<void> timetable_Creation(BuildContext context, List<Widget> textformWidget) {
+  Future<void> timetable_Creation(
+      BuildContext context, List<Widget> textformWidget) {
     final timetableCtrl = Get.put(TimeTableController());
     return aweSideSheet(
         context: context,
         sheetPosition: SheetPosition.right,
-        title: " TimeTable",
+        header: Container(),
         body: Padding(
           padding: const EdgeInsets.only(left: 10, top: 10),
           child: SingleChildScrollView(
             child: Column(
               children: [
+                const Row(
+                  children: [
+                    BackButton(),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    TextFontWidget(
+                      text: 'Time Table',
+                      fontsize: 17,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ],
+                ),
                 SizedBox(
                     height: 800,
                     child: Container(
@@ -344,13 +377,16 @@ class TimeTableMainScreen extends StatelessWidget {
                             textformWidget[8],
 
                             Padding(
-                              padding: const EdgeInsets.only(top: 10, bottom: 10),
+                              padding:
+                                  const EdgeInsets.only(top: 10, bottom: 10),
                               child: Center(
                                   child: ProgressButtonWidget(
-                                      buttonstate: timetableCtrl.buttonstate.value,
+                                      buttonstate:
+                                          timetableCtrl.buttonstate.value,
                                       text: 'Submit',
                                       function: () {
-                                        timetableCtrl.addTimeTableDataToFirebase();
+                                        timetableCtrl
+                                            .addTimeTableDataToFirebase();
                                       })
                                   //  NoticeButtonContainerWidget(
                                   //   text: 'Submit',

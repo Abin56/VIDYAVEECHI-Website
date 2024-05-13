@@ -195,7 +195,7 @@ class UserLoginController extends GetxController {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                TextFontWidget(text: 'Select Batch year *', fontsize: 12),
+                const TextFontWidget(text: 'Select Batch year *', fontsize: 12),
                 SizedBox(
                   height: 45,
                   child: SelectBatchYearDropDownLogin(),
@@ -203,7 +203,7 @@ class UserLoginController extends GetxController {
                 const SizedBox(
                   height: 10,
                 ),
-                TextFontWidget(text: 'Select Class *', fontsize: 12),
+                const TextFontWidget(text: 'Select Class *', fontsize: 12),
                 SizedBox(
                   height: 45,
                   child: SelectClassDropDownLogin(),
@@ -256,6 +256,7 @@ class UserLoginController extends GetxController {
           await SharedPreferencesHelper.setString(
               SharedPreferencesHelper.classIdKey, classCtrl.classDocID.value);
           if (context.mounted) {
+            logined.value = true;
             Navigator.pushAndRemoveUntil(context,
                 MaterialPageRoute(builder: (context) {
               return SplashScreen();
@@ -290,7 +291,7 @@ class UserLoginController extends GetxController {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                TextFontWidget(text: 'Select Batch year *', fontsize: 12),
+                const TextFontWidget(text: 'Select Batch year *', fontsize: 12),
                 SizedBox(
                   height: 45,
                   child: SelectBatchYearDropDownLogin(),
@@ -298,7 +299,7 @@ class UserLoginController extends GetxController {
                 const SizedBox(
                   height: 10,
                 ),
-                TextFontWidget(text: 'Select Class *', fontsize: 12),
+                const TextFontWidget(text: 'Select Class *', fontsize: 12),
                 SizedBox(
                   height: 45,
                   child: SelectClassDropDownLogin(),
@@ -352,6 +353,7 @@ class UserLoginController extends GetxController {
           await SharedPreferencesHelper.setString(
               SharedPreferencesHelper.classIdKey, classCtrl.classDocID.value);
           if (context.mounted) {
+            logined.value = true;
             Navigator.pushAndRemoveUntil(context,
                 MaterialPageRoute(builder: (context) {
               return SplashScreen();
@@ -388,7 +390,7 @@ class UserLoginController extends GetxController {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                TextFontWidget(text: 'Select Batch year *', fontsize: 12),
+                const TextFontWidget(text: 'Select Batch year *', fontsize: 12),
                 SizedBox(
                   height: 45,
                   child: SelectBatchYearDropDownLogin(),
@@ -396,7 +398,7 @@ class UserLoginController extends GetxController {
                 const SizedBox(
                   height: 10,
                 ),
-                TextFontWidget(text: 'Select Class *', fontsize: 12),
+                const TextFontWidget(text: 'Select Class *', fontsize: 12),
                 SizedBox(
                   height: 45,
                   child: SelectClassDropDownLogin(),
@@ -434,11 +436,11 @@ class UserLoginController extends GetxController {
         }
 
         if (UserCredentialsController.teacherModel?.userRole == "teacher") {
-    //       Scaffold(
-    //   body: SafeArea(child: Center(
-    //     child: TextFontWidget(text: "under Maintenance.........", fontsize: 20),
-    //   )),
-    // );
+          //       Scaffold(
+          //   body: SafeArea(child: Center(
+          //     child: TextFontWidget(text: "under Maintenance.........", fontsize: 20),
+          //   )),
+          // );
           await SharedPreferencesHelper.setString(
               SharedPreferencesHelper.userRoleKey, 'teacher');
           await SharedPreferencesHelper.setString(
@@ -451,6 +453,7 @@ class UserLoginController extends GetxController {
           await SharedPreferencesHelper.setString(
               SharedPreferencesHelper.classIdKey, classCtrl.classDocID.value);
           if (context.mounted) {
+            logined.value = true;
             Navigator.pushAndRemoveUntil(context,
                 MaterialPageRoute(builder: (context) {
               return SplashScreen();

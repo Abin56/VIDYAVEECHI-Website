@@ -1,4 +1,5 @@
 import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vidyaveechi_website/controller/admin_section/parent_controller/parent_controller.dart';
@@ -30,7 +31,7 @@ class CreateStudent extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-           Padding(
+            const Padding(
               padding: EdgeInsets.only(left: 25, top: 25),
               child: TextFontWidget(
                 text: 'Create A New Student',
@@ -44,24 +45,23 @@ class CreateStudent extends StatelessWidget {
                   ? Column(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(bottom: 8),
+                          padding: const EdgeInsets.only(
+                            bottom: 8,
+                            left: 10,
+                            right: 10,
+                          ),
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  left: 08,
-                                  right: 05,
-                                ),
-                                child: GestureDetector(
-                                  onTap: () {
-                                    studentController.ontapCreateStudent.value =
-                                        false;
-                                    // print(studentController
-                                    //     .ontapCreateStudent.value);
-                                  },
-                                  child: const RouteNonSelectedTextContainer(
-                                      title: 'Home'),
-                                ),
+                              GestureDetector(
+                                onTap: () {
+                                  studentController.ontapCreateStudent.value =
+                                      false;
+                                  // print(studentController
+                                  //     .ontapCreateStudent.value);
+                                },
+                                child: const RouteNonSelectedTextContainer(
+                                    title: 'Home'),
                               ),
                               const RouteSelectedTextContainer(
                                   width: 140, title: 'Create Student'),
@@ -74,7 +74,7 @@ class CreateStudent extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               SizedBox(
-                                width: 310,
+                                width: 300,
                                 child: TabBar(
                                     // indicatorSize: TabBarIndicatorSize.tab,
                                     indicatorColor: Colors.red,
@@ -82,11 +82,11 @@ class CreateStudent extends StatelessWidget {
                                       Tab(
                                           height: 30,
                                           child: RouteSelectedTextContainer(
-                                              width: 140, title: 'Manual')),
+                                              width: 120, title: 'Manual')),
                                       Tab(
                                           height: 30,
                                           child: RouteSelectedTextContainer(
-                                              width: 140, title: 'Class Wise')),
+                                              width: 120, title: 'Class Wise')),
                                     ]),
                               )
                             ],
@@ -135,7 +135,7 @@ class CreateStudent extends StatelessWidget {
             ),
             Expanded(
               child: TabBarView(children: [
-                ManualStudentCreation(),/////////////////////////////..................Create A New Student
+                ManualStudentCreation(), /////////////////////////////..................Create A New Student
                 ClassWiseStudentCreation()
               ]),
             )

@@ -18,13 +18,14 @@ class StdNoticeBoardContainer extends StatelessWidget {
     return SingleChildScrollView(
       child: Container(
         width: ResponsiveWebSite.isTablet(context) ? 450 : 600,
-        height: 470,
+        // height: 470,
         color: Colors.white,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                  top: 20, left: 20, right: 20, bottom: 20),
+            const Padding(
+              padding:
+                  EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 20),
               child: Row(
                 children: [
                   TextFontWidget(
@@ -32,7 +33,7 @@ class StdNoticeBoardContainer extends StatelessWidget {
                     fontsize: 17,
                     fontWeight: FontWeight.w600,
                   ),
-                  const Spacer(),
+                  Spacer(),
                   // const Icon(
                   //   Icons.more_horiz,
                   //   color: Colors.black38,
@@ -41,63 +42,59 @@ class StdNoticeBoardContainer extends StatelessWidget {
                 ],
               ),
             ),
-            Expanded(
-              child: StreamBuilder(
-                  stream: server
-                      .collection("SchoolListCollection")
-                      .doc(UserCredentialsController.schoolId)
-                      .collection('AllUsersDeviceID')
-                      .doc(serverAuth.currentUser!.uid)
-                      .collection("Notification_Message")
-                      .snapshots(),
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Center(child: CircularProgressIndicator());
-                    } else if (snapshot.hasError) {
-                      return Text('Error: ${snapshot.error}');
-                    } else if (!snapshot.hasData ||
-                        snapshot.data!.docs.isEmpty) {
-                      return const Center(
-                          child: Text('No Notifications available'));
-                    } else {
-                      return ListView.separated(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemCount: snapshot.data!.docs.length,
-                        separatorBuilder: (context, index) => const Divider(
-                          color: Colors.grey,
-                          height: 10,
-                        ),
-                        itemBuilder: (context, index) {
-                          final data = snapshot.data!.docs[index].data();
-                          return Column(
-                            children: [
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(top: 10, left: 10),
-                                child: TextFontWidget(
-                                  text: data['headerText'] ?? "",
-                                  // "Great School",
-                                  fontsize: 16,
-                                  fontWeight: FontWeight.w700,
-                                ),
+            StreamBuilder(
+                stream: server
+                    .collection("SchoolListCollection")
+                    .doc(UserCredentialsController.schoolId)
+                    .collection('AllUsersDeviceID')
+                    .doc(serverAuth.currentUser!.uid)
+                    .collection("Notification_Message")
+                    .snapshots(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(child: CircularProgressIndicator());
+                  } else if (snapshot.hasError) {
+                    return Text('Error: ${snapshot.error}');
+                  } else if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+                    return const Center(
+                        child: Text('No Notifications available'));
+                  } else {
+                    return ListView.separated(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: snapshot.data!.docs.length,
+                      separatorBuilder: (context, index) => const Divider(
+                        color: Colors.grey,
+                        height: 10,
+                      ),
+                      itemBuilder: (context, index) {
+                        final data = snapshot.data!.docs[index].data();
+                        return Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(top: 10, left: 10),
+                              child: TextFontWidget(
+                                text: data['headerText'] ?? "",
+                                // "Great School",
+                                fontsize: 16,
+                                fontWeight: FontWeight.w700,
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 15, left: 10, bottom: 15),
-                                child: TextFontWidget(
-                                  text: data['messageText'] ?? "",
-                                  // "Great School manag mene esom tus eleifend lectus sed maximus mi faucibusnting.",
-                                  fontsize: 14,
-                                ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 15, left: 10, bottom: 15),
+                              child: TextFontWidget(
+                                text: data['messageText'] ?? "",
+                                // "Great School manag mene esom tus eleifend lectus sed maximus mi faucibusnting.",
+                                fontsize: 14,
                               ),
-                            ],
-                          );
-                        },
-                      );
-                    }
-                  }),
-            ),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  }
+                }),
 
             // NoticeDisplayContainer(screensize: screensize,
             // text: "16 June,2023",
