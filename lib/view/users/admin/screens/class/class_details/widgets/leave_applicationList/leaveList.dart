@@ -201,7 +201,11 @@ class LeaveApplicationData extends StatelessWidget {
                   // width: 150,
                   index: index,
                   // ignore: unnecessary_null_comparison
-                  text: compare == null ? 'Compare value not available' : '$compare Days',
+                  text: compare == null
+                      ? 'Compare value not available'
+                      : (compare == 1
+                          ? '$compare Day'
+                          : '$compare Days'), //(compare == 1 ? '$compare Day' : '$compare Days');
                 ),
                 //  compare != null ? '$compare Days' : 'Compare value not available',
               ),
