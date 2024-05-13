@@ -175,6 +175,7 @@ class AllStudentListContainer extends StatelessWidget {
                                         true;
                                   },
                                   child: const RouteSelectedTextContainer(
+                                    color: cgreen,
                                       width: 200, title: 'Registered Student'),
                                 ),
                                 const Spacer(),

@@ -26,28 +26,32 @@ class _CreateAchievementState extends State<CreateAchievement> {
   Widget build(BuildContext context) {
     List<Widget> textformWidget = [
       Padding(
-        padding: const EdgeInsets.only(top: 5, right: 10, left: 10),
-        child: Container(
-          height: ResponsiveWebSite.isMobile(context) ? 80 : 100,
-          color: cWhite,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const TextFontWidget(text: 'Select Class *', fontsize: 12.5),
-              const SizedBox(
-                height: 05,
-              ),
-              SizedBox(
-                height: 50,
-                child: SelectClassDropDown(),
-              ),
-            ],
-          ),
+          padding: const EdgeInsets.only(top: 5, right: 10, left: 10),
+          child:
+             
+      Container(
+        
+        height: ResponsiveWebSite.isMobile(context) ? 80 : 100,
+        color: cWhite,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+             const TextFontWidget(text: 'Select Class *', fontsize: 12.5),
+            const SizedBox(
+              height: 05,
+            ),
+            SizedBox(
+              
+              height: 50,
+              child: SelectClassDropDown(),
+            ),
+          ],
         ),
-      ), ///////////////////////////////////////////////////////////////////////0
+      ),), ///////////////////////////////////////////////////////////////////////0
       Padding(
         padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
         child: TextFormFiledBlueContainerWidgetAchievement(
+          
           controller: achievementsController.studentNameController,
           validator: checkFieldEmpty,
           width: ResponsiveWebSite.isMobile(context) ? double.infinity : 500,
@@ -60,8 +64,7 @@ class _CreateAchievementState extends State<CreateAchievement> {
         padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
         child: TextFormFiledBlueContainerWidgetAchievement(
           onTap: () {
-            achievementsController.selectDate(
-                context, achievementsController.dateController);
+            achievementsController.selectDate(context, achievementsController.dateController);
           },
           validator: checkFieldDateIsValid,
           controller: achievementsController.dateController,
@@ -91,11 +94,11 @@ class _CreateAchievementState extends State<CreateAchievement> {
         ),
       ), ////////////////////////////////////4
 
-      const Expanded(
-          child: SizedBox(
-        height: 40,
-        width: 400,
-      ))
+      // const Expanded(
+      //     child: SizedBox(
+      //   height: 40,
+      //   width: 400,
+      // ))
     ];
     return Padding(
       padding: const EdgeInsets.only(top: 10, bottom: 10),
@@ -107,35 +110,24 @@ class _CreateAchievementState extends State<CreateAchievement> {
                 aweSideSheet(
                     context: context,
                     sheetPosition: SheetPosition.right,
-                    header: Container(),
+                    title: "Acheivements",
                     body: Padding(
-                      padding: const EdgeInsets.only(left: 10, top: 10),
+                      padding: const EdgeInsets.only(left: 10, top: 0),
                       child: SingleChildScrollView(
                         child: Form(
                           key: achievementsController.formKey,
                           child: Column(
                             children: [
-                              const Row(
-                                children: [
-                                  BackButton(),
-                                  SizedBox(
-                                    width: 20,
-                                  ),
-                                  TextFontWidget(
-                                    text: 'Acheivements',
-                                    fontsize: 17,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ],
-                              ),
                               SizedBox(
-                                  height: 800,
+                                  height: 700,
                                   child: Container(
-                                    margin: const EdgeInsets.only(top: 10),
+                                    margin: const EdgeInsets.only(top:10),
                                     child:
                                         //  Obx(() {
                                         // return
                                         Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.center,
                                             children: [
@@ -145,7 +137,7 @@ class _CreateAchievementState extends State<CreateAchievement> {
                                           //     (achievementsController.afile ==
                                           //             null)
                                           //         ? const CircleAvatar(
-
+                                                    
                                           //             radius: 60,
                                           //             backgroundImage: NetworkImage(
                                           //                 'https://via.placeholder.com/150'),
@@ -155,13 +147,14 @@ class _CreateAchievementState extends State<CreateAchievement> {
                                           //           )
                                           //         : CircleAvatar(
                                           //             radius: 60,
-
+                                                      
                                           //             backgroundImage: MemoryImage(
                                           //                 achievementsController
                                           //                     .afile!)
                                           //             //
                                           //             //   .image,
                                           //             ),
+                                                  
 
                                           //     // }
                                           //     // }),
@@ -229,21 +222,22 @@ class _CreateAchievementState extends State<CreateAchievement> {
                       ),
                     ),
                     showCloseButton: false,
-                    footer: Container());
+                    footer: Container()
+                    );
               }, /////////////////////////////////////////////////////////////create function
               child: ButtonContainerWidget(
-                  curving: 30,
-                  colorindex: 0,
-                  height: 40,
-                  width: 180,
-                  child: const Center(
-                    child: TextFontWidgetRouter(
-                      text: 'Create Achievement',
-                      fontsize: 14,
-                      fontWeight: FontWeight.bold,
-                      color: cWhite,
-                    ),
-                  ))),
+                       curving: 30,
+                       colorindex: 0,
+                       height: 40,
+                       width: 180,
+                       child: const Center(
+                        child: TextFontWidgetRouter(
+                          text: 'Create Achievement',
+                          fontsize: 14,
+                          fontWeight: FontWeight.bold,
+                          color: cWhite,
+                      ),
+                    ))),
         ],
       ),
     );

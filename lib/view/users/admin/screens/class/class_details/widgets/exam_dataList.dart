@@ -95,7 +95,7 @@ class ClassExameDataListContainer extends StatelessWidget {
                 rowMainAccess: MainAxisAlignment.center,
                 color: cWhite,
                 index: index,
-                headerTitle: data.obtainedMark),
+                headerTitle:data.obtainedMark ==null? '': data.obtainedMark),
           ), // ................................... Fees Required
           const SizedBox(
             width: 02,
@@ -117,7 +117,7 @@ class ClassExameDataListContainer extends StatelessWidget {
                 rowMainAccess: MainAxisAlignment.center,
                 color: cWhite,
                 index: index,
-                headerTitle: data.passMark),
+                headerTitle: data.passMark == null? '':data.passMark),
           ), //....................................... Fess Pending
           const SizedBox(
             width: 02,
@@ -125,7 +125,7 @@ class ClassExameDataListContainer extends StatelessWidget {
 
           Expanded(
             flex: 1,
-            child: Row(
+            child: Row(  
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(

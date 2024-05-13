@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
@@ -29,6 +28,7 @@ class FeesAndBillsController extends GetxController {
   RxInt studentClassWiseCount = 0.obs;
   List<StudentModel> studentData = [];
   Future<int> fetchInitalClassFee(String classDocID) async {
+    print("fetchInitalClassFee ....$classDocID");
     await server
         .collection('SchoolListCollection')
         .doc(UserCredentialsController.schoolId)
@@ -137,8 +137,7 @@ class FeesAndBillsController extends GetxController {
       await Future.delayed(const Duration(seconds: 2)).then((value) {
         buttonstate.value = ButtonState.idle;
       });
-      if (kDebugMode) {
-      }
+      if (kDebugMode) {}
     }
   }
 
@@ -146,19 +145,21 @@ class FeesAndBillsController extends GetxController {
     final String docid = '${feestypeNameContoller.text}${uuid.v1()}';
 
     buttonstate.value = ButtonState.loading;
-    final ClassFeesModel feesDetail = ClassFeesModel(
-        docid: docid,
-        feestypeName: feestypeNameContoller.text,
-        fees: classinitalFee.value,
-        createdDate: DateTime.now(),
-        dueDate: DateTime.now()
-            .add(Duration(days: int.parse(feesDueContoller.text.trim()))));
+
     try {
       for (var i = 0; i < selectedClassList.length; i++) {
+        final ClassFeesModel feesDetail = ClassFeesModel(
+            docid: docid,
+            feestypeName: feestypeNameContoller.text,
+            fees: classinitalFee.value,
+            createdDate: DateTime.now(),
+            dueDate: DateTime.now()
+                .add(Duration(days: int.parse(feesDueContoller.text.trim()))));
+
         await fetchInitalClassFee(selectedClassList[i].docid)
             .then((value) async {
-   
           feesDetail.fees = classinitalFee.value;
+
           await server
               .collection('SchoolListCollection')
               .doc(UserCredentialsController.schoolId)
@@ -189,29 +190,27 @@ class FeesAndBillsController extends GetxController {
                     docid: selectedFeeMonthContoller.text.trim())
                 .then((value) async {
               await getStudentClassWiseCount(
-                      selectedClassList[i].docid,
-                      selectedFeeMonthContoller.text.trim(),
-                      classinitalFee.value,
-                      docid)
-                  .then((value) async {
-                feestypeNameContoller.clear();
-                feesContoller.clear();
-                feesDueContoller.clear();
-                seletedFeeDateContoller.clear();
-                selectedFeeMonthContoller.clear();
-                buttonstate.value = ButtonState.success;
-                await Future.delayed(const Duration(seconds: 2)).then((vazlue) {
-                  buttonstate.value = ButtonState.idle;
-                });
-                Get.back();
-                Get.back();
-                selectedClassList.clear();
-                allClassList.clear();
-              });
+                  selectedClassList[i].docid,
+                  selectedFeeMonthContoller.text.trim(),
+                  classinitalFee.value,
+                  docid);
             });
           });
         });
       }
+      feestypeNameContoller.clear();
+      feesContoller.clear();
+      feesDueContoller.clear();
+      seletedFeeDateContoller.clear();
+      selectedFeeMonthContoller.clear();
+      buttonstate.value = ButtonState.success;
+      await Future.delayed(const Duration(seconds: 2)).then((vazlue) {
+        buttonstate.value = ButtonState.idle;
+      });
+      Get.back();
+      Get.back();
+      selectedClassList.clear();
+      allClassList.clear();
 
       showToast(msg: 'Fees Genrated Completed');
     } catch (e) {
@@ -220,8 +219,7 @@ class FeesAndBillsController extends GetxController {
       await Future.delayed(const Duration(seconds: 2)).then((value) {
         buttonstate.value = ButtonState.idle;
       });
-      if (kDebugMode) {
-      }
+      if (kDebugMode) {}
     }
   }
 
@@ -290,7 +288,8 @@ class FeesAndBillsController extends GetxController {
 
   Future<void> getStudentClassWiseCount(String classDocID,
       String feeCollectionID, int fee, String dataDocID) async {
-             log('Class Name:    $classDocID');
+        studentData.clear();
+
     await server
         .collection('SchoolListCollection')
         .doc(UserCredentialsController.schoolId)
@@ -301,12 +300,34 @@ class FeesAndBillsController extends GetxController {
         .collection('Students')
         .get()
         .then((value) async {
-      for (var i = 0; i < value.docs.length; i++) {
-   
-      
-        final list =
+                  final list =
             value.docs.map((e) => StudentModel.fromMap(e.data())).toList();
-        studentData.add(list[i]);
+        studentData.addAll(list);
+      for (var i = 0; i < value.docs.length; i++) {
+        print('Student names ${value.docs[i].data()['studentemail']}');
+
+        // final StudentModel list = StudentModel(
+        //     admissionNumber: value.docs[i].data()['admissionNumber'],
+        //     alPhoneNumber: value.docs[i].data()['alPhoneNumber'],
+        //     bloodgroup: value.docs[i].data()['bloodgroup'],
+        //     classId: value.docs[i].data()['classId'],
+        //     createDate: value.docs[i].data()['createDate'],
+        //     dateofBirth: value.docs[i].data()['dateofBirth'],
+        //     district: value.docs[i].data()['district'],
+        //     docid: value.docs[i].data()['docid'],
+        //     gender: value.docs[i].data()['gender'],
+        //     guardianId: value.docs[i].data()['guardianId'],
+        //     houseName: value.docs[i].data()['houseName'],
+        //     parentId: value.docs[i].data()['parentId'],
+        //     parentPhoneNumber: value.docs[i].data()['parentPhoneNumber'],
+        //     place: value.docs[i].data()['place'],
+        //     profileImageId: value.docs[i].data()['profileImageId'],
+        //     profileImageUrl: value.docs[i].data()['profileImageUrl'],
+        //     studentName: value.docs[i].data()['studentName'],
+        //     password: value.docs[i].data()['password'],
+        //     studentemail: value.docs[i].data()['studentemail'],
+        //     userRole: value.docs[i].data()['userRole']);
+
         await server
             .collection('SchoolListCollection')
             .doc(UserCredentialsController.schoolId)

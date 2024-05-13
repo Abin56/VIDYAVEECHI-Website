@@ -29,7 +29,7 @@ class ExamHistory extends StatelessWidget {
           height: 40,
           width: 1200,
           color: themeColorBlue.withOpacity(0.1),
-          child:  Padding(
+          child:  const Padding(
             padding: EdgeInsets.all(8.0),
             child: TextFontWidget(
               text: 'Exams section',
@@ -43,7 +43,7 @@ class ExamHistory extends StatelessWidget {
           padding: const EdgeInsets.all(10.0),
           child: Row(
             children: [
-               Expanded(
+               const Expanded(
                   flex: 1,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -70,7 +70,7 @@ class ExamHistory extends StatelessWidget {
           padding: const EdgeInsets.all(10.0),
           child: Row(
             children: [
-               Expanded(
+               const Expanded(
                   flex: 1,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -176,7 +176,7 @@ class ExamHistory extends StatelessWidget {
                           child: CatrgoryTableHeaderColorWidget(
                               color: themeColorBlue,
                               textcolor: cWhite,
-                              headerTitle: 'Pass mark')),
+                              headerTitle: 'Total  mark')),
                       SizedBox(
                         width: 02,
                       ),
