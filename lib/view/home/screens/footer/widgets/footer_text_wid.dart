@@ -1,13 +1,14 @@
 import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:vidyaveechi_website/info/info.dart';
 import 'package:vidyaveechi_website/view/colors/colors.dart';
 import 'package:vidyaveechi_website/view/fonts/google_poppins_widget.dart';
+import 'package:vidyaveechi_website/view/home/screens/footer/legal/cancellation.dart';
+import 'package:vidyaveechi_website/view/home/screens/footer/legal/privacypolicy.dart';
 import 'package:vidyaveechi_website/view/home/screens/footer/legal/terms%20_and_condition.dart';
 import 'package:vidyaveechi_website/view/home/screens/footer/legal/trademark.dart';
-import 'package:vidyaveechi_website/view/home/screens/footer/legal/privacypolicy.dart';
-import 'package:vidyaveechi_website/view/home/screens/footer/legal/cancellation.dart';
 import 'package:vidyaveechi_website/view/home/screens/footer/widgets/who_we_are.dart';
 import 'package:vidyaveechi_website/view/home/screens/footer/widgets/why_choose_us.dart';
 import 'package:vidyaveechi_website/view/users/super_admin/lepton_Admin/admin_panel_Screen.dart';
@@ -63,7 +64,7 @@ class AddressWidget extends StatelessWidget {
 }
 
 class LegalWidget extends StatelessWidget {
-  const  LegalWidget({
+  const LegalWidget({
     super.key,
   });
 
@@ -91,10 +92,10 @@ class LegalWidget extends StatelessWidget {
                     return GestureDetector(
                       onTap: () {
                         if (index == 1) {
-                      Navigator.pushNamed(context,'/PrivacyPolicy');
+                          Navigator.pushNamed(context, '/PrivacyPolicy');
                         } else if (index == 2) {
                           log("privacy ..................");
-                          Navigator.pushNamed(context,'/PrivacyPolicy');
+                          Navigator.pushNamed(context, '/PrivacyPolicy');
                         } else {
                           Navigator.push(context, MaterialPageRoute(
                             builder: (context) {
@@ -159,7 +160,7 @@ class ConnecWidget extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
-                        connectnav[index];
+                        connectnav[index]();
                       },
                       child: OnHoverText(builder: (isHoverd) {
                         final color = isHoverd
@@ -249,7 +250,7 @@ class WhoWeAreWidget extends StatelessWidget {
   }
 }
 
-List<String> constechDUjo = ['Who We Are', 'Why choose us','SUPER ADMIN'];
+List<String> constechDUjo = ['Who We Are', 'Why choose us', 'SUPER ADMIN'];
 List<String> connect = ['Facebook', 'Instagram', 'Twitter', 'Youtube'];
 List<String> legal = [
   'Terms & Conditions',
@@ -301,10 +302,10 @@ Future<void> _launchInstaUrl() async {
 }
 
 var connectnav = [
-  _launchFacebookUrl(),
-  _launchInstaUrl(),
-  _launchTwitterUrl(),
-  _launchyouTubeUrl(),
+  _launchFacebookUrl,
+  _launchInstaUrl,
+  _launchTwitterUrl,
+  _launchyouTubeUrl,
 ];
 var legalnav = [
   const TermsAndConditions(),

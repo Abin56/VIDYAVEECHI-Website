@@ -13,6 +13,7 @@ deleteFunctionOfEvents(BuildContext context, EventModel data) {
           data.id,
           context,
         );
+        Navigator.pop(context);
       });
   // customShowDilogBox(
   //   context: context,

@@ -18,7 +18,9 @@ import '../../../../../widgets/blue_Container_widget/blue_Container_widget.dart'
 
 class TeacherAttendenceHistoryInfo extends StatelessWidget {
   final TeacherController teacherController = Get.put(TeacherController());
-  TeacherAttendenceHistoryInfo({super.key, });
+  TeacherAttendenceHistoryInfo({
+    super.key,
+  });
   @override
   Widget build(BuildContext context) {
     final date = DateTime.now();
@@ -37,7 +39,7 @@ class TeacherAttendenceHistoryInfo extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-             const Padding(
+            const Padding(
               padding: EdgeInsets.only(left: 20, top: 20),
               child: TextFontWidget(
                 text: 'All History Teacher Attendance with Info 📶',
@@ -77,7 +79,7 @@ class TeacherAttendenceHistoryInfo extends StatelessWidget {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: SizedBox(
-                                //  height: 40,
+                                  //  height: 40,
                                   child: Obx(() => Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
@@ -96,7 +98,7 @@ class TeacherAttendenceHistoryInfo extends StatelessWidget {
                                             ),
                                           ),
                                           const RouteSelectedTextContainer(
-                                            title: 'All Teachers',
+                                            title: 'Attendence List',
                                             width: 200,
                                           ),
                                           const Spacer(),
@@ -168,16 +170,14 @@ class TeacherAttendenceHistoryInfo extends StatelessWidget {
                                 padding: const EdgeInsets.only(
                                     top: 0, left: 05, right: 05),
                                 child: Container(
-                                  height: 480,
-                                  color: cWhite,
-                          
-                                  child:TeacherAttendanceDataList()
-                                ),
+                                    height: 480,
+                                    color: cWhite,
+                                    child: TeacherAttendanceDataList()),
                               )
                             ],
                           );
                         } else if (snaps.data == null) {
-                          return  const Center(
+                          return const Center(
                             child: TextFontWidget(
                                 text: "No recordes found", fontsize: 16),
                           );

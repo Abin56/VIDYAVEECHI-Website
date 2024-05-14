@@ -128,11 +128,11 @@ class AllNoticeDataList extends StatelessWidget {
                         data.noticeId,
                         context,
                       );
-                      //Navigator.pop(context );
+                      Navigator.pop(context);
                     },
                   );
                 },
-                child:DataContainerWidget(
+                child: DataContainerWidget(
                     rowMainAccess: MainAxisAlignment.center,
                     color: cWhite,
                     // width: 150,
