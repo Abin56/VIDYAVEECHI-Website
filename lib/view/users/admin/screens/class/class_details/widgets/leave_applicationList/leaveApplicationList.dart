@@ -166,7 +166,7 @@ class LeaveApplicationList extends StatelessWidget {
                         SizedBox(
                           width: 02,
                         ),
-                        Expanded(flex: 2, child: CatrgoryTableHeaderWidget(headerTitle: 'ID')),
+                        Expanded(flex: 2, child: CatrgoryTableHeaderWidget(headerTitle: 'Class')),
                         SizedBox(
                           width: 02,
                         ),

@@ -37,7 +37,7 @@ class TeacherAttendenceHistoryInfo extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-             Padding(
+             const Padding(
               padding: EdgeInsets.only(left: 20, top: 20),
               child: TextFontWidget(
                 text: 'All History Teacher Attendance with Info 📶',
@@ -74,81 +74,84 @@ class TeacherAttendenceHistoryInfo extends StatelessWidget {
                           return Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              SizedBox(
-                                height: 80,
-                                child: Obx(() => Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 10, right: 05),
-                                          child: GestureDetector(
-                                            onTap: () => teacherController
-                                                .teacherAttendeceOnTap
-                                                .value = false,
-                                            child:
-                                                const RouteNonSelectedTextContainer(
-                                              title: 'Home',
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: SizedBox(
+                                //  height: 40,
+                                  child: Obx(() => Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 10, right: 05),
+                                            child: GestureDetector(
+                                              onTap: () => teacherController
+                                                  .teacherAttendeceOnTap
+                                                  .value = false,
+                                              child:
+                                                  const RouteNonSelectedTextContainer(
+                                                title: 'Home',
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                        const RouteSelectedTextContainer(
-                                          title: 'All Teachers',
-                                          width: 200,
-                                        ),
-                                        const Spacer(),
-                                        teacherController
-                                                    .teacherAttendeceMonthWiswOnTap
-                                                    .value ==
-                                                false
-                                            ? Row(
-                                                children: [
-                                                  BlueContainerWidget(
-                                                      title: "Month Wise ? ",
-                                                      fontSize: 12,
-                                                      color: themeColorBlue,
-                                                      width: 100),
-                                                  Checkbox(
-                                                    value: false,
-                                                    onChanged: (value) {
-                                                      teacherController
-                                                          .teacherAttendeceMonthWiswOnTap
-                                                          .value = true;
-                                                    },
-                                                  )
-                                                ],
-                                              )
-                                            : Row(
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsets.all(
-                                                            8.0),
-                                                    child: SizedBox(
-                                                      height: 40,
-                                                      width: 200,
-                                                      child:
-                                                          SelectTeacherAttendenceDayDropDown(),
+                                          const RouteSelectedTextContainer(
+                                            title: 'All Teachers',
+                                            width: 200,
+                                          ),
+                                          const Spacer(),
+                                          teacherController
+                                                      .teacherAttendeceMonthWiswOnTap
+                                                      .value ==
+                                                  false
+                                              ? Row(
+                                                  children: [
+                                                    BlueContainerWidget(
+                                                        title: "Month Wise ? ",
+                                                        fontSize: 12,
+                                                        color: themeColorBlue,
+                                                        width: 100),
+                                                    Checkbox(
+                                                      value: false,
+                                                      onChanged: (value) {
+                                                        teacherController
+                                                            .teacherAttendeceMonthWiswOnTap
+                                                            .value = true;
+                                                      },
+                                                    )
+                                                  ],
+                                                )
+                                              : Row(
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              8.0),
+                                                      child: SizedBox(
+                                                        height: 40,
+                                                        width: 200,
+                                                        child:
+                                                            SelectTeacherAttendenceDayDropDown(),
+                                                      ),
                                                     ),
-                                                  ),
-                                                  BlueContainerWidget(
-                                                      title: "Day Wise ? ",
-                                                      fontSize: 12,
-                                                      color: themeColorBlue,
-                                                      width: 100),
-                                                  Checkbox(
-                                                    value: false,
-                                                    onChanged: (value) {
-                                                      teacherController
-                                                          .teacherAttendeceMonthWiswOnTap
-                                                          .value = false;
-                                                    },
-                                                  )
-                                                ],
-                                              ),
-                                      ],
-                                    )),
+                                                    BlueContainerWidget(
+                                                        title: "Day Wise ? ",
+                                                        fontSize: 12,
+                                                        color: themeColorBlue,
+                                                        width: 100),
+                                                    Checkbox(
+                                                      value: false,
+                                                      onChanged: (value) {
+                                                        teacherController
+                                                            .teacherAttendeceMonthWiswOnTap
+                                                            .value = false;
+                                                      },
+                                                    )
+                                                  ],
+                                                ),
+                                        ],
+                                      )),
+                                ),
                               ),
 
                               // ),
@@ -174,7 +177,7 @@ class TeacherAttendenceHistoryInfo extends StatelessWidget {
                             ],
                           );
                         } else if (snaps.data == null) {
-                          return  Center(
+                          return  const Center(
                             child: TextFontWidget(
                                 text: "No recordes found", fontsize: 16),
                           );
