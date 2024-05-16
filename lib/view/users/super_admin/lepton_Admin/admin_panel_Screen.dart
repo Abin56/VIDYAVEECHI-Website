@@ -40,18 +40,22 @@ class LeptonAdminLoginScreen extends StatelessWidget {
                       height: height,
                       color: const Color.fromARGB(255, 6, 71, 157),
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          IconButtonBackWidget(
-                            color: cWhite,
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              IconButtonBackWidget(
+                                color: cWhite,
+                              ),
+                            ],
                           ),
+                          SizedBox(height: 30,),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(
-                                'Hi ! \n Admin',
+                                'Hi ! \nAdmin',
                                 style: ralewayStyle.copyWith(
                                   fontSize: 45,
                                   color: AppColors.whiteColor,
@@ -86,6 +90,17 @@ class LeptonAdminLoginScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
+                      ResponsiveWidget.isSmallScreen(context)
+                          ? Row(
+                              children: [
+                                IconButtonBackWidget(
+                                  color: cBlue,
+                                ),
+                              ],
+                            )
+                          : SizedBox(
+                              
+                            ),
                       SizedBox(height: height * 0.2),
                       RichText(
                         text: TextSpan(
@@ -241,7 +256,8 @@ class LeptonAdminLoginScreen extends StatelessWidget {
                             if (_leptonIdController.text.trim() ==
                                     'openadminpanel' &&
                                 passwordController.text.trim() == 'Lemon4you') {
-                              Get.off(const LeptonHomePage());
+                                  return
+                              Get.to(()=>const SuperAdminPage());
                             } else {
                               return;
                             }

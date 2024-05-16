@@ -8,14 +8,9 @@ import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
 import 'package:vidyaveechi_website/view/widgets/routeSelectedTextContainer/routeSelectedTextContainer.dart';
 
-class Achievements extends StatefulWidget {
+class Achievements extends StatelessWidget {
   const Achievements({super.key});
 
-  @override
-  State<Achievements> createState() => _AchievementsState();
-}
-
-class _AchievementsState extends State<Achievements> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -43,7 +38,8 @@ class _AchievementsState extends State<Achievements> {
               padding: EdgeInsets.only(bottom: 10),
               child: Row(
                 children: [
-                  RouteSelectedTextContainer(width: 180, title: 'All Notices'),
+                  RouteSelectedTextContainer(
+                      width: 180, title: 'All Notices'),
                   Spacer(),
                   CreateAchievement()
                 ],
@@ -80,8 +76,7 @@ class _AchievementsState extends State<Achievements> {
                       ),
                       Expanded(
                           flex: 2,
-                          child:
-                              CatrgoryTableHeaderWidget(headerTitle: 'Date')),
+                          child: CatrgoryTableHeaderWidget(headerTitle: 'Date')),
                       SizedBox(
                         width: 02,
                       ),

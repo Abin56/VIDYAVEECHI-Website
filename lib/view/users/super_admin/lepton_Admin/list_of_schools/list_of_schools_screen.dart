@@ -1,12 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vidyaveechi_website/view/home/screens/footer/widgets/Iconbackbutton.dart';
+import 'package:vidyaveechi_website/view/users/super_admin/lepton_Admin/admin_home_screen.dart';
 import 'package:vidyaveechi_website/view/users/super_admin/lepton_Admin/list_of_schools/details.dart';
 
 import '../../widgets/buttonContainer.dart';
 
 class SchoolsListScreen extends StatefulWidget {
-  static const String route = '/SchooList';
+  
   const SchoolsListScreen({super.key});
 
   @override
@@ -18,9 +20,20 @@ class _SchoolsListScreenState extends State<SchoolsListScreen> {
   Widget build(BuildContext context) {
  
     return Scaffold(
+    
+     
         body: SafeArea(
       child: Column(
         children: [
+          
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              IconButtonBackWidget(
+                color: const Color.fromARGB(255, 2, 71, 167),
+              ),
+            ],
+          ),
           Expanded(
             child: StreamBuilder(
                 stream: FirebaseFirestore.instance
