@@ -12,7 +12,7 @@ class TimeTableModel {
   String? startTime;
   String? endTime;
   Color? selectColor;
-  
+
   String docid;
   TimeTableModel({
     this.selectClass,
@@ -90,29 +90,28 @@ class TimeTableModel {
   @override
   bool operator ==(covariant TimeTableModel other) {
     if (identical(this, other)) return true;
-  
-    return 
-      other.selectClass == selectClass &&
-      other.dayName == dayName &&
-      other.teacherName == teacherName &&
-      other.subjectName == subjectName &&
-      other.periodNumber == periodNumber &&
-      other.startTime == startTime &&
-      other.endTime == endTime &&
-      other.selectColor == selectColor &&
-      other.docid == docid;
+
+    return other.selectClass == selectClass &&
+        other.dayName == dayName &&
+        other.teacherName == teacherName &&
+        other.subjectName == subjectName &&
+        other.periodNumber == periodNumber &&
+        other.startTime == startTime &&
+        other.endTime == endTime &&
+        other.selectColor == selectColor &&
+        other.docid == docid;
   }
 
   @override
   int get hashCode {
     return selectClass.hashCode ^
-      dayName.hashCode ^
-      teacherName.hashCode ^
-      subjectName.hashCode ^
-      periodNumber.hashCode ^
-      startTime.hashCode ^
-      endTime.hashCode ^
-      selectColor.hashCode ^
-      docid.hashCode;
+        dayName.hashCode ^
+        teacherName.hashCode ^
+        subjectName.hashCode ^
+        periodNumber.hashCode ^
+        startTime.hashCode ^
+        endTime.hashCode ^
+        selectColor.hashCode ^
+        docid.hashCode;
   }
 }

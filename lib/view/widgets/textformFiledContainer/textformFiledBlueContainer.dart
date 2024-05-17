@@ -66,8 +66,7 @@ class TextFormFiledBlueContainerWidget extends StatelessWidget {
                 keyboardType: keyboardType,
                 controller: controller,
                 decoration: InputDecoration(
-                  contentPadding:
-                      const EdgeInsets.symmetric(vertical: 01, horizontal: 01),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 01, horizontal: 01),
                   errorBorder: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(0)),
                       borderSide: BorderSide(
@@ -84,8 +83,7 @@ class TextFormFiledBlueContainerWidget extends StatelessWidget {
                     ),
                   ),
                   // contentPadding: const EdgeInsets.all(8.0),
-                  enabledBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(width: 0.4)),
+                  enabledBorder: const OutlineInputBorder(borderSide: BorderSide(width: 0.4)),
                   hintStyle: const TextStyle(fontSize: 13),
                   hintText: hintText,
                   focusedBorder: const OutlineInputBorder(
@@ -160,8 +158,7 @@ class TextFormFiledBlueContainerWidgetWithOutColor extends StatelessWidget {
                 keyboardType: keyboardType,
                 controller: controller,
                 decoration: InputDecoration(
-                  contentPadding:
-                      const EdgeInsets.symmetric(vertical: 01, horizontal: 01),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 01, horizontal: 01),
                   errorBorder: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(0)),
                       borderSide: BorderSide(
@@ -178,8 +175,7 @@ class TextFormFiledBlueContainerWidgetWithOutColor extends StatelessWidget {
                     ),
                   ),
                   // contentPadding: const EdgeInsets.all(8.0),
-                  enabledBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(width: 0.4)),
+                  enabledBorder: const OutlineInputBorder(borderSide: BorderSide(width: 0.4)),
                   hintStyle: const TextStyle(fontSize: 13),
                   hintText: hintText,
                   focusedBorder: const OutlineInputBorder(
@@ -254,8 +250,7 @@ class TextFormFiledWithoutColorEight extends StatelessWidget {
                 keyboardType: keyboardType,
                 controller: controller,
                 decoration: InputDecoration(
-                  contentPadding:
-                      const EdgeInsets.symmetric(vertical: 01, horizontal: 01),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 01, horizontal: 01),
                   errorBorder: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(0)),
                       borderSide: BorderSide(
@@ -272,8 +267,7 @@ class TextFormFiledWithoutColorEight extends StatelessWidget {
                     ),
                   ),
                   // contentPadding: const EdgeInsets.all(8.0),
-                  enabledBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(width: 0.4)),
+                  enabledBorder: const OutlineInputBorder(borderSide: BorderSide(width: 0.4)),
                   hintStyle: const TextStyle(fontSize: 13),
                   hintText: hintText,
                   focusedBorder: const OutlineInputBorder(
@@ -396,8 +390,7 @@ class TextFormFiledHeightnoColor extends StatelessWidget {
                 keyboardType: keyboardType,
                 controller: controller,
                 decoration: InputDecoration(
-                  contentPadding:
-                      const EdgeInsets.symmetric(vertical: 01, horizontal: 01),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 01, horizontal: 01),
                   errorBorder: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(0)),
                       borderSide: BorderSide(
@@ -414,10 +407,101 @@ class TextFormFiledHeightnoColor extends StatelessWidget {
                     ),
                   ),
                   // contentPadding: const EdgeInsets.all(8.0),
-                  enabledBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(width: 0.4)),
+                  enabledBorder: const OutlineInputBorder(borderSide: BorderSide(width: 0.4)),
                   hintStyle: const TextStyle(fontSize: 13),
                   hintText: hintText,
+                  focusedBorder: const OutlineInputBorder(
+                    //<-- SEE HERE
+                    borderSide: BorderSide(width: 1, color: Colors.green),
+                  ),
+                ),
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class TextFormFiledBlueContainerWidgetWithOutColorforShowdialogue extends StatelessWidget {
+  TextEditingController? controller = TextEditingController();
+  final String title;
+  final String text;
+  final Widget? widget;
+  final double? width;
+  bool? readOnly;
+  Function(String)? onChanged;
+  Iterable<String>? autofillHints;
+  String? Function(String?)? validator;
+  Function()? onTap;
+  TextInputType? keyboardType;
+  TextFormFiledBlueContainerWidgetWithOutColorforShowdialogue({
+    this.width,
+    this.widget,
+    required this.text,
+    required this.title,
+    this.readOnly,
+    this.keyboardType,
+    this.controller,
+    this.autofillHints,
+    this.onChanged,
+    this.validator,
+    this.onTap,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: ResponsiveWebSite.isMobile(context) ? 95 : 100,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TextFontWidget(text: '$title *', fontsize: 12.5),
+              widget == null ? const SizedBox() : widget!,
+            ],
+          ),
+          const SizedBox(
+            height: 05,
+          ),
+          Container(
+            // height: 40,
+            width: width,
+            color: screenContainerbackgroundColor,
+            child: Center(
+              child: TextFormField(
+                readOnly: readOnly ?? false,
+                onChanged: onChanged,
+                autofillHints: autofillHints,
+                onTap: onTap,
+                validator: validator,
+                keyboardType: keyboardType,
+                controller: controller,
+                decoration: InputDecoration(
+                  contentPadding: const EdgeInsets.symmetric(vertical: 01, horizontal: 01),
+                  errorBorder: const OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(0)),
+                      borderSide: BorderSide(
+                        width: 1,
+                        style: BorderStyle.none,
+                        color: Colors.red,
+                      )),
+                  focusedErrorBorder: const OutlineInputBorder(
+                    // borderRadius: BorderRadius.all(Radius.circular(4)),
+                    borderSide: BorderSide(
+                      width: 1,
+                      style: BorderStyle.none,
+                      color: Colors.red,
+                    ),
+                  ),
+                  // contentPadding: const EdgeInsets.all(8.0),
+                  enabledBorder: const OutlineInputBorder(borderSide: BorderSide(width: 0.4)),
+                  hintStyle: const TextStyle(fontSize: 13),
+                  hintText: text,
                   focusedBorder: const OutlineInputBorder(
                     //<-- SEE HERE
                     borderSide: BorderSide(width: 1, color: Colors.green),

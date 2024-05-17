@@ -32,10 +32,10 @@ class TimeTableController extends GetxController {
 
   TextEditingController startTimeController = TextEditingController();
   TextEditingController endTimeController = TextEditingController();
-  
+
   TextEditingController startTimeviewController = TextEditingController();
   TextEditingController endTimeviewController = TextEditingController();
-  TextEditingController periodController = TextEditingController();
+  TextEditingController periodController = TextEditingController(); 
   TextEditingController subjectNamecontroller = TextEditingController();
   TextEditingController periodcontroller = TextEditingController();
   TextEditingController timecontroller = TextEditingController();
@@ -48,7 +48,7 @@ class TimeTableController extends GetxController {
 
   RxBool ontapTimetable = false.obs;
   Rx<ButtonState> buttonstate = ButtonState.idle.obs;
-   // Map to store index values for weekdays
+  // Map to store index values for weekdays
   final Map<String, int> weekdayIndices = {
     'Monday': 0,
     'Tuesday': 1,
@@ -61,6 +61,7 @@ class TimeTableController extends GetxController {
 
   Future<void> addTimeTableDataToFirebase() async {
     final classController = Get.put(ClassController());
+
     final timetableDetails = TimeTableModel(
       selectClass: classController.className.value,
       dayName: dayName.value,
@@ -71,7 +72,6 @@ class TimeTableController extends GetxController {
       endTime: endTimeController.text,
       selectColor: subjectController.subjectColor.value,
       docid: periodController.text,
-    
     );
 
     final Map<String, dynamic> timetableData = timetableDetails.toMap();
@@ -86,36 +86,40 @@ class TimeTableController extends GetxController {
           .doc(classController.classDocID.value)
           .collection('timetables')
           .doc(dayName.value)
-          .set({'docid': dayName.value, 'day': dayName.value,'index': weekdayIndices[dayName.value]}).then(
-              (value) => FirebaseFirestore.instance
-                      .collection('SchoolListCollection')
-                      .doc(UserCredentialsController.schoolId)
-                      .collection(UserCredentialsController.batchId!)
-                      .doc(UserCredentialsController.batchId!)
-                      .collection('classes')
-                      .doc(classController.classDocID.value)
-                      .collection('timetables')
-                      .doc(dayName.value)
-                      .collection('Subjects') // .collection('Subjects').
-                      .doc(periodController.text)
-                      .set(timetableData)
-                      .then((value) {
-                   // showToast(msg: 'Timetable Added');
-                    dayName.value = 'Select Day';
-                    subjectName.value = 'Select Subject';
-                    teacherName.value = 'Select Teacher';
-                    // periodNumber.value = 'Period 1';
-                    selectclass.value = 'Select Class';
-                    //selectColor.value = Colors.amber;
-                    startTimeController.clear();
-                    endTimeController.clear();
-                    buttonstate.value = ButtonState.success;
-       showToast(msg: "TimeTable Created Successfully");
-         Future.delayed(const Duration(seconds: 2)).then((vazlue) {
-          buttonstate.value = ButtonState.idle;
-        });
-                    
-                  }));
+          .set({
+        'docid': dayName.value,
+        'day': dayName.value,
+        'index': weekdayIndices[dayName.value]
+      }).then((value) => FirebaseFirestore.instance
+                  .collection('SchoolListCollection')
+                  .doc(UserCredentialsController.schoolId)
+                  .collection(UserCredentialsController.batchId!)
+                  .doc(UserCredentialsController.batchId!)
+                  .collection('classes')
+                  .doc(classController.classDocID.value)
+                  .collection('timetables')
+                  .doc(dayName.value)
+                  .collection('Subjects') // .collection('Subjects').
+                  .doc(periodController.text)
+                  .set(timetableData)
+                  .then((value) {
+                // showToast(msg: 'Timetable Added');
+                dayName.value = 'Select Day';
+                subjectName.value = 'Select Subject';
+                teacherName.value = 'Select Teacher';
+                // periodNumber.value = 'Period 1';
+                selectclass.value = 'Select Class';
+                //selectColor.value = Colors.amber;
+                startTimeController.clear();
+                endTimeController.clear();
+                periodController.clear();
+
+                buttonstate.value = ButtonState.success;
+                showToast(msg: "TimeTable Created Successfully");
+                Future.delayed(const Duration(seconds: 2)).then((vazlue) {
+                  buttonstate.value = ButtonState.idle;
+                });
+              }));
 
       // Log the details
       print(UserCredentialsController.schoolId);
@@ -126,7 +130,6 @@ class TimeTableController extends GetxController {
       // print(periodNumber.value);
       print(timetableData);
     } catch (e, stackTrace) {
-      
       log('Error adding timetable: $e', stackTrace: stackTrace);
       showToast(msg: 'Failed to add timetable');
 
@@ -141,7 +144,6 @@ class TimeTableController extends GetxController {
   Future<void> enableUpdate(
     String docid,
     String daydocid,
-  
   ) async {
     server
         .collection('SchoolListCollection')
@@ -154,22 +156,26 @@ class TimeTableController extends GetxController {
         .doc(daydocid)
         .collection('Subjects')
         .doc(docid)
-        .update({'subjectName': subjectNamecontroller.text,
-        'periodNumber': periodController.text,
-        'startTime': startTimeviewController.text,
-        'endTime': endTimeviewController.text,
-        });
+        .update({
+      'subjectName': subjectNamecontroller.text,
+      'periodNumber': periodController.text,
+      'startTime': startTimeviewController.text,
+      'endTime': endTimeviewController.text,
+    }).then((value) {
+      periodController.clear();
+      subjectNamecontroller.clear();
+      startTimeviewController.clear();
+      endTimeviewController.clear();
+    });
 
     print(
       docid,
-
     );
   }
 
- Future<void> enableDelete(
+  Future<void> enableDelete(
     String docid,
     String daydocid,
-  
   ) async {
     server
         .collection('SchoolListCollection')
@@ -186,12 +192,10 @@ class TimeTableController extends GetxController {
 
     print(
       docid,
-
     );
   }
-  
 
-    Future<void> selectTimesec(BuildContext context, TextEditingController controller) async {
+  Future<void> selectTimesec(BuildContext context, TextEditingController controller) async {
     final TimeOfDay? selectedTime = await showTimePicker(
       context: context,
       initialTime: TimeOfDay.now(),
@@ -203,5 +207,3 @@ class TimeTableController extends GetxController {
     }
   }
 }
-  
-

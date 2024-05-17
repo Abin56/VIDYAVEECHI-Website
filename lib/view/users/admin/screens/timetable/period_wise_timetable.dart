@@ -19,8 +19,7 @@ import 'package:vidyaveechi_website/view/widgets/textformFiledContainer/textform
 class PeriodWiseTimeTable extends StatelessWidget {
   final dynamic data;
   final String docid;
-  final TimeTableController timeTableController =
-      Get.put(TimeTableController());
+  final TimeTableController timeTableController = Get.put(TimeTableController());
 
   final String subjectID;
   PeriodWiseTimeTable({
@@ -47,42 +46,27 @@ class PeriodWiseTimeTable extends StatelessWidget {
               children: [
                 const Row(
                   children: [
-                    Expanded(
-                        flex: 1,
-                        child: CatrgoryTableHeaderWidget(headerTitle: 'No')),
+                    Expanded(flex: 1, child: CatrgoryTableHeaderWidget(headerTitle: 'No')),
                     SizedBox(
                       width: 1,
                     ),
-                    Expanded(
-                        flex: 1,
-                        child:
-                            CatrgoryTableHeaderWidget(headerTitle: "Period ")),
+                    Expanded(flex: 1, child: CatrgoryTableHeaderWidget(headerTitle: "Period ")),
                     SizedBox(
                       width: 1,
                     ),
-                    Expanded(
-                        flex: 3,
-                        child:
-                            CatrgoryTableHeaderWidget(headerTitle: "Subject")),
+                    Expanded(flex: 3, child: CatrgoryTableHeaderWidget(headerTitle: "Subject")),
                     SizedBox(
                       width: 1,
                     ),
-                    Expanded(
-                        flex: 3,
-                        child: CatrgoryTableHeaderWidget(headerTitle: "Time")),
+                    Expanded(flex: 3, child: CatrgoryTableHeaderWidget(headerTitle: "Time")),
                     SizedBox(
                       width: 1,
                     ),
-                    Expanded(
-                        flex: 2,
-                        child: CatrgoryTableHeaderWidget(headerTitle: "Edit")),
+                    Expanded(flex: 2, child: CatrgoryTableHeaderWidget(headerTitle: "Edit")),
                     SizedBox(
                       width: 1,
                     ),
-                    Expanded(
-                        flex: 2,
-                        child:
-                            CatrgoryTableHeaderWidget(headerTitle: "Delete")),
+                    Expanded(flex: 2, child: CatrgoryTableHeaderWidget(headerTitle: "Delete")),
                     SizedBox(
                       width: 1,
                     ),
@@ -108,12 +92,11 @@ class PeriodWiseTimeTable extends StatelessWidget {
                       builder: (context, snapshot) {
                         if (snapshot.hasData) {
                           return snapshot.data!.docs.isEmpty
-                              ? const Text(
-                                  'Please select Class in Right Top DropDown List 😊')
+                              ? const Text('Please select Class in Right Top DropDown List 😊')
                               : ListView.separated(
                                   itemBuilder: (context, index) {
-                                    final data = TimeTableModel.fromMap(
-                                        snapshot.data!.docs[index].data());
+                                    final data =
+                                        TimeTableModel.fromMap(snapshot.data!.docs[index].data());
                                     return GestureDetector(
                                       onTap: () {},
                                       child: Row(
@@ -123,8 +106,7 @@ class PeriodWiseTimeTable extends StatelessWidget {
                                             child: DataContainerMarksWidget(
                                                 color: data.selectColor,
                                                 wantColor: false,
-                                                rowMainAccess:
-                                                    MainAxisAlignment.center,
+                                                rowMainAccess: MainAxisAlignment.center,
                                                 index: index,
                                                 headerTitle: "${index + 1}"),
                                           ),
@@ -135,11 +117,9 @@ class PeriodWiseTimeTable extends StatelessWidget {
                                             flex: 1,
                                             child: DataContainerMarksWidget(
                                                 color: data.selectColor,
-                                                rowMainAccess:
-                                                    MainAxisAlignment.center,
+                                                rowMainAccess: MainAxisAlignment.center,
                                                 index: index,
-                                                headerTitle:
-                                                    " ${data.periodNumber}"),
+                                                headerTitle: " ${data.periodNumber}"),
                                           ),
                                           const SizedBox(
                                             width: 1,
@@ -148,11 +128,9 @@ class PeriodWiseTimeTable extends StatelessWidget {
                                             flex: 3,
                                             child: DataContainerMarksWidget(
                                                 color: data.selectColor,
-                                                rowMainAccess:
-                                                    MainAxisAlignment.start,
+                                                rowMainAccess: MainAxisAlignment.start,
                                                 index: index,
-                                                headerTitle:
-                                                    "   ${data.subjectName}"),
+                                                headerTitle: "   ${data.subjectName}"),
                                           ),
                                           const SizedBox(
                                             width: 1,
@@ -161,8 +139,7 @@ class PeriodWiseTimeTable extends StatelessWidget {
                                             flex: 3,
                                             child: DataContainerMarksWidget(
                                                 color: data.selectColor,
-                                                rowMainAccess:
-                                                    MainAxisAlignment.start,
+                                                rowMainAccess: MainAxisAlignment.start,
                                                 index: index,
                                                 headerTitle:
                                                     " ${data.startTime} - ${data.endTime}"),
@@ -183,76 +160,59 @@ class PeriodWiseTimeTable extends StatelessWidget {
                                                         height: 500,
                                                         child: Form(
                                                           key: formKey,
-                                                          child:
-                                                              SingleChildScrollView(
+                                                          child: SingleChildScrollView(
                                                             child: Column(
                                                               children: [
                                                                 TextFormFiledBlueContainerWidgetWithOutColor(
-                                                                  validator:
-                                                                      checkFieldEmpty,
-                                                                  hintText:
-                                                                      ' ${data.periodNumber}',
-                                                                  title:
-                                                                      'Period Number',
-                                                                  controller:
-                                                                      timeTableController
-                                                                          .periodController,
+                                                                  validator: checkFieldEmpty,
+                                                                  hintText: ' ${data.periodNumber}',
+                                                                  title: 'Period Number',
+                                                                  controller: timeTableController
+                                                                      .periodController,
                                                                 ),
                                                                 const SizedBox(
                                                                   height: 20,
                                                                 ),
-                                                                TextFormFiledBlueContainerWidgetWithOutColor(
-                                                                  validator:
-                                                                      checkFieldEmpty,
-                                                                  hintText:
-                                                                      ' ${data.subjectName}',
-                                                                  title:
-                                                                      'Subject Name',
-                                                                  controller:
-                                                                      timeTableController
-                                                                          .subjectNamecontroller,
+                                                                TextFormFiledBlueContainerWidgetWithOutColorforShowdialogue(
+                                                                  validator: checkFieldEmpty,
+                                                                  text: ' ${data.subjectName}',
+                                                                  title: 'Subject Name',
+                                                                  controller: timeTableController
+                                                                      .subjectNamecontroller,
                                                                 ),
                                                                 const SizedBox(
                                                                   height: 10,
                                                                 ),
                                                                 TextFormFiledBlueContainerWidgetWithOutColor(
-                                                                  validator:
-                                                                      checkFieldEmpty,
-                                                                  onTap:
-                                                                      () async {
-                                                                    await timeTableController.selectTimesec(
-                                                                        context,
-                                                                        timeTableController
-                                                                            .startTimeviewController);
+                                                                  validator: checkFieldEmpty,
+                                                                  onTap: () async {
+                                                                    await timeTableController
+                                                                        .selectTimesec(
+                                                                            context,
+                                                                            timeTableController
+                                                                                .startTimeviewController);
                                                                   },
-                                                                  hintText:
-                                                                      ' ${data.startTime}',
-                                                                  title:
-                                                                      'Start Time',
-                                                                  controller:
-                                                                      timeTableController
-                                                                          .startTimeviewController,
+                                                                  hintText: ' ${data.startTime}',
+                                                                  title: 'Start Time',
+                                                                  controller: timeTableController
+                                                                      .startTimeviewController,
                                                                 ),
                                                                 const SizedBox(
                                                                   height: 10,
                                                                 ),
                                                                 TextFormFiledBlueContainerWidgetWithOutColor(
-                                                                  validator:
-                                                                      checkFieldEmpty,
-                                                                  onTap:
-                                                                      () async {
-                                                                    await timeTableController.selectTimesec(
-                                                                        context,
-                                                                        timeTableController
-                                                                            .endTimeviewController);
+                                                                  validator: checkFieldEmpty,
+                                                                  onTap: () async {
+                                                                    await timeTableController
+                                                                        .selectTimesec(
+                                                                            context,
+                                                                            timeTableController
+                                                                                .endTimeviewController);
                                                                   },
-                                                                  hintText:
-                                                                      ' ${data.endTime}',
-                                                                  title:
-                                                                      'End Time',
-                                                                  controller:
-                                                                      timeTableController
-                                                                          .endTimeviewController,
+                                                                  hintText: ' ${data.endTime}',
+                                                                  title: 'End Time',
+                                                                  controller: timeTableController
+                                                                      .endTimeviewController,
                                                                 ),
                                                                 const SizedBox(
                                                                   height: 10,
@@ -266,21 +226,16 @@ class PeriodWiseTimeTable extends StatelessWidget {
                                                     doyouwantActionButton: true,
                                                     actiontext: 'Update',
                                                     actiononTapfuction: () {
-                                                      if (formKey.currentState!
-                                                          .validate()) {
-                                                        timeTableController
-                                                            .enableUpdate(
-                                                                data.docid,
-                                                                data.dayName!);
-                                                        Navigator.of(context)
-                                                            .pop();
+                                                      if (formKey.currentState!.validate()) {
+                                                        timeTableController.enableUpdate(
+                                                            data.docid, data.dayName!);
+                                                        Navigator.of(context).pop();
                                                       }
                                                     });
                                               },
                                               child: DataContainerMarksWidget(
                                                   color: data.selectColor,
-                                                  rowMainAccess:
-                                                      MainAxisAlignment.center,
+                                                  rowMainAccess: MainAxisAlignment.center,
                                                   index: index,
                                                   headerTitle: '  Edit'),
                                             ),
@@ -295,18 +250,15 @@ class PeriodWiseTimeTable extends StatelessWidget {
                                                 customDeleteShowDialog(
                                                   context: context,
                                                   onTap: () {
-                                                    timeTableController
-                                                        .enableDelete(
-                                                            data.docid,
-                                                            data.dayName!);
+                                                    timeTableController.enableDelete(
+                                                        data.docid, data.dayName!);
                                                     Navigator.of(context).pop();
                                                   },
                                                 );
                                               },
                                               child: DataContainerMarksWidget(
                                                   color: data.selectColor,
-                                                  rowMainAccess:
-                                                      MainAxisAlignment.center,
+                                                  rowMainAccess: MainAxisAlignment.center,
                                                   index: index,
                                                   headerTitle: '  Delete'),
                                             ),
@@ -316,15 +268,13 @@ class PeriodWiseTimeTable extends StatelessWidget {
                                     );
                                   },
                                   itemCount: snapshot.data!.docs.length,
-                                  separatorBuilder: (context, index) =>
-                                      const SizedBox(
+                                  separatorBuilder: (context, index) => const SizedBox(
                                     height: 1,
                                   ),
                                 );
                         } else if (snapshot.data == null) {
-                          return Center(
-                            child: TextFontWidget(
-                                text: "No result found", fontsize: 12),
+                          return const Center(
+                            child: TextFontWidget(text: "No result found", fontsize: 12),
                           );
                         } else {
                           return const LoadingWidget();
@@ -402,8 +352,7 @@ class TextFormFiledBlueContainerWidget3 extends StatelessWidget {
                 keyboardType: keyboardType,
                 controller: controller,
                 decoration: InputDecoration(
-                  contentPadding:
-                      const EdgeInsets.symmetric(vertical: 01, horizontal: 01),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 01, horizontal: 01),
                   errorBorder: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(0)),
                       borderSide: BorderSide(
@@ -420,8 +369,7 @@ class TextFormFiledBlueContainerWidget3 extends StatelessWidget {
                     ),
                   ),
                   // contentPadding: const EdgeInsets.all(8.0),
-                  enabledBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(width: 0.4)),
+                  enabledBorder: const OutlineInputBorder(borderSide: BorderSide(width: 0.4)),
                   hintStyle: const TextStyle(fontSize: 13),
                   labelText: labeltext,
                   focusedBorder: const OutlineInputBorder(
