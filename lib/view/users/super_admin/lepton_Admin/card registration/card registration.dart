@@ -10,6 +10,7 @@ import 'package:vidyaveechi_website/view/fonts/google_poppins_widget.dart';
 import 'package:vidyaveechi_website/view/users/super_admin/lepton_Admin/card%20registration/table.dart';
 import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
+import 'package:vidyaveechi_website/view/widgets/drop_DownList/schoolDropDownList.dart';
 
 import '../../../../../card/controller/card_controller.dart';
 import '../../../../../card/view/assigning process/assigning_process.dart';
@@ -117,7 +118,7 @@ class _CardRegistrationState extends State<CardRegistration> {
                         //   ),
                         // ),
                         GestureDetector(
-                          child: Container(height: 280,width: 350,decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),border: Border.all(width: 0.4),color: Colors.blue[100]),
+                          child: Container(height: 380,width: 350,decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),border: Border.all(width: 0.4),color: Colors.blue[100]),
                             child: Column(
                               children: [
                                 Padding(
@@ -127,6 +128,15 @@ class _CardRegistrationState extends State<CardRegistration> {
                                       fontsize: 14),
                                 ),
                                 sh10,
+                                 Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: GooglePoppinsWidgets(
+                                      text: 'Select school',
+                                      fontsize: 14),
+                                ),
+                                const GetSchoolListDropDownButton(),
+                                sh10,
+
                                 AdmissionNumberAssigning(),sh10,
                                  GooglePoppinsWidgets(text:'Card Id: $cardId',fontsize: 15,fontWeight: FontWeight.w600,),sw20,
                                 GestureDetector(
@@ -143,7 +153,7 @@ class _CardRegistrationState extends State<CardRegistration> {
                                         borderRadius: BorderRadius.circular(10),
                                       ),
                                       child:
-                                          const Center(child: Text("Register")),
+                                          const Center(child: Text("Register",style: TextStyle(color: cWhite),)),
                                     ),
                                   ),
                                 ),
@@ -204,15 +214,10 @@ class _CardRegistrationState extends State<CardRegistration> {
             'DeviceId': deviceId,
             'Time': time+input,
           }, SetOptions(merge: true));
-          //  Get.find<NotificationController>()
-          //     .userStudentNotification(
-          //         studentID:value.docs[i].data()['docid'],
-          //         icon: cardNotifierSetup().icon,
-          //         messageText: "${value.docs[i].data()['studentName'] } is onboarded at ${time+input}",
-          //         // ,
-          //         headerText: "Onboarding",
-          //         whiteshadeColor: cardNotifierSetup().whiteshadeColor,
-          //         containerColor: cardNotifierSetup().containerColor);
+           await saveDataToAllStudentsCollection(value.docs[i].data()['docid'], cardId, deviceId, time, input);
+
+         // .then((value) => 
+         
           
                           Get.find<NotificationController>().userparentNotification(
                 parentID: value.docs[i].data()['parentId'],
@@ -222,7 +227,8 @@ class _CardRegistrationState extends State<CardRegistration> {
                 headerText:
                     "Onboarding",
                 whiteshadeColor: cardNotifierSetup().whiteshadeColor,
-                containerColor: cardNotifierSetup().containerColor).then((value) => showToast(msg: 'Card Registered'));
+                containerColor: cardNotifierSetup().containerColor).then((value) => 
+               showToast(msg: 'Card Registered'));
                 print("${   value.docs[i].data()['parentId']     }");
         } else {
           print(false);
@@ -232,6 +238,47 @@ class _CardRegistrationState extends State<CardRegistration> {
 
 
   }
+
+//   Future<void> addDataToFirebase(
+//   String cardId, String deviceId, String time, String input) async {
+//   final CardController cardController = Get.put(CardController());
+//   final String adnumber = '000${cardController.onTapValue.value}';
+//   print(adnumber);
+
+//   await server
+//       .collection('SchoolListCollection')
+//       .doc(UserCredentialsController.schoolId)
+//       .collection('AllStudents')
+//       .get()
+//       .then((value) async {
+//     for (var i = 0; i < value.docs.length; i++) {
+//       if (adnumber == value.docs[i].data()['admissionNumber']) {
+//         await saveDataToAllStudentsCollection(value.docs[i].data(), cardId, deviceId, time, input);
+//       } else {
+//         print(false);
+//       }
+//     }
+//   });
+// }
+
+Future<void> saveDataToAllStudentsCollection(
+  String studentData, String cardId, String deviceId, String time, String input,) async {
+  await server
+      .collection('SchoolListCollection')
+      .doc(UserCredentialsController.schoolId)
+      .collection('CurrentStudentAttendance')
+      .doc(studentData)
+      .set({
+    'CardId': cardId,
+    'DeviceId': deviceId,
+    'Time': time + input,
+  }, SetOptions(merge: true)).then((value) {
+    // Your additional operations here
+    showToast(msg: 'Card Registered');
+   // print("${studentData['parentId']}");
+  });
+}
+
 
   
 }

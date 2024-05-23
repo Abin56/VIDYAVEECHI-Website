@@ -50,7 +50,7 @@ class ListofCard extends StatelessWidget {
                       stream: FirebaseFirestore.instance
                           .collection('SchoolListCollection')
                           .doc(UserCredentialsController.schoolId)
-                          .collection('AllStudents')
+                          .collection('CurrentStudentAttendance')
                           .snapshots(),
                       builder: (context, snapshot) {
            

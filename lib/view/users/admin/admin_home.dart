@@ -28,11 +28,12 @@ import 'package:vidyaveechi_website/view/users/admin/screens/students/create_stu
 import 'package:vidyaveechi_website/view/users/admin/screens/students/view_allStudents.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/teacher/view_allTeachers.dart';
 import 'package:vidyaveechi_website/view/users/admin/screens/timetable/timetable_main_screen.dart';
-import 'package:vidyaveechi_website/view/users/super_admin/lepton_Admin/card%20registration/card%20registration.dart';
 import 'package:vidyaveechi_website/view/utils/firebase/firebase.dart';
 import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_credentials.dart';
 import 'package:vidyaveechi_website/view/widgets/loading_widget/loading_widget.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
+
+import '../../home/screens/create_student/excel.dart';
 
 class AdminHomeScreen extends StatefulWidget {
   const AdminHomeScreen({super.key});
@@ -58,7 +59,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
         builder: (context, snap) {
           if (snap.hasData) {
             return snap.data?.data()?['active'] == false
-                ? Scaffold(
+                ? const Scaffold(
                     body: SafeArea(
                         child: Center(
                       child: TextFontWidget(
@@ -106,16 +107,20 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                                         ],
                                       ),
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 10, top: 12),
-                                      child: Text(
-                                        "Main Menu",
-                                        style: TextStyle(
-                                            color: cBlack.withOpacity(
-                                              0.4,
-                                            ),
-                                            fontSize: 12),
+                                    GestureDetector(onTap: () {
+                                      Get.to(const GenerateExcel()); 
+                                    },
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10, top: 12),
+                                        child: Text(
+                                          "Main Menu",
+                                          style: TextStyle(
+                                              color: cBlack.withOpacity(
+                                                0.4,
+                                              ),
+                                              fontSize: 12),
+                                        ),
                                       ),
                                     ),
                                     const SizedBox(
@@ -179,7 +184,9 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                               ),
                               GestureDetector(
                                 onTap: (){
-                                 Get.to(() =>  CardRegistration());
+                                   Get.to(() =>  const GenerateExcel());
+                               //  Get.to(() =>  CardRegistration());
+                               
                                 },
                                 child: Padding(
                                   padding:

@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:progress_state_button/progress_button.dart';
@@ -14,7 +15,10 @@ import 'package:vidyaveechi_website/view/utils/shared_pref/user_auth/user_creden
 import 'package:vidyaveechi_website/view/widgets/custom_showDilog/custom_showdilog.dart';
 import 'package:vidyaveechi_website/view/widgets/drop_DownList/schoolDropDownList.dart';
 
+import '../class_controller/class_controller.dart';
+
 class RegistrationController extends GetxController {
+  final classController = Get.put(ClassController());
   int notifierCounter = 0;
   RxBool ontapRegiStudentList = false.obs;
   List<ClassModel> allclassList = [];
@@ -22,7 +26,7 @@ class RegistrationController extends GetxController {
   RxString className = ''.obs;
   RxString classDocID = ''.obs;
   Rx<ButtonState> buttonstate = ButtonState.idle.obs;
-   final formKey = GlobalKey<FormState>();
+  final formKey = GlobalKey<FormState>();
   Future<List<ClassModel>> fetchClass() async {
     await server
         .collection('SchoolListCollection')
@@ -41,7 +45,8 @@ class RegistrationController extends GetxController {
           .get()
           .then((value) {
         for (var i = 0; i < value.docs.length; i++) {
-          final list = value.docs.map((e) => ClassModel.fromMap(e.data())).toList();
+          final list =
+              value.docs.map((e) => ClassModel.fromMap(e.data())).toList();
           allclassList.add(list[i]);
         }
         allclassList.sort((a, b) => a.className.compareTo(b.className));
@@ -65,7 +70,8 @@ class RegistrationController extends GetxController {
           .get()
           .then((value) async {
         for (var i = 0; i < value.docs.length; i++) {
-          final list = value.docs.map((e) => StudentModel.fromMap(e.data())).toList();
+          final list =
+              value.docs.map((e) => StudentModel.fromMap(e.data())).toList();
           await server
               .collection('SchoolListCollection')
               .doc(UserCredentialsController.schoolId)
@@ -107,12 +113,14 @@ class RegistrationController extends GetxController {
     }
   }
 
-  Future<void> removeRegiStudent(BuildContext context, String classID, String studentDocID) async {
+  Future<void> removeRegiStudent(
+      BuildContext context, String classID, String studentDocID) async {
     customShowDilogBox2(
         context: context,
         title: "Alert",
         children: [
-          const TextFontWidget(text: "Do you want remove this student now?", fontsize: 12)
+          const TextFontWidget(
+              text: "Do you want remove this student now?", fontsize: 12)
         ],
         actiononTapfuction: () async {
           await server
@@ -136,6 +144,7 @@ class RegistrationController extends GetxController {
 
   Future<void> classWiseStudentCreation() async {
     buttonstate.value = ButtonState.loading;
+       log("Start .... ${className.value}");
     try {
       final uid = uuid.v1();
       final studentDetail = StudentModel(
@@ -158,7 +167,10 @@ class RegistrationController extends GetxController {
           studentName: stNameController.text.trim(),
           password: '123456',
           studentemail: stEmailController.text.trim(),
-          userRole: 'student');
+          userRole: 'student',
+          className: className.value);
+          studentDetail.className=className.value;
+               log("End .... ${studentDetail.className}");
       await server
           .collection('SchoolListCollection')
           .doc(schoolListValue?['docid'])
@@ -247,14 +259,36 @@ class RegistrationController extends GetxController {
             .doc(value.docs[i].data()['docid'])
             .collection('RegTemp_Students')
             .get();
-        final RegistrationStudentCountModel detail = RegistrationStudentCountModel(
-            className: value.docs[i].data()['className'],
-            classID: value.docs[i].data()['docid'],
-            studentCount: regiStudent.docs.length);
+        final RegistrationStudentCountModel detail =
+            RegistrationStudentCountModel(
+                className: value.docs[i].data()['className'],
+                classID: value.docs[i].data()['docid'],
+                studentCount: regiStudent.docs.length);
         allClasswiseRegStudents.add(detail);
       }
     });
 
     return allClasswiseRegStudents;
+  }
+
+  Future<List<StudentModel>> fetchStudentData() async {
+    final firebase = FirebaseFirestore.instance;
+    final querySnapshot = await firebase
+        .collection('SchoolListCollection')
+        .doc(UserCredentialsController.schoolId)
+        .collection(UserCredentialsController.batchId!)
+        .doc(UserCredentialsController.batchId!)
+        .collection('classes')
+        .doc(Get.find<ClassController>().classDocID.value)
+        .collection('RegTemp_Students')
+        .get();
+
+    print(UserCredentialsController.schoolId);
+    print(UserCredentialsController.batchId!);
+    print(classController.className.value);
+
+    return querySnapshot.docs
+        .map((doc) => StudentModel.fromMap(doc.data()))
+        .toList();
   }
 }

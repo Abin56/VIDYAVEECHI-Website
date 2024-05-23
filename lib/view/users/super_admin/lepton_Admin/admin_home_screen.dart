@@ -64,12 +64,10 @@
 // }
 // ignore_for_file: sort_child_properties_last, camel_case_types
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:vidyaveechi_website/view/home/screens/footer/widgets/Iconbackbutton.dart';
+import 'package:vidyaveechi_website/view/users/super_admin/lepton_Admin/card%20registration/card%20registration.dart';
 import 'package:vidyaveechi_website/view/users/super_admin/lepton_Admin/list_of_schools/list_of_schools_screen.dart';
 import 'package:vidyaveechi_website/view/users/super_admin/lepton_Admin/requested_list/req_list_screen.dart';
 import 'package:vidyaveechi_website/view/widgets/responsive/responsive.dart';
@@ -255,7 +253,7 @@ class superAdminPageWebView extends StatelessWidget {
                   image: AssetImage('webassets/images/102029.jpg'),
                   fit: BoxFit.fill)),
         ),
-        Container(
+        SizedBox(
           height: screenSize.height,
           width: screenSize.width / 2,
           child: Column(
@@ -326,29 +324,31 @@ class superAdminPageWebView extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              Container(
-                height: screenSize.height / 6,
-                width: screenSize.width / 3,
-                child: Center(
-                    child: Text(
-                  "ID Cards",
-                  style: TextStyle(
-                      fontSize: ResponsiveWebSite.isTablet(context) ? 20 : 30,
-                      fontWeight: FontWeight.bold,
-                      color: const Color.fromARGB(255, 5, 52, 91)),
-                )),
-                decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                    gradient: LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: <Color>[
-                          Color.fromARGB(255, 202, 230, 195),
-                          Color.fromARGB(255, 195, 218, 238),
-                          Color.fromARGB(255, 202, 244, 203),
-                          Color.fromARGB(255, 133, 181, 207),
-                          Color.fromARGB(255, 224, 165, 226)
-                        ])),
+              GestureDetector(onTap: (){Get.to(CardRegistration());},
+                child: Container(
+                  height: screenSize.height / 6,
+                  width: screenSize.width / 3,
+                  child: Center(
+                      child: Text(
+                    "ID Cards",
+                    style: TextStyle(
+                        fontSize: ResponsiveWebSite.isTablet(context) ? 20 : 30,
+                        fontWeight: FontWeight.bold,
+                        color: const Color.fromARGB(255, 5, 52, 91)),
+                  )),
+                  decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      gradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: <Color>[
+                            Color.fromARGB(255, 202, 230, 195),
+                            Color.fromARGB(255, 195, 218, 238),
+                            Color.fromARGB(255, 202, 244, 203),
+                            Color.fromARGB(255, 133, 181, 207),
+                            Color.fromARGB(255, 224, 165, 226)
+                          ])),
+                ),
               ),
             ],
           ),

@@ -41,7 +41,7 @@ class SelectClassDropDown extends StatelessWidget {
         if (value != null) {
           classCtrl.className.value = value.className;
           classCtrl.classDocID.value = value.docid;
-          log("message ${classCtrl.classDocID.value}");
+          log("message ${classCtrl.className.value}");
         }
       },
       popupProps: const PopupProps.menu(
